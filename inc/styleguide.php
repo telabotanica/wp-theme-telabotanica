@@ -105,3 +105,41 @@ function get_telabotanica_styleguide_element($type, $nom, $data) {
   the_telabotanica_styleguide_element($type, $nom, $data);
   return ob_get_clean();
 }
+
+/**
+ * Routes pour le styleguide
+ */
+function telabotanica_styleguide_page_template( $template ) {
+  global $wp_query;
+	if ( $wp_query->query_vars['pagename'] === 'styleguide' ) {
+		$new_template = locate_template('styleguide.php');
+		if ( '' != $new_template ) {
+			return $new_template ;
+		}
+	}
+	return $template;
+}
+add_filter( 'template_include', 'telabotanica_styleguide_page_template', 99 );
+
+function telabotanica_styleguide_rewrite_tags() {
+  add_rewrite_tag('%styleguide%', '([^&]+)');
+  add_rewrite_tag('%styleguide_type%', '([^&]+)');
+  add_rewrite_tag('%styleguide_nom%', '([^&]+)');
+}
+add_action('init', 'telabotanica_styleguide_rewrite_tags', 10, 0);
+
+function telabotanica_styleguide_rewrite_rules() {
+  add_rewrite_rule('^styleguide/([^/]*)/([^/]*)/?', 'index.php?pagename=styleguide&styleguide_type=$matches[1]&styleguide_nom=$matches[2]', 'top');
+  add_rewrite_rule('^styleguide/?', 'index.php?pagename=styleguide', 'top');
+}
+add_action('init', 'telabotanica_styleguide_rewrite_rules', 10, 0);
+
+function telabotanica_styleguide_flush_rules(){
+  $rules = get_option( 'rewrite_rules' );
+
+  if ( !isset( $rules['^styleguide/?'] ) ) {
+    global $wp_rewrite;
+    $wp_rewrite->flush_rules();
+  }
+}
+add_action( 'wp_loaded', 'telabotanica_styleguide_flush_rules' );

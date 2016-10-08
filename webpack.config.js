@@ -1,3 +1,7 @@
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const pixrem = require('pixrem')
+const postcss = require('postcss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -12,14 +16,29 @@ module.exports = {
       {
         test: /\.scss$/,
         //include: './assets/styles',
-        loader: ExtractTextPlugin.extract(
-          'style', // backup loader when not building .css file
-          'css!sass' // loaders to preprocess CSS
-        )
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style',
+          loader: [
+            'css',
+            'postcss',
+            'sass'
+          ]
+        })
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('../style.css'),
+    new ExtractTextPlugin('bundle.css'),
+    new webpack.LoaderOptionsPlugin({
+      postcss: [
+        autoprefixer({
+          browsers: [
+            'last 5 versions',
+            'android 4',
+            'opera 12',
+          ],
+        }),
+      ],
+    }),
   ]
 }

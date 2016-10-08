@@ -23,5 +23,5 @@ Cette commande :
     npm run build
 
 Cette commande :
-- compile `assets/styles/main.scss` dans `style.css`
+- compile `assets/styles/main.scss` dans `dist/bundle.css`
 - compile `assets/scripts/main.js` dans `dist/bundle.js`

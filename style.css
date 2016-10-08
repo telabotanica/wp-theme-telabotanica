@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 Theme Name: TelaBotanica
 Theme URI: https://github.com/telabotanica/wp-theme-telabotanica
@@ -9,4 +8,7 @@ Version: 0.0.1
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: telabotanica
+
+Ce fichier décrit seulement le thème Wordpress.
+La feuille de style chargée par le thème est `dist/bundle.css`
 */

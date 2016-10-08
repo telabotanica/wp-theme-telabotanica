@@ -29,7 +29,9 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('bundle.css'),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
+      minimize: true,
       postcss: [
         autoprefixer({
           browsers: [

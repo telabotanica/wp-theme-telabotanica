@@ -12,3 +12,9 @@ Text Domain: telabotanica
 
 // Import des dépendences NPM
 @import "../../node_modules/normalize-scss/sass/normalize/import-now";
+
+// Composants
+@import "../../composants/all";
+
+// Modules
+@import "../../modules/all";

@@ -1,0 +1,168 @@
+<?php
+/**
+ * Tela Botanica functions and definitions
+ *
+ * Set up the theme and provides some helper functions, which are used in the
+ * theme as custom template tags. Others are attached to action and filter
+ * hooks in WordPress to change core functionality.
+ *
+ * When using a child theme you can override certain functions (those wrapped
+ * in a function_exists() call) by defining them first in your child theme's
+ * functions.php file. The child theme's functions.php file is included before
+ * the parent theme's file, so the child theme functions would be used.
+ *
+ * @link https://codex.wordpress.org/Theme_Development
+ * @link https://codex.wordpress.org/Child_Themes
+ *
+ * Functions that are not pluggable (not wrapped in function_exists()) are
+ * instead attached to a filter or action hook.
+ *
+ * For more information on hooks, actions, and filters,
+ * {@link https://codex.wordpress.org/Plugin_API}
+ *
+ * @package WordPress
+ * @subpackage Tela_Botanica
+ * @since Tela Botanica 0.0.1
+ */
+
+/**
+ * Ce thème requiert WordPress 4.4 ou ultérieur
+ */
+if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
+	require get_template_directory() . '/inc/back-compat.php';
+}
+
+/**
+ * Chargement des groupes de champs ACF
+ */
+require get_template_directory() . '/inc/custom-fields.php';
+
+
+if ( ! function_exists( 'telabotanica_setup' ) ) :
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
+ *
+ * Create your own telabotanica_setup() function to override in a child theme.
+ */
+function telabotanica_setup() {
+	/*
+	 * Make theme available for translation.
+	 */
+	load_theme_textdomain( 'telabotanica' );
+
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 */
+	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 1200, 9999 );
+
+	// This theme uses wp_nav_menu() in two locations.
+	register_nav_menus( array(
+		'principal' => __( 'Menu principal', 'telabotanica' ),
+		'secondaire'  => __( 'Menu secondaire', 'telabotanica' ),
+    'social'  => __( 'Réseaux sociaux', 'telabotanica' ),
+		'pied-de-page'  => __( 'Pied de page', 'telabotanica' ),
+		'pied-thematiques'  => __( 'Pied de page > Thématiques', 'telabotanica' ),
+		'pied-outils'  => __( 'Pied de page > Outils', 'telabotanica' ),
+		'pied-projets'  => __( 'Pied de page > Projets', 'telabotanica' ),
+		'pied-partenaires'  => __( 'Pied de page > Partenaires', 'telabotanica' ),
+		'pied-donnees'  => __( 'Pied de page > Données', 'telabotanica' ),
+    'pied-pratique'  => __( 'Pied de page > Pratique', 'telabotanica' ),
+	) );
+
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+
+	/*
+	 * This theme styles the visual editor to resemble the theme style,
+	 * specifically font, colors, icons, and column width.
+	 */
+	//add_editor_style( array( 'css/editor-style.css', telabotanica_fonts_url() ) );
+}
+endif; // telabotanica_setup
+add_action( 'after_setup_theme', 'telabotanica_setup' );
+
+/**
+ * Sets the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function telabotanica_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'telabotanica_content_width', 840 );
+}
+add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
+
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for content images
+ *
+ * @since Tela Botanica 1.0
+ *
+ * @param string $sizes A source size value for use in a 'sizes' attribute.
+ * @param array  $size  Image size. Accepts an array of width and height
+ *                      values in pixels (in that order).
+ * @return string A source size value for use in a content image 'sizes' attribute.
+ */
+function telabotanica_content_image_sizes_attr( $sizes, $size ) {
+	$width = $size[0];
+
+	840 <= $width && $sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px';
+
+	if ( 'page' === get_post_type() ) {
+		840 > $width && $sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
+	} else {
+		840 > $width && 600 <= $width && $sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 61vw, (max-width: 1362px) 45vw, 600px';
+		600 > $width && $sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
+	}
+
+	return $sizes;
+}
+add_filter( 'wp_calculate_image_sizes', 'telabotanica_content_image_sizes_attr', 10 , 2 );
+
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for post thumbnails
+ *
+ * @since Tela Botanica 1.0
+ *
+ * @param array $attr Attributes for the image markup.
+ * @param int   $attachment Image attachment ID.
+ * @param array $size Registered image size or flat array of height and width dimensions.
+ * @return string A source size value for use in a post thumbnail 'sizes' attribute.
+ */
+function telabotanica_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
+	if ( 'post-thumbnail' === $size ) {
+		is_active_sidebar( 'sidebar-1' ) && $attr['sizes'] = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 60vw, (max-width: 1362px) 62vw, 840px';
+		! is_active_sidebar( 'sidebar-1' ) && $attr['sizes'] = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 88vw, 1200px';
+	}
+	return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'telabotanica_post_thumbnail_sizes_attr', 10 , 3 );

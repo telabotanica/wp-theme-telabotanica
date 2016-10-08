@@ -1,6 +1,6 @@
 <?php
 /**
- * Tela Botanica functions and definitions
+ * TelaBotanica functions and definitions
  *
  * Set up the theme and provides some helper functions, which are used in the
  * theme as custom template tags. Others are attached to action and filter
@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Tela_Botanica
- * @since Tela Botanica 0.0.1
+ * @since TelaBotanica 0.0.1
  */
 
 /**
@@ -121,10 +121,24 @@ function telabotanica_content_width() {
 add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
 
 /**
+ * Enqueues scripts and styles.
+ *
+ * @since Twenty Sixteen 1.0
+ */
+function telabotanica_scripts() {
+	// Theme stylesheet.
+	wp_enqueue_style( 'telabotanica-style', get_stylesheet_uri() );
+
+	// Theme script.
+	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', array( 'jquery' ), null, true );
+}
+add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
+
+/**
  * Add custom image sizes attribute to enhance responsive image functionality
  * for content images
  *
- * @since Tela Botanica 1.0
+ * @since TelaBotanica 1.0
  *
  * @param string $sizes A source size value for use in a 'sizes' attribute.
  * @param array  $size  Image size. Accepts an array of width and height
@@ -151,7 +165,7 @@ add_filter( 'wp_calculate_image_sizes', 'telabotanica_content_image_sizes_attr',
  * Add custom image sizes attribute to enhance responsive image functionality
  * for post thumbnails
  *
- * @since Tela Botanica 1.0
+ * @since TelaBotanica 1.0
  *
  * @param array $attr Attributes for the image markup.
  * @param int   $attachment Image attachment ID.

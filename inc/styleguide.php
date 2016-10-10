@@ -19,7 +19,7 @@
   * Liste de tous les modules accessibles depuis les fonctions du styleguide
   */
 $telabotanica_modules = [
-    'bouton'
+  'bouton'
 ];
 array_walk($telabotanica_modules, function ($module) {
   if (!locate_template('modules/' . $module . '/module.php', true, true)) {
@@ -107,33 +107,37 @@ function get_telabotanica_styleguide_element($type, $nom, $data) {
 }
 
 /**
- * Routes pour le styleguide
+ * Ajout des filtres et actions nécessaires
  */
+
+// Sélection du template styleguide en fonction du paraètre `pagename`
 function telabotanica_styleguide_page_template( $template ) {
   global $wp_query;
-	if ( $wp_query->query_vars['pagename'] === 'styleguide' ) {
-		$new_template = locate_template('styleguide.php');
-		if ( '' != $new_template ) {
-			return $new_template ;
-		}
-	}
-	return $template;
+  if ( $wp_query->query_vars['pagename'] === 'styleguide' ) {
+    $new_template = locate_template('styleguide.php');
+    if ( '' != $new_template ) {
+      return $new_template ;
+    }
+  }
+  return $template;
 }
 add_filter( 'template_include', 'telabotanica_styleguide_page_template', 99 );
 
+// Définition des paramètres d'URL
 function telabotanica_styleguide_rewrite_tags() {
-  add_rewrite_tag('%styleguide%', '([^&]+)');
   add_rewrite_tag('%styleguide_type%', '([^&]+)');
   add_rewrite_tag('%styleguide_nom%', '([^&]+)');
 }
 add_action('init', 'telabotanica_styleguide_rewrite_tags', 10, 0);
 
+// Définition des règles de réécriture d'URL
 function telabotanica_styleguide_rewrite_rules() {
   add_rewrite_rule('^styleguide/([^/]*)/([^/]*)/?', 'index.php?pagename=styleguide&styleguide_type=$matches[1]&styleguide_nom=$matches[2]', 'top');
   add_rewrite_rule('^styleguide/?', 'index.php?pagename=styleguide', 'top');
 }
 add_action('init', 'telabotanica_styleguide_rewrite_rules', 10, 0);
 
+// Vider le cache des routes après leur création
 function telabotanica_styleguide_flush_rules(){
   $rules = get_option( 'rewrite_rules' );
 
@@ -143,3 +147,19 @@ function telabotanica_styleguide_flush_rules(){
   }
 }
 add_action( 'wp_loaded', 'telabotanica_styleguide_flush_rules' );
+
+// Définition du <title> des pages
+function telabotanica_styleguide_title( $title ) {
+  global $wp_query;
+  if ( $wp_query->query_vars['pagename'] !== 'styleguide' ) { return $title; }
+
+  $prefix = '';
+  if ($wp_query->get('styleguide_type') && $wp_query->get('styleguide_nom')) {
+    $type = $wp_query->get('styleguide_type');
+    $nom = $wp_query->get('styleguide_nom');
+    $prefix = $type . ' ' . $nom . ' &#8211; ';
+  }
+
+  return $prefix . 'Styleguide' . ' &#8211; ' . get_bloginfo('name');
+}
+add_filter( 'pre_get_document_title', 'telabotanica_styleguide_title', 10, 2 );

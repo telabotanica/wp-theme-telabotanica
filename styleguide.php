@@ -1,13 +1,6 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
+ * Template pour les pages de documentation du styleguide
  *
  * @package WordPress
  * @subpackage Tela_Botanica
@@ -23,9 +16,12 @@ get_header(); ?>
 
 			<h1><a href="<?php echo site_url('styleguide') ?>">Styleguide</a></h1>
 
-      <?php if ($wp_query->get('styleguide_type') && $wp_query->get('styleguide_nom')):
+      <?php
+      $current = false;
+      if ($wp_query->get('styleguide_type') && $wp_query->get('styleguide_nom')):
         $type = $wp_query->get('styleguide_type');
         $nom = $wp_query->get('styleguide_nom');
+        $current = $type . '/' . $nom;
         echo '<h2>' . $type . ' <code>' . $nom . '</code></h2>';
         $exemples = require($type . 's/' . $nom . '/exemples.php');
         foreach ($exemples as $exemple => $data) {
@@ -33,22 +29,25 @@ get_header(); ?>
           echo '<div class="styleguide-element">' . get_telabotanica_styleguide_element($type, $nom, $data) . '</div>';
           echo '<pre class="styleguide-data">' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>';
         }
-      else: ?>
-      <h2>Modules</h2>
-      <ul><?php
-      array_walk($telabotanica_modules, function ($module) {
-        echo '<li><a href="' . site_url('styleguide/module/' . $module) . '"><code>' . $module . '</code></a></li>';
-      });
-      ?></ul>
-      <h2>Composants rédactionnels</h2>
-      <ul><?php
-      array_walk($telabotanica_composants, function ($composant) {
-        echo '<li><a href="' . site_url('styleguide/composant/' . $composant) . '"><code>' . $composant . '</code></a></li>';
-      });
-      ?></ul>
-      <?php
       endif;
       ?>
+
+      <aside>
+        <h2>Modules</h2>
+        <ul><?php
+        array_walk($telabotanica_modules, function ($module) {
+          global $current;
+          echo '<li' . ($current === 'module/' . $module ? ' class="current"' : '') . '><a href="' . site_url('styleguide/module/' . $module) . '"><code>' . $module . '</code></a></li>';
+        });
+        ?></ul>
+        <h2>Composants rédactionnels</h2>
+        <ul><?php
+        array_walk($telabotanica_composants, function ($composant) {
+          global $current;
+          echo '<li' . ($current === 'composant/' . $composant ? ' class="current"' : '') . '><a href="' . site_url('styleguide/composant/' . $composant) . '"><code>' . $composant . '</code></a></li>';
+        });
+        ?></ul>
+      </aside>
 
     </main><!-- .site-main -->
   </div><!-- .content-area -->

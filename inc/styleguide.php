@@ -20,6 +20,7 @@
   */
 $telabotanica_modules = [
   'article',
+  'bandeau',
   'bouton',
   'footer',
   'form-newsletter',
@@ -93,7 +94,7 @@ function the_telabotanica_styleguide_element($type, $nom, $data) {
     $data = (object) $data;
     call_user_func($function, $data);
   } else {
-    trigger_error(sprintf(__('Le %s `%s` n\'existe pas dans le styleguide.', 'telabotanica'), $type, $nom), E_USER_WARNING);
+    trigger_error(sprintf(__('Le %s `%s` n\'existe pas dans le styleguide. Avez-vous pensé à l\'ajouter à la liste des éléments dans inc/styleguide.php ?', 'telabotanica'), $type, $nom), E_USER_WARNING);
   }
 }
 

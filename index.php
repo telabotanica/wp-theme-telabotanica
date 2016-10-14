@@ -19,18 +19,22 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<?php the_telabotanica_module('bouton', array('href' => '#', 'text' => 'Bouton')); ?>
-			<?php
-			$monbouton = get_telabotanica_module('bouton', array('href' => '#', 'text' => 'Bouton'));
-			echo $monbouton;
-			?>
+      <article class="article">
 
-			<?php the_telabotanica_composant('boutons', array(
-				'items' => array(
-					array('href' => '#', 'text' => 'Bouton 1'),
-					array('href' => '#', 'text' => 'Bouton 2')
-				)
-			)) ?>
+  			<?php the_telabotanica_module('bouton', array('href' => '#', 'text' => 'Bouton')); ?>
+  			<?php
+  			$monbouton = get_telabotanica_module('bouton', array('href' => '#', 'text' => 'Bouton'));
+  			echo $monbouton;
+  			?>
+
+  			<?php the_telabotanica_composant('boutons', array(
+  				'items' => array(
+  					array('href' => '#', 'text' => 'Bouton 1'),
+  					array('href' => '#', 'text' => 'Bouton 2')
+  				)
+  			)) ?>
+
+      </article>
 
     </main><!-- .site-main -->
   </div><!-- .content-area -->

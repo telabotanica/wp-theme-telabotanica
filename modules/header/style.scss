@@ -1,0 +1,169 @@
+.header {
+  $hauteur: 17rem;
+  $hauteur-fixe: 5.5rem;
+
+  background-color: $beige;
+  height: $hauteur;
+
+  &-fixe {
+    background-color: $blanc;
+    font-family: $ubuntu;
+    font-size: 0; // cache les espaces entre éléments dans le code HTML
+    font-weight: $medium;
+    height: $hauteur-fixe;
+    letter-spacing: 0.1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &-logo {
+    background-color: $vert-clair;
+    float: left;
+    font-family: $ubuntu;
+    font-size: 2rem;
+    font-weight: $bold;
+    margin: 0 6rem 0 0;
+    width: 19rem;
+
+    > a {
+      align-items: center;
+      color: $blanc;
+      display: flex;
+      height: $hauteur-fixe;
+      justify-content: center;
+      text-decoration: none;
+    }
+  }
+
+  &-nav {
+    text-transform: uppercase;
+
+    &-items {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .menu-item {
+        display: inline-block;
+        margin-right: 2rem;
+      }
+
+      a {
+        color: $gris60;
+        display: block;
+        font-size: 1.2rem;
+        line-height: $hauteur-fixe;
+        position: relative;
+        padding: 0 1rem;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $beige;
+          color: $noir;
+        }
+      }
+
+      .current-menu-item a:after {
+          border-bottom: 0.4rem solid $vert-clair;
+          bottom: 0;
+          content: '';
+          display: block;
+          left: 0;
+          position: absolute;
+          width: 100%;
+      }
+    }
+  }
+
+  &-liens {
+    list-style: none;
+    margin: 0;
+    padding: 0 1.4rem 0 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &-item {
+      display: inline-block;
+
+      a {
+        align-items: center;
+        color: $grisB3;
+        display: flex;
+        font-size: 1.2rem;
+        height: $hauteur-fixe;
+        padding-left: 1rem;
+        text-decoration: none;
+      }
+
+      &-texte {
+        border-right: 0.1rem solid $grisF0;
+        display: inline-block;
+        height: 2.3rem;
+        line-height: 2.3rem;
+        padding-right: 1rem;
+      }
+
+      &-login a {
+        color: $vert-clair;
+        text-transform: uppercase;
+      }
+
+      &-don a {
+        font-weight: $light;
+        letter-spacing: 0;
+      }
+
+      &-recherche a {
+        .header-liens-item-texte {
+          align-items: center;
+          background-color: $vert-clair;
+          border: 0;
+          color: $blanc;
+          display: flex;
+          height: 3.2rem;
+          justify-content: center;
+          padding: 0;
+          width: 3.4rem;
+        }
+      }
+    }
+  }
+
+  &-nav-usages {
+    font-size: 0; // cache les espaces entre éléments dans le code HTML
+    padding-top: $hauteur-fixe;
+    margin: 0 auto;
+    width: 100rem;
+
+    &-items {
+      list-style: none;
+      margin: 0;
+      padding: 1.9rem 0;
+
+      .menu-item {
+        display: inline-block;
+
+        &:first-child a {
+          border-left: 0.1rem solid transparentize($taupe, 0.8);
+        }
+      }
+
+      a {
+        align-items: center;
+        border-right: 0.1rem solid transparentize($taupe, 0.8);
+        color: $gris33;
+        display: flex;
+        font-family: $ubuntu;
+        font-size: 1.5rem;
+        font-weight: $regular;
+        height: 7.2rem;
+        justify-content: center;
+        position: relative;
+        padding: 0 4rem;
+        text-decoration: none;
+      }
+    }
+  }
+}

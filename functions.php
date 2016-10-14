@@ -82,14 +82,14 @@ function telabotanica_setup() {
 	register_nav_menus( array(
 		'principal' => __( 'Menu principal', 'telabotanica' ),
 		'secondaire'  => __( 'Menu secondaire', 'telabotanica' ),
-    'social'  => __( 'Réseaux sociaux', 'telabotanica' ),
-		'pied-de-page'  => __( 'Pied de page', 'telabotanica' ),
-		'pied-thematiques'  => __( 'Pied de page > Thématiques', 'telabotanica' ),
-		'pied-outils'  => __( 'Pied de page > Outils', 'telabotanica' ),
-		'pied-projets'  => __( 'Pied de page > Projets', 'telabotanica' ),
-		'pied-partenaires'  => __( 'Pied de page > Partenaires', 'telabotanica' ),
-		'pied-donnees'  => __( 'Pied de page > Données', 'telabotanica' ),
-    'pied-pratique'  => __( 'Pied de page > Pratique', 'telabotanica' ),
+		'pied-de-page-bandeau'  => __( 'Pied de page - bandeau', 'telabotanica' ),
+		'pied-de-page-colonnes'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
+		// 'pied-thematiques'  => __( 'Pied de page > Thématiques', 'telabotanica' ),
+		// 'pied-outils'  => __( 'Pied de page > Outils', 'telabotanica' ),
+		// 'pied-projets'  => __( 'Pied de page > Projets', 'telabotanica' ),
+		// 'pied-partenaires'  => __( 'Pied de page > Partenaires', 'telabotanica' ),
+		// 'pied-donnees'  => __( 'Pied de page > Données', 'telabotanica' ),
+    // 'pied-pratique'  => __( 'Pied de page > Pratique', 'telabotanica' ),
 	) );
 
 	/*
@@ -133,6 +133,9 @@ add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
 function telabotanica_scripts() {
 	// Theme stylesheet.
 	wp_enqueue_style( 'telabotanica-style', get_template_directory_uri() . '/dist/bundle.css' );
+
+  // Google Fonts
+  wp_enqueue_style( 'telabotanica-fonts', 'https://fonts.googleapis.com/css?family=Muli:300,400|Ubuntu:300,400,500,700' );
 
 	// Theme script.
 	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', array( 'jquery' ), null, true );

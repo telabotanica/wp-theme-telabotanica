@@ -1,0 +1,67 @@
+// Hide elements accessibly
+// based on the last method described at
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin hidden-accessibly {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+.hidden-accessibly {
+  @include hidden-accessibly;
+}
+
+// Responsive mixins
+$small-page-padding: 30px;
+
+$large-min: $layout-wrapper-width + ($small-page-padding * 2);
+@mixin large {
+  @media (min-width: $large-min) {
+    @content;
+  }
+}
+
+$medium-min: 768px;
+$medium-max: $large-min - 0.1px;
+@mixin medium {
+  @media (min-width: $medium-min) and (max-width: $medium-max) {
+    @content;
+  }
+}
+
+@mixin large-and-medium {
+  @media (min-width: $medium-min) {
+    @content;
+  }
+}
+
+$small-max: $medium-min - 0.1px;
+@mixin small {
+  @media (max-width: $small-max) {
+    @content;
+  }
+}
+@mixin only-on-small {
+  display: none !important;
+  @include small {
+    display: block !important;
+  }
+}
+@mixin hidden-on-small {
+  @include small {
+    display: none !important;
+  }
+}
+.hidden-on-small {
+  @include hidden-on-small;
+}
+.only-on-small {
+  @include only-on-small;
+}
+
+@mixin medium-and-small {
+  @media (max-width: $medium-max) {
+    @content;
+  }
+}

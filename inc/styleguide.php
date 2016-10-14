@@ -19,11 +19,15 @@
   * Liste de tous les modules accessibles depuis les fonctions du styleguide
   */
 $telabotanica_modules = [
-  'bouton'
+  'article',
+  'bouton',
+  'footer',
+  'form-newsletter',
+  'header'
 ];
 array_walk($telabotanica_modules, function ($module) {
-  if (!locate_template('modules/' . $module . '/module.php', true, true)) {
-    trigger_error(sprintf(__('Erreur lors de la recherche de %s pour inclusion', 'telabotanica'), $file), E_USER_ERROR);
+  if (!locate_template('modules/' . $module . '/' . $module . '.php', true, true)) {
+    trigger_error(sprintf(__('Erreur lors de la recherche de %s pour inclusion', 'telabotanica'), $module), E_USER_ERROR);
   }
 });
 
@@ -34,8 +38,8 @@ $telabotanica_composants = [
   'boutons'
 ];
 array_walk($telabotanica_composants, function ($composant) {
- if (!locate_template('composants/' . $composant . '/composant.php', true, true)) {
-   trigger_error(sprintf(__('Erreur lors de la recherche de %s pour inclusion', 'telabotanica'), $file), E_USER_ERROR);
+ if (!locate_template('composants/' . $composant . '/' . $composant . '.php', true, true)) {
+   trigger_error(sprintf(__('Erreur lors de la recherche de %s pour inclusion', 'telabotanica'), $composant), E_USER_ERROR);
  }
 });
 
@@ -84,7 +88,7 @@ function get_telabotanica_composant($composant, $data) {
  * @param mixed[] $data Données utilisées par l'élément.
  */
 function the_telabotanica_styleguide_element($type, $nom, $data) {
-  $function = 'telabotanica_' . $type . '_' . $nom;
+  $function = 'telabotanica_' . $type . '_' . str_replace('-', '_', $nom);
   if (function_exists($function)) {
     $data = (object) $data;
     call_user_func($function, $data);

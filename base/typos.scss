@@ -1,0 +1,82 @@
+$fonts-path: '../assets/fonts/';
+
+// @font-face {
+//     font-family: 'Muli';
+//     src: url('#{$fonts-path}muli-light-webfont.eot');
+//     src: url('#{$fonts-path}muli-light-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('#{$fonts-path}muli-light-webfont.woff2') format('woff2'),
+//          url('#{$fonts-path}muli-light-webfont.woff') format('woff'),
+//          url('#{$fonts-path}muli-light-webfont.ttf') format('truetype'),
+//          url('#{$fonts-path}muli-light-webfont.svg#mulilight') format('svg');
+//     font-weight: 300;
+//     font-style: normal;
+// }
+//
+// @font-face {
+//     font-family: 'Muli';
+//     src: url('#{$fonts-path}muli-regular-webfont.eot');
+//     src: url('#{$fonts-path}muli-regular-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('#{$fonts-path}muli-regular-webfont.woff2') format('woff2'),
+//          url('#{$fonts-path}muli-regular-webfont.woff') format('woff'),
+//          url('#{$fonts-path}muli-regular-webfont.ttf') format('truetype'),
+//          url('#{$fonts-path}muli-regular-webfont.svg#muliregular') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+//
+// @font-face {
+//     font-family: 'Ubuntu';
+//     src: url('#{$fonts-path}ubuntu-bold-webfont.eot');
+//     src: url('#{$fonts-path}ubuntu-bold-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('#{$fonts-path}ubuntu-bold-webfont.woff2') format('woff2'),
+//          url('#{$fonts-path}ubuntu-bold-webfont.woff') format('woff'),
+//          url('#{$fonts-path}ubuntu-bold-webfont.ttf') format('truetype'),
+//          url('#{$fonts-path}ubuntu-bold-webfont.svg#ubuntubold') format('svg');
+//     font-weight: bold;
+//     font-style: normal;
+// }
+//
+// @font-face {
+//     font-family: 'Ubuntu';
+//     src: url('#{$fonts-path}ubuntu-medium-webfont.eot');
+//     src: url('#{$fonts-path}ubuntu-medium-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('#{$fonts-path}ubuntu-medium-webfont.woff2') format('woff2'),
+//          url('#{$fonts-path}ubuntu-medium-webfont.woff') format('woff'),
+//          url('#{$fonts-path}ubuntu-medium-webfont.ttf') format('truetype'),
+//          url('#{$fonts-path}ubuntu-medium-webfont.svg#ubuntumedium') format('svg');
+//     font-weight: 600;
+//     font-style: normal;
+// }
+//
+// @font-face {
+//     font-family: 'Ubuntu';
+//     src: url('#{$fonts-path}ubuntu-regular-webfont.eot');
+//     src: url('#{$fonts-path}ubuntu-regular-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('#{$fonts-path}ubuntu-regular-webfont.woff2') format('woff2'),
+//          url('#{$fonts-path}ubuntu-regular-webfont.woff') format('woff'),
+//          url('#{$fonts-path}ubuntu-regular-webfont.ttf') format('truetype'),
+//          url('#{$fonts-path}ubuntu-regular-webfont.svg#ubunturegular') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+$muli    :   'Muli', sans-serif;
+$ubuntu  : 'Ubuntu', sans-serif;
+$light   : 300;
+$regular : 400;
+$medium  : 500;
+$bold    : 700;
+
+html {
+  font-size: 62.5%; // for easy rem sizing
+}
+
+body {
+  font-family: $muli;
+  font-size: 1.5rem;
+  font-weight: $regular;
+
+  // Better Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

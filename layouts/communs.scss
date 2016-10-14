@@ -1,0 +1,23 @@
+.layout {
+  &-wrapper {
+    margin: 0 auto;
+  }
+
+  @include small {
+    &-wrapper {
+      margin: 0 $small-page-padding;
+    }
+  }
+
+  @include medium {
+    &-wrapper {
+      margin: 0 $medium-page-padding;
+    }
+  }
+
+  @include large {
+    &-wrapper {
+      width: $layout-wrapper-width;
+    }
+  }
+}

@@ -13,8 +13,19 @@ Text Domain: telabotanica
 // Import des dépendences NPM
 @import "../../node_modules/normalize-scss/sass/normalize/import-now";
 
+// Variables
+$layout-wrapper-width: 1000px;
+$small-page-padding: 3rem;
+$medium-page-padding: 4rem;
+
+// Base
+@import "../../base/tout";
+
+// Layouts
+@import "../../layouts/tout";
+
 // Composants
-@import "../../composants/all";
+@import "../../composants/tout";
 
 // Modules
-@import "../../modules/all";
+@import "../../modules/tout";

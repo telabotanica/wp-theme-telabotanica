@@ -1,6 +1,6 @@
 <?php
 /**
- * Page d'accueil
+ * Post
  */
 
 get_header(); ?>
@@ -8,7 +8,7 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <div class="article"><h1>Accueil</h1></div>
+      <?php the_telabotanica_module('bandeau', array()); ?>
 
     </main><!-- .site-main -->
   </div><!-- .content-area -->

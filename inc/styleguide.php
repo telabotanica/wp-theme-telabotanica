@@ -22,6 +22,7 @@ $telabotanica_modules = [
   'article',
   'bandeau',
   'bouton',
+  'categories',
   'footer',
   'form-newsletter',
   'header'

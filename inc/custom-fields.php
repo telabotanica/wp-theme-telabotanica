@@ -57,6 +57,13 @@ acf_add_local_field_group(array (
 				'value' => 'page',
 			),
 		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'tb_thematique',
+			),
+		),
 	),
 	'menu_order' => 0,
 	'position' => 'acf_after_title',
@@ -80,7 +87,7 @@ acf_add_local_field_group(array (
 			'name' => 'composants',
 			'type' => 'flexible_content',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
@@ -489,6 +496,13 @@ acf_add_local_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'page',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'tb_thematique',
 			),
 		),
 	),

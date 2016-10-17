@@ -18,10 +18,23 @@
       </nav>
     <?php endif; ?>
     <ul class="header-liens">
-      <li class="header-liens-item header-liens-item-login"><a href="#"><span class="header-liens-item-texte">Connexion</span></a></li>
+      <?php if ( is_user_logged_in() ) :
+        $current_user = wp_get_current_user();
+        $avatar_url = get_avatar_url($current_user->ID, array('size' => 22)); ?>
+        <li class="header-liens-item header-liens-item-utilisateur">
+          <a href="<?php echo admin_url(); ?>">
+            <span class="header-liens-item-texte">
+              <?php echo $current_user->display_name; ?>
+              <span class="header-liens-item-utilisateur-avatar" style="background-image: url(<?php echo $avatar_url ?>);"></span>
+            </span>
+          </a>
+        </li>
+      <?php else : ?>
+        <li class="header-liens-item header-liens-item-login"><a href="<?php echo wp_login_url( get_permalink() ); ?>"><span class="header-liens-item-texte">Connexion</span></a></li>
+      <?php endif; ?>
       <li class="header-liens-item"><a href="#"><span class="header-liens-item-texte">EN</span></a></li>
       <li class="header-liens-item header-liens-item-don"><a href="#">Faites un don !</a></li>
-      <li class="header-liens-item header-liens-item-recherche"><a href="#"><span class="header-liens-item-texte">🔎</span></a></li>
+      <li class="header-liens-item header-liens-item-recherche"><a href="<?php echo get_search_link(); ?>"><span class="header-liens-item-texte">🔎</span></a></li>
     </ul>
   </div>
   <?php if ( has_nav_menu('principal') ) : ?>

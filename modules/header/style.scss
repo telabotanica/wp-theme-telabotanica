@@ -105,6 +105,18 @@
         padding-right: 1rem;
       }
 
+      &-utilisateur {
+        &-avatar {
+          border-radius: 50%;
+          display: inline-block;
+          height: 2.2rem;
+          margin-left: 0.5rem;
+          vertical-align: middle;
+          width: 2.2rem;
+        }
+        a {color: $vert-fonce;}
+      }
+
       &-login a {
         color: $vert-clair;
         text-transform: uppercase;

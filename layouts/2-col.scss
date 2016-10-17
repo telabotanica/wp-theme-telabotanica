@@ -1,4 +1,5 @@
 .layout-2-col {
+
   @include small {
     .layout-column:last-child {
       margin-top: 3.5rem;
@@ -6,30 +7,30 @@
   }
 
   @include large-and-medium {
-    .layout-wrapper {
+    > .layout-wrapper {
       display: flex;
       justify-content: space-between;
       overflow: hidden;
-    }
 
-    &.down {
-      .layout-wrapper {
-        align-items: flex-end;
+      > .layout-column {
+        width: 45.5rem;
+
+        &:first-child {
+          float: left;
+          margin-right: 2rem;
+        }
+
+        &:last-child {
+          float: right;
+          margin-left: 2rem;
+        }
       }
     }
 
-    .layout-column {
-      width: 45.5rem;
-    }
-
-    .layout-column:first-child {
-      float: left;
-      margin-right: 2rem;
-    }
-
-    .layout-column:last-child {
-      float: right;
-      margin-left: 2rem;
+    &.down {
+      > .layout-wrapper {
+        align-items: flex-end;
+      }
     }
   }
 

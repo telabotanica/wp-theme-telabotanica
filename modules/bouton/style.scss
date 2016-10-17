@@ -1,2 +1,13 @@
 .bouton {
+  background-color: $vert-bouton;
+  border-radius: 0.2rem;
+  color: $blanc;
+  display: inline-block;
+  font-family: $ubuntu;
+  font-size: 1.3rem;
+  font-weight: $medium;
+  letter-spacing: 0.1rem;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
 }

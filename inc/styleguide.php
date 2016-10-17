@@ -25,7 +25,7 @@ $telabotanica_modules = [
   'categories',
   'footer',
   'form-newsletter',
-  'header'
+  'header',
 ];
 array_walk($telabotanica_modules, function ($module) {
   if (!locate_template('modules/' . $module . '/' . $module . '.php', true, true)) {
@@ -37,7 +37,11 @@ array_walk($telabotanica_modules, function ($module) {
  * Liste de tous les composants accessibles depuis les fonctions du styleguide
  */
 $telabotanica_composants = [
-  'boutons'
+  'bouton',
+  'intertitre',
+  'liens',
+  'outils',
+  'texte',
 ];
 array_walk($telabotanica_composants, function ($composant) {
  if (!locate_template('composants/' . $composant . '/' . $composant . '.php', true, true)) {

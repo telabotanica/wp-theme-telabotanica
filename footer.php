@@ -1,12 +1,6 @@
 <?php
 /**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after
- *
- * @package WordPress
- * @subpackage Tela_Botanica
- * @since TelaBotanica 0.0.1
+ * Footer
  */
 ?>
 

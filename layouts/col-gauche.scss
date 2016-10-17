@@ -1,31 +1,32 @@
 .layout-col-gauche {
-  .layout-wrapper {
+  > .layout-wrapper {
     display: flex;
-  }
 
-  .layout-colonne {
-    background-color: $beige;
-    float: left;
-    flex: 0 0 23rem;
-    position: relative;
-    padding-right: 3rem;
-    width: 30rem;
-
-    &:before {
+    > .layout-colonne {
       background-color: $beige;
-      bottom: 0;
-      content: "";
-      display: block;
-      position: absolute;
-      right: 100%;
-      top: 0;
-      width: 100rem;
-    }
-  }
+      float: left;
+      flex: 0 0 33rem;
+      position: relative;
+      padding-right: 3rem;
+      width: 33rem;
 
-  .layout-contenu {
-    float: right;
-    margin-left: 5rem;
-    flex: 1;
+      &:before {
+        background-color: $beige;
+        bottom: 0;
+        content: "";
+        display: block;
+        position: absolute;
+        right: 100%;
+        top: 0;
+        width: 100rem;
+      }
+    }
+
+    > .layout-contenu {
+      float: right;
+      margin-left: 5rem;
+      flex: 1;
+      width: 62rem;
+    }
   }
 }

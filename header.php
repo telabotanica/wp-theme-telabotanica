@@ -1,12 +1,6 @@
 <?php
 /**
- * The template for displaying the header
- *
- * Displays all of the head element and everything up until the "site-content" div.
- *
- * @package WordPress
- * @subpackage Tela_Botanica
- * @since TelaBotanica 0.0.1
+ * Header
  */
 
 ?><!DOCTYPE html>

@@ -10,3 +10,11 @@
 plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
+
+## 0.0.2 (2016-10-18)
+
+* ACF: utilisation du Synchronized JSON pour définir les champs (au lieu d'includes PHP)
+
+## 0.0.1 (2016-10-17)
+
+Première version testable

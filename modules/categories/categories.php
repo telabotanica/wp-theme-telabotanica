@@ -1,7 +1,7 @@
 <?php function telabotanica_module_categories ($data) {
   $categorie_active = get_query_var('cat');
   $categories = get_categories(array(
-    'exclude' => array(1, 2),
+    'exclude' => array(1),
     'hide_empty' => false,
     'orderby' => 'none',
     'parent' => 0

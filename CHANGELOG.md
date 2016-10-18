@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `categories`: exclure seulement la categorie ID=1 (non catégorisé)
+
 ## 0.0.2 (2016-10-18)
 
 * ACF: utilisation du Synchronized JSON pour définir les champs (au lieu d'includes PHP)

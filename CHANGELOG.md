@@ -11,7 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
-* module `categories`: exclure seulement la categorie ID=1 (non catégorisé)
+* module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
+* module `header` : ajout du lien de changement de langue
+* I18n : plus de chaînes du thème traduisibles
 
 ## 0.0.2 (2016-10-18)
 

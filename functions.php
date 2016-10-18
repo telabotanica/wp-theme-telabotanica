@@ -35,6 +35,11 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
+ * Options WPML
+ */
+require get_template_directory() . '/inc/wpml.php';
+
+/**
  * Chargement du styleguide
  */
 require get_template_directory() . '/inc/styleguide.php';

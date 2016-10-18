@@ -30,10 +30,15 @@
           </a>
         </li>
       <?php else : ?>
-        <li class="header-liens-item header-liens-item-login"><a href="<?php echo wp_login_url( get_permalink() ); ?>"><span class="header-liens-item-texte">Connexion</span></a></li>
+        <li class="header-liens-item header-liens-item-login"><a href="<?php echo wp_login_url( get_permalink() ); ?>"><span class="header-liens-item-texte"><?php _e( 'Connexion', 'telabotanica' ) ?></span></a></li>
       <?php endif; ?>
-      <li class="header-liens-item"><a href="#"><span class="header-liens-item-texte">EN</span></a></li>
-      <li class="header-liens-item header-liens-item-don"><a href="#">Faites un don !</a></li>
+      <li class="header-liens-item">
+        <?php foreach (icl_get_languages() as $locale) {
+          if ($locale['active'] === '1') {continue;}
+          echo '<a href="' . $locale['url'] . '" rel="alternate" hreflang="' . $locale['code'] . '" title="' . $locale['native_name'] . '"><span class="header-liens-item-texte">' . strtoupper($locale['code']) . '</span></a>';
+        } ?>
+      </li>
+      <li class="header-liens-item header-liens-item-don"><a href="#"><?php _e( 'Faites un don !', 'telabotanica' ) ?></a></li>
       <li class="header-liens-item header-liens-item-recherche"><a href="<?php echo get_search_link(); ?>"><span class="header-liens-item-texte">🔎</span></a></li>
     </ul>
   </div>

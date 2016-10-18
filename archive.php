@@ -9,8 +9,8 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
       <?php the_telabotanica_module('bandeau', array(
-        'titre' => 'Actualités',
-        'soustitre' => 'Toute l\'actualité, les offres d\'emploi et les évènements',
+        'titre' => __('Actualités', 'telabotanica'),
+        'soustitre' => __('Toute l\'actualité, les offres d\'emploi et les évènements', 'telabotanica'),
       )); ?>
 
       <div class="layout-col-gauche">
@@ -29,7 +29,7 @@ get_header(); ?>
 
               the_posts_pagination( array(
         				'prev_text'          => __( 'Page précédente', 'telabotanica' ),
-        				'next_text'          => __( 'Page suivant', 'telabotanica' ),
+        				'next_text'          => __( 'Page suivante', 'telabotanica' ),
         				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'telabotanica' ) . ' </span>',
         			) );
               ?>

@@ -7,7 +7,7 @@
     'parent' => 0
   )); ?>
   <div class="categories">
-    <h2 class="categories-titre">Catégories</h2>
+    <h2 class="categories-titre"><?php _e('Catégories', 'telabotanica'); ?></h2>
     <ul class="categories-items">
       <?php foreach ($categories as $categorie):
         $est_active = $categorie->term_id === $categorie_active; ?>

@@ -1,15 +1,12 @@
 <?php function telabotanica_module_footer($data) { ?>
   <footer class="footer" role="contentinfo">
-    <!-- <div class="site-info">
-      <span class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-    </div> -->
     <div class="footer-about layout-2-col">
       <div class="layout-wrapper">
         <div class="footer-about-tela layout-column">
           <div class="footer-about-tela-logo">Tela Botanica</div>
           <div class="footer-about-tela-coordonnees">
             <div class="footer-about-tela-coordonnees-adresse">4 rue de Belfort, 34000 Montpellier, France</div>
-            <div class="footer-about-tela-coordonnees-tel">Téléphone : +33 (4) 67 52 41 225</div>
+            <div class="footer-about-tela-coordonnees-tel"><?php _e( 'Téléphone', 'telabotanica' ) ?> : +33 (4) 67 52 41 225</div>
             <div class="footer-about-tela-coordonnees-mail"><a href="mailto:accueil@tela-botanica.org">accueil@tela-botanica.org</a></div>
           </div>
 

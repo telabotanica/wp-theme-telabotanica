@@ -9,7 +9,7 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
       <?php the_telabotanica_module('bandeau', array(
-        'titre' => 'Comment participer ?',
+        'titre' => __('Comment participer ?', 'telabotanica'),
       )); ?>
 
       <div class="layout-col-gauche">
@@ -27,7 +27,7 @@ get_header(); ?>
 
               the_posts_pagination( array(
         				'prev_text'          => __( 'Page précédente', 'telabotanica' ),
-        				'next_text'          => __( 'Page suivant', 'telabotanica' ),
+        				'next_text'          => __( 'Page suivante', 'telabotanica' ),
         				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'telabotanica' ) . ' </span>',
         			) );
               ?>

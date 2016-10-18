@@ -1,0 +1,165 @@
+{
+    "key": "group_58034d2dc9585",
+    "title": "Offre de stage",
+    "fields": [
+        {
+            "key": "field_58034d2ddf6a0",
+            "label": "Chapo",
+            "name": "chapo",
+            "type": "text",
+            "instructions": "[structure] propose un stage de [dur\u00e9e]",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58034d2ddf73d",
+            "label": "Contexte",
+            "name": "contexte",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034d2ddf7d6",
+            "label": "Missions",
+            "name": "missions",
+            "type": "textarea",
+            "instructions": "Noter les missions confi\u00e9es au stagiaire",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034d2ddf86f",
+            "label": "Profil recherch\u00e9",
+            "name": "profil_recherche",
+            "type": "textarea",
+            "instructions": "Noter le profil recherch\u00e9",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034d2ddf908",
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "textarea",
+            "instructions": "Noter les conditions du stage",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034d2ddf9a2",
+            "label": "Modalit\u00e9s de candidature",
+            "name": "modalites_de_candidature",
+            "type": "textarea",
+            "instructions": "Candidatures (CV & L.M) \u00e0 envoyer avant le [date limite] \u00e0 [contact]",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034d2ddfa5c",
+            "label": "Renseignements \/ contacts suppl\u00e9mentaires",
+            "name": "renseignements_contacts_supplementaires",
+            "type": "textarea",
+            "instructions": "Noter les contacts pour demande de renseignements",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:stages"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1476782318
+}

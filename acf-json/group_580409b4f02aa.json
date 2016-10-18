@@ -1,0 +1,110 @@
+{
+    "key": "group_580409b4f02aa",
+    "title": "Moyens de participer",
+    "fields": [
+        {
+            "key": "field_580409bc2c86d",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_580409d72c86e",
+            "label": "Description courte",
+            "name": "description_courte",
+            "type": "textarea",
+            "instructions": "D\u00e9crire en une phrase en quoi cela consiste.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_580409f32c86f",
+            "label": "Intitul\u00e9 du bouton",
+            "name": "intitule_bouton",
+            "type": "text",
+            "instructions": "Intitul\u00e9 qui sera affich\u00e9 sur le bouton permettant de passer \u00e0 l'action.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Commencer",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58040a202c870",
+            "label": "Destination",
+            "name": "destination",
+            "type": "page_link",
+            "instructions": "Au clic sur ce moyen de participer, l'utilisateur sera redirig\u00e9 sur cette page.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page",
+                "tb_thematique",
+                "tb_outil"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tb_participer"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1476782315
+}

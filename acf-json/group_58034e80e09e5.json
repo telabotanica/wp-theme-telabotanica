@@ -1,0 +1,108 @@
+{
+    "key": "group_58034e80e09e5",
+    "title": "En kiosque",
+    "fields": [
+        {
+            "key": "field_58034e8c9fc17",
+            "label": "Pr\u00e9sentation",
+            "name": "presentation",
+            "type": "textarea",
+            "instructions": "Pr\u00e9sentation de l'ouvrage",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034eab9fc18",
+            "label": "Auteur",
+            "name": "auteur",
+            "type": "textarea",
+            "instructions": "Pr\u00e9sentation de l'auteur",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034ebe9fc19",
+            "label": "Informations pratiques",
+            "name": "informations_pratiques",
+            "type": "textarea",
+            "instructions": "Renseigner les r\u00e9f\u00e9rences de l'ouvrage",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Titre de l'ouvrage\r\nAuteur(s)\r\n\u00c9ditions, date de publication\r\nNombre de pages, format ...\r\nISBN\r\nPrix indicatif",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58034ee99fc1a",
+            "label": "Pour se procurer l'ouvrage",
+            "name": "acheter",
+            "type": "textarea",
+            "instructions": "Donner un lien vers le site de l'\u00e9diteur pour pouvoir acqu\u00e9rir l'ouvrage",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Commander l'ouvrage en ligne sur le site des \u00e9ditions [X] [url de la page du livre]",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:en-kiosque"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1476782279
+}

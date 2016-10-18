@@ -1,0 +1,245 @@
+{
+    "key": "group_5803515c20ffc",
+    "title": "\u00c9v\u00e8nement",
+    "fields": [
+        {
+            "key": "field_5803652a92ee3",
+            "label": "Date unique ?",
+            "name": "date_unique",
+            "type": "true_false",
+            "instructions": "Cocher si l'\u00e9v\u00e8nement dure seulement un jour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_580364c892ee1",
+            "label": "Date",
+            "name": "date",
+            "type": "date_picker",
+            "instructions": "Date de l'\u00e9v\u00e8nement",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5803652a92ee3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5803657c92ee4",
+            "label": "D\u00e9but",
+            "name": "date_debut",
+            "type": "date_picker",
+            "instructions": "Date de d\u00e9but de l'\u00e9v\u00e8nement",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5803652a92ee3",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5803659792ee5",
+            "label": "Fin",
+            "name": "date_fin",
+            "type": "date_picker",
+            "instructions": "Date de fin de l'\u00e9v\u00e8nement",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5803652a92ee3",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_580366bfa9e00",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0
+        },
+        {
+            "key": "field_5803a5d09a5d0",
+            "label": "Gratuit ?",
+            "name": "gratuit",
+            "type": "true_false",
+            "instructions": "Cocher si l'\u00e9v\u00e8nement est gratuit",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_5803a6059a5d1",
+            "label": "Tarifs",
+            "name": "tarifs",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5803a5d09a5d0",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 5,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5803a64f08013",
+            "label": "Contact",
+            "name": "contact",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 5,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_580366d5a9e01",
+            "label": "Lieu",
+            "name": "lieu",
+            "type": "google_map",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": 46,
+            "center_lng": 2,
+            "zoom": 5,
+            "height": ""
+        },
+        {
+            "key": "field_5803a65a08014",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,png"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:evenements"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1476782312
+}

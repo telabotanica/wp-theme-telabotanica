@@ -1,0 +1,62 @@
+{
+    "key": "group_5805e99639d30",
+    "title": "Outil",
+    "fields": [
+        {
+            "key": "field_5805e9a7c8814",
+            "label": "Abbr\u00e9viation",
+            "name": "abbreviation",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5805e9b4c8815",
+            "label": "Description courte",
+            "name": "description_courte",
+            "type": "textarea",
+            "instructions": "D\u00e9crire l'outil en une phrase.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tb_outil"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1476782575
+}

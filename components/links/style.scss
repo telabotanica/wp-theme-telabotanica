@@ -1,0 +1,32 @@
+.component-links {
+
+  &-title {
+    color: $gris33;
+    font-family: $ubuntu;
+    font-size: 2rem;
+    font-weight: $light;
+    line-height: 2.6rem;
+    margin: 0 0 2rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li + li {
+    margin-top: 0.2rem;
+  }
+
+  a {
+    background-color: transparentize($turquoise, 0.9);
+    color: $gris33;
+    display: block;
+    font-family: $ubuntu;
+    font-weight: $regular;
+    padding: 1rem 2rem 1rem 4rem;
+    text-decoration: none;
+  }
+
+}

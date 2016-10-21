@@ -5,7 +5,7 @@
         {
             "key": "field_5805e9a7c8814",
             "label": "Abbr\u00e9viation",
-            "name": "abbreviation",
+            "name": "abbr",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -24,7 +24,7 @@
         {
             "key": "field_5805e9b4c8815",
             "label": "Description courte",
-            "name": "description_courte",
+            "name": "short_description",
             "type": "textarea",
             "instructions": "D\u00e9crire l'outil en une phrase.",
             "required": 0,

@@ -1,0 +1,52 @@
+.cover {
+  align-items: center;
+  background: center center no-repeat;
+  background-size: cover;
+  color: $blanc;
+  display: flex;
+  min-height: 27.5rem;
+  position: relative;
+
+  &:before {
+    background-color: transparentize($bleu-nuit, 0.6);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &-title,
+  &-subtitle {
+    position: relative;
+  }
+
+  &-title {
+    font-family: $ubuntu;
+    font-size: 3.2rem;
+    font-weight: $bold;
+    margin: 0;
+  }
+
+  &-subtitle {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+  }
+
+  &-credits {
+    color: transparentize($grisF0, 0.25);
+    font-size: 1.2rem;
+    bottom: 0;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+
+    a {
+      color: $grisF0;
+      text-decoration: none;
+      &:hover {border-bottom: 0.1rem solid;}
+    }
+  }
+}

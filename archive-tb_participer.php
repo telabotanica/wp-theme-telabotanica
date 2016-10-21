@@ -8,15 +8,15 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('bandeau', array(
+      <?php the_telabotanica_module('cover', array(
         'titre' => __('Comment participer ?', 'telabotanica'),
       )); ?>
 
-      <div class="layout-col-gauche">
+      <div class="layout-left-col">
         <div class="layout-wrapper">
-          <aside class="layout-colonne">
+          <aside class="layout-column">
           </aside>
-          <div class="layout-contenu">
+          <div class="layout-content">
             <?php if ( have_posts() ) : ?>
               <?php while ( have_posts() ) : the_post(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

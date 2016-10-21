@@ -26,7 +26,7 @@
         margin-bottom: 1rem
       }
 
-      &-coordonnees {
+      &-details {
         &-mail {
           margin-top: 0.5rem;
         }
@@ -137,7 +137,7 @@
       }
     }
 
-    &-bandeau {
+    &-bar {
       background-color: $gris33;
       letter-spacing: 0.1rem;
       line-height: 4rem;
@@ -168,7 +168,7 @@
       }
     }
 
-    &-licence {
+    &-license {
       background-color: transparentize($taupe, 0.8);
       border-radius: 0.2rem;
       line-height: 3rem;

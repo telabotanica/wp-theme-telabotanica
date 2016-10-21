@@ -1,16 +1,16 @@
 .header {
-  $hauteur: 17rem;
-  $hauteur-fixe: 5.5rem;
+  $height: 17rem;
+  $height-fixed: 5.5rem;
 
   background-color: $beige;
-  height: $hauteur;
+  height: $height;
 
-  &-fixe {
+  &-fixed {
     background-color: $blanc;
     font-family: $ubuntu;
     font-size: 0; // cache les espaces entre éléments dans le code HTML
     font-weight: $medium;
-    height: $hauteur-fixe;
+    height: $height-fixed;
     letter-spacing: 0.1rem;
     position: fixed;
     width: 100%;
@@ -30,7 +30,7 @@
       align-items: center;
       color: $blanc;
       display: flex;
-      height: $hauteur-fixe;
+      height: $height-fixed;
       justify-content: center;
       text-decoration: none;
     }
@@ -53,7 +53,7 @@
         color: $gris60;
         display: block;
         font-size: 1.2rem;
-        line-height: $hauteur-fixe;
+        line-height: $height-fixed;
         position: relative;
         padding: 0 1rem;
         text-decoration: none;
@@ -76,7 +76,7 @@
     }
   }
 
-  &-liens {
+  &-links {
     list-style: none;
     margin: 0;
     padding: 0 1.4rem 0 0;
@@ -92,12 +92,12 @@
         color: $grisB3;
         display: flex;
         font-size: 1.2rem;
-        height: $hauteur-fixe;
+        height: $height-fixed;
         padding-left: 1rem;
         text-decoration: none;
       }
 
-      &-texte {
+      &-text {
         border-right: 0.1rem solid $grisF0;
         display: inline-block;
         height: 2.3rem;
@@ -105,7 +105,7 @@
         padding-right: 1rem;
       }
 
-      &-utilisateur {
+      &-user {
         &-avatar {
           border-radius: 50%;
           display: inline-block;
@@ -122,13 +122,13 @@
         text-transform: uppercase;
       }
 
-      &-don a {
+      &-donate a {
         font-weight: $light;
         letter-spacing: 0;
       }
 
-      &-recherche a {
-        .header-liens-item-texte {
+      &-search a {
+        .header-links-item-text {
           align-items: center;
           background-color: $vert-clair;
           border: 0;
@@ -143,9 +143,9 @@
     }
   }
 
-  &-nav-usages {
+  &-nav-usecases {
     font-size: 0; // cache les espaces entre éléments dans le code HTML
-    padding-top: $hauteur-fixe;
+    padding-top: $height-fixed;
     margin: 0 auto;
     width: 100rem;
 

@@ -5,7 +5,7 @@
         {
             "key": "field_58034e8c9fc17",
             "label": "Pr\u00e9sentation",
-            "name": "presentation",
+            "name": "intro",
             "type": "textarea",
             "instructions": "Pr\u00e9sentation de l'ouvrage",
             "required": 1,
@@ -24,7 +24,7 @@
         {
             "key": "field_58034eab9fc18",
             "label": "Auteur",
-            "name": "auteur",
+            "name": "author",
             "type": "textarea",
             "instructions": "Pr\u00e9sentation de l'auteur",
             "required": 0,
@@ -43,7 +43,7 @@
         {
             "key": "field_58034ebe9fc19",
             "label": "Informations pratiques",
-            "name": "informations_pratiques",
+            "name": "references",
             "type": "textarea",
             "instructions": "Renseigner les r\u00e9f\u00e9rences de l'ouvrage",
             "required": 1,
@@ -62,7 +62,7 @@
         {
             "key": "field_58034ee99fc1a",
             "label": "Pour se procurer l'ouvrage",
-            "name": "acheter",
+            "name": "how_to_buy",
             "type": "textarea",
             "instructions": "Donner un lien vers le site de l'\u00e9diteur pour pouvoir acqu\u00e9rir l'ouvrage",
             "required": 1,

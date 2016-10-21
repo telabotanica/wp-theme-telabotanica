@@ -5,7 +5,7 @@
         {
             "key": "field_57e51ea874ee7",
             "label": "Sous-titre de la page",
-            "name": "bandeau-soustitre",
+            "name": "cover-subtitle",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -24,7 +24,7 @@
         {
             "key": "field_57e51ea874fab",
             "label": "Image de fond du bandeau",
-            "name": "bandeau-image",
+            "name": "cover-image",
             "type": "image",
             "instructions": "",
             "required": 1,

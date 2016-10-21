@@ -19,9 +19,9 @@ get_header(); ?>
       endif;
       ?>
 
-      <div class="layout-col-gauche">
+      <div class="layout-left-col">
         <div class="layout-wrapper">
-          <aside class="layout-colonne">
+          <aside class="layout-column">
             <h2>Modules</h2>
             <ul><?php
             array_walk($telabotanica_modules, function ($module) {
@@ -31,13 +31,13 @@ get_header(); ?>
             ?></ul>
             <h2>Composants rédactionnels</h2>
             <ul><?php
-            array_walk($telabotanica_composants, function ($composant) {
+            array_walk($telabotanica_components, function ($component) {
               global $current;
-              echo '<li' . ($current === 'composant/' . $composant ? ' class="current"' : '') . '><a href="' . site_url('styleguide/composant/' . $composant) . '"><code>' . $composant . '</code></a></li>';
+              echo '<li' . ($current === 'component/' . $component ? ' class="current"' : '') . '><a href="' . site_url('styleguide/component/' . $component) . '"><code>' . $component . '</code></a></li>';
             });
             ?></ul>
           </aside>
-          <div class="layout-contenu">
+          <div class="layout-content">
 			      <h1><a href="<?php echo site_url('styleguide') ?>">Styleguide</a></h1>
 
             <?php

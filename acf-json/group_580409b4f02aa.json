@@ -29,7 +29,7 @@
         {
             "key": "field_580409d72c86e",
             "label": "Description courte",
-            "name": "description_courte",
+            "name": "short_description",
             "type": "textarea",
             "instructions": "D\u00e9crire en une phrase en quoi cela consiste.",
             "required": 0,
@@ -48,7 +48,7 @@
         {
             "key": "field_580409f32c86f",
             "label": "Intitul\u00e9 du bouton",
-            "name": "intitule_bouton",
+            "name": "button_label",
             "type": "text",
             "instructions": "Intitul\u00e9 qui sera affich\u00e9 sur le bouton permettant de passer \u00e0 l'action.",
             "required": 1,

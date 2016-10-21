@@ -5,7 +5,7 @@
         {
             "key": "field_58034d2ddf6a0",
             "label": "Chapo",
-            "name": "chapo",
+            "name": "intro",
             "type": "text",
             "instructions": "[structure] propose un stage de [dur\u00e9e]",
             "required": 1,
@@ -24,7 +24,7 @@
         {
             "key": "field_58034d2ddf73d",
             "label": "Contexte",
-            "name": "contexte",
+            "name": "context",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -62,7 +62,7 @@
         {
             "key": "field_58034d2ddf86f",
             "label": "Profil recherch\u00e9",
-            "name": "profil_recherche",
+            "name": "profile",
             "type": "textarea",
             "instructions": "Noter le profil recherch\u00e9",
             "required": 1,
@@ -100,7 +100,7 @@
         {
             "key": "field_58034d2ddf9a2",
             "label": "Modalit\u00e9s de candidature",
-            "name": "modalites_de_candidature",
+            "name": "how_to_apply",
             "type": "textarea",
             "instructions": "Candidatures (CV & L.M) \u00e0 envoyer avant le [date limite] \u00e0 [contact]",
             "required": 1,
@@ -119,7 +119,7 @@
         {
             "key": "field_58034d2ddfa5c",
             "label": "Renseignements \/ contacts suppl\u00e9mentaires",
-            "name": "renseignements_contacts_supplementaires",
+            "name": "additional_info",
             "type": "textarea",
             "instructions": "Noter les contacts pour demande de renseignements",
             "required": 0,

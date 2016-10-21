@@ -1,7 +1,7 @@
 .categories {
   font-family: $ubuntu;
 
-  &-titre {
+  &-title {
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
     color: $marron;
     font-size: 1.4rem;
@@ -14,7 +14,7 @@
   }
 
   &-items,
-  &-enfants-items {
+  &-subitems {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -24,7 +24,7 @@
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
     padding-bottom: 2rem;
 
-    &.est-active .categories-item-lien:before {
+    &.is-active .categories-item-link:before {
       color: $vert-clair;
       content: ">";
       display: block;
@@ -32,11 +32,11 @@
       margin-left: -2rem;
     }
 
-    &-titre {
+    &-title {
       font-size: 1.6rem;
       font-weight: $bold;
     }
-    &-lien {
+    &-link {
       color: $gris23;
       text-decoration: none;
 
@@ -52,37 +52,34 @@
     }
   }
 
-  &-enfants {
-    &-item {
-
-      &.est-active {
-        .categories-enfants-item-lien {
-          background-color: $marron;
-          border-color: $marron;
-          color: $blanc;
-        }
+  &-subitem {
+    &.is-active {
+      .categories-subitem-link {
+        background-color: $marron;
+        border-color: $marron;
+        color: $blanc;
       }
+    }
 
-      &-lien {
-        border: 0.2rem solid;
-        border-radius: 1.6rem;
-        color: $taupe;
-        display: inline-block;
-        font-size: 1.4rem;
-        font-weight: $medium;
-        min-height: 3.2rem;
-        padding: 0.5rem 1.5rem;
-        text-decoration: none;
-        transition: all 0.2s ease;
+    &-link {
+      border: 0.2rem solid;
+      border-radius: 1.6rem;
+      color: $taupe;
+      display: inline-block;
+      font-size: 1.4rem;
+      font-weight: $medium;
+      min-height: 3.2rem;
+      padding: 0.5rem 1.5rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
 
-        &:hover, &:focus {
-          color: $gris33;
-        }
+      &:hover, &:focus {
+        color: $gris33;
       }
+    }
 
-      & + & {
-        margin-top: 0.7rem;
-      }
+    & + & {
+      margin-top: 0.7rem;
     }
   }
 

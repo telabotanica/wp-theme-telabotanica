@@ -1,0 +1,18 @@
+.layout-central-col {
+  > .layout-wrapper {
+    margin: 4rem auto;
+    position: relative;
+    width: 120rem;
+
+    > .layout-aside {
+      left: 0;
+      position: absolute;
+      width: 18rem;
+    }
+
+    > .layout-content {
+      margin: 0 auto;
+      width: 70rem;
+    }
+  }
+}

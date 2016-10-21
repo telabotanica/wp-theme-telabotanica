@@ -9,10 +9,10 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
       <?php if ( have_posts() ) : ?>
-        <div class="layout-col-centrale">
+        <div class="layout-central-col">
           <div class="layout-wrapper">
             <?php while ( have_posts() ) : the_post(); ?>
-              <aside class="layout-annexe">
+              <aside class="layout-aside">
                 <a href="#"><?php echo __( 'Retour', 'telabotanica' ); ?></a>
                 <div><?php echo sprintf( __( 'Publié le %s', 'telabotanica' ), get_the_date() ); ?></div>
                 <div><?php echo sprintf( __( 'Par %s', 'telabotanica' ), get_the_author() ); ?></div>
@@ -24,7 +24,7 @@ get_header(); ?>
                   echo '</div>';
                 endif; ?>
               </aside>
-              <div class="layout-contenu">
+              <div class="layout-content">
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                   <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 

@@ -19,13 +19,13 @@ $small-page-padding: 3rem;
 $medium-page-padding: 4rem;
 
 // Base
-@import "../../base/tout";
+@import "../../base/_all";
 
 // Layouts
-@import "../../layouts/tout";
+@import "../../layouts/_all";
 
 // Composants
-@import "../../composants/tout";
+@import "../../components/_all";
 
 // Modules
-@import "../../modules/tout";
+@import "../../modules/_all";

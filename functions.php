@@ -83,15 +83,9 @@ function telabotanica_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'principal' => __( 'Menu principal', 'telabotanica' ),
-		'secondaire'  => __( 'Menu secondaire', 'telabotanica' ),
-		'pied-de-page-bandeau'  => __( 'Pied de page - bandeau', 'telabotanica' ),
-		'pied-de-page-colonnes'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
-		// 'pied-thematiques'  => __( 'Pied de page > Thématiques', 'telabotanica' ),
-		// 'pied-outils'  => __( 'Pied de page > Outils', 'telabotanica' ),
-		// 'pied-projets'  => __( 'Pied de page > Projets', 'telabotanica' ),
-		// 'pied-partenaires'  => __( 'Pied de page > Partenaires', 'telabotanica' ),
-		// 'pied-donnees'  => __( 'Pied de page > Données', 'telabotanica' ),
-    // 'pied-pratique'  => __( 'Pied de page > Pratique', 'telabotanica' ),
+		'secondary'  => __( 'Menu secondaire', 'telabotanica' ),
+		'footer-bar'  => __( 'Pied de page - bandeau', 'telabotanica' ),
+		'footer-columns'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
 	) );
 
 	/*

@@ -8,23 +8,23 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('bandeau', array()); ?>
+      <?php the_telabotanica_module('cover', array()); ?>
 
-      <div class="layout-col-gauche">
+      <div class="layout-left-col">
         <div class="layout-wrapper">
-          <aside class="layout-colonne">
+          <aside class="layout-column">
             <p>TODO</p>
           </aside>
-          <div class="layout-contenu">
+          <div class="layout-content">
             <article class="article">
               <?php
               // Si la page utilise des composants
-              if( have_rows('composants') ):
+              if( have_rows('components') ):
 
                   // loop through the rows of data
-                  while ( have_rows('composants') ) : the_row();
+                  while ( have_rows('components') ) : the_row();
 
-                    the_telabotanica_composant(get_row_layout(), array());
+                    the_telabotanica_component(get_row_layout(), array());
 
                   endwhile;
 

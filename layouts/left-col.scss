@@ -1,0 +1,32 @@
+.layout-left-col {
+  > .layout-wrapper {
+    display: flex;
+
+    > .layout-column {
+      background-color: $beige;
+      float: left;
+      flex: 0 0 33rem;
+      position: relative;
+      padding-right: 3rem;
+      width: 33rem;
+
+      &:before {
+        background-color: $beige;
+        bottom: 0;
+        content: "";
+        display: block;
+        position: absolute;
+        right: 100%;
+        top: 0;
+        width: 100rem;
+      }
+    }
+
+    > .layout-content {
+      float: right;
+      margin-left: 5rem;
+      flex: 1;
+      width: 62rem;
+    }
+  }
+}

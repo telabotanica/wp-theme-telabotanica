@@ -1,5 +1,5 @@
-<?php function telabotanica_module_categories ($data) {
-  $categorie_active = get_query_var('cat');
+<?php function telabotanica_module_categories($data) {
+  $category_active = get_query_var('cat');
   $categories = get_categories(array(
     'exclude' => array(1),
     'hide_empty' => false,
@@ -7,20 +7,20 @@
     'parent' => 0
   )); ?>
   <div class="categories">
-    <h2 class="categories-titre"><?php _e('Catégories', 'telabotanica'); ?></h2>
+    <h2 class="categories-title"><?php _e('Catégories', 'telabotanica'); ?></h2>
     <ul class="categories-items">
-      <?php foreach ($categories as $categorie):
-        $est_active = $categorie->term_id === $categorie_active; ?>
-          <li class="categories-item<?php echo $est_active ? ' est-active' : null ?>">
-            <h3 class="categories-item-titre"><a href="<?php echo esc_url( get_term_link( $categorie ) ) ?>" class="categories-item-lien"><?php echo $categorie->name; ?></a></h3>
-            <?php $enfants = get_term_children( $categorie->term_id, 'category' );
-            if ($enfants): ?>
-            <ul class="categories-enfants-items">
-              <?php foreach ($enfants as $enfant_id):
-                $enfant_est_actif = $enfant_id === $categorie_active;
-                $enfant = get_term_by( 'id', $enfant_id, 'category' ); ?>
-                <li class="categories-enfants-item<?php echo $enfant_est_actif ? ' est-active' : null ?>">
-                  <a href="<?php echo esc_url( get_term_link( $enfant ) ) ?>" class="categories-enfants-item-lien"><?php echo $enfant->name; ?></a>
+      <?php foreach ($categories as $category):
+        $est_active = $category->term_id === $category_active; ?>
+          <li class="categories-item<?php echo $est_active ? ' is-active' : null ?>">
+            <h3 class="categories-item-title"><a href="<?php echo esc_url( get_term_link( $category ) ) ?>" class="categories-item-link"><?php echo $category->name; ?></a></h3>
+            <?php $subitems = get_term_children( $category->term_id, 'category' );
+            if ($subitems): ?>
+            <ul class="categories-subitems">
+              <?php foreach ($subitems as $subitem_id):
+                $subitem_is_active = $subitem_id === $category_active;
+                $subitem = get_term_by( 'id', $subitem_id, 'category' ); ?>
+                <li class="categories-subitem<?php echo $subitem_is_active ? ' is-active' : null ?>">
+                  <a href="<?php echo esc_url( get_term_link( $subitem ) ) ?>" class="categories-subitem-link"><?php echo $subitem->name; ?></a>
                 </li>
               <?php endforeach; ?>
             </ul>

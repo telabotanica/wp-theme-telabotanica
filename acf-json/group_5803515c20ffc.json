@@ -155,23 +155,116 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_5803a64f08013",
+            "key": "field_580e45279024d",
             "label": "Contact",
             "name": "contact",
-            "type": "textarea",
-            "instructions": "",
-            "required": 1,
+            "type": "repeater",
+            "instructions": "Tous ces champs sont optionnels.",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 5,
-            "new_lines": "wpautop"
+            "collapsed": "field_580e456e9024e",
+            "min": 1,
+            "max": 1,
+            "layout": "block",
+            "button_label": "Ajouter des informations de contact",
+            "sub_fields": [
+                {
+                    "key": "field_580e456e9024e",
+                    "label": "Nom",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "Nom de la personne ou de l'organisme \u00e0 contacter",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_580e45789024f",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "instructions": "Informations additionnelles, si n\u00e9cessaire",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "wpautop"
+                },
+                {
+                    "key": "field_580e458290250",
+                    "label": "T\u00e9l\u00e9phone",
+                    "name": "phone",
+                    "type": "text",
+                    "instructions": "Au format international, par exemple +33 4 67 52 41 22",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_580e458a90251",
+                    "label": "E-mail",
+                    "name": "email",
+                    "type": "email",
+                    "instructions": "Par exemple accueil@tela-botanica.org",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_580e459490252",
+                    "label": "Site web",
+                    "name": "website",
+                    "type": "url",
+                    "instructions": "Par exemple http:\/\/www.tela-botanica.org",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
         },
         {
             "key": "field_580366d5a9e01",
@@ -241,5 +334,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1476782312
+    "modified": 1477331052
 }

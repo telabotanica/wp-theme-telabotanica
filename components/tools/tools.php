@@ -1,5 +1,5 @@
 <?php function telabotanica_component_tools($data) {
-  if (!isset($data->items)) $data->items = get_sub_field('tools');
+  if (!isset($data->items)) $data->items = get_sub_field('items');
 
   echo '<div class="component component-tools">';
 
@@ -11,11 +11,18 @@
 
         $item = (object) $item;
 
+        $name = $item->post_title;
+
+        $fields = (object) get_fields($item->ID);
+        // affiche en gras le nom et l'abbréviation
+        $fields->short_description = str_replace($name, '<strong>' . $name . '</strong>', $fields->short_description);
+        $fields->short_description = str_replace($fields->abbr, '<strong>' . $fields->abbr . '</strong>', $fields->short_description);
+
         echo '<li class="component-tools-item">';
-        echo '<div class="component-tools-item-icon"></div>';
-        echo '<h4 class="component-tools-item-title">' . $item->title . '</h4>';
-        echo '<div class="component-tools-item-description">' . $item->description . '</div>';
-        echo '<div class="component-tools-item-link"><a href="' . $item->link . '">' . $item->link_text . ' &rsaquo;</a></div>';
+          echo '<a href="' . $item->link . '" class="component-tools-item-icon" style="color: ' . $fields->color . '"><img src="' . $fields->icon . '" alt="Icône de ' . $name . '" /></a>';
+          echo '<h4 class="component-tools-item-title"><a href="' . $item->link . '">' . $name . '</a></h4>';
+          echo '<div class="component-tools-item-description">' . $fields->short_description . '</div>';
+          echo '<div class="component-tools-item-link"><a href="' . $item->link . '" style="color: ' . $fields->color . '">' . $fields->link_text . ' &rsaquo;</a></div>';
         echo '</li>';
 
       endforeach;

@@ -1,6 +1,6 @@
 <?php function telabotanica_component_links($data) {
   if (!isset($data->title)) $data->title = get_sub_field('title');
-  if (!isset($data->items)) $data->items = get_sub_field('link');
+  if (!isset($data->items)) $data->items = get_sub_field('items');
 
   echo '<div class="component component-links">';
 
@@ -14,13 +14,7 @@
 
         $item = (object) $item;
 
-        if (@$item->href) {
-          $href = $item->href;
-        } else {
-          $href = $item->url;
-        }
-
-        echo '<li><a href="' . $href . '">' . $item->text . '</a></li>';
+        echo '<li><a href="' . $item->destination['url'] . '" target="' . $item->destination['target'] . '" title="' . $item->destination['title'] . '">' . $item->text . '</a></li>';
 
       endforeach;
 

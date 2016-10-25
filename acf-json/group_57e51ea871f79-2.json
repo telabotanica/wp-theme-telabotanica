@@ -5,7 +5,7 @@
         {
             "key": "field_57e51ea874ee7",
             "label": "Sous-titre de la page",
-            "name": "cover-subtitle",
+            "name": "cover_subtitle",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -24,10 +24,10 @@
         {
             "key": "field_57e51ea874fab",
             "label": "Image de fond du bandeau",
-            "name": "cover-image",
+            "name": "cover_image",
             "type": "image",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -79,5 +79,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1476782264
+    "modified": 1477334552
 }

@@ -48,7 +48,7 @@
         {
             "key": "field_580409f32c86f",
             "label": "Intitul\u00e9 du bouton",
-            "name": "button_label",
+            "name": "button_text",
             "type": "text",
             "instructions": "Intitul\u00e9 qui sera affich\u00e9 sur le bouton permettant de passer \u00e0 l'action.",
             "required": 1,
@@ -68,7 +68,7 @@
             "key": "field_58040a202c870",
             "label": "Destination",
             "name": "destination",
-            "type": "page_link",
+            "type": "link_picker",
             "instructions": "Au clic sur ce moyen de participer, l'utilisateur sera redirig\u00e9 sur cette page.",
             "required": 1,
             "conditional_logic": 0,
@@ -76,17 +76,7 @@
                 "width": "50",
                 "class": "",
                 "id": ""
-            },
-            "post_type": [
-                "post",
-                "page",
-                "tb_thematique",
-                "tb_outil"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
+            }
         }
     ],
     "location": [
@@ -106,5 +96,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1476782315
+    "modified": 1477333985
 }

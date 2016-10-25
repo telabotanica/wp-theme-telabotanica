@@ -1,5 +1,10 @@
 <?php function telabotanica_component_button($data) {
-  if (!isset($data->href)) $data->href = get_sub_field('internal_link');
+  if (!isset($data->href)) {
+    $link = get_sub_field('link');
+    $data->href = $link['url'];
+    $data->target = $link['target'];
+    $data->title = $link['title'];
+  }
   if (!isset($data->text)) $data->text = get_sub_field('text');
 
   echo '<div class="component component-button">';

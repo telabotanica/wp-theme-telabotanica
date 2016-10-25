@@ -143,8 +143,8 @@
                         },
                         {
                             "key": "field_57e51340a835c",
-                            "label": "Lien",
-                            "name": "link",
+                            "label": "Liens",
+                            "name": "items",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
@@ -154,8 +154,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "collapsed": "",
-                            "min": "",
+                            "collapsed": "field_57e51340a835d",
+                            "min": 1,
                             "max": "",
                             "layout": "table",
                             "button_label": "Ajouter un lien",
@@ -169,7 +169,7 @@
                                     "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -180,39 +180,18 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_57e51340a835e",
-                                    "label": "Lien interne",
-                                    "name": "internal_link",
-                                    "type": "page_link",
+                                    "key": "field_580e4ce06c4ab",
+                                    "label": "Destination",
+                                    "name": "destination",
+                                    "type": "link_picker",
                                     "instructions": "",
-                                    "required": 0,
+                                    "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
-                                    },
-                                    "post_type": [],
-                                    "taxonomy": [],
-                                    "allow_null": 1,
-                                    "allow_archives": 0,
-                                    "multiple": 0
-                                },
-                                {
-                                    "key": "field_57e51340a835f",
-                                    "label": "URL externe",
-                                    "name": "url",
-                                    "type": "url",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": ""
+                                    }
                                 }
                             ]
                         }
@@ -227,127 +206,27 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_57e516b899179",
+                            "key": "field_580e578ce67bc",
                             "label": "Outils",
-                            "name": "tools",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": "",
-                            "conditional_logic": "",
+                            "name": "items",
+                            "type": "relationship",
+                            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "collapsed": "field_57e516db9917a",
-                            "min": "",
+                            "post_type": [
+                                "tb_outil"
+                            ],
+                            "taxonomy": [],
+                            "filters": "",
+                            "elements": "",
+                            "min": 1,
                             "max": "",
-                            "layout": "",
-                            "button_label": "Ajouter un outil",
-                            "sub_fields": [
-                                {
-                                    "key": "field_57e516db9917a",
-                                    "label": "Titre",
-                                    "name": "title",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
-                                },
-                                {
-                                    "key": "field_57e516e39917b",
-                                    "label": "Description",
-                                    "name": "description",
-                                    "type": "wysiwyg",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "tabs": "visual",
-                                    "toolbar": "basic",
-                                    "media_upload": 0
-                                },
-                                {
-                                    "key": "field_57e5170d9917c",
-                                    "label": "Ic\u00f4ne",
-                                    "name": "icon",
-                                    "type": "select",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "choices": {
-                                        "flore": "flore",
-                                        "carnet": "carnet",
-                                        "base": "base",
-                                        "mobile": "mobile"
-                                    },
-                                    "default_value": [],
-                                    "allow_null": 0,
-                                    "multiple": 0,
-                                    "ui": 0,
-                                    "ajax": 0,
-                                    "return_format": "value",
-                                    "placeholder": ""
-                                },
-                                {
-                                    "key": "field_57e517329917d",
-                                    "label": "Lien",
-                                    "name": "link",
-                                    "type": "page_link",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "post_type": [],
-                                    "taxonomy": [],
-                                    "allow_null": 0,
-                                    "allow_archives": 0,
-                                    "multiple": 0
-                                },
-                                {
-                                    "key": "field_57e517639917e",
-                                    "label": "Intitul\u00e9 du lien",
-                                    "name": "link_text",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "Acc\u00e9der \u00e0 cet outil",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
-                                }
-                            ]
+                            "return_format": "object"
                         }
                     ],
                     "min": "",
@@ -380,9 +259,9 @@
                         },
                         {
                             "key": "field_57e9987b8f0d9",
-                            "label": "Lien interne",
+                            "label": "Lien",
                             "name": "link",
-                            "type": "page_link",
+                            "type": "link_picker",
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -390,12 +269,7 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            },
-                            "post_type": [],
-                            "taxonomy": [],
-                            "allow_null": 0,
-                            "allow_archives": 1,
-                            "multiple": 0
+                            }
                         }
                     ],
                     "min": "",
@@ -431,5 +305,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1476782322
+    "modified": 1477336959
 }

@@ -8,7 +8,7 @@
             "name": "intro",
             "type": "text",
             "instructions": "[structure] recherche un.e [titre de poste] en [type du contrat\/dur\u00e9e]",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -161,5 +161,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477334022
+    "modified": 1477591984
 }

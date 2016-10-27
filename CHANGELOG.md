@@ -20,6 +20,7 @@ plus de détails sur http://semver.org/lang/fr/
   * ajout du lien de changement de langue (avec gestion des erreurs)
 * module `toc` ajouté
 * I18n : plus de chaînes du thème traduisibles
+* groupes de champs offres d'emploi : chapo optionnel
 
 ## 0.0.2 (2016-10-18)
 

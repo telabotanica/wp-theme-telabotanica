@@ -18,6 +18,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens
 * module `header` :
   * ajout du lien de changement de langue (avec gestion des erreurs)
+* module `toc` ajouté
 * I18n : plus de chaînes du thème traduisibles
 
 ## 0.0.2 (2016-10-18)

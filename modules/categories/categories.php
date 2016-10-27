@@ -10,8 +10,8 @@
     <h2 class="categories-title"><?php _e('Catégories', 'telabotanica'); ?></h2>
     <ul class="categories-items">
       <?php foreach ($categories as $category):
-        $est_active = $category->term_id === $category_active; ?>
-          <li class="categories-item<?php echo $est_active ? ' is-active' : null ?>">
+        $is_active = $category->term_id === $category_active; ?>
+          <li class="categories-item<?php echo $is_active ? ' is-active' : null ?>">
             <h3 class="categories-item-title"><a href="<?php echo esc_url( get_term_link( $category ) ) ?>" class="categories-item-link"><?php echo $category->name; ?></a></h3>
             <?php $subitems = get_term_children( $category->term_id, 'category' );
             if ($subitems): ?>

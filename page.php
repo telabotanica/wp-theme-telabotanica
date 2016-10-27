@@ -13,7 +13,7 @@ get_header(); ?>
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <p>TODO</p>
+            <?php the_telabotanica_module('toc', array()); ?>
           </aside>
           <div class="layout-content">
             <article class="article">
@@ -21,7 +21,7 @@ get_header(); ?>
               // Si la page utilise des composants
               if( have_rows('components') ):
 
-                  // loop through the rows of data
+                  // On boucle sur les composants
                   while ( have_rows('components') ) : the_row();
 
                     the_telabotanica_component(get_row_layout(), array());

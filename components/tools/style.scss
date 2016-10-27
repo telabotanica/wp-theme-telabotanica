@@ -14,17 +14,33 @@
 
     &-icon {
       align-items: center;
-      background-color: transparentize($marron, 0.8);
-      border-radius: 0.4rem;
       display: flex;
       float: left;
       justify-content: center;
       height: 10rem;
+      position: relative;
       width: 10rem;
 
-      > * {
+      &:after {
+        background-color: currentColor;
+        border-radius: 0.4rem;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0.2;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      svg, img {
         height: 6rem;
         width: 6rem;
+      }
+
+      svg {
+        fill: currentColor;
       }
     }
 

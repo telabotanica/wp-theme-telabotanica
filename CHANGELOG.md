@@ -11,7 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* composant `tools` : colorisation des icônes SVG
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
+* module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens
 * module `header` :
   * ajout du lien de changement de langue (avec gestion des erreurs)
 * I18n : plus de chaînes du thème traduisibles

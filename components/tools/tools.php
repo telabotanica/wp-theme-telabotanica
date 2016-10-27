@@ -11,6 +11,7 @@
 
         $item = (object) $item;
 
+        $link = get_permalink($item);
         $name = $item->post_title;
 
         $fields = (object) get_fields($item->ID);
@@ -19,10 +20,10 @@
         $fields->short_description = str_replace($fields->abbr, '<strong>' . $fields->abbr . '</strong>', $fields->short_description);
 
         echo '<li class="component-tools-item">';
-          echo '<a href="' . $item->link . '" class="component-tools-item-icon" style="color: ' . $fields->color . '"><img src="' . $fields->icon . '" alt="Icône de ' . $name . '" class="style-svg" /></a>';
-          echo '<h4 class="component-tools-item-title"><a href="' . $item->link . '">' . $name . '</a></h4>';
+          echo '<a href="' . $link . '" class="component-tools-item-icon" style="color: ' . $fields->color . '"><img src="' . $fields->icon . '" alt="Icône de ' . $name . '" class="style-svg" /></a>';
+          echo '<h4 class="component-tools-item-title"><a href="' . $link . '">' . $name . '</a></h4>';
           echo '<div class="component-tools-item-description">' . $fields->short_description . '</div>';
-          echo '<div class="component-tools-item-link"><a href="' . $item->link . '" style="color: ' . $fields->color . '">' . $fields->link_text . ' &rsaquo;</a></div>';
+          echo '<div class="component-tools-item-link"><a href="' . $link . '" style="color: ' . $fields->color . '">' . $fields->link_text . ' &rsaquo;</a></div>';
         echo '</li>';
 
       endforeach;

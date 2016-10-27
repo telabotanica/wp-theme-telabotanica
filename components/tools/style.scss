@@ -31,7 +31,12 @@
         opacity: 0.2;
         position: absolute;
         top: 0;
+        transition: opacity 0.2s ease;
         width: 100%;
+      }
+
+      &:hover, &:focus {
+        &:after {opacity: 0.3;}
       }
 
       svg, img {
@@ -58,8 +63,13 @@
       margin-top: 0;
 
       a {
+        border-bottom: 0.2rem solid transparent;
         color: $gris23;
         text-decoration: none;
+
+        &:hover, &:focus {
+          border-bottom-color: currentColor;
+        }
       }
     }
 
@@ -71,6 +81,7 @@
     }
 
     &-link a {
+      border-bottom: 0.2rem solid transparent;
       color: $marron;
       font-family: $ubuntu;
       font-size: 1.3rem;
@@ -78,6 +89,11 @@
       letter-spacing: 0.1rem;
       text-decoration: none;
       text-transform: uppercase;
+      transition: border 0.2s ease;
+
+      &:hover, &:focus {
+        border-bottom-color: currentColor;
+      }
     }
   }
 

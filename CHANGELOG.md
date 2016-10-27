@@ -11,7 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
-* composant `tools` : colorisation des icônes SVG
+* composant `tools` :
+  * colorisation des icônes SVG
+  * ajout des liens et des effets de rollover
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
 * module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens
 * module `header` :

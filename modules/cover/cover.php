@@ -1,7 +1,7 @@
 <?php function telabotanica_module_cover($data) {
-  if (!isset($data->image)) $data->image = get_field('cover-image');
+  if (!isset($data->image)) $data->image = get_field('cover_image');
   if (!isset($data->title)) $data->title = get_the_title();
-  if (!isset($data->subtitle)) $data->subtitle = get_field('cover-subtitle');
+  if (!isset($data->subtitle)) $data->subtitle = get_field('cover_subtitle');
   ?>
   <div class="cover" style="background-image: url(<?php echo $data->image['url'] ?>);">
     <div class="layout-wrapper">

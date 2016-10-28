@@ -80,7 +80,7 @@
         },
         {
             "key": "field_58034adeef080",
-            "label": "Poste",
+            "label": "Poste \/ conditions",
             "name": "conditions",
             "type": "textarea",
             "instructions": "Noter les conditions du recrutement ou du stage",
@@ -185,5 +185,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477648728
+    "modified": 1477649413
 }

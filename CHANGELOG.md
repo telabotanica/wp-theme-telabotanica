@@ -19,6 +19,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `header` :
   * ajout du lien de changement de langue (avec gestion des erreurs)
 * module `toc` ajouté
+* page `404` ajoutée
 * I18n : plus de chaînes du thème traduisibles
 * groupes de champs offres d'emploi : chapo optionnel
 

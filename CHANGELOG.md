@@ -21,7 +21,10 @@ plus de détails sur http://semver.org/lang/fr/
 * module `toc` ajouté
 * page `404` ajoutée
 * I18n : plus de chaînes du thème traduisibles
-* groupes de champs offres d'emploi : chapo optionnel
+* groupes de champs offres d'emploi :
+  * fusion entre CDD/CDI et stages
+  * ajout pour la catégorie Service civique
+  * chapo optionnel
 
 ## 0.0.2 (2016-10-18)
 

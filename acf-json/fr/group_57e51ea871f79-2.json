@@ -3,7 +3,7 @@
     "title": "Bandeau",
     "fields": [
         {
-            "key": "field_57e51ea874ee7",
+            "key": "field_581315b54e7dd",
             "label": "Sous-titre de la page",
             "name": "cover_subtitle",
             "type": "text",
@@ -22,7 +22,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_57e51ea874fab",
+            "key": "field_581315ce4e7de",
             "label": "Image de fond du bandeau",
             "name": "cover_image",
             "type": "image",
@@ -79,5 +79,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477334552
+    "modified": 1477645805
 }

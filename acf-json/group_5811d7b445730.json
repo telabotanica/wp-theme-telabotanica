@@ -1,0 +1,45 @@
+{
+    "key": "group_5811d7b445730",
+    "title": "Composants optionnels",
+    "fields": [
+        {
+            "key": "field_5811d7c5f28b7",
+            "label": "Composants (optionnels)",
+            "name": "components",
+            "type": "clone",
+            "instructions": "Vous pouvez utiliser des composants, en compl\u00e9ment du contenu principal. Ils seront affich\u00e9s en dessous.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_57e5133fa8356"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1477567113
+}

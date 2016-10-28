@@ -9,8 +9,8 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
       <?php the_telabotanica_module('cover', array(
-        'titre' => __('Actualités', 'telabotanica'),
-        'soustitre' => __('Toute l\'actualité, les offres d\'emploi et les évènements', 'telabotanica'),
+        'title' => __('Actualités', 'telabotanica'),
+        'subtitle' => __('Toute l\'actualité, les offres d\'emploi et les évènements', 'telabotanica'),
       )); ?>
 
       <div class="layout-left-col">

@@ -84,6 +84,7 @@
       display: inline-block;
       font-size: 1.5rem;
       font-weight: $regular;
+      padding-left: 3rem;
       text-decoration: none;
       transition: all 0.2s ease;
 
@@ -91,7 +92,9 @@
         color: $vert-clair;
         content: "●";
         display: inline-block;
+        left: 0;
         margin-right: 2rem;
+        position: absolute;
       }
 
       &:hover, &:focus {

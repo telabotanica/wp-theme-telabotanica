@@ -9,7 +9,7 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
       <?php the_telabotanica_module('cover', array(
-        'titre' => __('Outils', 'telabotanica'),
+        'title' => __('Outils', 'telabotanica'),
       )); ?>
 
       <div class="layout-left-col">

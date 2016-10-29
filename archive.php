@@ -8,9 +8,15 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', array(
+      <?php
+      the_telabotanica_module('cover', array(
         'title' => __('Actualités', 'telabotanica'),
-        'subtitle' => __('Toute l\'actualité, les offres d\'emploi et les évènements', 'telabotanica'),
+        'subtitle' => sprintf(
+          __('Toute l\'<a href="%s">actualité</a>, les <a href="%s">offres d\'emploi</a> et les <a href="%s">évènements</a>', 'telabotanica'),
+          get_category_link( get_cat_ID( 'Actualités' ) ),
+          get_category_link( get_cat_ID( 'Offres d\'emploi' ) ),
+          get_category_link( get_cat_ID( 'Évènements' ) )
+        ),
       )); ?>
 
       <div class="layout-left-col">

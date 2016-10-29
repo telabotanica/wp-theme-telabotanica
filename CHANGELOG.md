@@ -15,7 +15,7 @@ plus de détails sur http://semver.org/lang/fr/
   * colorisation des icônes SVG
   * ajout des liens et des effets de rollover
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
-* module `cover` : crédits basé sur les champs ACF
+* module `cover` : crédits basés sur les champs ACF
 * module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens
 * module `header` :
   * ajout du lien de changement de langue (avec gestion des erreurs)
@@ -30,6 +30,7 @@ plus de détails sur http://semver.org/lang/fr/
   * ajout pour la catégorie Service civique
   * chapo optionnel
 * groupe de champs crédits médias
+* groupe de champs bandeau de catégorie
 
 ## 0.0.2 (2016-10-18)
 

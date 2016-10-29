@@ -31,8 +31,20 @@
   }
 
   &-subtitle {
+    font-weight: $regular;
     font-size: 1.8rem;
     margin-top: 0.5rem;
+
+    a {
+      border-bottom: 0.1rem solid $blanc;
+      color: $blanc;
+      text-decoration: none;
+      transition: border 0.2s ease;
+
+      &:hover, &:focus {
+        border-bottom-color: transparent;
+      }
+    }
   }
 
   &-credits {

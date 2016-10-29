@@ -31,6 +31,7 @@ plus de détails sur http://semver.org/lang/fr/
   * chapo optionnel
 * groupe de champs crédits médias
 * groupe de champs bandeau de catégorie
+* ajout d'une taxonomie Catégorie d'outils
 
 ## 0.0.2 (2016-10-18)
 

@@ -34,10 +34,21 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 require get_template_directory() . '/inc/utile.php';
 
 /**
+ * Pages d'options (avec ACF)
+ */
+require get_template_directory() . '/inc/options.php';
+
+/**
  * Chargement des types de contenus sur mesure (Custom Post Types)
  * cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
  */
 require get_template_directory() . '/inc/custom-post-types.php';
+
+/**
+ * Chargement des taxonomies sur mesure (Custom Taxonomies)
+ * cf. https://codex.wordpress.org/Taxonomies#Custom_Taxonomies
+ */
+require get_template_directory() . '/inc/custom-taxonomies.php';
 
 /**
  * Options WPML

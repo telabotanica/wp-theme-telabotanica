@@ -20,16 +20,23 @@
     padding: 0;
   }
 
+  &-item.is-active .categories-item-link:before,
+  &-item .categories-item-link:hover:before,
+  &-item .categories-item-link:focus:before {
+    content: "▶";
+    display: block;
+    font-size: 1rem;
+    line-height: 2rem;
+    margin-left: -2rem;
+    position: absolute;
+  }
+
   &-item {
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
     padding-bottom: 2rem;
 
     &.is-active .categories-item-link:before {
       color: $vert-clair;
-      content: ">";
-      display: block;
-      position: absolute;
-      margin-left: -2rem;
     }
 
     &-title {
@@ -43,10 +50,6 @@
       &:hover, &:focus {
         &:before {
           color: $taupe;
-          content: ">";
-          display: block;
-          position: absolute;
-          margin-left: -2rem;
         }
       }
     }

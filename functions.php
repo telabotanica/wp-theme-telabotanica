@@ -29,6 +29,11 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 }
 
 /**
+ * Fonctions utiles
+ */
+require get_template_directory() . '/inc/utile.php';
+
+/**
  * Chargement des types de contenus sur mesure (Custom Post Types)
  * cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
  */

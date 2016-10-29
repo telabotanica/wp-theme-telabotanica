@@ -1,6 +1,7 @@
 .toc {
   font-family: $ubuntu;
   font-weight: $regular;
+  margin-bottom: 4rem;
 
   &-title {
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
@@ -21,38 +22,47 @@
     padding: 0;
   }
 
+  &-item.is-active .toc-item-link:before,
+  &-item .toc-item-link:hover:before,
+  &-item .toc-item-link:focus:before {
+    content: "▶";
+    display: block;
+    font-size: 1rem;
+    line-height: 2rem;
+    margin-left: -2rem;
+    position: absolute;
+  }
+
   &-item {
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
-    font-size: 1.5rem;
-    padding-bottom: 2rem;
+    padding: 1.5rem 0;
 
     &:only-child {border-bottom: 0;}
 
-    &.is-active .categories-item-link:before {
-      color: $vert-clair;
-      content: ">";
-      display: block;
-      position: absolute;
-      margin-left: -2rem;
+    &.is-active .toc-item-link {
+      color: $gris23;
+
+      &:before {
+        color: $vert-clair;
+      }
     }
 
     &-link {
-      color: $marron-gris;
+      color: $gris60;
+      font-size: 1.6rem;
+      font-weight: $bold;
       text-decoration: none;
 
       &:hover, &:focus {
         &:before {
           color: $taupe;
-          content: ">";
-          display: block;
-          position: absolute;
-          margin-left: -2rem;
         }
       }
     }
   }
 
   &-subitems {
+    font-size: 1.5rem;
     position: relative;
 
     &:before {

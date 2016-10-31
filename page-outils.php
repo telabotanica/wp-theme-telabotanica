@@ -3,7 +3,50 @@
  * Page
  */
 
-get_header(); ?>
+get_header();
+
+$taxonomy_name = 'tb_outils_category';
+$tools_categories = get_terms(array(
+  'taxonomy'   => $taxonomy_name,
+  'hide_empty' => false,
+  'fields'     => 'all',
+  'parent'     => 0
+));
+
+function tools_category($term) {
+  global $taxonomy_name;
+
+  the_telabotanica_component( 'title', array(
+    "level" => $term->parent === 0 ? 2 : 3,
+    "anchor" => $term->slug,
+    "title" => $term->name
+  ));
+
+  if ( !empty( $term->description ) ) {
+    the_telabotanica_component( 'text', array(
+      "text" => sprintf( "<p>%s</p>", $term->description )
+    ));
+  }
+
+  $tools = get_posts(array(
+    'post_type' => 'tb_outil',
+    'tax_query' => array(
+      array(
+        'taxonomy' => $taxonomy_name,
+        'field' => 'term_id',
+        'terms' => $term->term_id,
+        'include_children' => false
+      )
+    ),
+    'numberposts' => -1
+  ));
+  the_telabotanica_component('tools', array(
+    'items' => $tools
+  ));
+
+}
+
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -13,7 +56,11 @@ get_header(); ?>
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <?php the_telabotanica_module('toc', array()); ?>
+            <?php the_telabotanica_module('toc', array(
+              'items' => array(
+                array('items' => $tools_categories)
+              )
+            )); ?>
           </aside>
           <div class="layout-content">
             <article class="article">
@@ -34,54 +81,13 @@ get_header(); ?>
 
               endif;
 
-              $taxonomy_name = 'tb_outils_category';
-              $tools_categories = get_terms(array(
-                'taxonomy'   => $taxonomy_name,
-                'hide_empty' => false,
-                'fields'     => 'all',
-                'parent'     => 0
-              ));
-
-              function term_title_and_description($term) {
-                global $taxonomy_name;
-
-                the_telabotanica_component( 'title', array(
-                  "level" => $term->parent === 0 ? 2 : 3,
-                  "anchor" => "titre-niveau-2",
-                  "title" => $term->name
-                ));
-
-                if ( !empty( $term->description ) ) {
-                  the_telabotanica_component( 'text', array(
-                    "text" => sprintf( "<p>%s</p>", $term->description )
-                  ));
-                }
-
-                $tools = get_posts(array(
-                  'post_type' => 'tb_outil',
-                  'tax_query' => array(
-                    array(
-                      'taxonomy' => $taxonomy_name,
-                      'field' => 'term_id',
-                      'terms' => $term->term_id,
-                      'include_children' => false
-                    )
-                  ),
-                  'numberposts' => -1
-                ));
-                the_telabotanica_component('tools', array(
-                  'items' => $tools
-                ));
-
-              }
-
               foreach ( $tools_categories as $term ) :
 
-                term_title_and_description($term);
+                tools_category($term);
 
                 foreach ( get_term_children( $term->term_id, $taxonomy_name ) as $child ) :
                   $term_child = get_term_by( 'id', $child, $taxonomy_name );
-                  term_title_and_description($term_child);
+                  tools_category($term_child);
                 endforeach;
 
               endforeach;

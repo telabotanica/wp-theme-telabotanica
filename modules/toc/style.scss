@@ -74,11 +74,19 @@
       position: absolute;
       top: 1rem;
     }
+
+    .toc-item-link + & {
+      margin-top: 2rem;
+    }
   }
 
   &-subitem {
-    margin-top: 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
+
+    &:last-child {
+      margin-bottom: 0.5rem;
+    }
 
     &.is-active {
       .toc-subitem-link {
@@ -110,10 +118,6 @@
       &:hover, &:focus {
         color: $gris33;
       }
-    }
-
-    & + & {
-      margin-top: 1.5rem;
     }
   }
 

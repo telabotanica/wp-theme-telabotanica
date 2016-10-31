@@ -3,7 +3,7 @@
 
   echo '<div class="component component-tools">';
 
-  if ( $data->items ):
+  if ( $data->items ) :
 
       echo '<ul class="component-tools-items">';
 

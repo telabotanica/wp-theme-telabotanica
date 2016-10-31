@@ -1,11 +1,13 @@
 <?php
 require_once 'inc/walker.php';
 
-function telabotanica_module_toc($data) { ?>
-  <div class="toc">
-    <h2 class="toc-title"><?php _e('Sommaire', 'telabotanica'); ?></h2>
-    <ul class="toc-items">
-      <?php
+function telabotanica_module_toc($data) {
+
+  // Fonction permettant d'afficher le sommaire de la page en cours,
+  // en se basant sur l'arborescence des pages dans Wordpress et les
+  // composants `title` utilisés
+  if ( !function_exists( 'telabotanica_module_toc_current_page' ) ) :
+    function telabotanica_module_toc_current_page() {
       $children = get_children(array(
         'post_parent' => get_the_ID(),
         'post_type' => 'page'
@@ -47,7 +49,70 @@ function telabotanica_module_toc($data) { ?>
           'walker' => new TocWalker()
         ));
       }
-      ?>
-    </ul>
-  </div>
-<?php }
+    }
+  endif;
+
+
+  echo '<div class="toc">';
+  echo '<h2 class="toc-title">' . __('Sommaire', 'telabotanica') . '</h2>';
+  echo '<ul class="toc-items">';
+
+  if ( isset($data->items) ) :
+
+    foreach ($data->items as $item) :
+      $item = (object) $item;
+
+      echo '<li class="toc-item' . ( isset($item->active) && $item->active ? ' is-active' : '' ) . '">';
+
+        if ( isset($item->text) ) {
+          echo sprintf(
+            '<a href="%s" class="toc-item-link">%s</a>',
+            $item->href,
+            $item->text
+          );
+        }
+
+        if ( isset($item->items) ) :
+          echo '<ul class="toc-subitems">';
+
+          foreach ($item->items as $subitem) :
+            $subitem = (object) $subitem;
+
+            // Tableau d'objets Taxonomies
+            if (gettype($subitem) === 'object' && get_class($subitem) === 'WP_Term') :
+
+              $subitem->text = $subitem->name;
+              $subitem->href = '#' . $subitem->slug;
+
+            // Tableau simple
+            elseif (gettype($subitem) === 'array') :
+
+              $subitem = (object) $subitem;
+
+            endif;
+
+            echo '<li class="toc-subitem' . ( isset($subitem->active) && $subitem->active ? ' is-active' : '' ) . '">';
+              echo sprintf(
+                '<a href="%s" class="toc-subitem-link">%s</a>',
+                $subitem->href,
+                $subitem->text
+              );
+            echo '</li>';
+
+          endforeach;
+          echo '</ul>';
+
+        endif;
+
+      echo '</li>';
+    endforeach;
+
+  else :
+
+    telabotanica_module_toc_current_page();
+
+  endif;
+
+  echo '</ul>';
+  echo '</div>';
+}

@@ -71,13 +71,15 @@
     ],
     "menu_order": 0,
     "position": "acf_after_title",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "field",
     "hide_on_screen": [
+        "the_content",
+        "excerpt",
         "featured_image"
     ],
     "active": 1,
     "description": "",
-    "modified": 1477645805
+    "modified": 1477926456
 }

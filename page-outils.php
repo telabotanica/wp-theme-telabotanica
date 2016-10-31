@@ -10,9 +10,7 @@ $tools_categories = get_terms(array(
   'taxonomy'   => $taxonomy_name,
   'hide_empty' => false,
   'fields'     => 'all',
-  'parent'     => 0,
-  'orderby'    => 'menu_order',
-  'order'      => 'ASC'
+  'parent'     => 0
 ));
 
 function tools_category($term) {

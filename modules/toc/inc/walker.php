@@ -112,7 +112,7 @@ class TocWalker extends Walker_Page {
           if (get_row_layout() !== 'title') continue;
 
           // On garde seulement les intertitres de niveau 2
-          if (get_sub_field('level') !== 2) continue;
+          if (get_sub_field('level') !== '2') continue;
 
           $current_toc .= sprintf(
             '<li class="%s"><a href="%s" class="toc-subitem-link">%s</a></li>',

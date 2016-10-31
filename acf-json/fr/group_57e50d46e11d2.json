@@ -218,6 +218,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "5817939342dcc",
+                    "name": "embed",
+                    "label": "Contenu int\u00e9gr\u00e9",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5817939842dcd",
+                            "label": "\u00c9l\u00e9ment \u00e0 int\u00e9grer",
+                            "name": "embed",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_581792e517d97"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         }
@@ -239,5 +270,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les pages",
-    "modified": 1477935594
+    "modified": 1477941211
 }

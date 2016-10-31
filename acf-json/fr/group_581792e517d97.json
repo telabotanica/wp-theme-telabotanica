@@ -1,0 +1,99 @@
+{
+    "key": "group_581792e517d97",
+    "title": "Composant embed",
+    "fields": [
+        {
+            "key": "field_5817976d9ed35",
+            "label": "M\u00e9thode",
+            "name": "method",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "oembed": "oEmbed (recommand\u00e9)",
+                "iframe": "iframe"
+            },
+            "default_value": [
+                "oembed"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_581792eb7cc53",
+            "label": "Avec oEmbed",
+            "name": "embed",
+            "type": "oembed",
+            "instructions": "Vous pouvez int\u00e9grer une vid\u00e9o, un document ou tout autre contenu depuis un site supportant le standard oEmbed (Youtube, Vimeo, Dailymotion, Issuu...). Saisissez simplement l'URL du contenu \u00e0 int\u00e9grer.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5817976d9ed35",
+                        "operator": "==",
+                        "value": "oembed"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": ""
+        },
+        {
+            "key": "field_5817972c0cb54",
+            "label": "Avec une iframe",
+            "name": "iframe",
+            "type": "url",
+            "instructions": "Saisissez l'URL de l'iframe \u00e0 int\u00e9grer.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5817976d9ed35",
+                        "operator": "==",
+                        "value": "iframe"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1477941837
+}

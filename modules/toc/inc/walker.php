@@ -101,9 +101,9 @@ class TocWalker extends Walker_Page {
     // Sommaire de la page en cours
     $current_toc = '';
     if ( $page->ID == $current_page ) {
-      $current_toc .= '<ul class="toc-subitems">';
       // Si la page utilise des composants
       if ( have_rows('components') ) {
+        $current_toc .= '<ul class="toc-subitems">';
         $first = true;
         // On boucle sur les composants
         while ( have_rows('components') ) : the_row();
@@ -121,8 +121,8 @@ class TocWalker extends Walker_Page {
           $first = false;
 
         endwhile;
+        $current_toc .= '</ul>';
       }
-      $current_toc .= '</ul>';
       $output .= $current_toc;
     }
 	}

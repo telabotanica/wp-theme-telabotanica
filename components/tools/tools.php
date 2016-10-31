@@ -40,10 +40,10 @@
         $item->description = str_replace($item->title, '<strong>' . $item->title . '</strong>', $item->description);
 
         echo '<li class="component-tools-item">';
-          echo '<a href="' . $item->link . '" class="component-tools-item-icon" style="color: ' . $item->color . '">';
+          echo '<a href="' . $item->link . '" target="' . $item->link_target . '" class="component-tools-item-icon" style="color: ' . $item->color . '">';
           if ($item->icon) echo '<img src="' . $item->icon . '" alt="' . sprintf( __('Icône de %s', 'telabotanica'), $item->title ) . '" class="style-svg" />';
           echo '</a>';
-          echo '<h4 class="component-tools-item-title"><a href="' . $item->link . '">' . $item->title . '</a></h4>';
+          echo '<h4 class="component-tools-item-title"><a href="' . $item->link . '" target="' . $item->link_target . '">' . $item->title . '</a></h4>';
           echo '<div class="component-tools-item-description">' . $item->description . '</div>';
           echo '<div class="component-tools-item-link"><a href="' . $item->link . '" target="' . $item->link_target . '" style="color: ' . $item->color . '">' . $item->link_text . ' &rsaquo;</a></div>';
         echo '</li>';

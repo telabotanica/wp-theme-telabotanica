@@ -1,7 +1,15 @@
 <?php
 /**
- * Page
+ * Page Outil
  */
+
+$fields = (object) get_fields( get_the_ID() );
+
+// Si une redirection est définie, la suivre
+if (isset($fields->redirect)) {
+  wp_redirect( $fields->redirect['url'] );
+  exit;
+}
 
 get_header(); ?>
 

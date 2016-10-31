@@ -23,7 +23,9 @@
         font-family: $ubuntu;
         font-weight: $bold;
         font-size: 2rem;
-        margin-bottom: 1rem
+        margin-bottom: 1rem;
+
+        img {width: 20rem;}
       }
 
       &-details {

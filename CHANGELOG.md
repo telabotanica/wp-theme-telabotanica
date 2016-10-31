@@ -26,8 +26,11 @@ plus de détails sur http://semver.org/lang/fr/
   * support des redirections
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
 * module `cover` : crédits basés sur les champs ACF
-* module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens
+* module `footer` :
+  * ajout du logo SVG
+  * utilisation de la classe `menu-item-more` pour styler certains liens
 * module `header` :
+  * ajout du logo SVG
   * ajout du lien de changement de langue (avec gestion des erreurs)
 * module `toc` ajouté
   * support du sommaire de la page actuelle (basé sur les composants `title`)

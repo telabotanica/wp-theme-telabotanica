@@ -3,7 +3,9 @@
     <div class="footer-about layout-2-col">
       <div class="layout-wrapper">
         <div class="footer-about-tela layout-column">
-          <div class="footer-about-tela-logo">Tela Botanica</div>
+          <div class="footer-about-tela-logo">
+            <img src="<?php echo get_template_directory_uri() . '/modules/footer/logo.svg'; ?>" alt="Tela Botanica" />
+          </div>
           <div class="footer-about-tela-details">
             <div class="footer-about-tela-details-adresse">4 rue de Belfort, 34000 Montpellier, France</div>
             <div class="footer-about-tela-details-tel"><?php _e( 'Téléphone', 'telabotanica' ) ?> : +33 (4) 67 52 41 225</div>

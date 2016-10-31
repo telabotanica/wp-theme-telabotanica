@@ -1,11 +1,12 @@
 <?php function telabotanica_module_header($data) { ?>
 <header class="header" role="banner">
   <div class="header-fixed">
-    <?php if ( is_front_page() && is_home() ) : ?>
-      <h1 class="header-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Tela Botanica</a></h1>
-    <?php else : ?>
-      <div class="header-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Tela Botanica</a></div>
-    <?php endif; ?>
+    <?php
+      $logo_element = ( is_front_page() && is_home() ) ? 'h1' : 'div';
+      ?>
+      <<?php echo $logo_element ?> class="header-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+        <img src="<?php echo get_template_directory_uri() . '/modules/header/logo.svg'; ?>" alt="Tela Botanica" />
+      </a></<?php echo $logo_element ?>>
     <?php if ( has_nav_menu('secondary') ) : ?>
       <nav class="header-nav" role="navigation"  aria-label="<?php esc_attr_e( 'Menu secondaire', 'telabotanica' ); ?>">
         <?php

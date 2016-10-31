@@ -1,3 +1,7 @@
+.component + .component {
+  margin-top: 2rem;
+}
+
 @import "button/style";
 @import "embed/style";
 @import "intro/style";

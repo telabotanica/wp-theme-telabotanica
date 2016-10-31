@@ -63,7 +63,8 @@ get_header(); ?>
                     array(
                       'taxonomy' => $taxonomy_name,
                       'field' => 'term_id',
-                      'terms' => $term->term_id
+                      'terms' => $term->term_id,
+                      'include_children' => false
                     )
                   ),
                   'numberposts' => -1
@@ -84,25 +85,6 @@ get_header(); ?>
                 endforeach;
 
               endforeach;
-
-              // $tools_query = new WP_Query(array(
-              //   'post_type' => 'tb_outil',
-              //   // 'tax_query' => array(
-              //   //   array(
-              //   //     'taxonomy' => 'tb_outils_category',
-              // 	// 		'field'    => 'slug',
-              // 	// 		'terms'    => 'bob',
-              //   //   )
-              //   // )
-              // ));
-              //
-              // if ( $tools_query->have_posts() ) :
-              //   while ( $tools_query->have_posts() ) { $tools_query->the_post();
-              //     the_telabotanica_component('tools', array(
-              //       'title' => get_the_title()
-              //     ));
-              //   }
-              // endif;
 
               ?>
             </article>

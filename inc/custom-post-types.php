@@ -100,7 +100,7 @@ function telabotanica_outil_post_type() {
       'labels' => $labels,
       'description' => __( 'Outil', 'telabotanica' ),
       'public' => true,
-      'has_archive' => true,
+      'has_archive' => false,
       'menu_position' => 22,
       'menu_icon' => 'dashicons-admin-tools',
       'capability_type' => 'page',

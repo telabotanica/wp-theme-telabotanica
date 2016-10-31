@@ -14,6 +14,7 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `tools` :
   * colorisation des icônes SVG
   * ajout des liens et des effets de rollover
+  * fonctionne avec un tableau de données ou un tableau d'objets WP_Post
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
 * module `cover` : crédits basés sur les champs ACF
 * module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens

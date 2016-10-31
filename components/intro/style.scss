@@ -1,0 +1,20 @@
+.component-intro {
+  color: $gris33;
+  font-size: 2rem;
+  font-weight: $regular;
+  line-height: 3.2rem;
+
+  p {
+    margin: 0 0 2rem;
+  }
+
+  a {
+    border-bottom: 0.1rem solid;
+    color: $turquoise-fonce;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      background-color: transparentize($turquoise-fonce, 0.9);
+    }
+  }
+}

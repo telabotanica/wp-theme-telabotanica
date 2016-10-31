@@ -39,6 +39,7 @@ array_walk($telabotanica_modules, function ($module) {
  */
 $telabotanica_components = [
   'button',
+  'intro',
   'links',
   'tools',
   'text',

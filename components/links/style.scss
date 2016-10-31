@@ -26,7 +26,42 @@
     font-family: $ubuntu;
     font-weight: $regular;
     padding: 1rem 2rem 1rem 4rem;
+    position: relative;
     text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:before {
+      color: $turquoise;
+      display: block;
+      margin: -0.3rem 0 0 -2.5rem;
+      position: absolute;
+    }
+
+    &:hover, &:focus {
+      background-color: transparentize($turquoise, 0.8);
+
+      &:before {
+        color: $gris33;
+      }
+    }
+  }
+
+  &-item-link a {
+    &:before {
+      content: "↗";
+    }
+  }
+
+  &-item-download a {
+    &:before {
+      content: "▯";
+    }
+  }
+
+  &-metadata {
+    color: $turquoise-fonce;
+    font-size: 1.4rem;
+    float: right;
   }
 
 }

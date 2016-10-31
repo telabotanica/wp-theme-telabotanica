@@ -11,6 +11,10 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* composant `links` :
+  * ajout des effets de rollover
+  * support des liens de téléchargements
+  * fonctionne avec un tableau de données ou les champs ACF
 * composant `tools` :
   * colorisation des icônes SVG
   * ajout des liens et des effets de rollover

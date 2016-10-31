@@ -29,6 +29,24 @@ get_header(); ?>
                   <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
                   <?php the_content(); ?>
+
+                  <?php
+                  // Si la page utilise des composants
+                  if( have_rows('components') ):
+
+                      // On boucle sur les composants
+                      while ( have_rows('components') ) : the_row();
+
+                        the_telabotanica_component(get_row_layout(), array());
+
+                      endwhile;
+
+                  else :
+
+                      // no layouts found
+
+                  endif;
+                  ?>
                 </article>
               </div>
             <?php endwhile; ?>

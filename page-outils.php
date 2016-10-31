@@ -10,7 +10,9 @@ $tools_categories = get_terms(array(
   'taxonomy'   => $taxonomy_name,
   'hide_empty' => false,
   'fields'     => 'all',
-  'parent'     => 0
+  'parent'     => 0,
+  'orderby'    => 'menu_order',
+  'order'      => 'ASC'
 ));
 
 function tools_category($term) {
@@ -38,6 +40,8 @@ function tools_category($term) {
         'include_children' => false
       )
     ),
+    'orderby' => 'menu_order',
+    'sort_order' => 'asc',
     'numberposts' => -1
   ));
   the_telabotanica_component('tools', array(

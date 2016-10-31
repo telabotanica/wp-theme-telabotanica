@@ -21,7 +21,7 @@
       float: left;
       justify-content: center;
       height: 10rem;
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
       position: relative;
       width: 10rem;
 
@@ -70,6 +70,7 @@
         border-bottom: 0.2rem solid transparent;
         color: $gris23;
         text-decoration: none;
+        transition: border 0.2s ease;
 
         &:hover, &:focus {
           border-bottom-color: currentColor;

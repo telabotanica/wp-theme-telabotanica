@@ -1,6 +1,6 @@
 {
     "key": "group_5805e99639d30",
-    "title": "Outil",
+    "title": "Type - Outil",
     "fields": [
         {
             "key": "field_580e5447036cb",
@@ -154,5 +154,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1477924496
+    "modified": 1477944282
 }

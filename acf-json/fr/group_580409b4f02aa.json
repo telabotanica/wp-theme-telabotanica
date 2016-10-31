@@ -1,6 +1,6 @@
 {
     "key": "group_580409b4f02aa",
-    "title": "Moyens de participer",
+    "title": "Type - Moyen de participer",
     "fields": [
         {
             "key": "field_580409bc2c86d",
@@ -96,5 +96,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1477333985
+    "modified": 1477944268
 }

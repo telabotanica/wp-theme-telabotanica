@@ -1,6 +1,6 @@
 {
     "key": "group_58034a4d87ab4",
-    "title": "Offre d'emploi",
+    "title": "Article - Offre d'emploi",
     "fields": [
         {
             "key": "field_58034a58a9784",
@@ -185,5 +185,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477649413
+    "modified": 1477944230
 }

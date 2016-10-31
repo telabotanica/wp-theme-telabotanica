@@ -1,0 +1,105 @@
+{
+    "key": "group_5817760bb75a4",
+    "title": "Composants pour les articles",
+    "fields": [
+        {
+            "key": "field_58177612a0f3b",
+            "label": "Composants (optionnels)",
+            "name": "components",
+            "type": "flexible_content",
+            "instructions": "Vous pouvez ajouter des composants \u00e0 la suite du contenu de votre article.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_label": "Ajouter un composant",
+            "min": "",
+            "max": "",
+            "layouts": [
+                {
+                    "key": "58177621e94aa",
+                    "name": "text",
+                    "label": "Texte",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5817766ea0f3c",
+                            "label": "Texte",
+                            "name": "text",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_581775e00f928"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "5817910237e00",
+                    "name": "links",
+                    "label": "Liens ou t\u00e9l\u00e9chargements",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5817910c37e01",
+                            "label": "Liens",
+                            "name": "links",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_581780cf64012"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Composants r\u00e9dactionnels utilisables dans les articles",
+    "modified": 1477939499
+}

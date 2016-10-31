@@ -1,0 +1,243 @@
+{
+    "key": "group_57e50d46e11d2",
+    "title": "Composants pour les pages",
+    "fields": [
+        {
+            "key": "field_57e5133fa8356",
+            "label": "Composants",
+            "name": "components",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_label": "Ajouter un composant",
+            "min": 1,
+            "max": "",
+            "layouts": [
+                {
+                    "key": "57e50d66aeb0c",
+                    "name": "title",
+                    "label": "Intertitre",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_57e5133fa8357",
+                            "label": "Intertitre",
+                            "name": "title",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58177c9ec44c6"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58177e88fab6e",
+                    "name": "intro",
+                    "label": "Texte d'intro",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_58177e9afab6f",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58177e49d817f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "57e50e1615b88",
+                    "name": "text",
+                    "label": "Texte",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_58177c7c4cc25",
+                            "label": "Texte",
+                            "name": "text",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_581775e00f928"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "57e50e7015b8b",
+                    "name": "links",
+                    "label": "Liens ou t\u00e9l\u00e9chargements",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_57e51340a835b",
+                            "label": "Liens",
+                            "name": "links",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_581780cf64012"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "57e515ef99173",
+                    "name": "tools",
+                    "label": "Liste d'outils",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_580e578ce67bc",
+                            "label": "Outils",
+                            "name": "items",
+                            "type": "relationship",
+                            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "tb_outil"
+                            ],
+                            "taxonomy": [],
+                            "filters": "",
+                            "elements": "",
+                            "min": 1,
+                            "max": "",
+                            "return_format": "object"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "57e998678f0d7",
+                    "name": "button",
+                    "label": "Bouton",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_57e9986d8f0d8",
+                            "label": "Intitul\u00e9",
+                            "name": "text",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_57e9987b8f0d9",
+                            "label": "Lien",
+                            "name": "link",
+                            "type": "link_picker",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Composants r\u00e9dactionnels utilisables dans les pages",
+    "modified": 1477935594
+}

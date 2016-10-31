@@ -1,0 +1,83 @@
+{
+    "key": "group_58177c9ec44c6",
+    "title": "Composant intertitre",
+    "fields": [
+        {
+            "key": "field_58177ca9e3651",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58177cc7e3652",
+            "label": "Ancre",
+            "name": "anchor",
+            "type": "text",
+            "instructions": "Ne pas utiliser de caract\u00e8res accentu\u00e9s ou de ponctuation. Remplacer les espaces par des tirets (-).",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "#",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58177cf9e3653",
+            "label": "Niveau de titre",
+            "name": "level",
+            "type": "number",
+            "instructions": "Veillez \u00e0 respecter la hi\u00e9rarchie des titres (pas de niveau 4 directement sous un niveau 2 par exemple).",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 2,
+            "max": 4,
+            "step": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1477934565
+}

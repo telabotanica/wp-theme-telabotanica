@@ -93,7 +93,7 @@
                             "name": "embed",
                             "type": "clone",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -132,5 +132,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1477940764
+    "modified": 1477943361
 }

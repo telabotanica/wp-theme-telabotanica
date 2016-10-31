@@ -1,21 +1,44 @@
 .component-embed {
-  height: 0;
-  height: auto;
-  margin: 0 0 2rem;
-  max-width: 100%;
-  overflow: hidden;
-  padding-bottom: 56.25%;
-	position: relative;
+  color: $gris33;
+  line-height: 2.4rem;
 
-	iframe,
-	object,
-	embed {
-    border: 0;
-    height: 100%;
-    left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
-	}
+  &-wrapper {
+    height: 0;
+    height: auto;
+    margin: 0 0 2rem;
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+  	position: relative;
+
+  	iframe,
+  	object,
+  	embed {
+      border: 0;
+      display: block;
+      height: 100%;
+      left: 0;
+  		position: absolute;
+  		top: 0;
+  		width: 100%;
+  	}
+  }
+
+  &-description {
+    p {
+      margin: 0 0 2rem;
+    }
+  }
+
+  a {
+    border-bottom: 0.1rem solid;
+    color: $turquoise-fonce;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover, &:focus {
+      background-color: transparentize($turquoise-fonce, 0.9);
+    }
+  }
 
 }

@@ -35,7 +35,7 @@
             "name": "embed",
             "type": "oembed",
             "instructions": "Vous pouvez int\u00e9grer une vid\u00e9o, un document ou tout autre contenu depuis un site supportant le standard oEmbed (Youtube, Vimeo, Dailymotion, Issuu...). Saisissez simplement l'URL du contenu \u00e0 int\u00e9grer.",
-            "required": 0,
+            "required": 1,
             "conditional_logic": [
                 [
                     {
@@ -59,7 +59,7 @@
             "name": "iframe",
             "type": "url",
             "instructions": "Saisissez l'URL de l'iframe \u00e0 int\u00e9grer.",
-            "required": 0,
+            "required": 1,
             "conditional_logic": [
                 [
                     {
@@ -76,6 +76,24 @@
             },
             "default_value": "",
             "placeholder": ""
+        },
+        {
+            "key": "field_58179c698ffe2",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "instructions": "Il est recommand\u00e9 d'accompagner votre contenu int\u00e9gr\u00e9 d'une description textuelle, pour am\u00e9liorer l'accessibilit\u00e9 et le r\u00e9f\u00e9rencement. Pour un contenu vid\u00e9o ou audio, l'id\u00e9al est de r\u00e9diger un transcript complet.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0
         }
     ],
     "location": [
@@ -95,5 +113,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1477941837
+    "modified": 1477943594
 }

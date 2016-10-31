@@ -231,7 +231,7 @@
                             "name": "embed",
                             "type": "clone",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -270,5 +270,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les pages",
-    "modified": 1477941211
+    "modified": 1477943373
 }

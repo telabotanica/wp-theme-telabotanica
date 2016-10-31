@@ -200,3 +200,11 @@ function telabotanica_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	return $attr;
 }
 add_filter( 'wp_get_attachment_image_attributes', 'telabotanica_post_thumbnail_sizes_attr', 10 , 3 );
+
+/*
+ * Ajout d'un style spécifique pour l'admin
+ */
+function telabotanica_admin_theme_style() {
+    wp_enqueue_style('telabotanica', get_template_directory_uri() . '/admin/style.css');
+}
+add_action('admin_enqueue_scripts', 'telabotanica_admin_theme_style');

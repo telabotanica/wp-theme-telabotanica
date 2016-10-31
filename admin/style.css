@@ -1,0 +1,4 @@
+/* Cache le message affiché par l'extension "Category Order and Taxonomy Terms Order" */
+#cpt_info_box {
+  display: none;
+}

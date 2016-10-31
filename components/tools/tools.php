@@ -19,7 +19,7 @@
           // affiche en gras l'abbréviation
           if (isset($fields->abbr)) $item->description = str_replace($fields->abbr, '<strong>' . $fields->abbr . '</strong>', $item->description);
           $item->color = isset($fields->color) ? $fields->color : '#666';
-          $item->icon = isset($fields->icon) ? $fields->icon : false;
+          $item->icon = isset($fields->icon) && !empty($fields->icon) ? $fields->icon : get_template_directory_uri() . '/components/tools/default-icon.svg';
           $item->link_text = isset($fields->link_text) ? $fields->link_text : __('Accéder à cet outil', 'telabotanica');
 
           if (isset($fields->redirect)) {
@@ -27,12 +27,15 @@
             $item->link_target = $fields->redirect['target'];
           } else {
             $item->link = get_permalink($item);
+            $item->link_target = '';
           }
 
         // Tableau simple
         elseif (gettype($item) === 'array') :
 
           $item = (object) $item;
+          if (!isset($item->icon)) $item->icon = get_template_directory_uri() . '/components/tools/default-icon.svg';
+          if (!isset($item->link_target)) $item->link_target = '';
 
         endif;
 

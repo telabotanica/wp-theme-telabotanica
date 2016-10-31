@@ -43,7 +43,7 @@
         },
         {
             "key": "field_5805e9a7c8814",
-            "label": "Abbr\u00e9viation",
+            "label": "Abr\u00e9viation",
             "name": "abbr",
             "type": "text",
             "instructions": "Si le nom de cet outil peut \u00eatre abr\u00e9g\u00e9, l'indiquer ici.",
@@ -99,15 +99,39 @@
             "new_lines": "wpautop"
         },
         {
+            "key": "field_5817542038a5e",
+            "label": "Page outil",
+            "name": "has_page",
+            "type": "true_false",
+            "instructions": "Cr\u00e9er une page pour cet outil",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1
+        },
+        {
             "key": "field_581743c1eada3",
             "label": "Redirection",
             "name": "redirect",
             "type": "link_picker",
             "instructions": "Si ce champ est compl\u00e9t\u00e9, tous les liens vers cet outil redirigeront sur cette adresse, plut\u00f4t que d'afficher la page Outil.",
-            "required": 0,
-            "conditional_logic": 0,
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5817542038a5e",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
-                "width": "",
+                "width": "70",
                 "class": "",
                 "id": ""
             }
@@ -124,11 +148,11 @@
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1477919757
+    "modified": 1477924496
 }

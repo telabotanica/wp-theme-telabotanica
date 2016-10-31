@@ -15,6 +15,7 @@ plus de détails sur http://semver.org/lang/fr/
   * colorisation des icônes SVG
   * ajout des liens et des effets de rollover
   * fonctionne avec un tableau de données ou un tableau d'objets WP_Post
+  * support des redirections
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
 * module `cover` : crédits basés sur les champs ACF
 * module `footer` : utilisation de la classe `menu-item-more` pour styler certains liens
@@ -32,6 +33,8 @@ plus de détails sur http://semver.org/lang/fr/
   * chapo optionnel
 * groupe de champs crédits médias
 * groupe de champs bandeau de catégorie
+* groupes de champs outil :
+  * ajout d'un champ redirection
 * ajout d'une taxonomie Catégorie d'outils
 
 ## 0.0.2 (2016-10-18)

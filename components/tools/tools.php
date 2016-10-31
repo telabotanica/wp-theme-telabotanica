@@ -12,7 +12,6 @@
         // Tableau d'objets Outil
         if (gettype($item) === 'object' && get_class($item) === 'WP_Post') :
 
-          $item->link = get_permalink($item);
           $item->title = $item->post_title;
 
           $fields = (object) get_fields($item->ID);
@@ -22,6 +21,13 @@
           $item->color = isset($fields->color) ? $fields->color : '#666';
           $item->icon = isset($fields->icon) ? $fields->icon : false;
           $item->link_text = isset($fields->link_text) ? $fields->link_text : __('Accéder à cet outil', 'telabotanica');
+
+          if (isset($fields->redirect)) {
+            $item->link = $fields->redirect['url'];
+            $item->link_target = $fields->redirect['target'];
+          } else {
+            $item->link = get_permalink($item);
+          }
 
         // Tableau simple
         elseif (gettype($item) === 'array') :
@@ -39,7 +45,7 @@
           echo '</a>';
           echo '<h4 class="component-tools-item-title"><a href="' . $item->link . '">' . $item->title . '</a></h4>';
           echo '<div class="component-tools-item-description">' . $item->description . '</div>';
-          echo '<div class="component-tools-item-link"><a href="' . $item->link . '" style="color: ' . $item->color . '">' . $item->link_text . ' &rsaquo;</a></div>';
+          echo '<div class="component-tools-item-link"><a href="' . $item->link . '" target="' . $item->link_target . '" style="color: ' . $item->color . '">' . $item->link_text . ' &rsaquo;</a></div>';
         echo '</li>';
 
       endforeach;

@@ -27,6 +27,7 @@ $telabotanica_modules = [
   'form-newsletter',
   'header',
   'toc',
+  'upcoming-events',
 ];
 array_walk($telabotanica_modules, function ($module) {
   if (!locate_template('modules/' . $module . '/' . $module . '.php', true, true)) {

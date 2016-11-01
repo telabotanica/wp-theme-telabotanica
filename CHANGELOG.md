@@ -24,6 +24,9 @@ plus de détails sur http://semver.org/lang/fr/
   * ajout des liens et des effets de rollover
   * fonctionne avec un tableau de données ou un tableau d'objets WP_Post
   * support des redirections
+* module `button` :
+  * ajout d'un modifier `block`
+  * ajout d'un modifier `orange`
 * module `categories` : exclure seulement la categorie ID=1 (non catégorisé)
 * module `cover` : crédits basés sur les champs ACF
 * module `footer` :
@@ -33,12 +36,16 @@ plus de détails sur http://semver.org/lang/fr/
   * ajout du logo SVG
   * ajout des icônes et d'effets de hover sur la navigation
   * ajout du lien de changement de langue (avec gestion des erreurs)
+  * ajout d'effets de rollover
 * module `toc` ajouté
   * support du sommaire de la page actuelle (basé sur les composants `title`)
   * support des pages parentes et soeurs
   * utilisation d'un `walker` spécifique
+* module `upcoming-events` ajouté
 * page `404` ajoutée
 * I18n : plus de chaînes du thème traduisibles
+* groupes de champs évènements :
+  * meilleur ciblage des catégories
 * groupes de champs offres d'emploi :
   * fusion entre CDD/CDI et stages
   * ajout pour la catégorie Service civique

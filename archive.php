@@ -23,7 +23,22 @@ get_header(); ?>
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <?php the_telabotanica_module('categories', array()); ?>
+            <?php the_telabotanica_module('categories', array(
+              'modifiers' => 'layout-column-item'
+            )); ?>
+            <div class="layout-column-item background-white with-shadow with-padding">
+              <?php the_telabotanica_module('button', array(
+                'href' => '#',
+                'text' => __( 'Proposer une actualité', 'telabotanica' ),
+                'modifiers' => 'block'
+              )); ?>
+            </div>
+            <?php the_telabotanica_module('form-newsletter', array(
+              'modifiers' => 'layout-column-item background-white with-shadow with-padding'
+            )); ?>
+            <?php the_telabotanica_module('upcoming-events', array(
+              'modifiers' => 'layout-column-item background-white with-shadow with-padding'
+            )); ?>
           </aside>
           <div class="layout-content">
             <?php if ( have_posts() ) : ?>

@@ -8,6 +8,24 @@
   font-weight: $medium;
   letter-spacing: 0.1rem;
   padding: 1.5rem 2rem;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  transition: background 0.2s ease;
+
+  &:hover, &:focus {
+    background-color: $vert-clair-vif;
+  }
+
+  &.orange {
+    background-color: $orange;
+
+    &:hover, &:focus {
+      background-color: lighten($orange, 8%);
+    }
+  }
+
+  &.block {
+    display: block;
+  }
 }

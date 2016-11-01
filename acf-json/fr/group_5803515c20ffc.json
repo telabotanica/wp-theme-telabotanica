@@ -321,6 +321,54 @@
                 "operator": "==",
                 "value": "category:evenements"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:congres-conferences"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:expositions"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:sorties-de-terrain"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:stages-ateliers"
+            }
         ]
     ],
     "menu_order": 0,
@@ -334,5 +382,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477944214
+    "modified": 1478008492
 }

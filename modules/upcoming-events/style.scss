@@ -1,0 +1,84 @@
+.upcoming-events {
+  background-color: $grisF0;
+  border-radius: 0.2rem;
+  padding: 2rem;
+
+  &-title {
+    color: $gris23;
+    font-family: $ubuntu;
+    font-size: 1.8rem;
+    font-weight: $bold;
+
+    &:before {
+      color: $orange;
+      content: "☑";
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
+
+  &-items {
+    border-top: 0.1rem solid transparentize($taupe, 0.8);
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+  }
+
+  &-item {
+    border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+    padding: 1.5rem 0;
+
+    &-link {
+      display: block;
+      font-family: $ubuntu;
+      min-height: 5.5rem;
+      text-decoration: none;
+      color: $gris23;
+
+      &:hover, &:focus {
+        .upcoming-events-date {color: darken($orange, 20%);}
+      }
+    }
+  }
+
+  &-date {
+    background-color: transparentize($orange, 0.8);
+    color: $orange;
+    font-weight: $medium;
+    height: 5.5rem;
+    padding: 0.5rem;
+    position: absolute;
+    text-align: center;
+    transition: color 0.2s ease;
+    width: 6.5rem;
+
+    &-day {
+      font-size: 2.6rem;
+    }
+    &-month {
+      font-size: 1rem;
+      letter-spacing: 0.1rem;
+      overflow: hidden;
+      text-transform: uppercase;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-name,
+  &-place {
+    margin-left: 7.5rem;
+  }
+
+  &-name {
+    font-size: 1.6rem;
+    font-weight: $medium;
+    line-height: 2.1rem;
+  }
+
+  &-place {
+    color: $orange;
+    font-size: 1.2rem;
+    font-weight: $regular;
+    margin-top: 0.5rem;
+  }
+}

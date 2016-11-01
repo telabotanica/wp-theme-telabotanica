@@ -33,7 +33,6 @@
 
   &-item {
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
-    padding-bottom: 2rem;
 
     &.is-active .categories-item-link:before {
       color: $vert-clair;
@@ -53,6 +52,10 @@
         }
       }
     }
+  }
+
+  &-subitems {
+    padding-bottom: 2rem;
   }
 
   &-subitem {

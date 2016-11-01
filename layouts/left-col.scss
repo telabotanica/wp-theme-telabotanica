@@ -20,6 +20,24 @@
         top: 0;
         width: 100rem;
       }
+
+      .layout-column-item {
+        margin-bottom: 3rem;
+
+        &.background-white {
+          background-color: $blanc;
+          .form-newsletter-email {background-color: $grisF0;}
+        }
+
+        &.with-shadow {
+          box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
+          position: relative;
+        }
+
+        &.with-padding {
+          padding: 2rem;
+        }
+      }
     }
 
     > .layout-content {

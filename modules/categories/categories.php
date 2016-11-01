@@ -6,7 +6,7 @@
     'orderby' => 'none',
     'parent' => 0
   )); ?>
-  <div class="categories">
+  <div class="categories <?php echo $data->modifiers ?>">
     <h2 class="categories-title"><?php _e('Catégories', 'telabotanica'); ?></h2>
     <ul class="categories-items">
       <?php foreach ($categories as $category):

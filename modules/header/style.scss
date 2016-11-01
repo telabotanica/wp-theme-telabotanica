@@ -158,17 +158,46 @@
       list-style: none;
       margin: 0;
       padding: 1.9rem 0;
+      text-align: center;
 
       .menu-item {
         display: inline-block;
+        overflow: hidden;
+        position: relative;
+        width: 25%;
 
         &:first-child a {
           border-left: 0.1rem solid transparentize($taupe, 0.8);
         }
+
+        &:before {
+          border-radius: 50%;
+          content: "";
+          display: block;
+          height: 0;
+          left: 50%;
+          opacity: 0.8;
+          position: absolute;
+          top: 30%;
+          transform: translate3d(-50%, -50%, 0);
+          width: 0;
+          z-index: 0;
+        }
+
+        &:hover {
+          &:before {
+            height: 30rem;
+            opacity: 0;
+            transition: opacity 0.8s ease, height 0.8s ease, width 0.8s ease;
+            width: 30rem;
+          }
+        }
       }
 
       a {
-        align-items: center;
+        align-items: flex-end;
+        background: transparent top center no-repeat;
+        background-size: 4.6rem;
         border-right: 0.1rem solid transparentize($taupe, 0.8);
         color: $gris33;
         display: flex;
@@ -178,8 +207,30 @@
         height: 7.2rem;
         justify-content: center;
         position: relative;
-        padding: 0 4rem;
+        padding: 0.5rem 4rem;
         text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .menu-item.identifier {
+        &:before {background-color: #E9F2B7;}
+        a {background-image: url('../../modules/header/icons/identifier.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
+      }
+      .menu-item.apprendre {
+        &:before {background-color: #FCE3F1;}
+        a {background-image: url('../../modules/header/icons/apprendre.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $violet;}
+      }
+      .menu-item.sortir {
+        &:before {background-color: #F9E2D7;}
+        a {background-image: url('../../modules/header/icons/sortir.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $orange;}
+      }
+      .menu-item.participer {
+        &:before {background-color: #E9F6F8;}
+        a {background-image: url('../../modules/header/icons/participer.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
       }
     }
   }

@@ -31,6 +31,7 @@ plus de détails sur http://semver.org/lang/fr/
   * utilisation de la classe `menu-item-more` pour styler certains liens
 * module `header` :
   * ajout du logo SVG
+  * ajout des icônes et d'effets de hover sur la navigation
   * ajout du lien de changement de langue (avec gestion des erreurs)
 * module `toc` ajouté
   * support du sommaire de la page actuelle (basé sur les composants `title`)
@@ -47,6 +48,7 @@ plus de détails sur http://semver.org/lang/fr/
 * groupes de champs outil :
   * ajout d'un champ redirection
 * ajout d'une taxonomie Catégorie d'outils
+* support des SVG dans la build Webpack
 
 ## 0.0.2 (2016-10-18)
 

@@ -25,3 +25,4 @@ Cette commande :
 Cette commande :
 - compile `assets/styles/main.scss` dans `dist/bundle.css`
 - compile `assets/scripts/main.js` dans `dist/bundle.js`
+- inclut en inline les images SVG utilisées dans les feuilles de style

@@ -48,6 +48,6 @@
       endif;
       ?>
     </ul>
-    <a href="#" class="button block orange upcoming-events-button"><?php echo __( "Voir tous les évènements", 'telabotanica' ) ?></a>
+    <a href="<?php echo get_category_link( get_category_by_slug( 'evenements' ) ) ?>" class="button block orange upcoming-events-button"><?php echo __( "Voir tous les évènements", 'telabotanica' ) ?></a>
   </div>
 <?php }

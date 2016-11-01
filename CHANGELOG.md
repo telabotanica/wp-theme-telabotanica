@@ -42,6 +42,7 @@ plus de détails sur http://semver.org/lang/fr/
   * support des pages parentes et soeurs
   * utilisation d'un `walker` spécifique
 * module `upcoming-events` ajouté
+  * ajout du lien vers tous les évènements
 * page `404` ajoutée
 * I18n : plus de chaînes du thème traduisibles
 * groupes de champs évènements :

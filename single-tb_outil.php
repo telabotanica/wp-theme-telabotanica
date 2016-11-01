@@ -6,7 +6,8 @@
 $fields = (object) get_fields( get_the_ID() );
 
 // Si une redirection est définie, la suivre
-if (isset($fields->redirect)) {
+if ( isset($fields->has_page) && $fields->has_page === false
+  && isset($fields->redirect) ) {
   wp_redirect( $fields->redirect['url'] );
   exit;
 }

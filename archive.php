@@ -17,6 +17,7 @@ get_header(); ?>
           get_category_link( get_cat_ID( 'Offres d\'emploi' ) ),
           get_category_link( get_cat_ID( 'Évènements' ) )
         ),
+        'image' => get_field( 'cover_image', get_queried_object() )
       )); ?>
 
       <div class="layout-left-col">

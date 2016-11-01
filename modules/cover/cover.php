@@ -5,7 +5,7 @@
   ?>
   <div class="cover" style="background-image: url(<?php echo $data->image['url'] ?>);">
     <div class="layout-wrapper">
-      <h1 class="cover-title"><?php echo @$data->title ?></h1>
+      <h1 class="cover-title"><?php echo $data->title ?></h1>
       <?php if ($data->subtitle) : ?>
         <div class="cover-subtitle"><?php echo $data->subtitle ?></div>
       <?php endif; ?>

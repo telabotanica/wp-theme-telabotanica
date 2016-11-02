@@ -10,17 +10,18 @@
         <div class="cover-subtitle"><?php echo $data->subtitle ?></div>
       <?php endif; ?>
     </div>
-    <?php if ($data->image) :
-      $credits = get_fields($data->image['ID']);
-      if ($credits) : ?>
-        <div class="cover-credits">
-          <?php if ($credits['link']) {
+    <?php
+      if ( $data->image ) :
+        $credits = get_fields( $data->image['ID'] );
+        if ( $credits ) :
+          echo '<div class="cover-credits">';
+          if ($credits['link']) {
             echo sprintf(__('%s par %s', 'telabotanica'), '<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>', $credits['author']);
           } else {
             echo sprintf(__('%s par %s', 'telabotanica'), $data->image['title'], $credits['author']);
-          } ?>
-        </div>
-      <?php endif;
+          }
+          echo '</div>';
+        endif;
     endif; ?>
   </div>
 <?php }

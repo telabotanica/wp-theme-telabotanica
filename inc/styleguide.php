@@ -20,6 +20,7 @@
   */
 $telabotanica_modules = [
   'article',
+  'breadcrumbs',
   'button',
   'categories',
   'cover',

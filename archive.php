@@ -3,19 +3,24 @@
  * Page d'accueil
  */
 
-get_header(); ?>
+get_header();
+
+$category_actualites = get_category_by_slug( 'actualites' );
+$category_emploi = get_category_by_slug( 'offres-emploi' );
+$category_evenements = get_category_by_slug( 'evenements' );
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
       <?php
       the_telabotanica_module('cover', array(
-        'title' => __('Actualités', 'telabotanica'),
+        'title' => $category_actualites->name,
         'subtitle' => sprintf(
           __('Toute l\'<a href="%s">actualité</a>, les <a href="%s">offres d\'emploi</a> et les <a href="%s">évènements</a>', 'telabotanica'),
-          get_category_link( get_cat_ID( 'Actualités' ) ),
-          get_category_link( get_cat_ID( 'Offres d\'emploi' ) ),
-          get_category_link( get_cat_ID( 'Évènements' ) )
+          get_category_link( $category_actualites ),
+          get_category_link( $category_emploi ),
+          get_category_link( $category_evenements )
         ),
         'image' => get_field( 'cover_image', get_queried_object() )
       )); ?>
@@ -41,7 +46,9 @@ get_header(); ?>
             )); ?>
           </aside>
           <div class="layout-content">
-            <?php if ( have_posts() ) : ?>
+            <?php the_telabotanica_module('breadcrumbs', array());
+
+            if ( have_posts() ) : ?>
               <?php while ( have_posts() ) : the_post(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                   <?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>

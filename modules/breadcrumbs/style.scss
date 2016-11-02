@@ -1,0 +1,57 @@
+.breadcrumbs {
+  border-bottom: 0.1rem solid $grisDD;
+  color: $marron;
+  line-height: 1rem;
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 1.8rem 0 1.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  // pas de padding-top lorsqu'on est dans un layout central-col
+  .layout-central-col & {
+    padding-top: 0;
+  }
+
+  &-item {
+    display: inline;
+    font-family: $ubuntu;
+    font-size: 1.4rem;
+    font-weight: $regular;
+    letter-spacing: 0.1rem;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    margin-right: 1rem;
+
+    > a {
+      border-bottom: 0.1rem solid $vert-fonce;
+      color: $vert-fonce;
+      display: inline-block;
+      text-decoration: none;
+      transition: border 0.2s ease;
+
+      &:hover {
+        border-bottom-color: transparent;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      > a {
+        border: 0;
+        color: $marron;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &-item + &-item:before {
+    content: ">";
+    margin-right: 1rem;
+    position: relative;
+    speak: none;
+  }
+}

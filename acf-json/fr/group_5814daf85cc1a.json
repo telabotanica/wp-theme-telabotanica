@@ -3,10 +3,10 @@
     "title": "Bandeau de cat\u00e9gorie",
     "fields": [
         {
-            "key": "field_5814db0f686f3",
+            "key": "field_5819d5953d542",
             "label": "Image de fond du bandeau",
             "name": "cover_image",
-            "type": "clone",
+            "type": "image",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,13 +15,16 @@
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "field_581315ce4e7de"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -41,5 +44,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1477958708
+    "modified": 1478088116
 }

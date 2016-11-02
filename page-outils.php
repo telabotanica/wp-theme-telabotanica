@@ -65,6 +65,7 @@ function tools_category($term) {
             )); ?>
           </aside>
           <div class="layout-content">
+            <?php the_telabotanica_module('breadcrumbs', array()); ?>
             <article class="article">
               <?php
               // Si la page utilise des composants

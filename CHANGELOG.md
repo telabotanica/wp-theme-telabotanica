@@ -24,6 +24,7 @@ plus de détails sur http://semver.org/lang/fr/
   * ajout des liens et des effets de rollover
   * fonctionne avec un tableau de données ou un tableau d'objets WP_Post
   * support des redirections
+* module `breadcrumbs` ajouté
 * module `button` :
   * ajout d'un modifier `block`
   * ajout d'un modifier `orange`
@@ -55,8 +56,10 @@ plus de détails sur http://semver.org/lang/fr/
 * groupe de champs bandeau de catégorie
 * groupes de champs outil :
   * ajout d'un champ redirection
+* groupe de champs newsletter
 * ajout d'une taxonomie Catégorie d'outils
 * support des SVG dans la build Webpack
+* ajout d'une page d'options Lettre d'actu
 
 ## 0.0.2 (2016-10-18)
 

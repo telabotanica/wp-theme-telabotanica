@@ -20,6 +20,68 @@
             "max": "",
             "layouts": [
                 {
+                    "key": "5820c6f40fda7",
+                    "name": "title",
+                    "label": "Intertitre",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_5820c70f0fda8",
+                            "label": "Intertitre",
+                            "name": "title",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58177c9ec44c6"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "5820c7380fda9",
+                    "name": "intro",
+                    "label": "Texte d'intro",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_5820c73e0fdaa",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58177e49d817f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "58177621e94aa",
                     "name": "text",
                     "label": "Texte",
@@ -31,7 +93,7 @@
                             "name": "text",
                             "type": "clone",
                             "instructions": "",
-                            "required": 0,
+                            "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -82,6 +144,43 @@
                     "max": ""
                 },
                 {
+                    "key": "5820c76d0fdab",
+                    "name": "tools",
+                    "label": "Liste d'outils",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5820c7740fdac",
+                            "label": "Outils",
+                            "name": "tools",
+                            "type": "relationship",
+                            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "tb_outil"
+                            ],
+                            "taxonomy": [],
+                            "filters": [
+                                "search",
+                                "post_type",
+                                "taxonomy"
+                            ],
+                            "elements": "",
+                            "min": "",
+                            "max": "",
+                            "return_format": "object"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "581795f9075cb",
                     "name": "embed",
                     "label": "Contenu int\u00e9gr\u00e9",
@@ -121,31 +220,6 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "post"
-            },
-            {
-                "param": "post_category",
-                "operator": "!=",
-                "value": "category:en-kiosque"
-            },
-            {
-                "param": "post_category",
-                "operator": "!=",
-                "value": "category:offres-emploi"
-            },
-            {
-                "param": "post_category",
-                "operator": "!=",
-                "value": "category:cdd-cdi"
-            },
-            {
-                "param": "post_category",
-                "operator": "!=",
-                "value": "category:stages"
-            },
-            {
-                "param": "post_category",
-                "operator": "!=",
-                "value": "category:service-civique"
             }
         ]
     ],
@@ -157,5 +231,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1477944113
+    "modified": 1478543341
 }

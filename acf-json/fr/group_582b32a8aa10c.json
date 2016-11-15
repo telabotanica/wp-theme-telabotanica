@@ -48,6 +48,31 @@
                 "param": "post_category",
                 "operator": "!=",
                 "value": "category:service-civique"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:evenements"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:congres-conferences"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:expositions"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:sorties-de-terrain"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:stages-ateliers"
             }
         ]
     ],
@@ -59,5 +84,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1479228537
+    "modified": 1479231515
 }

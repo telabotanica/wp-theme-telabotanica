@@ -1,13 +1,13 @@
 {
-    "key": "group_58177e49d817f",
-    "title": "Composant intro",
+    "key": "group_582b32a8aa10c",
+    "title": "Intro d'article",
     "fields": [
         {
-            "key": "field_58177e4a2990d",
+            "key": "field_582b32add4527",
             "label": "Intro",
             "name": "intro",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Ce texte d'introduction optionnel sera affich\u00e9 en plus grand, avant le contenu principal.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -52,12 +52,12 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
-    "style": "default",
+    "position": "acf_after_title",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 0,
+    "active": 1,
     "description": "",
-    "modified": 1479228378
+    "modified": 1479228537
 }

@@ -223,7 +223,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 2,
     "position": "normal",
     "style": "seamless",
     "label_placement": "top",
@@ -231,5 +231,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1478543341
+    "modified": 1479228429
 }

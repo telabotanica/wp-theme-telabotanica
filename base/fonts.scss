@@ -67,6 +67,18 @@ $bold    : bold;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('#{$fonts-path}ubuntu-light-webfont.eot');
+    src: url('#{$fonts-path}ubuntu-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$fonts-path}ubuntu-light-webfont.woff2') format('woff2'),
+         url('#{$fonts-path}ubuntu-light-webfont.woff') format('woff'),
+         url('#{$fonts-path}ubuntu-light-webfont.ttf') format('truetype'),
+         url('#{$fonts-path}ubuntu-light-webfont.svg#ubuntulight') format('svg');
+    font-weight: $light;
+    font-style: normal;
+}
+
 html {
   font-size: 62.5%; // for easy rem sizing
 }

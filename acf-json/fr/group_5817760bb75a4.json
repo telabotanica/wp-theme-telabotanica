@@ -153,8 +153,8 @@
                             "key": "field_5820c7740fdac",
                             "label": "Outils",
                             "name": "tools",
-                            "type": "relationship",
-                            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+                            "type": "clone",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -162,19 +162,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
-                                "tb_outil"
+                            "clone": [
+                                "group_582c2df7e7931"
                             ],
-                            "taxonomy": [],
-                            "filters": [
-                                "search",
-                                "post_type",
-                                "taxonomy"
-                            ],
-                            "elements": "",
-                            "min": "",
-                            "max": "",
-                            "return_format": "object"
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -231,5 +225,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1479228429
+    "modified": 1479290532
 }

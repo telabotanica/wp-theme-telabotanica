@@ -15,6 +15,7 @@ plus de détails sur http://semver.org/lang/fr/
   * support de l'intégration avec oEmbed
   * support de l'intégration dans une iframe
   * ajout d'une description (accessibilité et référencement)
+  * ajout d'une hauteur optionnelle pour l'iframe
 * composant `links` :
   * ajout des effets de rollover
   * support des liens de téléchargements

@@ -27,18 +27,29 @@ get_header(); ?>
               <div class="layout-content">
                 <?php the_telabotanica_module('breadcrumbs', array()); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?>>
-                  <?php the_title( '<h1 class="article-title">', '</h1>' ); ?>
-
-                  <?php the_content(); ?>
-
                   <?php
+
+                  the_title( '<h1 class="article-title">', '</h1>' );
+
+                  if ( get_field('intro') ) :
+
+                    the_telabotanica_component('intro', [
+                      'text' => get_field('intro')
+                    ]);
+
+                  endif;
+
+                  the_telabotanica_component('text', [
+                    'text' => get_the_content()
+                  ]);
+
                   // Si la page utilise des composants
                   if( have_rows('components') ):
 
                       // On boucle sur les composants
                       while ( have_rows('components') ) : the_row();
 
-                        the_telabotanica_component(get_row_layout(), array());
+                        the_telabotanica_component(get_row_layout(), []);
 
                       endwhile;
 

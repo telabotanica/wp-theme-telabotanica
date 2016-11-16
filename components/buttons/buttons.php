@@ -10,10 +10,10 @@
       $item = (object) $item;
 
       if (!isset($item->href)) {
-        $link = get_sub_field('link');
-        $item->href = $link['url'];
-        $item->target = $link['target'];
-        $item->title = $link['title'];
+        $item->href = $item->link['url'];
+        $item->target = $item->link['target'];
+        $item->title = $item->link['title'];
+        unset($item->link);
       }
       if (!isset($item->text)) $item->text = get_sub_field('text');
       if (!isset($item->modifiers)) {

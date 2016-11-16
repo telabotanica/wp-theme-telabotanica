@@ -1,0 +1,39 @@
+// Base
+@import "../../base/colors";
+@import "../../base/defaults";
+@import "../../base/fonts";
+
+html {
+  font-size: 62.5%; // for easy rem sizing
+}
+
+body {
+  font-family: $muli;
+  font-size: 1.5rem;
+  font-weight: $light;
+
+  color: $gris33;
+  line-height: 2.4rem;
+  max-width: 70rem;
+}
+
+body.post-type-page {
+  max-width: 62rem;
+}
+
+p {
+  margin: 0 0 2rem;
+}
+
+a {
+  border-bottom: 0.1rem solid;
+  color: $turquoise-fonce;
+  font-weight: $regular;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+b,
+strong {
+  font-weight: $bold;
+}

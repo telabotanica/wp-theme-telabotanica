@@ -3,6 +3,10 @@ const autoprefixer = require('autoprefixer')
 const pixrem = require('pixrem')
 const postcss = require('postcss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+
+const extractBundle = new ExtractTextPlugin('bundle.css');
+const extractEditorStyle = new ExtractTextPlugin('editor-style.css');
 
 module.exports = {
   entry: './assets/scripts/main.js',
@@ -14,9 +18,19 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.scss$/,
-        //include: './assets/styles',
-        loader: ExtractTextPlugin.extract({
+        test: /main\.scss$/,
+        loader: extractBundle.extract({
+          fallbackLoader: 'style',
+          loader: [
+            'css',
+            'postcss',
+            'sass'
+          ]
+        })
+      },
+      {
+        test: /editor-style\.scss$/,
+        loader: extractEditorStyle.extract({
           fallbackLoader: 'style',
           loader: [
             'css',
@@ -27,12 +41,23 @@ module.exports = {
       },
       {
         test: /\.svg$/,
+        exclude: [
+          path.resolve(__dirname, "assets/fonts")
+        ],
         loader: 'svg-url-loader'
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include: [
+          path.resolve(__dirname, "assets/fonts")
+        ],
+        loader: 'file?name=fonts/[name].[ext]'
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css'),
+    extractBundle,
+    extractEditorStyle,
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,

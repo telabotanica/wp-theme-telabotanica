@@ -40,7 +40,7 @@ array_walk($telabotanica_modules, function ($module) {
  * Liste de tous les composants accessibles depuis les fonctions du styleguide
  */
 $telabotanica_components = [
-  'button',
+  'buttons',
   'embed',
   'intro',
   'links',

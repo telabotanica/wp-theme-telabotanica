@@ -175,6 +175,37 @@
                     "max": ""
                 },
                 {
+                    "key": "582c5f278e5a1",
+                    "name": "buttons",
+                    "label": "Bouton(s)",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c5f388e5a2",
+                            "label": "Boutons",
+                            "name": "buttons",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c55a2217be"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "581795f9075cb",
                     "name": "embed",
                     "label": "Contenu int\u00e9gr\u00e9",
@@ -225,5 +256,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1479290532
+    "modified": 1479303428
 }

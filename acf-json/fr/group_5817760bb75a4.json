@@ -113,13 +113,13 @@
                     "max": ""
                 },
                 {
-                    "key": "582c684f05646",
+                    "key": "582c84928668e",
                     "name": "image",
                     "label": "Image",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_582c685605647",
+                            "key": "field_582c849d8668f",
                             "label": "Image",
                             "name": "image",
                             "type": "clone",
@@ -266,6 +266,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "582c83e996f94",
+                    "name": "accordion",
+                    "label": "Accord\u00e9on",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c83f496f95",
+                            "label": "Accord\u00e9on",
+                            "name": "accordion",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c77f92d671"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         }
@@ -287,5 +318,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1479305323
+    "modified": 1479312563
 }

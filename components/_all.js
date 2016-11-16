@@ -1,0 +1,1 @@
+require('./accordion/script');

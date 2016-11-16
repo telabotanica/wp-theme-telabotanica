@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* composant `accordion` ajouté
 * composant `image` ajouté
 * composant `buttons` ajouté
 * composant `embed` :

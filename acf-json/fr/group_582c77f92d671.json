@@ -1,0 +1,103 @@
+{
+    "key": "group_582c77f92d671",
+    "title": "Composant accord\u00e9on",
+    "fields": [
+        {
+            "key": "field_582c784be565b",
+            "label": "Niveau des titres",
+            "name": "title_level",
+            "type": "number",
+            "instructions": "Respectez la hi\u00e9rarchie des titres d\u00e9j\u00e0 ins\u00e9r\u00e9s avec le composant intertitre.<br \/>Par exemple, si le pr\u00e9c\u00e9dent intertitre est de niveau 2, indiquez ici niveau 3.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "placeholder": "",
+            "prepend": "h",
+            "append": "",
+            "min": 2,
+            "max": 4,
+            "step": 1
+        },
+        {
+            "key": "field_582c77ffe5658",
+            "label": "El\u00e9ments",
+            "name": "items",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_582c7829e5659",
+            "min": 1,
+            "max": "",
+            "layout": "row",
+            "button_label": "Ajouter un \u00e9l\u00e9ment",
+            "sub_fields": [
+                {
+                    "key": "field_582c7829e5659",
+                    "label": "Titre",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_582c7898e565c",
+                    "label": "Contenu",
+                    "name": "content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1479309784
+}

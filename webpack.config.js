@@ -70,5 +70,14 @@ module.exports = {
         }),
       ],
     }),
-  ]
+    // Make $ and jQuery available in every module without writing require("jquery")
+    new webpack.ProvidePlugin({
+      $: "jquery"
+    }),
+  ],
+  externals: {
+    // require("jquery") is external and available
+    //  on the global var jQuery
+    "jquery": "jQuery"
+  }
 }

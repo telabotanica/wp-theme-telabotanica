@@ -61,6 +61,32 @@ require get_template_directory() . '/inc/wpml.php';
 require get_template_directory() . '/inc/styleguide.php';
 
 
+if ( ! function_exists( 'telabotanica_fonts_url' ) ) :
+/**
+ * Register Google fonts
+ *
+ * @return string Google fonts URL for the theme.
+ */
+function telabotanica_fonts_url() {
+  $fonts_url = '';
+  $fonts     = array();
+  $subsets   = 'latin,latin-ext';
+
+  $fonts[] = 'Muli:300,400';
+  $fonts[] = 'Ubuntu:300,400,500,700';
+
+  if ( $fonts ) {
+    $fonts_url = add_query_arg( array(
+      'family' => urlencode( implode( '|', $fonts ) ),
+      'subset' => urlencode( $subsets ),
+    ), 'https://fonts.googleapis.com/css' );
+  }
+
+  return $fonts_url;
+}
+endif;
+
+
 if ( ! function_exists( 'telabotanica_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -120,7 +146,7 @@ function telabotanica_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	//add_editor_style( array( 'css/editor-style.css', telabotanica_fonts_url() ) );
+	add_editor_style( ['dist/editor-style.css', telabotanica_fonts_url()] );
 }
 endif; // telabotanica_setup
 add_action( 'after_setup_theme', 'telabotanica_setup' );
@@ -147,7 +173,7 @@ function telabotanica_scripts() {
 	wp_enqueue_style( 'telabotanica-style', get_template_directory_uri() . '/dist/bundle.css' );
 
   // Google Fonts
-  wp_enqueue_style( 'telabotanica-fonts', 'https://fonts.googleapis.com/css?family=Muli:300,400|Ubuntu:300,400,500,700' );
+  wp_enqueue_style( 'telabotanica-fonts', telabotanica_fonts_url() );
 
 	// Theme script.
 	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', array( 'jquery' ), null, true );

@@ -1,0 +1,34 @@
+html {
+  font-size: 62.5%; // for easy rem sizing
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+
+  color: #333;
+  line-height: 2.4rem;
+  max-width: 70rem;
+}
+
+body.post-type-page {
+  max-width: 62rem;
+}
+
+p {
+  margin: 0 0 2rem;
+}
+
+a {
+  border-bottom: 0.1rem solid;
+  color: #006979;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+b,
+strong {
+  font-weight: 700;
+}

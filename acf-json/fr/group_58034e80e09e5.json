@@ -5,7 +5,7 @@
         {
             "key": "field_58034e8c9fc17",
             "label": "Pr\u00e9sentation",
-            "name": "intro",
+            "name": "presentation",
             "type": "textarea",
             "instructions": "Pr\u00e9sentation de l'ouvrage",
             "required": 1,
@@ -104,5 +104,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479227807
+    "modified": 1479227808
 }

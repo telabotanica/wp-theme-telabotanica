@@ -40,7 +40,7 @@ get_header(); ?>
                   endif;
 
                   the_telabotanica_component('text', [
-                    'text' => get_the_content()
+                    'text' => apply_filters('the_content', get_the_content())
                   ]);
 
                   // Si la page utilise des composants

@@ -34,6 +34,11 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 require get_template_directory() . '/inc/utile.php';
 
 /**
+ * Filtres pour l'extrait
+ */
+require get_template_directory() . '/inc/excerpt.php';
+
+/**
  * Pages d'options (avec ACF)
  */
 require get_template_directory() . '/inc/options.php';

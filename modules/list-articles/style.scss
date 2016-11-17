@@ -1,0 +1,81 @@
+.list-articles {
+  margin-top: 3rem;
+
+  &-item {
+    color: $gris33;
+    line-height: 2.4rem;
+    overflow: hidden;
+
+    & + & {margin-top: 5rem;}
+  }
+
+  &-image {
+    background-color: $grisF0;
+    float: left;
+    height: 16rem;
+    margin-right: 2.5rem;
+    width: 22rem;
+  }
+
+  &-meta {
+    color: $taupe;
+    fill: $taupe;
+    font-size: 1.2rem;
+    font-weight: $regular;
+    line-height: 2.2rem;
+    margin-bottom: 1rem;
+
+    .icon {
+      height: 1.5rem;
+      vertical-align: middle;
+      width: 1.5rem;
+    }
+  }
+
+  &-date {
+    time {cursor: help;}
+  }
+
+  &-categories {
+    margin-left: 1.5rem;
+
+    a {
+      background-color: transparentize($taupe, 0.8);
+      border-radius: 1.1rem;
+      color: $marron;
+      display: inline-block;
+      padding: 0 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      &:hover, &:focus {
+        background-color: transparentize($taupe, 0.6);
+        color: $gris33;
+      }
+    }
+  }
+
+  &-title {
+    font-family: $ubuntu;
+    font-size: 2rem;
+    font-weight: $medium;
+    margin: 0;
+
+    &, a {
+      color: $gris23;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        color: $turquoise-fonce;
+      }
+    }
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
+}

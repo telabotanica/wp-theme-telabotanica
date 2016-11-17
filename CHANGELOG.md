@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `list-articles` ajouté
 * ajout des icônes SVG
 * configuration de webpack pour générer un sprite SVG
 

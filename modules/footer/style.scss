@@ -45,8 +45,12 @@
         }
 
         &-item {
-          display: inline-block;
+          &, a {
+            display: inline-block;
+          }
+
           & + & {margin-left: 2.5rem;}
+
           a {
             font-size: 1.4rem;
 

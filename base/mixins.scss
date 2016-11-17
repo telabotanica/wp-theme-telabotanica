@@ -9,13 +9,17 @@
 // based on the last method described at
 // http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin hidden-accessibly {
-  position: absolute !important;
-  height: 1px; width: 1px;
-  overflow: hidden;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+  /* many screen reader and browser combinations announce broken words as they would appear visually */
+  word-wrap: normal !important;
 }
-.hidden-accessibly {
+.hidden-accessibly,
+.screen-reader-text {
   @include hidden-accessibly;
 }
 

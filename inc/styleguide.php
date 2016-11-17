@@ -28,6 +28,7 @@ $telabotanica_modules = [
   'header',
   'icon',
   'list-articles',
+  'pagination',
   'toc',
   'upcoming-events',
 ];

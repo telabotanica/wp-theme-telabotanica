@@ -97,24 +97,24 @@ function telabotanica_setup() {
 	set_post_thumbnail_size( 1200, 9999 );
 
 	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus( array(
+	register_nav_menus( [
 		'principal' => __( 'Menu principal', 'telabotanica' ),
 		'secondary'  => __( 'Menu secondaire', 'telabotanica' ),
 		'footer-bar'  => __( 'Pied de page - bandeau', 'telabotanica' ),
 		'footer-columns'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
-	) );
+	] );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
 	 */
-	add_theme_support( 'html5', array(
+	add_theme_support( 'html5', [
 		'search-form',
 		'comment-form',
 		'comment-list',
 		'gallery',
 		'caption',
-	) );
+	] );
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,
@@ -147,7 +147,7 @@ function telabotanica_scripts() {
 	wp_enqueue_style( 'telabotanica-style', get_template_directory_uri() . '/dist/bundle.css' );
 
 	// Theme script.
-	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', [ 'jquery' ], null, true );
 }
 add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
 

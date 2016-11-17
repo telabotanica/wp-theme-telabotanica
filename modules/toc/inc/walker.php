@@ -17,14 +17,14 @@ class TocWalker extends Walker_Page {
 	 * @param array   $args         Optional. Array of arguments. Default empty array.
 	 * @param int     $current_page Optional. Page ID. Default 0.
 	 */
-	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+	public function start_el( &$output, $page, $depth = 0, $args = [], $current_page = 0 ) {
 		if ( $depth ) {
 			$indent = str_repeat( "\t", $depth );
 		} else {
 			$indent = '';
 		}
 
-		$css_class = array( 'toc-item', 'toc-item-' . $page->ID );
+		$css_class = [ 'toc-item', 'toc-item-' . $page->ID ];
 
 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
 			$css_class[] = 'has-children';

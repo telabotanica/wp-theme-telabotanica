@@ -25,7 +25,7 @@ get_header(); ?>
                 endif; ?>
               </aside>
               <div class="layout-content">
-                <?php the_telabotanica_module('breadcrumbs', array()); ?>
+                <?php the_telabotanica_module('breadcrumbs', []); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?>>
                   <?php
 

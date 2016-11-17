@@ -6,45 +6,45 @@
 get_header();
 
 $taxonomy_name = 'tb_outils_category';
-$tools_categories = get_terms(array(
+$tools_categories = get_terms( [
   'taxonomy'   => $taxonomy_name,
   'hide_empty' => false,
   'fields'     => 'all',
   'parent'     => 0
-));
+] );
 
 function tools_category($term) {
   global $taxonomy_name;
 
-  the_telabotanica_component( 'title', array(
+  the_telabotanica_component( 'title', [
     "level" => $term->parent === 0 ? 2 : 3,
     "anchor" => $term->slug,
     "title" => $term->name
-  ));
+  ] );
 
   if ( !empty( $term->description ) ) {
-    the_telabotanica_component( 'text', array(
+    the_telabotanica_component( 'text', [
       "text" => sprintf( "<p>%s</p>", $term->description )
-    ));
+    ] );
   }
 
-  $tools = get_posts(array(
+  $tools = get_posts( [
     'post_type' => 'tb_outil',
-    'tax_query' => array(
-      array(
+    'tax_query' => [
+      [
         'taxonomy' => $taxonomy_name,
         'field' => 'term_id',
         'terms' => $term->term_id,
         'include_children' => false
-      )
-    ),
+      ]
+    ],
     'orderby' => 'menu_order',
     'sort_order' => 'asc',
     'numberposts' => -1
-  ));
-  the_telabotanica_component('tools', array(
+  ] );
+  the_telabotanica_component('tools', [
     'items' => $tools
-  ));
+  ] );
 
 }
 
@@ -53,19 +53,19 @@ function tools_category($term) {
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', array()); ?>
+      <?php the_telabotanica_module('cover', []); ?>
 
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <?php the_telabotanica_module('toc', array(
-              'items' => array(
-                array('items' => $tools_categories)
-              )
-            )); ?>
+            <?php the_telabotanica_module('toc', [
+              'items' => [
+                [ 'items' => $tools_categories ]
+              ]
+            ] ); ?>
           </aside>
           <div class="layout-content">
-            <?php the_telabotanica_module('breadcrumbs', array()); ?>
+            <?php the_telabotanica_module('breadcrumbs', []); ?>
             <article class="article">
               <?php
               // Si la page utilise des composants
@@ -74,7 +74,7 @@ function tools_category($term) {
                   // On boucle sur les composants
                   while ( have_rows('components') ) : the_row();
 
-                    the_telabotanica_component(get_row_layout(), array());
+                    the_telabotanica_component(get_row_layout(), []);
 
                   endwhile;
 

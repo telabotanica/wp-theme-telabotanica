@@ -1,7 +1,7 @@
 <?php
-return array(
-  "Standard" => array(
+return [
+  "Standard" => [
     'href' => '#',
     'text' => 'Bouton',
-  )
-);
+  ]
+];

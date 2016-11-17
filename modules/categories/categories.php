@@ -1,11 +1,11 @@
 <?php function telabotanica_module_categories($data) {
   $category_active = get_query_var('cat');
-  $categories = get_categories(array(
-    'exclude' => array(1),
+  $categories = get_categories([
+    'exclude' => [ 1 ],
     'hide_empty' => false,
     'orderby' => 'none',
     'parent' => 0
-  )); ?>
+  ] ); ?>
   <div class="categories <?php echo $data->modifiers ?>">
     <h2 class="categories-title"><?php _e('Catégories', 'telabotanica'); ?></h2>
     <ul class="categories-items">

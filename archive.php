@@ -14,7 +14,7 @@ $category_evenements = get_category_by_slug( 'evenements' );
 		<main id="main" class="site-main" role="main">
 
       <?php
-      the_telabotanica_module('cover', array(
+      the_telabotanica_module('cover', [
         'title' => $category_actualites->name,
         'subtitle' => sprintf(
           __('Toute l\'<a href="%s">actualité</a>, les <a href="%s">offres d\'emploi</a> et les <a href="%s">évènements</a>', 'telabotanica'),
@@ -23,30 +23,30 @@ $category_evenements = get_category_by_slug( 'evenements' );
           get_category_link( $category_evenements )
         ),
         'image' => get_field( 'cover_image', get_queried_object() )
-      )); ?>
+      ] ); ?>
 
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <?php the_telabotanica_module('categories', array(
+            <?php the_telabotanica_module('categories', [
               'modifiers' => 'layout-column-item'
-            )); ?>
+            ] ); ?>
             <div class="layout-column-item background-white with-shadow with-padding">
-              <?php the_telabotanica_module('button', array(
+              <?php the_telabotanica_module('button', [
                 'href' => '#',
                 'text' => __( 'Proposer une actualité', 'telabotanica' ),
                 'modifiers' => 'block'
-              )); ?>
+              ] ); ?>
             </div>
-            <?php the_telabotanica_module('form-newsletter', array(
+            <?php the_telabotanica_module('form-newsletter', [
               'modifiers' => 'layout-column-item background-white with-shadow with-padding'
-            )); ?>
-            <?php the_telabotanica_module('upcoming-events', array(
+            ] ); ?>
+            <?php the_telabotanica_module('upcoming-events', [
               'modifiers' => 'layout-column-item background-white with-shadow with-padding'
-            )); ?>
+            ] ); ?>
           </aside>
           <div class="layout-content">
-            <?php the_telabotanica_module('breadcrumbs', array());
+            <?php the_telabotanica_module('breadcrumbs', []);
 
             if ( have_posts() ) : ?>
               <?php while ( have_posts() ) : the_post(); ?>
@@ -56,11 +56,11 @@ $category_evenements = get_category_by_slug( 'evenements' );
                 </article>
               <?php endwhile;
 
-              the_posts_pagination( array(
+              the_posts_pagination( [
         				'prev_text'          => __( 'Page précédente', 'telabotanica' ),
         				'next_text'          => __( 'Page suivante', 'telabotanica' ),
         				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'telabotanica' ) . ' </span>',
-        			) );
+        			] );
               ?>
             <?php else :
               echo '<p>' . __( 'Aucune actualité dans cette catégorie.', 'telabotanica' ) . '</p>';

@@ -67,10 +67,10 @@
     foreach ($data->items as $i => $item) :
 
       if ( $item === 'home' ) {
-        $item = array(
+        $item = [
           'href' => site_url(),
           'text' => __( 'Accueil', 'telabotanica' )
-        );
+        ];
       }
 
       $item = (object) $item;

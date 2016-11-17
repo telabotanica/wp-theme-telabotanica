@@ -1,4 +1,4 @@
 <?php
-return array(
-  "Standard" => array()
-);
+return [
+  "Standard" => []
+];

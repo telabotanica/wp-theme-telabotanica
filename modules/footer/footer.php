@@ -19,17 +19,17 @@
           </ul>
         </div>
 
-        <?php the_telabotanica_module('form-newsletter', array('modifiers' => 'layout-column')); ?>
+        <?php the_telabotanica_module('form-newsletter', ['modifiers' => 'layout-column'] ); ?>
       </div>
     </div>
 
     <?php if ( has_nav_menu( 'footer-columns' ) ) : ?>
       <nav class="footer-nav" role="navigation" aria-label="<?php esc_attr_e( 'Plan du site', 'telabotanica' ); ?>">
         <?php
-          wp_nav_menu( array(
+          wp_nav_menu( [
             'theme_location' => 'footer-columns',
             'menu_class'     => 'footer-nav-items layout-wrapper',
-          ) );
+          ] );
         ?>
       </nav>
     <?php endif; ?>
@@ -37,11 +37,11 @@
     <?php if ( has_nav_menu( 'footer-bar' ) ) : ?>
       <nav class="footer-nav-bar" role="navigation" aria-label="<?php esc_attr_e( 'Menu de pied de page', 'telabotanica' ); ?>">
         <?php
-          wp_nav_menu( array(
+          wp_nav_menu( [
             'theme_location' => 'footer-bar',
             'menu_class'     => 'footer-nav-bar-items',
             'depth'          => 1,
-          ) );
+          ] );
         ?>
         <a href="http://creativecommons.org/licenses/by-sa/2.0/fr/" target="_blank" rel="nofollow" class="footer-nav-license">CC BY-SA 2.0</a>
       </nav>

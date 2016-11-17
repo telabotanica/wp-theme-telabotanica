@@ -1,6 +1,6 @@
 <?php
-return array(
-  "Standard" => array('href' => '#', 'text' => 'Bouton'),
-  "Orange" => array('href' => '#', 'text' => 'Bouton', 'modifiers' => 'orange'),
-  "Bloc" => array('href' => '#', 'text' => 'Autre bouton', 'modifiers' => 'block')
-);
+return [
+  "Standard" => ['href' => '#', 'text' => 'Bouton'],
+  "Orange" => ['href' => '#', 'text' => 'Bouton', 'modifiers' => 'orange'],
+  "Bloc" => ['href' => '#', 'text' => 'Autre bouton', 'modifiers' => 'block']
+];

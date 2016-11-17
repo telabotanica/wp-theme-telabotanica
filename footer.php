@@ -6,7 +6,7 @@
 
 	</div><!-- .site-content -->
 
-  <?php the_telabotanica_module('footer', array()); ?>
+  <?php the_telabotanica_module('footer', []); ?>
 
 <?php wp_footer(); ?>
 </body>

@@ -1,16 +1,16 @@
 <?php
-return array(
-  "Standard" => array(
-    'items' => array(
-      array('href' => '#', 'text' => 'Rubrique'),
-      array('text' => 'Page'),
-    )
-  ),
-  "Avec l'accueil en premier" => array(
-    'items' => array(
+return [
+  "Standard" => [
+    'items' => [
+      ['href' => '#', 'text' => 'Rubrique'],
+      ['text' => 'Page'],
+    ]
+  ],
+  "Avec l'accueil en premier" => [
+    'items' => [
       'home',
-      array('href' => '#', 'text' => 'Rubrique'),
-      array('text' => 'Page'),
-    )
-  ),
-);
+      ['href' => '#', 'text' => 'Rubrique'],
+      ['text' => 'Page'],
+    ]
+  ],
+];

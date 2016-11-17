@@ -8,7 +8,7 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', array()); ?>
+      <?php the_telabotanica_module('cover', []); ?>
 
       <div class="layout-left-col">
         <div class="layout-wrapper">

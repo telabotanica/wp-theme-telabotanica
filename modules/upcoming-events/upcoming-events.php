@@ -5,20 +5,20 @@
     </div>
     <ul class="upcoming-events-items">
       <?php
-      $events = get_posts( array(
+      $events = get_posts( [
         'posts_per_page' => 3,
-        'meta_query' => array(
-          array(
+        'meta_query' => [
+          [
             'key' => 'date',
             'compare' => '>',
             'value' => date('Ymd'),
             'type' => 'DATE'
-          )
-        ),
+          ]
+        ],
         'orderby' => 'meta_value_num',
         'meta_key' => 'date',
         'order' => 'ASC',
-      ) );
+      ] );
 
       if ( $events ) :
         foreach ( $events as $event ) :

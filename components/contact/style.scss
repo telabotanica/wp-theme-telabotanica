@@ -1,0 +1,48 @@
+.component-contact {
+  border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+  border-top: 0.1rem solid transparentize($taupe, 0.8);
+  font-size: 1.6rem;
+  font-weight: $regular;
+  line-height: 2.4rem;
+  padding: 2rem 0;
+
+  a {
+    border-bottom: 0.1rem solid;
+    color: $turquoise-fonce;
+    font-weight: $regular;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover, &:focus {
+      background-color: transparentize($turquoise-fonce, 0.9);
+    }
+  }
+
+  &-text {
+    margin-left: 12.5rem;
+  }
+
+  &-image {
+    background: $vert-tres-clair center center no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    float: left;
+    height: 10rem;
+    margin-right: 2.5rem;
+    overflow: hidden;
+    width: 10rem;
+  }
+
+  &-name {
+    font-weight: $bold;
+  }
+
+  &-description {
+  }
+
+  &-details {
+    @include reset-list;
+    margin-top: 0.5rem;
+  }
+
+}

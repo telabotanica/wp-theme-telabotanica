@@ -1,4 +1,5 @@
 .component-accordion {
+  @extend .component-text;
 
   &__panel {
     display: block;
@@ -56,6 +57,10 @@
     &[aria-selected="true"]:before {
       content: "▶";
     }
+  }
+
+  & &__header + p {
+    margin-top: 2rem;
   }
 
 }

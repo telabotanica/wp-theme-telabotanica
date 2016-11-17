@@ -12,7 +12,6 @@
  *
  * @package WordPress
  * @subpackage Tela_Botanica
- * @since TelaBotanica 0.0.1
  */
 
  /**

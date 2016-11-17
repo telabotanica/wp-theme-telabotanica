@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+## 0.0.3 (2016-11-17)
+
 * composant `contact` ajouté
 * composant `accordion` ajouté
 * composant `image` ajouté

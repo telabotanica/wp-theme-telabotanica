@@ -15,6 +15,14 @@
     height: 16rem;
     margin-right: 2.5rem;
     width: 22rem;
+
+    &, img {
+      display: block;
+    }
+  }
+
+  &-text {
+    margin-left: 24.5rem;
   }
 
   &-meta {
@@ -24,20 +32,35 @@
     font-weight: $regular;
     line-height: 2.2rem;
     margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
 
     .icon {
       height: 1.5rem;
       vertical-align: middle;
       width: 1.5rem;
     }
+
+    &:after {
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+      content: "";
+      display: block;
+      height: 2.2rem;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 2.2rem;
+    }
   }
 
   &-date {
-    time {cursor: help;}
+    cursor: help;
   }
 
   &-categories {
-    margin-left: 1.5rem;
+    margin-left: 1rem;
 
     a {
       background-color: transparentize($taupe, 0.8);
@@ -67,6 +90,7 @@
 
     a {
       text-decoration: none;
+      transition: color 0.2s ease;
 
       &:hover {
         color: $turquoise-fonce;
@@ -75,7 +99,7 @@
   }
 
   p {
-    margin: 1rem 0;
+    margin: 1rem 0 0;
   }
 
 }

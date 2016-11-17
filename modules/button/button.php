@@ -5,5 +5,14 @@
   if (!isset($data->text)) $data->text = 'Bouton';
   if (!isset($data->title)) $data->title = '';
 
-  echo '<a href="' . $data->href . '" class="button ' . $data->modifiers . '" target="' . $data->target . '" title="' . $data->title . '">' . $data->text . '</a>';
+  if ( is_array($data->modifiers) ) $data->modifiers = implode($data->modifiers, ' ');
+
+  echo sprintf(
+    '<a href="%s" class="button %s" target="%s" title="%s">%s</a>',
+    $data->href,
+    $data->modifiers,
+    $data->target,
+    $data->title,
+    $data->text
+  );
 }

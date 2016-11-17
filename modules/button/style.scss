@@ -17,6 +17,10 @@
     background-color: lighten($green-button, 8%);
   }
 
+  & + & {
+    margin-left: 2rem;
+  }
+
   &.orange {
     background-color: $orange;
 
@@ -29,7 +33,33 @@
     display: block;
   }
 
-  & + & {
-    margin-left: 2rem;
+  &.link {
+    background-color: transparent;
+    border-radius: 0;
+    color: $vert-fonce;
+    padding: 0;
+
+    & + & {
+      margin-left: 3rem;
+    }
+
+    &:after {
+      content: ">";
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    &:hover, &:focus {
+      background-color: transparent;
+      color: lighten($vert-fonce, 8%);
+    }
+
+    &.orange {
+      color: $orange;
+
+      &:hover, &:focus {
+        color: lighten($orange, 8%);
+      }
+    }
   }
 }

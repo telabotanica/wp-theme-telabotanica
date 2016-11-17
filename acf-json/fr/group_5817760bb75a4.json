@@ -209,7 +209,7 @@
                     "key": "582c5f278e5a1",
                     "name": "buttons",
                     "label": "Bouton(s)",
-                    "display": "table",
+                    "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_582c5f388e5a2",
@@ -349,5 +349,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1479313734
+    "modified": 1479373506
 }

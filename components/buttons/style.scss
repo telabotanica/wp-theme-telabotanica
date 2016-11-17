@@ -3,4 +3,10 @@
   margin-top: 4rem;
   padding: 3rem 0;
   text-align: center;
+
+  &.as-links {
+    border-top: 0;
+    padding: 0;
+    text-align: left;
+  }
 }

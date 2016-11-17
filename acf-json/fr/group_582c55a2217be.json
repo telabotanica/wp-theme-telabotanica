@@ -8,7 +8,7 @@
             "name": "items",
             "type": "repeater",
             "instructions": "Vous pouvez int\u00e9grer un ou plusieurs boutons, qui s'afficheront sur la m\u00eame ligne.",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -82,6 +82,30 @@
                     "placeholder": ""
                 }
             ]
+        },
+        {
+            "key": "field_582d7211a4816",
+            "label": "Affichage",
+            "name": "display",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "buttons": "comme des boutons",
+                "links": "comme des liens"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "buttons",
+            "layout": "horizontal",
+            "return_format": "value"
         }
     ],
     "location": [
@@ -101,5 +125,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1479302722
+    "modified": 1479373388
 }

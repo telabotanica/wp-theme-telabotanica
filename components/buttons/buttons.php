@@ -1,7 +1,14 @@
 <?php function telabotanica_component_buttons($data) {
   if (!isset($data->items)) $data->items = get_sub_field('items');
+  if (!isset($data->display)) $data->display = get_sub_field('display');
+  if (empty($data->display)) $data->display = 'buttons';
 
-  echo '<div class="component component-buttons">';
+  $data->modifiers = [ 'component', 'component-buttons' ];
+  if ( $data->display === 'links' ) {
+    $data->modifiers[] = 'as-links';
+  }
+
+  echo '<div class="' . implode($data->modifiers, ' ') . '">';
 
   if ( $data->items ):
 
@@ -17,7 +24,14 @@
       }
       if (!isset($item->text)) $item->text = get_sub_field('text');
       if (!isset($item->modifiers)) {
-        $item->modifiers = get_sub_field('modifiers');
+        $item->modifiers = [ get_sub_field('modifiers') ];
+        if (empty($data->modifiers)) $data->modifiers = [];
+      } else {
+        $item->modifiers = [ $item->modifiers ];
+      }
+
+      if ( $data->display === 'links' ) {
+        $item->modifiers[] = 'link';
       }
 
       the_telabotanica_module('button', $item);

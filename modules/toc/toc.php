@@ -73,6 +73,7 @@ function telabotanica_module_toc($data) {
         }
 
         if ( isset($item->items) ) :
+
           echo '<ul class="toc-subitems">';
 
           foreach ($item->items as $subitem) :
@@ -100,6 +101,7 @@ function telabotanica_module_toc($data) {
             echo '</li>';
 
           endforeach;
+
           echo '</ul>';
 
         endif;

@@ -7,6 +7,7 @@
 
   if ( $data->method === 'oembed' ) :
 
+    $height = false;
     $data->embed = get_sub_field('embed');
 
   elseif ( $data->method === 'iframe' ) :

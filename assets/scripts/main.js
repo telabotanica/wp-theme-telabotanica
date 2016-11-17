@@ -5,4 +5,6 @@ require('../styles/editor-style.scss');
 require('../icons/_all.js');
 
 // Composants
-require('../../components/_all.js');
+// Require all script.js files in the components folder
+var req = require.context('../../components/', true, /script\.js$/);
+req.keys().forEach(req);

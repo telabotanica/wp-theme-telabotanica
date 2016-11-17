@@ -11,6 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* ajout des icônes SVG
+* configuration de webpack pour générer un sprite SVG
+
 ## 0.0.3 (2016-11-17)
 
 * composant `contact` ajouté

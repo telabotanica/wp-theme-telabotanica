@@ -40,10 +40,10 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        exclude: [
-          path.resolve(__dirname, "assets/fonts")
+        include: [
+          path.resolve(__dirname, "assets/icons")
         ],
-        loader: 'svg-url-loader'
+        loader: 'svg-sprite?name=icon-[name]'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -51,7 +51,15 @@ module.exports = {
           path.resolve(__dirname, "assets/fonts")
         ],
         loader: 'file?name=fonts/[name].[ext]'
-      }
+      },
+      {
+        test: /\.svg$/,
+        exclude: [
+          path.resolve(__dirname, "assets/fonts"),
+          path.resolve(__dirname, "assets/icons")
+        ],
+        loader: 'svg-url-loader'
+      },
     ]
   },
   plugins: [

@@ -47,21 +47,22 @@
         &-item {
           display: inline-block;
           & + & {margin-left: 2.5rem;}
-          a {font-size: 1.4rem;}
-        }
+          a {
+            font-size: 1.4rem;
 
-        &-icon {
-          background-color: $vert-clair;
-          border-radius: 50%;
-          color: $blanc;
-          display: inline-block;
-          height: 3.2rem;
-          margin-right: 0.5rem;
-          vertical-align: middle;
-          width: 3.2rem;
+            &:hover .icon {
+              fill: $orange;
+            }
+          }
 
-          a:hover & {
-            background-color: $orange;
+          .icon {
+            fill: $vert-clair;
+            display: inline-block;
+            height: 3.2rem;
+            margin-right: 0.5rem;
+            transition: fill 0.2s ease;
+            vertical-align: middle;
+            width: 3.2rem;
           }
         }
       }

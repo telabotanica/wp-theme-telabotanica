@@ -26,6 +26,7 @@ $telabotanica_modules = [
   'footer',
   'form-newsletter',
   'header',
+  'icon',
   'toc',
   'upcoming-events',
 ];

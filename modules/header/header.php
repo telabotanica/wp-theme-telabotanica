@@ -47,7 +47,7 @@
         endif; ?>
       </li>
       <li class="header-links-item header-links-item-donate"><a href="#"><?php _e( 'Faites un don !', 'telabotanica' ) ?></a></li>
-      <li class="header-links-item header-links-item-search"><a href="<?php echo get_search_link(); ?>"><span class="header-links-item-text">🔎</span></a></li>
+      <li class="header-links-item header-links-item-search"><a href="<?php echo get_search_link(); ?>"><span class="header-links-item-text"><?php the_telabotanica_module('icon', ['icon' => 'search']) ?></span></a></li>
     </ul>
   </div>
   <?php if ( has_nav_menu('principal') ) : ?>

@@ -1,4 +1,5 @@
 <?php function telabotanica_module_breadcrumbs($data) {
+  if (!isset($data->modifiers)) $data->modifiers = '';
 
   // Supporte les microdonnées Schema.org
   // cf. https://schema.org/BreadcrumbList
@@ -62,7 +63,7 @@
 
   if ( isset($data->items) ):
 
-    echo '<ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">';
+    echo '<ol class="breadcrumbs ' . $data->modifiers . '" itemscope itemtype="http://schema.org/BreadcrumbList">';
 
     foreach ($data->items as $i => $item) :
 

@@ -9,6 +9,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
+  // modifier pour enlever la bordure
+  &.no-border {
+    border: 0;
+  }
+
   // pas de padding-top lorsqu'on est dans un layout central-col
   .layout-central-col & {
     padding-top: 0;

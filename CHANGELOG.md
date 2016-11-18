@@ -11,6 +11,14 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* compatibilité avec BuddyPress :
+  * ajout d'un template `index-directory.php` (liste des projets)
+* layout `left-col` :
+  * ajout d'un modifier `full-width`
+* module `breadcrumbs` :
+  * ajout d'un modifier `no-border`
+* module `categories` :
+  * fonctionne désormais avec des data passées en paramètre
 * module `pagination` ajouté
 * module `list-articles` ajouté
 * ajout des icônes SVG

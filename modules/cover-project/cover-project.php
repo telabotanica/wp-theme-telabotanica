@@ -5,9 +5,13 @@
 
       echo '<div class="cover-project">';
 
+        $cover_image_url = bp_attachments_get_attachment('url', array(
+          'object_dir' => 'groups',
+          'item_id' => bp_get_group_id(),
+        ));
         echo sprintf(
           '<div class="cover-project-image" style="background-image: url(%s);"></div>',
-          'http://local.wordpress.dev/wp-content/uploads/2016/09/img000267049O.jpg' // TODO: URL de la cover
+          $cover_image_url
         );
 
         bp_group_avatar( 'type=full&width=90&height=90' );

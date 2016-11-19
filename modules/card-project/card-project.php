@@ -4,10 +4,16 @@
   echo '<' . $data->tag . ' class="card-project">';
 
     echo '<a class="card-project-link" href="' . bp_get_group_permalink() . '">';
+
+      $cover_image_url = bp_attachments_get_attachment('url', array(
+        'object_dir' => 'groups',
+        'item_id' => bp_get_group_id(),
+      ));
       echo sprintf(
         '<div class="card-project-cover" style="background-image: url(%s);">',
-        '' // TODO: URL de la cover
+        $cover_image_url
       );
+
       if (true) { // TODO s'il s'agit d'un projet Tela
         echo sprintf(
           '<div class="card-project-tela" title="%s">%s</div>',

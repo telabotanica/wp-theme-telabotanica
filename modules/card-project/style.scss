@@ -21,7 +21,8 @@
 
   &-cover {
     align-items: center;
-    background-color: $grisF0;
+    background: $grisF0 center center no-repeat;
+    background-size: cover;
     display: flex;
     height: 17rem;
     justify-content: center;
@@ -39,7 +40,7 @@
     fill: $green-button;
     height: 4.2rem;
     left: 0;
-    padding: 1rem 1.3rem 1rem 1rem;
+    padding: 0.8rem 1.3rem 1.2rem 1rem;
     position: absolute;
     top: 0;
     width: 4.5rem;

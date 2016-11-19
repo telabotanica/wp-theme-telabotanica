@@ -1,0 +1,119 @@
+.cover-project {
+  align-items: center;
+  color: $blanc;
+  fill: $blanc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 36.8rem;
+  overflow: hidden;
+  padding: 1rem;
+  position: relative;
+
+  > * {
+    z-index: 1;
+  }
+
+  &-image {
+    background: center center no-repeat;
+    background-size: cover;
+    filter: blur(0.3rem);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: scale(1.05);
+    width: 100%;
+    z-index: 0;
+
+    &:before {
+      background-color: transparentize($bleu-nuit, 0.6);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .avatar {
+    border-radius: 50%;
+    border: 0.3rem solid white;
+  }
+
+  &-title,
+  &-description {
+    max-width: 60rem;
+  }
+
+  &-title {
+    font-family: $ubuntu;
+    font-size: 3.2rem;
+    font-weight: $bold;
+    line-height: 4rem;
+    margin: 1rem 0 0.5rem;
+  }
+
+  &-description {
+    font-size: 1.8rem;
+    font-weight: $regular;
+    line-height: 2.6rem;
+    margin-bottom: 3rem;
+    text-align: center;
+
+    p {margin: 0;}
+  }
+
+  &-back,
+  &-meta {
+    font-family: $ubuntu;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    line-height: 4.7rem;
+    padding: 1rem 1.5rem;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+
+    .icon {
+      height: 1.3rem;
+      width: 1.3rem;
+    }
+  }
+
+  &-back {
+    color: $blanc;
+    font-weight: $medium;
+    left: 0;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:hover, &:focus {
+      opacity: 0.7;
+    }
+
+    .icon {
+      margin-right: 0.5rem;
+      vertical-align: sub;
+    }
+  }
+
+  &-meta {
+    right: 0;
+
+    > * + * {
+      margin-left: 3rem;
+    }
+    
+    .icon {
+      margin-left: 0.5rem;
+      vertical-align: sub;
+    }
+  }
+
+  &-visibility {
+  }
+
+}

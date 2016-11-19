@@ -11,11 +11,13 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `cover-project` ajouté
 * module `card-project` ajouté
 * module `list-projects` ajouté
 * ajout d'un template `generic.php`
 * compatibilité avec BuddyPress :
   * ajout d'un template `index-directory.php` (liste des projets)
+  * ajout d'un template `single/index.php` (page d'accueil projet)
 * layout `left-col` :
   * ajout d'un modifier `full-width`
 * module `breadcrumbs` :

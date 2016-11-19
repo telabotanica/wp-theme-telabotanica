@@ -47,9 +47,10 @@
 
         if ( isset($item->text) ) {
           echo sprintf(
-            '<h3 class="categories-item-title"><a href="%s" class="categories-item-link">%s</a></h3>',
+            '<h3 class="categories-item-title"><a href="%s" class="categories-item-link">%s%s</a></h3>',
             esc_url( $item->href ),
-            $item->text
+            $item->text,
+            isset($item->number) ? ' (' . $item->number . ')' : ''
           );
         }
 

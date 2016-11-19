@@ -37,10 +37,8 @@ get_header(); ?>
 
             if ( is_user_logged_in() && bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) :
               $categories_items[] = [
-                'text' => printf(
-                  __('Mes projets <span>%s</span>', 'telabotanica'),
-                  bp_get_total_group_count_for_user( bp_loggedin_user_id() )
-                ),
+                'text' => __('Mes projets', 'telabotanica'),
+                'number' => bp_get_total_group_count_for_user( bp_loggedin_user_id() ),
                 'href' => trailingslashit( bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups' )
               ];
             endif;
@@ -72,8 +70,10 @@ get_header(); ?>
             ?>
           </aside>
           <div class="layout-content">
-            <?php the_telabotanica_module('breadcrumbs', ['modifiers' => 'no-border']); ?>
-            TODO
+            <?php
+            the_telabotanica_module('breadcrumbs', ['modifiers' => 'no-border']);
+            the_telabotanica_module('list-projects', []);
+            ?>
           </div>
         </div>
       </div>

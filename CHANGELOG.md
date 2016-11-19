@@ -11,6 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `card-project` ajouté
+* module `list-projects` ajouté
+* ajout d'un template `generic.php`
 * compatibilité avec BuddyPress :
   * ajout d'un template `index-directory.php` (liste des projets)
 * layout `left-col` :
@@ -19,6 +22,7 @@ plus de détails sur http://semver.org/lang/fr/
   * ajout d'un modifier `no-border`
 * module `categories` :
   * fonctionne désormais avec des data passées en paramètre
+  * accepte un `number` optionnel
 * module `pagination` ajouté
 * module `list-articles` ajouté
 * ajout des icônes SVG

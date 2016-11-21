@@ -12,18 +12,30 @@
         'orderby' => 'none',
         'parent' => 0
       ] );
+      $icons = [
+        'actualites' => 'news',
+        'news' => 'news',
+        'evenements' => 'calendar',
+        'events' => 'calendar',
+        'offres-emploi' => 'laptop',
+        'job-offers' => 'laptop'
+      ];
 
       foreach ($categories as $category):
+        $icon = @$icons[$category->slug];
         $is_active = $category->term_id === $category_active; ?>
-          <li class="categories-item<?php echo $is_active ? ' is-active' : null ?>">
-            <h3 class="categories-item-title"><a href="<?php echo esc_url( get_term_link( $category ) ) ?>" class="categories-item-link"><?php echo $category->name; ?></a></h3>
+          <li class="categories-item<?php echo $is_active ? ' is-active' : '' ?>">
+            <h3 class="categories-item-title"><a href="<?php echo esc_url( get_term_link( $category ) ) ?>" class="categories-item-link">
+              <?php if ($icon) the_telabotanica_module('icon', ['icon' => $icon]); ?>
+              <?php echo $category->name; ?>
+            </a></h3>
             <?php $subitems = get_term_children( $category->term_id, 'category' );
             if ($subitems): ?>
             <ul class="categories-subitems">
               <?php foreach ($subitems as $subitem_id):
-                $subitem_is_active = $subitem_id === $category_active;
+                $subitem_is_active = (int) $subitem_id === $category_active;
                 $subitem = get_term_by( 'id', $subitem_id, 'category' ); ?>
-                <li class="categories-subitem<?php echo $subitem_is_active ? ' is-active' : null ?>">
+                <li class="categories-subitem<?php echo $subitem_is_active ? ' is-active' : '' ?>">
                   <a href="<?php echo esc_url( get_term_link( $subitem ) ) ?>" class="categories-subitem-link"><?php echo $subitem->name; ?></a>
                 </li>
               <?php endforeach;

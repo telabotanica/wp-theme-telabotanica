@@ -14,6 +14,7 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `contact` :
   * correction bug photo quand texte trop long
 * module `cover-project` ajouté
+  * bouton d'adhésion fonctionnel
 * module `card-project` ajouté
 * module `list-projects` ajouté
 * ajout d'un template `generic.php`

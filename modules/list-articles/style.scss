@@ -1,5 +1,13 @@
 .list-articles {
-  margin-top: 3rem;
+  margin: 3rem 0 20rem;
+
+  &.only-events {
+    .list-articles-item + .list-articles-item {
+      border-top: 0.1rem solid $grisDD;
+      margin-top: 3rem;
+      padding-top: 3rem;
+    }
+  }
 
   &-item {
     color: $gris33;
@@ -9,11 +17,15 @@
     & + & {margin-top: 5rem;}
   }
 
+  &-image,
+  &-dates {
+    float: left;
+    margin-right: 2.5rem;
+  }
+
   &-image {
     background-color: $grisF0;
-    float: left;
     height: 16rem;
-    margin-right: 2.5rem;
     width: 22rem;
 
     &, img {
@@ -21,8 +33,60 @@
     }
   }
 
+  &-dates {
+    color: $orange;
+    font-family: $ubuntu;
+    font-weight: $medium;
+    text-align: center;
+    text-decoration: none;
+    width: 8rem;
+
+    &:hover, &:focus {
+      color: darken($orange, 10%);
+    }
+
+    &-item {
+      background-color: lighten($orange, 35%);
+      display: block;
+      height: 7rem;
+      padding: 1.4rem 0.5rem;
+
+      &.is-end {
+        background-color: lighten($orange, 42%);
+        position: relative;
+
+        &:before {
+          border-top: solid 1rem lighten($orange, 35%);
+          border-left: solid 1rem transparent;
+          border-right: solid 1rem transparent;
+          content: '';
+          height: 0;
+          position: absolute;
+          top: 0;
+          transform: translateX(-50%);
+          width: 0;
+        }
+      }
+    }
+
+    &-day {
+      font-size: 2.6rem;
+    }
+    &-month {
+      font-size: 1rem;
+      letter-spacing: 0.1rem;
+      overflow: hidden;
+      text-transform: uppercase;
+      text-overflow: ellipsis;
+    }
+  }
+
   &-text {
     margin-left: 24.5rem;
+
+    .list-articles-item.is-event & {
+      margin-left: 10.5rem;
+    }
   }
 
   &-meta {
@@ -53,6 +117,13 @@
       top: 0;
       width: 2.2rem;
     }
+  }
+
+  &-place {
+    color: $orange;
+    display: inline-block;
+    fill: $orange;
+    margin-right: 1.5rem;
   }
 
   &-date {
@@ -92,9 +163,8 @@
       text-decoration: none;
       transition: color 0.2s ease;
 
-      &:hover {
-        color: $turquoise-fonce;
-      }
+      &:hover {color: $turquoise-fonce;}
+      .list-articles-item.is-event &:hover {color: darken($orange, 30%);}
     }
   }
 

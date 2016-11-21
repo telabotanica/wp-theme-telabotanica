@@ -9,11 +9,11 @@
     font-size: 1.8rem;
     font-weight: $bold;
 
-    &:before {
-      color: $orange;
-      content: "☑";
+    .icon {
+      fill: $orange;
       display: inline-block;
       margin-right: 1rem;
+      width: 1.8rem;
     }
   }
 

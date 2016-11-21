@@ -3,62 +3,13 @@
     "title": "Article - \u00c9v\u00e8nement",
     "fields": [
         {
-            "key": "field_5803652a92ee3",
-            "label": "Date unique ?",
-            "name": "is_single_date",
-            "type": "true_false",
-            "instructions": "Cocher si l'\u00e9v\u00e8nement dure seulement un jour.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0
-        },
-        {
             "key": "field_580364c892ee1",
             "label": "Date",
             "name": "date",
             "type": "date_picker",
-            "instructions": "Date de l'\u00e9v\u00e8nement",
+            "instructions": "(ou date de d\u00e9but si l'\u00e9v\u00e8nement dure plusieurs jours)",
             "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5803652a92ee3",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "display_format": "d\/m\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1
-        },
-        {
-            "key": "field_5803657c92ee4",
-            "label": "D\u00e9but",
-            "name": "date_from",
-            "type": "date_picker",
-            "instructions": "Date de d\u00e9but de l'\u00e9v\u00e8nement",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5803652a92ee3",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
                 "class": "",
@@ -70,20 +21,12 @@
         },
         {
             "key": "field_5803659792ee5",
-            "label": "Fin",
-            "name": "date_to",
+            "label": "Date de fin",
+            "name": "date_end",
             "type": "date_picker",
-            "instructions": "Date de fin de l'\u00e9v\u00e8nement",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5803652a92ee3",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "instructions": "Laisser vide si l'\u00e9v\u00e8nement dure seulement un jour",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
                 "class": "",
@@ -291,5 +234,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479313901
+    "modified": 1479758519
 }

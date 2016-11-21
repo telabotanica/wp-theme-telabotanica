@@ -13,6 +13,11 @@ function telabotanica_custom_excerpt( $post_excerpt ) {
     $post_excerpt = get_field('intro') . ' ' . $post_excerpt;
   endif;
 
+  // Si l'excerpt est toujours vide, on essaye d'utiliser la description
+  if ( empty( $post_excerpt ) && get_field('description') ) :
+    $post_excerpt = get_field('description');
+  endif;
+
   // On recoupe l'excerpt à 20 mots, et on change le suffixe
   return wp_trim_words( $post_excerpt, 30, '&nbsp;&hellip;' );
 

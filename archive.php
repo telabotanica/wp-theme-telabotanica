@@ -9,6 +9,7 @@ $category = get_category( get_query_var('cat') );
 $category_actualites = get_category_by_slug( 'actualites' );
 $category_emploi = get_category_by_slug( 'offres-emploi' );
 $category_evenements = get_category_by_slug( 'evenements' );
+$is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of( $category_evenements, $category );
 ?>
 
 	<div id="primary" class="content-area">
@@ -31,20 +32,44 @@ $category_evenements = get_category_by_slug( 'evenements' );
           <aside class="layout-column">
             <?php the_telabotanica_module('categories', [
               'modifiers' => 'layout-column-item'
-            ] ); ?>
-            <div class="layout-column-item background-white with-shadow with-padding">
-              <?php the_telabotanica_module('button', [
-                'href' => '#',
-                'text' => __( 'Proposer une actualité', 'telabotanica' ),
-                'modifiers' => 'block'
+            ] );
+
+            if ( $is_category_events ) :
+              ?>
+              <div class="layout-column-item background-white with-shadow with-padding">
+                <?php the_telabotanica_module('button', [
+                  'href' => '#', // TODO
+                  'text' => __( 'Proposer un évènement', 'telabotanica' ),
+                  'modifiers' => 'block orange'
+                ] ); ?>
+              </div>
+              <div class="layout-column-item background-white with-shadow with-padding">
+                <?php
+                // TODO: ajouter l'image
+                the_telabotanica_module('button', [
+                  'href' => '#', // TODO
+                  'text' => __( 'Carte des évènements', 'telabotanica' ),
+                  'modifiers' => 'block orange'
+                ] ); ?>
+              </div>
+              <?php
+            else :
+              ?>
+              <div class="layout-column-item background-white with-shadow with-padding">
+                <?php the_telabotanica_module('button', [
+                  'href' => '#', // TODO
+                  'text' => __( 'Proposer une actualité', 'telabotanica' ),
+                  'modifiers' => 'block'
+                ] ); ?>
+              </div>
+              <?php the_telabotanica_module('form-newsletter', [
+                'modifiers' => 'layout-column-item background-white with-shadow with-padding'
               ] ); ?>
-            </div>
-            <?php the_telabotanica_module('form-newsletter', [
-              'modifiers' => 'layout-column-item background-white with-shadow with-padding'
-            ] ); ?>
-            <?php the_telabotanica_module('upcoming-events', [
-              'modifiers' => 'layout-column-item background-white with-shadow with-padding'
-            ] ); ?>
+              <?php the_telabotanica_module('upcoming-events', [
+                'modifiers' => 'layout-column-item background-white with-shadow with-padding'
+              ] );
+            endif;
+            ?>
             <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">

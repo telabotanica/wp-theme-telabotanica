@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* groupes de champs évènements :
+  * simplification du choix date unique / date de début et fin
 * module `button-top` ajouté
 * module `nav-project` ajouté
 * composant `contact` :
@@ -33,6 +35,7 @@ plus de détails sur http://semver.org/lang/fr/
   * accepte un `number` optionnel
 * module `pagination` ajouté
 * module `list-articles` ajouté
+  * affichage spécifique des évènements
 * ajout des icônes SVG
 * configuration de webpack pour générer un sprite SVG
 

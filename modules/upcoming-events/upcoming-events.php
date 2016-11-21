@@ -1,6 +1,7 @@
 <?php function telabotanica_module_upcoming_events($data) { ?>
   <div class="upcoming-events <?php echo $data->modifiers ?>">
     <div class="upcoming-events-title">
+      <?php the_telabotanica_module('icon', ['icon' => 'calendar']); ?>
       <?php echo __( "Évènements à venir", 'telabotanica' ) ?>
     </div>
     <ul class="upcoming-events-items">
@@ -23,7 +24,6 @@
       if ( $events ) :
         foreach ( $events as $event ) :
           $date_timestamp = strtotime( get_field( 'date', $event, false ) );
-          $place = get_field( 'place', $event );
           preg_match( "/(\d{2})\d{3}\W(.+),\WFrance/", get_field( 'place', $event )['address'], $address );
           echo '<li class="upcoming-events-item">';
           echo sprintf(
@@ -39,8 +39,8 @@
             date_i18n('j', $date_timestamp),
             date_i18n('M', $date_timestamp),
             get_the_title($event),
-            $address[2],
-            $address[1]
+            @$address[2],
+            @$address[1]
           );
           echo '</li>';
         endforeach;

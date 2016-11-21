@@ -61,47 +61,57 @@
 
   endif;
 
-  if ( isset($data->items) ):
+  echo '<div class="breadcrumbs ' . $data->modifiers . '">';
 
-    echo '<ol class="breadcrumbs ' . $data->modifiers . '" itemscope itemtype="http://schema.org/BreadcrumbList">';
+    if ( isset($data->button) ):
 
-    foreach ($data->items as $i => $item) :
+      echo '<div class="breadcrumbs-button">' . $data->button . '</div>';
 
-      if ( $item === 'home' ) {
-        $item = [
-          'href' => site_url(),
-          'text' => __( 'Accueil', 'telabotanica' )
-        ];
-      }
+    endif;
 
-      $item = (object) $item;
+    if ( isset($data->items) ):
 
-      if (!isset($item->modifiers)) $item->modifiers = '';
-      if (!isset($item->text)) $item->text = 'Page';
+      echo '<ol class="breadcrumbs-items" itemscope itemtype="http://schema.org/BreadcrumbList">';
 
-      echo '<li class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+      foreach ($data->items as $i => $item) :
 
-      if ( isset($item->href) ) :
+        if ( $item === 'home' ) {
+          $item = [
+            'href' => site_url(),
+            'text' => __( 'Accueil', 'telabotanica' )
+          ];
+        }
 
-        $is_last = ( $i + 1 === count( $data->items ) );
+        $item = (object) $item;
 
-        echo '<a href="' . $item->href . '" class="' . $item->modifiers . '"' . ( $is_last ? ' tabindex="-1"' : '' ) . ' itemprop="item">';
-        echo '<span itemprop="name">' . $item->text . '</span>';
-        echo '<meta itemprop="position" content="' . ($i + 1) . '" />';
-        echo '</a>';
+        if (!isset($item->modifiers)) $item->modifiers = '';
+        if (!isset($item->text)) $item->text = 'Page';
 
-      else :
+        echo '<li class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
 
-        echo $item->text;
+        if ( isset($item->href) ) :
 
-      endif;
+          $is_last = ( $i + 1 === count( $data->items ) );
 
-      echo '</li>';
+          echo '<a href="' . $item->href . '" class="' . $item->modifiers . '"' . ( $is_last ? ' tabindex="-1"' : '' ) . ' itemprop="item">';
+          echo '<span itemprop="name">' . $item->text . '</span>';
+          echo '<meta itemprop="position" content="' . ($i + 1) . '" />';
+          echo '</a>';
 
-    endforeach;
+        else :
 
-    echo '</ol>';
+          echo $item->text;
 
-  endif;
+        endif;
+
+        echo '</li>';
+
+      endforeach;
+
+      echo '</ol>';
+
+    endif;
+
+  echo '</div>';
 
 }

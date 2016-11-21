@@ -5,6 +5,7 @@
 
 get_header();
 
+$category = get_category( get_query_var('cat') );
 $category_actualites = get_category_by_slug( 'actualites' );
 $category_emploi = get_category_by_slug( 'offres-emploi' );
 $category_evenements = get_category_by_slug( 'evenements' );
@@ -48,8 +49,16 @@ $category_evenements = get_category_by_slug( 'evenements' );
           </aside>
           <div class="layout-content">
             <?php
-              the_telabotanica_module('breadcrumbs', []);
-              the_telabotanica_module('list-articles', []);
+            if ( !empty( $category ) ):
+              $rss_button = sprintf(
+                '<a href="%s" title="%s" rel="nofollow">%s</a>',
+                get_category_feed_link( $category->cat_ID ),
+                esc_attr( sprintf( __( 'Flux RSS %s', 'telabotanica' ), $category->name ) ),
+                get_telabotanica_module('icon', ['icon' => 'rss', 'color' => 'orange'])
+              );
+            endif;
+            the_telabotanica_module('breadcrumbs', ['button' => $rss_button]);
+            the_telabotanica_module('list-articles');
             ?>
           </div>
         </div>

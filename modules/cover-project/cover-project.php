@@ -21,10 +21,10 @@ function telabotanica_module_cover_project($data) {
     echo '<h1 class="cover-project-title">' . bp_get_group_name() . '</h1>';
     echo '<div class="cover-project-description">' . bp_get_group_description_excerpt() . '</div>';
 
-    the_telabotanica_module('button', [
-      'href' => '#',
-      'text' => __( 'Visiter le site web', 'telabotanica' )
-    ] );
+    // the_telabotanica_module('button', [
+    //   'href' => '#',
+    //   'text' => __( 'Visiter le site web', 'telabotanica' )
+    // ] );
 
     echo sprintf(
       '<a href="%s" class="cover-project-back">%s %s</a>',
@@ -45,7 +45,6 @@ function telabotanica_module_cover_project($data) {
         get_telabotanica_module('icon', ['icon' => $visibility_icons[ bp_get_group_status() ] ])
       );
       bp_group_join_button();
-      // var_dump( bp_get_group_join_button() );
     echo '</div>';
 
   echo '</div>';

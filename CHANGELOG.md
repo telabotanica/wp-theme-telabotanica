@@ -18,8 +18,9 @@ plus de détails sur http://semver.org/lang/fr/
 * module `list-projects` ajouté
 * ajout d'un template `generic.php`
 * compatibilité avec BuddyPress :
-  * ajout d'un template `buddypress/groups/index.php` (liste des projets)
-  * ajout d'un template `buddypress/groups/single/home.php` (page d'accueil projet)
+  * ajout de tous les templates par défaut
+  * adaptation du template `buddypress/groups/index.php` (liste des projets)
+  * adaptation du template `buddypress/groups/single/home.php` (page d'accueil projet)
 * layout `left-col` :
   * ajout d'un modifier `full-width`
 * module `breadcrumbs` :

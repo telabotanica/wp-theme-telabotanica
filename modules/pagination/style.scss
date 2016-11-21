@@ -15,12 +15,15 @@
   }
 
   .page-numbers {
+    border-radius: 0.2rem;
     color: $vert-fonce;
     display: inline-block;
     padding: 0 1rem;
     text-decoration: none;
+    transition: all 0.2s ease;
 
     &:hover, &:focus {
+      background-color: $grisF0;
       color: lighten($vert-fonce, 8%);
     }
 
@@ -30,7 +33,6 @@
 
     &.current {
       background-color: $green-button;
-      border-radius: 0.2rem;
       color: $blanc;
       pointer-events: none;
     }
@@ -38,6 +40,11 @@
     &.dots {
       color: $gris60;
       pointer-events: none;
+    }
+
+    &.prev,
+    &.next {
+      background-color: transparent;
     }
 
     &.prev {

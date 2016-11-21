@@ -17,30 +17,12 @@ if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group();
 do_action( 'bp_before_group_home_content' );
 
 the_telabotanica_module('cover-project', []);
+the_telabotanica_module('nav-project', []);
 ?>
 
 <div class="layout-central-col">
   <div class="layout-wrapper">
     <div class="layout-content" id="buddypress">
-
-    	<div id="item-nav">
-    		<div class="item-list-tabs no-ajax" id="object-nav" aria-label="<?php esc_attr_e( 'Group primary navigation', 'buddypress' ); ?>" role="navigation">
-    			<ul>
-
-    				<?php bp_get_options_nav(); ?>
-
-    				<?php
-
-    				/**
-    				 * Fires after the display of group options navigation.
-    				 *
-    				 * @since 1.2.0
-    				 */
-    				do_action( 'bp_group_options_nav' ); ?>
-
-    			</ul>
-    		</div>
-    	</div><!-- #item-nav -->
 
     	<div id="item-body">
 

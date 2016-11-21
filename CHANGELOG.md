@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `nav-project` ajouté
 * composant `contact` :
   * correction bug photo quand texte trop long
 * module `cover-project` ajouté

@@ -63,6 +63,7 @@ function tools_category($term) {
                 [ 'items' => $tools_categories ]
               ]
             ] ); ?>
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
             <?php the_telabotanica_module('breadcrumbs', []); ?>

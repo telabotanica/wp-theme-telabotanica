@@ -54,6 +54,7 @@ get_header(); ?>
                 ]
               ]
             ] ); ?>
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
 			      <h1><a href="<?php echo site_url('styleguide') ?>">Styleguide</a></h1>

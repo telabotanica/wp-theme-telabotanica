@@ -17,11 +17,12 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', []); ?>
+      <?php the_telabotanica_module('cover'); ?>
 
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
             <p>TODO</p>

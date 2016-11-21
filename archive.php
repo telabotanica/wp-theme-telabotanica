@@ -44,6 +44,7 @@ $category_evenements = get_category_by_slug( 'evenements' );
             <?php the_telabotanica_module('upcoming-events', [
               'modifiers' => 'layout-column-item background-white with-shadow with-padding'
             ] ); ?>
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
             <?php

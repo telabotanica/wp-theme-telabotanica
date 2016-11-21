@@ -15,6 +15,7 @@ get_header(); ?>
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
             <?php if ( have_posts() ) : ?>

@@ -46,6 +46,7 @@
   &-title,
   &-description {
     max-width: 60rem;
+    text-align: center;
   }
 
   &-title {
@@ -61,7 +62,6 @@
     font-weight: $regular;
     line-height: 2.6rem;
     margin-bottom: 3rem;
-    text-align: center;
 
     p {margin: 0;}
   }
@@ -106,7 +106,7 @@
     > * + * {
       margin-left: 3rem;
     }
-    
+
     .icon {
       margin-left: 0.5rem;
       vertical-align: sub;

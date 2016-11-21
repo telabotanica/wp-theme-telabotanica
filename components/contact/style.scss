@@ -1,5 +1,5 @@
 .component-contact {
-  align-items: center;
+  align-items: flex-start;
   border-bottom: 0.1rem solid transparentize($taupe, 0.8);
   border-top: 0.1rem solid transparentize($taupe, 0.8);
   display: flex;
@@ -36,8 +36,8 @@
     float: left;
     height: 10rem;
     margin-right: 2.5rem;
+    min-width: 10rem;
     overflow: hidden;
-    width: 10rem;
   }
 
   &-name {

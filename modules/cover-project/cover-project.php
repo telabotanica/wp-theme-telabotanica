@@ -32,16 +32,23 @@
         );
 
         echo '<div class="cover-project-meta">';
+          $visibility_icons = [
+            'public' => 'globe',
+            'private' => 'globe',
+            'hidden' => 'globe'
+          ];
           echo sprintf(
             '<span class="cover-project-visibility">%s %s</span>',
-            __( 'Projet public', 'telabotanica' ),
-            get_telabotanica_module('icon', ['icon' => 'globe'])
+            bp_get_group_type(),
+            get_telabotanica_module('icon', ['icon' => $visibility_icons[ bp_get_group_status() ] ])
           );
           the_telabotanica_module('button', [
             'href' => '#',
             'text' => __( 'Suivre ce projet', 'telabotanica' ) . get_telabotanica_module('icon', ['icon' => 'plus']),
             'modifiers' => 'outline'
           ] );
+          // bp_group_join_button();
+          // var_dump( bp_get_group_join_button() );
         echo '</div>';
 
       echo '</div>';

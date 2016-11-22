@@ -10,10 +10,6 @@
 Template Name: eflore
 */
 
-$content_class = [ 'main-content-inner' ];
-
-get_header();
-
 $dossier_eflore = get_field('applis_externes_chemin_eflore', 'options');
 $chemin_eflore_http = get_field('applis_externes_chemin_eflore_http', 'options');
 
@@ -25,6 +21,8 @@ if (is_dir($dossier_eflore)) {
 	echo "Impossible de charger eFlore, vérifiez la configuration.";
 }
 
+// Rendu
+get_header();
+$content_class = [ 'main-content-inner' ];
+echo eflore_get_contenu(); // défini dans eflore_wordpress.php
 get_footer();
-
-?>

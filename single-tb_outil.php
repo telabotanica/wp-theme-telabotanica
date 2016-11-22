@@ -18,11 +18,9 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
       <?php
-      $cover_buttons = get_field('cover_buttons');
-
-      if ( $cover_buttons ) :
-        $cover_buttons['display'] = 'seamless';
-        $cover_content = get_telabotanica_component( 'buttons', $cover_buttons );
+      if ( $fields->cover_buttons ) :
+        $fields->cover_buttons['display'] = 'seamless';
+        $cover_content = get_telabotanica_component( 'buttons', $fields->cover_buttons );
       endif;
 
       the_telabotanica_module('cover', [
@@ -31,8 +29,37 @@ get_header(); ?>
       ]); ?>
 
       <div class="layout-full-width">
+        <?php
+        // Si la page utilise des blocs
+        if( have_rows('blocks') ):
+
+            // On boucle sur les blocs
+            while ( have_rows('blocks') ) : the_row();
+
+              the_telabotanica_block(get_row_layout());
+
+            endwhile;
+
+        endif;
+        ?>
+      </div>
+      <div class="layout-full-width background-beige">
         <div class="layout-wrapper">
-          <p>TODO</p>
+          <div class="layout-components">
+            <?php
+            // Si la page utilise des composants
+            if( have_rows('components') ):
+
+                // On boucle sur les composants
+                while ( have_rows('components') ) : the_row();
+
+                  the_telabotanica_component(get_row_layout());
+
+                endwhile;
+
+            endif;
+            ?>
+          </div>
         </div>
       </div>
 

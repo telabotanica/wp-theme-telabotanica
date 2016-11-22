@@ -2,4 +2,15 @@
   > .layout-wrapper {
     position: relative;
   }
+
+  .layout-components {
+    margin: 0 auto;
+    max-width: 70rem;
+    overflow: hidden;
+    padding: 10rem 0;
+  }
+
+  &.background-beige {
+    background-color: $beige2;
+  }
 }

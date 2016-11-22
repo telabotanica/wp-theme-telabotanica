@@ -346,9 +346,16 @@
                 "operator": "==",
                 "value": "tb_thematique"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tb_outil"
+            }
         ]
     ],
-    "menu_order": 1,
+    "menu_order": 2,
     "position": "normal",
     "style": "seamless",
     "label_placement": "top",
@@ -356,5 +363,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les pages",
-    "modified": 1479374063
+    "modified": 1479834456
 }

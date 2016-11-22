@@ -2,7 +2,7 @@
 /**
  * Fonctions du style guide
  *
- * Ces fonctions permettent de charger les modules et composants du styleguide.
+ * Ces fonctions permettent de charger les modules, les blocs et les composants du styleguide.
  * Elles suivent les conventions de nommage de wordpress:
  *    `the_*` pour les fonctions qui affichent un élément
  *    `get_*` pour les fonctions qui retournent un élément
@@ -49,6 +49,18 @@ array_walk($telabotanica_modules, function ($module) {
 /**
  * Liste de tous les composants accessibles depuis les fonctions du styleguide
  */
+$telabotanica_blocks = [
+  'list-features',
+];
+array_walk($telabotanica_blocks, function ($block) {
+ if (!locate_template('blocks/' . $block . '/' . $block . '.php', true, true)) {
+   trigger_error(sprintf(__('Erreur lors de la recherche de %s pour inclusion', 'telabotanica'), $block), E_USER_ERROR);
+ }
+});
+
+/**
+ * Liste de tous les composants accessibles depuis les fonctions du styleguide
+ */
 $telabotanica_components = [
   'accordion',
   'buttons',
@@ -87,8 +99,27 @@ function get_telabotanica_module($module, $data = []) {
 }
 
 /**
+ * Affiche un bloc
+ * @param string $bloc Nom du bloc.
+ * @param mixed[] $data Données utilisées par le bloc.
+ */
+function the_telabotanica_block($block, $data = []) {
+  the_telabotanica_styleguide_element('block', $block, $data);
+}
+
+/**
+ * Retourne un bloc
+ * @param string $block Nom du bloc.
+ * @param mixed[] $data Données utilisées par le bloc.
+ * @return string Le code HTML du bloc.
+ */
+function get_telabotanica_block($block, $data = []) {
+  return get_telabotanica_styleguide_element('block', $block, $data);
+}
+
+/**
  * Affiche un composant
- * @param string $module Nom du composant.
+ * @param string $component Nom du composant.
  * @param mixed[] $data Données utilisées par le composant.
  */
 function the_telabotanica_component($component, $data = []) {
@@ -97,7 +128,7 @@ function the_telabotanica_component($component, $data = []) {
 
 /**
  * Retourne un composant
- * @param string $module Nom du composant.
+ * @param string $component Nom du composant.
  * @param mixed[] $data Données utilisées par le composant.
  * @return string Le code HTML du composant.
  */
@@ -107,7 +138,7 @@ function get_telabotanica_component($component, $data = []) {
 
 /**
  * Affiche un élément du styleguide
- * @param string $type Type d'élément (module ou composant)
+ * @param string $type Type d'élément (module, block ou component)
  * @param string $name Nom de l'élément
  * @param mixed[] $data Données utilisées par l'élément.
  */
@@ -122,8 +153,8 @@ function the_telabotanica_styleguide_element($type, $name, $data) {
 }
 
 /**
- * Retourne un élément du styleguide (module ou composant)
- * @param string $type Type d'élément (module ou composant)
+ * Retourne un élément du styleguide (module, bloc ou composant)
+ * @param string $type Type d'élément (module, block ou component)
  * @param string $name Nom de l'élément
  * @param mixed[] $data Données utilisées par l'élément.
  * @return string Le code HTML de l'élément.

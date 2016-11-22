@@ -1,0 +1,74 @@
+{
+    "key": "group_58347a810370a",
+    "title": "Blocs pour les pages outils",
+    "fields": [
+        {
+            "key": "field_58347a8d9d6b0",
+            "label": "Blocs",
+            "name": "blocks",
+            "type": "flexible_content",
+            "instructions": "Les blocs sont des composants complexes, destin\u00e9s sp\u00e9cialement aux pages outils.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_label": "Ajouter un bloc",
+            "min": "",
+            "max": 5,
+            "layouts": [
+                {
+                    "key": "58347a9e9b492",
+                    "name": "list-features",
+                    "label": "Liste de fonctionnalit\u00e9s",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58347abf9d6b1",
+                            "label": "list-features",
+                            "name": "list-features",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_583458a889f29"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tb_outil"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1479834635
+}

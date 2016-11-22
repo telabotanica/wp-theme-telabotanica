@@ -4,7 +4,6 @@
   margin: 4rem 0 2rem;
   position: relative;
 
-  &:first-child {margin-top: 0;}
   & + & {margin-top: 0;}
 
   &.level-2 {
@@ -41,5 +40,7 @@
     line-height: 2.6rem;
     margin: 0;
   }
+
+  &:first-child {margin-top: 0;}
 
 }

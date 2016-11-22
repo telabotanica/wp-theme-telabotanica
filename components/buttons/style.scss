@@ -1,0 +1,11 @@
+.component-buttons {
+  &:not(.as-seamless, .as-links) {
+    border-top: 0.1rem solid transparentize($taupe, 0.8);
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  &:not(.as-seamless) {
+    margin-top: 4rem;
+  }
+}

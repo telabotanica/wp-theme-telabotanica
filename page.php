@@ -8,15 +8,16 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', array()); ?>
+      <?php the_telabotanica_module('cover'); ?>
 
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <?php the_telabotanica_module('toc', array()); ?>
+            <?php the_telabotanica_module('toc'); ?>
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
-            <?php the_telabotanica_module('breadcrumbs', array()); ?>
+            <?php the_telabotanica_module('breadcrumbs'); ?>
             <article class="article">
               <?php
               // Si la page utilise des composants
@@ -25,7 +26,7 @@ get_header(); ?>
                   // On boucle sur les composants
                   while ( have_rows('components') ) : the_row();
 
-                    the_telabotanica_component(get_row_layout(), array());
+                    the_telabotanica_component(get_row_layout());
 
                   endwhile;
 
@@ -35,14 +36,14 @@ get_header(); ?>
 
               endif;
 
-              wp_link_pages( array(
+              wp_link_pages( [
                   'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentysixteen' ) . '</span>',
                   'after'       => '</div>',
                   'link_before' => '<span>',
                   'link_after'  => '</span>',
                   'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>%',
                   'separator'   => '<span class="screen-reader-text">, </span>',
-              ) );
+              ] );
               ?>
             </article>
           </div>

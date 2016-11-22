@@ -1,0 +1,50 @@
+{
+    "key": "group_582c2df7e7931",
+    "title": "Composant outils",
+    "fields": [
+        {
+            "key": "field_582c2e03a460e",
+            "label": "Liste d'outils",
+            "name": "items",
+            "type": "relationship",
+            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "tb_outil"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1479290751
+}

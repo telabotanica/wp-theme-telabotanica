@@ -4,11 +4,11 @@
     "fields": [
         {
             "key": "field_58034a58a9784",
-            "label": "Chapo",
+            "label": "Intro",
             "name": "intro",
-            "type": "text",
-            "instructions": "Pour les CDD\/CDI : [structure] recherche un.e [titre de poste] en [type du contrat\/dur\u00e9e]\r\nPour les stages : [structure] propose un stage de [dur\u00e9e]",
-            "required": 0,
+            "type": "textarea",
+            "instructions": "Pour les CDD\/CDI : [structure] recherche un.e [titre de poste] en [type du contrat\/dur\u00e9e]<br \/>\r\nPour les stages : [structure] propose un stage de [dur\u00e9e]",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -17,9 +17,9 @@
             },
             "default_value": "",
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
         },
         {
             "key": "field_58034aa1ef07d",
@@ -172,9 +172,21 @@
                 "operator": "==",
                 "value": "category:service-civique"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:offres-emploi"
+            }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "acf_after_title",
     "style": "seamless",
     "label_placement": "top",
@@ -185,5 +197,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477944230
+    "modified": 1479228751
 }

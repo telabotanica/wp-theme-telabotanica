@@ -12,17 +12,14 @@
  /*
 Template Name: eflore
 */
-$content_class = array('main-content-inner');
+$content_class = [ 'main-content-inner' ];
 
 
 get_header(); ?>
 
 
-			
+
 						<?php include("../eflore-test/consultation/eflore_wordpress.php"); ?>
 
 
 <?php get_footer(); ?>
- 
-
-

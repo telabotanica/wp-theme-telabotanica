@@ -7,6 +7,7 @@
       float: left;
       flex: 0 0 33rem;
       position: relative;
+      padding-bottom: 8rem;
       padding-right: 3rem;
       width: 33rem;
 
@@ -45,6 +46,28 @@
       margin-left: 5rem;
       flex: 1;
       width: 62rem;
+    }
+  }
+
+  // Pleine largeur
+  &.full-width {
+    > .layout-wrapper {
+      width: 100%;
+
+      > .layout-column {
+        background-color: $blanc;
+        flex: 0 0 36rem;
+        padding: 0 5rem;
+        width: 36rem;
+
+        &:before {display: none;}
+      }
+
+      > .layout-content {
+        background-color: $grisF4;
+        margin-left: 0;
+        padding: 0 5rem;
+      }
     }
   }
 }

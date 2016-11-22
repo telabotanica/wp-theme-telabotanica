@@ -1,0 +1,88 @@
+{
+    "key": "group_582b32a8aa10c",
+    "title": "Intro d'article",
+    "fields": [
+        {
+            "key": "field_582b32add4527",
+            "label": "Intro",
+            "name": "intro",
+            "type": "textarea",
+            "instructions": "Ce texte d'introduction optionnel sera affich\u00e9 en plus grand, avant le contenu principal.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:offres-emploi"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:cdd-cdi"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:stages"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:service-civique"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:evenements"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:congres-conferences"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:expositions"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:sorties-de-terrain"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:stages-ateliers"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1479231515
+}

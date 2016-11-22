@@ -1,0 +1,26 @@
+.component-image {
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  &.left,
+  &.right {
+    margin-bottom: 2rem;
+    max-width: 50%;
+  }
+
+  &.left {
+    float: left;
+    margin-right: 2.5rem;
+  }
+
+  &.right {
+    float: right;
+    margin-left: 2.5rem;
+  }
+
+  &.center {
+    img {margin: 0 auto;}
+  }
+}

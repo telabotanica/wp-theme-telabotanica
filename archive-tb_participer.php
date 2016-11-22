@@ -8,13 +8,14 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', array(
+      <?php the_telabotanica_module('cover', [
         'title' => __('Comment participer ?', 'telabotanica'),
-      )); ?>
+      ] ); ?>
 
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
             <?php if ( have_posts() ) : ?>
@@ -25,11 +26,11 @@ get_header(); ?>
                 </article>
               <?php endwhile;
 
-              the_posts_pagination( array(
+              the_posts_pagination( [
         				'prev_text'          => __( 'Page précédente', 'telabotanica' ),
         				'next_text'          => __( 'Page suivante', 'telabotanica' ),
         				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'telabotanica' ) . ' </span>',
-        			) );
+        			] );
               ?>
             <?php else :
               echo '<p>' . __( 'Aucun moyen de participer.', 'telabotanica' ) . '</p>';

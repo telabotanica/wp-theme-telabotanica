@@ -1,0 +1,66 @@
+.component-accordion {
+  @extend .component-text;
+
+  &__panel {
+    display: block;
+    overflow: hidden;
+    opacity: 1;
+    transition: visibility 0s ease, max-height 0.5s ease, opacity 0.5s ease ;
+    max-height: 1000rem;
+    /* magic number for max-height = enough height */
+    visibility: visible;
+    transition-delay: 0s;
+    margin: 0;
+    padding: 0;
+
+    &[aria-hidden=true] {
+      display: block;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: 0.5s, 0s, 0s;
+      margin: 0;
+      padding: 0;
+    }
+
+    &[role="tabpanel"] .component-accordion__header {
+      display: none;
+    }
+  }
+
+  &__header {
+    background: transparent;
+    border: 0;
+    border-bottom: 0.1rem solid $grisDD;
+    color: $gris23;
+    cursor: pointer;
+    display: block;
+    font-family: $ubuntu;
+    font-size: 1.8rem;
+    font-weight: $regular;
+    padding: 1.5rem 0.5rem;
+    text-align: left;
+    width: 100%;
+
+    &:before {
+      color: $green-button;
+      content: "▷";
+      display: inline-block;
+      margin-right: 1.5rem;
+      transition: transform 0.2s ease;
+    }
+
+    &[aria-expanded="true"]:before {
+      transform: rotate(90deg);
+    }
+
+    &[aria-selected="true"]:before {
+      content: "▶";
+    }
+  }
+
+  & &__header + p {
+    margin-top: 2rem;
+  }
+
+}

@@ -1,0 +1,96 @@
+{
+    "key": "group_582c67b573a57",
+    "title": "Composant image",
+    "fields": [
+        {
+            "key": "field_582c67ba3c90e",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,png,gif"
+        },
+        {
+            "key": "field_582c69d749e46",
+            "label": "Texte alternatif",
+            "name": "alt",
+            "type": "text",
+            "instructions": "Pour l'accessibilit\u00e9 et le r\u00e9f\u00e9rencement",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_582c67e13c90f",
+            "label": "Positionnement",
+            "name": "modifiers",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Standard",
+                "left": "Flottante \u00e0 gauche",
+                "right": "Flottante \u00e0 droite",
+                "center": "Centr\u00e9e"
+            },
+            "default_value": [
+                "standard"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1479306851
+}

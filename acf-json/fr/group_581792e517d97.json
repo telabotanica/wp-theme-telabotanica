@@ -70,12 +70,41 @@
                 ]
             ],
             "wrapper": {
-                "width": "70",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "placeholder": ""
+        },
+        {
+            "key": "field_582c5263899c7",
+            "label": "Hauteur",
+            "name": "height",
+            "type": "number",
+            "instructions": "Forcer la hauteur de l'iframe",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5817976d9ed35",
+                        "operator": "==",
+                        "value": "iframe"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "px",
+            "min": 0,
+            "max": "",
+            "step": 1
         },
         {
             "key": "field_58179c698ffe2",
@@ -113,5 +142,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1477943594
+    "modified": 1479299934
 }

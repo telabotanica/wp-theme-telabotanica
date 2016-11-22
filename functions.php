@@ -34,6 +34,11 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 require get_template_directory() . '/inc/utile.php';
 
 /**
+ * Filtres pour l'extrait
+ */
+require get_template_directory() . '/inc/excerpt.php';
+
+/**
  * Pages d'options (avec ACF)
  */
 require get_template_directory() . '/inc/options.php';
@@ -94,33 +99,34 @@ function telabotanica_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 1200, 9999 );
+	set_post_thumbnail_size( 220, 160, array( 'center', 'center') );
+  add_image_size( 'home-post-thumbnail', 65, 50, array( 'center', 'center') );
 
 	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus( array(
+	register_nav_menus( [
 		'principal' => __( 'Menu principal', 'telabotanica' ),
 		'secondary'  => __( 'Menu secondaire', 'telabotanica' ),
 		'footer-bar'  => __( 'Pied de page - bandeau', 'telabotanica' ),
 		'footer-columns'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
-	) );
+	] );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
 	 */
-	add_theme_support( 'html5', array(
+	add_theme_support( 'html5', [
 		'search-form',
 		'comment-form',
 		'comment-list',
 		'gallery',
 		'caption',
-	) );
+	] );
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	//add_editor_style( array( 'css/editor-style.css', telabotanica_fonts_url() ) );
+	add_editor_style( 'dist/editor-style.css' );
 }
 endif; // telabotanica_setup
 add_action( 'after_setup_theme', 'telabotanica_setup' );
@@ -146,11 +152,8 @@ function telabotanica_scripts() {
 	// Theme stylesheet.
 	wp_enqueue_style( 'telabotanica-style', get_template_directory_uri() . '/dist/bundle.css' );
 
-  // Google Fonts
-  wp_enqueue_style( 'telabotanica-fonts', 'https://fonts.googleapis.com/css?family=Muli:300,400|Ubuntu:300,400,500,700' );
-
 	// Theme script.
-	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', [ 'jquery' ], null, true );
 }
 add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
 

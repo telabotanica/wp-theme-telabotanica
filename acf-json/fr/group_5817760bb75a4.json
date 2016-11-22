@@ -113,6 +113,37 @@
                     "max": ""
                 },
                 {
+                    "key": "582c84928668e",
+                    "name": "image",
+                    "label": "Image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c849d8668f",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c67b573a57"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "5817910237e00",
                     "name": "links",
                     "label": "Liens ou t\u00e9l\u00e9chargements",
@@ -153,8 +184,8 @@
                             "key": "field_5820c7740fdac",
                             "label": "Outils",
                             "name": "tools",
-                            "type": "relationship",
-                            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+                            "type": "clone",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -162,19 +193,44 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
-                                "tb_outil"
+                            "clone": [
+                                "group_582c2df7e7931"
                             ],
-                            "taxonomy": [],
-                            "filters": [
-                                "search",
-                                "post_type",
-                                "taxonomy"
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "582c5f278e5a1",
+                    "name": "buttons",
+                    "label": "Bouton(s)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c5f388e5a2",
+                            "label": "Boutons",
+                            "name": "buttons",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c55a2217be"
                             ],
-                            "elements": "",
-                            "min": "",
-                            "max": "",
-                            "return_format": "object"
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -210,6 +266,68 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "582c83e996f94",
+                    "name": "accordion",
+                    "label": "Accord\u00e9on",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c83f496f95",
+                            "label": "Accord\u00e9on",
+                            "name": "accordion",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c77f92d671"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "582c890a5e8eb",
+                    "name": "contact",
+                    "label": "Contact",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c890f5e8ec",
+                            "label": "Contact",
+                            "name": "contact",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c858789a7f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         }
@@ -223,7 +341,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 2,
     "position": "normal",
     "style": "seamless",
     "label_placement": "top",
@@ -231,5 +349,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1478543341
+    "modified": 1479373506
 }

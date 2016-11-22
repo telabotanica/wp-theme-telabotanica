@@ -113,6 +113,37 @@
                     "max": ""
                 },
                 {
+                    "key": "582c684f05646",
+                    "name": "image",
+                    "label": "Image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c685605647",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c67b573a57"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "57e50e7015b8b",
                     "name": "links",
                     "label": "Liens ou t\u00e9l\u00e9chargements",
@@ -152,9 +183,9 @@
                         {
                             "key": "field_580e578ce67bc",
                             "label": "Outils",
-                            "name": "items",
-                            "type": "relationship",
-                            "instructions": "Cliquez dans la liste de gauche sur les outils que vous souhaitez afficher.",
+                            "name": "tools",
+                            "type": "clone",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -162,58 +193,44 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
-                                "tb_outil"
+                            "clone": [
+                                "group_582c2df7e7931"
                             ],
-                            "taxonomy": [],
-                            "filters": "",
-                            "elements": "",
-                            "min": 1,
-                            "max": "",
-                            "return_format": "object"
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
                     "max": ""
                 },
                 {
-                    "key": "57e998678f0d7",
-                    "name": "button",
-                    "label": "Bouton",
-                    "display": "table",
+                    "key": "582c562c07003",
+                    "name": "buttons",
+                    "label": "Bouton(s)",
+                    "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_57e9986d8f0d8",
-                            "label": "Intitul\u00e9",
-                            "name": "text",
-                            "type": "text",
+                            "key": "field_582c563707004",
+                            "label": "Boutons",
+                            "name": "buttons",
+                            "type": "clone",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
-                            "key": "field_57e9987b8f0d9",
-                            "label": "Lien",
-                            "name": "link",
-                            "type": "link_picker",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            }
+                            "clone": [
+                                "group_582c55a2217be"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -249,6 +266,68 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "582c78d817d39",
+                    "name": "accordion",
+                    "label": "Accord\u00e9on",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c78e017d3a",
+                            "label": "Accord\u00e9on",
+                            "name": "accordion",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c77f92d671"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "582c8a3b4f636",
+                    "name": "contact",
+                    "label": "Contact",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_582c8a3e4f637",
+                            "label": "Contact",
+                            "name": "contact",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_582c858789a7f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         }
@@ -269,7 +348,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "normal",
     "style": "seamless",
     "label_placement": "top",
@@ -277,5 +356,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants r\u00e9dactionnels utilisables dans les pages",
-    "modified": 1477944017
+    "modified": 1479374063
 }

@@ -55,7 +55,7 @@
             },
             "default_value": 2,
             "placeholder": "",
-            "prepend": "",
+            "prepend": "h",
             "append": "",
             "min": 2,
             "max": 4,
@@ -79,5 +79,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1477934565
+    "modified": 1479309746
 }

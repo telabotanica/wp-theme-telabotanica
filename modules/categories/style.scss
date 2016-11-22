@@ -34,16 +34,27 @@
   &-item {
     border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
 
-    &.is-active .categories-item-link:before {
-      color: $vert-clair;
+    &.is-active .categories-item-link {
+      color: $gris23;
+      fill: $gris23;
+      &:before {color: $vert-clair;}
     }
 
     &-title {
       font-size: 1.6rem;
       font-weight: $bold;
+
+      .icon {
+        margin-right: 0.5rem;
+        vertical-align: top;
+        transform: translateY(0.2rem);
+        width: 1.8rem;
+      }
     }
+
     &-link {
-      color: $gris23;
+      color: $marron-gris;
+      fill: $marron-gris;
       text-decoration: none;
 
       &:hover, &:focus {
@@ -61,8 +72,8 @@
   &-subitem {
     &.is-active {
       .categories-subitem-link {
-        background-color: $marron;
-        border-color: $marron;
+        background-color: $taupe;
+        border-color: $taupe;
         color: $blanc;
       }
     }

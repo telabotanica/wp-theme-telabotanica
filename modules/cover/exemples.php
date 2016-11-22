@@ -1,4 +1,4 @@
 <?php
-return array(
-  "Standard" => array('title' => 'Titre', 'subtitle' => 'Sous-titre'),
-);
+return [
+  "Standard" => ['title' => 'Titre', 'subtitle' => 'Sous-titre'],
+];

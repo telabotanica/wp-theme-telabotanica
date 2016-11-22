@@ -7,6 +7,7 @@
   font-size: 1.3rem;
   font-weight: $medium;
   letter-spacing: 0.1rem;
+  line-height: 1.5rem;
   padding: 1.5rem 2rem;
   text-align: center;
   text-decoration: none;
@@ -14,7 +15,11 @@
   transition: background 0.2s ease;
 
   &:hover, &:focus {
-    background-color: $vert-clair-vif;
+    background-color: lighten($green-button, 8%);
+  }
+
+  & + & {
+    margin-left: 2rem;
   }
 
   &.orange {
@@ -27,5 +32,77 @@
 
   &.block {
     display: block;
+  }
+
+  &.outline {
+    background: transparent;
+    border: 0.2rem solid;
+    font-weight: $regular;
+    padding: 1.3rem 1.8rem;
+    transition: opacity 0.2s ease;
+
+    &:hover, &:focus {
+      opacity: 0.7;
+    }
+  }
+
+  &.link {
+    background-color: transparent;
+    border-radius: 0;
+    color: $vert-fonce;
+    padding: 0;
+
+    > .icon {
+      height: 1.4rem;
+    }
+
+    & + & {
+      margin-left: 3rem;
+    }
+
+    &:after {
+      content: ">";
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    &:hover, &:focus {
+      background-color: transparent;
+      color: lighten($vert-fonce, 8%);
+    }
+
+    &.orange {
+      color: $orange;
+
+      &:hover, &:focus {
+        color: lighten($orange, 8%);
+      }
+    }
+
+    &.white {
+      color: $blanc;
+
+      &:hover, &:focus {
+        opacity: 0.7;
+      }
+    }
+
+    &.back {
+      &:after {display: none;}
+    }
+  }
+
+  > .icon {
+    fill: currentColor;
+    vertical-align: sub;
+  }
+
+  &-text {
+    display: inline-block;
+
+    .icon + &,
+    & + .icon {
+      margin-left: 1rem;
+    }
   }
 }

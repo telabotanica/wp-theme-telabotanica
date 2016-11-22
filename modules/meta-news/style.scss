@@ -1,0 +1,58 @@
+.meta-news {
+  color: $taupe;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+
+  &-item {
+    border-top: 0.1rem solid $grisDD;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+
+    .button + & {
+      margin-top: 2rem; // pour aligner sur breadcrumbs
+    }
+
+    .icon {
+      fill: $taupe;
+      margin-right: 1rem;
+      position: absolute;
+      vertical-align: top;
+    }
+
+    .icon + * {
+      display: block;
+      margin-left: 2.6rem;
+    }
+  }
+
+  &-date {
+    time {cursor: help;}
+  }
+
+  &-categories {
+    .icon {vertical-align: middle;}
+  }
+
+  &-share {
+    .icon {
+      position: static;
+    }
+
+    .share-item > a {
+      align-items: center;
+      background-color: transparentize($taupe, 0.8);
+      border-radius: 50%;
+      fill: $marron;
+      display: inline-flex;
+      height: 3.4rem;
+      justify-content: center;
+      width: 3.4rem;
+
+      &:hover, &:focus {
+        background-color: transparentize($taupe, 0.6);
+        fill: $gris33;
+      }
+    }
+  }
+
+}

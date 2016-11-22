@@ -3,62 +3,13 @@
     "title": "Article - \u00c9v\u00e8nement",
     "fields": [
         {
-            "key": "field_5803652a92ee3",
-            "label": "Date unique ?",
-            "name": "is_single_date",
-            "type": "true_false",
-            "instructions": "Cocher si l'\u00e9v\u00e8nement dure seulement un jour.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0
-        },
-        {
             "key": "field_580364c892ee1",
             "label": "Date",
             "name": "date",
             "type": "date_picker",
-            "instructions": "Date de l'\u00e9v\u00e8nement",
+            "instructions": "(ou date de d\u00e9but si l'\u00e9v\u00e8nement dure plusieurs jours)",
             "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5803652a92ee3",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "display_format": "d\/m\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1
-        },
-        {
-            "key": "field_5803657c92ee4",
-            "label": "D\u00e9but",
-            "name": "date_from",
-            "type": "date_picker",
-            "instructions": "Date de d\u00e9but de l'\u00e9v\u00e8nement",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5803652a92ee3",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
                 "class": "",
@@ -70,20 +21,12 @@
         },
         {
             "key": "field_5803659792ee5",
-            "label": "Fin",
-            "name": "date_to",
+            "label": "Date de fin",
+            "name": "date_end",
             "type": "date_picker",
-            "instructions": "Date de fin de l'\u00e9v\u00e8nement",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5803652a92ee3",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "instructions": "Laisser vide si l'\u00e9v\u00e8nement dure seulement un jour",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
                 "class": "",
@@ -158,7 +101,7 @@
             "key": "field_580e45279024d",
             "label": "Contact",
             "name": "contact",
-            "type": "repeater",
+            "type": "clone",
             "instructions": "Tous ces champs sont optionnels.",
             "required": 0,
             "conditional_logic": 0,
@@ -167,110 +110,19 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_580e456e9024e",
-            "min": 1,
-            "max": 1,
+            "clone": [
+                "group_582c858789a7f"
+            ],
+            "display": "seamless",
             "layout": "block",
-            "button_label": "Ajouter des informations de contact",
-            "sub_fields": [
-                {
-                    "key": "field_580e456e9024e",
-                    "label": "Nom",
-                    "name": "name",
-                    "type": "text",
-                    "instructions": "Nom de la personne ou de l'organisme \u00e0 contacter",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_580e45789024f",
-                    "label": "Description",
-                    "name": "description",
-                    "type": "textarea",
-                    "instructions": "Informations additionnelles, si n\u00e9cessaire",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 3,
-                    "new_lines": "wpautop"
-                },
-                {
-                    "key": "field_580e458290250",
-                    "label": "T\u00e9l\u00e9phone",
-                    "name": "phone",
-                    "type": "text",
-                    "instructions": "Au format international, par exemple +33 4 67 52 41 22",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "34",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_580e458a90251",
-                    "label": "E-mail",
-                    "name": "email",
-                    "type": "email",
-                    "instructions": "Par exemple accueil@tela-botanica.org",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_580e459490252",
-                    "label": "Site web",
-                    "name": "website",
-                    "type": "url",
-                    "instructions": "Par exemple http:\/\/www.tela-botanica.org",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                }
-            ]
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
-            "key": "field_580366d5a9e01",
+            "key": "field_58337bc15ecd7",
             "label": "Lieu",
             "name": "place",
-            "type": "google_map",
+            "type": "algolia_places",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -279,10 +131,8 @@
                 "class": "",
                 "id": ""
             },
-            "center_lat": 46,
-            "center_lng": 2,
-            "zoom": 5,
-            "height": ""
+            "algolia_type": "all",
+            "algolia_countries": ""
         },
         {
             "key": "field_5803a65a08014",
@@ -371,7 +221,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "acf_after_title",
     "style": "seamless",
     "label_placement": "top",
@@ -382,5 +232,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1478008492
+    "modified": 1479778549
 }

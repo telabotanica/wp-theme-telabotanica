@@ -1,0 +1,71 @@
+.nav-project {
+  background-color: $beige;
+  border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+  font-family: $ubuntu;
+  font-size: 1.3rem;
+  font-weight: $medium;
+  letter-spacing: 0.1rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+
+  &-items {
+    @include reset-list;
+    margin: 0 15rem;
+
+    > li {
+      display: inline-block;
+
+      &.current a {
+        border-bottom-color: $green-button;
+        color: $marron-fonce;
+      }
+    }
+
+    > li + li {
+      margin-left: 4rem;
+    }
+
+    a {
+      border-bottom: 0.3rem solid transparent;
+      color: $marron;
+      display: inline-block;
+      padding: 2rem 0;
+      text-decoration: none;
+      transition: border-bottom 0.2s ease;
+
+      &:hover, &:focus {
+        border-bottom-color: transparentize($marron, 0.8);
+      }
+
+      span {
+        &:before {
+          content: "(";
+        }
+        &:after {
+          content: ")";
+        }
+      }
+    }
+  }
+
+  > .share {
+    padding: 1rem 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .share-item + .share-item {
+      margin-left: 0;
+    }
+
+    a {
+      fill: $marron;
+      padding: 1rem;
+
+      &:hover, &:focus {
+        fill: $gris33;
+      }
+    }
+  }
+}

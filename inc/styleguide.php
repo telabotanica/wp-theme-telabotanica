@@ -12,7 +12,6 @@
  *
  * @package WordPress
  * @subpackage Tela_Botanica
- * @since TelaBotanica 0.0.1
  */
 
  /**
@@ -22,11 +21,22 @@ $telabotanica_modules = [
   'article',
   'breadcrumbs',
   'button',
+  'button-top',
+  'card-project',
   'categories',
+  'categories-labels',
   'cover',
+  'cover-project',
   'footer',
   'form-newsletter',
   'header',
+  'icon',
+  'list-articles',
+  'list-projects',
+  'meta-news',
+  'nav-project',
+  'pagination',
+  'share',
   'toc',
   'upcoming-events',
 ];
@@ -40,8 +50,11 @@ array_walk($telabotanica_modules, function ($module) {
  * Liste de tous les composants accessibles depuis les fonctions du styleguide
  */
 $telabotanica_components = [
-  'button',
+  'accordion',
+  'buttons',
+  'contact',
   'embed',
+  'image',
   'intro',
   'links',
   'tools',
@@ -59,7 +72,7 @@ array_walk($telabotanica_components, function ($component) {
  * @param string $module Nom du module.
  * @param mixed[] $data Données utilisées par le module.
  */
-function the_telabotanica_module($module, $data) {
+function the_telabotanica_module($module, $data = []) {
   the_telabotanica_styleguide_element('module', $module, $data);
 }
 
@@ -69,7 +82,7 @@ function the_telabotanica_module($module, $data) {
  * @param mixed[] $data Données utilisées par le module.
  * @return string Le code HTML du module.
  */
-function get_telabotanica_module($module, $data) {
+function get_telabotanica_module($module, $data = []) {
   return get_telabotanica_styleguide_element('module', $module, $data);
 }
 
@@ -78,7 +91,7 @@ function get_telabotanica_module($module, $data) {
  * @param string $module Nom du composant.
  * @param mixed[] $data Données utilisées par le composant.
  */
-function the_telabotanica_component($component, $data) {
+function the_telabotanica_component($component, $data = []) {
   the_telabotanica_styleguide_element('component', $component, $data);
 }
 
@@ -88,36 +101,36 @@ function the_telabotanica_component($component, $data) {
  * @param mixed[] $data Données utilisées par le composant.
  * @return string Le code HTML du composant.
  */
-function get_telabotanica_component($component, $data) {
+function get_telabotanica_component($component, $data = []) {
   return get_telabotanica_styleguide_element('component', $component, $data);
 }
 
 /**
  * Affiche un élément du styleguide
  * @param string $type Type d'élément (module ou composant)
- * @param string $nom Nom de l'élément
+ * @param string $name Nom de l'élément
  * @param mixed[] $data Données utilisées par l'élément.
  */
-function the_telabotanica_styleguide_element($type, $nom, $data) {
-  $function = 'telabotanica_' . $type . '_' . str_replace('-', '_', $nom);
+function the_telabotanica_styleguide_element($type, $name, $data) {
+  $function = 'telabotanica_' . $type . '_' . str_replace('-', '_', $name);
   if (function_exists($function)) {
     $data = (object) $data;
     call_user_func($function, $data);
   } else {
-    trigger_error(sprintf(__('Le %s `%s` n\'existe pas dans le styleguide. Avez-vous pensé à l\'ajouter à la liste des éléments dans inc/styleguide.php ?', 'telabotanica'), $type, $nom), E_USER_WARNING);
+    trigger_error(sprintf(__('Le %s `%s` n\'existe pas dans le styleguide. Avez-vous pensé à l\'ajouter à la liste des éléments dans inc/styleguide.php ?', 'telabotanica'), $type, $name), E_USER_WARNING);
   }
 }
 
 /**
  * Retourne un élément du styleguide (module ou composant)
  * @param string $type Type d'élément (module ou composant)
- * @param string $nom Nom de l'élément
+ * @param string $name Nom de l'élément
  * @param mixed[] $data Données utilisées par l'élément.
  * @return string Le code HTML de l'élément.
  */
-function get_telabotanica_styleguide_element($type, $nom, $data) {
+function get_telabotanica_styleguide_element($type, $name, $data) {
   ob_start();
-  the_telabotanica_styleguide_element($type, $nom, $data);
+  the_telabotanica_styleguide_element($type, $name, $data);
   return ob_get_clean();
 }
 
@@ -171,8 +184,8 @@ function telabotanica_styleguide_title( $title ) {
   $prefix = '';
   if ($wp_query->get('styleguide_type') && $wp_query->get('styleguide_nom')) {
     $type = $wp_query->get('styleguide_type');
-    $nom = $wp_query->get('styleguide_nom');
-    $prefix = $type . ' ' . $nom . ' &#8211; ';
+    $name = $wp_query->get('styleguide_nom');
+    $prefix = $type . ' ' . $name . ' &#8211; ';
   }
 
   return $prefix . 'Styleguide' . ' &#8211; ' . get_bloginfo('name');

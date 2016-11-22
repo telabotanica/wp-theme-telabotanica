@@ -5,7 +5,7 @@
         {
             "key": "field_58034e8c9fc17",
             "label": "Pr\u00e9sentation",
-            "name": "intro",
+            "name": "presentation",
             "type": "textarea",
             "instructions": "Pr\u00e9sentation de l'ouvrage",
             "required": 1,
@@ -46,7 +46,7 @@
             "name": "references",
             "type": "textarea",
             "instructions": "Renseigner les r\u00e9f\u00e9rences de l'ouvrage",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -93,7 +93,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "acf_after_title",
     "style": "seamless",
     "label_placement": "top",
@@ -104,5 +104,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1477944181
+    "modified": 1479227808
 }

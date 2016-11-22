@@ -1,0 +1,74 @@
+.pagination {
+  border-top: 0.1rem solid $grisDD;
+  font-family: $ubuntu;
+  font-size: 1.3rem;
+  font-weight: $medium;
+  letter-spacing: 0.1rem;
+  line-height: 3rem;
+  margin-top: 6rem;
+  padding: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+
+  .nav-links {
+    position: relative;
+  }
+
+  .page-numbers {
+    border-radius: 0.2rem;
+    color: $vert-fonce;
+    display: inline-block;
+    padding: 0 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover, &:focus {
+      background-color: $grisF0;
+      color: lighten($vert-fonce, 8%);
+    }
+
+    & + & {
+      margin-left: 0.5rem;
+    }
+
+    &.current {
+      background-color: $green-button;
+      color: $blanc;
+      pointer-events: none;
+    }
+
+    &.dots {
+      color: $gris60;
+      pointer-events: none;
+    }
+
+    &.prev,
+    &.next {
+      background-color: transparent;
+    }
+
+    &.prev {
+      padding-left: 0;
+      position: absolute;
+      left: 0;
+
+      &:before {
+        content: "<";
+        display: inline-block;
+        margin-right: 0.5rem;
+      }
+    }
+
+    &.next {
+      padding-right: 0;
+      position: absolute;
+      right: 0;
+
+      &:after {
+        content: ">";
+        display: inline-block;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

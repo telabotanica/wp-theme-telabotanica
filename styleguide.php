@@ -22,38 +22,39 @@ get_header(); ?>
       <div class="layout-left-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
-            <?php the_telabotanica_module('toc', array(
-              'items' => array(
-                array(
+            <?php the_telabotanica_module('toc', [
+              'items' => [
+                [
                   'text' => 'Modules',
                   'href' => '#',
                   'active' => (substr($current, 0, strlen('module')) === 'module'),
                   'items' => array_map(function ($module) {
                     global $current;
-                    return array(
+                    return [
                       'text' => $module,
                       'href' => site_url('styleguide/module/' . $module),
                       'active' => ($current === 'module/' . $module)
-                    );
+                    ];
                     // echo '<li' . ($current === 'module/' . $module ? ' class="current"' : '') . '><a href="' . site_url('styleguide/module/' . $module) . '"><code>' . $module . '</code></a></li>';
                   }, $telabotanica_modules)
-                ),
-                array(
+                ],
+                [
                   'text' => 'Composants rédactionnels',
                   'href' => '#',
                   'active' => (substr($current, 0, strlen('component')) === 'component'),
                   'items' => array_map(function ($component) {
                     global $current;
-                    return array(
+                    return [
                       'text' => $component,
                       'href' => site_url('styleguide/component/' . $component),
                       'active' => ($current === 'component/' . $component)
-                    );
+                    ];
                     // echo '<li' . ($current === 'component/' . $component ? ' class="current"' : '') . '><a href="' . site_url('styleguide/component/' . $component) . '"><code>' . $component . '</code></a></li>';
                   }, $telabotanica_components)
-                )
-              )
-            )); ?>
+                ]
+              ]
+            ] ); ?>
+            <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
 			      <h1><a href="<?php echo site_url('styleguide') ?>">Styleguide</a></h1>

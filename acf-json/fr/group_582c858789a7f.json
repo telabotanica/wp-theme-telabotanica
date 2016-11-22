@@ -1,0 +1,160 @@
+{
+    "key": "group_582c858789a7f",
+    "title": "Composant contact",
+    "fields": [
+        {
+            "key": "field_582c87e96af64",
+            "label": "Contact",
+            "name": "contact",
+            "type": "repeater",
+            "instructions": "Tous ces champs sont optionnels.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_582c881b6af65",
+            "min": 1,
+            "max": 1,
+            "layout": "block",
+            "button_label": "Ajouter un contact",
+            "sub_fields": [
+                {
+                    "key": "field_582c88dc87649",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_582c881b6af65",
+                    "label": "Nom",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "Nom de la personne ou de l'organisme",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "66",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_582c88326af66",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "instructions": "Informations additionnelles, si n\u00e9cessaire",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br"
+                },
+                {
+                    "key": "field_582c884c6af67",
+                    "label": "T\u00e9l\u00e9phone",
+                    "name": "phone",
+                    "type": "text",
+                    "instructions": "Au format international, par exemple +33 4 67 52 41 22",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_582c88626af68",
+                    "label": "E-mail",
+                    "name": "email",
+                    "type": "email",
+                    "instructions": "Par exemple accueil@tela-botanica.org",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_582c88716af69",
+                    "label": "Site web",
+                    "name": "website",
+                    "type": "url",
+                    "instructions": "Par exemple http:\/\/www.tela-botanica.org",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1479313789
+}

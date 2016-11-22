@@ -50,9 +50,9 @@ function telabotanica_upgrade_notice() {
  * @global string $wp_version WordPress version.
  */
 function telabotanica_customize() {
-	wp_die( sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] ), '', array(
+	wp_die( sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] ), '', [
 		'back_link' => true,
-	) );
+	] );
 }
 add_action( 'load-customize.php', 'telabotanica_customize' );
 

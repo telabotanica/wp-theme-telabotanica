@@ -10,18 +10,18 @@
     <?php if ( has_nav_menu('secondary') ) : ?>
       <nav class="header-nav" role="navigation"  aria-label="<?php esc_attr_e( 'Menu secondaire', 'telabotanica' ); ?>">
         <?php
-          wp_nav_menu( array(
+          wp_nav_menu( [
             'theme_location' => 'secondary',
             'menu_class'     => 'header-nav-items',
             'depth'          => 1,
-           ) );
+           ] );
         ?>
       </nav>
     <?php endif; ?>
     <ul class="header-links">
       <?php if ( is_user_logged_in() ) :
         $current_user = wp_get_current_user();
-        $avatar_url = get_avatar_url($current_user->ID, array('size' => 22)); ?>
+        $avatar_url = get_avatar_url($current_user->ID, [ 'size' => 22 ]); ?>
         <li class="header-links-item header-links-item-user">
           <a href="<?php echo admin_url(); ?>">
             <span class="header-links-item-text">
@@ -47,17 +47,17 @@
         endif; ?>
       </li>
       <li class="header-links-item header-links-item-donate"><a href="#"><?php _e( 'Faites un don !', 'telabotanica' ) ?></a></li>
-      <li class="header-links-item header-links-item-search"><a href="<?php echo get_search_link(); ?>"><span class="header-links-item-text">🔎</span></a></li>
+      <li class="header-links-item header-links-item-search"><a href="<?php echo get_search_link(); ?>"><span class="header-links-item-text"><?php the_telabotanica_module('icon', ['icon' => 'search']) ?></span></a></li>
     </ul>
   </div>
   <?php if ( has_nav_menu('principal') ) : ?>
     <nav class="header-nav-usecases" role="navigation" aria-label="<?php esc_attr_e( 'Menu principal', 'telabotanica' ); ?>">
       <?php
-        wp_nav_menu( array(
+        wp_nav_menu( [
           'theme_location' => 'principal',
           'menu_class'     => 'header-nav-usecases-items',
           'depth'          => 1,
-         ) );
+         ] );
       ?>
     </nav>
   <?php endif; ?>

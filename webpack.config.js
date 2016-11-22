@@ -3,20 +3,33 @@ const autoprefixer = require('autoprefixer')
 const pixrem = require('pixrem')
 const postcss = require('postcss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+
+const extractBundle = new ExtractTextPlugin('bundle.css');
+const extractEditorStyle = new ExtractTextPlugin('editor-style.css');
 
 module.exports = {
   entry: './assets/scripts/main.js',
   output: {
     path: './dist',
-    publicPath: '/wp-content/themes/telabotanica/dist/',
     filename: 'bundle.js'
   },
   module: {
     loaders: [
       {
-        test: /\.scss$/,
-        //include: './assets/styles',
-        loader: ExtractTextPlugin.extract({
+        test: /main\.scss$/,
+        loader: extractBundle.extract({
+          fallbackLoader: 'style',
+          loader: [
+            'css',
+            'postcss',
+            'sass'
+          ]
+        })
+      },
+      {
+        test: /editor-style\.scss$/,
+        loader: extractEditorStyle.extract({
           fallbackLoader: 'style',
           loader: [
             'css',
@@ -27,12 +40,31 @@ module.exports = {
       },
       {
         test: /\.svg$/,
+        include: [
+          path.resolve(__dirname, "assets/icons")
+        ],
+        loader: 'svg-sprite?name=icon-[name]'
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include: [
+          path.resolve(__dirname, "assets/fonts")
+        ],
+        loader: 'file?name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.svg$/,
+        exclude: [
+          path.resolve(__dirname, "assets/fonts"),
+          path.resolve(__dirname, "assets/icons")
+        ],
         loader: 'svg-url-loader'
-      }
+      },
     ]
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css'),
+    extractBundle,
+    extractEditorStyle,
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -46,5 +78,14 @@ module.exports = {
         }),
       ],
     }),
-  ]
+    // Make $ and jQuery available in every module without writing require("jquery")
+    new webpack.ProvidePlugin({
+      $: "jquery"
+    }),
+  ],
+  externals: {
+    // require("jquery") is external and available
+    //  on the global var jQuery
+    "jquery": "jQuery"
+  }
 }

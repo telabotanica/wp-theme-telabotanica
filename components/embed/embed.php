@@ -7,20 +7,28 @@
 
   if ( $data->method === 'oembed' ) :
 
+    $height = false;
     $data->embed = get_sub_field('embed');
 
   elseif ( $data->method === 'iframe' ) :
 
+    $height = get_sub_field('height');
+
     $data->embed = sprintf(
-      '<iframe src="%s"></iframe>',
-      get_sub_field('iframe')
+      '<iframe src="%s" style="%s"></iframe>',
+      get_sub_field('iframe'),
+      $height ? 'height: ' . ($height / 10) . 'rem' : ''
     );
 
   endif;
 
   echo '<div class="component component-embed">';
 
-  echo '<div class="component-embed-wrapper" aria-describedby="' . $data->description_id . '">';
+  echo sprintf(
+    '<div class="component-embed-wrapper" aria-describedby="%s" style="%s">',
+    $data->description_id,
+    $height ? 'height: ' . ($height / 10) . 'rem' : ''
+  );
     echo $data->embed;
   echo '</div>';
 

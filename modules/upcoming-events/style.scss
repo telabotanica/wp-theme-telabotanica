@@ -9,11 +9,11 @@
     font-size: 1.8rem;
     font-weight: $bold;
 
-    &:before {
-      color: $orange;
-      content: "☑";
+    .icon {
+      fill: $orange;
       display: inline-block;
       margin-right: 1rem;
+      width: 1.8rem;
     }
   }
 
@@ -46,7 +46,7 @@
     color: $orange;
     font-weight: $medium;
     height: 5.5rem;
-    padding: 0.5rem;
+    padding: 0.2rem;
     position: absolute;
     text-align: center;
     transition: color 0.2s ease;

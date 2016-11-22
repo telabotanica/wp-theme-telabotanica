@@ -1,0 +1,45 @@
+{% autoescape 'html' %}
+
+* Lettre d'information du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} *
+
+{{ intro|striptags }}
+
+{% for category_id, category in categories %}
+
+	{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+
+		* {{ subcategory }} *
+
+		{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+
+			{% if not item.is_event %}
+
+				* {{ item.post.post_title }} *
+
+				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
+
+			{% else %}
+
+				* {{ item.post.post_title }} *
+
+				{{ item.date_alt|localizeddate("none", "none", "fr-FR", null, "d MMM") }}
+
+				{{ item.place }} - Publié par {{ item.author }}
+
+			{% endif %}
+
+				{{ item.post.post_content|striptags|truncate(200, true) }} Lire la suite : {{ item.link }}
+
+				----------------
+
+		{% endfor %}
+
+	{% endfor %}
+
+		Tous les articles de {{ category.name }} : {{ category.url }}
+
+{% endfor %}
+
+{{ outro|striptags }}
+
+{% endautoescape %}

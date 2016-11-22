@@ -48,13 +48,8 @@
           <div class="list-articles-meta">
             <?php
             if ( $is_event ) :
-              preg_match( "/(\d{2})\d{3}\W(.+),\WFrance/", get_field( 'place' )['address'], $address );
-              echo sprintf(
-                '<span class="list-articles-place">%s %s (%s)</span>',
-                get_telabotanica_module('icon', ['icon' => 'marker']),
-                @$address[2],
-                @$address[1]
-              );
+              $place = get_field( 'place' );
+              echo '<span class="list-articles-place">' . telabotanica_format_place( $place ) . '</span>';
             endif;
 
             echo sprintf(

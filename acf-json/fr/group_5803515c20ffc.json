@@ -119,10 +119,10 @@
             "prefix_name": 0
         },
         {
-            "key": "field_580366d5a9e01",
+            "key": "field_58337bc15ecd7",
             "label": "Lieu",
             "name": "place",
-            "type": "google_map",
+            "type": "algolia_places",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -131,10 +131,8 @@
                 "class": "",
                 "id": ""
             },
-            "center_lat": 46,
-            "center_lng": 2,
-            "zoom": 5,
-            "height": ""
+            "algolia_type": "all",
+            "algolia_countries": ""
         },
         {
             "key": "field_5803a65a08014",
@@ -234,5 +232,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479758519
+    "modified": 1479778549
 }

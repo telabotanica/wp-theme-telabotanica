@@ -24,7 +24,6 @@
       if ( $events ) :
         foreach ( $events as $event ) :
           $date_timestamp = strtotime( get_field( 'date', $event, false ) );
-          preg_match( "/(\d{2})\d{3}\W(.+),\WFrance/", get_field( 'place', $event )['address'], $address );
           echo '<li class="upcoming-events-item">';
           echo sprintf(
             '<a href="%s" class="upcoming-events-item-link">
@@ -33,14 +32,13 @@
                 <div class="upcoming-events-date-month">%s</div>
               </div>
               <div class="upcoming-events-name">%s</div>
-              <div class="upcoming-events-place">%s (%d)</div>
+              <div class="upcoming-events-place">%s</div>
             </a>',
             get_permalink($event),
             date_i18n('j', $date_timestamp),
             date_i18n('M', $date_timestamp),
             get_the_title($event),
-            @$address[2],
-            @$address[1]
+            telabotanica_format_place( get_field( 'place', $event ), false )
           );
           echo '</li>';
         endforeach;

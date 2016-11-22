@@ -19,3 +19,42 @@ function get_current_page_depth(){
 
  	return $depth;
 }
+
+/**
+ * Format place (saved using ACF field Algolia Places)
+ *
+ * @return string
+ */
+function telabotanica_format_place($place, $icon = true) {
+
+  if ( !is_object( $place ) ) return $place;
+
+  $template = '%s %s (%s)';
+
+  if ( $icon ) {
+    $icon = get_telabotanica_module('icon', ['icon' => 'marker']);
+  }
+
+  if ( $place->countryCode !== 'fr' ) {
+    $code = strtoupper( $place->countryCode );
+  } else if ( isset( $place->postcode ) ) {
+    $code = substr( $place->postcode, 0, 2 );
+  } else {
+    $code = $place->administrative;
+  }
+
+  if ( isset( $place->city ) ) {
+    $city = $place->city;
+  } else {
+    $city = $place->name;
+  }
+
+  $place = sprintf(
+    $template,
+    $icon,
+    $city,
+    $code
+  );
+
+ 	return $place;
+}

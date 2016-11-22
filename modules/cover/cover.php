@@ -2,13 +2,30 @@
   if (!isset($data->image)) $data->image = get_field('cover_image');
   if (!isset($data->title)) $data->title = get_the_title();
   if (!isset($data->subtitle)) $data->subtitle = get_field('cover_subtitle');
+  if (!isset($data->content)) $data->content = false;
+  if (!isset($data->modifiers)) $data->modifiers = '';
   ?>
-  <div class="cover" style="background-image: url(<?php echo $data->image['url'] ?>);">
+  <div class="cover <?php echo $data->modifiers ?>" style="background-image: url(<?php echo $data->image['url'] ?>);">
     <div class="layout-wrapper">
-      <h1 class="cover-title"><?php echo $data->title ?></h1>
-      <?php if ($data->subtitle) : ?>
-        <div class="cover-subtitle"><?php echo $data->subtitle ?></div>
-      <?php endif; ?>
+      <?php
+      echo sprintf(
+        '<h1 class="cover-title">%s</h1>',
+        $data->title
+      );
+
+      if ($data->subtitle) :
+        echo sprintf(
+          '<div class="cover-subtitle">%s</div>',
+          $data->subtitle
+        );
+      endif;
+
+      if ($data->content) :
+        echo sprintf(
+          '<div class="cover-content">%s</div>',
+          $data->content
+        );
+      endif; ?>
     </div>
     <?php
       if ( $data->image ) :

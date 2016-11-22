@@ -17,16 +17,22 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover'); ?>
+      <?php
+      $cover_buttons = get_field('cover_buttons');
 
-      <div class="layout-left-col">
+      if ( $cover_buttons ) :
+        $cover_buttons['display'] = 'seamless';
+        $cover_content = get_telabotanica_component( 'buttons', $cover_buttons );
+      endif;
+
+      the_telabotanica_module('cover', [
+        'content' => $cover_content,
+        'modifiers' => 'tall'
+      ]); ?>
+
+      <div class="layout-full-width">
         <div class="layout-wrapper">
-          <aside class="layout-column">
-            <?php the_telabotanica_module('button-top'); ?>
-          </aside>
-          <div class="layout-content">
-            <p>TODO</p>
-          </div>
+          <p>TODO</p>
         </div>
       </div>
 

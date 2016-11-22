@@ -11,6 +11,11 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* template outil :
+  * support des boutons du bandeau
+* module `cover` :
+  * support d'un contenu optionnel
+* layout `full-width` ajouté
 * module `categories-labels` ajouté
 * module `meta-news` ajouté
 * module `share` ajouté

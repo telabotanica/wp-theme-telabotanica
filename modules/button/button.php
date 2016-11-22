@@ -9,7 +9,7 @@
 
   if ( !empty($data->modifiers) && !is_array($data->modifiers) ) $data->modifiers = explode(' ', $data->modifiers);
 
-  if ( in_array('back', $data->modifiers) ) $data->icon_before = 'arrow-left';
+  if ( $data->modifiers && in_array('back', $data->modifiers) ) $data->icon_before = 'arrow-left';
 
   echo sprintf(
     '<a href="%s" class="button %s" target="%s" title="%s">%s<span class="button-text">%s<span>%s</a>',

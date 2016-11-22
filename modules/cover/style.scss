@@ -7,6 +7,10 @@
   min-height: 27.5rem;
   position: relative;
 
+  &.tall {
+    min-height: 37rem;
+  }
+
   &:before {
     background-color: transparentize($bleu-nuit, 0.6);
     content: "";
@@ -19,7 +23,8 @@
   }
 
   &-title,
-  &-subtitle {
+  &-subtitle,
+  &-content {
     position: relative;
   }
 
@@ -45,6 +50,10 @@
         border-bottom-color: transparent;
       }
     }
+  }
+
+  &-content {
+    margin-top: 2rem;
   }
 
   &-credits {

@@ -5,7 +5,7 @@
         {
             "key": "field_5820a29dc9764",
             "label": "Introduction",
-            "name": "tb_newsletter_introduction",
+            "name": "introduction",
             "type": "wysiwyg",
             "instructions": "",
             "required": 1,
@@ -23,7 +23,7 @@
         {
             "key": "field_58209d35fbc3e",
             "label": "Rubriques",
-            "name": "tb_newsletter_sections",
+            "name": "sections",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -42,7 +42,7 @@
                 {
                     "key": "field_5820a16a76f68",
                     "label": "Titre",
-                    "name": "tb_newsletter_sections_title",
+                    "name": "title",
                     "type": "taxonomy",
                     "instructions": "",
                     "required": 1,
@@ -64,7 +64,7 @@
                 {
                     "key": "field_5820a0432ffad",
                     "label": "Articles",
-                    "name": "tb_newsletter_sections_items",
+                    "name": "items",
                     "type": "relationship",
                     "instructions": "S\u00e9lectionnez les articles que vous souhaitez ajouter \u00e0 cette section.",
                     "required": 0,
@@ -92,7 +92,7 @@
         {
             "key": "field_5820a2dcb23d5",
             "label": "Pied de page",
-            "name": "tb_newsletter_footer",
+            "name": "footer",
             "type": "wysiwyg",
             "instructions": "",
             "required": 1,
@@ -125,5 +125,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1479830064
+    "modified": 1478533934
 }

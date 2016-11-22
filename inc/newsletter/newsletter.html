@@ -1,0 +1,68 @@
+{% autoescape 'html' %}
+
+<bandeau>Lettre d'information du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM") }}</bandeau>
+<logos-sociaux></logos-sociaux>
+
+<intro>
+
+	<logo-tela></logo-tela>
+
+	{{ intro|raw }}
+
+</intro>
+
+{% for category_id, category in categories %}
+
+	<category class="{{ category.slug }}">
+
+	{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+
+		<h2>{{ subcategory }}</h2>
+
+		{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+
+			{% if not item.is_event %}
+
+				{% if item.thumbnail %}
+				<img src="{{ item.thumbnail }}" alt="">
+				{% endif %}
+
+				<h3>{{ item.post.post_title }}</h3>
+
+				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
+
+			{% else %}
+
+				<date>{{ item.date_alt|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date>
+
+				<h3>{{ item.post.post_title }}</h3>
+
+				<place>{{ item.place }}</place> - Publié par {{ item.author }}
+
+			{% endif %}
+
+			<p>
+				{{ item.content }} <a href="{{ item.link }}">Lire la suite</a>
+			</p>
+
+		{% endfor %}
+
+		<hr>
+
+	{% endfor %}
+
+		<a href="{{ category.url }}">Tous les articles de {{ category.name }}</a>
+
+	</category>
+
+{% endfor %}
+
+<outro>
+
+	<logo-tela></logo-tela>
+
+	{{ outro|raw }}
+
+</outro>
+
+{% endautoescape %}

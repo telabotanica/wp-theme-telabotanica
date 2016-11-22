@@ -65,7 +65,7 @@
             ?>
             &ndash;
             <span class="list-articles-author"><?php echo sprintf( __( 'par %s', 'telabotanica' ), get_the_author() ); ?></span>
-            <span class="list-articles-categories"><?php the_category( ' ' ); ?></span>
+            <?php the_telabotanica_module('categories-labels'); ?>
           </div>
           <?php the_title( sprintf( '<h2 class="list-articles-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
           <?php the_excerpt(); ?>

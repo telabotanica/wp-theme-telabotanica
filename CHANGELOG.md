@@ -11,8 +11,14 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `categories-labels` ajouté
+* module `meta-news` ajouté
+* module `share` ajouté
+* module `button` :
+  * support d'une icône avant ou après le texte
 * groupes de champs évènements :
   * simplification du choix date unique / date de début et fin
+  * remplacement de Google Maps par Algolia Places
 * module `button-top` ajouté
 * module `nav-project` ajouté
 * composant `contact` :

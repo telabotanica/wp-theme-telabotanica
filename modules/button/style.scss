@@ -52,6 +52,10 @@
     color: $vert-fonce;
     padding: 0;
 
+    > .icon {
+      height: 1.4rem;
+    }
+
     & + & {
       margin-left: 3rem;
     }
@@ -73,6 +77,24 @@
       &:hover, &:focus {
         color: lighten($orange, 8%);
       }
+    }
+
+    &.back {
+      &:after {display: none;}
+    }
+  }
+
+  > .icon {
+    fill: currentColor;
+    vertical-align: sub;
+  }
+
+  &-text {
+    display: inline-block;
+
+    .icon + &,
+    & + .icon {
+      margin-left: 1rem;
     }
   }
 }

@@ -1,0 +1,19 @@
+.categories-labels {
+  line-height: 2.2rem;
+
+  a {
+    background-color: transparentize($taupe, 0.8);
+    border-radius: 1.1rem;
+    color: $marron;
+    display: inline-block;
+    padding: 0 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover, &:focus {
+      background-color: transparentize($taupe, 0.6);
+      color: $gris33;
+    }
+  }
+
+}

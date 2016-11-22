@@ -24,6 +24,7 @@ $telabotanica_modules = [
   'button-top',
   'card-project',
   'categories',
+  'categories-labels',
   'cover',
   'cover-project',
   'footer',
@@ -32,8 +33,10 @@ $telabotanica_modules = [
   'icon',
   'list-articles',
   'list-projects',
+  'meta-news',
   'nav-project',
   'pagination',
+  'share',
   'toc',
   'upcoming-events',
 ];

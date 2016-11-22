@@ -13,9 +13,9 @@
           </div>
 
           <ul class="footer-about-tela-social-items">
-            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'facebook']) ?> Facebook</a></li>
-            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'twitter']) ?> Twitter</a></li>
-            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'pinterest']) ?> Pinterest</a></li>
+            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'facebook-disc']) ?> Facebook</a></li>
+            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'twitter-disc']) ?> Twitter</a></li>
+            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'pinterest-disc']) ?> Pinterest</a></li>
           </ul>
         </div>
 

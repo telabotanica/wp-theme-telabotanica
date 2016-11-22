@@ -51,6 +51,7 @@ array_walk($telabotanica_modules, function ($module) {
  */
 $telabotanica_blocks = [
   'list-features',
+  'main-features',
 ];
 array_walk($telabotanica_blocks, function ($block) {
  if (!locate_template('blocks/' . $block . '/' . $block . '.php', true, true)) {

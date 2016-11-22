@@ -1,8 +1,9 @@
 <?php function telabotanica_block_list_features($data) {
   if (!isset($data->title)) $data->title = get_sub_field('title');
   if (!isset($data->items)) $data->items = get_sub_field('items');
+  if (!isset($data->background_color)) $data->background_color = get_sub_field('background_color');
 
-  echo '<div class="block block-list-features">';
+  echo '<div class="block block-list-features" style="background-color: ' . $data->background_color . '">';
 
     echo '<h2 class="block-list-features-title">' . $data->title . '</h2>';
 

@@ -1,28 +1,9 @@
 {
-    "key": "group_583458a889f29",
-    "title": "Bloc liste de fonctionnalit\u00e9s",
+    "key": "group_58348e46ea597",
+    "title": "Bloc fonctionnalit\u00e9s principales",
     "fields": [
         {
-            "key": "field_5834597157204",
-            "label": "Titre",
-            "name": "title",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Fonctionnalit\u00e9s",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_58348b63dd882",
+            "key": "field_58348e473d332",
             "label": "Couleur de fond",
             "name": "background_color",
             "type": "color_picker",
@@ -30,14 +11,14 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "default_value": "#FFFFFF"
         },
         {
-            "key": "field_5834593b57202",
+            "key": "field_58348e473d3c6",
             "label": "Items",
             "name": "items",
             "type": "repeater",
@@ -49,14 +30,14 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_5834595957203",
+            "collapsed": "field_58348e4750bfa",
             "min": 2,
-            "max": 10,
+            "max": 3,
             "layout": "table",
             "button_label": "Ajouter une fonctionnalit\u00e9",
             "sub_fields": [
                 {
-                    "key": "field_5834595957203",
+                    "key": "field_58348e4750bfa",
                     "label": "Titre",
                     "name": "title",
                     "type": "text",
@@ -64,7 +45,7 @@
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "25",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -75,7 +56,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5834796f57205",
+                    "key": "field_58348e4750ca0",
                     "label": "Texte",
                     "name": "text",
                     "type": "textarea",
@@ -83,7 +64,7 @@
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "25",
+                        "width": "34",
                         "class": "",
                         "id": ""
                     },
@@ -94,7 +75,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_583479f157206",
+                    "key": "field_58348e4750d42",
                     "label": "Ic\u00f4ne",
                     "name": "icon",
                     "type": "image",
@@ -102,7 +83,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "25",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -116,21 +97,6 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "svg,png"
-                },
-                {
-                    "key": "field_58347a1557207",
-                    "label": "Couleur",
-                    "name": "color",
-                    "type": "color_picker",
-                    "instructions": "Couleur de l'ic\u00f4ne",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "25",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "#CCCCCC"
                 }
             ]
         }
@@ -152,5 +118,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1479839983
+    "modified": 1479840055
 }

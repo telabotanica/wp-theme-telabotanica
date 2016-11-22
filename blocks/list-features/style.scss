@@ -52,10 +52,6 @@
         width: 100%;
       }
 
-      &:hover, &:focus {
-        &:after {opacity: 0.3;}
-      }
-
       svg, img {
         max-height: 2.4rem;
         max-width: 2.4rem;

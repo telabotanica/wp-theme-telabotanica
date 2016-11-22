@@ -11,8 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
-* styleguide : support des blocs
+* bloc `main-features` ajouté
 * bloc `list-features` ajouté
+* styleguide : support des blocs
 * template outil :
   * support des boutons du bandeau
 * module `cover` :

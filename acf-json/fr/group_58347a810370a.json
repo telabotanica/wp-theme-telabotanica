@@ -20,6 +20,37 @@
             "max": 5,
             "layouts": [
                 {
+                    "key": "58348f9854e50",
+                    "name": "main-features",
+                    "label": "Fonctionnalit\u00e9s principales",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58348f9854e51",
+                            "label": "Fonctionnalit\u00e9s principales",
+                            "name": "main-features",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58348e46ea597"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "58347a9e9b492",
                     "name": "list-features",
                     "label": "Liste de fonctionnalit\u00e9s",
@@ -27,12 +58,12 @@
                     "sub_fields": [
                         {
                             "key": "field_58347abf9d6b1",
-                            "label": "list-features",
+                            "label": "Liste de fonctionnalit\u00e9s",
                             "name": "list-features",
                             "type": "clone",
                             "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
+                            "required": "",
+                            "conditional_logic": "",
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -42,9 +73,9 @@
                                 "group_583458a889f29"
                             ],
                             "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                            "layout": "",
+                            "prefix_label": "",
+                            "prefix_name": ""
                         }
                     ],
                     "min": "",
@@ -70,5 +101,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1479834635
+    "modified": 1479840438
 }

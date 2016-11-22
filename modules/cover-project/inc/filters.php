@@ -13,7 +13,8 @@ function telabotanica_bp_get_group_join_button( $button ) {
 
   the_telabotanica_module('button', [
     'href' => $button['link_href'],
-    'text' => $button['link_text'] . ( $icon ? get_telabotanica_module('icon', ['icon' => $icon]) : '' ),
+    'text' => $button['link_text'],
+    'icon_after' => $icon ? $icon : false,
     'modifiers' => 'outline'
   ] );
   return false;

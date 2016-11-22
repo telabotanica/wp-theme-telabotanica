@@ -68,11 +68,7 @@
 
   &-back,
   &-meta {
-    font-family: $ubuntu;
-    font-size: 1.3rem;
-    letter-spacing: 0.1rem;
     line-height: 4.7rem;
-    padding: 1rem 1.5rem;
     position: absolute;
     text-transform: uppercase;
     top: 0;
@@ -84,23 +80,15 @@
   }
 
   &-back {
-    color: $blanc;
-    font-weight: $medium;
     left: 0;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-
-    &:hover, &:focus {
-      opacity: 0.7;
-    }
-
-    .icon {
-      margin-right: 0.5rem;
-      vertical-align: sub;
-    }
+    margin: 1rem 1.5rem;
   }
 
   &-meta {
+    font-family: $ubuntu;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    padding: 1rem 1.5rem;
     right: 0;
 
     > * + * {

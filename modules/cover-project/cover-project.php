@@ -26,12 +26,11 @@ function telabotanica_module_cover_project($data) {
     //   'text' => __( 'Visiter le site web', 'telabotanica' )
     // ] );
 
-    echo sprintf(
-      '<a href="%s" class="cover-project-back">%s %s</a>',
-      bp_get_groups_directory_permalink(),
-      get_telabotanica_module('icon', ['icon' => 'arrow-left']),
-      __( 'Retour à la liste', 'telabotanica' )
-    );
+    the_telabotanica_module('button', [
+      'href' => bp_get_groups_directory_permalink(),
+      'text' => __( 'Retour à la liste', 'telabotanica' ),
+      'modifiers' => 'cover-project-back white link back'
+    ] );
 
     echo '<div class="cover-project-meta">';
       $visibility_icons = [

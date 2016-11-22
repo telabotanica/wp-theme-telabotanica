@@ -79,6 +79,14 @@
       }
     }
 
+    &.white {
+      color: $blanc;
+
+      &:hover, &:focus {
+        opacity: 0.7;
+      }
+    }
+
     &.back {
       &:after {display: none;}
     }

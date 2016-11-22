@@ -5,11 +5,13 @@
   font-size: 1.3rem;
   font-weight: $medium;
   letter-spacing: 0.1rem;
+  position: relative;
   text-align: center;
   text-transform: uppercase;
 
   &-items {
     @include reset-list;
+    margin: 0 15rem;
 
     > li {
       display: inline-block;
@@ -43,6 +45,26 @@
         &:after {
           content: ")";
         }
+      }
+    }
+  }
+
+  > .share {
+    padding: 1rem 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .share-item + .share-item {
+      margin-left: 0;
+    }
+
+    a {
+      fill: $marron;
+      padding: 1rem;
+
+      &:hover, &:focus {
+        fill: $gris33;
       }
     }
   }

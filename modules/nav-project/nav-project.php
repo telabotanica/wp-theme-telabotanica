@@ -2,7 +2,7 @@
 
   echo '<div class="nav-project">';
     echo '<ul class="nav-project-items">';
-    
+
       bp_get_options_nav();
 
       /**
@@ -13,6 +13,8 @@
       do_action( 'bp_group_options_nav' );
 
     echo '</ul>';
+
+    the_telabotanica_module('share');
   echo '</div>';
 
 }

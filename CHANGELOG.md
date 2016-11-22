@@ -21,6 +21,7 @@ plus de détails sur http://semver.org/lang/fr/
   * remplacement de Google Maps par Algolia Places
 * module `button-top` ajouté
 * module `nav-project` ajouté
+  * boutons de partage ajoutés
 * composant `contact` :
   * correction bug photo quand texte trop long
 * module `cover-project` ajouté

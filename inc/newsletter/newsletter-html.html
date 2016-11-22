@@ -42,7 +42,7 @@
 			{% endif %}
 
 			<p>
-				{{ item.content }} <a href="{{ item.link }}">Lire la suite</a>
+				{{ item.post.post_content|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire la suite</a>
 			</p>
 
 		{% endfor %}

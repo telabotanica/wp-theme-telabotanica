@@ -28,7 +28,7 @@
 
 			{% endif %}
 
-				{{ item.content|striptags }} Lire la suite : {{ item.link }}
+				{{ item.post.post_content|striptags|truncate(200, true) }} Lire la suite : {{ item.link }}
 
 				----------------
 

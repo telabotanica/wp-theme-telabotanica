@@ -1,6 +1,6 @@
 <?php function telabotanica_block_main_features($data) {
   if (!isset($data->items)) $data->items = get_sub_field('items');
-  if (!isset($data->background_color)) $data->background_color = '#fff';
+  if (!isset($data->background_color)) $data->background_color = get_sub_field('background_color');
 
   echo '<div class="block block-main-features" style="background-color: ' . $data->background_color . '">';
 

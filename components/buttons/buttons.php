@@ -4,8 +4,8 @@
   if (empty($data->display)) $data->display = 'buttons';
 
   $data->modifiers = [ 'component', 'component-buttons' ];
-  if ( $data->display === 'links' ) $data->modifiers[] = 'as-links';
-  if ( $data->display === 'seamless' ) $data->modifiers[] = 'as-seamless';
+  if ( $data->display === 'links' || ( is_array( $data->display ) && in_array('links', $data->display) ) ) $data->modifiers[] = 'as-links';
+  if ( $data->display === 'seamless' || ( is_array( $data->display ) && in_array('seamless', $data->display) ) ) $data->modifiers[] = 'as-seamless';
 
   echo '<div class="' . implode($data->modifiers, ' ') . '">';
 
@@ -29,7 +29,7 @@
         $item->modifiers = [ $item->modifiers ];
       }
 
-      if ( $data->display === 'links' ) {
+      if ( in_array('as-links', $data->modifiers ) ) {
         $item->modifiers[] = 'link';
       }
 

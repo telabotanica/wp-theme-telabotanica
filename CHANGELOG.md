@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* bloc `focus` ajouté
 * bloc `main-features` ajouté
 * bloc `list-features` ajouté
 * styleguide : support des blocs

@@ -11,7 +11,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "80",
                 "class": "",
                 "id": ""
             },
@@ -92,7 +92,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -104,7 +104,7 @@
             "other_choice": 0,
             "save_other_choice": 0,
             "default_value": "buttons",
-            "layout": "horizontal",
+            "layout": "vertical",
             "return_format": "value"
         }
     ],
@@ -125,5 +125,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1479373388
+    "modified": 1479914474
 }

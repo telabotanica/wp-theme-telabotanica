@@ -31,7 +31,7 @@
                             "name": "main-features",
                             "type": "clone",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -40,6 +40,37 @@
                             },
                             "clone": [
                                 "group_58348e46ea597"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58359620c9fd1",
+                    "name": "focus",
+                    "label": "Focus",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58359620c9fd2",
+                            "label": "Focus",
+                            "name": "focus",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_583594000c481"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -62,8 +93,8 @@
                             "name": "list-features",
                             "type": "clone",
                             "instructions": "",
-                            "required": "",
-                            "conditional_logic": "",
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -73,9 +104,9 @@
                                 "group_583458a889f29"
                             ],
                             "display": "seamless",
-                            "layout": "",
-                            "prefix_label": "",
-                            "prefix_name": ""
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -101,5 +132,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1479840438
+    "modified": 1479910965
 }

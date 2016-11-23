@@ -1,0 +1,100 @@
+{
+    "key": "group_5833121029805",
+    "title": "Options des applications externes",
+    "fields": [
+        {
+            "key": "field_583312d594537",
+            "label": "Chemin syst\u00e8me vers eFlore",
+            "name": "applis_externes_chemin_eflore",
+            "type": "text",
+            "instructions": "Chemin vers le dossier racine de l'application eFlore, dans lequel se trouve le fichier eflore_wordpress.php.\r\nNe pas mettre de slash (\"\/\") \u00e0 la fin.\r\nCe dossier doit \u00eatre accessible en HTTP (voir param\u00e8tre suivant).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "\/home\/moncompte\/www\/eflore\/consultation",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_583414502658f",
+            "label": "Chemin HTTP vers eFlore",
+            "name": "applis_externes_chemin_eflore_http",
+            "type": "text",
+            "instructions": "Chemin HTTP vers l'application eFlore, pour charger les scripts et les styles.\r\nNe pas mettre de slash (\"\/\") \u00e0 la fin.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/mon-site.org\/eflore\/consultation",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5833136394538",
+            "label": "Chemin syst\u00e8me vers Chorologie",
+            "name": "applis_externes_chemin_chorologie",
+            "type": "text",
+            "instructions": "Chemin vers le dossier racine de l'application Chorologie, dans lequel se trouve le fichier chorologie_wordpress.php.\r\nNe pas mettre de slash (\"\/\") \u00e0 la fin.\r\nCe dossier doit \u00eatre accessible en HTTP (voir param\u00e8tre suivant).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "..\/chorologie\/consultation",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_583414f2fec6f",
+            "label": "Chemin HTTP vers Chorologie",
+            "name": "applis_externes_chemin_chorologie_http",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/mon-site.org\/chorologie",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tb_applis_externes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1479808284
+}

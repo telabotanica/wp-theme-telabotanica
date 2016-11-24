@@ -32,9 +32,13 @@
     echo $data->embed;
   echo '</div>';
 
-  echo '<div class="component-embed-description" id="' . $data->description_id . '">';
-    echo $data->description;
-  echo '</div>';
+  if ( $data->description ) :
+
+    echo '<div class="component-embed-description" id="' . $data->description_id . '">';
+      echo $data->description;
+    echo '</div>';
+  
+  endif;
 
   echo '</div>';
 }

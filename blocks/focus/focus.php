@@ -12,17 +12,17 @@
 
   echo '<div class="block block-focus" style="background-color: ' . $data->background_color . '">';
 
+    if ( $data->main_component_place === 'top' && have_rows('main_component') ) :
+
+      while ( have_rows('main_component') ) : the_row();
+
+        the_telabotanica_component(get_row_layout(), $data->main_component);
+
+      endwhile;
+
+    endif;
+
     echo '<div class="block-focus-header">';
-
-      if ( $data->main_component_place === 'top' && have_rows('main_component') ) :
-
-        while ( have_rows('main_component') ) : the_row();
-
-          the_telabotanica_component(get_row_layout(), $data->main_component);
-
-        endwhile;
-
-      endif;
 
       echo '<h2 class="block-focus-title">' . $data->title . '</h2>';
 

@@ -1,5 +1,10 @@
 .block-focus {
 
+  > .component {
+    margin: 0 auto 5rem;
+    max-width: 100rem;
+  }
+
   &-header {
     margin: 0 auto;
     max-width: 66rem;

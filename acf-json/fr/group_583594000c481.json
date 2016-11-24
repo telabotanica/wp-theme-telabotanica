@@ -88,24 +88,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_583622b1ea9fa",
-            "label": "Texte",
-            "name": "text",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0
-        },
-        {
             "key": "field_583594c864275",
             "label": "Composant principal",
             "name": "main_component",
@@ -209,6 +191,24 @@
             "default_value": "left",
             "layout": "vertical",
             "return_format": "value"
+        },
+        {
+            "key": "field_583622b1ea9fa",
+            "label": "Texte",
+            "name": "text",
+            "type": "wysiwyg",
+            "instructions": "Utilisez des titres de niveau 3 (balise h3) pour les intertitres.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0
         },
         {
             "key": "field_5835b20cc9b6d",
@@ -324,5 +324,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1479942963
+    "modified": 1479946472
 }

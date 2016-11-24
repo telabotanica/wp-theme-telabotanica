@@ -92,7 +92,7 @@
             "label": "Composant principal",
             "name": "main_component",
             "type": "flexible_content",
-            "instructions": "",
+            "instructions": "L'option de positionnement du composant image n'est pas pris en compte.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -324,5 +324,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1479946472
+    "modified": 1479947676
 }

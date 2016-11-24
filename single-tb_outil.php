@@ -43,25 +43,24 @@ get_header(); ?>
         endif;
         ?>
       </div>
-      <div class="layout-full-width background-beige">
-        <div class="layout-wrapper">
-          <div class="layout-components">
-            <?php
-            // Si la page utilise des composants
-            if( have_rows('components') ):
+      <?php
+      // Si la page utilise des composants
+      if( have_rows('components') ) : ?>
+        <div class="layout-full-width background-beige">
+          <div class="layout-wrapper">
+            <div class="layout-components">
+              <?php
+              // On boucle sur les composants
+              while ( have_rows('components') ) : the_row();
 
-                // On boucle sur les composants
-                while ( have_rows('components') ) : the_row();
+                the_telabotanica_component(get_row_layout());
 
-                  the_telabotanica_component(get_row_layout());
-
-                endwhile;
-
-            endif;
-            ?>
+              endwhile;
+              ?>
+            </div>
           </div>
         </div>
-      </div>
+      <?php endif; ?>
 
     </main><!-- .site-main -->
   </div><!-- .content-area -->

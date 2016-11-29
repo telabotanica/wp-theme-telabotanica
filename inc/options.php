@@ -11,4 +11,15 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
 	));
+
+	// Options pour les application externes intégrées (eFlore, Chorologie...)
+	acf_add_options_page(array(
+		'page_title' 	=> __( "Applis externes", 'tb_applis_externes' ),
+		'menu_title'	=> __( "Applis externes", 'tb_applis_externes' ),
+		'menu_slug' 	=> 'tb_applis_externes',
+		'capability'	=> 'administrator',
+		'position'    => 105,
+		'icon_url'    => 'dashicons-screenoptions',
+		'redirect'		=> false
+	));
 }

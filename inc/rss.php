@@ -56,20 +56,29 @@ add_action( 'pre_get_posts', 'my_pre_get_posts' );
 function fields_in_feed($content) {
     if(is_feed()) {
         $post_id = get_the_ID();
-        $output = "";
-        $content = get_field('description', $post_id); 
-        $date = get_field('date', $post_id);
-        $date_end = get_field('date_end', $post_id);
-        if (!is_null($date)) {
-			if (is_null($date_end)) {
-				$output = "Le ".$date." ";
-			} else {
-				$output = "Du ";
-				$output .= $date;
-				$output .= " au ".$date_end." ";
-			} 
+		$categories = get_the_category();
+		// identifiants de toutes les catégories
+		$categories_ids = array();
+		foreach ($categories as $categ) {
+			$categories_ids[] = $categories[0]->term_id;
 		}
-        $content = $output.$content;  
+		// affichage selon catégorie
+		if (in_array(36, $categories_ids)) { // événement
+			$content = get_field('description', $post_id); 
+	        $date = get_field('date', $post_id);
+			$date_end = get_field('date_end', $post_id);
+			$output = "";
+			if (!is_null($date)) {
+				if (is_null($date_end)) {
+					$output = "Le ".$date." ";
+				} else {
+					$output = "Du ";
+					$output .= $date;
+					$output .= " au ".$date_end." ";
+				} 
+			}
+			$content = $output.$content;  
+		}
     }  
     return $content;  
 }  

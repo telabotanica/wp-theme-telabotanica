@@ -64,7 +64,7 @@
             "label": "Chemin HTTP vers Chorologie",
             "name": "applis_externes_chemin_chorologie_http",
             "type": "text",
-            "instructions": "",
+            "instructions": "Chemin HTTP vers l'application Chorologie, pour charger les scripts et les styles.\r\nNe pas mettre de slash (\"\/\") \u00e0 la fin.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -96,5 +96,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1479808284
+    "modified": 1480673397
 }

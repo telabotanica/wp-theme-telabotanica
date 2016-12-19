@@ -77,6 +77,44 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5857dae58aef3",
+            "label": "Chemin syst\u00e8me vers coel-consultation",
+            "name": "applis_externes_chemin_collections",
+            "type": "text",
+            "instructions": "Chemin vers le dossier racine de l'application coel-consultation, dans lequel se trouve le fichier collection_wordpress.php.\r\nNe pas mettre de slash (\"\/\") \u00e0 la fin.\r\nCe dossier doit \u00eatre accessible en HTTP (voir param\u00e8tre suivant).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "\/home\/moncompte\/www\/coel-consultation",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5857db268aef4",
+            "label": "Chemin HTTP vers coel-consultation",
+            "name": "applis_externes_chemin_collections_http",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/mon-site.org\/coel-consultation",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -96,5 +134,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1480673397
+    "modified": 1482152874
 }

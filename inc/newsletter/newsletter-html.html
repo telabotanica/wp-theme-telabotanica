@@ -21,7 +21,19 @@
 
 		{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
 
-			{% if not item.is_event %}
+			{% if item.event.date %}
+
+				<date>{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date>
+
+				{% if item.event.date_end %}
+				<date-end>{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date-end>
+				{% endif %}
+
+				<h3>{{ item.post.post_title }}</h3>
+
+				<place>{{ item.place }}</place> - Publié par {{ item.author }}
+
+			{% else %}
 
 				{% if item.thumbnail %}
 				<img src="{{ item.thumbnail }}" alt="">
@@ -30,14 +42,6 @@
 				<h3>{{ item.post.post_title }}</h3>
 
 				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
-
-			{% else %}
-
-				<date>{{ item.date_alt|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date>
-
-				<h3>{{ item.post.post_title }}</h3>
-
-				<place>{{ item.place }}</place> - Publié par {{ item.author }}
 
 			{% endif %}
 

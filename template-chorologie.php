@@ -11,6 +11,9 @@ Template Name: chorologie
 */
 
 $dossier_chorologie = get_field('applis_externes_chemin_chorologie', 'options');
+
+// Cette variable globale sera utilisée par l'amorceur chorologie_wordpress.php
+// @TODO faire moins bancal un jour
 $chemin_chorologie_http = get_field('applis_externes_chemin_chorologie_http', 'options');
 
 // Inclusion de l'appli

@@ -11,6 +11,9 @@ Template Name: eflore
 */
 
 $dossier_eflore = get_field('applis_externes_chemin_eflore', 'options');
+
+// Cette variable globale sera utilisée par l'amorceur eflore_wordpress.php
+// @TODO faire moins bancal un jour
 $chemin_eflore_http = get_field('applis_externes_chemin_eflore_http', 'options');
 
 // Inclusion de l'appli

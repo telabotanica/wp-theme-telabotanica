@@ -10,7 +10,6 @@
 Template Name: collections
 */
 
-// Rendu spécifique au template Collections
 $dossier_collections = get_field('applis_externes_chemin_collections', 'options');
 // Cette variable globale sera utilisée par l'amorceur collection_wordpress.php
 // @TODO faire moins bancal un jour
@@ -77,9 +76,21 @@ function template_collections_entete() {
 			<?php the_telabotanica_module('toc', [
 				'items' => [
 					[
-						'text' => 'Rechercher parmi les collections',
+						'text' => 'Rechercher',
 						'href' => '#recherche-collections',
-						'active' => false
+						'active' => true,
+						'items' => [
+							[
+								'text' => 'Rechercher une collection',
+								'href' => '#rechercher-parmi-collections',
+								'active' => false
+							],
+							[
+								'text' => 'Rechercher une personne',
+								'href' => '#rechercher-parmi-personnes',
+								'active' => false
+							]
+						]
 					],
 					[
 						'text' => 'Résultats de recherche',

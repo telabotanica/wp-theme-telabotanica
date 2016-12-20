@@ -1,3 +1,19 @@
 .appli-collections {
-	
+
+	#col-form, #pers-form {
+		input[type="submit"] {
+			border: none;
+			cursor: pointer;
+		}
+	}
+
+	#col_resultat {
+		margin-bottom: 50px;
+		li {
+			padding-top: 3px;
+		}
+		ul > li > a {
+			color: #598000;
+		}
+	}
 }

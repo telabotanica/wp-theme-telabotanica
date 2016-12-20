@@ -11,7 +11,6 @@ Template Name: chorologie
 */
 
 $dossier_chorologie = get_field('applis_externes_chemin_chorologie', 'options');
-
 // Cette variable globale sera utilisée par l'amorceur chorologie_wordpress.php
 // @TODO faire moins bancal un jour
 $chemin_chorologie_http = get_field('applis_externes_chemin_chorologie_http', 'options');
@@ -22,15 +21,82 @@ if (is_dir($dossier_chorologie)) {
 	require $chemin_chorologie;
 
 	// Rendu
+	// get_header() doit être placé après le require sans quoi les
+	// scripts et styles ne seront pas amorcés
 	get_header();
-	// fonctions définies dans chorologie_wordpress.php
-	//echo chorologie_get_contenu_tete();
-	//echo chorologie_get_contenu_navigation();
-	echo chorologie_get_contenu();
-	echo chorologie_get_contenu_pied();
+	template_chorologie_entete();
+	?>
+	<div class="appli-chorologie">
+		<?php
+		// fonctions définies dans chorologie_wordpress.php
+		//echo chorologie_get_contenu_tete();
+		//echo chorologie_get_contenu_navigation();
+		echo chorologie_get_contenu();
+		echo chorologie_get_contenu_pied();
+		?>
+	</div>
+	<?php
 } else {
 	get_header();
-	echo "Impossible de charger Chorologie, vérifiez la configuration.";
+	template_chorologie_entete();
+	?>
+	<div class="component component-text">Impossible de charger Chorologie, vérifiez la configuration.</div>
+	<?php
 }
 
+// fermeture des balises ouvertes par template_chorologie_entete() ?>
+</article>
+</div>
+</div>
+</div>
+</main><!-- .site-main -->
+</div><!-- .content-area -->
+
+<?php
 get_footer();
+
+/**
+ * Factorisation crado des éléments communs au cas général et au cas d'erreur, à
+ * cause de la nécesité d'appeler get_header() après l'inclusion de l'appli
+ */
+function template_chorologie_entete() {
+	?>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+	  <?php the_telabotanica_module('cover'); ?>
+
+	  <div class="layout-left-col">
+		<div class="layout-wrapper">
+		  <aside class="layout-column">
+			<?php the_telabotanica_module('toc', [
+				'items' => [
+					[
+						'text' => 'Par département',
+						'href' => '?module=liste-zones-geo',
+						'active' => ($_GET['module'] == 'liste-zones-geo')
+					],
+					[
+						'text' => 'Liste des taxons',
+						'href' => '?module=liste-taxons',
+						'active' => ($_GET['module'] == 'liste-taxons')
+					],
+					[
+						'text' => 'Carte',
+						'href' => '?module=carte',
+						'active' => ($_GET['module'] == 'carte')
+					]
+				]
+			]); ?>
+			<?php the_telabotanica_module('button-top'); ?>
+		  </aside>
+		  <div class="layout-content">
+			<?php the_telabotanica_module('breadcrumbs'); ?>
+			<article class="article">
+				<div class="component component-title level-2">
+					<h1 id="recherche-collections">Chorologie départementale</h1>
+				</div>
+				<div class="component component-text">
+					<p>Ceci est un texte de présentation, pour la chorologie départementale.</p>
+				</div>
+<?php }

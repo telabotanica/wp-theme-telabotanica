@@ -12,19 +12,23 @@
 
 		{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
 
-			{% if not item.is_event %}
+			{% if item.event.date %}
 
 				* {{ item.post.post_title }} *
 
-				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
+				{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d MMM") }}
+
+				{% if item.event.date_end %}
+				{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") }}
+				{% endif %}
+
+				{{ item.place }} - Publié par {{ item.author }}
 
 			{% else %}
 
 				* {{ item.post.post_title }} *
 
-				{{ item.date_alt|localizeddate("none", "none", "fr-FR", null, "d MMM") }}
-
-				{{ item.place }} - Publié par {{ item.author }}
+				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
 			{% endif %}
 

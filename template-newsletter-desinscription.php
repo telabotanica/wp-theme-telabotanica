@@ -109,7 +109,7 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 				}
 				?>
 				<p>
-					Une erreur est survenue lors de la désinscription, nous en avons eté informés.
+					Une erreur est survenue lors de la désinscription, nous en avons été informés.
 					<br/>
 					Pour plus d'informations n'hésitez pas à nous contacter.
 				</p>
@@ -122,7 +122,7 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 		<form method="post" action="" class="form-newsletter layout-column">
 			<input type="hidden" name="name" id="name">
 			<fieldset class="form-newsletter-fields">
-				<input class="form-newsletter-email" type="email" name="email" placeholder="Votre adresse e-mail" type="email">
+				<input class="form-newsletter-email" name="email" placeholder="Votre adresse e-mail" type="email">
 				<svg aria-hidden="true" role="img" class="icon icon-mail "><use xlink:href="#icon-mail"/></svg>
 				<button class="form-newsletter-button" type="submit">
 					Me désinscrire

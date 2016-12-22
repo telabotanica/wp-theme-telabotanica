@@ -69,22 +69,24 @@ function template_chorologie_entete() {
 	  <div class="layout-left-col">
 		<div class="layout-wrapper">
 		  <aside class="layout-column">
-			<?php the_telabotanica_module('toc', [
+			<?php
+				$module = chorologie_get_module();
+				the_telabotanica_module('toc', [
 				'items' => [
 					[
 						'text' => 'Par département',
 						'href' => '?module=liste-zones-geo',
-						'active' => ($_GET['module'] == 'liste-zones-geo')
+						'active' => ($module == 'liste-zones-geo')
 					],
 					[
 						'text' => 'Liste des taxons',
 						'href' => '?module=liste-taxons',
-						'active' => ($_GET['module'] == 'liste-taxons')
+						'active' => ($module == 'liste-taxons')
 					],
 					[
 						'text' => 'Carte',
 						'href' => '?module=carte',
-						'active' => ($_GET['module'] == 'carte')
+						'active' => ($module == 'carte' || $module == 'carte-taxon')
 					]
 				]
 			]); ?>

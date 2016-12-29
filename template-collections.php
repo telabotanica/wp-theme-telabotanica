@@ -73,7 +73,9 @@ function template_collections_entete() {
 	  <div class="layout-left-col">
 		<div class="layout-wrapper">
 		  <aside class="layout-column">
-			<?php the_telabotanica_module('toc', [
+		  <?php
+			$module = collections_get_module();
+			the_telabotanica_module('toc', [
 				'items' => [
 					[
 						'text' => 'Rechercher',
@@ -82,13 +84,18 @@ function template_collections_entete() {
 						'items' => [
 							[
 								'text' => 'Rechercher une collection',
-								'href' => '#rechercher-parmi-collections',
+								'href' => '?module=Recherche#rechercher-parmi-collections',
 								'active' => false
 							],
 							[
 								'text' => 'Rechercher une personne',
-								'href' => '#rechercher-parmi-personnes',
+								'href' => '?module=Recherche#rechercher-parmi-personnes',
 								'active' => false
+							],
+							[
+								'text' => 'Rechercher une publication',
+								'href' => '?module=RecherchePublications',
+								'active' => ($module == 'RecherchePublications')
 							]
 						]
 					],

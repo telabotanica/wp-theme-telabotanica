@@ -115,6 +115,10 @@ function template_collections_entete() {
 					<h1 id="recherche-collections">Rechercher parmi les collections</h1>
 				</div>
 				<div class="component component-text">
-					<p>Ceci est un texte de présentation, pour le moteur de recherche sur les collections.</p>
+					<p>
+						Recherchez une collection botanique, une institution hébergeant un herbier, une personne ou une publication.
+						<br>
+						Complétez l'inventaire sur <a href="https://beta.tela-botanica.org/preprod/outils/collections-en-ligne">Collections En Ligne</a>
+					</p>
 				</div>
 <?php }

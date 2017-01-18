@@ -20,9 +20,9 @@ the_telabotanica_module('cover-project', []);
 the_telabotanica_module('nav-project', []);
 ?>
 
-<div class="layout-central-col">
+<!--<div class="layout-central-col">
   <div class="layout-wrapper">
-    <div class="layout-content" id="buddypress">
+    <div class="layout-content" id="buddypress">-->
 
     	<div id="item-body">
 
@@ -96,7 +96,21 @@ the_telabotanica_module('nav-project', []);
     				elseif ( bp_is_group_membership_request() ) : bp_get_template_part( 'groups/single/request-membership' );
 
     				// Anything else (plugins mostly)
-    				else                                : bp_get_template_part( 'groups/single/plugins'      );
+    				else :
+						$current_action = bp_current_action();
+						//var_dump($current_action);
+						switch ($current_action) :
+							case 'forum':
+							case 'porte-documents':
+							case 'wiki':
+								bp_get_template_part('groups/single/ep-centre-large');
+								break;
+							case 'flora-data':
+								bp_get_template_part('groups/single/ep-flora-data');
+								break;
+							default:
+								bp_get_template_part('groups/single/plugins');
+						endswitch;
 
     				endif;
 
@@ -122,6 +136,6 @@ the_telabotanica_module('nav-project', []);
 
     	<?php endwhile; endif; ?>
 
-    </div><!-- #buddypress -->
+    <!-- #buddypress --><!--</div>
   </div>
-</div>
+</div>-->

@@ -1,6 +1,6 @@
 .layout-central-col {
   > .layout-wrapper {
-    margin: 4rem auto;
+    margin: 2rem auto;
     position: relative;
     width: 120rem;
 
@@ -13,6 +13,11 @@
     > .layout-content {
       margin: 0 auto;
       width: 70rem;
+    }
+
+    > .layout-content-large {
+      margin: 0 auto;
+      width: 100rem;
     }
   }
 }

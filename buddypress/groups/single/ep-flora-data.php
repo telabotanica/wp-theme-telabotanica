@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="layout-left-col" id="ep-flora-data">
+<div class="layout-left-col reverse-colors" id="ep-flora-data">
 	<div class="layout-wrapper">
 		<aside class="layout-column">
 			<div class="toc">

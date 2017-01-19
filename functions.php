@@ -28,6 +28,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 }
 
+
 /**
  * Fonctions utiles
  */
@@ -69,6 +70,11 @@ require get_template_directory() . '/inc/styleguide.php';
  * Amélioration du flux RSS
  */
 require get_template_directory() . '/inc/rss.php';
+
+/**
+ * Synchronisation et améliorations des profils wordpress et buddypress
+ */
+require get_template_directory() . '/inc/profile.php';
 
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :

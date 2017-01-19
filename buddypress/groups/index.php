@@ -25,7 +25,7 @@ the_telabotanica_module('cover', []);
 <?php //bp_get_template_part( 'common/search/dir-search-form' ); ?>
 
 <form action="" method="post" id="groups-directory-form" class="dir-form">
-  <div class="layout-left-col full-width">
+  <div class="layout-left-col full-width reverse-colors">
     <div class="layout-wrapper">
       <aside class="layout-column">
       	<?php

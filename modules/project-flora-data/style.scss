@@ -1,0 +1,39 @@
+#ep-flora-data {
+
+	#ep-flora-data-tabs {
+		//border: green dotted 2px;
+		//height: 1000px;
+	}
+
+	.ep-flora-data-tab {
+		//border: solid red 1px;
+		//visibility: hidden;
+		display: none;
+
+		&:first-of-type {
+			display: block;
+		}
+
+		> iframe {
+			width: 100%;
+			height: 60rem;
+		}
+	}
+
+	#ep-flora-data-iframe-saisie {
+		height: 300rem;
+	}
+	#ep-flora-data-iframe-cartoPoint {
+		height: 50rem;
+	}
+	#ep-flora-data-iframe-export {
+		height: 75rem;
+		width: auto;
+	}
+	#ep-flora-data-iframe-photo {
+		height: 55rem;
+	}
+	#ep-flora-data-iframe-observation {
+		height: 70rem;
+	}
+}

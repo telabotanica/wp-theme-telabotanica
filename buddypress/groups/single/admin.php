@@ -5,66 +5,77 @@
  * @package BuddyPress
  * @subpackage bp-legacy
  */
-
 ?>
-<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Group secondary navigation', 'buddypress' ); ?>" role="navigation">
-	<ul>
-		<?php bp_group_admin_tabs(); ?>
-	</ul>
-</div><!-- .item-list-tabs -->
 
-<?php
-/**
- * Fires before the group admin form and content.
- *
- * @since 2.7.0
- */
-do_action( 'bp_before_group_admin_form' ); ?>
+<div class="layout-left-col reverse-colors">
+	<div class="layout-wrapper">
+		<aside class="layout-column">
+			<div class="item-list-tabs no-ajax toc" id="subnav" aria-label="<?php esc_attr_e( 'Group secondary navigation', 'buddypress' ); ?>" role="navigation">
+				<h2 class="toc-title">Paramètres du projet</h2>
+				<ul class="toc-items">
+					<?php bp_group_admin_tabs(); ?>
+				</ul>
+			</div><!-- .item-list-tabs -->
+		</aside>
 
-<form action="<?php bp_group_admin_form_action(); ?>" name="group-settings-form" id="group-settings-form" class="standard-form" method="post" enctype="multipart/form-data">
+		<div class="layout-content">
+			<div id="group-settings-panel">
+				<?php
+				/**
+				 * Fires before the group admin form and content.
+				 *
+				 * @since 2.7.0
+				 */
+				do_action( 'bp_before_group_admin_form' ); ?>
 
-	<?php
-	/**
-	 * Fires inside the group admin form and before the content.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'bp_before_group_admin_content' ); ?>
+				<form action="<?php bp_group_admin_form_action(); ?>" name="group-settings-form" id="group-settings-form" class="standard-form" method="post" enctype="multipart/form-data">
 
-	<?php /* Fetch the template for the current admin screen being viewed */ ?>
+					<?php
+					/**
+					 * Fires inside the group admin form and before the content.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_before_group_admin_content' ); ?>
 
-	<?php if ( bp_is_group_admin_screen( bp_action_variable() ) ) : ?>
+					<?php /* Fetch the template for the current admin screen being viewed */ ?>
 
-		<?php bp_get_template_part( 'groups/single/admin/' . bp_action_variable() ); ?>
+					<?php if ( bp_is_group_admin_screen( bp_action_variable() ) ) : ?>
 
-	<?php endif; ?>
+						<?php bp_get_template_part( 'groups/single/admin/' . bp_action_variable() ); ?>
 
-	<?php
+					<?php endif; ?>
 
-	/**
-	 * Fires inside the group admin template.
-	 *
-	 * Allows plugins to add custom group edit screens.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'groups_custom_edit_steps' ); ?>
+					<?php
 
-	<?php
+					/**
+					 * Fires inside the group admin template.
+					 *
+					 * Allows plugins to add custom group edit screens.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'groups_custom_edit_steps' ); ?>
 
-	/**
-	 * Fires inside the group admin form and after the content.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'bp_after_group_admin_content' ); ?>
+					<?php
 
-</form><!-- #group-settings-form -->
+					/**
+					 * Fires inside the group admin form and after the content.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_after_group_admin_content' ); ?>
 
-<?php
-/**
- * Fires after the group admin form and content.
- *
- * @since 2.7.0
- */
-do_action( 'bp_after_group_admin_form' ); ?>
+				</form><!-- #group-settings-form -->
+			</div>
+			<?php
+		/**
+		 * Fires after the group admin form and content.
+		 *
+		 * @since 2.7.0
+		 */
+		do_action( 'bp_after_group_admin_form' ); ?>
+
+		</div>
+	</div>
+</div>

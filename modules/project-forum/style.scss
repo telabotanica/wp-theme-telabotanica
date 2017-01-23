@@ -1,5 +1,5 @@
 #tb-forum-commande-inscription {
-	border-bottom: solid #f0f0f0 1px;
+	border-bottom: solid $grisF0 1px;
 	display: inline-block;
 	float: right;
 	padding-bottom: 1rem;
@@ -21,9 +21,9 @@
 
 		&.abonne {
 			&:hover {
-				background-color: #fb0;
+				background-color: $orange-clair;
 			}
-			background-color: #ddd;
+			background-color: $grisDD;
 		}
 	}
 }

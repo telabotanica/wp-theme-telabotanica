@@ -45,18 +45,22 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 			<ul id="admins-list" class="item-list">
 				<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 					<li>
-						<div class="item-avatar">
-							<?php bp_group_member_avatar_thumb(); ?>
-						</div>
-
 						<div class="item">
-							<div class="item-title">
-								<?php bp_group_member_link(); ?>
-							</div>
-							<p class="joined item-meta">
-								<?php bp_group_member_joined_since(); ?>
-							</p>
 							<?php
+							$memberId = bp_get_group_member_id();
+							the_telabotanica_component('contact', [
+								//'image' => bp_core_fetch_avatar('html=false'),
+								'image' => bp_core_fetch_avatar(array(
+									'item_id' => $memberId,
+									'html' => 'false',
+									'type' => 'full'
+								)),
+								'name' => bp_get_group_member_name(),
+								'description' => bp_get_group_member_joined_since(),
+								'email' => '',
+								'phone' => '',
+								'website' => ''
+							]);
 
 							/**
 							 * Fires inside the item section of a member admin item in group management area.
@@ -139,18 +143,22 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 
 				<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 					<li>
-						<div class="item-avatar">
-							<?php bp_group_member_avatar_thumb(); ?>
-						</div>
-
 						<div class="item">
-							<div class="item-title">
-								<?php bp_group_member_link(); ?>
-							</div>
-							<p class="joined item-meta">
-								<?php bp_group_member_joined_since(); ?>
-							</p>
 							<?php
+							$memberId = bp_get_group_member_id();
+							the_telabotanica_component('contact', [
+								//'image' => bp_core_fetch_avatar('html=false'),
+								'image' => bp_core_fetch_avatar(array(
+									'item_id' => $memberId,
+									'html' => 'false',
+									'type' => 'full'
+								)),
+								'name' => bp_get_group_member_name(),
+								'description' => bp_get_group_member_joined_since(),
+								'email' => '',
+								'phone' => '',
+								'website' => ''
+							]);
 
 							/**
 							 * Fires inside the item section of a member admin item in group management area.
@@ -234,24 +242,22 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 				<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 
 					<li class="<?php bp_group_member_css_class(); ?>">
-						<div class="item-avatar">
-							<?php bp_group_member_avatar_thumb(); ?>
-						</div>
-
 						<div class="item">
-							<div class="item-title">
-								<?php bp_group_member_link(); ?>
-								<?php
-								if ( bp_get_group_member_is_banned() ) {
-									echo ' <span class="banned">';
-									_e( '(banned)', 'buddypress' );
-									echo '</span>';
-								} ?>
-							</div>
-							<p class="joined item-meta">
-								<?php bp_group_member_joined_since(); ?>
-							</p>
 							<?php
+							$memberId = bp_get_group_member_id();
+							the_telabotanica_component('contact', [
+								//'image' => bp_core_fetch_avatar('html=false'),
+								'image' => bp_core_fetch_avatar(array(
+									'item_id' => $memberId,
+									'html' => 'false',
+									'type' => 'full'
+								)),
+								'name' => bp_get_group_member_name(),
+								'description' => bp_get_group_member_joined_since(),
+								'email' => '',
+								'phone' => '',
+								'website' => ''
+							]);
 
 							/**
 							 * Fires inside the item section of a member admin item in group management area.

@@ -58,3 +58,40 @@ function dk_bp_core_signup_user( $user_id ) {
     );
     wp_update_user( $userdata );
 }
+
+// Empêche un utilisateur non identifié d'accéder à des pages membres
+// @TODO comprendre pourquoi ce test et pourquoi 2 hooks
+if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page')) {
+	add_action('wp','members_page_only_for_logged_in_users');
+} else {
+	add_action('wp_head','members_page_only_for_logged_in_users');
+}
+
+function members_page_only_for_logged_in_users() {
+	if (is_front_page()) {
+		return;
+	}
+	if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page')) {
+		if (bp_is_register_page() || bp_is_activation_page())	{
+			return;
+		}
+	}
+
+	$current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+	if (is_user_logged_in() == false && (
+		bp_is_activity_component() ||
+		//bp_is_groups_component() || // on souhaite pouvoir voir les groupes publics
+		bp_is_forums_component() ||
+		bp_is_blogs_component() ||
+		bp_is_members_component() || // marche pas :-/
+		strpos($current_url,'/profile/') == true ||
+		strpos($current_url,'/friends/') == true ||
+		strpos($current_url,'/following/') == true ||
+		strpos($current_url,'/followers/') == true)) {
+
+		$redirect_url = wp_login_url();
+		header('Location: ' . $redirect_url);
+		die();
+	}
+}

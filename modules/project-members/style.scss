@@ -1,3 +1,24 @@
 #member-list {
 	list-style: none;
 }
+
+#group-members-subnav > ul {
+	list-style: none;
+	padding: 0;
+	
+	> li {
+		display: inline-block;
+	}
+}
+
+#group_members-order-select {
+	margin-top: 1.2rem;
+	margin-left: 2rem;
+}
+
+#members-group-list {
+	> .pagination {
+		border-top: none;
+		margin-top: 2rem;
+	}
+}

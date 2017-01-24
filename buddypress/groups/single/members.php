@@ -5,8 +5,11 @@
  * @package BuddyPress
  * @subpackage bp-legacy
  */
-
 ?>
+
+<div class="layout-central-col">
+	<div class="layout-wrapper">
+		<div class="layout-content-large">
 
 <?php if ( bp_group_has_members( bp_ajax_querystring( 'group_members' ) ) ) : ?>
 
@@ -49,16 +52,19 @@
 		<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 
 			<li>
-				<a href="<?php bp_group_member_domain(); ?>">
-
-					<?php bp_group_member_avatar_thumb(); ?>
-
-				</a>
-
-				<h5><?php bp_group_member_link(); ?></h5>
-				<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_group_member_joined_since( array( 'relative' => false ) ) ); ?>"><?php bp_group_member_joined_since(); ?></span>
-
 				<?php
+				$memberId = bp_get_group_member_id();
+				the_telabotanica_component('contact', [
+					//'image' => bp_core_fetch_avatar('html=false'),
+					'image' => bp_core_fetch_avatar(array(
+						'item_id' => $memberId,
+						'html' => 'false',
+						'type' => 'full'
+					)),
+					'name' => bp_get_group_member_name(),
+					'link' => bp_get_group_member_url(),
+					'description' => bp_get_group_member_joined_since()
+				]);
 
 				/**
 				 * Fires inside the listing of an individual group member listing item.
@@ -132,3 +138,7 @@
 	</div>
 
 <?php endif; ?>
+
+		</div>
+	</div>
+</div>

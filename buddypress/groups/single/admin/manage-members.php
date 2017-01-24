@@ -56,10 +56,8 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 									'type' => 'full'
 								)),
 								'name' => bp_get_group_member_name(),
-								'description' => bp_get_group_member_joined_since(),
-								'email' => '',
-								'phone' => '',
-								'website' => ''
+								'link' => bp_get_group_member_url(),
+								'description' => bp_get_group_member_joined_since()
 							]);
 
 							/**
@@ -154,10 +152,8 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 									'type' => 'full'
 								)),
 								'name' => bp_get_group_member_name(),
-								'description' => bp_get_group_member_joined_since(),
-								'email' => '',
-								'phone' => '',
-								'website' => ''
+								'link' => bp_get_group_member_url(),
+								'description' => bp_get_group_member_joined_since()
 							]);
 
 							/**
@@ -253,10 +249,8 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 									'type' => 'full'
 								)),
 								'name' => bp_get_group_member_name(),
-								'description' => bp_get_group_member_joined_since(),
-								'email' => '',
-								'phone' => '',
-								'website' => ''
+								'link' => bp_get_group_member_url(),
+								'description' => bp_get_group_member_joined_since()
 							]);
 
 							/**

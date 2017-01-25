@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+## 0.0.4 (2017-01-25)
+
 * bloc `focus` ajouté
 * bloc `main-features` ajouté
 * bloc `list-features` ajouté

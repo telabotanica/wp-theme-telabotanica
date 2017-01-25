@@ -21,27 +21,19 @@
  * {@link https://codex.wordpress.org/Plugin_API}
  */
 
-/**
- * Ce thème requiert WordPress 4.4 ou ultérieur
- */
+// Ce thème requiert WordPress 4.4 ou ultérieur
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 }
 
 
-/**
- * Fonctions utiles
- */
+// Fonctions utiles
 require get_template_directory() . '/inc/utile.php';
 
-/**
- * Filtres pour l'extrait
- */
+// Filtres pour l'extrait
 require get_template_directory() . '/inc/excerpt.php';
 
-/**
- * Pages d'options (avec ACF)
- */
+// Pages d'options (avec ACF)
 require get_template_directory() . '/inc/options.php';
 
 /**
@@ -56,24 +48,19 @@ require get_template_directory() . '/inc/custom-post-types.php';
  */
 require get_template_directory() . '/inc/custom-taxonomies.php';
 
-/**
- * Options WPML
- */
+// Options WPML
 require get_template_directory() . '/inc/wpml.php';
 
-/**
- * Chargement du styleguide
- */
+// Chargement du styleguide
 require get_template_directory() . '/inc/styleguide.php';
 
-/**
- * Amélioration du flux RSS
- */
+// Amélioration du flux RSS
 require get_template_directory() . '/inc/rss.php';
 
-/**
- * Synchronisation et améliorations des profils wordpress et buddypress
- */
+// Personnalisation de la page de login
+require get_template_directory() . '/inc/login.php';
+
+// Synchronisation et améliorations des profils wordpress et buddypress
 require get_template_directory() . '/inc/profile.php';
 
 

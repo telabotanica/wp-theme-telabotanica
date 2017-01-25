@@ -1,5 +1,6 @@
 require('../styles/main.scss');
 require('../styles/editor-style.scss');
+require('../styles/login-style.scss');
 
 // Icons
 require('../icons/_all.js');

@@ -56,6 +56,8 @@ plus de détails sur http://semver.org/lang/fr/
   * affichage spécifique des évènements
 * ajout des icônes SVG
 * configuration de webpack pour générer un sprite SVG
+* configuration de webpack pour gérer les images dans des `url()`
+* personnalisation de la page de login avec `login-style.css`
 
 ## 0.0.3 (2016-11-17)
 

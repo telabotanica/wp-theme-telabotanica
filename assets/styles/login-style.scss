@@ -7,12 +7,27 @@ body.login {
   background-color: $grisF4;
 }
 
+.login  {
+  #login_error,
+  .message {
+    border-color: $orange;
+  }
+
+  #backtoblog,
+  #nav,
+  h1 {
+    a:hover {
+      color: $turquoise;
+    }
+  }
+}
+
 #login,
 .login {
   h1 {
     a {
       background-image: url(../images/logo-login.png);
-      margin-bottom: 0;
+      margin-bottom: 1.5rem;
     }
   }
 

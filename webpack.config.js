@@ -61,7 +61,7 @@ module.exports = {
         loader: 'svg-url-loader'
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif)$/i,
         exclude: [
           path.resolve(__dirname, "assets/fonts"),
           path.resolve(__dirname, "assets/icons")

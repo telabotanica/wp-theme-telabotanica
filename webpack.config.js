@@ -7,6 +7,7 @@ const path = require('path')
 
 const extractBundle = new ExtractTextPlugin('bundle.css');
 const extractEditorStyle = new ExtractTextPlugin('editor-style.css');
+const extractLoginStyle = new ExtractTextPlugin('login-style.css');
 
 module.exports = {
   entry: './assets/scripts/main.js',
@@ -19,23 +20,22 @@ module.exports = {
       {
         test: /main\.scss$/,
         loader: extractBundle.extract({
-          fallbackLoader: 'style',
-          loader: [
-            'css',
-            'postcss',
-            'sass'
-          ]
+          fallbackLoader: 'style-loader',
+          loader: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
         })
       },
       {
         test: /editor-style\.scss$/,
         loader: extractEditorStyle.extract({
-          fallbackLoader: 'style',
-          loader: [
-            'css',
-            'postcss',
-            'sass'
-          ]
+          fallbackLoader: 'style-loader',
+          loader: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
+        })
+      },
+      {
+        test: /login-style\.scss$/,
+        loader: extractLoginStyle.extract({
+          fallbackLoader: 'style-loader',
+          loader: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
         })
       },
       {
@@ -43,14 +43,14 @@ module.exports = {
         include: [
           path.resolve(__dirname, "assets/icons")
         ],
-        loader: 'svg-sprite?name=icon-[name]'
+        loader: 'svg-sprite-loader?name=icon-[name]'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: [
           path.resolve(__dirname, "assets/fonts")
         ],
-        loader: 'file?name=fonts/[name].[ext]'
+        loader: 'file-loader?name=fonts/[name].[ext]'
       },
       {
         test: /\.svg$/,
@@ -60,11 +60,20 @@ module.exports = {
         ],
         loader: 'svg-url-loader'
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        exclude: [
+          path.resolve(__dirname, "assets/fonts"),
+          path.resolve(__dirname, "assets/icons")
+        ],
+        loader: 'url-loader?limit=10000'
+      },
     ]
   },
   plugins: [
     extractBundle,
     extractEditorStyle,
+    extractLoginStyle,
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,

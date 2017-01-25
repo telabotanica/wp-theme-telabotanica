@@ -1,0 +1,38 @@
+// Base
+@import "../../base/colors";
+@import "../../base/defaults";
+@import "../../base/fonts";
+
+body.login {
+  background-color: $grisF4;
+}
+
+#login,
+.login {
+  h1 {
+    a {
+      background-image: url(../images/logo-login.png);
+      margin-bottom: 0;
+    }
+  }
+
+  .button-primary {
+    background-color: $green-button;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding-bottom: 0;
+    text-shadow: none;
+
+    &:hover, &:focus {
+      background-color: lighten($green-button, 8%);
+    }
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="checkbox"]:focus {
+    border-color: $green-button;
+    box-shadow: 0 0 0.2rem transparentize($green-button, 0.8);
+  }
+}

@@ -3,6 +3,11 @@
     "title": "Newsletter",
     "fields": [
         {
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": "Bonjour, voici la lettre d'information sur l'actualit\u00e9 de la botanique francophone. Cette lettre pr\u00e9sente les articles publi\u00e9s sur le site Tela Botanica http:\/\/www.tela-botanica.org\/actu depuis une semaine.\r\n\r\n\u00c0 savoir : Publiez vos actualit\u00e9s et \u00e9v\u00e9nements gr\u00e2ce \u00e0 l'espace r\u00e9dacteur.\r\n\r\nConsultez les \u00e9v\u00e9nements de votre r\u00e9gion sur www.tela-botanica.org\/page:evenements",
+            "delay": 0,
             "key": "field_5820a29dc9764",
             "label": "Introduction",
             "name": "tb_newsletter_introduction",
@@ -14,32 +19,19 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "Bonjour, voici la lettre d'information sur l'actualit\u00e9 de la botanique francophone. Cette lettre pr\u00e9sente les articles publi\u00e9s sur le site Tela Botanica http:\/\/www.tela-botanica.org\/actu depuis une semaine.\r\n\r\n\u00c0 savoir : Publiez vos actualit\u00e9s et \u00e9v\u00e9nements gr\u00e2ce \u00e0 l'espace r\u00e9dacteur.\r\n\r\nConsultez les \u00e9v\u00e9nements de votre r\u00e9gion sur www.tela-botanica.org\/page:evenements",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0
+            }
         },
         {
-            "key": "field_58209d35fbc3e",
-            "label": "Rubriques",
-            "name": "tb_newsletter_sections",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "field_58209d4cfbc3f",
-            "min": "",
-            "max": "",
-            "layout": "row",
-            "button_label": "Ajouter une rubrique",
             "sub_fields": [
                 {
+                    "taxonomy": "category",
+                    "field_type": "select",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "return_format": "object",
+                    "add_term": 0,
+                    "load_terms": 0,
+                    "save_terms": 0,
                     "key": "field_5820a16a76f68",
                     "label": "Titre",
                     "name": "tb_newsletter_sections_title",
@@ -51,17 +43,21 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "taxonomy": "category",
-                    "field_type": "select",
-                    "allow_null": 0,
-                    "add_term": 0,
-                    "save_terms": 0,
-                    "load_terms": 0,
-                    "return_format": "object",
-                    "multiple": 0
+                    }
                 },
                 {
+                    "post_type": [
+                        "post"
+                    ],
+                    "taxonomy": [],
+                    "min": "",
+                    "max": "",
+                    "filters": [
+                        "search",
+                        "taxonomy"
+                    ],
+                    "elements": "",
+                    "return_format": "object",
                     "key": "field_5820a0432ffad",
                     "label": "Articles",
                     "name": "tb_newsletter_sections_items",
@@ -73,23 +69,33 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "post_type": [
-                        "post"
-                    ],
-                    "taxonomy": [],
-                    "filters": [
-                        "search",
-                        "taxonomy"
-                    ],
-                    "elements": "",
-                    "min": "",
-                    "max": "",
-                    "return_format": "object"
+                    }
                 }
-            ]
+            ],
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "Ajouter une rubrique",
+            "collapsed": "field_58209d4cfbc3f",
+            "key": "field_58209d35fbc3e",
+            "label": "Rubriques",
+            "name": "tb_newsletter_sections",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         },
         {
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": "Ne r\u00e9pondez pas \u00e0 ce courriel qui est g\u00e9n\u00e9r\u00e9 automatiquement, pour toute question \u00e9crivez plut\u00f4t \u00e0 accueil@tela-botanica.org\r\nLettre d'information de Tela Botanica http:\/\/www.tela-botanica.org\/actu\/\r\nSe d\u00e9sabonner : www.tela-botanica.org\/page:inscription?m=annuaire_fiche_gestion_consultation&id_annuaire=1",
+            "delay": 0,
             "key": "field_5820a2dcb23d5",
             "label": "Pied de page",
             "name": "tb_newsletter_footer",
@@ -101,11 +107,7 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "Ne r\u00e9pondez pas \u00e0 ce courriel qui est g\u00e9n\u00e9r\u00e9 automatiquement, pour toute question \u00e9crivez plut\u00f4t \u00e0 accueil@tela-botanica.org\r\nLettre d'information de Tela Botanica http:\/\/www.tela-botanica.org\/actu\/\r\nSe d\u00e9sabonner : www.tela-botanica.org\/page:inscription?m=annuaire_fiche_gestion_consultation&id_annuaire=1",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0
+            }
         }
     ],
     "location": [
@@ -113,7 +115,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "newsletter"
+                "value": "newsletter_compose"
             }
         ]
     ],
@@ -125,5 +127,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1479830064
+    "modified": 1485421914
 }

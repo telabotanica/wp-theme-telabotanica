@@ -67,6 +67,10 @@ if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_
 	add_action('wp_head','members_page_only_for_logged_in_users');
 }
 
+/**
+ * Interdit l'accès la page associée au composant Buddypress/membres et à toutes
+ * ses sous-pages, si l'utilisateur n'est pas connecté
+ */
 function members_page_only_for_logged_in_users() {
 	if (is_front_page()) {
 		return;
@@ -76,20 +80,12 @@ function members_page_only_for_logged_in_users() {
 			return;
 		}
 	}
-
 	$current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	// nom (slug) de la page associée au composant "membres" de Buddypress
+	$pagesBP = get_option('bp-pages');
+	$nomPageMembres = get_post_field('post_name', $pagesBP['members']);
 
-	if (is_user_logged_in() == false && (
-		bp_is_activity_component() ||
-		//bp_is_groups_component() || // on souhaite pouvoir voir les groupes publics
-		bp_is_forums_component() ||
-		bp_is_blogs_component() ||
-		bp_is_members_component() || // marche pas :-/
-		strpos($current_url,'/profile/') == true ||
-		strpos($current_url,'/friends/') == true ||
-		strpos($current_url,'/following/') == true ||
-		strpos($current_url,'/followers/') == true)) {
-
+	if (is_user_logged_in() == false && strpos($current_url, '/' . $nomPageMembres . '/') !== false) {
 		$redirect_url = wp_login_url();
 		header('Location: ' . $redirect_url);
 		die();

@@ -18,12 +18,12 @@
 
   echo '<div class="component-contact-text">';
     if (! empty($data->link)) :
-		echo '<a href="' . $data->link . '">';
-	endif;
+        echo '<a href="' . $data->link . '">';
+    endif;
     echo '<div class="component-contact-name">' . $data->name . '</div>';
     if (! empty($data->link)) :
-		echo '</a>';
-	endif;
+        echo '</a>';
+    endif;
     echo '<div class="component-contact-description">' . (! empty($data->description) ? $data->description : '') . '</div>';
 
     if (! empty($data->phone) || ! empty($data->email) || ! empty($data->website)) :

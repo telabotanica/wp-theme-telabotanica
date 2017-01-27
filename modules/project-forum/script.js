@@ -4,8 +4,8 @@ var Tela = window.Tela || {};
 
 Tela.epForum = (function(){
 
-  function manageForum(){
-    var $formAbonnement = $('#tb-forum-inscription'),
+  function manageForum(selector){
+    var $formAbonnement = $(selector),
         $boutonAbonnement = $formAbonnement.find('input[type="submit"]');
 
     function init(){
@@ -24,12 +24,14 @@ Tela.epForum = (function(){
     init();
   }
 
-  return function(){
-    manageForum();
+  return function(selector){
+    $(selector).each(function() {
+      manageForum(this);
+    });
   };
 
 })();
 
 $(document).ready(function(){
-  Tela.epForum();
+  Tela.epForum('#tb-forum-inscription');
 });

@@ -99,9 +99,13 @@ the_telabotanica_module('nav-project', []);
         //var_dump($current_action);
         switch ($current_action) :
           case 'forum':
+            bp_get_template_part('groups/single/ep-forum');
+            break;
           case 'porte-documents':
+            bp_get_template_part('groups/single/ep-documents');
+            break;
           case 'wiki':
-            bp_get_template_part('groups/single/ep-centre-large');
+            bp_get_template_part('groups/single/ep-wiki');
             break;
           case 'flora-data':
             bp_get_template_part('groups/single/ep-flora-data');

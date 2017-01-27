@@ -12,17 +12,15 @@
     <div class="layout-content">
       <?php
       $group = groups_get_current_group();
-      //var_dump($group);
-      
-      $descriptionAAfficher = $group->description;
-      $descriptionComplete = groups_get_groupmeta($group->id, 'description-complete');
-      //var_dump($descriptionComplete);
-      if ($descriptionComplete) {
-        $descriptionAAfficher = $descriptionComplete;
+
+      $descriptionToDisplay = $group->description;
+      $completeDescription = groups_get_groupmeta($group->id, 'description-complete');
+      if ($completeDescription) {
+        $descriptionToDisplay = $completeDescription;
       }
       ?>
       <div class="project-front-description"><?php _e("", 'telabotanica') ?>
-        <?php echo $descriptionAAfficher; ?>
+        <?php echo $descriptionToDisplay; ?>
       </div>
     </div>
   </div>

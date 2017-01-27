@@ -49,7 +49,6 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
               <?php
               $memberId = bp_get_group_member_id();
               the_telabotanica_component('contact', [
-                //'image' => bp_core_fetch_avatar('html=false'),
                 'image' => bp_core_fetch_avatar(array(
                   'item_id' => $memberId,
                   'html' => 'false',
@@ -145,7 +144,6 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
               <?php
               $memberId = bp_get_group_member_id();
               the_telabotanica_component('contact', [
-                //'image' => bp_core_fetch_avatar('html=false'),
                 'image' => bp_core_fetch_avatar(array(
                   'item_id' => $memberId,
                   'html' => 'false',
@@ -242,7 +240,6 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
               <?php
               $memberId = bp_get_group_member_id();
               the_telabotanica_component('contact', [
-                //'image' => bp_core_fetch_avatar('html=false'),
                 'image' => bp_core_fetch_avatar(array(
                   'item_id' => $memberId,
                   'html' => 'false',

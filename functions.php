@@ -63,6 +63,9 @@ require get_template_directory() . '/inc/login.php';
 // Synchronisation et améliorations des profils wordpress et buddypress
 require get_template_directory() . '/inc/profile.php';
 
+// Customisation du plugin Algolia
+require get_template_directory() . '/inc/algolia.php';
+
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
 /**

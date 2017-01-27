@@ -12,7 +12,9 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * module `cover-home` ajouté
+* module `search-box` ajouté
 * groupe de champs ACF "Newsletter" déplacé vers la page newsletter_compose
+* dossier `algolia` ajouté (fichiers spécifiques au plugin Algolia)
 
 ## 0.0.4 (2017-01-25)
 

@@ -50,7 +50,12 @@
   }
 
   &-content {
-    margin-top: 2rem;
+    flex-grow: 1;
+    margin-right: 5rem;
+
+    > .search-box {
+      margin-top: 2.5rem;
+    }
   }
 
   &-stats {

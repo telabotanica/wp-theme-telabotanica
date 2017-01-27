@@ -24,13 +24,15 @@
           $data->title
         );
       endif;
+
+      the_telabotanica_module('search-box', []);
       ?>
       </div>
 
       <?php
       // TODO: brancher les compteurs et les liens
       $users_link = '#';
-      $user_count = 10000;
+      $user_count = bp_get_total_member_count();
       $observations_link = '#';
       $observations_count = 10000;
       $get_involved_link = '#';

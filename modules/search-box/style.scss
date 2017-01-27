@@ -1,0 +1,103 @@
+@import "../../algolia/algolia-autocomplete";
+
+.search-box {
+  &-wrapper {
+    display: flex;
+    height: 5.7rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  // modifiers
+  &.large {
+    &-wrapper {
+      background-color: transparent;
+      height: 5.6rem;
+    }
+
+    .search-box-input {
+      background-color: $blanc;
+      border-radius: 0;
+    }
+
+    .search-box-button {
+      align-items: center;
+      display: flex;
+    }
+
+    .aa-dropdown-menu {
+      border: 0;
+      transform: translateX(-4.5rem);
+      width: 62.5rem;
+    }
+  }
+
+  &-input,
+  .algolia-autocomplete {
+    flex-grow: 1;
+  }
+
+  &-input,
+  &-button {
+    border: 0;
+    background-color: $blanc;
+  }
+
+  &-input {
+    border-radius: 0.2rem 0 0 0.2rem;
+    color: $gris23;
+    height: 100%;
+    padding: 1rem 0 1rem 2rem;
+    width: 100%;
+  }
+
+  &-button {
+    background-color: $vert-clair;
+    border-radius: 0 0.2rem 0.2rem 0;
+    color: $blanc;
+    cursor: pointer;
+    fill: $blanc;
+    padding: 0 2rem;
+  }
+
+  &-suggestions {
+    color: transparentize($grisF0, 0.25);
+    margin-top: 2rem;
+  }
+
+  @include small {
+
+    &.large {
+      .search-box-input {
+        border-radius: 0.2rem 0 0 0.2rem;
+        overflow: hidden;
+        padding-left: 2rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .search-box-button {
+        background-color: $blanc;
+        font-size: 2rem;
+        padding: 0 2rem 0 1rem;
+      }
+    }
+
+  }
+
+  @include large-and-medium {
+
+    &.large {
+      .search-box-input {
+        font-size: 1.8rem;
+      }
+
+      .search-box-button {
+        color: $blanc;
+        font-size: 2.7rem;
+      }
+    }
+
+  }
+
+}

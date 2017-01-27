@@ -15,12 +15,12 @@ do_action( 'bp_before_directory_groups_page' );
 
 the_telabotanica_module('cover', []);
 
-	/**
-	 * Fires before the display of the groups.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'bp_before_directory_groups' ); ?>
+    /**
+     * Fires before the display of the groups.
+     *
+     * @since 1.1.0
+     */
+    do_action( 'bp_before_directory_groups' ); ?>
 
 <?php //bp_get_template_part( 'common/search/dir-search-form' ); ?>
 
@@ -28,13 +28,13 @@ the_telabotanica_module('cover', []);
   <div class="layout-left-col full-width reverse-colors">
     <div class="layout-wrapper">
       <aside class="layout-column">
-      	<?php
-      	/**
-      	 * Fires before the display of the groups content.
-      	 *
-      	 * @since 1.1.0
-      	 */
-      	do_action( 'bp_before_directory_groups_content' );
+          <?php
+          /**
+           * Fires before the display of the groups content.
+           *
+           * @since 1.1.0
+           */
+          do_action( 'bp_before_directory_groups_content' );
 
         $categories_items = [
           [
@@ -90,12 +90,12 @@ the_telabotanica_module('cover', []);
         endif;
         echo '</div>';
 
-  			/**
-  			 * Fires inside the groups directory group types.
-  			 *
-  			 * @since 1.2.0
-  			 */
-  			do_action( 'bp_groups_directory_group_types' );
+        /**
+         * Fires inside the groups directory group types.
+         *
+         * @since 1.2.0
+         */
+        do_action( 'bp_groups_directory_group_types' );
         ?>
 
       </aside>
@@ -104,43 +104,43 @@ the_telabotanica_module('cover', []);
         <?php the_telabotanica_module('breadcrumbs', ['modifiers' => 'no-border']); ?>
 
         <div id="template-notices" role="alert" aria-atomic="true">
-    			<?php
-    			/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
-    			do_action( 'template_notices' );
+                <?php
+                /** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
+                do_action( 'template_notices' );
           ?>
-    		</div>
+            </div>
 
-  			<?php bp_get_template_part( 'groups/groups-loop' ); ?>
+              <?php bp_get_template_part( 'groups/groups-loop' ); ?>
 
-  		<?php
-  		/**
-  		 * Fires and displays the group content.
-  		 *
-  		 * @since 1.1.0
-  		 */
-  		do_action( 'bp_directory_groups_content' );
+          <?php
+          /**
+           * Fires and displays the group content.
+           *
+           * @since 1.1.0
+           */
+          do_action( 'bp_directory_groups_content' );
 
-  		wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' );
+          wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' );
 
-  		/**
-  		 * Fires after the display of the groups content.
-  		 *
-  		 * @since 1.1.0
-  		 */
-  		do_action( 'bp_after_directory_groups_content' ); ?>
+          /**
+           * Fires after the display of the groups content.
+           *
+           * @since 1.1.0
+           */
+          do_action( 'bp_after_directory_groups_content' ); ?>
 
       </div>
     </div>
   </div>
 </form><!-- #groups-directory-form -->
-	<?php
+    <?php
 
-	/**
-	 * Fires after the display of the groups.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'bp_after_directory_groups' );
+    /**
+     * Fires after the display of the groups.
+     *
+     * @since 1.1.0
+     */
+    do_action( 'bp_after_directory_groups' );
 
 /**
  * Fires at the bottom of the groups directory template file.

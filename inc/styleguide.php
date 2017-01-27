@@ -26,6 +26,7 @@ $telabotanica_modules = [
   'categories',
   'categories-labels',
   'cover',
+  'cover-home',
   'cover-project',
   'footer',
   'form-newsletter',

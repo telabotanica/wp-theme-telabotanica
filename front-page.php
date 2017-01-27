@@ -5,8 +5,13 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area" style="background: url(https://beta.tela-botanica.org/preprod/wp-content/uploads/2016/11/Accueil.jpg) top center no-repeat; background-size: cover; height: 708rem; height: 368.7vw;">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+
+      <?php
+      the_telabotanica_module('cover-home', [
+      ]); ?>
+
     </main><!-- .site-main -->
   </div><!-- .content-area -->
 

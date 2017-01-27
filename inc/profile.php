@@ -58,3 +58,36 @@ function dk_bp_core_signup_user( $user_id ) {
     );
     wp_update_user( $userdata );
 }
+
+// Empêche un utilisateur non identifié d'accéder à des pages membres
+// @TODO comprendre pourquoi ce test et pourquoi 2 hooks
+if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page')) {
+	add_action('wp','members_page_only_for_logged_in_users');
+} else {
+	add_action('wp_head','members_page_only_for_logged_in_users');
+}
+
+/**
+ * Interdit l'accès la page associée au composant Buddypress/membres et à toutes
+ * ses sous-pages, si l'utilisateur n'est pas connecté
+ */
+function members_page_only_for_logged_in_users() {
+	if (is_front_page()) {
+		return;
+	}
+	if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page')) {
+		if (bp_is_register_page() || bp_is_activation_page())	{
+			return;
+		}
+	}
+	$current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	// nom (slug) de la page associée au composant "membres" de Buddypress
+	$pagesBP = get_option('bp-pages');
+	$nomPageMembres = get_post_field('post_name', $pagesBP['members']);
+
+	if (is_user_logged_in() == false && strpos($current_url, '/' . $nomPageMembres . '/') !== false) {
+		$redirect_url = wp_login_url();
+		header('Location: ' . $redirect_url);
+		die();
+	}
+}

@@ -229,22 +229,22 @@
       }
 
       .menu-item.identifier {
-        &:before {background-color: #E9F2B7;}
+        &:before {background-color: $vert-tres-clair;}
         a {background-image: url('../../modules/header/icons/identifier.svg');}
         &.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
       }
       .menu-item.apprendre {
-        &:before {background-color: #FCE3F1;}
+        &:before {background-color: $violet-clair;}
         a {background-image: url('../../modules/header/icons/apprendre.svg');}
         &.current_page_item a, a:hover, a:focus {color: $violet;}
       }
       .menu-item.sortir {
-        &:before {background-color: #F9E2D7;}
+        &:before {background-color: $orange-clair;}
         a {background-image: url('../../modules/header/icons/sortir.svg');}
         &.current_page_item a, a:hover, a:focus {color: $orange;}
       }
       .menu-item.participer {
-        &:before {background-color: #E9F6F8;}
+        &:before {background-color: $bleu-clair;}
         a {background-image: url('../../modules/header/icons/participer.svg');}
         &.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
       }

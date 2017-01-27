@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="layout-left-col reverse-colors" id="ep-flora-data">
+<div class="layout-left-col reverse-colors project-flora-data" id="ep-flora-data">
   <div class="layout-wrapper">
     <aside class="layout-column">
       <div class="toc">
@@ -15,35 +15,35 @@
         <ul class="toc-items" id="ep-flora-data-menu">
           <li class="toc-item is-active" id="ep-flora-data-cartoPoint">
             <a class="toc-item-link" href="#ep-flora-data-tab-cartoPoint">
-              <?php echo __('Carte des observations', 'telabotanica') ?>
+              <?php _e('Carte des observations', 'telabotanica') ?>
             </a>
           </li>
           <li class="toc-item" id="ep-flora-data-photo">
             <a class="toc-item-link" href="#ep-flora-data-tab-photo">
-              <?php echo __('Galerie photo', 'telabotanica') ?>
+              <?php _e('Galerie photo', 'telabotanica') ?>
             </a>
           </li>
           <li class="toc-item" id="ep-flora-data-observation">
             <a class="toc-item-link" href="#ep-flora-data-tab-observation">
-              <?php echo __('Flux des dernières observations', 'telabotanica') ?>
+              <?php _e('Flux des dernières observations', 'telabotanica') ?>
             </a>
           </li>
           <li class="toc-item" id="ep-flora-data-saisie">
             <a class="toc-item-link" href="#ep-flora-data-tab-saisie">
-              <?php echo __('Saisie de nouvelles observations', 'telabotanica') ?>
+              <?php _e('Saisie de nouvelles observations', 'telabotanica') ?>
             </a>
           </li>
           <li class="toc-item" id="ep-flora-data-export">
             <a class="toc-item-link" href="#ep-flora-data-tab-export">
-              <?php echo __('Export des observations', 'telabotanica') ?>
+              <?php _e('Export des observations', 'telabotanica') ?>
             </a>
           </li>
         </ul>
       </div>
-      <a href="#" class="button-top" title="Remonter en haut de la page" tabindex="-1">
+      <a href="#" class="button-top" title="<?php _e('Remonter en haut de la page', 'telabotanica') ?>" tabindex="-1">
         <svg aria-hidden="true" role="img" class="icon icon-arrow-up ">
           <use xlink:href="#icon-arrow-up"/>
-        </svg> Remonter
+        </svg> <?php _e('Remonter', 'telabotanica') ?>
       </a>
     </aside>
 

@@ -11,7 +11,7 @@
   <div class="layout-wrapper">
     <aside class="layout-column">
       <div class="item-list-tabs no-ajax toc" id="subnav" aria-label="<?php esc_attr_e( 'Group secondary navigation', 'buddypress' ); ?>" role="navigation">
-        <h2 class="toc-title">Paramètres du projet</h2>
+        <h2 class="toc-title"><?php _e('Paramètres du projet', 'telabotanica') ?></h2>
         <ul class="toc-items">
           <?php bp_group_admin_tabs(); ?>
         </ul>

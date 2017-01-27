@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="layout-central-col">
+<div class="layout-central-col project-forum">
   <div class="layout-wrapper">
     <div class="layout-content-large">
       <?php      

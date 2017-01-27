@@ -41,7 +41,6 @@
 
 #group-settings-panel {
     padding-top: 2rem;
-    //border: solid blue 1px;
     color: $gris23;
 }
 
@@ -54,8 +53,8 @@
         margin-top: 1.1rem;
         padding: 0;
         font-size: 2.5rem;
-        font-family: Ubuntu;
-        font-weight: normal;
+        font-family: $ubuntu;
+        font-weight: $regular;
     }
 
     label {
@@ -85,8 +84,8 @@
 
     input[type="text"], textarea {
         width: 100%;
-        border: solid $grisDD 1px;
-        border-radius: 3px;
+        border: solid $grisDD .1rem;
+        border-radius: .3rem;
         padding: 1rem;
     }
 
@@ -129,9 +128,9 @@
         border-radius: .2rem;
         color: $blanc;
         display: inline-block;
-        font-family: Ubuntu,sans-serif;
+        font-family: $ubuntu, sans-serif;
         font-size: 1.3rem;
-        font-weight: 500;
+        font-weight: $medium;
         letter-spacing: .1rem;
         line-height: 1.5rem;
         padding: 1.5rem 2rem;

@@ -40,7 +40,6 @@ Tela.epFloraData = (function(){
     }
 
     function changeTab(e){
-      //console.log('ça clique sa mémé');
       e.preventDefault();
       e.stopPropagation();
       // active le bon lien dans le menu
@@ -58,12 +57,14 @@ Tela.epFloraData = (function(){
     init();
   }
 
-  return function(menuSelector, bodySelector){
-    manageTabs(menuSelector, bodySelector);
+  return function(selector, menuSelector, bodySelector){
+    $(selector).each(function() {
+      manageTabs(menuSelector, bodySelector);
+    });
   };
 
 })();
 
 $(document).ready(function(){
-  Tela.epFloraData('#ep-flora-data-menu', '#ep-flora-data-tabs');
+  Tela.epFloraData('.project-flora-data', '#ep-flora-data-menu', '#ep-flora-data-tabs');
 });

@@ -77,9 +77,6 @@
             color: $gris23;
             font-size: 1.8rem;
         }
-        > p {
-            top: -3.5rem !important; // si pas de <legend>, tout foire
-        }
     }
 
     input[type="text"], textarea {
@@ -107,17 +104,16 @@
 
     .description, fieldset > p {
         position: absolute;
-        top: 0;
         right: 0;
         width: 30rem;
+        top: -3.5rem;
         font-size: 1.3rem;
         text-align: right;
         color: $grisAA;
+    }
 
-        > .button {
-            padding: .3rem .7rem !important;
-            margin: 0 1px 0 0 !important;
-        }
+    .description {
+        top: 0;
     }
 
     input[type="submit"], #tb-forum-creer-liste, #bp-browse-button {
@@ -146,6 +142,11 @@
         &[disabled] {
             background-color: $grisB3;
         }
+    }
+
+    #tb-forum-creer-liste {
+        padding: .3rem .7rem;
+        margin-top: 1px;
     }
 
     p {

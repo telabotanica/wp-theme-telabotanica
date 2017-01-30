@@ -1,0 +1,222 @@
+.toc-items {
+    // répercussion (copie) du style de la ToC)
+    > li {
+        border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
+        padding: 1.5rem 0;
+
+        &.current {
+            > a {
+                color: $gris23;
+            }
+            > a::before {
+                content: "\25B6";
+                display: block;
+                font-size: 1rem;
+                line-height: 2rem;
+                margin-left: -2rem;
+                position: absolute;
+                color: $vert-clair;
+            }
+        }
+        > a {
+            color: $gris60;
+            font-size: 1.6rem;
+            font-weight: $bold;
+            text-decoration: none;
+        }
+        > a:focus::before, a:hover::before {
+            content: "\25B6";
+            display: block;
+            font-size: 1rem;
+            line-height: 2rem;
+            margin-left: -2rem;
+            position: absolute;
+        }
+    }
+}
+
+#subnav.toc {
+    padding-top: 2rem;
+}
+
+#group-settings-panel {
+    padding-top: 2rem;
+    color: $gris23;
+}
+
+#group-settings-form, #search-members-form {
+
+    h2.bp-screen-reader-text {
+        position: relative;
+        height: auto;
+        width: auto;
+        margin-top: 1.1rem;
+        padding: 0;
+        font-size: 2.5rem;
+        font-family: $ubuntu;
+        font-weight: $regular;
+    }
+
+    label {
+        display: block;
+        margin-top: 2rem;
+        margin-bottom: .4rem;
+        color: $gris60;
+        font-size: 1.5rem;
+    }
+
+    fieldset {
+        border: none;
+        position: relative;
+        margin-top: 2rem;
+
+        > legend {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-bottom: .4rem;
+            color: $gris23;
+            font-size: 1.8rem;
+        }
+    }
+
+    input[type="text"], textarea {
+        width: 100%;
+        border: solid $grisDD .1rem;
+        border-radius: .3rem;
+        padding: 1rem;
+    }
+
+    .editfield {
+        position: relative;
+    }
+
+    .group-create-privacy {
+        ul {
+            margin-top: 0;
+        }
+    }
+
+    .checkbox-group, .checkbox, .radio {
+        label {
+            margin-top: .2rem;
+        }
+    }
+
+    .description, fieldset > p {
+        position: absolute;
+        right: 0;
+        width: 30rem;
+        top: -3.5rem;
+        font-size: 1.3rem;
+        text-align: right;
+        color: $grisAA;
+    }
+
+    .description {
+        top: 0;
+    }
+
+    input[type="submit"], #tb-forum-creer-liste, #bp-browse-button {
+        border: none;
+        margin-top: 1rem;
+        cursor: pointer;
+        background-color: $green-button;
+        border-radius: .2rem;
+        color: $blanc;
+        display: inline-block;
+        font-family: $ubuntu, sans-serif;
+        font-size: 1.3rem;
+        font-weight: $medium;
+        letter-spacing: .1rem;
+        line-height: 1.5rem;
+        padding: 1.5rem 2rem;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background .2s ease;
+
+        &:focus, &:hover {
+            background-color: lighten($green-button, 8%);
+        }
+
+        &[disabled] {
+            background-color: $grisB3;
+        }
+    }
+
+    #tb-forum-creer-liste {
+        padding: .3rem .7rem;
+        margin-top: 1px;
+    }
+
+    p {
+        color: $gris60;
+    }
+
+    #bp-browse-button {
+        width: auto;
+    }
+
+    #drag-drop-area {
+        border-width: 2px;
+    }
+
+    .bp-avatar-nav ul.avatar-nav-items {
+        > li {
+            &.current {
+                border-bottom-color: $grisF4;
+                border-radius: 0;
+                > a {
+                    color: $gris23;
+                }
+            }
+            > a {
+                color: $gris60;
+            }
+        }
+    }
+}
+
+#search-members-form {
+    > label {
+        display: inline;
+        > input[type="text"] {
+            width: 40rem;
+        }
+    }
+    > input[type="submit"] {
+        padding: 1.2rem 1.8rem;
+    }
+}
+
+.bp-widget.group-members-list {
+    margin-top: 3rem;
+
+    ul {
+        list-style: none;
+
+        .component-contact {
+            border-bottom: none;
+        }
+        .action {
+            margin-bottom: 1rem;
+            > .button {
+                padding: .4rem 1rem;
+                margin-top: .3rem;
+                background-color: $rouge; // le bouton "supprimer du groupe" n'a pas de classe
+
+                & + .button {
+                    margin-left: 0;
+                }
+
+                &.member-ban {
+                    background-color: $orange-clair;
+                }
+
+                &.member-promote-to-mod, &.member-promote-to-admin {
+                    background-color: $green-button;
+                }
+            }
+        }
+    }
+}

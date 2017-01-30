@@ -1,0 +1,36 @@
+.project-forum {
+
+    > .layout-wrapper {
+        margin-top: 2rem;
+    }
+
+    #tb-forum-commande-inscription {
+        border-bottom: solid $grisF0 1px;
+        display: inline-block;
+        float: right;
+        padding-bottom: 1rem;
+
+        > #tb-forum-etat-inscription {
+            display: inline-block;
+        }
+
+        > .tab-meta-info {
+            display: inline-block;
+        }
+    }
+
+    #tb-forum-inscription {
+
+        input.button {
+            padding: 0.5rem 1rem;
+            border: 0 none;
+
+            &.abonne {
+                &:hover {
+                    background-color: $orange-clair;
+                }
+                background-color: $grisDD;
+            }
+        }
+    }
+}

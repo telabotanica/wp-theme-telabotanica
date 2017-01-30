@@ -21,304 +21,301 @@ do_action( 'bp_before_group_manage_members_admin' ); ?>
 
 <div aria-live="polite" aria-relevant="all" aria-atomic="true">
 
-	<div class="bp-widget group-members-list group-admins-list">
-		<h3 class="section-header"><?php _e( 'Administrators', 'buddypress' ); ?></h3>
+  <div class="bp-widget group-members-list group-admins-list">
+    <h3 class="section-header"><?php _e( 'Administrators', 'buddypress' ); ?></h3>
+
+    <?php if ( bp_group_has_members( array( 'per_page' => 15, 'group_role' => array( 'admin' ), 'page_arg' => 'mlpage-admin' ) ) ) : ?>
 
-		<?php if ( bp_group_has_members( array( 'per_page' => 15, 'group_role' => array( 'admin' ), 'page_arg' => 'mlpage-admin' ) ) ) : ?>
+      <?php if ( bp_group_member_needs_pagination() ) : ?>
+
+        <div class="pagination no-ajax">
 
-			<?php if ( bp_group_member_needs_pagination() ) : ?>
+          <div id="member-count" class="pag-count">
+            <?php bp_group_member_pagination_count(); ?>
+          </div>
 
-				<div class="pagination no-ajax">
+          <div id="member-admin-pagination" class="pagination-links">
+            <?php bp_group_member_admin_pagination(); ?>
+          </div>
 
-					<div id="member-count" class="pag-count">
-						<?php bp_group_member_pagination_count(); ?>
-					</div>
+        </div>
 
-					<div id="member-admin-pagination" class="pagination-links">
-						<?php bp_group_member_admin_pagination(); ?>
-					</div>
+      <?php endif; ?>
 
-				</div>
+      <ul id="admins-list" class="item-list">
+        <?php while ( bp_group_members() ) : bp_group_the_member(); ?>
+          <li>
+            <div class="item">
+              <?php
+              $memberId = bp_get_group_member_id();
+              the_telabotanica_component('contact', [
+                'image' => bp_core_fetch_avatar(array(
+                  'item_id' => $memberId,
+                  'html' => 'false',
+                  'type' => 'full'
+                )),
+                'name' => bp_get_group_member_name(),
+                'link' => bp_get_group_member_url(),
+                'description' => bp_get_group_member_joined_since()
+              ]);
+
+              /**
+               * Fires inside the item section of a member admin item in group management area.
+               *
+               * @since 1.1.0
+               * @since 2.7.0 Added $section parameter.
+               *
+               * @param $section Which list contains this item.
+               */
+              do_action( 'bp_group_manage_members_admin_item', 'admins-list' ); ?>
+            </div>
+
+            <div class="action">
+              <?php if ( count( bp_group_admin_ids( false, 'array' ) ) > 1 ) : ?>
+                <a class="button confirm admin-demote-to-member" href="<?php bp_group_member_demote_link(); ?>"><?php _e( 'Demote to Member', 'buddypress' ); ?></a>
+              <?php endif; ?>
+
+              <?php
+
+              /**
+               * Fires inside the action section of a member admin item in group management area.
+               *
+               * @since 2.7.0
+               *
+               * @param $section Which list contains this item.
+               */
+              do_action( 'bp_group_manage_members_admin_actions', 'admins-list' ); ?>
+            </div>
+          </li>
+        <?php endwhile; ?>
+      </ul>
+
+      <?php if ( bp_group_member_needs_pagination() ) : ?>
+
+        <div class="pagination no-ajax">
+
+          <div id="member-count" class="pag-count">
+            <?php bp_group_member_pagination_count(); ?>
+          </div>
+
+          <div id="member-admin-pagination" class="pagination-links">
+            <?php bp_group_member_admin_pagination(); ?>
+          </div>
+
+        </div>
+
+      <?php endif; ?>
+
+    <?php else: ?>
+
+    <div id="message" class="info">
+      <p><?php _e( 'No group administrators were found.', 'buddypress' ); ?></p>
+    </div>
+
+    <?php endif; ?>
+  </div>
+
+  <div class="bp-widget group-members-list group-mods-list">
+    <h3 class="section-header"><?php _e( 'Moderators', 'buddypress' ); ?></h3>
 
-			<?php endif; ?>
+    <?php if ( bp_group_has_members( array( 'per_page' => 15, 'group_role' => array( 'mod' ), 'page_arg' => 'mlpage-mod' ) ) ) : ?>
 
-			<ul id="admins-list" class="item-list">
-				<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
-					<li>
-						<div class="item-avatar">
-							<?php bp_group_member_avatar_thumb(); ?>
-						</div>
+      <?php if ( bp_group_member_needs_pagination() ) : ?>
 
-						<div class="item">
-							<div class="item-title">
-								<?php bp_group_member_link(); ?>
-							</div>
-							<p class="joined item-meta">
-								<?php bp_group_member_joined_since(); ?>
-							</p>
-							<?php
+        <div class="pagination no-ajax">
 
-							/**
-							 * Fires inside the item section of a member admin item in group management area.
-							 *
-							 * @since 1.1.0
-							 * @since 2.7.0 Added $section parameter.
-							 *
-							 * @param $section Which list contains this item.
-							 */
-							do_action( 'bp_group_manage_members_admin_item', 'admins-list' ); ?>
-						</div>
-
-						<div class="action">
-							<?php if ( count( bp_group_admin_ids( false, 'array' ) ) > 1 ) : ?>
-								<a class="button confirm admin-demote-to-member" href="<?php bp_group_member_demote_link(); ?>"><?php _e( 'Demote to Member', 'buddypress' ); ?></a>
-							<?php endif; ?>
-
-							<?php
-
-							/**
-							 * Fires inside the action section of a member admin item in group management area.
-							 *
-							 * @since 2.7.0
-							 *
-							 * @param $section Which list contains this item.
-							 */
-							do_action( 'bp_group_manage_members_admin_actions', 'admins-list' ); ?>
-						</div>
-					</li>
-				<?php endwhile; ?>
-			</ul>
+          <div id="member-count" class="pag-count">
+            <?php bp_group_member_pagination_count(); ?>
+          </div>
 
-			<?php if ( bp_group_member_needs_pagination() ) : ?>
-
-				<div class="pagination no-ajax">
+          <div id="member-admin-pagination" class="pagination-links">
+            <?php bp_group_member_admin_pagination(); ?>
+          </div>
 
-					<div id="member-count" class="pag-count">
-						<?php bp_group_member_pagination_count(); ?>
-					</div>
+        </div>
 
-					<div id="member-admin-pagination" class="pagination-links">
-						<?php bp_group_member_admin_pagination(); ?>
-					</div>
+      <?php endif; ?>
 
-				</div>
+      <ul id="mods-list" class="item-list">
 
-			<?php endif; ?>
+        <?php while ( bp_group_members() ) : bp_group_the_member(); ?>
+          <li>
+            <div class="item">
+              <?php
+              $memberId = bp_get_group_member_id();
+              the_telabotanica_component('contact', [
+                'image' => bp_core_fetch_avatar(array(
+                  'item_id' => $memberId,
+                  'html' => 'false',
+                  'type' => 'full'
+                )),
+                'name' => bp_get_group_member_name(),
+                'link' => bp_get_group_member_url(),
+                'description' => bp_get_group_member_joined_since()
+              ]);
 
-		<?php else: ?>
+              /**
+               * Fires inside the item section of a member admin item in group management area.
+               *
+               * @since 1.1.0
+               * @since 2.7.0 Added $section parameter.
+               *
+               * @param $section Which list contains this item.
+               */
+              do_action( 'bp_group_manage_members_admin_item', 'admins-list' ); ?>
+            </div>
+
+            <div class="action">
+              <a href="<?php bp_group_member_promote_admin_link(); ?>" class="button confirm mod-promote-to-admin"><?php _e( 'Promote to Admin', 'buddypress' ); ?></a>
+              <a class="button confirm mod-demote-to-member" href="<?php bp_group_member_demote_link(); ?>"><?php _e( 'Demote to Member', 'buddypress' ); ?></a>
 
-		<div id="message" class="info">
-			<p><?php _e( 'No group administrators were found.', 'buddypress' ); ?></p>
-		</div>
+              <?php
+
+              /**
+               * Fires inside the action section of a member admin item in group management area.
+               *
+               * @since 2.7.0
+               *
+               * @param $section Which list contains this item.
+               */
+              do_action( 'bp_group_manage_members_admin_actions', 'mods-list' ); ?>
 
-		<?php endif; ?>
-	</div>
+            </div>
+          </li>
+        <?php endwhile; ?>
 
-	<div class="bp-widget group-members-list group-mods-list">
-		<h3 class="section-header"><?php _e( 'Moderators', 'buddypress' ); ?></h3>
+      </ul>
 
-		<?php if ( bp_group_has_members( array( 'per_page' => 15, 'group_role' => array( 'mod' ), 'page_arg' => 'mlpage-mod' ) ) ) : ?>
+      <?php if ( bp_group_member_needs_pagination() ) : ?>
+
+        <div class="pagination no-ajax">
 
-			<?php if ( bp_group_member_needs_pagination() ) : ?>
+          <div id="member-count" class="pag-count">
+            <?php bp_group_member_pagination_count(); ?>
+          </div>
 
-				<div class="pagination no-ajax">
+          <div id="member-admin-pagination" class="pagination-links">
+            <?php bp_group_member_admin_pagination(); ?>
+          </div>
 
-					<div id="member-count" class="pag-count">
-						<?php bp_group_member_pagination_count(); ?>
-					</div>
+        </div>
 
-					<div id="member-admin-pagination" class="pagination-links">
-						<?php bp_group_member_admin_pagination(); ?>
-					</div>
+      <?php endif; ?>
 
-				</div>
+    <?php else: ?>
 
-			<?php endif; ?>
+      <div id="message" class="info">
+        <p><?php _e( 'No group moderators were found.', 'buddypress' ); ?></p>
+      </div>
 
-			<ul id="mods-list" class="item-list">
+    <?php endif; ?>
+  </div>
 
-				<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
-					<li>
-						<div class="item-avatar">
-							<?php bp_group_member_avatar_thumb(); ?>
-						</div>
+  <div class="bp-widget group-members-list">
+    <h3 class="section-header"><?php _e( "Members", 'buddypress' ); ?></h3>
 
-						<div class="item">
-							<div class="item-title">
-								<?php bp_group_member_link(); ?>
-							</div>
-							<p class="joined item-meta">
-								<?php bp_group_member_joined_since(); ?>
-							</p>
-							<?php
+    <?php if ( bp_group_has_members( array( 'per_page' => 15, 'exclude_banned' => 0 ) ) ) : ?>
 
-							/**
-							 * Fires inside the item section of a member admin item in group management area.
-							 *
-							 * @since 1.1.0
-							 * @since 2.7.0 Added $section parameter.
-							 *
-							 * @param $section Which list contains this item.
-							 */
-							do_action( 'bp_group_manage_members_admin_item', 'admins-list' ); ?>
-						</div>
-
-						<div class="action">
-							<a href="<?php bp_group_member_promote_admin_link(); ?>" class="button confirm mod-promote-to-admin"><?php _e( 'Promote to Admin', 'buddypress' ); ?></a>
-							<a class="button confirm mod-demote-to-member" href="<?php bp_group_member_demote_link(); ?>"><?php _e( 'Demote to Member', 'buddypress' ); ?></a>
-
-							<?php
-
-							/**
-							 * Fires inside the action section of a member admin item in group management area.
-							 *
-							 * @since 2.7.0
-							 *
-							 * @param $section Which list contains this item.
-							 */
-							do_action( 'bp_group_manage_members_admin_actions', 'mods-list' ); ?>
+      <?php if ( bp_group_member_needs_pagination() ) : ?>
 
-						</div>
-					</li>
-				<?php endwhile; ?>
+        <div class="pagination no-ajax">
 
-			</ul>
+          <div id="member-count" class="pag-count">
+            <?php bp_group_member_pagination_count(); ?>
+          </div>
 
-			<?php if ( bp_group_member_needs_pagination() ) : ?>
+          <div id="member-admin-pagination" class="pagination-links">
+            <?php bp_group_member_admin_pagination(); ?>
+          </div>
 
-				<div class="pagination no-ajax">
+        </div>
 
-					<div id="member-count" class="pag-count">
-						<?php bp_group_member_pagination_count(); ?>
-					</div>
-
-					<div id="member-admin-pagination" class="pagination-links">
-						<?php bp_group_member_admin_pagination(); ?>
-					</div>
+      <?php endif; ?>
 
-				</div>
+      <ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
+        <?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 
-			<?php endif; ?>
+          <li class="<?php bp_group_member_css_class(); ?>">
+            <div class="item">
+              <?php
+              $memberId = bp_get_group_member_id();
+              the_telabotanica_component('contact', [
+                'image' => bp_core_fetch_avatar(array(
+                  'item_id' => $memberId,
+                  'html' => 'false',
+                  'type' => 'full'
+                )),
+                'name' => bp_get_group_member_name(),
+                'link' => bp_get_group_member_url(),
+                'description' => bp_get_group_member_joined_since()
+              ]);
 
-		<?php else: ?>
+              /**
+               * Fires inside the item section of a member admin item in group management area.
+               *
+               * @since 1.1.0
+               * @since 2.7.0 Added $section parameter.
+               *
+               * @param $section Which list contains this item.
+               */
+              do_action( 'bp_group_manage_members_admin_item', 'admins-list' ); ?>
+            </div>
 
-			<div id="message" class="info">
-				<p><?php _e( 'No group moderators were found.', 'buddypress' ); ?></p>
-			</div>
+            <div class="action">
+              <?php if ( bp_get_group_member_is_banned() ) : ?>
 
-		<?php endif; ?>
-	</div>
+                <a href="<?php bp_group_member_unban_link(); ?>" class="button confirm member-unban" title="<?php esc_attr_e( 'Unban this member', 'buddypress' ); ?>"><?php _e( 'Remove Ban', 'buddypress' ); ?></a>
 
-	<div class="bp-widget group-members-list">
-		<h3 class="section-header"><?php _e( "Members", 'buddypress' ); ?></h3>
+              <?php else : ?>
 
-		<?php if ( bp_group_has_members( array( 'per_page' => 15, 'exclude_banned' => 0 ) ) ) : ?>
+                <a href="<?php bp_group_member_ban_link(); ?>" class="button confirm member-ban"><?php _e( 'Kick &amp; Ban', 'buddypress' ); ?></a>
+                <a href="<?php bp_group_member_promote_mod_link(); ?>" class="button confirm member-promote-to-mod"><?php _e( 'Promote to Mod', 'buddypress' ); ?></a>
+                <a href="<?php bp_group_member_promote_admin_link(); ?>" class="button confirm member-promote-to-admin"><?php _e( 'Promote to Admin', 'buddypress' ); ?></a>
 
-			<?php if ( bp_group_member_needs_pagination() ) : ?>
+              <?php endif; ?>
 
-				<div class="pagination no-ajax">
+              <a href="<?php bp_group_member_remove_link(); ?>" class="button confirm"><?php _e( 'Remove from group', 'buddypress' ); ?></a>
 
-					<div id="member-count" class="pag-count">
-						<?php bp_group_member_pagination_count(); ?>
-					</div>
+              <?php
 
-					<div id="member-admin-pagination" class="pagination-links">
-						<?php bp_group_member_admin_pagination(); ?>
-					</div>
+              /**
+               * Fires inside the action section of a member admin item in group management area.
+               *
+               * @since 2.7.0
+               *
+               * @param $section Which list contains this item.
+               */
+              do_action( 'bp_group_manage_members_admin_actions', 'members-list' ); ?>
+            </div>
+          </li>
 
-				</div>
+        <?php endwhile; ?>
+      </ul>
 
-			<?php endif; ?>
+      <?php if ( bp_group_member_needs_pagination() ) : ?>
 
-			<ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
-				<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
+        <div class="pagination no-ajax">
 
-					<li class="<?php bp_group_member_css_class(); ?>">
-						<div class="item-avatar">
-							<?php bp_group_member_avatar_thumb(); ?>
-						</div>
+          <div id="member-count" class="pag-count">
+            <?php bp_group_member_pagination_count(); ?>
+          </div>
 
-						<div class="item">
-							<div class="item-title">
-								<?php bp_group_member_link(); ?>
-								<?php
-								if ( bp_get_group_member_is_banned() ) {
-									echo ' <span class="banned">';
-									_e( '(banned)', 'buddypress' );
-									echo '</span>';
-								} ?>
-							</div>
-							<p class="joined item-meta">
-								<?php bp_group_member_joined_since(); ?>
-							</p>
-							<?php
+          <div id="member-admin-pagination" class="pagination-links">
+            <?php bp_group_member_admin_pagination(); ?>
+          </div>
 
-							/**
-							 * Fires inside the item section of a member admin item in group management area.
-							 *
-							 * @since 1.1.0
-							 * @since 2.7.0 Added $section parameter.
-							 *
-							 * @param $section Which list contains this item.
-							 */
-							do_action( 'bp_group_manage_members_admin_item', 'admins-list' ); ?>
-						</div>
+        </div>
 
-						<div class="action">
-							<?php if ( bp_get_group_member_is_banned() ) : ?>
+      <?php endif; ?>
 
-								<a href="<?php bp_group_member_unban_link(); ?>" class="button confirm member-unban" title="<?php esc_attr_e( 'Unban this member', 'buddypress' ); ?>"><?php _e( 'Remove Ban', 'buddypress' ); ?></a>
+    <?php else: ?>
 
-							<?php else : ?>
+      <div id="message" class="info">
+        <p><?php _e( 'No group members were found.', 'buddypress' ); ?></p>
+      </div>
 
-								<a href="<?php bp_group_member_ban_link(); ?>" class="button confirm member-ban"><?php _e( 'Kick &amp; Ban', 'buddypress' ); ?></a>
-								<a href="<?php bp_group_member_promote_mod_link(); ?>" class="button confirm member-promote-to-mod"><?php _e( 'Promote to Mod', 'buddypress' ); ?></a>
-								<a href="<?php bp_group_member_promote_admin_link(); ?>" class="button confirm member-promote-to-admin"><?php _e( 'Promote to Admin', 'buddypress' ); ?></a>
-
-							<?php endif; ?>
-
-							<a href="<?php bp_group_member_remove_link(); ?>" class="button confirm"><?php _e( 'Remove from group', 'buddypress' ); ?></a>
-
-							<?php
-
-							/**
-							 * Fires inside the action section of a member admin item in group management area.
-							 *
-							 * @since 2.7.0
-							 *
-							 * @param $section Which list contains this item.
-							 */
-							do_action( 'bp_group_manage_members_admin_actions', 'members-list' ); ?>
-						</div>
-					</li>
-
-				<?php endwhile; ?>
-			</ul>
-
-			<?php if ( bp_group_member_needs_pagination() ) : ?>
-
-				<div class="pagination no-ajax">
-
-					<div id="member-count" class="pag-count">
-						<?php bp_group_member_pagination_count(); ?>
-					</div>
-
-					<div id="member-admin-pagination" class="pagination-links">
-						<?php bp_group_member_admin_pagination(); ?>
-					</div>
-
-				</div>
-
-			<?php endif; ?>
-
-		<?php else: ?>
-
-			<div id="message" class="info">
-				<p><?php _e( 'No group members were found.', 'buddypress' ); ?></p>
-			</div>
-
-		<?php endif; ?>
-	</div>
+    <?php endif; ?>
+  </div>
 
 </div>
 

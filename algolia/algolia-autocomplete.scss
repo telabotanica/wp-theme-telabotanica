@@ -10,13 +10,14 @@
   border-bottom-right-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);
 
-  // display: flex !important;
-  // flex-direction: row;
-  // flex-wrap: wrap;
+  .aa-dropdown-menu-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-  > * {
-    float: left;
-    width: 33.33%;
+    > * {
+      width: 33.33%;
+    }
   }
 
   @media only screen and (max-width: 768px) {

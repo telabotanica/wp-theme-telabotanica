@@ -1,3 +1,14 @@
+<script type="text/template" id="tmpl-dropdown-menu">
+  <div class="aa-dropdown-menu-wrapper">
+    <div class="aa-dataset-0"></div>
+    <div class="aa-dataset-1"></div>
+    <div class="aa-dataset-2"></div>
+    <div class="aa-dataset-3"></div>
+    <div class="aa-dataset-4"></div>
+    <div class="aa-dataset-5"></div>
+  </div>
+</script>
+
 <script type="text/html" id="tmpl-autocomplete-header">
 	<div class="autocomplete-header">
 		<div class="autocomplete-header-title">{{{ data.label }}}</div>
@@ -29,6 +40,18 @@
 			#>
 			<span class="suggestion-post-content">{{{ relevant_content }}}</span>
 		</div>
+	</a>
+</script>
+
+<script type="text/html" id="tmpl-autocomplete-taxon-suggestion">
+	<a class="suggestion-link" href="{{ data.bdtfx.url }}"  title="{{ data.bdtfx.scientific_name }}">
+		<span class="suggestion-taxon-title">{{{ data._highlightResult.bdtfx.scientific_name.value }}}</span>
+	</a>
+</script>
+
+<script type="text/html" id="tmpl-autocomplete-syntaxon-suggestion">
+	<a class="suggestion-link" href="{{ data.url }}"  title="{{ data.commonName }}">
+		<span class="suggestion-syntaxon-title">{{{ data._highlightResult.syntaxon.value }}}</span>
 	</a>
 </script>
 
@@ -108,7 +131,9 @@
 				debug: algolia.debug,
 				hint: false,
 				openOnFocus: true,
-				templates: {}
+				templates: {
+          dropdownMenu: '#tmpl-dropdown-menu'
+        }
 			};
 			/* Todo: Add empty template when we fixed https://github.com/algolia/autocomplete.js/issues/109 */
 

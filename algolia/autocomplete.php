@@ -13,7 +13,7 @@
 	<a href="{{{ data.resultsUrl }}}" class="autocomplete-header">
 		<div class="autocomplete-header-title">{{{ data.label }}}</div>
 		<div class="autocomplete-header-count">{{{ data.nbHits }}}</div>
-		<div class="autocomplete-header-more">voir plus</div>
+		<div class="autocomplete-header-more"><?php _e( 'voir plus', 'telabotanica' ); ?></div>
 	</a>
 </script>
 
@@ -86,8 +86,8 @@
 
 <script type="text/html" id="tmpl-autocomplete-empty">
 	<div class="autocomplete-empty">
-		<?php esc_html_e( 'No results matched your query ', 'algolia' ); ?>
-		<span class="empty-query">{{ data.query }}"</span>
+		<?php esc_html_e( 'Aucun résultat pour ', 'telabotanica' ); ?>
+		<span class="empty-query">"{{ data.query }}"</span>
 	</div>
 </script>
 
@@ -120,6 +120,7 @@
               resultsUrl: '#'
 						});
 					},
+          empty: wp.template('autocomplete-empty'),
 					suggestion: wp.template(config['tmpl_suggestion'])
 				}
 			});
@@ -138,7 +139,6 @@
           dropdownMenu: '#tmpl-dropdown-menu'
         }
 			};
-			/* Todo: Add empty template when we fixed https://github.com/algolia/autocomplete.js/issues/109 */
 
 			if(algolia.powered_by_enabled) {
 				config.templates.footer = wp.template('autocomplete-footer');

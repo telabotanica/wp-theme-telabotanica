@@ -15,8 +15,38 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    > * {
+    > .aa-dataset {
+      margin-bottom: 2rem;
+      position: relative;
       width: 33.33%;
+
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+      }
+
+      &:before {
+        border-top: 0.1rem solid $grisEB;
+        height: 0;
+        left: 2.5rem;
+        top: 0;
+        width: calc(100% - 5rem);
+      }
+
+      &:after {
+        border-right: 0.1rem solid $grisEB;
+        height: calc(100% - 2.5rem);
+        right: 0;
+        top: 2.5rem;
+        width: 0;
+      }
+
+      &:nth-child(1):before,
+      &:nth-child(2):before,
+      &:nth-child(3):before,
+      &:nth-child(3n):after {display: none;}
     }
   }
 
@@ -43,29 +73,44 @@
   }
 
   .autocomplete-header {
-    margin: 0 14px;
-    line-height: 3em;
-    border-bottom: 1px solid rgba(0,0,0,.05);
+    display: block;
+    font-weight: $regular;
+    line-height: 2.2rem;
+    margin: 2.5rem 2.5rem 1.5rem;
+    overflow: hidden;
 
     &-title,
-    &-more {
+    &-count {
+      font-size: 1.4rem;
       letter-spacing: 1px;
       text-transform: uppercase;
-      font-weight: bold;
     }
 
     &-title {
       color: $vert-fonce;
       float: left;
+      margin-right: 0.5rem;
+    }
+
+    &-count {
+      color: $orange;
+      float: left;
     }
 
     &-more {
+      border: 0.1rem solid $marron;
+      border-radius: 1.2rem;
+      color: $marron;
       float: right;
+      font-size: 1.2rem;
+      line-height: 2.2rem;
+      padding: 0 1rem;
+    }
 
-      a {
-        color: rgba(0,0,0,.3);
-        font-weight: bold;
-        &:hover {color:  rgba(0,0,0,.4);}
+    &:hover {
+      .autocomplete-header-more {
+        border-color: $marron-fonce;
+        color: $marron-fonce;
       }
     }
   }
@@ -116,7 +161,7 @@
 
   a.suggestion-link {
     display: block;
-    padding: 0 14px;
+    padding: 0 2.5rem;
 
     &.user-suggestion-link {line-height: 32px;}
 

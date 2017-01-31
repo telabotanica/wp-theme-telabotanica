@@ -1,19 +1,20 @@
 <script type="text/template" id="tmpl-dropdown-menu">
   <div class="aa-dropdown-menu-wrapper">
-    <div class="aa-dataset-0"></div>
-    <div class="aa-dataset-1"></div>
-    <div class="aa-dataset-2"></div>
-    <div class="aa-dataset-3"></div>
-    <div class="aa-dataset-4"></div>
-    <div class="aa-dataset-5"></div>
+    <div class="aa-dataset aa-dataset-0"></div>
+    <div class="aa-dataset aa-dataset-1"></div>
+    <div class="aa-dataset aa-dataset-2"></div>
+    <div class="aa-dataset aa-dataset-3"></div>
+    <div class="aa-dataset aa-dataset-4"></div>
+    <div class="aa-dataset aa-dataset-5"></div>
   </div>
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-header">
-	<div class="autocomplete-header">
+	<a href="{{{ data.resultsUrl }}}" class="autocomplete-header">
 		<div class="autocomplete-header-title">{{{ data.label }}}</div>
-		<div class="clear"></div>
-	</div>
+		<div class="autocomplete-header-count">{{{ data.nbHits }}}</div>
+		<div class="autocomplete-header-more">voir plus</div>
+	</a>
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
@@ -112,9 +113,11 @@
 					]
 				}),
 				templates: {
-					header: function() {
+					header: function(data, algoliaResponse) {
 						return wp.template('autocomplete-header')({
-							label: config['label']
+							label: config['label'],
+              nbHits: algoliaResponse.nbHits,
+              resultsUrl: '#'
 						});
 					},
 					suggestion: wp.template(config['tmpl_suggestion'])

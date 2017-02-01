@@ -5,6 +5,8 @@
   if (!isset($data->title)) $data->title = get_sub_field('title');
   if (!isset($data->intro)) $data->intro = get_sub_field('intro');
   if (!isset($data->text)) $data->text = get_sub_field('text');
+  if (!isset($data->display_buttons))$data->display_buttons = get_sub_field('display_buttons');
+  if (!$data->display_buttons) $data->display_buttons = [];
   if (!isset($data->intro_buttons)) $data->intro_buttons = get_sub_field('intro_buttons');
   if (!isset($data->content_buttons)) $data->content_buttons = get_sub_field('content_buttons');
 
@@ -32,7 +34,7 @@
 
       endif;
 
-      if ( $data->intro_buttons ) :
+      if ( in_array('intro', $data->display_buttons) && $data->intro_buttons ) :
 
         $data->intro_buttons['display'] = [ $data->intro_buttons['display'], 'seamless' ];
         the_telabotanica_component( 'buttons', $data->intro_buttons );
@@ -65,7 +67,7 @@
 
             endif;
 
-            if ( $data->content_buttons['items'] ) :
+            if ( in_array('content', $data->display_buttons) && $data->content_buttons['items'] ) :
 
               $data->content_buttons['display'] = [ $data->content_buttons['display'], 'seamless' ];
               the_telabotanica_component( 'buttons', $data->content_buttons );

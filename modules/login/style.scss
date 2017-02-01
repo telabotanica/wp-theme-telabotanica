@@ -1,0 +1,76 @@
+/*
+Ce fichier ne suit pas exactement les conventions des autres modules du styleguide
+car il surcharge des règles de Wordpress.
+Certaines couleurs n'utilisent pas les variables de colors.scss pour la même raison.
+*/
+
+body.login {
+  background-color: $grisF4;
+}
+
+.login  {
+  #login_error,
+  .message {
+    border-color: $orange;
+  }
+
+  #backtoblog,
+  #nav,
+  h1 {
+    a:hover {
+      color: $turquoise;
+    }
+  }
+}
+
+#login,
+.login {
+  h1 {
+    a {
+      background-image: url(../images/logo-login.png);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .button-primary {
+    background-color: $green-button;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding-bottom: 0;
+    text-shadow: none;
+
+    &:hover, &:focus {
+      background-color: lighten($green-button, 8%);
+    }
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="checkbox"]:focus {
+    border-color: $green-button;
+    box-shadow: 0 0 0.2rem transparentize($green-button, 0.8);
+  }
+
+  & label,
+  &-providers {
+    color: $taupe;
+    font-size: 1.4rem;
+  }
+
+  #login &-providers {
+    margin-bottom: 2rem;
+
+    label {
+      background-color: #fbfbfb;
+      border: 0.1rem solid #ddd;
+      color: #32373c;
+      display: inline-block;
+      margin: 0.5rem 1rem 0 0;
+      line-height: 3rem;
+      padding: 0 1.2rem;
+    }
+  }
+
+  &-provider-default {@include hidden-accessibly;}
+}

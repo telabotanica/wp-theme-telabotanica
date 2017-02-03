@@ -10,6 +10,7 @@ require_once get_template_directory() . '/algolia/class-algolia-actualites-index
  */
 function telabotanica_theme_dequeue_files() {
   wp_dequeue_style( 'algolia-autocomplete' );
+  wp_dequeue_script( 'algolia-search' );
   wp_dequeue_script( 'algolia-autocomplete' );
   wp_dequeue_script( 'algolia-autocomplete-noconflict' );
   wp_dequeue_script( 'tether' );

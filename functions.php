@@ -155,7 +155,7 @@ function telabotanica_scripts() {
 	wp_enqueue_style( 'telabotanica-style', get_template_directory_uri() . '/dist/bundle.css' );
 
 	// Theme script.
-	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', [ 'jquery' ], null, true );
+	wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', [ 'jquery', 'wp-util' ], null, true );
 }
 add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
 

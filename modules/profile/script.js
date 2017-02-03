@@ -6,16 +6,15 @@ var _ = {
 };
 var Tela = window.Tela || {};
 
-Tela.extendedProfile = (function(){
+Tela.profile = (function(){
 
-  function manageExtendedProfile(selector){
-    console.log('auto con con sur [' + selector + ']');
+  function module(selector){
     var $el = $(selector),
         $searchInput,
         $currentRequest;
 
     function init(){
-      $searchInput = $el.find('input[type="text"]');
+      $searchInput = $el.find('.field_ville input[type="text"]');
       $currentRequest = false;
 
       /* config */
@@ -53,12 +52,12 @@ Tela.extendedProfile = (function(){
 
   return function(selector){
     $(selector).each(function() {
-      manageExtendedProfile(this);
+      module(this);
     });
   };
 
 })();
 
 $(document).ready(function(){
-  Tela.extendedProfile('#profile-edit-form > .field_ville, #profile-details-section > .field_ville');
+  Tela.profile('#profile-edit-form, #profile-details-section');
 });

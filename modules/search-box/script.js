@@ -53,8 +53,6 @@ Tela.searchBox = (function(){
       if(algolia.powered_by_enabled) {
         config.templates.footer = wp.template('autocomplete-footer');
       }
-
-      console.log('initConfig', config);
     }
 
     function initSources(){
@@ -86,12 +84,9 @@ Tela.searchBox = (function(){
         });
 
       });
-
-      console.log('initSources', sources);
     }
 
     function initAutocomplete(){
-      console.log('initAutocomplete');
       algoliaAutocomplete($searchInput[0], config, sources)
         .on('autocomplete:selected', function(e, suggestion, datasetName) {
           /* Redirect the user when we detect a suggestion selection. */
@@ -100,7 +95,6 @@ Tela.searchBox = (function(){
     }
 
     function initTether(){
-      console.log('initTether');
       /* Remove autocomplete.js default inline input search styles. */
       $el.removeAttr('style');
 

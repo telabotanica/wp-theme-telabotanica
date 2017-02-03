@@ -1,6 +1,9 @@
 'use strict';
 
 var algoliaAutocomplete = require('autocomplete.js');
+var _ = {
+  debounce: require('lodash.debounce')
+};
 
 var Tela = window.Tela || {};
 
@@ -23,12 +26,12 @@ Tela.autocomplete = (function(){
       /* setup sources */
       var sources = [
         {
-          source: function(query, cb) {
+          source: _.debounce(function(query, cb) {
             console.log('Recherche', query, cb);
             // TODO: faire la recherche et retourner les résultats dans un tableau
             var hits = [];
             cb(hits);
-          }
+          }, 150)
         }
       ];
 

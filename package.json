@@ -29,6 +29,7 @@
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "jquery-accessible-accordion-aria": "^2.1.0",
+    "lodash.debounce": "^4.0.8",
     "node-sass": "^3.13.1",
     "normalize-scss": "^5.0.4",
     "path": "^0.12.7",

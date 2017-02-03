@@ -42,7 +42,7 @@
         <li class="cover-home-stats-item cover-home-stats-item-users">
           <a href="<?php echo $users_link ?>">
             <div class="cover-home-stats-icon"><?php the_telabotanica_module('icon', ['icon' => 'mail']) ?></div>
-            <?php printf(__('%s télabotanistes', 'telabotanica'), '<var>' . number_format_i18n($user_count) . '</var>') ?>
+            <?php printf(__('%s telabotanistes', 'telabotanica'), '<var>' . number_format_i18n($user_count) . '</var>') ?>
           </a>
         </li>
         <li class="cover-home-stats-item cover-home-stats-item-observations">

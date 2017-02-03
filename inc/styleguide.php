@@ -19,6 +19,7 @@
   */
 $telabotanica_modules = [
   'article',
+  'autocomplete',
   'breadcrumbs',
   'button',
   'button-top',

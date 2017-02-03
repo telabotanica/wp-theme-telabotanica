@@ -13,12 +13,9 @@ Tela.autocomplete = (function(){
     function init(){
       $searchInput = $el.find('.autocomplete-input');
 
-      /* init Algolia client */
-      var client = algoliasearch(algolia.application_id, algolia.search_api_key);
-
       /* config */
       var config = {
-        debug: algolia.debug,
+        debug: true,
         hint: false,
         openOnFocus: true
       };

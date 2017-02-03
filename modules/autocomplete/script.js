@@ -7,14 +7,14 @@ var Tela = window.Tela || {};
 Tela.autocomplete = (function(){
 
   function autocomplete(selector){
-    var $el = $(selector),
+    var $el     = $(selector),
       $searchInput;
 
     function init(){
       $searchInput = $el.find('.autocomplete-input');
 
       /* init Algolia client */
-  		var client = algoliasearch(algolia.application_id, algolia.search_api_key);
+      var client = algoliasearch(algolia.application_id, algolia.search_api_key);
 
       /* config */
       var config = {
@@ -26,12 +26,12 @@ Tela.autocomplete = (function(){
       /* setup sources */
       var sources = [
         {
-          source: function(query, callback) {
-            console.log('Recherche', query);
+          source: function(query, cb) {
+            console.log('Recherche', query, cb);
             // TODO: faire la recherche et retourner les résultats dans un tableau
             var hits = [];
-            callback(hits);
-          };
+            cb(hits);
+          }
         }
       ];
 

@@ -7,7 +7,7 @@ var Tela = window.Tela || {};
 Tela.autocomplete = (function(){
 
   function autocomplete(selector){
-    var $el     = $(selector),
+    var $el = $(selector),
       $searchInput;
 
     function init(){
@@ -18,13 +18,13 @@ Tela.autocomplete = (function(){
 
       /* config */
       var config = {
-				debug: algolia.debug,
-				hint: false,
-				openOnFocus: true
-			};
+        debug: algolia.debug,
+        hint: false,
+        openOnFocus: true
+      };
 
-  		/* setup sources */
-  		var sources = [
+      /* setup sources */
+      var sources = [
         {
           source: function(query, callback) {
             console.log('Recherche', query);

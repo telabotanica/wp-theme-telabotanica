@@ -30,11 +30,12 @@
       </div>
 
       <?php
-      // TODO: brancher les compteurs et les liens
+      // TODO: brancher les liens
       $users_link = '#';
       $user_count = bp_get_total_member_count();
       $observations_link = '#';
-      $observations_count = 10000;
+      // TODO: définir cette URL en config + mettre en cache
+      $observations_count = file_get_contents('https://api.tela-botanica.org/service:cel:CelStatistiqueTxt/NbObsPubliques');
       $get_involved_link = '#';
       $get_involved_count = wp_count_posts('tb_participer')->publish;
       ?>

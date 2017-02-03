@@ -3,16 +3,18 @@
 require_once get_template_directory() . '/algolia/class-algolia-actualites-index.php';
 
 /**
- * Dequeue default CSS files.
+ * Dequeue default CSS & JS files.
  *
- * Hooked to the wp_print_styles action, with a late priority (100),
+ * Hooked to the algolia_autocomplete_scripts action, with a late priority (100),
  * so that it is after the stylesheets were enqueued.
  */
-function telabotanica_theme_dequeue_styles() {
-  // Remove the algolia-autocomplete.css.
+function telabotanica_theme_dequeue_files() {
   wp_dequeue_style( 'algolia-autocomplete' );
+  wp_dequeue_script( 'algolia-autocomplete' );
+  wp_dequeue_script( 'algolia-autocomplete-noconflict' );
+  wp_dequeue_script( 'tether' );
 }
-add_action( 'wp_print_styles', 'telabotanica_theme_dequeue_styles', 100 );
+add_action( 'algolia_autocomplete_scripts', 'telabotanica_theme_dequeue_files', 100 );
 
 
 // Blacklist some custom post types

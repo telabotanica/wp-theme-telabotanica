@@ -1,16 +1,21 @@
 <?php
 
+require_once get_template_directory() . '/algolia/class-algolia-actualites-index.php';
+
 /**
- * Dequeue default CSS files.
+ * Dequeue default CSS & JS files.
  *
- * Hooked to the wp_print_styles action, with a late priority (100),
+ * Hooked to the algolia_autocomplete_scripts action, with a late priority (100),
  * so that it is after the stylesheets were enqueued.
  */
-function telabotanica_theme_dequeue_styles() {
-  // Remove the algolia-autocomplete.css.
+function telabotanica_theme_dequeue_files() {
   wp_dequeue_style( 'algolia-autocomplete' );
+  wp_dequeue_script( 'algolia-search' );
+  wp_dequeue_script( 'algolia-autocomplete' );
+  wp_dequeue_script( 'algolia-autocomplete-noconflict' );
+  wp_dequeue_script( 'tether' );
 }
-add_action( 'wp_print_styles', 'telabotanica_theme_dequeue_styles', 100 );
+add_action( 'algolia_autocomplete_scripts', 'telabotanica_theme_dequeue_files', 100 );
 
 
 // Blacklist some custom post types
@@ -21,7 +26,6 @@ function telabotanica_blacklist_custom_post_type( array $blacklist ) {
     $blacklist[] = 'customize_changeset';
     $blacklist[] = 'acf-field-group';
     $blacklist[] = 'acf-field';
-    $blacklist[] = 'tb_outils_category';
     return $blacklist;
 }
 add_filter( 'algolia_post_types_blacklist', 'telabotanica_blacklist_custom_post_type' );
@@ -37,28 +41,49 @@ function telabotanica_blacklist_custom_taxonomies( array $blacklist ) {
 }
 add_filter( 'algolia_taxonomies_blacklist', 'telabotanica_blacklist_custom_taxonomies' );
 
-// Customize config
-function telabotanica_algolia_config( array $config ) {
-  // var_dump($config);
+// Customize indices
+function telabotanica_algolia_indices( array $indices ) {
+  // Add the Actualites index.
+  //$indices[] = new Algolia_Actualites_Index();
+
+  return $indices;
+}
+add_filter( 'algolia_indices', 'telabotanica_algolia_indices' );
+
+// Customize searchable posts (it will be displayed as the "Pages" index)
+function telabotanica_algolia_should_index_searchable_post( bool $should_index, WP_Post $post ) {
+  // Add all post types you want to make searchable.
+  $included_post_types = array( 'page', 'tb_thematique', 'tb_outil', 'tb_participer' );
+
+  if ( false === $should_index ) {
+    return false;
+  }
+
+  return in_array( $post->post_type, $included_post_types, true );
+}
+add_filter( 'algolia_should_index_searchable_post', 'telabotanica_algolia_should_index_searchable_post', 10, 2 );
+
+// Customize autocomplete config
+function telabotanica_algolia_autocomplete_config( array $config ) {
   // Add other indices
-  $config['autocomplete']['sources'][] = [
+  $config[] = [
     'index_id' => 'taxons',
     'index_name' => 'Taxons_dev',
     'label' => __('Flore', 'telabotanica'),
-    'position' => 90,
+    'position' => 5,
     'max_suggestions' => 3,
     'tmpl_suggestion' => 'autocomplete-taxon-suggestion',
     'enabled' => true
   ];
-  $config['autocomplete']['sources'][] = [
+  $config[] = [
     'index_id' => 'syntaxons',
     'index_name' => 'SyntaxonCore_dev',
     'label' => __('Végétation', 'telabotanica'),
-    'position' => 80,
+    'position' => 50,
     'max_suggestions' => 3,
     'tmpl_suggestion' => 'autocomplete-syntaxon-suggestion',
     'enabled' => true
   ];
   return $config;
 }
-add_filter( 'algolia_config', 'telabotanica_algolia_config' );
+add_filter( 'algolia_autocomplete_config', 'telabotanica_algolia_autocomplete_config' );

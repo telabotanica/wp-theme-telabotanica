@@ -32,7 +32,7 @@ Tela.profile = (function(){
             }
             $currentRequest = $.get(
               // @TODO parameterize country - tough because we need the ISO code
-              'http://api.tela-botanica.org/service:eflore:0.1/osm/zone-admin/?pays=FR&masque=' + query + '%&limite=20',
+              'https://api.tela-botanica.org/service:eflore:0.1/osm/zone-admin/?pays=FR&masque=' + query + '%&limite=20',
               function(data) {
                 cb(data);
               }

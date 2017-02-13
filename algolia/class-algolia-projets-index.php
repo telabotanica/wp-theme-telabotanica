@@ -39,27 +39,12 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_records( $item )
 	{
-		// TODO: compose record for group
 		$record = array();
-		$record['objectID'] = $item->ID;
-		$record['user_id'] = $item->ID;
-		$record['display_name'] = $item->display_name;
-		$record['posts_url'] = get_author_posts_url( $item->ID, $item->user_nicename );
-		$record['description'] = get_the_author_meta( 'description', $item->ID );
-
-		if ( function_exists( 'wpcom_vip_count_user_posts' ) ) {
-			$record['posts_count'] = (int) wpcom_vip_count_user_posts( $item->ID );
-		} else {
-			$record['posts_count'] = (int) count_user_posts( $item->ID );
-		}
-
-		$avatar_size = 32;
-		if ( function_exists( 'get_avatar_url' ) ) {
-			$record['avatar_url'] = get_avatar_url( $item->ID, array( 'size' => $avatar_size ) );
-		} else {
-			$email_hash = md5( strtolower( trim( $item->user_email ) ) );
-			$record['avatar_url'] = 'https://www.gravatar.com/avatar/' . $email_hash . '?s=' . $avatar_size;
-		}
+    $this->get_logger()->log_operation( sprintf( 'get_records %s', '' ), $item );
+		$record['objectID'] = $item->id;
+		$record['name'] = $item->name;
+		$record['description'] = $item->description;
+    $record['permalink'] = bp_get_group_permalink( $item );
 
 		$record = (array) apply_filters( 'algolia_group_record', $record, $item );
 

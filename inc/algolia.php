@@ -79,19 +79,19 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 	// Add other indices
 	$config[] = [
 		'index_id' => 'taxons',
-		'index_name' => 'Taxons_dev',
+		'index_name' => 'Taxons_dev', // TODO: depends on environment
 		'label' => __('Flore', 'telabotanica'),
 		'position' => 10,
-		'max_suggestions' => 3,
+		'max_suggestions' => 5,
 		'tmpl_suggestion' => 'autocomplete-taxon-suggestion',
 		'enabled' => true
 	];
 	$config[] = [
 		'index_id' => 'syntaxons',
-		'index_name' => 'SyntaxonCore_dev',
+		'index_name' => 'SyntaxonCore_dev', // TODO: depends on environment
 		'label' => __('Végétation', 'telabotanica'),
 		'position' => 40,
-		'max_suggestions' => 3,
+		'max_suggestions' => 5,
 		'tmpl_suggestion' => 'autocomplete-syntaxon-suggestion',
 		'enabled' => true
 	];

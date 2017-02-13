@@ -59,16 +59,7 @@ Tela.searchBox = (function(){
       $.each(algolia.autocomplete.sources, function(i, config) {
         sources.push({
           source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
-            hitsPerPage: config['max_suggestions'],
-            attributesToSnippet: [
-              'content:10',
-              'title1:10',
-              'title2:10',
-              'title3:10',
-              'title4:10',
-              'title5:10',
-              'title6:10'
-            ]
+            hitsPerPage: config['max_suggestions']
           }),
           templates: {
             header: function(data, algoliaResponse) {

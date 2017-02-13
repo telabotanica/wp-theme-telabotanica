@@ -40,11 +40,16 @@ final class Algolia_Projets_Index extends Algolia_Index
 	protected function get_records( $item )
 	{
 		$record = array();
-    $this->get_logger()->log_operation( sprintf( 'get_records %s', '' ), $item );
+		$this->get_logger()->log_operation( sprintf( 'get_records %s', '' ), $item );
 		$record['objectID'] = $item->id;
 		$record['name'] = $item->name;
 		$record['description'] = $item->description;
-    $record['permalink'] = bp_get_group_permalink( $item );
+		$record['permalink'] = bp_get_group_permalink( $item );
+		$record['image'] = bp_core_fetch_avatar( [
+			'item_id' => $item->id,
+			'object' => 'group',
+			'html' => false
+		] );
 
 		$record = (array) apply_filters( 'algolia_group_record', $record, $item );
 
@@ -71,9 +76,13 @@ final class Algolia_Projets_Index extends Algolia_Index
 				'name',
 				'description',
 			),
-			// 'customRanking' => array(
-			// 	'desc(posts_count)',
-			// ),
+			'customRanking' => array(
+				'asc(name)',
+			),
+			'attributesToSnippet' => array(
+				'description:10',
+			),
+			'snippetEllipsisText' => '…',
 		);
 
 		return (array) apply_filters( 'algolia_groups_index_settings', $settings );
@@ -161,7 +170,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 
 		$group = groups_get_group( $data['group_id'] );
 
-		return  ! $group ? null : $group ;
+		return ! $group ? null : $group ;
 	}
 
 	public function get_default_autocomplete_config() {

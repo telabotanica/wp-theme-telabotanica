@@ -1,6 +1,6 @@
 <?php
 
-final class Algolia_Actualites_Index extends Algolia_Index
+final class Algolia_Evenements_Index extends Algolia_Index
 {
 	/**
 	 * @var string
@@ -27,7 +27,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 * @return string The name displayed in the admin UI.
 	 */
 	public function get_admin_name() {
-		return 'Actualités';
+		return 'Évènements';
 	}
 
 	/**
@@ -50,11 +50,11 @@ final class Algolia_Actualites_Index extends Algolia_Index
 			return false;
 		}
 
-    // Should be in Actualites category
-    $category_actualites = get_category_by_slug( 'actualites' );
+    // Should be in Evenements category
+    $category_evenements = get_category_by_slug( 'evenements' );
     $category = get_the_category( $post->ID );
     $category_parent_id = $category[0]->category_parent;
-		if ( $category_actualites->cat_ID !== $category_parent_id ) {
+		if ( $category_evenements->cat_ID !== $category_parent_id ) {
 			return false;
 		}
 
@@ -358,7 +358,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 * @return string
 	 */
 	public function get_id() {
-		return 'posts_actualites';
+		return 'posts_evenements';
 	}
 
 	/**

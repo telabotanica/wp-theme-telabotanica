@@ -1,6 +1,7 @@
 <?php
 
 require_once get_template_directory() . '/algolia/class-algolia-actualites-index.php';
+require_once get_template_directory() . '/algolia/class-algolia-evenements-index.php';
 
 /**
  * Dequeue default CSS & JS files.
@@ -43,8 +44,9 @@ add_filter( 'algolia_taxonomies_blacklist', 'telabotanica_blacklist_custom_taxon
 
 // Customize indices
 function telabotanica_algolia_indices( array $indices ) {
-  // Add the Actualites index.
-  //$indices[] = new Algolia_Actualites_Index();
+  // Add the Actualites and Evenements indices
+  $indices[] = new Algolia_Actualites_Index();
+  $indices[] = new Algolia_Evenements_Index();
 
   return $indices;
 }
@@ -79,7 +81,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
     'index_id' => 'syntaxons',
     'index_name' => 'SyntaxonCore_dev',
     'label' => __('Végétation', 'telabotanica'),
-    'position' => 50,
+    'position' => 30,
     'max_suggestions' => 3,
     'tmpl_suggestion' => 'autocomplete-syntaxon-suggestion',
     'enabled' => true

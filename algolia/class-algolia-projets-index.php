@@ -22,7 +22,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function should_index( $item )
 	{
-    // TODO should index group?
+		// TODO should index group?
 		return (bool) apply_filters( 'algolia_should_index_group', $should_index, $item );
 	}
 
@@ -33,7 +33,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_records( $item )
 	{
-    // TODO: compose record for group
+		// TODO: compose record for group
 		$record = array();
 		$record['objectID'] = $item->ID;
 		$record['user_id'] = $item->ID;
@@ -65,7 +65,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_re_index_items_count()
 	{
-    // TODO: count groups
+		// TODO: count groups
 		$groups_count = count_users();
 
 		return (int) $groups_count['total_groups'];
@@ -76,7 +76,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_settings()
 	{
-    // TODO: define settings
+		// TODO: define settings
 		$settings = array(
 			'attributesToIndex' => array(
 				'unordered(display_name)',
@@ -114,7 +114,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_items( $page, $batch_size )
 	{
-    // TODO: get groups
+		// TODO: get groups
 		$offset = $batch_size * ( $page - 1 );
 
 		$args = array(
@@ -155,14 +155,13 @@ final class Algolia_Projets_Index extends Algolia_Index
 			return;
 		}
 
-    // TODO get group by ID
-		$group = get_group_by( 'id', $data['group_id'] );
+		$group = groups_get_group( $data['group_id'] );
 
 		return  ! $group ? null : $group ;
 	}
 
 	public function get_default_autocomplete_config() {
-    // TODO set default config
+		// TODO set default config
 		$config = array(
 			'position'        => 30,
 			'max_suggestions' => 3,

@@ -47,6 +47,7 @@ function telabotanica_algolia_indices( array $indices ) {
   // Add the Actualites and Evenements indices
   $indices[] = new Algolia_Actualites_Index();
   $indices[] = new Algolia_Evenements_Index();
+  // $indices[] = new Algolia_Projets_Index();
 
   return $indices;
 }

@@ -50,6 +50,12 @@
 	</a>
 </script>
 
+<script type="text/html" id="tmpl-autocomplete-group-suggestion">
+	<a class="suggestion-link" href="{{ data.url }}" title="{{ data.name }}">
+		<span class="suggestion-group-title">{{{ data._highlightResult.name.value }}}</span>
+	</a>
+</script>
+
 <script type="text/html" id="tmpl-autocomplete-syntaxon-suggestion">
 	<a class="suggestion-link" href="{{ data.url }}"  title="{{ data.commonName }}">
 		<span class="suggestion-syntaxon-title">{{{ data._highlightResult.syntaxon.value }}}</span>

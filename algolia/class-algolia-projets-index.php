@@ -66,14 +66,14 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_settings()
 	{
-		// TODO: define settings
 		$settings = array(
 			'attributesToIndex' => array(
-				'unordered(display_name)',
+				'name',
+				'description',
 			),
-			'customRanking' => array(
-				'desc(posts_count)',
-			),
+			// 'customRanking' => array(
+			// 	'desc(posts_count)',
+			// ),
 		);
 
 		return (array) apply_filters( 'algolia_groups_index_settings', $settings );

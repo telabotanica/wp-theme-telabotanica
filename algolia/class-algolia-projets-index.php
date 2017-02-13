@@ -22,7 +22,13 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function should_index( $item )
 	{
-		// TODO should index group?
+		// get_items() already filters hidden groups
+		$should_index = true;
+
+		// compatibility with bp-moderate-group-creation plugin
+		$published_state = groups_get_groupmeta($item->id, 'published');
+		$should_index = ($published_state !== "0");
+
 		return (bool) apply_filters( 'algolia_should_index_group', $should_index, $item );
 	}
 
@@ -65,10 +71,9 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_re_index_items_count()
 	{
-		// TODO: count groups
-		$groups_count = count_users();
+		$results = $this->query_non_hidden_groups();
 
-		return (int) $groups_count['total_groups'];
+		return (int) $results['total'];
 	}
 
 	/**
@@ -114,18 +119,32 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_items( $page, $batch_size )
 	{
-		// TODO: get groups
-		$offset = $batch_size * ( $page - 1 );
-
-		$args = array(
-			'order'        => 'ASC',
-			'orderby'      => 'ID',
-			'offset'       => $offset,
-			'number'	      => $batch_size,
-		);
+		$results = $this->query_non_hidden_groups($page, $batch_size);
 
 		// We use prior to 4.5 syntax for BC purposes, no `paged` arg.
-		return get_users( $args );
+		return $results['groups'];
+	}
+
+	/**
+	 * Returns all BP groups having a status different from "hidden"
+	 * 
+	 * @param int $page page
+	 * @param int $batch_size
+	 * @return array
+	 */
+	protected function query_non_hidden_groups($page=null, $batch_size=null)
+	{
+		$args = array(
+			'order'			=> 'ASC',
+			'orderby'		=> 'name',
+			'page'			=> $page,
+			'per_page'		=> $batch_size,
+			'type'			=> 'alphabetical',
+			'show_hidden'	=> false
+		);
+		$results = BP_Groups_Group::get($args);
+
+		return $results;
 	}
 
 	/**
@@ -161,7 +180,6 @@ final class Algolia_Projets_Index extends Algolia_Index
 	}
 
 	public function get_default_autocomplete_config() {
-		// TODO set default config
 		$config = array(
 			'position'        => 30,
 			'max_suggestions' => 3,

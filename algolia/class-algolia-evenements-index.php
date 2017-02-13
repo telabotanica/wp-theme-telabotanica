@@ -27,7 +27,7 @@ final class Algolia_Evenements_Index extends Algolia_Index
 	 * @return string The name displayed in the admin UI.
 	 */
 	public function get_admin_name() {
-		return 'Évènements';
+    return __( 'Évènements', 'telabotanica' );
 	}
 
 	/**
@@ -413,6 +413,16 @@ final class Algolia_Evenements_Index extends Algolia_Index
 		}
 
 		return get_post( $data['post_id'] );
+	}
+
+	public function get_default_autocomplete_config() {
+		$config = array(
+			'position'        => 50,
+			'max_suggestions' => 5,
+			'tmpl_suggestion' => 'autocomplete-post-suggestion',
+		);
+
+		return array_merge( parent::get_default_autocomplete_config(), $config );
 	}
 
 	/**

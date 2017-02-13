@@ -72,7 +72,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
     'index_id' => 'taxons',
     'index_name' => 'Taxons_dev',
     'label' => __('Flore', 'telabotanica'),
-    'position' => 5,
+    'position' => 10,
     'max_suggestions' => 3,
     'tmpl_suggestion' => 'autocomplete-taxon-suggestion',
     'enabled' => true
@@ -81,7 +81,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
     'index_id' => 'syntaxons',
     'index_name' => 'SyntaxonCore_dev',
     'label' => __('Végétation', 'telabotanica'),
-    'position' => 30,
+    'position' => 40,
     'max_suggestions' => 3,
     'tmpl_suggestion' => 'autocomplete-syntaxon-suggestion',
     'enabled' => true

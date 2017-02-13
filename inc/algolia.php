@@ -2,6 +2,7 @@
 
 require_once get_template_directory() . '/algolia/class-algolia-actualites-index.php';
 require_once get_template_directory() . '/algolia/class-algolia-evenements-index.php';
+require_once get_template_directory() . '/algolia/class-algolia-projets-index.php';
 
 /**
  * Dequeue default CSS & JS files.

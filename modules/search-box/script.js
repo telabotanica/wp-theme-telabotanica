@@ -22,6 +22,8 @@ Tela.searchBox = (function(){
       dropdownMinWidth;
 
     function init(){
+      if ($el.data('autocomplete') === false) {return;}
+
       client = algoliasearch(algolia.application_id, algolia.search_api_key);
       $wrapper = $el.find('.search-box-wrapper');
       $searchInput = $el.find('.search-box-input');
@@ -72,7 +74,7 @@ Tela.searchBox = (function(){
               return wp.template('autocomplete-header')({
                 label: config['label'],
                 nbHits: algoliaResponse.nbHits,
-                resultsUrl: '#' // TODO compose URL
+                resultsUrl: '#' + algoliaResponse.query // TODO compose URL to search results
               });
             },
             empty: wp.template('autocomplete-empty'),

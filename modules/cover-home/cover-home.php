@@ -3,7 +3,7 @@
   if (!isset($data->title)) $data->title = __('Bienvenue sur Tela Botanica, <br />le réseau des botanistes francophones', 'telabotanica');
   if (!isset($data->modifiers)) $data->modifiers = '';
   ?>
-  <div class="cover-home <?php echo $data->modifiers ?>" style="background-image: url(<?php echo $data->image['url'] ?>);">
+  <div class="cover cover-home <?php echo $data->modifiers ?>" style="background-image: url(<?php echo $data->image['url'] ?>);">
     <div class="layout-wrapper">
       <div class="cover-home-content">
       <?php
@@ -25,7 +25,10 @@
         );
       endif;
 
-      the_telabotanica_module('search-box', []);
+      the_telabotanica_module('search-box', [
+        // TODO: make the suggestions configurable
+        'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc']
+      ]);
       ?>
       </div>
 
@@ -64,7 +67,7 @@
       if ( $data->image ) :
         $credits = get_fields( $data->image['ID'] );
         if ( $credits ) :
-          echo '<div class="cover-home-credits">';
+          echo '<div class="cover-credits">';
           if ($credits['link']) {
             echo sprintf(__('%s par %s', 'telabotanica'), '<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>', $credits['author']);
           } else {

@@ -1,5 +1,12 @@
-<?php function telabotanica_module_header($data) { ?>
-<header class="header" role="banner">
+<?php function telabotanica_module_header($data) {
+	// $header_small can be set be true before calling get_header()
+	// in a template file to force a small header (without use cases navigation)
+	global $header_small;
+
+	$data->modifiers = [ 'header' ];
+	if ( $header_small === true ) $data->modifiers[] = 'is-small';
+	?>
+<header class="<?php echo implode($data->modifiers, ' ') ?>" role="banner">
   <div class="header-fixed">
     <?php
       $logo_element = ( is_front_page() && is_home() ) ? 'h1' : 'div';
@@ -50,7 +57,7 @@
       <li class="header-links-item header-links-item-search"><a href="<?php echo get_search_link(); ?>"><span class="header-links-item-text"><?php the_telabotanica_module('icon', ['icon' => 'search']) ?></span></a></li>
     </ul>
   </div>
-  <?php if ( has_nav_menu('principal') ) : ?>
+  <?php if ( has_nav_menu('principal') && $header_small !== true ) : ?>
     <nav class="header-nav-usecases" role="navigation" aria-label="<?php esc_attr_e( 'Menu principal', 'telabotanica' ); ?>">
       <?php
         wp_nav_menu( [

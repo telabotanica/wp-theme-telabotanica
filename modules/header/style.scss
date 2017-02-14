@@ -5,6 +5,10 @@
   background-color: $beige;
   height: $height;
 
+  &.is-small {
+    height: $height-fixed;
+  }
+
   &-fixed {
     background-color: $blanc;
     font-family: $ubuntu;

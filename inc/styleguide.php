@@ -29,6 +29,7 @@ $telabotanica_modules = [
   'cover',
   'cover-home',
   'cover-project',
+  'cover-search',
   'footer',
   'form-newsletter',
   'header',

@@ -1,0 +1,38 @@
+// This module inherits styles from `cover`
+
+.cover-search {
+	display: block;
+	min-height: 26rem;
+  padding: 9rem 0 4.5rem;
+
+  > .layout-wrapper {
+    position: relative;
+  }
+
+  &-title {
+    font-size: 2rem;
+		font-weight: $regular;
+    margin: 2.5rem 0 0;
+		text-align: center;
+  }
+
+  &-link {
+    font-weight: $regular;
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+
+    a {
+      border-bottom: 0.1rem solid $blanc;
+      color: $blanc;
+      text-decoration: none;
+      transition: border 0.2s ease;
+
+      &:hover, &:focus {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  &-content {
+  }
+}

@@ -26,9 +26,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <!-- TODO: skip links -->
+  <?php
+	// TODO: add skip links ?>
 	<!-- <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'telabotanica' ); ?></a> -->
 
-  <?php the_telabotanica_module('header', []); ?>
+  <?php the_telabotanica_module('header'); ?>
 
 	<div id="content" class="site-content">

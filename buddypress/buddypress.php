@@ -3,6 +3,11 @@
  * Page
  */
 
+if (bp_is_group_create()) {
+	// Force a small header (without use cases navigation) on group creation pages
+	$header_small = true;
+}
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">

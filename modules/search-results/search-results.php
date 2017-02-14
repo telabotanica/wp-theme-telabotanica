@@ -57,14 +57,22 @@ function telabotanica_module_search_results($data) {
 				);
 			echo '</a>';
 
-			// hits
-			echo '<div class="search-results-hits">';
-				foreach ( $results['hits'] as $hit ) :
-					echo '<div class="search-results-hit">';
-						telabotanica_module_search_results_hit($indices_ids[$results['index']], $hit);
-					echo '</div>';
-				endforeach;
-			echo '</div>';
+			// hits / empty
+			if ( $results['nbHits'] !== 0 ) :
+				echo '<div class="search-results-hits">';
+					foreach ( $results['hits'] as $hit ) :
+						echo '<div class="search-results-hit">';
+							telabotanica_module_search_results_hit($indices_ids[$results['index']], $hit);
+						echo '</div>';
+					endforeach;
+				echo '</div>';
+			else :
+				printf(
+					'<div class="search-results-empty">%s<span class="search-results-empty-query">"%s"</span></div>',
+					__( 'Aucun résultat pour ', 'telabotanica' ),
+					$results['query']
+				);
+			endif;
 
 			// more
 			printf(

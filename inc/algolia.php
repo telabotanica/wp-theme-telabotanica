@@ -84,7 +84,8 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 		'position' => 10,
 		'max_suggestions' => 5,
 		'tmpl_suggestion' => 'autocomplete-taxon-suggestion',
-		'enabled' => true
+		'enabled' => true,
+		'default_facet_filters' => [ 'referentiels:bdtfx' ]
 	];
 	$config[] = [
 		'index_id' => 'syntaxons',

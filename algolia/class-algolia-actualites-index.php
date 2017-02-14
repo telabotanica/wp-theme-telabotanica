@@ -27,7 +27,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 * @return string The name displayed in the admin UI.
 	 */
 	public function get_admin_name() {
-    return __( 'Actualités', 'telabotanica' );
+		return __( 'Actualités', 'telabotanica' );
 	}
 
 	/**
@@ -45,20 +45,20 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 * @return bool
 	 */
 	private function should_index_post( WP_Post $post ) {
-    // Should be a post
+		// Should be a post
 		if ( ! $this->post_type === $post->post_type ) {
 			return false;
 		}
 
-    // Should be in Actualites category
-    $category_actualites = get_category_by_slug( 'actualites' );
-    $category = get_the_category( $post->ID );
-    $category_parent_id = $category[0]->category_parent;
+		// Should be in Actualites category
+		$category_actualites = get_category_by_slug( 'actualites' );
+		$category = get_the_category( $post->ID );
+		$category_parent_id = $category[0]->category_parent;
 		if ( $category_actualites->cat_ID !== $category_parent_id ) {
 			return false;
 		}
 
-    // Should be published
+		// Should be published
 		$post_status = $post->post_status;
 
 		if ( 'inherit' === $post_status ) {
@@ -70,7 +70,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 			}
 		}
 
-    // Should be published and not have a password
+		// Should be published and not have a password
 		$should_index = 'publish' === $post_status && empty( $post->post_password );
 
 		return (bool) apply_filters( 'algolia_should_index_post', $should_index, $post );
@@ -110,12 +110,12 @@ final class Algolia_Actualites_Index extends Algolia_Index
 
 		if ( defined( 'ALGOLIA_SPLIT_POSTS' ) && false === ALGOLIA_SPLIT_POSTS ) {
 			$parser->setAttributeSelectors( array(
-				'title1'  => 'h1#unused',
-				'title2'  => 'h2#unused',
-				'title3'  => 'h3#unused',
-				'title4'  => 'h4#unused',
-				'title5'  => 'h5#unused',
-				'title6'  => 'h6#unused',
+				'title1'	=> 'h1#unused',
+				'title2'	=> 'h2#unused',
+				'title3'	=> 'h3#unused',
+				'title4'	=> 'h4#unused',
+				'title5'	=> 'h5#unused',
+				'title6'	=> 'h6#unused',
 				'content' => 'h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table',
 			) );
 
@@ -175,10 +175,10 @@ final class Algolia_Actualites_Index extends Algolia_Index
 		$author = get_userdata( $post->post_author );
 		if ( $author ) {
 			$shared_attributes['post_author'] = array(
-				'user_id'       => (int) $post->post_author,
-				'display_name'  => $author->display_name,
-				'user_url'      => $author->user_url,
-				'user_login'    => $author->user_login,
+				'user_id'				=> (int) $post->post_author,
+				'display_name'	=> $author->display_name,
+				'user_url'			=> $author->user_url,
+				'user_login'		=> $author->user_login,
 			);
 		}
 
@@ -242,8 +242,8 @@ final class Algolia_Actualites_Index extends Algolia_Index
 				'desc(is_sticky)',
 				'desc(post_date)',
 			),
-			'attributeForDistinct'  => 'post_id',
-			'distinct'              => true,
+			'attributeForDistinct'	=> 'post_id',
+			'distinct'							=> true,
 			'attributesForFaceting' => array(
 				'taxonomies',
 				'taxonomies_hierarchical',
@@ -335,7 +335,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 
 	/**
 	 * @param WP_Post $post
-	 * @param array   $records
+	 * @param array $records
 	 */
 	private function update_post_records( WP_Post $post, array $records ) {
 		$current_records_count = $this->get_post_records_count( $post->ID );
@@ -366,8 +366,8 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 */
 	protected function get_re_index_items_count() {
 		$query = new WP_Query( array(
-			'post_type'   		    => $this->post_type,
-			'post_status' 		    => 'any', // Let the `should_index` take care of the filtering.
+			'post_type'	 				=> $this->post_type,
+			'post_status' 			=> 'any', // Let the `should_index` take care of the filtering.
 			'suppress_filters' 	=> true,
 		) );
 
@@ -382,12 +382,12 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 */
 	protected function get_items( $page, $batch_size ) {
 		$query = new WP_Query( array(
-			'post_type'      	  => $this->post_type,
-			'posts_per_page' 	  => $batch_size,
-			'post_status'    	  => 'any',
-			'order'          	  => 'ASC',
-			'orderby'        	  => 'ID',
-			'paged'			 	        => $page,
+			'post_type'					=> $this->post_type,
+			'posts_per_page' 		=> $batch_size,
+			'post_status'				=> 'any',
+			'order'							=> 'ASC',
+			'orderby'						=> 'ID',
+			'paged'							=> $page,
 			'suppress_filters' 	=> true,
 		) );
 
@@ -417,7 +417,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 
 	public function get_default_autocomplete_config() {
 		$config = array(
-			'position'        => 20,
+			'position'				=> 20,
 			'max_suggestions' => 5,
 			'tmpl_suggestion' => 'autocomplete-post-suggestion',
 		);

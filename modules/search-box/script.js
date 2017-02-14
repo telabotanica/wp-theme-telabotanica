@@ -14,15 +14,18 @@ Tela.searchBox = (function(){
       tether,
       config,
       sources = [],
+      search,
       $searchInput,
       $wrapper,
       $menu,
+      $suggestions,
       dropdownMinWidth;
 
     function init(){
       client = algoliasearch(algolia.application_id, algolia.search_api_key);
       $wrapper = $el.find('.search-box-wrapper');
       $searchInput = $el.find('.search-box-input');
+      $suggestions = $el.find('.search-box-suggestions a');
 
       dropdownMinWidth = $('.layout-wrapper').first().outerWidth();
 
@@ -33,6 +36,8 @@ Tela.searchBox = (function(){
         e.preventDefault();
         window.location = "https://www.algolia.com/?utm_source=WordPress&utm_medium=extension&utm_content=" + window.location.hostname + "&utm_campaign=poweredby";
       });
+
+      $suggestions.on('click', onClickSuggestion);
 
       initConfig();
       initSources();
@@ -60,22 +65,14 @@ Tela.searchBox = (function(){
         sources.push({
           source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
             hitsPerPage: config['max_suggestions'],
-            attributesToSnippet: [
-              'content:10',
-              'title1:10',
-              'title2:10',
-              'title3:10',
-              'title4:10',
-              'title5:10',
-              'title6:10'
-            ]
+            facetFilters: config['default_facet_filters']
           }),
           templates: {
             header: function(data, algoliaResponse) {
               return wp.template('autocomplete-header')({
                 label: config['label'],
                 nbHits: algoliaResponse.nbHits,
-                resultsUrl: '#'
+                resultsUrl: '#' // TODO compose URL
               });
             },
             empty: wp.template('autocomplete-empty'),
@@ -87,7 +84,7 @@ Tela.searchBox = (function(){
     }
 
     function initAutocomplete(){
-      algoliaAutocomplete($searchInput[0], config, sources)
+      search = algoliaAutocomplete($searchInput[0], config, sources)
         .on('autocomplete:selected', function(e, suggestion, datasetName) {
           /* Redirect the user when we detect a suggestion selection. */
           window.location.href = suggestion.permalink;
@@ -147,6 +144,12 @@ Tela.searchBox = (function(){
         $menu.css('width', dropdownMinWidth);
       }
       tether.position();
+    }
+
+    function onClickSuggestion(e) {
+      e.preventDefault();
+      search.autocomplete.setVal($(this).text());
+      $searchInput.focus();
     }
 
     init();

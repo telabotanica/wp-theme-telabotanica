@@ -63,6 +63,17 @@
   &-suggestions {
     color: transparentize($grisF0, 0.25);
     margin-top: 2rem;
+    
+    a {
+      color: inherit;
+      text-decoration: underline;
+      
+      &:hover,
+      &:focus {
+        color: $blanc;
+        text-decoration: none;
+      }
+    }
   }
 
   @include small {

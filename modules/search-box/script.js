@@ -22,6 +22,7 @@ Tela.searchBox = (function(){
       dropdownMinWidth;
 
     function init(){
+      // The autocomplete can be disabled by setting the `data-autocomplete` to false
       if ($el.data('autocomplete') === false) {return;}
 
       client = algoliasearch(algolia.application_id, algolia.search_api_key);
@@ -31,7 +32,7 @@ Tela.searchBox = (function(){
 
       dropdownMinWidth = $('.layout-wrapper').first().outerWidth();
 
-      /* This ensures that when the dropdown overflows the window, Thether can reposition it. */
+      // This ensures that when the dropdown overflows the window, Tether can reposition it.
       $('body').css('overflow-x', 'hidden');
 
       $(document).on("click", ".algolia-powered-by-link", function(e) {

@@ -18,7 +18,7 @@ Tela.autocomplete = (function(){
 
       /* config */
       var config = {
-        debug: true,
+        debug: algolia.debug,
         hint: false,
         openOnFocus: true
       };

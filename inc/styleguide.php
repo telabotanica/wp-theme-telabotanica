@@ -40,6 +40,7 @@ $telabotanica_modules = [
   'nav-project',
   'pagination',
   'search-box',
+  'search-results',
   'share',
   'toc',
   'upcoming-events',

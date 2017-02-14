@@ -1,6 +1,7 @@
 <?php function telabotanica_module_cover_search($data) {
 	global $wp_query;
 	if (!isset($data->image)) $data->image = get_field('cover_image');
+	if (!isset($data->total_results)) $data->total_results = $wp_query->found_posts;
 	if (!isset($data->modifiers)) $data->modifiers = '';
 	?>
 	<div class="cover cover-search <?php echo $data->modifiers ?>" style="background-image: url(<?php echo $data->image['url'] ?>);">
@@ -17,9 +18,9 @@
 					sprintf( _n(
 						'%s résultat trouvé',
 						'%s résultats trouvés',
-						$wp_query->found_posts,
+						$data->total_results,
 						'telabotanica'
-					), $wp_query->found_posts )
+					), number_format_i18n( $data->total_results ) )
 				);
 			endif;
 			?>

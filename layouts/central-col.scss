@@ -14,10 +14,22 @@
       margin: 0 auto;
       width: 70rem;
     }
-
-    > .layout-content-large {
-      margin: 0 auto;
-      width: 100rem;
-    }
   }
+
+	// Larger width
+	&.is-wide {
+		> .layout-wrapper {
+			> .layout-content {
+				width: 100rem;
+			}
+		}
+	}
+
+	// No margin on top
+	&.adjacent-top {
+		> .layout-wrapper {
+			margin-top: 0;
+		}
+	}
+
 }

@@ -7,9 +7,9 @@
  */
 ?>
 
-<div class="layout-central-col project-members">
+<div class="layout-central-col project-members is-wide">
   <div class="layout-wrapper">
-    <div class="layout-content-large">
+    <div class="layout-content">
 
       <div class="item-list-tabs" id="group-members-subnav" aria-label="<?php esc_attr_e( 'Group secondary navigation', 'buddypress' ); ?>" role="navigation">
         <ul>

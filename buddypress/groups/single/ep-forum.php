@@ -7,10 +7,10 @@
  */
 ?>
 
-<div class="layout-central-col project-forum">
+<div class="layout-central-col project-forum is-wide">
   <div class="layout-wrapper">
-    <div class="layout-content-large">
-      <?php      
+    <div class="layout-content">
+      <?php
       /**
        * Fires before the display of content for plugins using the BP_Group_Extension.
        *

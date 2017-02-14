@@ -30,13 +30,13 @@
 			var attribute_name;
 			var relevant_content = '';
 			for ( var index in attributes ) {
-			attribute_name = attributes[ index ];
-			if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
-			relevant_content = data._snippetResult[ attribute_name ].value;
-			break;
-			} else if( data._snippetResult[ attribute_name ].value !== '' ) {
-			relevant_content = data._snippetResult[ attribute_name ].value;
-			}
+				attribute_name = attributes[ index ];
+				if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
+					relevant_content = data._snippetResult[ attribute_name ].value;
+					break;
+				} else if( data._snippetResult[ attribute_name ].value !== '' ) {
+					relevant_content = data._snippetResult[ attribute_name ].value;
+				}
 			}
 			#>
 			<span class="suggestion-post-content">{{{ relevant_content }}}</span>
@@ -56,22 +56,22 @@
 		<# if ( data.image ) { #>
 		<img class="suggestion-group-thumbnail" src="{{ data.image }}" alt="{{ data.name }}" />
 		<# } #>
-		
+
 		<div class="suggestion-group-attributes">
 			<span class="suggestion-post-title">{{{ data._highlightResult.name.value }}}</span>
-			
+
 			<#
 			var attributes = ['description'];
 			var attribute_name;
 			var relevant_content = '';
 			for ( var index in attributes ) {
-			attribute_name = attributes[ index ];
-			if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
-			relevant_content = data._snippetResult[ attribute_name ].value;
-			break;
-			} else if( data._snippetResult[ attribute_name ].value !== '' ) {
-			relevant_content = data._snippetResult[ attribute_name ].value;
-			}
+				attribute_name = attributes[ index ];
+				if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
+					relevant_content = data._snippetResult[ attribute_name ].value;
+					break;
+				} else if( data._snippetResult[ attribute_name ].value !== '' ) {
+					relevant_content = data._snippetResult[ attribute_name ].value;
+				}
 			}
 			#>
 			<span class="suggestion-post-content">{{{ relevant_content }}}</span>
@@ -80,7 +80,7 @@
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-syntaxon-suggestion">
-	<a class="suggestion-link" href="{{ data.url }}" target=""title="{{ data.commonName }}">
+	<a class="suggestion-link" href="{{ data.url }}" target="_blank" title="{{ data.commonName }}">
 		<span class="suggestion-post-title">{{{ data._highlightResult.syntaxon.value }}}</span>
 	</a>
 </script>

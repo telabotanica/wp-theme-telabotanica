@@ -8,7 +8,7 @@
 	echo '<div class="search-box large" data-autocomplete="' . var_export($data->autocomplete, true) . '">';
 		echo '<form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="search-box-wrapper">';
 		printf(
-			'<input name="s" type="text" class="search-box-input" placeholder="%s" value="%s" />',
+			'<input name="s" type="text" class="search-box-input" placeholder="%s" value="%s" autocomplete="off" spellcheck="false" />',
 			$data->placeholder,
 			$data->value
 		);

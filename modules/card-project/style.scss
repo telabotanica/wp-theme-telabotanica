@@ -4,6 +4,12 @@
   position: relative;
   width: 30rem;
 
+	em {
+		color: $noir;
+		background: $jaune-clair;
+		font-style: normal;
+	}
+
   &-link {
     color: $gris33;
     display: block;
@@ -27,12 +33,14 @@
     height: 17rem;
     justify-content: center;
     position: relative;
-
-    .avatar {
-      border-radius: 50%;
-      border: 0.3rem solid white;
-    }
   }
+
+	&-avatar {
+		border-radius: 50%;
+		border: 0.3rem solid white;
+		height: 9rem;
+		width: 9rem;
+	}
 
   &-tela {
     background: $blanc;
@@ -71,6 +79,9 @@
   &-description {
     font-size: 1.4rem;
     line-height: 2.2rem;
+		margin: 1.5rem 0;
+
+		p {margin: 0;}
   }
 
   &-meta {

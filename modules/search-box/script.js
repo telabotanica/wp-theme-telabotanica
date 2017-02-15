@@ -3,172 +3,206 @@
 var algoliasearch = require('algoliasearch');
 var algoliaAutocomplete = require('autocomplete.js');
 var Tether = require('tether');
+var PubSub = require('pubsub-js');
+var _ = {
+	find: require('lodash.find')
+};
 
 var Tela = window.Tela || {};
 
 Tela.searchBox = (function(){
 
-  function module(selector){
-    var $el = $(selector),
-      client,
-      tether,
-      config,
-      sources = [],
-      search,
-      $searchInput,
-      $wrapper,
-      $menu,
-      $suggestions,
-      dropdownMinWidth;
+	function module(selector){
+		var $el = $(selector),
+			client,
+			tether,
+			config,
+			sources = [],
+			search,
+			index,
+			$searchInput,
+			$wrapper,
+			$menu,
+			$suggestions,
+			dropdownMinWidth;
 
-    function init(){
-      // The autocomplete can be disabled by setting the `data-autocomplete` to false
-      if ($el.data('autocomplete') === false) {return;}
+		function init(){
+			client = algoliasearch(algolia.application_id, algolia.search_api_key);
+			$wrapper = $el.find('.search-box-wrapper');
+			$searchInput = $el.find('.search-box-input');
 
-      client = algoliasearch(algolia.application_id, algolia.search_api_key);
-      $wrapper = $el.find('.search-box-wrapper');
-      $searchInput = $el.find('.search-box-input');
-      $suggestions = $el.find('.search-box-suggestions a');
+			// The autocomplete can be disabled by setting the `data-autocomplete` to false
+			if ($el.data('autocomplete') === false) {
 
-      dropdownMinWidth = $('.layout-wrapper').first().outerWidth();
+				var currentIndexId = $el.find('input[name="index"]').val();
+				var currentIndex = _.find(algolia.autocomplete.sources, ['index_id', currentIndexId]);
 
-      // This ensures that when the dropdown overflows the window, Tether can reposition it.
-      $('body').css('overflow-x', 'hidden');
+				index = client.initIndex(currentIndex['index_name']);
+				index.setSettings({
+					hitsPerPage: currentIndex['max_suggestions'],
+					facetFilters: currentIndex['default_facet_filters']
+				});
 
-      $(document).on("click", ".algolia-powered-by-link", function(e) {
-        e.preventDefault();
-        window.location = "https://www.algolia.com/?utm_source=WordPress&utm_medium=extension&utm_content=" + window.location.hostname + "&utm_campaign=poweredby";
-      });
+				$searchInput.on('input', onInput);
 
-      $suggestions.on('click', onClickSuggestion);
+			} else {
+				$suggestions = $el.find('.search-box-suggestions a');
 
-      initConfig();
-      initSources();
-      initAutocomplete();
-      initTether();
-    }
+				dropdownMinWidth = $('.layout-wrapper').first().outerWidth();
 
-    function initConfig(){
-      config = {
-        debug: algolia.debug,
-        hint: false,
-        openOnFocus: true,
-        templates: {
-          dropdownMenu: '#tmpl-dropdown-menu'
-        }
-      };
+				// This ensures that when the dropdown overflows the window, Tether can reposition it.
+				$('body').css('overflow-x', 'hidden');
 
-      if(algolia.powered_by_enabled) {
-        config.templates.footer = wp.template('autocomplete-footer');
-      }
-    }
+				$(document).on("click", ".algolia-powered-by-link", function(e) {
+					e.preventDefault();
+					window.location = "https://www.algolia.com/?utm_source=WordPress&utm_medium=extension&utm_content=" + window.location.hostname + "&utm_campaign=poweredby";
+				});
 
-    function initSources(){
-      $.each(algolia.autocomplete.sources, function(i, config) {
-        sources.push({
-          source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
-            hitsPerPage: config['max_suggestions'],
-            facetFilters: config['default_facet_filters']
-          }),
-          templates: {
-            header: function(data, algoliaResponse) {
-              return wp.template('autocomplete-header')({
-                label: config['label'],
-                nbHits: algoliaResponse.nbHits,
-                 // TODO improve composition of URL to search results
-                resultsUrl: '/?s=' + algoliaResponse.query + '&index=' + config['index_id']
-              });
-            },
-            empty: wp.template('autocomplete-empty'),
-            suggestion: wp.template(config['tmpl_suggestion'])
-          }
-        });
+				$suggestions.on('click', onClickSuggestion);
 
-      });
-    }
+				initConfig();
+				initSources();
+				initAutocomplete();
+				initTether();
+			}
+		}
 
-    function initAutocomplete(){
-      search = algoliaAutocomplete($searchInput[0], config, sources)
-        .on('autocomplete:selected', function(e, suggestion, datasetName) {
-          /* Redirect the user when we detect a suggestion selection. */
-          window.location.href = suggestion.permalink;
-        });
-    }
+		function onInput(e) {
+			var val = $(this).val();
+			if (val === '') {
+				PubSub.publish('search-box.results', false);
+			}
+			index.search(val, onSearchResults);
+		}
 
-    function initTether(){
-      /* Remove autocomplete.js default inline input search styles. */
-      $el.removeAttr('style');
+		function onSearchResults(err, data) {
+			PubSub.publish('search-box.results', data);
+		}
 
-      $menu = $el.find('.aa-dropdown-menu');
-      var tetherConfig = {
-        element: $menu,
-        target: $wrapper,
-        attachment: 'top left',
-        targetAttachment: 'bottom left',
-        constraints: [
-          {
-            to: 'window',
-            attachment: 'none element'
-          }
-        ]
-      };
+		// Autocomplete
 
-      /* This will make sure the dropdown is no longer part of the same container as */
-      /* the search input container. */
-      /* It ensures styles are not overridden and limits theme breaking. */
-      tether = new Tether(tetherConfig);
-      tether.on('update', function(item) {
-        /* todo: fix the inverse of this: https://github.com/HubSpot/tether/issues/182 */
-        if (item.attachment.left == 'right' && item.attachment.top == 'top' && item.targetAttachment.left == 'left' && item.targetAttachment.top == 'bottom') {
-          config.attachment = 'top right';
-          config.targetAttachment = 'bottom right';
+		function initConfig(){
+			config = {
+				debug: algolia.debug,
+				hint: false,
+				openOnFocus: true,
+				templates: {
+					dropdownMenu: '#tmpl-dropdown-menu'
+				}
+			};
 
-          tether.setOptions(config, false);
-        }
-      });
-      $searchInput.on('autocomplete:updated', function() {
-        tether.position();
-      });
-      $searchInput.on('autocomplete:opened', function() {
-        updateDropdownWidth();
-      });
+			if(algolia.powered_by_enabled) {
+				config.templates.footer = wp.template('autocomplete-footer');
+			}
+		}
 
-      /* Trick to ensure the autocomplete is always above all. */
-      $menu.css('z-index', '99999');
+		function initSources(){
+			$.each(algolia.autocomplete.sources, function(i, config) {
+				sources.push({
+					source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
+						hitsPerPage: config['max_suggestions'],
+						facetFilters: config['default_facet_filters']
+					}),
+					templates: {
+						header: function(data, algoliaResponse) {
+							return wp.template('autocomplete-header')({
+								label: config['label'],
+								nbHits: algoliaResponse.nbHits,
+								 // TODO improve composition of URL to search results
+								resultsUrl: '/?s=' + algoliaResponse.query + '&index=' + config['index_id']
+							});
+						},
+						empty: wp.template('autocomplete-empty'),
+						suggestion: wp.template(config['tmpl_suggestion'])
+					}
+				});
 
-      /* Makes dropdown match the input size. */
-      $(window).on('resize', updateDropdownWidth);
-    }
+			});
+		}
 
-    function updateDropdownWidth() {
-      var inputWidth = $searchInput.outerWidth();
-      if (inputWidth >= dropdownMinWidth) {
-        $menu.css('width', $searchInput.outerWidth());
-      } else {
-        $menu.css('width', dropdownMinWidth);
-      }
-      tether.position();
-    }
+		function initAutocomplete(){
+			search = algoliaAutocomplete($searchInput[0], config, sources)
+				.on('autocomplete:selected', function(e, suggestion, datasetName) {
+					/* Redirect the user when we detect a suggestion selection. */
+					window.location.href = suggestion.permalink;
+				});
+		}
 
-    function onClickSuggestion(e) {
-      e.preventDefault();
-      search.autocomplete.setVal($(this).text());
-      $searchInput.focus();
-    }
+		function initTether(){
+			/* Remove autocomplete.js default inline input search styles. */
+			$el.removeAttr('style');
 
-    init();
+			$menu = $el.find('.aa-dropdown-menu');
+			var tetherConfig = {
+				element: $menu,
+				target: $wrapper,
+				attachment: 'top left',
+				targetAttachment: 'bottom left',
+				constraints: [
+					{
+						to: 'window',
+						attachment: 'none element'
+					}
+				]
+			};
 
-    return $el;
-  }
+			/* This will make sure the dropdown is no longer part of the same container as */
+			/* the search input container. */
+			/* It ensures styles are not overridden and limits theme breaking. */
+			tether = new Tether(tetherConfig);
+			tether.on('update', function(item) {
+				/* todo: fix the inverse of this: https://github.com/HubSpot/tether/issues/182 */
+				if (item.attachment.left == 'right' && item.attachment.top == 'top' && item.targetAttachment.left == 'left' && item.targetAttachment.top == 'bottom') {
+					config.attachment = 'top right';
+					config.targetAttachment = 'bottom right';
 
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
-  };
+					tether.setOptions(config, false);
+				}
+			});
+			$searchInput.on('autocomplete:updated', function() {
+				tether.position();
+			});
+			$searchInput.on('autocomplete:opened', function() {
+				updateDropdownWidth();
+			});
+
+			/* Trick to ensure the autocomplete is always above all. */
+			$menu.css('z-index', '99999');
+
+			/* Makes dropdown match the input size. */
+			$(window).on('resize', updateDropdownWidth);
+		}
+
+		function updateDropdownWidth() {
+			var inputWidth = $searchInput.outerWidth();
+			if (inputWidth >= dropdownMinWidth) {
+				$menu.css('width', $searchInput.outerWidth());
+			} else {
+				$menu.css('width', dropdownMinWidth);
+			}
+			tether.position();
+		}
+
+		function onClickSuggestion(e) {
+			e.preventDefault();
+			search.autocomplete.setVal($(this).text());
+			$searchInput.focus();
+		}
+
+
+		init();
+
+		return $el;
+	}
+
+	return function(selector){
+		return $(selector).each(function(){
+			module(this);
+		});
+	};
 
 })();
 
 $(document).ready(function(){
-  Tela.searchBox('.search-box');
+	Tela.searchBox('.search-box');
 });

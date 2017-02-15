@@ -30,7 +30,10 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 require get_template_directory() . '/vendor/autoload.php';
 
 // Création d'une instance de Pug pour le rendu des templates *.pug
-$pug = new \Pug\Pug(); // TODO: configurer le cache
+// TODO: configurer le cache, voir https://github.com/pug-php/pug
+$pug = new \Pug\Pug([
+	'expressionLanguage' => 'js'
+]);
 
 // Fonctions utiles
 require get_template_directory() . '/inc/utile.php';

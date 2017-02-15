@@ -14,10 +14,13 @@ plus de détails sur http://semver.org/lang/fr/
 * ajout d'une dépendance (`pug-php`) avec Composer
 * mise à jour du `README`
 * ajout d'un template `search.php`
+* module `card-project` : refactoring avec Pug
 * module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté
 * module `cover-search` ajouté
+* module `icon` : refactoring avec Pug
 * module `header` : support d'une version `small` pour certaines pages
+* module `list-projects` : ajout d'un script pour gérer la recherche
 * module `search-box` ajouté
 * module `search-filters` ajouté
 * module `search-results` ajouté

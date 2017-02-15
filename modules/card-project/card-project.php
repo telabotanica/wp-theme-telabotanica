@@ -1,40 +1,39 @@
 <?php function telabotanica_module_card_project($data) {
-  if (!isset($data->tag)) $data->tag = 'div';
+	global $pug;
 
-  echo '<' . $data->tag . ' class="card-project">';
+	$cover_image_url = bp_attachments_get_attachment('url', array(
+		'object_dir' => 'groups',
+		'item_id' => bp_get_group_id(),
+	));
 
-    echo '<a class="card-project-link" href="' . bp_get_group_permalink() . '">';
+	$defaults = [
+		'tag' => 'div',
+		'permalink' => bp_get_group_permalink(),
+		'cover_image_url' => $cover_image_url,
+		'tela' => true, // TODO s'il s'agit d'un projet Tela
+		'tela_title' => __( 'Un projet Tela Botanica', 'telabotanica' ),
+		'tela_icon' => get_telabotanica_module('icon', ['icon' => 'tela-leaf']),
+		'avatar' => bp_core_fetch_avatar( [
+			'item_id' => bp_get_group_id(),
+			'object' => 'group',
+			'type' => 'full',
+			'html' => false
+		] ),
+		'name' => bp_get_group_name(),
+		'description' => bp_get_group_description_excerpt(),
+		'meta' => [
+			[
+				'icon' => 'members',
+				'text' => bp_get_group_member_count()
+			]
+		]
+	];
 
-      $cover_image_url = bp_attachments_get_attachment('url', array(
-        'object_dir' => 'groups',
-        'item_id' => bp_get_group_id(),
-      ));
-      echo sprintf(
-        '<div class="card-project-cover" style="background-image: url(%s);">',
-        $cover_image_url
-      );
+	$data = (object) array_merge((array) $defaults, (array) $data);
 
-      if (true) { // TODO s'il s'agit d'un projet Tela
-        echo sprintf(
-          '<div class="card-project-tela" title="%s">%s</div>',
-          esc_attr__( 'Un projet Tela Botanica', 'telabotanica' ),
-          get_telabotanica_module('icon', ['icon' => 'tela-leaf'])
-        );
-      }
-      bp_group_avatar( 'type=full&width=90&height=90' );
-      echo '</div>';
-
-      echo '<div class="card-project-content">';
-        echo '<h2 class="card-project-title"><span>' . bp_get_group_name() . '</span></h2>';
-        echo '<div class="card-project-description">' . bp_get_group_description_excerpt() . '</div>';
-      echo '</div>';
-    echo '</a>';
-
-    echo '<div class="card-project-meta">';
-    the_telabotanica_module('icon', ['icon' => 'members']);
-    bp_group_member_count();
-    echo '</div>';
-
-  echo '</' . $data->tag . '>';
+	echo $pug->render(__DIR__ . '/card-project.pug', [
+		'tag' => $data->tag,
+		'data' => $data
+	]);
 
 }

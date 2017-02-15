@@ -78,7 +78,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 
 	// Add other indices
 	$config[] = [
-		'index_id' => 'taxons',
+		'index_id' => 'flore',
 		'index_name' => 'Taxons_dev', // TODO: depends on environment
 		'label' => __('Flore', 'telabotanica'),
 		'position' => 10,
@@ -88,7 +88,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 		'default_facet_filters' => [ 'referentiels:bdtfx' ]
 	];
 	$config[] = [
-		'index_id' => 'syntaxons',
+		'index_id' => 'vegetation',
 		'index_name' => 'SyntaxonCore_dev', // TODO: depends on environment
 		'label' => __('Végétation', 'telabotanica'),
 		'position' => 40,
@@ -99,3 +99,10 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 	return $config;
 }
 add_filter( 'algolia_autocomplete_config', 'telabotanica_algolia_autocomplete_config' );
+
+// Add custom query_var `index` (for search page)
+function telabotanica_algolia_add_query_vars( $vars ){
+  $vars[] = "index";
+  return $vars;
+}
+add_filter( 'query_vars', 'telabotanica_algolia_add_query_vars' );

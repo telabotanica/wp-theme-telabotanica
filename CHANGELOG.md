@@ -16,6 +16,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `cover-search` ajouté
 * module `header` : support d'une version `small` pour certaines pages
 * module `search-box` ajouté
+* module `search-filters` ajouté
 * module `search-results` ajouté
 * layout `central-col` : refactoring avec un modifier `is-wide`
 * groupe de champs ACF "Newsletter" déplacé vers la page newsletter_compose

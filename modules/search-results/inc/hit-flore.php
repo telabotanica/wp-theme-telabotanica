@@ -1,4 +1,4 @@
-<?php function telabotanica_module_search_results_hit_taxons($hit) {
+<?php function telabotanica_module_search_results_hit_flore($hit) {
 	printf(
 		'<a class="search-results-hit-link" href="%s" title="%s">',
 		$hit['bdtfx']['url'],

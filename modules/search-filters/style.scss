@@ -1,0 +1,24 @@
+.search-filters {
+  font-family: $ubuntu;
+  font-weight: $regular;
+  margin-bottom: 4rem;
+
+  &-title {
+    border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
+    color: $marron;
+    font-size: 1.4rem;
+    font-weight: $regular;
+    letter-spacing: 0.1rem;
+    line-height: 2.5rem;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-transform: uppercase;
+  }
+
+  &-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+}

@@ -358,7 +358,7 @@ final class Algolia_Actualites_Index extends Algolia_Index
 	 * @return string
 	 */
 	public function get_id() {
-		return 'posts_actualites';
+		return 'actualites';
 	}
 
 	/**

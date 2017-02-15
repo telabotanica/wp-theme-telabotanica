@@ -75,7 +75,8 @@ Tela.searchBox = (function(){
               return wp.template('autocomplete-header')({
                 label: config['label'],
                 nbHits: algoliaResponse.nbHits,
-                resultsUrl: '#' + algoliaResponse.query // TODO compose URL to search results
+                 // TODO improve composition of URL to search results
+                resultsUrl: '/?s=' + algoliaResponse.query + '&index=' + config['index_id']
               });
             },
             empty: wp.template('autocomplete-empty'),

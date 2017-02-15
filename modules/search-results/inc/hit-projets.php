@@ -1,4 +1,4 @@
-<?php function telabotanica_module_search_results_hit_groups($hit) {
+<?php function telabotanica_module_search_results_hit_projets($hit) {
 	printf(
 		'<a class="search-results-hit-link" href="%s" title="%s">',
 		$hit['permalink'],

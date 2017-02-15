@@ -85,7 +85,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 			'snippetEllipsisText' => '…',
 		);
 
-		return (array) apply_filters( 'algolia_groups_index_settings', $settings );
+		return (array) apply_filters( 'algolia_projets_index_settings', $settings );
 	}
 
 	/**
@@ -93,7 +93,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	protected function get_synonyms()
 	{
-		return (array) apply_filters( 'algolia_groups_index_synonyms', array() );
+		return (array) apply_filters( 'algolia_projets_index_synonyms', array() );
 	}
 
 	/**
@@ -101,7 +101,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 	 */
 	public function get_id()
 	{
-		return 'groups';
+		return 'projets';
 	}
 
 
@@ -121,7 +121,7 @@ final class Algolia_Projets_Index extends Algolia_Index
 
 	/**
 	 * Returns all BP groups having a status different from "hidden"
-	 * 
+	 *
 	 * @param int $page page
 	 * @param int $batch_size
 	 * @return array

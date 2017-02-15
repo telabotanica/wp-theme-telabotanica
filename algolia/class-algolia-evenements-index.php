@@ -358,7 +358,7 @@ final class Algolia_Evenements_Index extends Algolia_Index
 	 * @return string
 	 */
 	public function get_id() {
-		return 'posts_evenements';
+		return 'evenements';
 	}
 
 	/**

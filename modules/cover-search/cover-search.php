@@ -12,7 +12,7 @@
 				'autocomplete' => false
 			]);
 
-			if ( get_search_query() ) :
+			if ( get_search_query() && !empty( $data->total_results ) ) :
 				echo sprintf(
 					'<h1 class="cover-search-title">%s</h1>',
 					sprintf( _n(

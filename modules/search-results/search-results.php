@@ -1,7 +1,8 @@
 <?php
-require_once 'inc/hit-groups.php';
-require_once 'inc/hit-taxons.php';
-require_once 'inc/hit-syntaxons.php';
+// Load methods for rendering specific hits
+require_once 'inc/hit-projets.php';
+require_once 'inc/hit-flore.php';
+require_once 'inc/hit-vegetation.php';
 
 function telabotanica_module_search_results_hit($index_id, $hit) {
 	$function = 'telabotanica_module_search_results_hit_' . $index_id;
@@ -38,7 +39,7 @@ function telabotanica_module_search_results($data) {
 	echo '<div class="search-results">';
 
 	foreach ( $data->results as $results ) :
-		$link_more = '/#' . $results['query']; // TODO
+		$link_more = '/?s=' . $results['query'] . '&index=' . $indices_ids[$results['index']]; // TODO
 
 		echo '<div class="search-results-index has-more">';
 

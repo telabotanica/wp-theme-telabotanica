@@ -24,6 +24,7 @@ plus de détails sur http://semver.org/lang/fr/
 * layout `central-col` : refactoring avec un modifier `is-wide`
 * groupe de champs ACF "Newsletter" déplacé vers la page newsletter_compose
 * dossier `algolia` ajouté (fichiers spécifiques au plugin Algolia)
+* configuration de Webpack pour supporter les templates Pug
 
 ## 0.0.4 (2017-01-25)
 

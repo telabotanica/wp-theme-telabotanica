@@ -36,6 +36,8 @@
     "pixrem": "^3.0.2",
     "postcss": "^5.2.11",
     "postcss-loader": "^0.13.0",
+    "pug": "^2.0.0-beta11",
+    "pug-loader": "^2.3.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "svg-sprite-loader": "0.0.31",

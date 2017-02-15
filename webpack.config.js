@@ -39,6 +39,13 @@ module.exports = {
         })
       },
       {
+        test: /\.pug$/,
+				include: [
+          path.resolve(__dirname, "modules")
+        ],
+        loader: 'pug-loader'
+      },
+      {
         test: /\.svg$/,
         include: [
           path.resolve(__dirname, "assets/icons")

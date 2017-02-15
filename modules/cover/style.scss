@@ -29,6 +29,12 @@
     position: relative;
   }
 
+  &-search-box ~ &-title,
+  &-search-box ~ &-subtitle,
+  &-search-box ~ &-content {
+    margin-right: 46rem;
+  }
+
   &-title {
     font-family: $ubuntu;
     font-size: 3.2rem;
@@ -55,6 +61,13 @@
 
   &-content {
     margin-top: 2rem;
+  }
+
+  &-search-box {
+		float: right;
+		margin-top: 1rem;
+		position: relative;
+		width: 44rem;
   }
 
   &-credits {

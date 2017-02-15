@@ -12,6 +12,7 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * ajout d'un template `search.php`
+* module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté
 * module `cover-search` ajouté
 * module `header` : support d'une version `small` pour certaines pages

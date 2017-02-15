@@ -71,6 +71,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 	// Override some parameters in existing indices
 	foreach ($config as $i => $index) :
 		if ( 'searchable_posts' === $index['index_id'] ) {
+			$config[$i]['index_id'] = 'pages';
 			$config[$i]['label'] = __('Pages', 'telabotanica');
 			$config[$i]['position'] = 60;
 		}

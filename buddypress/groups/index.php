@@ -13,7 +13,12 @@
  */
 do_action( 'bp_before_directory_groups_page' );
 
-the_telabotanica_module('cover', []);
+the_telabotanica_module('cover', [
+  'search' => [
+    'index' => 'projets',
+    'placeholder' => __('Rechercher un projet...', 'telabotanica')
+  ]
+]);
 
     /**
      * Fires before the display of the groups.

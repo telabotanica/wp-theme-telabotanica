@@ -24,7 +24,14 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
           get_category_link( $category_emploi ),
           get_category_link( $category_evenements )
         ),
-        'image' => get_field( 'cover_image', get_queried_object() )
+        'image' => get_field( 'cover_image', get_queried_object() ),
+				'search' => $is_category_events ? [
+					'index' => 'evenements',
+					'placeholder' => __('Rechercher un évènement...', 'telabotanica')
+				] : [
+					'index' => 'actualites',
+					'placeholder' => __("Rechercher une actualité...", 'telabotanica')
+				]
       ] ); ?>
 
       <div class="layout-left-col">

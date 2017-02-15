@@ -26,6 +26,11 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 }
 
+// Chargement des dépendances installées avec Composer
+require get_template_directory() . '/vendor/autoload.php';
+
+// Création d'une instance de Pug pour le rendu des templates *.pug
+$pug = new \Pug\Pug(); // TODO: configurer le cache
 
 // Fonctions utiles
 require get_template_directory() . '/inc/utile.php';

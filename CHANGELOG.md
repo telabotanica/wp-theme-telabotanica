@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* ajout d'une dépendance (`pug-php`) avec Composer
+* mise à jour du `README`
 * ajout d'un template `search.php`
 * module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté

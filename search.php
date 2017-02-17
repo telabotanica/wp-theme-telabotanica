@@ -1,10 +1,10 @@
 <?php
+// Are we searching in a specific index?
+$current_index = get_query_var( 'index', false );
+
 // Force a small header (without use cases navigation)
 $header_small = true;
 get_header();
-
-// Are we searching in a specific index?
-$current_index = get_query_var( 'index', false );
 
 // Get Algolia instance
 $algolia = Algolia_Plugin::get_instance();

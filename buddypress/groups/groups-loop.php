@@ -34,7 +34,7 @@ do_action( 'bp_before_groups_loop' ); ?>
 	 */
 	do_action( 'bp_before_directory_groups_list' );
 
-  the_telabotanica_module('list-projects', []);
+  the_telabotanica_module('list-projects');
 
 	/**
 	 * Fires after the listing of the groups list.

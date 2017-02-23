@@ -50,6 +50,16 @@ final class Algolia_Projets_Index extends Algolia_Index
 			'object' => 'group',
 			'html' => false
 		] );
+		$record['cover_image'] = bp_attachments_get_attachment('url', array(
+			'object_dir' => 'groups',
+			'item_id' => $item->id
+		));
+		$categories = bp_groups_get_group_type( $item->id, false );
+		$record['tela'] = (!empty($categories) && in_array('tela-botanica', $categories));
+		$record['archive'] = (!empty($categories) && in_array('archive', $categories));
+		$record['member_count'] = intval(groups_get_total_member_count( $item->id ));
+		$description_complete = groups_get_groupmeta( $item->id, 'description-complete' );
+		$record['description_complete'] = strip_tags($description_complete);
 
 		$record = (array) apply_filters( 'algolia_group_record', $record, $item );
 

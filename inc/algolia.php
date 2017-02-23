@@ -80,7 +80,7 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 	// Add other indices
 	$config[] = [
 		'index_id' => 'flore',
-		'index_name' => 'Taxons_dev', // TODO: depends on environment
+		'index_name' => 'Flore',
 		'label' => __('Flore', 'telabotanica'),
 		'position' => 10,
 		'max_suggestions' => 5,

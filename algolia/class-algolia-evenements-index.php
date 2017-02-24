@@ -53,6 +53,9 @@ final class Algolia_Evenements_Index extends Algolia_Index
     // Should be in Evenements category
     $category_evenements = get_category_by_slug( 'evenements' );
     $category = get_the_category( $post->ID );
+	if (empty($category)) {
+		return false;
+	}
     $category_parent_id = $category[0]->category_parent;
 		if ( $category_evenements->cat_ID !== $category_parent_id ) {
 			return false;

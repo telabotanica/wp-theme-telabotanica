@@ -53,6 +53,9 @@ final class Algolia_Actualites_Index extends Algolia_Index
 		// Should be in Actualites category
 		$category_actualites = get_category_by_slug( 'actualites' );
 		$category = get_the_category( $post->ID );
+		if (empty($category)) {
+			return false;
+		}
 		$category_parent_id = $category[0]->category_parent;
 		if ( $category_actualites->cat_ID !== $category_parent_id ) {
 			return false;

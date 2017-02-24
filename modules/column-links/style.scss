@@ -1,0 +1,52 @@
+.column-links {
+
+  &-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+	&-item {
+		border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+
+		&-link {
+			color: $marron;
+			display: block;
+			font-family: $ubuntu;
+			font-size: 1.4rem;
+			font-weight: $medium;
+			letter-spacing: 0.1rem;
+			line-height: 3rem;
+			padding: 1.5rem 2rem 1.5rem 3rem;
+			position: relative;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			&:hover,
+			&:focus {
+				color: $marron-fonce;
+				.icon {fill: $marron-fonce;}
+			}
+
+			.icon {
+				fill: $marron;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				vertical-align: middle;
+
+				&:first-child {
+					left: 0;
+					width: 1.8rem;
+				}
+
+				&:last-child {
+					right: 0;
+					width: 0.6rem;
+				}
+			}
+		}
+
+	}
+
+}

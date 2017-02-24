@@ -17,13 +17,16 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `tools` : amélioration du hover des liens
 * module `article` ajouté
 * module `card-project` : refactoring avec Pug
+* module `column-links` ajouté
 * module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté
 * module `cover-search` ajouté
 * module `form-newsletter` :
 	* renommé `newsletter`
 	* remplacement du formulaire par un bouton
-* module `icon` : refactoring avec Pug
+* module `icon` :
+	* refactoring avec Pug
+	* amélioration de la documentation
 * module `header` : support d'une version `small` pour certaines pages
 * module `list-projects` : ajout d'un script pour gérer la recherche
 * module `search-box` ajouté

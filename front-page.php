@@ -46,7 +46,8 @@ get_header(); ?>
 						<?php
 						the_telabotanica_module('title', [
 							'title' => __('Les outils de Tela Botanica', 'telabotanica'),
-							'level' => 2
+							'level' => 2,
+							'modifiers' => 'with-separator'
 						]);
 
 						the_telabotanica_component('tools', [
@@ -89,9 +90,39 @@ get_header(); ?>
 							'modifiers' => 'with-margin-top'
 						]);
 
-						the_telabotanica_module('form-newsletter', [
+						$category_actualites = get_category_by_slug( 'actualites' );
+						$category_evenements = get_category_by_slug( 'evenements' );
+						$category_emploi = get_category_by_slug( 'offres-emploi' );
+						the_telabotanica_module('column-links', [
+					    'items' => [
+					      [
+					        'text' => __("Toute l'actualité", "telabotanica"),
+					        'href' => get_category_link( $category_actualites ),
+					        'icon' => 'news'
+					      ],
+					      [
+					        'text' => __("Tous les évènements", "telabotanica"),
+					        'href' => get_category_link( $category_evenements ),
+					        'icon' => 'calendar'
+					      ],
+					      [
+					        'text' => __("Offres d'emplois / stages", "telabotanica"),
+					        'href' => get_category_link( $category_emploi ),
+					        'icon' => 'laptop'
+					      ],
+					      [
+					        'text' => __("Soumettre une actualité", "telabotanica"),
+					        'href' => '#', // TODO
+					        'icon' => 'edit'
+					      ]
+					    ],
+							'modifiers' => 'layout-column-item'
+					  ] );
+
+						the_telabotanica_module('newsletter', [
 							'modifiers' => 'layout-column-item background-white with-shadow with-padding'
-						] ); ?>
+						] );
+						?>
 					</aside>
 				</div>
 			</div>

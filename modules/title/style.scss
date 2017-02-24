@@ -13,6 +13,12 @@
 		margin-top: 1.5rem;
 	}
 
+	&.with-separator {
+		border-top: 0.1rem solid transparentize($grisDD, 0.5);
+		padding-top: 3.5rem;
+		margin-top: 4rem;
+	}
+
 	&.with-border-bottom {
 		border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
 	}

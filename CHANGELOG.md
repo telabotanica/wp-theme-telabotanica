@@ -25,6 +25,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `search-box` ajouté
 * module `search-filters` ajouté
 * module `search-results` ajouté
+* module `title` ajouté
 * layout `central-col` : refactoring avec un modifier `is-wide`
 * groupe de champs ACF "Newsletter" déplacé vers la page newsletter_compose
 * dossier `algolia` ajouté (fichiers spécifiques au plugin Algolia)

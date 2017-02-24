@@ -1,0 +1,23 @@
+.title {
+	color: $vert-fonce;
+	font-family: $ubuntu;
+	font-size: 1.4rem;
+	font-weight: $regular;
+	letter-spacing: 0.1rem;
+	line-height: 2.5rem;
+	margin: 0;
+	padding: 1.5rem 0;
+	text-transform: uppercase;
+
+	&.with-margin-top {
+		margin-top: 1.5rem;
+	}
+
+	&.with-border-bottom {
+		border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
+	}
+
+	.layout-column & {
+		color: $marron;
+	}
+}

@@ -62,9 +62,8 @@ function telabotanica_module_column_articles($data) {
 
 		if ( $data->query && get_class($data->query) === 'WP_Query' ) :
 
-			while ( $data->query->have_posts() ) :
+			while ( $data->query->have_posts() ) : $data->query->the_post();
 
-				$data->query->the_post();
 				$item = [
 					'title' => get_the_title(),
 					'text' => get_the_excerpt(),

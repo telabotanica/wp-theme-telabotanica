@@ -1,0 +1,99 @@
+.block-contribute {
+
+  &-header {
+    margin: 0 auto;
+    max-width: 66rem;
+    text-align: center;
+  }
+
+  &-title {
+    color: $gris33;
+    font-family: $ubuntu;
+    font-size: 3.2rem;
+    font-weight: $light;
+    line-height: 3.6rem;
+    margin: 0 0 5rem;
+    text-align: center;
+  }
+
+  &-content {
+		text-align: center;
+  }
+
+  &-items {
+		@include reset-list;
+		display: flex;
+		margin-bottom: 5rem;
+		justify-content: space-between;
+  }
+
+	&-item {
+		text-align: center;
+		width: 31%;
+
+		&-link {
+			color: $gris33;
+			display: block;
+			font-size: 1.5rem;
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				.block-contribute-item-title span {
+					border-bottom-color: currentColor;
+				}
+				.block-contribute-item-button {
+					color: $marron-fonce;
+				}
+			}
+		}
+
+		&-image {
+			background-position: center center;
+			background-size: cover;
+			border-radius: 50%;
+			height: 22rem;
+			margin: 0 auto 2rem;
+			width: 22rem;
+		}
+
+		&-title {
+			color: $gris23;
+      font-family: $ubuntu;
+      font-size: 2.2rem;
+      font-weight: $bold;
+			line-height: 2.8rem;
+      margin-bottom: 1rem;
+      margin-top: 0;
+
+			span {
+				border-bottom: 0.2rem solid transparent;
+        transition: border 0.2s ease;
+			}
+		}
+
+		&-text {
+			line-height: 2.4rem;
+			margin-bottom: 2rem;
+		}
+
+		&-button {
+      color: $orange;
+      font-family: $ubuntu;
+      font-size: 1.3rem;
+      font-weight: $medium;
+      letter-spacing: 0.1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+
+			&:after {
+				content: "›";
+				display: inline;
+				margin-left: 0.5rem;
+			}
+    }
+
+	}
+
+}

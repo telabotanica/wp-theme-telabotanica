@@ -27,12 +27,6 @@
 						'modifiers' => 'with-large-cover'
 					]);
 
-					the_telabotanica_module('card-project', [
-						'tag' => 'li',
-						'meta' => false,
-						'modifiers' => 'with-large-cover'
-					]);
-
 				endwhile;
 
 			endif;

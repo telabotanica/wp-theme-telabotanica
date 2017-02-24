@@ -67,7 +67,7 @@ get_header(); ?>
                 foreach ( $exemples as $exemple => $data ) {
                   echo '<h3>' . $exemple . '</h3>';
                   echo '<div class="styleguide-element">' . get_telabotanica_styleguide_element($type, $nom, $data) . '</div>';
-                  echo '<pre class="styleguide-data">' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>';
+                  echo '<pre class="styleguide-data" style="max-width: 62rem; overflow: auto;">' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>';
                 }
               else :
                 echo '<p>' . $exemples . '</p>';

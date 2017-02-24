@@ -17,6 +17,7 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `tools` : amélioration du hover des liens
 * module `article` ajouté
 * module `card-project` : refactoring avec Pug
+* module `column-articles` ajouté
 * module `column-links` ajouté
 * module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté

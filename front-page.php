@@ -32,9 +32,7 @@ get_header(); ?>
 						if ( $front_page_post ) :
 							foreach ( $front_page_post as $post ) :
 								setup_postdata( $post );
-
 								the_telabotanica_module('article');
-
 								the_telabotanica_module('button', [
 									'href' => get_permalink(),
 									'text' => 'Lire la suite'
@@ -93,6 +91,19 @@ get_header(); ?>
 						$category_actualites = get_category_by_slug( 'actualites' );
 						$category_evenements = get_category_by_slug( 'evenements' );
 						$category_emploi = get_category_by_slug( 'offres-emploi' );
+
+						the_telabotanica_module('column-articles', [
+							'query' => new WP_Query([
+								'post_type' => 'post',
+								'cat' => implode(',', [
+									$category_actualites->cat_ID//,
+									// $category_evenements->cat_ID,
+									// $category_emploi->cat_ID
+							 	]),
+								'posts_per_page' => 5
+							])
+						]);
+
 						the_telabotanica_module('column-links', [
 					    'items' => [
 					      [

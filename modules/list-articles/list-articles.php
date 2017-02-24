@@ -78,7 +78,8 @@
 							sprintf( _x( 'il y a %s', '%s = intervalle de temps', 'telabotanica' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) )
 						);
 
-						echo '&ndash;';
+						echo ' &ndash; ';
+
 						echo sprintf(
 							'<span class="list-articles-author">%s</span>',
 							sprintf( __( 'par %s', 'telabotanica' ), get_the_author() )

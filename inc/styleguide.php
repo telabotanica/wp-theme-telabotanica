@@ -26,6 +26,7 @@ $telabotanica_modules = [
 	'card-project',
 	'categories',
 	'categories-labels',
+	'column-articles',
 	'column-links',
 	'cover',
 	'cover-home',

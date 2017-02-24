@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* bloc `list-projects` ajouté
 * ajout d'une dépendance (`pug-php`) avec Composer
 * mise à jour du `README`
 * template `front_page.php`
@@ -43,7 +44,7 @@ plus de détails sur http://semver.org/lang/fr/
 * groupe de champs ACF "Newsletter" déplacé vers la page newsletter_compose
 * dossier `algolia` ajouté (fichiers spécifiques au plugin Algolia)
 * configuration de Webpack pour supporter les templates Pug
-* refactoring des modules et composants pour standardiser les data et modifiers
+* refactoring des blocs, modules et composants pour standardiser les data et modifiers
 
 ## 0.0.4 (2017-01-25)
 

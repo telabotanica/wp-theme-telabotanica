@@ -1,6 +1,6 @@
 include ../icon/icon-mixin
 
-#{tag}(class="card-project")
+#{tag}(class=data.modifiers)
 	a.card-project-link(href=data.permalink)
 		- var style = "background-image: url(" + data.cover_image_url + ");"
 		.card-project-cover(style=style)
@@ -12,8 +12,9 @@ include ../icon/icon-mixin
 			h2.card-project-title
 				span!= data.name
 			.card-project-description!= data.description
-		.card-project-meta
-			each item in data.meta
-				span.card-project-meta-item
-					+icon({icon: item.icon})
-					= item.text
+		if data.meta
+			.card-project-meta
+				each item in data.meta
+					span.card-project-meta-item
+						+icon({icon: item.icon})
+						= item.text

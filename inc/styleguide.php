@@ -62,6 +62,7 @@ array_walk($telabotanica_modules, function ($module) {
 $telabotanica_blocks = [
 	'focus',
 	'list-features',
+	'list-projects',
 	'main-features',
 ];
 array_walk($telabotanica_blocks, function ($block) {

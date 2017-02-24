@@ -4,6 +4,12 @@
 	position: relative;
 	width: 30rem;
 
+	&.with-large-cover {
+		.card-project-cover {
+			height: 22rem;
+		}
+	}
+
 	em {
 		color: $noir;
 		background: $jaune-clair;

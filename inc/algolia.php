@@ -90,8 +90,8 @@ function telabotanica_algolia_autocomplete_config( array $config ) {
 	];
 	$config[] = [
 		'index_id' => 'vegetation',
-		'index_name' => 'SyntaxonCore_dev', // TODO: depends on environment
-		'label' => __('Végétation', 'telabotanica'),
+		'index_name' => 'Vegetations',
+		'label' => __('Végétations', 'telabotanica'),
 		'position' => 40,
 		'max_suggestions' => 5,
 		'tmpl_suggestion' => 'autocomplete-syntaxon-suggestion',

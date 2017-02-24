@@ -27,6 +27,7 @@ $telabotanica_modules = [
 	'categories',
 	'categories-labels',
 	'column-articles',
+	'column-features',
 	'column-links',
 	'cover',
 	'cover-home',

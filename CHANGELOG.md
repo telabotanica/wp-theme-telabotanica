@@ -19,6 +19,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `article` ajouté
 * module `card-project` : refactoring avec Pug
 * module `column-articles` ajouté
+* module `column-features` ajouté
 * module `column-links` ajouté
 * module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté

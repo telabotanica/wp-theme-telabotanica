@@ -109,30 +109,30 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 						]);
 
 						the_telabotanica_module('column-links', [
-					    'items' => [
-					      [
-					        'text' => __("Toute l'actualité", "telabotanica"),
-					        'href' => get_category_link( $category_actualites ),
-					        'icon' => 'news'
-					      ],
-					      [
-					        'text' => __("Tous les évènements", "telabotanica"),
-					        'href' => get_category_link( $category_evenements ),
-					        'icon' => 'calendar'
-					      ],
-					      [
-					        'text' => __("Offres d'emplois / stages", "telabotanica"),
-					        'href' => get_category_link( $category_emploi ),
-					        'icon' => 'laptop'
-					      ],
-					      [
-					        'text' => __("Soumettre une actualité", "telabotanica"),
-					        'href' => '#', // TODO
-					        'icon' => 'edit'
-					      ]
-					    ],
+							'items' => [
+								[
+									'text' => __("Toute l'actualité", "telabotanica"),
+									'href' => get_category_link( $category_actualites ),
+									'icon' => 'news'
+								],
+								[
+									'text' => __("Tous les évènements", "telabotanica"),
+									'href' => get_category_link( $category_evenements ),
+									'icon' => 'calendar'
+								],
+								[
+									'text' => __("Offres d'emplois / stages", "telabotanica"),
+									'href' => get_category_link( $category_emploi ),
+									'icon' => 'laptop'
+								],
+								[
+									'text' => __("Soumettre une actualité", "telabotanica"),
+									'href' => '#', // TODO
+									'icon' => 'edit'
+								]
+							],
 							'modifiers' => 'layout-column-item'
-					  ] );
+						] );
 
 						the_telabotanica_module('newsletter', [
 							'modifiers' => ['layout-column-item', 'background-white', 'with-shadow', 'with-padding']
@@ -152,6 +152,33 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 							'title' => __('Cartographies', 'telabotanica'),
 							'level' => 2,
 							'modifiers' => 'with-margin-top'
+						]);
+
+						the_telabotanica_module('column-features', [
+							'items' => [
+								[
+									'href' => '#',
+									'icon' => 'news',
+									'color' => '#009fb8',
+									'title' => "110 pays",
+									'text' => "Le réseau Tela Botanica rassemble des passionnés de tous pays",
+								],
+								[
+									'href' => '#',
+									'icon' => 'members',
+									'color' => '#ff5d55',
+									'title' => "28 214 telabotanistes",
+									'text' => "Trouvez les inscrits près de chez vous et prenez contact",
+								],
+								[
+									'href' => '#',
+									'icon' => 'home',
+									'color' => '#918a6f',
+									'title' => "172 structures",
+									'text' => "À travers le monde, les structures locales vous accompagnent dans vos découvertes naturalistes",
+								]
+							],
+							'modifiers' => 'layout-column-item'
 						]);
 
 						the_telabotanica_module('button', [

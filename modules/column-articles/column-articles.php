@@ -56,9 +56,9 @@ function telabotanica_module_column_articles($data) {
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('column-articles', $data->modifiers);
 
-  echo '<div class="' . implode(' ', $data->modifiers) . '">';
+	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-	  echo '<ul class="column-articles-items">';
+		echo '<ul class="column-articles-items">';
 
 		if ( $data->query && get_class($data->query) === 'WP_Query' ) :
 
@@ -78,14 +78,14 @@ function telabotanica_module_column_articles($data) {
 
 		elseif ( !empty($data->items) ) :
 
-	    foreach ($data->items as $item) :
+			foreach ($data->items as $item) :
 
 				telabotanica_module_column_articles_item($item);
 
-	    endforeach;
+			endforeach;
 
-	  endif;
+		endif;
 
-	  echo '</ul>';
-  echo '</div>';
+		echo '</ul>';
+	echo '</div>';
 }

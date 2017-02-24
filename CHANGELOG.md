@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `cover-project` : icônes selon status
+
 ## 0.0.5 (2017-02-24)
 
 * bloc `contribute` ajouté

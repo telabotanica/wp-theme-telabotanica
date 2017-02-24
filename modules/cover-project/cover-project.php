@@ -35,8 +35,8 @@ function telabotanica_module_cover_project($data) {
     echo '<div class="cover-project-meta">';
       $visibility_icons = [
         'public' => 'globe',
-        'private' => 'globe',
-        'hidden' => 'globe'
+        'private' => 'private',
+        'hidden' => 'hidden'
       ];
       echo sprintf(
         '<span class="cover-project-visibility">%s %s</span>',

@@ -94,7 +94,7 @@ function template_chorologie_entete() {
 		  </aside>
 		  <div class="layout-content">
 			<?php the_telabotanica_module('breadcrumbs'); ?>
-			<article class="article">
+			<article>
 				<div class="component component-title level-2">
 					<h1 id="recherche-collections">Chorologie départementale</h1>
 				</div>

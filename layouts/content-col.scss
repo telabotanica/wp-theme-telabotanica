@@ -1,75 +1,79 @@
 .layout-content-col {
-  > .layout-wrapper {
-    display: flex;
+	> .layout-wrapper {
+		display: flex;
 
-    > .layout-column {
-      background-color: $beige;
-      float: left;
-      flex: 0 0 33rem;
-      position: relative;
-      padding-bottom: 8rem;
-      padding-right: 3rem;
-      width: 33rem;
+		> .layout-column {
+			background-color: $beige;
+			float: left;
+			flex: 0 0 33rem;
+			position: relative;
+			padding-bottom: 8rem;
+			padding-right: 3rem;
+			width: 33rem;
 
-      &:before {
-        background-color: $beige;
-        bottom: 0;
-        content: "";
-        display: block;
-        position: absolute;
-        right: 100%;
-        top: 0;
-        width: 100rem;
-      }
+			&:before {
+				background-color: $beige;
+				bottom: 0;
+				content: "";
+				display: block;
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 100rem;
+			}
 
-      .layout-column-item {
-        margin-bottom: 3rem;
+			.layout-column-item {
+				margin-bottom: 3rem;
 
-        &.background-white {
-          background-color: $blanc;
-        }
+				&:last-child {
+					margin-bottom: 0;
+				}
 
-        &.with-shadow {
-          box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
-          position: relative;
-        }
+				&.background-white {
+					background-color: $blanc;
+				}
 
-        &.with-padding {
-          padding: 2rem;
-        }
-      }
-    }
+				&.with-shadow {
+					box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
+					position: relative;
+				}
 
-    > .layout-content {
-      float: right;
-      margin-left: 5rem;
-      flex: 1;
-      width: 62rem;
-    }
-  }
+				&.with-padding {
+					padding: 2rem;
+				}
+			}
+		}
 
-  // Pleine largeur
-  &.full-width {
-    > .layout-wrapper {
-      width: 100%;
+		> .layout-content {
+			float: right;
+			margin-left: 5rem;
+			flex: 1;
+			width: 62rem;
+		}
+	}
 
-      > .layout-column {
-        flex: 0 0 36rem;
-        padding: 0 5rem;
-        width: 36rem;
+	// Pleine largeur
+	&.full-width {
+		> .layout-wrapper {
+			width: 100%;
 
-        &:before {display: none;}
-      }
+			> .layout-column {
+				flex: 0 0 36rem;
+				padding: 0 5rem;
+				width: 36rem;
 
-      > .layout-content {
-        margin-left: 0;
-        padding: 0 5rem;
-      }
-    }
-  }
+				&:before {display: none;}
+			}
 
-  // Inversion des colonnes (contenu à gauche et colonne à droite)
-  &.reversed {
+			> .layout-content {
+				margin-left: 0;
+				padding: 0 5rem;
+			}
+		}
+	}
+
+	// Inversion des colonnes (contenu à gauche et colonne à droite)
+	&.reversed {
 		> .layout-wrapper {
 			> .layout-column {
 				float: right;
@@ -90,24 +94,24 @@
 		}
 	}
 
-  // Inversion des couleurs des colonnes
-  &.reversed-colors {
-    background-color: $grisF4;
-    > .layout-wrapper {
-      > .layout-column {
-        background-color: $blanc;
+	// Inversion des couleurs des colonnes
+	&.reversed-colors {
+		background-color: $grisF4;
+		> .layout-wrapper {
+			> .layout-column {
+				background-color: $blanc;
 
-        &:before {
-          background-color: $blanc;
-        }
+				&:before {
+					background-color: $blanc;
+				}
 
-        > .button-top {
-          background-color: $blanc;
-        }
-      }
-      > .layout-content {
-        background-color: $grisF4;
-      }
-    }
-  }
+				> .button-top {
+					background-color: $blanc;
+				}
+			}
+			> .layout-content {
+				background-color: $grisF4;
+			}
+		}
+	}
 }

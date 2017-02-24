@@ -3,7 +3,12 @@
  * Page d'accueil
  */
 
-get_header(); ?>
+get_header();
+
+$category_actualites = get_category_by_slug( 'actualites' );
+$category_evenements = get_category_by_slug( 'evenements' );
+$category_emploi = get_category_by_slug( 'offres-emploi' );
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -22,26 +27,27 @@ get_header(); ?>
 							'modifiers' => 'with-margin-top'
 						]);
 
-						$category_actualites = get_category_by_slug( 'actualites' );
-						$front_page_post = get_posts( [
-							'category' => $category_actualites->cat_ID,
-							'numberposts' => 1,
-							'orderby' => 'date',
-							'order' => 'DESC',
-						] );
-						if ( $front_page_post ) :
-							foreach ( $front_page_post as $post ) :
-								setup_postdata( $post );
-								the_telabotanica_module('article');
-								the_telabotanica_module('button', [
-									'href' => get_permalink(),
-									'text' => __('Lire la suite', 'telabotanica')
-								]);
-							endforeach;
-						endif;
-						?>
+						$latest_post = new WP_Query([
+							'post_type' => 'post',
+							'cat' => 10, // TODO
+							'posts_per_page' => 1
+						]);
+						while ( $latest_post->have_posts() ) : $latest_post->the_post();
+							$latest_post_id = get_the_ID();
+							the_telabotanica_module('article', [
+								'href' => get_the_permalink(),
+								'title' => get_the_title(),
+								'image' => has_post_thumbnail() ? get_the_post_thumbnail( null, 'home-latest-post' ) : false,
+								'text' => get_the_excerpt()
+							]);
+						endwhile;
 
-						<?php
+
+						the_telabotanica_module('button', [
+							'href' => get_permalink(),
+							'text' => __('Lire la suite', 'telabotanica')
+						]);
+
 						the_telabotanica_module('title', [
 							'title' => __('Les outils de Tela Botanica', 'telabotanica'),
 							'level' => 2,
@@ -88,10 +94,6 @@ get_header(); ?>
 							'modifiers' => 'with-margin-top'
 						]);
 
-						$category_actualites = get_category_by_slug( 'actualites' );
-						$category_evenements = get_category_by_slug( 'evenements' );
-						$category_emploi = get_category_by_slug( 'offres-emploi' );
-
 						the_telabotanica_module('column-articles', [
 							'query' => new WP_Query([
 								'post_type' => 'post',
@@ -100,7 +102,9 @@ get_header(); ?>
 									// $category_evenements->cat_ID,
 									// $category_emploi->cat_ID
 							 	]),
-								'posts_per_page' => 5
+								'posts_per_page' => 5,
+								// évite d'afficher 2 fois l'actu à la Une
+								'post__not_in' => [$latest_post_id]
 							])
 						]);
 
@@ -131,7 +135,7 @@ get_header(); ?>
 					  ] );
 
 						the_telabotanica_module('newsletter', [
-							'modifiers' => 'layout-column-item background-white with-shadow with-padding'
+							'modifiers' => ['layout-column-item', 'background-white', 'with-shadow', 'with-padding']
 						] );
 						?>
 					</aside>

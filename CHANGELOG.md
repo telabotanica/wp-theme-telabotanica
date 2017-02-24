@@ -13,6 +13,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 * ajout d'une dépendance (`pug-php`) avec Composer
 * mise à jour du `README`
+* template `front_page.php`
 * ajout d'un template `search.php`
 * composant `tools` : amélioration du hover des liens
 * module `article` ajouté

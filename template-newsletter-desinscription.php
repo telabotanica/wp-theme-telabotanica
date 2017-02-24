@@ -20,7 +20,7 @@ get_header();
 		<div class="layout-wrapper">
 			<div class="layout-content">
 				<?php the_telabotanica_module('breadcrumbs'); ?>
-				<article class="article">
+				<article>
 					<div class="component component-title level-2">
 						<h1>Me désinscrire de la lettre d'actualités</h1>
 					</div>

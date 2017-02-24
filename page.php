@@ -18,7 +18,7 @@ get_header(); ?>
           </aside>
           <div class="layout-content">
             <?php the_telabotanica_module('breadcrumbs'); ?>
-            <article class="article">
+            <article>
               <?php
               // Si la page utilise des composants
               if( have_rows('components') ):

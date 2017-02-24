@@ -110,7 +110,7 @@ function template_collections_entete() {
 		  </aside>
 		  <div class="layout-content">
 			<?php the_telabotanica_module('breadcrumbs'); ?>
-			<article class="article">
+			<article>
 				<div class="component component-title level-2">
 					<h1 id="recherche-collections">Rechercher parmi les collections</h1>
 				</div>

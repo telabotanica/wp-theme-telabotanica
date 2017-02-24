@@ -1,13 +1,11 @@
 .article {
-	margin: 5rem auto;
-	max-width: 70rem;
 
 	&-title {
 		font-family: $ubuntu;
 		font-size: 2.6rem;
 		font-weight: $bold;
 		line-height: 3.6rem;
-		margin: 0 0 3rem;
+		margin: 0;
 
 		a {
 			border-bottom: 0.2rem solid transparent;
@@ -20,6 +18,18 @@
 				border-bottom-color: $gris23;
 			}
 		}
+	}
+
+	&-title,
+	&-image,
+	> .component-intro {
+		margin-bottom: 2.5rem;
+	}
+
+	&-image {
+		display: block;
+
+		img {display: block;}
 	}
 
 	// moins de margin-top lorsque précédé de breadcrumbs

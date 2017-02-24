@@ -69,7 +69,7 @@ function telabotanica_module_column_articles($data) {
 					'title' => get_the_title(),
 					'text' => get_the_excerpt(),
 					'href' => get_the_permalink(),
-					'image' => has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'post-thumbnail' ) : false,
+					'image' => has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'home-post-thumbnail' ) : false,
 					'time' => get_the_time( 'U' )
 				];
 				telabotanica_module_column_articles_item($item);

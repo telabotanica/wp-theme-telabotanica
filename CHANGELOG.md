@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+## 0.0.5 (2017-02-24)
+
 * bloc `contribute` ajouté
 * bloc `list-projects` ajouté
 * ajout d'une dépendance (`pug-php`) avec Composer

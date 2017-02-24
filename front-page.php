@@ -35,7 +35,7 @@ get_header(); ?>
 								the_telabotanica_module('article');
 								the_telabotanica_module('button', [
 									'href' => get_permalink(),
-									'text' => 'Lire la suite'
+									'text' => __('Lire la suite', 'telabotanica')
 								]);
 							endforeach;
 						endif;
@@ -72,7 +72,7 @@ get_header(); ?>
 							'items' => [
 								[
 									'link' => [
-										'url' => '#'
+										'url' => get_permalink( get_page_by_path( 'outils' ) )
 									],
 									'text' => __('Voir tous les outils', 'telabotanica')
 								]
@@ -133,6 +133,28 @@ get_header(); ?>
 						the_telabotanica_module('newsletter', [
 							'modifiers' => 'layout-column-item background-white with-shadow with-padding'
 						] );
+						?>
+					</aside>
+				</div>
+			</div>
+
+			<div class="layout-content-col reversed reversed-colors">
+				<div class="layout-wrapper">
+					<div class="layout-content">
+					</div>
+					<aside class="layout-column">
+						<?php
+						the_telabotanica_module('title', [
+							'title' => __('Cartographies', 'telabotanica'),
+							'level' => 2,
+							'modifiers' => 'with-margin-top'
+						]);
+
+						the_telabotanica_module('button', [
+							'href' => '#',
+							'text' => __('Explorer les cartographies', 'telabotanica'),
+							'modifiers' => ['block', 'orange']
+						]);
 						?>
 					</aside>
 				</div>

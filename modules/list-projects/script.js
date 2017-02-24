@@ -38,9 +38,10 @@ Tela.listProjects = (function(){
 				var cardData = {
 					tag: 'li',
 					data: {
+						modifiers: 'card-project',
 						permalink: hit.permalink,
-						cover_image_url: '', // TODO
-						tela: true, // TODO s'il s'agit d'un projet Tela
+						cover_image_url: hit.cover_image,
+						tela: hit.tela,
 						tela_title: 'Un projet Tela Botanica', // TODO I18n
 						avatar: hit.image,
 						name: hit._highlightResult.name.value,

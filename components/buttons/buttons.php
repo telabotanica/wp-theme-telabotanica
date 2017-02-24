@@ -1,43 +1,50 @@
 <?php function telabotanica_component_buttons($data) {
-  if (!isset($data->items)) $data->items = get_sub_field('items');
-  if (!isset($data->display)) $data->display = get_sub_field('display');
-  if (empty($data->display)) $data->display = 'buttons';
 
-  $data->modifiers = [ 'component', 'component-buttons' ];
-  if ( $data->display === 'links' || ( is_array( $data->display ) && in_array('links', $data->display) ) ) $data->modifiers[] = 'as-links';
-  if ( $data->display === 'seamless' || ( is_array( $data->display ) && in_array('seamless', $data->display) ) ) $data->modifiers[] = 'as-seamless';
+	$defaults = [
+		'items' => get_sub_field('items'),
+		'display' => get_sub_field('display'),
+		'modifiers' => []
+	];
 
-  echo '<div class="' . implode($data->modifiers, ' ') . '">';
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-buttons'], $data->modifiers);
 
-  if ( $data->items ):
+	if (empty($data->display)) $data->display = 'buttons';
 
-    foreach ($data->items as $item) :
+	if ( $data->display === 'links' || ( is_array( $data->display ) && in_array('links', $data->display) ) ) $data->modifiers[] = 'as-links';
+	if ( $data->display === 'seamless' || ( is_array( $data->display ) && in_array('seamless', $data->display) ) ) $data->modifiers[] = 'as-seamless';
 
-      $item = (object) $item;
+	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-      if (!isset($item->href)) {
-        $item->href = $item->link['url'];
-        $item->target = $item->link['target'];
-        $item->title = $item->link['title'];
-        unset($item->link);
-      }
-      if (!isset($item->text)) $item->text = get_sub_field('text');
-      if (!isset($item->modifiers)) {
-        $item->modifiers = [ get_sub_field('modifiers') ];
-        if (empty($data->modifiers)) $data->modifiers = [];
-      } else {
-        $item->modifiers = [ $item->modifiers ];
-      }
+	if ( $data->items ):
 
-      if ( in_array('as-links', $data->modifiers ) ) {
-        $item->modifiers[] = 'link';
-      }
+		foreach ($data->items as $item) :
 
-      the_telabotanica_module('button', $item);
+			$item = (object) $item;
 
-    endforeach;
+			if (!isset($item->href)) {
+				$item->href = $item->link['url'];
+				if (array_key_exists('target', $item->link)) $item->target = $item->link['target'];
+				if (array_key_exists('title', $item->link)) $item->title = $item->link['title'];
+				unset($item->link);
+			}
+			if (!isset($item->text)) $item->text = get_sub_field('text');
+			if (!isset($item->modifiers)) {
+				$item->modifiers = [ get_sub_field('modifiers') ];
+				if (empty($data->modifiers)) $data->modifiers = [];
+			} else {
+				$item->modifiers = [ $item->modifiers ];
+			}
 
-  endif;
+			if ( in_array('as-links', $data->modifiers ) ) {
+				$item->modifiers[] = 'link';
+			}
 
-  echo '</div>';
+			the_telabotanica_module('button', $item);
+
+		endforeach;
+
+	endif;
+
+	echo '</div>';
 }

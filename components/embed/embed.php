@@ -1,44 +1,49 @@
 <?php function telabotanica_component_embed($data) {
-  if (!isset($data->method)) $data->method = get_sub_field('method');
-  if (!isset($data->description)) {
-    $data->description = get_sub_field('description');
-    $data->description_id = get_sub_field_object('description')['name'];
-  }
+	$defaults = [
+		'method' => get_sub_field('method'),
+		'description' => get_sub_field('description'),
+		'description_id' => get_sub_field_object('description')['name'],
+		'embed' => '',
+		'modifiers' => []
+	];
 
-  if ( $data->method === 'oembed' ) :
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-embed'], $data->modifiers);
 
-    $height = false;
-    $data->embed = get_sub_field('embed');
+	if ( $data->method === 'oembed' ) :
 
-  elseif ( $data->method === 'iframe' ) :
+		$height = false;
+		$data->embed = get_sub_field('embed');
 
-    $height = get_sub_field('height');
+	elseif ( $data->method === 'iframe' ) :
 
-    $data->embed = sprintf(
-      '<iframe src="%s" style="%s"></iframe>',
-      get_sub_field('iframe'),
-      $height ? 'height: ' . ($height / 10) . 'rem' : ''
-    );
+		$height = get_sub_field('height');
 
-  endif;
+		$data->embed = sprintf(
+			'<iframe src="%s" style="%s"></iframe>',
+			get_sub_field('iframe'),
+			$height ? 'height: ' . ($height / 10) . 'rem' : ''
+		);
 
-  echo '<div class="component component-embed">';
+	endif;
 
-  echo sprintf(
-    '<div class="component-embed-wrapper" aria-describedby="%s" style="%s">',
-    $data->description_id,
-    $height ? 'height: ' . ($height / 10) . 'rem' : ''
-  );
-    echo $data->embed;
-  echo '</div>';
+	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-  if ( $data->description ) :
+	echo sprintf(
+		'<div class="component-embed-wrapper" aria-describedby="%s" style="%s">',
+		$data->description_id,
+		$height ? 'height: ' . ($height / 10) . 'rem' : ''
+	);
+		echo $data->embed;
+	echo '</div>';
 
-    echo '<div class="component-embed-description" id="' . $data->description_id . '">';
-      echo $data->description;
-    echo '</div>';
-  
-  endif;
+	if ( $data->description ) :
 
-  echo '</div>';
+		echo '<div class="component-embed-description" id="' . $data->description_id . '">';
+			echo $data->description;
+		echo '</div>';
+
+	endif;
+
+	echo '</div>';
 }

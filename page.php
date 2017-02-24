@@ -10,7 +10,7 @@ get_header(); ?>
 
       <?php the_telabotanica_module('cover'); ?>
 
-      <div class="layout-left-col">
+      <div class="layout-content-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
             <?php the_telabotanica_module('toc'); ?>

@@ -70,7 +70,7 @@ function template_collections_entete() {
 
 	  <?php the_telabotanica_module('cover'); ?>
 
-	  <div class="layout-left-col">
+	  <div class="layout-content-col">
 		<div class="layout-wrapper">
 		  <aside class="layout-column">
 		  <?php

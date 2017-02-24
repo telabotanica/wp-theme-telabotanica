@@ -19,7 +19,7 @@ get_header(); ?>
       endif;
       ?>
 
-      <div class="layout-left-col">
+      <div class="layout-content-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
             <?php the_telabotanica_module('toc', [

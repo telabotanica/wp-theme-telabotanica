@@ -1,4 +1,4 @@
-.layout-left-col {
+.layout-content-col {
   > .layout-wrapper {
     display: flex;
 
@@ -69,8 +69,30 @@
     }
   }
 
+  // Inversion des colonnes (contenu à gauche et colonne à droite)
+  &.reversed {
+		> .layout-wrapper {
+			> .layout-column {
+				float: right;
+				padding-left: 3rem;
+				padding-right: 0;
+
+				&:before {
+					left: 100%;
+					right: auto;
+				}
+			}
+
+			> .layout-content {
+				float: right;
+				margin-left: 0;
+				margin-right: 5rem;
+			}
+		}
+	}
+
   // Inversion des couleurs des colonnes
-  &.reverse-colors {
+  &.reversed-colors {
     background-color: $grisF4;
     > .layout-wrapper {
       > .layout-column {

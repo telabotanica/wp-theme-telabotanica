@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="layout-left-col reverse-colors">
+<div class="layout-content-col reversed-colors">
   <div class="layout-wrapper">
     <aside class="layout-column">
       <div class="item-list-tabs no-ajax toc" id="subnav" aria-label="<?php esc_attr_e( 'Group secondary navigation', 'buddypress' ); ?>" role="navigation">

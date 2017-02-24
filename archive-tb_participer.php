@@ -12,7 +12,7 @@ get_header(); ?>
         'title' => __('Comment participer ?', 'telabotanica'),
       ] ); ?>
 
-      <div class="layout-left-col">
+      <div class="layout-content-col">
         <div class="layout-wrapper">
           <aside class="layout-column">
             <?php the_telabotanica_module('button-top'); ?>

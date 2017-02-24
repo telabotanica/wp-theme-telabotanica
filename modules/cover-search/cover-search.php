@@ -1,13 +1,24 @@
 <?php function telabotanica_module_cover_search($data) {
 	global $wp_query;
-	if (!isset($data->image)) $data->image = get_field('cover_image');
-	if (!isset($data->total_results)) $data->total_results = $wp_query->found_posts;
-	if (!isset($data->modifiers)) $data->modifiers = '';
-	?>
-	<div class="cover cover-search <?php echo $data->modifiers ?>" style="background-image: url(<?php echo $data->image['url'] ?>);">
-		<div class="layout-wrapper">
-			<div class="cover-search-content">
-			<?php
+
+	$defaults = [
+		'image' => get_field('cover_image'),
+		'total_results' => $wp_query->found_posts,
+		'modifiers' => []
+	];
+
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array(['cover', 'cover-search'], $data->modifiers);
+
+	printf(
+		'<div class="%s" style="background-image: url(%s);">',
+		implode(' ', $data->modifiers),
+		$data->image['url']
+	);
+
+		echo '<div class="layout-wrapper">';
+			echo '<div class="cover-search-content">';
+
 			the_telabotanica_module('search-box', [
 				'autocomplete' => false
 			]);
@@ -23,22 +34,22 @@
 					), number_format_i18n( $data->total_results ) )
 				);
 			endif;
-			?>
-			</div>
 
-		</div>
-		<?php
-			if ( $data->image ) :
-				$credits = get_fields( $data->image['ID'] );
-				if ( $credits ) :
-					echo '<div class="cover-credits">';
-					if ($credits['link']) {
-						echo sprintf(__('%s par %s', 'telabotanica'), '<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>', $credits['author']);
-					} else {
-						echo sprintf(__('%s par %s', 'telabotanica'), $data->image['title'], $credits['author']);
-					}
-					echo '</div>';
-				endif;
-		endif; ?>
-	</div>
-<?php }
+			echo '</div>';
+		echo '</div>';
+
+		if ( $data->image ) :
+			$credits = get_fields( $data->image['ID'] );
+			if ( $credits ) :
+				echo '<div class="cover-credits">';
+				if ($credits['link']) {
+					echo sprintf(__('%s par %s', 'telabotanica'), '<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>', $credits['author']);
+				} else {
+					echo sprintf(__('%s par %s', 'telabotanica'), $data->image['title'], $credits['author']);
+				}
+				echo '</div>';
+			endif;
+		endif;
+
+	echo '</div>';
+}

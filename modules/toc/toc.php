@@ -54,7 +54,13 @@ function telabotanica_module_toc($data) {
 
 
   echo '<div class="toc">';
-  echo '<h2 class="toc-title">' . __('Sommaire', 'telabotanica') . '</h2>';
+
+	the_telabotanica_module('title', [
+		'title' => __('Sommaire', 'telabotanica'),
+		'level' => 2,
+		'modifiers' => ['toc-title', 'with-border-bottom']
+	]);
+
   echo '<ul class="toc-items">';
 
   if ( isset($data->items) ) :

@@ -1,12 +1,23 @@
 <?php function telabotanica_module_cover_home($data) {
-  if (!isset($data->image)) $data->image = get_field('cover_image');
-  if (!isset($data->title)) $data->title = __('Bienvenue sur Tela Botanica, <br />le réseau des botanistes francophones', 'telabotanica');
-  if (!isset($data->modifiers)) $data->modifiers = '';
-  ?>
-  <div class="cover cover-home <?php echo $data->modifiers ?>" style="background-image: url(<?php echo $data->image['url'] ?>);">
-    <div class="layout-wrapper">
-      <div class="cover-home-content">
-      <?php
+
+	$defaults = [
+		'image' => get_field('cover_image'),
+		'title' => __('Bienvenue sur Tela Botanica, <br />le réseau des botanistes francophones', 'telabotanica'),
+		'modifiers' => []
+	];
+
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array(['cover', 'cover-home'], $data->modifiers);
+
+	printf(
+		'<div class="%s" style="background-image: url(%s);">',
+		implode(' ', $data->modifiers),
+		$data->image['url']
+	);
+
+		echo '<div class="layout-wrapper">';
+			echo '<div class="cover-home-content">';
+
       if ( is_user_logged_in() ) :
         $current_user = wp_get_current_user();
         echo sprintf(
@@ -29,10 +40,9 @@
         // TODO: make the suggestions configurable
         'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc']
       ]);
-      ?>
-      </div>
 
-      <?php
+			echo '</div>';
+
       // TODO: brancher les liens
       $users_link = '#';
       $user_count = bp_get_total_member_count();
@@ -62,8 +72,9 @@
           </a>
         </li>
       </ul>
-    </div>
     <?php
+		echo '</div>';
+
       if ( $data->image ) :
         $credits = get_fields( $data->image['ID'] );
         if ( $credits ) :
@@ -75,6 +86,7 @@
           }
           echo '</div>';
         endif;
-    endif; ?>
-  </div>
-<?php }
+    endif;
+
+		echo '</div>';
+}

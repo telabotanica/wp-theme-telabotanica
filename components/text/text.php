@@ -1,9 +1,14 @@
 <?php function telabotanica_component_text($data) {
-  if (!isset($data->text)) $data->text = get_sub_field('text');
 
-  echo '<div class="component component-text">';
+	$defaults = [
+		'text' => get_sub_field('text'),
+		'modifiers' => []
+	];
 
-  echo $data->text;
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-text'], $data->modifiers);
 
-  echo '</div>';
+	echo '<div class="' . implode(' ', $data->modifiers) . '">';
+		echo $data->text;
+	echo '</div>';
 }

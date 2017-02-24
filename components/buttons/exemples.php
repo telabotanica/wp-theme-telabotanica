@@ -1,7 +1,13 @@
 <?php
 return [
   "Standard" => [
-    'href' => '#',
-    'text' => 'Bouton',
+		'items' => [
+			[
+				'link' => [
+					'url' => '#'
+				],
+				'text' => 'Bouton'
+			]
+		]
   ]
 ];

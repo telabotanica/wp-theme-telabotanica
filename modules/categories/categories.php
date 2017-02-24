@@ -1,5 +1,12 @@
 <?php function telabotanica_module_categories($data) {
-  if (!isset($data->modifiers)) $data->modifiers = '';
+
+	$defaults = [
+		'items' => [],
+		'modifiers' => []
+	];
+
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array('categories', $data->modifiers);
 
   // Fonction permettant d'afficher les catégories par défaut,
   // en se basant sur les catégories créées dans Wordpress
@@ -46,11 +53,17 @@
     }
   endif;
 
-  echo '<div class="categories ' . $data->modifiers . '">';
-  echo '<h2 class="categories-title">' . __('Catégories', 'telabotanica') . '</h2>';
+  echo '<div class="' . implode(' ', $data->modifiers) . '">';
+
+	the_telabotanica_module('title', [
+		'title' => __('Catégories', 'telabotanica'),
+		'level' => 2,
+		'modifiers' => ['categories-title', 'with-border-bottom']
+	]);
+
   echo '<ul class="categories-items">';
 
-  if ( isset($data->items) ) :
+  if ( !empty($data->items) ) :
 
     foreach ($data->items as $item) :
       $item = (object) $item;

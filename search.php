@@ -35,7 +35,7 @@ $algolia = Algolia_Plugin::get_instance();
 				]);
 				?>
 
-				<div class="layout-left-col">
+				<div class="layout-content-col">
 					<div class="layout-wrapper">
 							<aside class="layout-column">
 								<?php

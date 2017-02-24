@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="layout-left-col reverse-colors project-flora-data" id="ep-flora-data">
+<div class="layout-content-col reversed-colors project-flora-data" id="ep-flora-data">
   <div class="layout-wrapper">
     <aside class="layout-column">
       <div class="toc">
@@ -48,7 +48,7 @@
     </aside>
 
     <div class="layout-content">
-      <?php      
+      <?php
       /**
        * Fires before the display of content for plugins using the BP_Group_Extension.
        *

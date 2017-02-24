@@ -4,6 +4,6 @@ mixin icon(data)
 	- var href = "#icon-" + data.icon;
 	- var modifiers = "icon-" + data.icon;
 	if data.color
-		- modifiers.push("icon-color-" + data.color)
+		- modifiers = modifiers + " icon-color-" + data.color
 	svg.icon(aria-hidden="true" role="img" class=modifiers)
 		use(xlink:href=href)

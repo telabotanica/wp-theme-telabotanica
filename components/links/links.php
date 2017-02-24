@@ -1,76 +1,83 @@
 <?php function telabotanica_component_links($data) {
-  if (!isset($data->title)) $data->title = get_sub_field('title');
-  if (!isset($data->items)) $data->items = get_sub_field('items');
 
-  echo '<div class="component component-links">';
+	$defaults = [
+		'title' => get_sub_field('title'),
+		'items' => get_sub_field('items'),
+		'modifiers' => []
+	];
 
-  echo '<h3 class="component-links-title">' . $data->title . '</h3>';
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-links'], $data->modifiers);
 
-  if ( $data->items ):
+	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-      echo '<ul>';
+		echo '<h3 class="component-links-title">' . $data->title . '</h3>';
 
-      foreach ($data->items as $item) :
+		if ( $data->items ):
 
-        $item = (object) $item;
+			echo '<ul>';
 
-        if ( isset($item->acf_fc_layout) ) :
+				foreach ($data->items as $item) :
 
-          // Téléchargement
-          if ( $item->acf_fc_layout === 'download' ) :
+					$item = (object) $item;
 
-            $item->download = true;
-            $item->href = $item->file['url'];
-            $item->filename = $item->file['filename'];
-            $item->filesize = filesize( get_attached_file( $item->file['id'] ) );
+					if ( isset($item->acf_fc_layout) ) :
 
-          // Lien
-          elseif ( $item->acf_fc_layout === 'link' ) :
+						// Téléchargement
+						if ( $item->acf_fc_layout === 'download' ) :
 
-            $item->href = $item->destination['url'];
-            $item->target = $item->destination['target'];
-            $item->title = $item->destination['title'];
+							$item->download = true;
+							$item->href = $item->file['url'];
+							$item->filename = $item->file['filename'];
+							$item->filesize = filesize( get_attached_file( $item->file['id'] ) );
 
-          endif;
+						// Lien
+						elseif ( $item->acf_fc_layout === 'link' ) :
 
-        else :
+							$item->href = $item->destination['url'];
+							$item->target = $item->destination['target'];
+							$item->title = $item->destination['title'];
 
-          if ( !isset($item->target) ) $item->target = '';
+						endif;
 
-        endif;
+					else :
 
-        // Téléchargement
-        if ( isset( $item->download ) && $item->download === true ) :
+						if ( !isset($item->target) ) $item->target = '';
 
-          echo sprintf(
-            '<li class="component-links-item-download"><a href="%s" target="%s" title="%s" download="%s">%s <span class="component-links-metadata">%s - %s</span></a></li>',
-            $item->href,
-            '_blank',
-            sprintf ( __( 'Télécharger le fichier %s', 'telabotanica' ), $item->filename ),
-            $item->filename,
-            $item->text,
-            strtoupper( pathinfo( $item->filename, PATHINFO_EXTENSION ) ),
-            size_format( $item->filesize, 2 )
-          );
+					endif;
 
-        // Lien
-        else :
+					// Téléchargement
+					if ( isset( $item->download ) && $item->download === true ) :
 
-          echo sprintf(
-            '<li class="component-links-item-link"><a href="%s" target="%s" title="%s">%s</a></li>',
-            $item->href,
-            $item->target,
-            $item->title,
-            $item->text
-          );
+						echo sprintf(
+							'<li class="component-links-item-download"><a href="%s" target="%s" title="%s" download="%s">%s <span class="component-links-metadata">%s - %s</span></a></li>',
+							$item->href,
+							'_blank',
+							sprintf ( __( 'Télécharger le fichier %s', 'telabotanica' ), $item->filename ),
+							$item->filename,
+							$item->text,
+							strtoupper( pathinfo( $item->filename, PATHINFO_EXTENSION ) ),
+							size_format( $item->filesize, 2 )
+						);
 
-        endif;
+					// Lien
+					else :
 
-      endforeach;
+						echo sprintf(
+							'<li class="component-links-item-link"><a href="%s" target="%s" title="%s">%s</a></li>',
+							$item->href,
+							$item->target,
+							$item->title,
+							$item->text
+						);
 
-      echo '</ul>';
+					endif;
 
-  endif;
+				endforeach;
 
-  echo '</div>';
+			echo '</ul>';
+
+		endif;
+
+	echo '</div>';
 }

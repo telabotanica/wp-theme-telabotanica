@@ -29,7 +29,7 @@
 		]
 	];
 
-	$data = (object) array_merge((array) $defaults, (array) $data);
+	$data = telabotanica_styleguide_data($defaults, $data);
 
 	echo $pug->render(__DIR__ . '/card-project.pug', [
 		'tag' => $data->tag,

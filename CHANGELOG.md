@@ -14,6 +14,7 @@ plus de détails sur http://semver.org/lang/fr/
 * ajout d'une dépendance (`pug-php`) avec Composer
 * mise à jour du `README`
 * ajout d'un template `search.php`
+* composant `tools` : amélioration du hover des liens
 * module `article` ajouté
 * module `card-project` : refactoring avec Pug
 * module `cover` : support de l'ajout d'une `search-box`

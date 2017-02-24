@@ -86,7 +86,6 @@
     }
 
     &-link a {
-      border-bottom: 0.2rem solid transparent;
       color: $marron;
       font-family: $ubuntu;
       font-size: 1.3rem;
@@ -96,9 +95,20 @@
       text-transform: uppercase;
       transition: border 0.2s ease;
 
-      &:hover, &:focus {
+			span {
+	      border-bottom: 0.2rem solid transparent;
+			}
+
+      &:hover span,
+			&:focus span {
         border-bottom-color: currentColor;
       }
+
+			&:after {
+				content: "›";
+				display: inline;
+				margin-left: 0.5rem;
+			}
     }
   }
 

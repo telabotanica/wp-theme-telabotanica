@@ -5,38 +5,40 @@ function telabotanica_module_column_articles_item($item) {
 
 	echo '<li class="column-articles-item">';
 
-		echo sprintf(
+		printf(
 			'<a href="%s" class="column-articles-item-link">',
 			esc_url( $item->href )
 		);
 
-			echo sprintf(
-				'<div class="column-articles-item-image" style="background-image: url(%s);"></div>',
-				$item->image
-			);
+			if ( $item->image ) {
+				printf(
+					'<div class="column-articles-item-image" style="background-image: url(%s);"></div>',
+					esc_url( $item->image )
+				);
+			}
 
-			echo sprintf(
+			printf(
 				'<h3 class="column-articles-item-title"><span>%s</span></h3>',
 				$item->title
 			);
 
-			echo sprintf(
+			printf(
 				'<div class="column-articles-item-text">%s</div>',
-				wp_trim_words($item->text, 18)
+				wp_trim_words( $item->text, 18 )
 			);
 
 		echo '</a>';
 
 		echo '<div class="column-articles-item-meta">';
-			echo sprintf(
+			printf(
 				'<div class="column-articles-item-date" title="%s">%s <time datetime="%s">%s</time></span>',
 				sprintf( _x( '%s à %s', '%s = date et %s = heure', 'telabotanica' ),
-					date_i18n( get_option( 'date_format' ), get_the_time( 'U' ) ),
-					date_i18n( get_option( 'time_format' ), get_the_time( 'U' ) )
+					date_i18n( get_option( 'date_format' ), $item->time ),
+					date_i18n( get_option( 'time_format' ), $item->time )
 				),
 				get_telabotanica_module('icon', ['icon' => 'clock']),
-				get_the_time( 'Y-m-d\\TG:i:s\\Z' ),
-				sprintf( _x( 'il y a %s', '%s = intervalle de temps', 'telabotanica' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) )
+				mysql2date( 'Y-m-d\\TG:i:s\\Z', $item->time ),
+				sprintf( _x( 'il y a %s', '%s = intervalle de temps', 'telabotanica' ), human_time_diff( $item->time, current_time( 'timestamp' ) ) )
 			);
 		echo '</div>';
 
@@ -67,7 +69,8 @@ function telabotanica_module_column_articles($data) {
 					'title' => get_the_title(),
 					'text' => get_the_excerpt(),
 					'href' => get_the_permalink(),
-					'image' => has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'post-thumbnail' ) : '',
+					'image' => has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'post-thumbnail' ) : false,
+					'time' => get_the_time( 'U' )
 				];
 				telabotanica_module_column_articles_item($item);
 

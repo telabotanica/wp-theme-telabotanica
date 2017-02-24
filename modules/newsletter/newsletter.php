@@ -1,11 +1,11 @@
-<?php function telabotanica_module_form_newsletter($data) {
+<?php function telabotanica_module_newsletter($data) {
 
 	$defaults = [
 		'modifiers' => []
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array('form-newsletter', $data->modifiers);
+	$data->modifiers = telabotanica_styleguide_modifiers_array('newsletter', $data->modifiers);
 
 	printf(
 		'<div class="%s">',
@@ -13,12 +13,12 @@
 	);
 
 		printf(
-			'<div class="form-newsletter-title">%s</div>',
+			'<div class="newsletter-title">%s</div>',
 			__( "Recevoir la lettre d'actualités", 'telabotanica' )
 		);
 
 		printf(
-			'<p class="form-newsletter-text">%s</p>',
+			'<p class="newsletter-text">%s</p>',
 			__( "Chaque jeudi, recevez un condensé de l'actualité du réseau, les évènements et les offres d'emplois directement dans votre boîte mail.", 'telabotanica' )
 		);
 

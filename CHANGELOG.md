@@ -20,7 +20,9 @@ plus de détails sur http://semver.org/lang/fr/
 * module `cover` : support de l'ajout d'une `search-box`
 * module `cover-home` ajouté
 * module `cover-search` ajouté
-* module `form-newsletter` : remplacement du formulaire par un bouton
+* module `form-newsletter` :
+	* renommé `newsletter`
+	* remplacement du formulaire par un bouton
 * module `icon` : refactoring avec Pug
 * module `header` : support d'une version `small` pour certaines pages
 * module `list-projects` : ajout d'un script pour gérer la recherche

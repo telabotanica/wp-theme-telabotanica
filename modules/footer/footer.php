@@ -19,7 +19,7 @@
           </ul>
         </div>
 
-        <?php the_telabotanica_module('form-newsletter', ['modifiers' => 'layout-column'] ); ?>
+        <?php the_telabotanica_module('newsletter', ['modifiers' => 'layout-column'] ); ?>
       </div>
     </div>
 

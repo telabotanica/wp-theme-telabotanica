@@ -69,7 +69,7 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 									'modifiers' => 'block'
 								] ); ?>
 							</div>
-							<?php the_telabotanica_module('form-newsletter', [
+							<?php the_telabotanica_module('newsletter', [
 								'modifiers' => 'layout-column-item background-white with-shadow with-padding'
 							] ); ?>
 							<?php the_telabotanica_module('upcoming-events', [

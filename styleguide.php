@@ -57,11 +57,22 @@ get_header(); ?>
             <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
-			      <h1><a href="<?php echo site_url('styleguide') ?>">Styleguide</a></h1>
+						<?php
+						$breadcrumbs_items = [
+							[
+								'href' => esc_url( site_url('styleguide') ),
+								'text' => __('Styleguide', 'telabotanica')
+							]
+						];
+						if ( $current ) :
+							$breadcrumbs_items[] = ['text' => $type . 's'];
+							$breadcrumbs_items[] = ['text' => $nom,];
+						endif;
+						the_telabotanica_module('breadcrumbs', [
+							'items' => $breadcrumbs_items
+						]);
 
-            <?php
             if ( $current ) :
-              echo '<h2>' . $type . ' <code>' . $nom . '</code></h2>';
               $exemples = require($type . 's/' . $nom . '/exemples.php');
               if ( is_array($exemples) ) :
                 foreach ( $exemples as $exemple => $data ) {

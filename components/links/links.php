@@ -49,14 +49,17 @@
 					// Téléchargement
 					if ( isset( $item->download ) && $item->download === true ) :
 
-						echo sprintf(
-							'<li class="component-links-item-download"><a href="%s" target="%s" title="%s" download="%s">%s <span class="component-links-metadata">%s - %s</span></a></li>',
+						$extension = pathinfo( $item->filename, PATHINFO_EXTENSION );
+
+						printf(
+							'<li class="component-links-item-download"><a href="%s" target="%s" title="%s" download="%s">%s%s <span class="component-links-metadata">%s - %s</span></a></li>',
 							$item->href,
 							'_blank',
 							sprintf ( __( 'Télécharger le fichier %s', 'telabotanica' ), $item->filename ),
 							$item->filename,
+							get_telabotanica_module('icon', ['icon' => ($extension === 'pdf' ? 'pdf' : 'doc')]),
 							$item->text,
-							strtoupper( pathinfo( $item->filename, PATHINFO_EXTENSION ) ),
+							strtoupper( $extension ),
 							size_format( $item->filesize, 2 )
 						);
 
@@ -64,10 +67,11 @@
 					else :
 
 						echo sprintf(
-							'<li class="component-links-item-link"><a href="%s" target="%s" title="%s">%s</a></li>',
+							'<li class="component-links-item-link"><a href="%s" target="%s" title="%s">%s%s</a></li>',
 							$item->href,
 							$item->target,
 							$item->title,
+							get_telabotanica_module('icon', ['icon' => 'link']),
 							$item->text
 						);
 

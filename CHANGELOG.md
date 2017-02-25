@@ -14,6 +14,9 @@ plus de détails sur http://semver.org/lang/fr/
 * block `focus` :
 	* correction de la taille des composants `embed`
 	* centrage des composants `image` placés en haut
+* composant `links` :
+	* amélioration du placement des metadata
+	* ajout des icônes
 * module `card-project` :
 	* icône Tela si le projet est dans la catégorie dédiée
 	* support du nombre de membres depuis l'index Algolia

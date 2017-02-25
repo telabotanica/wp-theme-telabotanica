@@ -11,6 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* block `focus` :
+	* correction de la taille des composants `embed`
+	* centrage des composants `image` placés en haut
 * module `card-project` :
 	* icône Tela si le projet est dans la catégorie dédiée
 	* support du nombre de membres depuis l'index Algolia

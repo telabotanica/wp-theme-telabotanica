@@ -5,6 +5,10 @@
     max-width: 100rem;
   }
 
+	> .component-image img {
+		margin: 0 auto;
+	}
+
   &-header {
     margin: 0 auto;
     max-width: 66rem;
@@ -43,6 +47,10 @@
     justify-content: space-around;
     margin: 0 auto;
     max-width: 118rem;
+
+		> .component-embed {
+			width: 50rem;
+		}
 
     &-text {
       margin-left: 4rem;

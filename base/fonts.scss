@@ -13,8 +13,7 @@ $bold    : bold;
     src: url('#{$fonts-path}muli-light-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{$fonts-path}muli-light-webfont.woff2') format('woff2'),
          url('#{$fonts-path}muli-light-webfont.woff') format('woff'),
-         url('#{$fonts-path}muli-light-webfont.ttf') format('truetype'),
-         url('#{$fonts-path}muli-light-webfont.svg#mulilight') format('svg');
+         url('#{$fonts-path}muli-light-webfont.ttf') format('truetype');
     font-weight: $light;
     font-style: normal;
 }
@@ -25,9 +24,19 @@ $bold    : bold;
     src: url('#{$fonts-path}muli-regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{$fonts-path}muli-regular-webfont.woff2') format('woff2'),
          url('#{$fonts-path}muli-regular-webfont.woff') format('woff'),
-         url('#{$fonts-path}muli-regular-webfont.ttf') format('truetype'),
-         url('#{$fonts-path}muli-regular-webfont.svg#muliregular') format('svg');
+         url('#{$fonts-path}muli-regular-webfont.ttf') format('truetype');
     font-weight: $regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('#{$fonts-path}muli-bold-webfont.eot');
+    src: url('#{$fonts-path}muli-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$fonts-path}muli-bold-webfont.woff2') format('woff2'),
+         url('#{$fonts-path}muli-bold-webfont.woff') format('woff'),
+         url('#{$fonts-path}muli-bold-webfont.ttf') format('truetype');
+    font-weight: $bold;
     font-style: normal;
 }
 
@@ -37,8 +46,7 @@ $bold    : bold;
     src: url('#{$fonts-path}ubuntu-bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{$fonts-path}ubuntu-bold-webfont.woff2') format('woff2'),
          url('#{$fonts-path}ubuntu-bold-webfont.woff') format('woff'),
-         url('#{$fonts-path}ubuntu-bold-webfont.ttf') format('truetype'),
-         url('#{$fonts-path}ubuntu-bold-webfont.svg#ubuntubold') format('svg');
+         url('#{$fonts-path}ubuntu-bold-webfont.ttf') format('truetype');
     font-weight: $bold;
     font-style: normal;
 }
@@ -49,8 +57,7 @@ $bold    : bold;
     src: url('#{$fonts-path}ubuntu-medium-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{$fonts-path}ubuntu-medium-webfont.woff2') format('woff2'),
          url('#{$fonts-path}ubuntu-medium-webfont.woff') format('woff'),
-         url('#{$fonts-path}ubuntu-medium-webfont.ttf') format('truetype'),
-         url('#{$fonts-path}ubuntu-medium-webfont.svg#ubuntumedium') format('svg');
+         url('#{$fonts-path}ubuntu-medium-webfont.ttf') format('truetype');
     font-weight: $medium;
     font-style: normal;
 }
@@ -61,8 +68,7 @@ $bold    : bold;
     src: url('#{$fonts-path}ubuntu-regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{$fonts-path}ubuntu-regular-webfont.woff2') format('woff2'),
          url('#{$fonts-path}ubuntu-regular-webfont.woff') format('woff'),
-         url('#{$fonts-path}ubuntu-regular-webfont.ttf') format('truetype'),
-         url('#{$fonts-path}ubuntu-regular-webfont.svg#ubunturegular') format('svg');
+         url('#{$fonts-path}ubuntu-regular-webfont.ttf') format('truetype');
     font-weight: $regular;
     font-style: normal;
 }
@@ -73,8 +79,7 @@ $bold    : bold;
     src: url('#{$fonts-path}ubuntu-light-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{$fonts-path}ubuntu-light-webfont.woff2') format('woff2'),
          url('#{$fonts-path}ubuntu-light-webfont.woff') format('woff'),
-         url('#{$fonts-path}ubuntu-light-webfont.ttf') format('truetype'),
-         url('#{$fonts-path}ubuntu-light-webfont.svg#ubuntulight') format('svg');
+         url('#{$fonts-path}ubuntu-light-webfont.ttf') format('truetype');
     font-weight: $light;
     font-style: normal;
 }

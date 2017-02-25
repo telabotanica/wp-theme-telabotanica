@@ -22,6 +22,7 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `tools` :
 	* correction bug icône Chrome
 	* correction bug quand redirection vide
+* module `breadcrumbs` : support des items passés en data
 * module `card-project` :
 	* icône Tela si le projet est dans la catégorie dédiée
 	* support du nombre de membres depuis l'index Algolia
@@ -29,6 +30,9 @@ plus de détails sur http://semver.org/lang/fr/
 * suppression des webfonts SVG
 * ajout de la webfont Muli en bold
 * fonctionnement avec plugin Algolia désactivé
+* compatibilité avec BuddyPress :
+	* template `buddypress/groups/index.php` (liste des projets) :
+		* support du filtrage par type de projet
 
 ## 0.0.5 (2017-02-24)
 

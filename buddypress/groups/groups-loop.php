@@ -19,10 +19,6 @@
  */
 do_action( 'bp_before_groups_loop' ); ?>
 
-<?php if ( bp_get_current_group_directory_type() ) : ?>
-	<p class="current-group-type"><?php bp_current_group_directory_type_message() ?></p>
-<?php endif; ?>
-
 <?php if ( bp_has_groups( bp_ajax_querystring( 'groups' ) ) ) : ?>
 
 	<?php
@@ -34,7 +30,7 @@ do_action( 'bp_before_groups_loop' ); ?>
 	 */
 	do_action( 'bp_before_directory_groups_list' );
 
-  the_telabotanica_module('list-projects');
+	the_telabotanica_module('list-projects');
 
 	/**
 	 * Fires after the listing of the groups list.

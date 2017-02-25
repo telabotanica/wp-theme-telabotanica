@@ -5,59 +5,62 @@
   // cf. https://schema.org/BreadcrumbList
 
   // Génération des items selon le type de page courante
+	if ( empty($data->items) ) :
 
-  // Article seul
-  if ( is_single() ) :
+	  // Article seul
+	  if ( is_single() ) :
 
-    $category = get_the_category();
-    $data->items = ['home'];
+	    $category = get_the_category();
+	    $data->items = ['home'];
 
-    if ( count($category) > 0 ) {
-      $category = $category[0];
+	    if ( count($category) > 0 ) {
+	      $category = $category[0];
 
-      // Catégorie parente
-      if ( $category->parent ) {
-        $category_parent = get_category( $category->parent );
-        $data->items[] = [ 'href' => get_category_link( $category_parent ), 'text' => $category_parent->name ];
-      }
+	      // Catégorie parente
+	      if ( $category->parent ) {
+	        $category_parent = get_category( $category->parent );
+	        $data->items[] = [ 'href' => get_category_link( $category_parent ), 'text' => $category_parent->name ];
+	      }
 
-      // Catégorie de l'article
-      $data->items[] = [ 'href' => get_category_link( $category ), 'text' => $category->name ];
-    }
+	      // Catégorie de l'article
+	      $data->items[] = [ 'href' => get_category_link( $category ), 'text' => $category->name ];
+	    }
 
-    // Article courant
-    $data->items[] = [ 'text' => get_the_title() ];
+	    // Article courant
+	    $data->items[] = [ 'text' => get_the_title() ];
 
-  // Page
-  elseif ( is_page() ) :
+	  // Page
+	  elseif ( is_page() ) :
 
-    $data->items = ['home'];
+	    $data->items = ['home'];
 
-    // Page parente
-    if ( get_current_page_depth() > 0 ) {
-      $page_parent = wp_get_post_parent_id( get_the_ID() );
-      $page_parent = get_post( $page_parent );
-      $data->items[] = [ 'href' => get_permalink( $page_parent ), 'text' => $page_parent->post_name ];
-    }
+	    // Page parente
+	    if ( get_current_page_depth() > 0 ) {
+	      $page_parent = wp_get_post_parent_id( get_the_ID() );
+	      $page_parent = get_post( $page_parent );
+	      $data->items[] = [ 'href' => get_permalink( $page_parent ), 'text' => $page_parent->post_name ];
+	    }
 
-    // Page courante
-    $data->items[] = [ 'text' => get_the_title() ];
+	    // Page courante
+	    $data->items[] = [ 'text' => get_the_title() ];
 
 
-  // Archive
-  elseif ( is_archive() ) :
+	  // Archive
+	  elseif ( is_archive() ) :
 
-    $category = get_category( get_query_var('cat') );
-    $data->items = ['home'];
+	    $category = get_category( get_query_var('cat') );
+	    $data->items = ['home'];
 
-    // Catégorie parente
-    if ( $category->parent ) {
-      $category_parent = get_category( $category->parent );
-      $data->items[] = [ 'href' => get_category_link( $category_parent ), 'text' => $category_parent->name ];
-    }
+	    // Catégorie parente
+	    if ( $category->parent ) {
+	      $category_parent = get_category( $category->parent );
+	      $data->items[] = [ 'href' => get_category_link( $category_parent ), 'text' => $category_parent->name ];
+	    }
 
-    // Catégorie courante
-    $data->items[] = [ 'text' => $category->name ];
+	    // Catégorie courante
+	    $data->items[] = [ 'text' => $category->name ];
+
+	  endif;
 
   endif;
 

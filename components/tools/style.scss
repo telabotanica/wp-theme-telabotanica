@@ -43,13 +43,15 @@
         &:after {opacity: 0.3;}
       }
 
-      svg, img {
-        max-height: 6rem;
-        max-width: 6rem;
+      img {
+        height: 6rem;
+        width: 6rem;
       }
 
       svg {
         fill: currentColor;
+				height: 6rem;
+        width: 6rem;
       }
     }
 

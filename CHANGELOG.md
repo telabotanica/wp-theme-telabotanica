@@ -18,6 +18,7 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `links` :
 	* amélioration du placement des metadata
 	* ajout des icônes
+* composant `tools` : correction bug icône Chrome
 * module `card-project` :
 	* icône Tela si le projet est dans la catégorie dédiée
 	* support du nombre de membres depuis l'index Algolia

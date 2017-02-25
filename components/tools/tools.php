@@ -29,7 +29,7 @@
 					$item->icon = isset($fields->icon) && !empty($fields->icon) ? $fields->icon : get_template_directory_uri() . '/components/tools/default-icon.svg';
 					$item->link_text = isset($fields->link_text) ? $fields->link_text : __('Accéder à cet outil', 'telabotanica');
 
-					if ( isset($fields->has_page) && isset($fields->redirect) ) {
+					if ( $fields->has_page === false && isset($fields->redirect) ) {
 						$item->link = $fields->redirect['url'];
 						$item->link_target = $fields->redirect['target'];
 					} else {

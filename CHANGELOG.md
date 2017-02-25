@@ -14,11 +14,14 @@ plus de détails sur http://semver.org/lang/fr/
 * block `focus` :
 	* correction de la taille des composants `embed`
 	* centrage des composants `image` placés en haut
+* composant `buttons` : champ passé en optionnel dans ACF
 * composant `image` : ajout des crédits
 * composant `links` :
 	* amélioration du placement des metadata
 	* ajout des icônes
-* composant `tools` : correction bug icône Chrome
+* composant `tools` :
+	* correction bug icône Chrome
+	* correction bug quand redirection vide
 * module `card-project` :
 	* icône Tela si le projet est dans la catégorie dédiée
 	* support du nombre de membres depuis l'index Algolia

@@ -3,15 +3,27 @@
     "title": "Composant bouton(s)",
     "fields": [
         {
+            "key": "field_582c55c9b2905",
+            "label": "Boutons",
+            "name": "items",
+            "type": "repeater",
+            "instructions": "Vous pouvez intégrer un ou plusieurs boutons, qui s'afficheront sur la même ligne.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "80",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_582c55dbb2906",
+            "min": 0,
+            "max": 3,
+            "layout": "table",
+            "button_label": "Ajouter un élément",
             "sub_fields": [
                 {
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "key": "field_582c55dbb2906",
-                    "label": "Intitul\u00e9",
+                    "label": "Intitulé",
                     "name": "text",
                     "type": "text",
                     "instructions": "",
@@ -21,7 +33,12 @@
                         "width": "30",
                         "class": "",
                         "id": ""
-                    }
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
                     "key": "field_582c55f9b2907",
@@ -38,19 +55,6 @@
                     }
                 },
                 {
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "choices": {
-                        "standard": "Standard",
-                        "orange": "Orange"
-                    },
-                    "default_value": [
-                        "standard"
-                    ],
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "return_format": "value",
                     "key": "field_582c5d6cbe183",
                     "label": "Style",
                     "name": "modifiers",
@@ -62,38 +66,24 @@
                         "width": "30",
                         "class": "",
                         "id": ""
-                    }
+                    },
+                    "choices": {
+                        "standard": "Standard",
+                        "orange": "Orange"
+                    },
+                    "default_value": [
+                        "standard"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
                 }
-            ],
-            "min": 0,
-            "max": 3,
-            "layout": "table",
-            "button_label": "Ajouter un \u00e9l\u00e9ment",
-            "collapsed": "field_582c55dbb2906",
-            "key": "field_582c55c9b2905",
-            "label": "Boutons",
-            "name": "items",
-            "type": "repeater",
-            "instructions": "Vous pouvez int\u00e9grer un ou plusieurs boutons, qui s'afficheront sur la m\u00eame ligne.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "80",
-                "class": "",
-                "id": ""
-            }
+            ]
         },
         {
-            "layout": "vertical",
-            "choices": {
-                "buttons": "comme des boutons",
-                "links": "comme des liens"
-            },
-            "default_value": "buttons",
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "allow_null": 0,
-            "return_format": "value",
             "key": "field_582d7211a4816",
             "label": "Affichage",
             "name": "display",
@@ -105,7 +95,17 @@
                 "width": "20",
                 "class": "",
                 "id": ""
-            }
+            },
+            "choices": {
+                "buttons": "comme des boutons",
+                "links": "comme des liens"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "buttons",
+            "layout": "vertical",
+            "return_format": "value"
         }
     ],
     "location": [
@@ -125,5 +125,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1485364751
+    "modified": 1488059680
 }

@@ -55,8 +55,8 @@ final class Algolia_Projets_Index extends Algolia_Index
 			'item_id' => $item->id
 		));
 		$categories = bp_groups_get_group_type( $item->id, false );
-		$record['tela'] = (!empty($categories) && in_array('tela-botanica', $categories));
-		$record['archive'] = (!empty($categories) && in_array('archive', $categories));
+		$record['tela'] = bp_groups_has_group_type( $item->id, 'tela-botanica' );
+		$record['archive'] = bp_groups_has_group_type( $item->id, 'archive' );
 		$record['member_count'] = intval(groups_get_total_member_count( $item->id ));
 		$description_complete = groups_get_groupmeta( $item->id, 'description-complete' );
 		$record['description_complete'] = strip_tags($description_complete);

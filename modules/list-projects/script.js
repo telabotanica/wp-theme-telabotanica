@@ -47,7 +47,7 @@ Tela.listProjects = (function(){
 						name: hit._highlightResult.name.value,
 						description: hit._highlightResult.description.value,
 						meta: [
-							{icon: 'members', 'text': 'X membres'} // TODO with I18n
+							{icon: 'members', 'text': hit.member_count + ' membres'} // TODO I18n
 						]
 					}
 				};

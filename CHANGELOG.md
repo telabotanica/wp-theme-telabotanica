@@ -11,6 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `card-project` :
+	* icône Tela si le projet est dans la catégorie dédiée
+	* support du nombre de membres depuis l'index Algolia
 * module `cover-project` : icônes selon status
 
 ## 0.0.5 (2017-02-24)

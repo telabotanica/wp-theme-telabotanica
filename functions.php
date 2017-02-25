@@ -72,7 +72,9 @@ require get_template_directory() . '/inc/login.php';
 require get_template_directory() . '/inc/profile.php';
 
 // Customisation du plugin Algolia
-require get_template_directory() . '/inc/algolia.php';
+if ( class_exists( 'Algolia_Plugin' ) ) {
+	require get_template_directory() . '/inc/algolia.php';
+}
 
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
@@ -109,14 +111,14 @@ function telabotanica_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 220, 160, array( 'center', 'center') );
-  add_image_size( 'home-latest-post', 600, 365, array( 'center', 'center') );
-  add_image_size( 'home-post-thumbnail', 65, 50, array( 'center', 'center') );
+	add_image_size( 'home-latest-post', 600, 365, array( 'center', 'center') );
+	add_image_size( 'home-post-thumbnail', 65, 50, array( 'center', 'center') );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( [
-		'principal' => __( 'Menu principal', 'telabotanica' ),
-		'secondary'  => __( 'Menu secondaire', 'telabotanica' ),
-		'footer-bar'  => __( 'Pied de page - bandeau', 'telabotanica' ),
+		'principal'       => __( 'Menu principal', 'telabotanica' ),
+		'secondary'       => __( 'Menu secondaire', 'telabotanica' ),
+		'footer-bar'      => __( 'Pied de page - bandeau', 'telabotanica' ),
 		'footer-columns'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
 	] );
 
@@ -175,8 +177,8 @@ add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
  * @since TelaBotanica 1.0
  *
  * @param string $sizes A source size value for use in a 'sizes' attribute.
- * @param array  $size  Image size. Accepts an array of width and height
- *                      values in pixels (in that order).
+ * @param array $size Image size. Accepts an array of width and height
+ *                    values in pixels (in that order).
  * @return string A source size value for use in a content image 'sizes' attribute.
  */
 function telabotanica_content_image_sizes_attr( $sizes, $size ) {
@@ -219,6 +221,6 @@ add_filter( 'wp_get_attachment_image_attributes', 'telabotanica_post_thumbnail_s
  * Ajout d'un style spécifique pour l'admin
  */
 function telabotanica_admin_theme_style() {
-    wp_enqueue_style('telabotanica', get_template_directory_uri() . '/admin/style.css');
+	wp_enqueue_style('telabotanica', get_template_directory_uri() . '/admin/style.css');
 }
 add_action('admin_enqueue_scripts', 'telabotanica_admin_theme_style');

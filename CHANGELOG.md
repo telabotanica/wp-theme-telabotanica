@@ -24,6 +24,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `cover-project` : icônes selon status
 * suppression des webfonts SVG
 * ajout de la webfont Muli en bold
+* fonctionnement avec plugin Algolia désactivé
 
 ## 0.0.5 (2017-02-24)
 

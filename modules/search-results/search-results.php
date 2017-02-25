@@ -6,7 +6,7 @@ require_once 'inc/hit-vegetation.php';
 
 function telabotanica_module_search_results_hit($index_id, $hit) {
 	$function = 'telabotanica_module_search_results_hit_' . $index_id;
-  if (function_exists($function)) {
+	if (function_exists($function)) {
 		call_user_func($function, $hit);
 	} else {
 		echo sprintf(
@@ -25,6 +25,7 @@ function telabotanica_module_search_results_hit($index_id, $hit) {
 }
 
 function telabotanica_module_search_results($data) {
+	if ( !class_exists( 'Algolia_Plugin' ) ) { return; }
 	$algolia = Algolia_Plugin::get_instance();
 
 	// Retrieve the label for each index

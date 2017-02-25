@@ -33,13 +33,40 @@
 
 	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-	echo sprintf(
-		'<img src="%s" srcset="%s" sizes="%s" alt="%s" />',
-		$data->image,
-		$data->srcset,
-		$data->sizes,
-		$data->alt
-	);
+		echo sprintf(
+			'<img src="%s" srcset="%s" sizes="%s" alt="%s" />',
+			$data->image,
+			$data->srcset,
+			$data->sizes,
+			$data->alt
+		);
+
+		if ( $data->image ) :
+			$credits = get_fields( $image['ID'] );
+			if ( $credits ) :
+				echo '<div class="component-image-credits">';
+				$caption = $image['caption'];
+				if ( empty( $caption ) ) $caption = $image['title'];
+				if ( $credits['link'] ) {
+					$caption = sprintf(
+						'<a href="%s" target="_blank" class="component-image-credits-title">%s</a>',
+						$credits['link'],
+						$caption
+					);
+				} else {
+					$caption = sprintf(
+						'<span class="component-image-credits-title">%s</span>',
+						$caption
+					);
+				}
+				printf(
+					__('%s par %s', 'telabotanica'),
+					$caption,
+					$credits['author']
+				);
+				echo '</div>';
+			endif;
+		endif;
 
 	echo '</div>';
 }

@@ -64,7 +64,7 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 							?>
 							<div class="layout-column-item background-white with-shadow with-padding">
 								<?php the_telabotanica_module('button', [
-									'href' => '#', // TODO
+									'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
 									'text' => __( 'Proposer une actualité', 'telabotanica' ),
 									'modifiers' => 'block'
 								] ); ?>

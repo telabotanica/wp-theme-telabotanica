@@ -126,8 +126,8 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 									'icon' => 'laptop'
 								],
 								[
-									'text' => __("Soumettre une actualité", "telabotanica"),
-									'href' => '#', // TODO
+									'text' => __("Proposer une actualité", "telabotanica"),
+									'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
 									'icon' => 'edit'
 								]
 							],

@@ -116,7 +116,7 @@
         top: 0;
     }
 
-    input[type="submit"], #tb-forum-creer-liste, #bp-browse-button {
+    input[type="submit"], #tb-forum-creer-liste, #bp-browse-button, .item-list.group-request-list .generic-button {
         border: none;
         margin-top: 1rem;
         cursor: pointer;
@@ -175,6 +175,48 @@
             }
         }
     }
+
+    .component-contact {
+        border-bottom: none;
+    }
+
+    .membership-request-comments {
+        margin-top: 0;
+    }
+
+    .pagination {
+        border-top: none;
+        margin-top: 0;
+    }
+
+    .item-list.group-request-list {
+        margin-bottom: 2rem;
+        list-style-type: none;
+
+        .action {
+            > .generic-button {
+                padding: .4rem 1rem;
+                margin-top: .3rem;
+
+                > a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                & + .button {
+                    margin-left: 0;
+                }
+
+                &.reject {
+                    background-color: $rouge;
+                }
+
+                &.accept {
+                    background-color: $green-button;
+                }
+            }
+        }
+    }
 }
 
 #search-members-form {
@@ -207,10 +249,6 @@
 
                 & + .button {
                     margin-left: 0;
-                }
-
-                &.member-ban {
-                    background-color: $orange-clair;
                 }
 
                 &.member-promote-to-mod, &.member-promote-to-admin {

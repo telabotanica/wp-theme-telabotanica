@@ -27,22 +27,29 @@
 	</div>
 
 	<ul id="request-list" class="item-list">
+		<?php global $requests_template; ?>
 		<?php while ( bp_group_membership_requests() ) : bp_group_the_membership_request(); ?>
 
 			<li class="item-list group-request-list">
 
-				<div class="item-avatar"><?php bp_group_request_user_avatar_thumb(); ?></div>
-
 				<div class="item">
-
-					<div class="item-title"><?php bp_group_request_user_link(); ?> </div>
-
-					<span class="activity"><?php bp_group_request_time_since_requested(); ?></span>
-
-					<p class="comments"><?php bp_group_request_comment(); ?></p>
+					<?php
+					the_telabotanica_component('contact', [
+					  'image' => bp_core_fetch_avatar(array(
+						'item_id' => $requests_template->request->user_id,
+						'html' => 'false',
+						'type' => 'full'
+					  )),
+					  'name' => $requests_template->request->display_name,
+					  'link' => bp_core_get_user_domain($requests_template->request->user_id),
+					  'description' => sprintf(__('A demandé un accès %s', 'telabotanica'), bp_core_time_since($requests_template->request->date_modified))
+					]);
+					?>
+					<p class="membership-request-comments">
+						<?php echo stripslashes($requests_template->request->comments) ?>
+					</p>
 
 					<?php
-
 					/**
 					 * Fires inside the groups membership request list loop.
 					 *

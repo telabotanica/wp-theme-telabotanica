@@ -59,10 +59,15 @@
 
 			> .layout-column {
 				flex: 0 0 36rem;
-				padding: 0 5rem;
+				padding-left: 5rem;
+				padding-right: 5rem;
 				width: 36rem;
 
 				&:before {display: none;}
+
+				.button-top {
+					text-align: center;
+				}
 			}
 
 			> .layout-content {
@@ -97,15 +102,12 @@
 	// Inversion des couleurs des colonnes
 	&.reversed-colors {
 		background-color: $grisF4;
+
 		> .layout-wrapper {
 			> .layout-column {
 				background-color: $blanc;
 
 				&:before {
-					background-color: $blanc;
-				}
-
-				> .button-top {
 					background-color: $blanc;
 				}
 			}

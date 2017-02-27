@@ -91,6 +91,8 @@ the_telabotanica_module('cover', [
 				endif;
 				echo '</div>';
 
+				the_telabotanica_module('button-top');
+
 				/**
 				 * Fires inside the groups directory group types.
 				 *

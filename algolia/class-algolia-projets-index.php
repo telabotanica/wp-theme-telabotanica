@@ -86,8 +86,16 @@ final class Algolia_Projets_Index extends Algolia_Index
 				'name',
 				'description',
 			),
+			'attributesForFaceting' => array(
+				'archive',
+				'tela',
+				'categories',
+			),
+			'unretrievableAttributes' => array(
+				'members_ids',
+			),
 			'customRanking' => array(
-				'asc(name)',
+				'desc(member_count)',
 			),
 			'attributesToSnippet' => array(
 				'description:10',

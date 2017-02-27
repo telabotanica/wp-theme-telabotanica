@@ -65,6 +65,7 @@ $telabotanica_blocks = [
 	'list-features',
 	'list-projects',
 	'main-features',
+	'mosaic',
 ];
 array_walk($telabotanica_blocks, function ($block) {
  if (!locate_template('blocks/' . $block . '/' . $block . '.php', true, true)) {

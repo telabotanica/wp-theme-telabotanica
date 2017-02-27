@@ -212,6 +212,40 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 				]
 			]);
 
+			the_telabotanica_block('mosaic', [
+				'items' => [
+					[
+						'title' => __( "Besoin d'aide pour identifier une plante ?", 'telabotanica' ),
+						'text' => __( "Envoyez la photo d'une plante et indiquez son emplacement pour obtenir de l'aide", 'telabotanica' ),
+						'button' => [
+							'href' => '#', // TODO
+							'text' => __( 'Envoyez votre photo', 'telabotanica' )
+						],
+						'images' => [ // TODO données dynamiques
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000116754CRS.jpg', 'alt' => ''],
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000120074CRS.jpg', 'alt' => ''],
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000120075CRS.jpg', 'alt' => ''],
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000025592CRS.jpg', 'alt' => ''],
+						]
+					],
+					[
+						'title' => __( "Aidez à identifier les observations du réseau", 'telabotanica' ),
+						'text' => __( "Mettez votre savoir à contribution pour aider à enrichir la base de données botaniques", 'telabotanica' ),
+						'button' => [
+							'href' => '#', // TODO
+							'text' => __( 'Proposez vos déterminations', 'telabotanica' ),
+							'modifiers' => ['orange']
+						],
+						'images' => [ // TODO données dynamiques
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000129593CRS.jpg', 'alt' => ''],
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000119370CRS.jpg', 'alt' => ''],
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000014266CRS.jpg', 'alt' => ''],
+							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000002621CRS.jpg', 'alt' => ''],
+						]
+					]
+				]
+			]);
+
 			the_telabotanica_block('focus', [
 				'background_color' => '#f8f5ef',
 				'title' => __('Rejoignez un projet citoyen', 'telabotanica'),

@@ -1,0 +1,99 @@
+
+.block-mosaic {
+	$mosaic-item-height: 20vw;
+
+	padding: 0;
+
+	&-items,
+	&-item-images {
+		@include reset-list;
+	}
+
+	&-item {
+		color: $gris33;
+		font-size: 1.6rem;
+		height: $mosaic-item-height;
+		line-height: 2.6rem;
+		overflow: hidden;
+
+		&-content-wrapper {
+			align-items: center;
+			display: flex;
+			float: right;
+			height: $mosaic-item-height;
+			justify-content: flex-start;
+			padding: 3.5rem;
+			width: 40%;
+		}
+
+		&-content {
+			max-width: 30.5rem;
+		}
+
+		&-title {
+			color: $gris23;
+			font-family: $ubuntu;
+			font-size: 1.9rem;
+			font-weight: $bold;
+			line-height: 2.5rem;
+			margin: 0;
+		}
+
+		&-text {
+			margin: 0.5rem 0 1.5rem;
+		}
+
+		&:nth-child(2n) {
+			.block-mosaic-item-content-wrapper {
+				float: left;
+				justify-content: flex-end;
+			}
+		}
+
+		&-images {
+			float: left;
+			width: 60%;
+		}
+
+		&-image {
+			width: 33.33%;
+
+			&, a {
+				display: inline-block;
+			}
+
+			img {
+				height: $mosaic-item-height;
+				width: 100%;
+			}
+		}
+
+	}
+
+	@media (min-width: 1600px) {
+
+		$mosaic-item-height: 16.67vw;
+
+		&-item {
+			&,
+			&-content-wrapper {
+				height: $mosaic-item-height;
+			}
+
+			&-content-wrapper {
+				width: 33.33%;
+			}
+
+			&-images {
+				width: 66.66%;
+			}
+
+			&-image {
+				width: 25%;
+				img {height: $mosaic-item-height;}
+			}
+		}
+
+	}
+
+}

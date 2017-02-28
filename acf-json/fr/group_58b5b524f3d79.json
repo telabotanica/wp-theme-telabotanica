@@ -1,0 +1,88 @@
+{
+    "key": "group_58b5b524f3d79",
+    "title": "Article sélectionnable pour la Une",
+    "fields": [
+        {
+            "key": "field_58b5b59f61f05",
+            "label": "Afficher à la Une",
+            "name": "featured",
+            "type": "true_false",
+            "instructions": "Cochez pour que l'article s'affiche à la Une sur la page d'accueil (seul l'article le plus récent s'affiche).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:offres-emploi"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:cdd-cdi"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:stages"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:service-civique"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:evenements"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:congres-conferences"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:expositions"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:sorties-de-terrain"
+            },
+            {
+                "param": "post_category",
+                "operator": "!=",
+                "value": "category:stages-ateliers"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Ajoute une case à cocher pour afficher l'article à la Une sur l'accueil",
+    "modified": 1488303910
+}

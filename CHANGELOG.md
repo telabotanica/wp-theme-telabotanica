@@ -36,6 +36,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* template `buddypress/groups/index.php` (liste des projets) :
 		* support du filtrage par type de projet
 * ajout de la taille d'image `medium_square` (250x250)
+* groupe de champs ACF "Article sélectionnable pour la Une" ajouté
 
 ## 0.0.5 (2017-02-24)
 

@@ -21,37 +21,40 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 				<div class="layout-wrapper">
 					<div class="layout-content">
 						<?php
-						the_telabotanica_module('title', [
-							'title' => __('À la Une', 'telabotanica'),
-							'level' => 2,
-							'modifiers' => 'with-margin-top'
-						]);
-
-						$latest_post = new WP_Query([
+						$featured_post_id = false;
+						$featured_post = new WP_Query([
 							'post_type' => 'post',
-							'cat' => 10, // TODO
+							'meta_key'   => 'featured',
 							'posts_per_page' => 1
 						]);
-						while ( $latest_post->have_posts() ) : $latest_post->the_post();
-							$latest_post_id = get_the_ID();
-							the_telabotanica_module('article', [
-								'href' => get_the_permalink(),
-								'title' => get_the_title(),
-								'image' => has_post_thumbnail() ? get_the_post_thumbnail( null, 'home-latest-post' ) : false,
-								'text' => get_the_excerpt()
-							]);
-						endwhile;
-						wp_reset_postdata();
 
-						the_telabotanica_module('button', [
-							'href' => get_permalink(),
-							'text' => __('Lire la suite', 'telabotanica')
-						]);
+						if ( $featured_post->have_posts() ) :
+							the_telabotanica_module('title', [
+								'title' => __('À la Une', 'telabotanica'),
+								'level' => 2,
+								'modifiers' => 'with-margin-top'
+							]);
+							while ( $featured_post->have_posts() ) : $featured_post->the_post();
+								$featured_post_id = get_the_ID();
+								the_telabotanica_module('article', [
+									'href' => get_the_permalink(),
+									'title' => get_the_title(),
+									'image' => has_post_thumbnail() ? get_the_post_thumbnail( null, 'home-latest-post' ) : false,
+									'text' => get_the_excerpt()
+								]);
+							endwhile;
+							wp_reset_postdata();
+
+							the_telabotanica_module('button', [
+								'href' => get_permalink(),
+								'text' => __('Lire la suite', 'telabotanica')
+							]);
+						endif;
 
 						the_telabotanica_module('title', [
 							'title' => __('Les outils de Tela Botanica', 'telabotanica'),
 							'level' => 2,
-							'modifiers' => 'with-separator'
+							'modifiers' => $featured_post->have_posts() ? 'with-separator' : 'with-margin-top'
 						]);
 
 						the_telabotanica_component('tools', [
@@ -102,7 +105,7 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 							 	]),
 								'posts_per_page' => 5,
 								// évite d'afficher 2 fois l'actu à la Une
-								'post__not_in' => [$latest_post_id]
+								'post__not_in' => $featured_post_id ? [$featured_post_id] : []
 							])
 						]);
 						wp_reset_postdata();

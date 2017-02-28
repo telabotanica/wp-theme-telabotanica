@@ -24,7 +24,8 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 						$featured_post_id = false;
 						$featured_post = new WP_Query([
 							'post_type' => 'post',
-							'meta_key'   => 'featured',
+							'meta_key' => 'featured',
+							'meta_value' => 1,
 							'posts_per_page' => 1
 						]);
 

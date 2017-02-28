@@ -1,0 +1,185 @@
+{
+    "key": "group_58b5c39a9e9fe",
+    "title": "Bloc cartographies",
+    "fields": [
+        {
+            "key": "field_58b5c39ab865c",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Cartographies",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58b5c3d06346a",
+            "label": "Carte",
+            "name": "iframe_url",
+            "type": "url",
+            "instructions": "Saisissez l'URL de l'iframe à intégrer.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_58b5c39ab87a2",
+            "label": "Items",
+            "name": "items",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_58b5c39ac7881",
+            "min": 0,
+            "max": 3,
+            "layout": "table",
+            "button_label": "Ajouter un item",
+            "sub_fields": [
+                {
+                    "key": "field_58b5c39ac7881",
+                    "label": "Titre",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "Variables utilisables ici : {countries_count}, {members_count}, {structures_count}",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_58b5c39ac7963",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "Décrivez la fonctionnalité en une phrase.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_58b5c801afd63",
+                    "label": "Lien",
+                    "name": "link",
+                    "type": "link_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_58b5c39ac7a2d",
+                    "label": "Icône",
+                    "name": "icon",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png"
+                },
+                {
+                    "key": "field_58b5c39ac7af9",
+                    "label": "Couleur",
+                    "name": "color",
+                    "type": "color_picker",
+                    "instructions": "Couleur de l'icône",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "15",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "#CCCCCC"
+                }
+            ]
+        },
+        {
+            "key": "field_58b5c48b6346b",
+            "label": "Bouton",
+            "name": "button",
+            "type": "link_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1488308319
+}

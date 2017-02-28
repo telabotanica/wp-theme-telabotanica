@@ -24,7 +24,29 @@
                     "name": "maps",
                     "label": "Cartographies",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_58b5c4db17618",
+                            "label": "Cartographies",
+                            "name": "cartographies",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58b5c39a9e9fe"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -172,5 +194,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1488274539
+    "modified": 1488307450
 }

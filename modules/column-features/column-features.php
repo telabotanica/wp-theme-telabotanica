@@ -15,13 +15,16 @@
 		if ( !empty($data->items) ) :
 
 			foreach ($data->items as $item) :
+
 				$item = (object) $item;
 
 				echo '<li class="column-features-item">';
 
 					printf(
-						'<a href="%s" class="column-features-item-link">',
-						esc_url( $item->href )
+						'<a href="%s" title="%s" target="%s" class="column-features-item-link">',
+						esc_url( $item->link['url'] ),
+						$item->link['title'],
+						$item->link['target']
 					);
 
 						if ( $item->icon ) {
@@ -29,7 +32,7 @@
 								'<div class="column-features-item-icon" style="color: %s; fill: %s">%s</div>',
 								$item->color,
 								$item->color,
-								get_telabotanica_module('icon', ['icon' => $item->icon])
+								'<img src="' . $item->icon . '" alt="" class="style-svg" />'
 							);
 						}
 

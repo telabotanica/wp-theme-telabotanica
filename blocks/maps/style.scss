@@ -1,3 +1,15 @@
 .block-maps {
 	padding: 0;
+
+	> .layout-content-col {
+		position: relative;
+	}
+
+	iframe {
+		border: 0;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		width: calc(100% - 78rem);
+	}
 }

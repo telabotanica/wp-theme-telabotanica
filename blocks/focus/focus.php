@@ -1,8 +1,11 @@
 <?php function telabotanica_block_focus($data) {
 	$defaults = [
+		'background' => get_sub_field('background'),
 		'background_color' => get_sub_field('background_color'),
+		'background_image' => get_sub_field('background_image'),
 		'main_component_place' => get_sub_field('main_component_place'),
 		'main_component' => get_sub_field('main_component'),
+		'title_icon' => get_sub_field('title_icon'),
 		'title' => get_sub_field('title'),
 		'intro' => get_sub_field('intro'),
 		'text' => get_sub_field('text'),
@@ -19,10 +22,17 @@
 
 	$data->main_component['modifiers'] = []; // annule les modifiers du composant image
 
+	if ( $data->background === 'image' && $data->background_image ) :
+		$background = sprintf( 'background-image: url(%s)', $data->background_image['url'] );
+		$data->modifiers[] = 'with-background-image';
+	elseif ( $data->background === 'color' && $data->background_color ) :
+		$background = sprintf( 'background-color: %s', $data->background_color );
+	endif;
+
 	printf(
-		'<div class="%s" style="background-color: %s">',
+		'<div class="%s" style="%s">',
 		implode(' ', $data->modifiers),
-		$data->background_color
+		@$background ?: ''
 	);
 
 		if ( $data->main_component_place === 'top' && have_rows('main_component') ) :
@@ -36,6 +46,15 @@
 		endif;
 
 		echo '<div class="block-focus-header">';
+
+			if ( $data->title_icon ) :
+
+				printf(
+					'<div class="block-focus-title-icon">%s</div>',
+					get_telabotanica_module('icon', ['icon' => $data->title_icon, 'color' => 'vert-clair'])
+				);
+
+			endif;
 
 			echo '<h2 class="block-focus-title">' . $data->title . '</h2>';
 
@@ -91,6 +110,27 @@
 
 			echo '</div>';
 
+		endif;
+
+		if ( $data->background === 'image' && $data->background_image ) :
+			$credits = get_fields( $data->background_image['ID'] );
+			if ( $credits ) :
+				echo '<div class="cover-credits">';
+				if ($credits['link']) {
+					printf(
+						__('%s par %s', 'telabotanica'),
+						'<a href="' . $credits['link'] . '" target="_blank">' . $data->background_image['title'] . '</a>',
+						$credits['author']
+					);
+				} else {
+					printf(
+						__('%s par %s', 'telabotanica'),
+						$data->background_image['title'],
+						$credits['author']
+					);
+				}
+				echo '</div>';
+			endif;
 		endif;
 
 	echo '</div>';

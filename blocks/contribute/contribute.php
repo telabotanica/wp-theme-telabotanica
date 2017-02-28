@@ -1,7 +1,7 @@
 <?php
 
 function telabotanica_block_contribute_item($item) {
-	$item = (object) $item;
+	if ( is_array($item) ) $item = (object) $item;
 
 	echo '<li class="block-contribute-item">';
 
@@ -43,6 +43,8 @@ function telabotanica_block_contribute($data) {
 		'query' => false,
 		'background_color' => get_sub_field('background_color'),
 		'title' => get_sub_field('title'),
+		'items' => get_sub_field('items'),
+		'buttons' => get_sub_field('buttons'),
 		'modifiers' => []
 	];
 
@@ -66,6 +68,42 @@ function telabotanica_block_contribute($data) {
 			echo '<div class="layout-wrapper">';
 				echo '<ul class="block-contribute-items">';
 
+				if ( !empty($data->items) ) :
+
+					$items_id = [];
+
+					foreach ($data->items as $item) :
+
+						// Tableau d'objets Moyens de participer
+						if (gettype($item) === 'object' && get_class($item) === 'WP_Post') :
+
+							$items_id[] = $item->ID;
+							$item->title = $item->post_title;
+							$fields = (object) get_fields($item->ID);
+							$item->text = isset($fields->short_description) ? $fields->short_description : '';
+							$item->button_text = isset($fields->button_text) ? $fields->button_text : __( 'Commencer', 'telabotanica' );
+							$item->href = $fields->destination['url'];
+							$item->target = $fields->destination['target'];
+							$item->image = $fields->image['sizes']['medium_square'];
+
+						endif;
+
+						telabotanica_block_contribute_item($item);
+
+					endforeach;
+
+					// S'il y a moins de 3 items sélectionnés, on en ajoute pour arriver à 3
+					$items_count = count($data->items);
+					if ($items_count < 3) {
+						$data->query = new WP_Query([
+							'post_type' => 'tb_participer',
+							'posts_per_page' => 3 - $items_count,
+							'post__not_in' => $items_id,
+							'orderby' => 'rand'
+						]);
+					}
+
+				endif;
 				if ( $data->query && get_class($data->query) === 'WP_Query' ) :
 
 					while ( $data->query->have_posts() ) : $data->query->the_post();
@@ -98,4 +136,6 @@ function telabotanica_block_contribute($data) {
 		echo '</div>';
 
 	echo '</div>';
+
+	wp_reset_postdata();
 }

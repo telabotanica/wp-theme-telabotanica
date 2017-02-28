@@ -26,7 +26,7 @@
         );
         echo sprintf(
           '<div class="cover-home-link"><a href="%s">%s</a></div>',
-          '#',
+          '#', // TODO
           __('Accéder à votre espace personnel', 'telabotanica')
         );
       else :
@@ -49,7 +49,7 @@
       $observations_link = '#';
       // TODO: définir cette URL en config + mettre en cache
       $observations_count = file_get_contents('https://api.tela-botanica.org/service:cel:CelStatistiqueTxt/NbObsPubliques');
-      $get_involved_link = '#';
+      $get_involved_link = get_permalink( get_page_by_path( 'comment-participer' ) );
       $get_involved_count = wp_count_posts('tb_participer')->publish;
       ?>
       <ul class="cover-home-stats">

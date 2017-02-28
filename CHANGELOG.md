@@ -14,6 +14,7 @@ plus de détails sur http://semver.org/lang/fr/
 * block `focus` :
 	* correction de la taille des composants `embed`
 	* centrage des composants `image` placés en haut
+* block `maps` ajouté
 * block `mosaic` ajouté
 * composant `buttons` : champ passé en optionnel dans ACF
 * composant `image` : ajout des crédits
@@ -34,6 +35,7 @@ plus de détails sur http://semver.org/lang/fr/
 * compatibilité avec BuddyPress :
 	* template `buddypress/groups/index.php` (liste des projets) :
 		* support du filtrage par type de projet
+* ajout de la taille d'image `medium_square` (250x250)
 
 ## 0.0.5 (2017-02-24)
 

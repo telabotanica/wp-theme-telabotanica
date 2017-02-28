@@ -41,7 +41,7 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 								'text' => get_the_excerpt()
 							]);
 						endwhile;
-
+						wp_reset_postdata();
 
 						the_telabotanica_module('button', [
 							'href' => get_permalink(),
@@ -98,15 +98,14 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 							'query' => new WP_Query([
 								'post_type' => 'post',
 								'cat' => implode(',', [
-									$category_actualites->cat_ID//,
-									// $category_evenements->cat_ID,
-									// $category_emploi->cat_ID
+									$category_actualites->cat_ID
 							 	]),
 								'posts_per_page' => 5,
 								// évite d'afficher 2 fois l'actu à la Une
 								'post__not_in' => [$latest_post_id]
 							])
 						]);
+						wp_reset_postdata();
 
 						the_telabotanica_module('column-links', [
 							'items' => [
@@ -142,134 +141,21 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 				</div>
 			</div>
 
-			<div class="layout-content-col reversed reversed-colors">
-				<div class="layout-wrapper">
-					<div class="layout-content">
-					</div>
-					<aside class="layout-column">
-						<?php
-						the_telabotanica_module('title', [
-							'title' => __('Cartographies', 'telabotanica'),
-							'level' => 2,
-							'modifiers' => 'with-margin-top'
-						]);
+			<div class="layout-full-width">
+				<?php
+				// Si la page utilise des blocs
+				if( have_rows('blocks') ):
 
-						the_telabotanica_module('column-features', [
-							'items' => [
-								[
-									'href' => '#', // TODO
-									'icon' => 'news',
-									'color' => '#009fb8',
-									'title' => "110 pays",
-									'text' => __("Le réseau Tela Botanica rassemble des passionnés de tous pays", 'telabotanica'),
-								],
-								[
-									'href' => '#', // TODO
-									'icon' => 'members',
-									'color' => '#ff5d55',
-									'title' => "28 214 telabotanistes",
-									'text' => __("Trouvez les inscrits près de chez vous et prenez contact", 'telabotanica'),
-								],
-								[
-									'href' => '#', // TODO
-									'icon' => 'home',
-									'color' => '#918a6f',
-									'title' => "172 structures",
-									'text' => __("À travers le monde, les structures locales vous accompagnent dans vos découvertes naturalistes", 'telabotanica'),
-								]
-							],
-							'modifiers' => 'layout-column-item'
-						]);
+						// On boucle sur les blocs
+						while ( have_rows('blocks') ) : the_row();
 
-						the_telabotanica_module('button', [
-							'href' => '#', // TODO
-							'text' => __('Explorer les cartographies', 'telabotanica'),
-							'modifiers' => ['block', 'orange']
-						]);
-						?>
-					</aside>
-				</div>
+							the_telabotanica_block(get_row_layout());
+
+						endwhile;
+
+				endif;
+				?>
 			</div>
-
-			<?php
-			the_telabotanica_block('contribute', [
-				'background_color' => '#f8f5ef',
-				'title' => __('Contribuez dès maintenant', 'telabotanica'),
-				'query' => new WP_Query([
-					'post_type' => 'tb_participer',
-					'posts_per_page' => 3,
-					'orderby' => 'rand'
-				]),
-				'buttons' => [
-					'display' => 'buttons',
-					'items' => [
-						[
-							'href' => get_permalink( get_page_by_path( 'comment-participer' ) ),
-							'text' => __('Trouver un moyen de participer', 'telabotanica'),
-							'modifiers' => 'orange'
-						]
-					]
-				]
-			]);
-
-			the_telabotanica_block('mosaic', [
-				'items' => [
-					[
-						'title' => __( "Besoin d'aide pour identifier une plante ?", 'telabotanica' ),
-						'text' => __( "Envoyez la photo d'une plante et indiquez son emplacement pour obtenir de l'aide", 'telabotanica' ),
-						'button' => [
-							'href' => '#', // TODO
-							'text' => __( 'Envoyez votre photo', 'telabotanica' )
-						],
-						'images' => [ // TODO données dynamiques
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000116754CRS.jpg', 'alt' => ''],
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000120074CRS.jpg', 'alt' => ''],
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000120075CRS.jpg', 'alt' => ''],
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000025592CRS.jpg', 'alt' => ''],
-						]
-					],
-					[
-						'title' => __( "Aidez à identifier les observations du réseau", 'telabotanica' ),
-						'text' => __( "Mettez votre savoir à contribution pour aider à enrichir la base de données botaniques", 'telabotanica' ),
-						'button' => [
-							'href' => '#', // TODO
-							'text' => __( 'Proposez vos déterminations', 'telabotanica' ),
-							'modifiers' => ['orange']
-						],
-						'images' => [ // TODO données dynamiques
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000129593CRS.jpg', 'alt' => ''],
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000119370CRS.jpg', 'alt' => ''],
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000014266CRS.jpg', 'alt' => ''],
-							['href' => '#', 'src' => 'http://api.tela-botanica.org/img:000002621CRS.jpg', 'alt' => ''],
-						]
-					]
-				]
-			]);
-
-			the_telabotanica_block('focus', [
-				'background_color' => '#f8f5ef',
-				'title' => __('Rejoignez un projet citoyen', 'telabotanica'),
-				'intro' => __('Un programme de <strong>science participative</strong> est un programme conduit en partenariat entre des observateurs (citoyens) et un laboratoire ou une structure à vocation scientifique, visant à observer ou étudier un phénomène dans le cadre d’un protocole bien défini.', 'telabotanica'),
-				'display_buttons' => ['intro'],
-				'intro_buttons' => [
-					'display' => 'buttons',
-					'items' => [
-						[
-							'href' => get_permalink( get_page_by_path( 'projets' ) ),
-							'text' => __('Voir tous les projets', 'telabotanica')
-						]
-					]
-				]
-			]);
-
-			the_telabotanica_block('list-projects', [
-				'background_color' => '#f8f5ef',
-				'query' => [
-					'type' => 'popular', // TODO filter only "science participative"
-					'max' => 4
-				]
-			]);
-			?>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->

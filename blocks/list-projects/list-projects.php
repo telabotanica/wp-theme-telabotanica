@@ -1,7 +1,11 @@
 <?php function telabotanica_block_list_projects($data) {
 	$defaults = [
 		'background_color' => get_sub_field('background_color'),
-		'query' => '',
+		'query' => [
+			'type' => 'random',
+			'group_type' => get_sub_field('category')->name,
+			'max' => 4
+		],
 		'modifiers' => []
 	];
 

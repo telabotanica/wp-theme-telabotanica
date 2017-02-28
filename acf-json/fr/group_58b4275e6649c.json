@@ -1,0 +1,176 @@
+{
+    "key": "group_58b4275e6649c",
+    "title": "Blocs pour la page d'accueil",
+    "fields": [
+        {
+            "key": "field_58b4275ec2fa9",
+            "label": "Blocs",
+            "name": "blocks",
+            "type": "flexible_content",
+            "instructions": "Les blocs sont des composants complexes, destinés spécialement à la page d'accueil.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_label": "Ajouter un bloc",
+            "min": "",
+            "max": "",
+            "layouts": [
+                {
+                    "key": "58b44908cd75a",
+                    "name": "maps",
+                    "label": "Cartographies",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58b430451b1fe",
+                    "name": "contribute",
+                    "label": "Contribuez",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58b43318ef31d",
+                            "label": "Contribuez",
+                            "name": "contribute",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58b43313ebe30"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58b430d21b1ff",
+                    "name": "mosaic",
+                    "label": "Mosaïque",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58b44e0034b7c",
+                            "label": "Mosaïque",
+                            "name": "mosaic",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58b44dd3eb3c3"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58359620c9fd1",
+                    "name": "focus",
+                    "label": "Focus",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58b4275ec5c76",
+                            "label": "Focus",
+                            "name": "focus",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_583594000c481"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58b430e31b200",
+                    "name": "list-projects",
+                    "label": "Liste de projets",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58b5444cfffb8",
+                            "label": "Liste de projet",
+                            "name": "list-projects",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58b544022d75e"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1488274539
+}

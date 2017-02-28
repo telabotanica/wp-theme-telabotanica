@@ -97,3 +97,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// Defaults
+strong {font-weight: $bold;}

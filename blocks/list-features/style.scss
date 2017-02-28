@@ -52,12 +52,14 @@
         width: 100%;
       }
 
-      svg, img {
+      img {
         max-height: 2.4rem;
         max-width: 2.4rem;
       }
 
       svg {
+        height: 2.4rem;
+        width: 2.4rem;
         fill: currentColor;
       }
     }

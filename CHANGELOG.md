@@ -15,6 +15,8 @@ plus de détails sur http://semver.org/lang/fr/
 	* correction de la taille des composants `embed`
 	* centrage des composants `image` placés en haut
 * block `maps` ajouté
+* block `list-features` :
+	* correction bug icône Chrome
 * block `mosaic` ajouté
 * composant `buttons` : champ passé en optionnel dans ACF
 * composant `image` : ajout des crédits

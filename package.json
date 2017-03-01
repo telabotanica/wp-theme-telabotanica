@@ -1,6 +1,6 @@
 {
   "name": "wp-theme-telabotanica",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "TelaBotanica est un thème créé sur mesure pour le site tela-botanica.org",
   "scripts": {
     "start": "webpack --watch",

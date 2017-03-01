@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+## 0.0.6 (2017-03-01)
+
 * block `focus` :
 	* correction de la taille des composants `embed`
 	* centrage des composants `image` placés en haut

@@ -8,7 +8,7 @@
 
 ?>
 
-<h2><?php _e( 'Cover Image', 'buddypress' ); ?></h2>
+<h2 class="bp-screen-reader-text"><?php _e( 'Cover Image', 'buddypress' ); ?></h2>
 
 <?php
 

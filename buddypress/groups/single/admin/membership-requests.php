@@ -5,13 +5,11 @@
  * @package BuddyPress
  * @subpackage bp-legacy
  */
-
 ?>
 
 <h2 class="bp-screen-reader-text"><?php _e( 'Manage Membership Requests', 'buddypress' ); ?></h2>
 
 <?php
-
 /**
  * Fires before the display of group membership requests admin.
  *

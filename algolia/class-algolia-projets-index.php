@@ -43,7 +43,10 @@ final class Algolia_Projets_Index extends Algolia_Index
 		$this->get_logger()->log_operation( sprintf( 'get_records %s', '' ), $item );
 		$record['objectID'] = $item->id;
 		$record['name'] = $item->name;
+		$record['creator_id'] = $item->creator_id;
 		$record['description'] = $item->description;
+		$last_activity = strtotime($item->last_activity); // @WARNING fuseau horaire de PHP
+		$record['last_activity'] = $last_activity;
 		$record['permalink'] = bp_get_group_permalink( $item );
 		$record['image'] = bp_core_fetch_avatar( [
 			'item_id' => $item->id,
@@ -55,11 +58,21 @@ final class Algolia_Projets_Index extends Algolia_Index
 			'item_id' => $item->id
 		));
 		$categories = bp_groups_get_group_type( $item->id, false );
+		$record['categories'] = ($categories === false ? array() : $categories);
 		$record['tela'] = bp_groups_has_group_type( $item->id, 'tela-botanica' );
 		$record['archive'] = bp_groups_has_group_type( $item->id, 'archive' );
 		$record['member_count'] = intval(groups_get_total_member_count( $item->id ));
 		$description_complete = groups_get_groupmeta( $item->id, 'description-complete' );
 		$record['description_complete'] = strip_tags($description_complete);
+		$members_ids = array();
+		$members = groups_get_group_members( array( 'group_id' => $item->id ) );
+		foreach ($members['members'] as $member) {
+			$members_ids[] = $member->ID;
+		}
+		if (!in_array($item->creator_id, $members_ids)) {
+			$members_ids[] = $item->creator_id;
+		}
+		$record['members_ids'] = $members_ids;
 
 		$record = (array) apply_filters( 'algolia_group_record', $record, $item );
 

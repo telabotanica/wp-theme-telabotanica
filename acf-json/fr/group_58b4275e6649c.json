@@ -3,6 +3,27 @@
     "title": "Blocs pour la page d'accueil",
     "fields": [
         {
+            "key": "field_58b714a12ff0e",
+            "label": "Outils",
+            "name": "tools",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_582c2df7e7931"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
             "key": "field_58b4275ec2fa9",
             "label": "Blocs",
             "name": "blocks",
@@ -194,5 +215,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1488307450
+    "modified": 1488393420
 }

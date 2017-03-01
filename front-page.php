@@ -52,42 +52,31 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 							]);
 						endif;
 
-						the_telabotanica_module('title', [
-							'title' => __('Les outils de Tela Botanica', 'telabotanica'),
-							'level' => 2,
-							'modifiers' => $featured_post->have_posts() ? 'with-separator' : 'with-margin-top'
-						]);
 
-						the_telabotanica_component('tools', [
-							'items' => [
-								[
-									'title' => "Nom de l'outil",
-									'description' => "Ceci est la description de l'outil",
-									'link' => '#',
-									'link_text' => 'Lien',
-									'color' => '#a2b93b',
-									'icon' => get_template_directory_uri() . '/components/tools/sample-icon.svg'
-								],
-								[
-									'title' => "Nom d'un autre outil",
-									'description' => "Ceci est la description de l'autre outil",
-									'link' => '#',
-									'link_text' => 'Lien',
-									'color' => '#e16e38'
-								],
-							]
-						]);
+						$featured_tools = get_field('tools');
 
-						the_telabotanica_component('buttons', [
-							'items' => [
-								[
-									'link' => [
-										'url' => get_permalink( get_page_by_path( 'outils' ) )
-									],
-									'text' => __('Voir tous les outils', 'telabotanica')
+						if ( $featured_tools ) :
+
+							the_telabotanica_module('title', [
+								'title' => __('Les outils de Tela Botanica', 'telabotanica'),
+								'level' => 2,
+								'modifiers' => $featured_post->have_posts() ? 'with-separator' : 'with-margin-top'
+							]);
+
+							the_telabotanica_component('tools', $featured_tools);
+
+							the_telabotanica_component('buttons', [
+								'items' => [
+									[
+										'link' => [
+											'url' => get_permalink( get_page_by_path( 'outils' ) )
+										],
+										'text' => __('Voir tous les outils', 'telabotanica')
+									]
 								]
-							]
-						]);
+							]);
+
+						endif;
 						?>
 					</div>
 					<aside class="layout-column">

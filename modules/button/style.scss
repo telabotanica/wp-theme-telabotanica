@@ -1,6 +1,8 @@
 .button {
   background-color: $green-button;
   border-radius: 0.2rem;
+  border: 0 none;
+  cursor: pointer;
   color: $blanc;
   display: inline-block;
   font-family: $ubuntu;

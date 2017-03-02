@@ -19,7 +19,11 @@ do_action( 'bp_before_members_loop' ); ?>
 	<p class="current-member-type"><?php bp_current_member_type_message() ?></p>
 <?php endif; ?>
 
-<?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
+<?php
+	// IMPORTANT at the moment (2017-02) this plugin guarantees compatibility
+	// with BP Profile Search only if the member loop is initiated with default
+	// parameters (type="active")
+	if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
 	<div id="pag-top" class="pagination">
 
@@ -38,7 +42,6 @@ do_action( 'bp_before_members_loop' ); ?>
 	</div>
 
 	<?php
-
 	/**
 	 * Fires before the display of the members list.
 	 *
@@ -51,6 +54,15 @@ do_action( 'bp_before_members_loop' ); ?>
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
 		<li <?php bp_member_class(); ?>>
+			<?php
+
+			/**
+			 * Fires before the display of a directory member item.
+			 *
+			 * @since 1.1.0
+			 */
+			do_action( 'bp_directory_before_members_item' ); ?>
+
 			<div class="item-avatar">
 				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
 			</div>

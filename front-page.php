@@ -81,23 +81,29 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 					</div>
 					<aside class="layout-column">
 						<?php
-						the_telabotanica_module('title', [
-							'title' => __('Les dernières actus', 'telabotanica'),
-							'level' => 2,
-							'modifiers' => 'with-margin-top'
+						$latest_articles = new WP_Query([
+							'post_type' => 'post',
+							'cat' => implode(',', [
+								$category_actualites->cat_ID
+							]),
+							'posts_per_page' => 5,
+							// évite d'afficher 2 fois l'actu à la Une
+							'post__not_in' => $featured_post_id ? [$featured_post_id] : []
 						]);
 
-						the_telabotanica_module('column-articles', [
-							'query' => new WP_Query([
-								'post_type' => 'post',
-								'cat' => implode(',', [
-									$category_actualites->cat_ID
-							 	]),
-								'posts_per_page' => 5,
-								// évite d'afficher 2 fois l'actu à la Une
-								'post__not_in' => $featured_post_id ? [$featured_post_id] : []
-							])
-						]);
+						if ( $latest_articles->have_posts() ) :
+
+							the_telabotanica_module('title', [
+								'title' => __('Les dernières actus', 'telabotanica'),
+								'level' => 2,
+								'modifiers' => 'with-margin-top'
+							]);
+
+							the_telabotanica_module('column-articles', [
+								'query' => $latest_articles
+							]);
+
+						endif;
 						wp_reset_postdata();
 
 						the_telabotanica_module('column-links', [

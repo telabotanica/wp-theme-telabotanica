@@ -21,9 +21,8 @@
 	    color: $blanc;
 		}
 
-		> * {
-	    position: relative;
-		}
+		> * {position: relative;}
+		> .block-focus-credits {position: absolute;}
 	}
 
   > .component {

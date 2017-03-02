@@ -1,130 +1,142 @@
 // This module inherits styles from `cover`
 
 .cover-home {
-  min-height: 42rem;
-  padding: 5rem 0;
+	min-height: 42rem;
+	padding: 5rem 0;
 
-  > .layout-wrapper {
-    align-items: center;
-    display: flex;
-    height: 32rem;
-    justify-content: space-between;
-    position: relative;
-  }
+	> .layout-wrapper {
+		align-items: center;
+		display: flex;
+		height: 32rem;
+		justify-content: space-between;
+		position: relative;
+	}
 
-  &-title {
-    font-family: $ubuntu;
-    font-size: 3.2rem;
-    font-weight: $bold;
-    margin: 0;
-  }
+	&-title {
+		font-family: $ubuntu;
+		font-size: 3.2rem;
+		font-weight: $bold;
+		margin: 0;
+	}
 
-  &-link {
-    font-weight: $regular;
-    font-size: 1.8rem;
-    margin-top: 0.5rem;
+	&-link {
+		font-weight: $regular;
+		font-size: 1.8rem;
+		margin-top: 0.5rem;
 
-    a {
-      border-bottom: 0.1rem solid $blanc;
-      color: $blanc;
-      text-decoration: none;
-      transition: border 0.2s ease;
+		a {
+			border-bottom: 0.1rem solid $blanc;
+			color: $blanc;
+			text-decoration: none;
+			transition: border 0.2s ease;
 
-      &:hover, &:focus {
-        border-bottom-color: transparent;
-      }
-    }
-  }
+			&:hover, &:focus {
+				border-bottom-color: transparent;
+			}
+		}
+	}
 
-  &-content {
-    flex-grow: 1;
-    margin-right: 5rem;
+	&-content {
+		flex-grow: 1;
+		margin-right: 5rem;
 
-    > .search-box {
-      margin-top: 2.5rem;
-    }
-  }
+		> .search-box {
+			margin-top: 2.5rem;
+		}
+	}
 
-  &-stats {
-    @include reset-list;
-    font-family: $ubuntu;
-    font-size: 1.2rem;
-    font-weight: $medium;
-    letter-spacing: 0.1rem;
-    height: 32rem;
-    position: relative;
-    text-transform: uppercase;
-    text-align: center;
-    width: 40%;
+	&-stats {
+		@include reset-list;
+		font-family: $ubuntu;
+		font-size: 1.2rem;
+		font-weight: $medium;
+		letter-spacing: 0.1rem;
+		height: 32rem;
+		position: relative;
+		text-transform: uppercase;
+		text-align: center;
+		width: 40%;
 
-    a {
-      color: $blanc;
-      text-decoration: none;
+		a {
+			color: $blanc;
+			text-decoration: none;
 
-      &:hover, &:focus {
-      }
-    }
+			&:hover, &:focus {
+				.cover-home-stats-icon {background-color: $blanc;}
+			}
+		}
 
-    &-icon {
-      align-items: center;
-      border-radius: 50%;
-      display: flex;
-      height: 6.6rem;
-      justify-content: center;
-      margin: 0 auto 0.5rem;
-      width: 6.6rem;
+		&-icon {
+			align-items: center;
+			border-radius: 50%;
+			display: flex;
+			height: 6.6rem;
+			justify-content: center;
+			margin: 0 auto 0.5rem;
+			transition: background-color 0.3s ease;
+			width: 6.6rem;
+		}
 
-      > svg {
-        height: 2rem;
-        width: 2rem;
-      }
-    }
+		var {
+			display: block;
+			font-size: 2.6rem;
+			font-style: normal;
+			font-weight: $bold;
+			letter-spacing: 0;
+			white-space: nowrap;
+		}
 
-    var {
-      display: block;
-      font-size: 2.6rem;
-      font-style: normal;
-      font-weight: $bold;
-      letter-spacing: 0;
-      white-space: nowrap;
-    }
+		&-item {
+			position: absolute;
 
-    &-item {
-      position: absolute;
+			> a {
+				display: block;
+			}
 
-      > a {
-        display: block;
-      }
+			&-users {
+				top: 10%;
+				left: 0;
 
-      &-users {
-        top: 10%;
-        left: 0;
+				.cover-home-stats-icon {
+					background-color: $orange-clair;
 
-        .cover-home-stats-icon {
-          background-color: $orange-clair;
-          fill: $orange;
-        }
-      }
+					svg {
+						fill: $orange;
+						height: 3rem;
+						width: 4rem;
+					}
+				}
+			}
 
-      &-observations {
-        top: 0;
-        right: 0;
+			&-observations {
+				top: 0;
+				right: 0;
 
-        .cover-home-stats-icon {
-          background-color: $vert-archi-clair;
-          fill: $vert-clair;
-        }
-      }
+				.cover-home-stats-icon {
+					background-color: $vert-archi-clair;
 
-      &-get-involved {
-        bottom: 0;
-        left: 30%;
+					svg {
+						fill: $vert-clair;
+						height: 3rem;
+						width: 4rem;
+					}
+				}
+			}
 
-        .cover-home-stats-icon {
-          background-color: $turquoise-clair;
-          fill: $turquoise;
-        }
-      }
-    }
-  }
+			&-get-involved {
+				bottom: 0;
+				left: 30%;
+
+				.cover-home-stats-icon {
+					background-color: $turquoise-clair;
+
+					svg {
+						fill: $turquoise;
+						height: 3rem;
+						width: 3rem;
+					}
+				}
+			}
+		}
+	}
 }

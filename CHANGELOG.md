@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `cover-home` : ajout des icônes prévues
+
 ## 0.0.6 (2017-03-01)
 
 * block `focus` :

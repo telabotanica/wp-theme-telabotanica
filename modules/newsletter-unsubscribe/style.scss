@@ -1,0 +1,11 @@
+.newsletter-unsubscribe {
+  min-height: 200px;
+
+  .form-newsletter-email {
+    width: 40rem;
+    border: solid $grisDD .1rem;
+	color: $gris33;
+    border-radius: .3rem;
+    padding: 0.9rem;
+  }
+}

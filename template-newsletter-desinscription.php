@@ -2,9 +2,9 @@
 /**
  * Template pour le formulaire de désinscription de la newsletter
  *
- * Charge les options "URL annuaire" et "Jeton SSO administrateur" définies par
- * le plugin Tela Botanica, et envoie un ordre de désinscription à toute
- * personne saisissant son adresse email dans le formulaire
+ * Utilise la bibliothèque de gestion de liste définie par le plugin
+ * Tela Botanica, et envoie un ordre de désinscription à toute personne
+ * saisissant son adresse email dans le formulaire
  */
  /*
 Template Name: newsletter-desinscription
@@ -16,39 +16,26 @@ get_header();
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<?php //the_telabotanica_module('cover'); ?>
 		<div class="layout-wrapper">
 			<div class="layout-content">
 				<?php the_telabotanica_module('breadcrumbs'); ?>
-				<article>
+				<article class="newsletter-unsubscribe">
 					<div class="component component-title level-2">
-						<h1>Me désinscrire de la lettre d'actualités</h1>
+						<h1><?php _e("Me désinscrire de la lettre d'actualités", 'telabotanica') ?></h1>
 					</div>
 
 <?php
 // Détection du plugin Tela Botanica
-// @WARNING attention à ne pas renommer le dossier
+// @WARNING attention à ne pas renommer le dossier @TODO trouver mieux
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
-	// Lecture de la configuration (adresse du service ezmlm-php, jeton SSO admin)
+	// Chargement de la lib de gestion de liste
+	include_once( ABSPATH . 'wp-content/plugins/tela-botanica/lib/liste.php' );
+
+	// adresse de la liste "lettre d'actu"
 	$newsletter_config = json_decode(get_option('tb_newsletter_config'), true);
-	$general_config = json_decode(get_option('tb_general_config'), true);
-
-	if (! empty($general_config['adminToken'])
-		&& ! empty($newsletter_config['ezmlm_php_url'])
-		&& ! empty($newsletter_config['newsletter_recipient'])) {
-
-		$jeton_admin_sso = $general_config['adminToken'];
-		$ezmlm_php_url = $newsletter_config['ezmlm_php_url'];
-		$ezmlm_php_header = "Authorization"; // défaut confortable
-		if (! empty($newsletter_config['ezmlm_php_header'])) {
-			$ezmlm_php_header = $newsletter_config['ezmlm_php_header'];
-		}
-		$adresse_liste = $newsletter_config['newsletter_recipient'];
-		$destinataires_emails_erreurs = $newsletter_config['error_recipients_emails'];
-		// ezmlm-php s'attend à recevoir le nom de la liste, sans son domaine
-		$nom_liste = substr($adresse_liste, 0, strpos($adresse_liste, '@'));
-
+	if (! empty($newsletter_config['newsletter_recipient'])) {
 		/**
 		 * Affiche le formulaire de désinscription, et le traite une fois posté :
 		 * appelle le service ezmlm-php avec un jeton administrateur pour désinscrire
@@ -58,27 +45,37 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 			//robot
 		} elseif (!empty ($_POST['email'])) {
 			$email = trim($_POST['email']);
-			$unsubscribe_url = $ezmlm_php_url . '/lists/' . $nom_liste . '/subscribers/' . $email;
+			// instance du gestionnaire de liste, pour la lettre d'actualités
+			$adresse_liste = $newsletter_config['newsletter_recipient'];
+			$nom_liste = substr($adresse_liste, 0, strpos($adresse_liste, '@'));
+			$liste = new TB_ListeEzmlm($nom_liste);
+			// désinscription
+			$ok = $liste->modifierStatutAbonnement(false, $email);
 
-			$ch = curl_init();
-			curl_setopt_array($ch, array(
-				CURLOPT_CUSTOMREQUEST => 'DELETE',
-				CURLOPT_HTTPHEADER => [$ezmlm_php_header . ': ' . $jeton_admin_sso],
-				CURLOPT_RETURNTRANSFER => 1,
-				CURLOPT_FAILONERROR => 1,
-				CURLOPT_URL => $unsubscribe_url
-			));
-
-			$contenu = curl_exec($ch);
-
-			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			if ($http_code == 200) { // @WARNING se méfier d'un potentiel changement de code 2**
+			if ($ok) {
 				?>
 				<p>
-					L'adresse <strong><?= $email ?></strong> a bien été désinscrite de la lettre d'actualités.
+					<?php echo sprintf(__("L'adresse <strong>%s</strong> a bien été désinscrite de la lettre d'actualités", 'telabotanica'), $email) ?>.
 				</p>
 				<?php
+				// si la personne a un compte, décochage de la case "je veux
+				// recevoir la lettre" dans son profil
+				$utilisateur = get_user_by( 'email', $email );
+				if ($utilisateur) {
+					$config_plugin_tb = tbChargerConfigPlugin();
+					if (! empty($config_plugin_tb['profil']['id_case_inscription_lettre_actu'])) {
+						$id_case = $config_plugin_tb['profil']['id_case_inscription_lettre_actu'];
+						// modification de la métadonnée
+						xprofile_set_field_data($id_case, $utilisateur->ID, false);
+						?>
+						<p>
+							<?php echo sprintf(__("Votre profil a été mis à jour", 'telabotanica'), $email) ?>.
+						</p>
+						<?php
+					} // else message ?
+				}
 			} else {
+				$destinataires_emails_erreurs = $newsletter_config['error_recipients_emails'];
 				/**
 				 * Lors d'un échec de désinscription, envoie une alerte par email
 				 * aux destinataires listés dans la configuration du plugin :
@@ -88,19 +85,13 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 					. "\r\n"
 					. 'Adresse à désinscrire : ' . $email . "\r\n"
 					. 'Liste : ' . $adresse_liste . "\r\n"
-					. 'URL appelée : ' . $unsubscribe_url . "\r\n"
-					. 'Code de retour HTTP : ' . $http_code . "\r\n"
-					. 'Erreur cURL : ' . curl_error($ch) . "\r\n"
-					. 'Message renvoyé par le service : ' . $contenu . "\r\n"
 				;
-
 				$headers = 'Content-Type: text/plain; charset="utf-8"' . "\r\n"
 					. 'Content-Transfer-Encoding: 8bit' . "\r\n"
 					. 'From: wp-newsletter@tela-botanica.org' . "\r\n"
 					. 'Reply-To: no-reply@example.com' . "\r\n"
 					. 'X-Mailer: PHP/' . phpversion()
 				;
-
 				foreach ($destinataires_emails_erreurs as $destinataire) {
 					if ($destinataire && '#' !== substr($destinataire, 0, 1)) {
 						error_log($message, 1, $destinataire, $headers);
@@ -108,50 +99,42 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 					}
 				}
 				?>
-				<p>
-					Une erreur est survenue lors de la désinscription, nous en avons été informés.
-					<br/>
-					Pour plus d'informations n'hésitez pas à nous contacter.
+				<p class="notice notice-warning">
+					<?php _e("Une erreur est survenue lors de la désinscription, nous en avons été informés", 'telabotanica') ?>.
+					<br>
+					<?php _e("Pour plus d'informations n'hésitez pas à nous contacter", 'telabotanica') ?>.
 				</p>
 				<?php
 			}
-
-			curl_close($ch);
 		}
-		?>
-		<form method="post" action="" class="form-newsletter layout-column">
-			<input type="hidden" name="name" id="name">
-			<fieldset class="form-newsletter-fields">
-				<input class="form-newsletter-email" name="email" placeholder="Votre adresse e-mail" type="email">
-				<svg aria-hidden="true" role="img" class="icon icon-mail "><use xlink:href="#icon-mail"/></svg>
-				<button class="form-newsletter-button" type="submit">
-					Me désinscrire
-				</button>
-			</fieldset>
-		</form>
-		<?php
 	} else {
+		// erreur config lettre
 		?>
-		<p>
-			Configuration incomplète.
+		<p class="notice notice-warning">
+			<?php _e("Configuration incomplète") ?>.
 			<br/>
-			Vérifiez que vous avez défini "URL racine du service ezmlm-php" dans
-			"Newsletter" > "Réglages".
-			<br/>
-			Vérifiez que vous avez défini "Adresse destinataire" dans
-			"Newsletter" > "Envoyer la newsletter".
-			<br/>
-			Vérifiez que vous avez défini "Jeton SSO administrateur" dans
-			"Tela Botanica" > "Sécurité".
+			<?php _e("Vérifiez les réglages de la lettre d'actualités") ?>.
 		</p>
 		<?php
 	}
+	?>
+	<form method="post" action="" class="form-newsletter layout-column">
+		<input type="hidden" name="name" id="name">
+		<input class="form-newsletter-email" name="email" type="email" required
+			   placeholder="<?php _e('Votre adresse e-mail', 'telabotanica') ?>">
+		<?php the_telabotanica_module('button', [
+			'tag' => 'button',
+			'extra_attributes' => 'type="submit"',
+			'icon_before' => 'mail',
+			'text' => __( 'Me désinscrire', 'telabotanica' )
+		] ); ?>
+	</form>
+<?php
 } else {
 	?>
-	<p>Vérifiez que le plugin Tela Botanica est installé et activé.</p>
+	<p><?php _e("Vérifiez que le plugin Tela Botanica est installé et activé", 'telabotanica') ?>.</p>
 	<?php
 }
-
 ?>
 				</article>
 			</div>

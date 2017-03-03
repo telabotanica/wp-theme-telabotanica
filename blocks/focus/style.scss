@@ -30,8 +30,9 @@
     max-width: 100rem;
   }
 
-	> .component-image img {
-		margin: 0 auto;
+	> .component-image {
+		img {margin: 0 auto;}
+		.component-image-credits {text-align: center;}
 	}
 
   &-header {

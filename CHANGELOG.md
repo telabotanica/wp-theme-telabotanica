@@ -22,7 +22,9 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout des liens vers les auteurs
 	* ajout du lieu pour les évènements
 * module `nav-dashboard` ajouté
-* template `single` : support de la catégorie "En kiosque"
+* template `single` :
+	* support de la catégorie "En kiosque"
+	* support de la catégorie "Évènements"
 * ACF : utiliser le premier composant image comme vignette, si l'article n'en a pas
 
 ## 0.0.6 (2017-03-01)

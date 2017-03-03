@@ -85,7 +85,7 @@ get_header(); ?>
 									endif;
 
 									// Si la page utilise des composants
-									if( have_rows('components') ):
+									if( have_rows('components') ) :
 
 											// On boucle sur les composants
 											while ( have_rows('components') ) : the_row();
@@ -95,6 +95,31 @@ get_header(); ?>
 											endwhile;
 
 									endif;
+
+									// EVENEMENT
+									if ( post_is_in_descendant_category( 'evenements' ) ) :
+
+										$info_items = [];
+
+										$info_items[] = [
+											'title' => 'Adresse',
+											'text' => get_field('place')->value
+										];
+
+										$info_items[] = [
+											'title' => 'Tarif',
+											'text' => get_field('is_free') === true ? __( 'Gratuit', 'telabotanica') : get_field('prices')
+										];
+
+										the_telabotanica_component('info', [
+											'items' => $info_items
+										]);
+
+										if ( get_field('contact') && !empty( get_field('contact')->name ) ) {
+											the_telabotanica_component('contact', get_field('contact'));
+										}
+
+									endif; // FIN EVENEMENT
 									?>
 								</article>
 							</div>

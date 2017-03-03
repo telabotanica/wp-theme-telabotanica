@@ -36,8 +36,11 @@
 		margin-top: 3rem;
 	}
 
-	h2 {
-		color: $gris33;
-		font-weight: $light;
+	.component-title,
+	.component-text {
+		h2 {
+			color: $gris33;
+			font-weight: $light;
+		}
 	}
 }

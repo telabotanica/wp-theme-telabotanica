@@ -64,25 +64,43 @@
 						</span>
 					</a>
 				</li>
-			<?php else : ?>
-				<li class="header-links-item header-links-item-login"><a href="<?php echo wp_login_url( get_permalink() ); ?>"><span class="header-links-item-text"><?php _e( 'Connexion', 'telabotanica' ) ?></span></a></li>
-			<?php endif; ?>
-			<li class="header-links-item">
-				<?php
+			<?php else :
+				printf(
+					'<li class="header-links-item header-links-item-login"><a href="%s"><span class="header-links-item-text">%s</span></a></li>',
+					wp_login_url( get_permalink() ),
+					__( 'Connexion', 'telabotanica' )
+				);
+			endif;
+
+			echo '<li class="header-links-item">';
 				if (function_exists('icl_get_languages')) :
 					try {
 						foreach (icl_get_languages() as $locale) {
 							if ($locale['active'] === '1') {continue;}
-							echo '<a href="' . $locale['url'] . '" rel="alternate" hreflang="' . $locale['code'] . '" title="' . $locale['native_name'] . '"><span class="header-links-item-text">' . strtoupper($locale['code']) . '</span></a>';
+							printf(
+								'<a href="%s" rel="alternate" hreflang="%s" title="%s"><span class="header-links-item-text">%s</span></a>',
+								$locale['url'],
+								$locale['code'],
+								$locale['native_name'],
+								strtoupper($locale['code'])
+							);
 						}
 					} catch (Exception $e) {
 						echo $e->getMessage();
 					}
-				endif; ?>
-			</li>
-			<li class="header-links-item header-links-item-donate"><a href="#"><?php _e( 'Faites un don !', 'telabotanica' ) ?></a></li>
-			<li class="header-links-item header-links-item-search"><a href="<?php echo get_search_link(); ?>"><span class="header-links-item-text"><?php the_telabotanica_module('icon', ['icon' => 'search']) ?></span></a></li>
-		<?php
+				endif;
+			echo '</li>';
+
+			printf(
+				'<li class="header-links-item header-links-item-donate"><a href="%s">%s</a></li>',
+				get_permalink( get_page_by_path( 'faire-un-don' ) ),
+				__( 'Faites un don !', 'telabotanica' )
+			);
+			printf(
+				'<li class="header-links-item header-links-item-search"><a href="%s"><span class="header-links-item-text">%s</span></a></li>',
+				get_search_link(),
+				get_telabotanica_module('icon', ['icon' => 'search'])
+			);
 		echo '</ul>';
 	echo '</div>';
 

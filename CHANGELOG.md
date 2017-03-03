@@ -13,6 +13,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 * block `mosaic` : liens vers Identiplante
 * module `cover-home` : ajout des icônes prévues
+* module `header` : refactoring
 * module `nav-dashboard` ajouté
 
 ## 0.0.6 (2017-03-01)

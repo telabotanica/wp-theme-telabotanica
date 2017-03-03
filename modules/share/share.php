@@ -7,19 +7,19 @@
   endif;
 
   echo '<ul class="share">';
-    echo sprintf(
+    printf(
       '<li class="share-item"><a href="%s" target="_blank" title="%s">%s</a></li>',
       'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $url ),
       sprintf( __( 'Partager sur %s', 'telabotanica' ), 'Facebook' ),
       get_telabotanica_module('icon', ['icon' => 'facebook'])
     );
-    echo sprintf(
+    printf(
       '<li class="share-item"><a href="%s" target="_blank" title="%s">%s</a></li>',
       'https://twitter.com/intent/tweet?text=' . urlencode( get_the_title() . ' ' . $url ),
       sprintf( __( 'Partager sur %s', 'telabotanica' ), 'Twitter' ),
       get_telabotanica_module('icon', ['icon' => 'twitter'])
     );
-    echo sprintf(
+    printf(
       '<li class="share-item"><a href="%s" target="_blank" title="%s">%s</a></li>',
       'mailto:?subject=' . urlencode( get_the_title() ) . '&body=' . urlencode( $url ),
       __( 'Partager par courriel', 'telabotanica' ),

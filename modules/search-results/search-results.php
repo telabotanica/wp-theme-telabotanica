@@ -9,13 +9,13 @@ function telabotanica_module_search_results_hit($index_id, $hit) {
 	if (function_exists($function)) {
 		call_user_func($function, $hit);
 	} else {
-		echo sprintf(
+		printf(
 			'<a href="%s" title="%s" class="search-results-hit-link">',
 			$hit['permalink'],
 			$hit['post_title']
 		);
 		echo '<div class="search-results-hit-post-attributes">';
-		echo sprintf(
+		printf(
 			'<span class="search-results-hit-post-title">%s</span>',
 			$hit['_highlightResult']['post_title']['value']
 		);
@@ -45,15 +45,15 @@ function telabotanica_module_search_results($data) {
 		echo '<div class="search-results-index has-more">';
 
 			// header
-			echo sprintf(
+			printf(
 				'<a href="%s" class="search-results-header">',
 				$link_more
 			);
-				echo sprintf(
+				printf(
 					'<div class="search-results-header-title">%s</div>',
 					$indices_labels[$results['index']]
 				);
-				echo sprintf(
+				printf(
 					'<div class="search-results-header-count">%s</div>',
 					$results['nbHits']
 				);

@@ -48,7 +48,7 @@ if (function_exists('tbChargerConfigPlugin')) {
 			if ($ok) {
 				?>
 				<p>
-					<?php echo sprintf(__("L'adresse <strong>%s</strong> a bien été désinscrite de la lettre d'actualités", 'telabotanica'), $email) ?>.
+					<?php printf(__("L'adresse <strong>%s</strong> a bien été désinscrite de la lettre d'actualités", 'telabotanica'), $email) ?>.
 				</p>
 				<?php
 				// si la personne a un compte, décochage de la case "je veux

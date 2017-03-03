@@ -9,7 +9,7 @@ function telabotanica_module_cover_project($data) {
       'object_dir' => 'groups',
       'item_id' => bp_get_group_id(),
     ));
-    echo sprintf(
+    printf(
       '<div class="cover-project-image" style="background-image: url(%s);"></div>',
       $cover_image_url
     );
@@ -38,7 +38,7 @@ function telabotanica_module_cover_project($data) {
         'private' => 'private',
         'hidden' => 'hidden'
       ];
-      echo sprintf(
+      printf(
         '<span class="cover-project-visibility">%s %s</span>',
         bp_get_group_type(),
         get_telabotanica_module('icon', ['icon' => $visibility_icons[ bp_get_group_status() ] ])

@@ -71,7 +71,7 @@ function telabotanica_module_toc($data) {
       echo '<li class="toc-item' . ( isset($item->active) && $item->active ? ' is-active' : '' ) . '">';
 
         if ( isset($item->text) ) {
-          echo sprintf(
+          printf(
             '<a href="%s" class="toc-item-link">%s</a>',
             esc_url( $item->href ),
             $item->text
@@ -99,7 +99,7 @@ function telabotanica_module_toc($data) {
             endif;
 
             echo '<li class="toc-subitem' . ( isset($subitem->active) && $subitem->active ? ' is-active' : '' ) . '">';
-              echo sprintf(
+              printf(
                 '<a href="%s" class="toc-subitem-link">%s</a>',
                 esc_url( $subitem->href ),
                 $subitem->text

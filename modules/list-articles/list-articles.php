@@ -36,14 +36,14 @@
 						$date_title = sprintf( _x( 'Le %s', '%s = date', 'telabotanica' ), $date_title );
 					endif;
 					echo '<a href="' . esc_url( get_permalink() ) . '" class="list-articles-dates" title="' . $date_title . '">';
-					echo sprintf(
+					printf(
 						'<time datetime="%s" class="list-articles-dates-item"><div class="list-articles-dates-day">%s</div><div class="list-articles-dates-month">%s</div></time>',
 						date_i18n('Y-m-d', $date_timestamp),
 						date_i18n('j', $date_timestamp),
 						date_i18n('M', $date_timestamp)
 					);
 					if ( $date_end_timestamp ) {
-						echo sprintf(
+						printf(
 							'<time datetime="%s" class="list-articles-dates-item is-end"><div class="list-articles-dates-day">%s</div><div class="list-articles-dates-month">%s</div></time>',
 							date_i18n('Y-m-d', $date_end_timestamp),
 							date_i18n('j', $date_end_timestamp),
@@ -52,7 +52,7 @@
 					}
 					echo '</a>';
 				else :
-					echo sprintf(
+					printf(
 						'<a href="%s" class="list-articles-image">%s</a>',
 						esc_url( get_permalink() ),
 						has_post_thumbnail() ? get_the_post_thumbnail( null, 'post-thumbnail', array( 'class' => 'list-articles-image' ) ) : ''
@@ -67,7 +67,7 @@
 							echo '<span class="list-articles-place">' . telabotanica_format_place( $place ) . '</span>';
 						endif;
 
-						echo sprintf(
+						printf(
 							'<span class="list-articles-date" title="%s">%s <time datetime="%s">%s</time></span>',
 							sprintf( _x( '%s à %s', '%s = date et %s = heure', 'telabotanica' ),
 								date_i18n( get_option( 'date_format' ), get_the_time( 'U' ) ),
@@ -80,7 +80,7 @@
 
 						echo ' &ndash; ';
 
-						echo sprintf(
+						printf(
 							'<span class="list-articles-author">%s</span>',
 							sprintf( __( 'par %s', 'telabotanica' ), get_the_author() )
 						);

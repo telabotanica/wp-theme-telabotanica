@@ -22,7 +22,7 @@
     $extra_attributes .= sprintf('%s="%s" ', $name, $value);
   }
 
-  echo sprintf(
+  printf(
     '<%s href="%s" %s class="%s" target="%s" title="%s">%s<span class="button-text">%s</span>%s</%s>',
     $data->tag,
     $data->href,

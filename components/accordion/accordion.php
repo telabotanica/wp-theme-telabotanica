@@ -22,7 +22,7 @@
 
 				$item = (object) $item;
 
-				echo sprintf(
+				printf(
 					'<h%s class="js-accordion__header component-accordion__header">%s</h%s>',
 					$data->title_level,
 					$item->title,

@@ -13,7 +13,7 @@
 
   echo '<div class="meta-news-item meta-news-date">';
   the_telabotanica_module('icon', ['icon' => 'clock']);
-  echo sprintf(
+  printf(
     '<time datetime="%s" title="%s">%s</time>',
     get_the_time( 'Y-m-d\\TG:i:s\\Z' ),
     sprintf( _x( '%s à %s', '%s = date et %s = heure', 'telabotanica' ),
@@ -24,7 +24,7 @@
   );
   echo '</div>';
 
-  echo sprintf(
+  printf(
     '<div class="meta-news-item meta-news-author">%s<span>%s</span></div>',
     get_telabotanica_module('icon', ['icon' => 'user']),
     sprintf( __( 'Par %s', 'telabotanica' ), get_the_author() )

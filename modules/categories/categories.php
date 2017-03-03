@@ -71,7 +71,7 @@
 			echo '<li class="categories-item' . ( isset($item->active) && $item->active ? ' is-active' : '' ) . '">';
 
 				if ( isset($item->text) ) {
-					echo sprintf(
+					printf(
 						'<h3 class="categories-item-title"><a href="%s" class="categories-item-link" title="%s">%s%s</a></h3>',
 						esc_url( $item->href ),
 						isset($item->title) ? $item->title : '',
@@ -101,7 +101,7 @@
 						// endif;
 
 						echo '<li class="categories-subitem' . ( isset($subitem->active) && $subitem->active ? ' is-active' : '' ) . '">';
-							echo sprintf(
+							printf(
 								'<a href="%s" class="categories-subitem-link" title="%s">%s</a>',
 								esc_url( $subitem->href ),
 								isset($item->title) ? $subitem->title : '',

@@ -33,7 +33,7 @@
 
 	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-		echo sprintf(
+		printf(
 			'<img src="%s" srcset="%s" sizes="%s" alt="%s" />',
 			$data->image,
 			$data->srcset,

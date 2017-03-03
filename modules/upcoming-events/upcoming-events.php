@@ -38,7 +38,7 @@
 				foreach ( $events as $event ) :
 					$date_timestamp = strtotime( get_field( 'date', $event, false ) );
 					echo '<li class="upcoming-events-item">';
-					echo sprintf(
+					printf(
 						'<a href="%s" class="upcoming-events-item-link">
 							<div class="upcoming-events-date">
 								<div class="upcoming-events-date-day">%s</div>

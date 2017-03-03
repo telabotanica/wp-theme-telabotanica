@@ -105,7 +105,7 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 						<a href="<?php bp_the_topic_post_poster_link(); ?>">
 							<?php bp_the_topic_post_poster_avatar( 'width=40&height=40' ); ?>
 						</a>
-						<?php echo sprintf( __( '%1$s said %2$s:', 'buddypress' ), bp_get_the_topic_post_poster_name(), bp_get_the_topic_post_time_since() ); ?>
+						<?php printf( __( '%1$s said %2$s:', 'buddypress' ), bp_get_the_topic_post_poster_name(), bp_get_the_topic_post_time_since() ); ?>
 					</div>
 
 					<div class="post-content">

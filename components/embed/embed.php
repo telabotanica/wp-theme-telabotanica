@@ -29,7 +29,7 @@
 
 	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-	echo sprintf(
+	printf(
 		'<div class="component-embed-wrapper" aria-describedby="%s" style="%s">',
 		$data->description_id,
 		$height ? 'height: ' . ($height / 10) . 'rem' : ''

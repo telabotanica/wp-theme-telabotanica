@@ -22,7 +22,7 @@
 		);
 
 		if ( $data->image ) :
-			echo sprintf(
+			printf(
 				'<a href="%s" class="article-image">%s</a>',
 				esc_url( $data->href ),
 				$data->image

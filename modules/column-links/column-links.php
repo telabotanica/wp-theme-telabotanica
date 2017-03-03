@@ -20,7 +20,7 @@
 				echo '<li class="column-links-item">';
 
 					if ( isset($item->text) ) {
-						echo sprintf(
+						printf(
 							'<a href="%s" class="column-links-item-link">%s%s%s</a>',
 							esc_url( $item->href ),
 							get_telabotanica_module('icon', ['icon' => $item->icon]),

@@ -20,17 +20,17 @@
 
       if ( is_user_logged_in() ) :
         $current_user = wp_get_current_user();
-        echo sprintf(
+        printf(
           '<h1 class="cover-home-title">%s</h1>',
           sprintf(__('Bienvenue %s !', 'telabotanica'), $current_user->display_name)
         );
-        echo sprintf(
+        printf(
           '<div class="cover-home-link"><a href="%s">%s</a></div>',
           '#', // TODO
           __('Accéder à votre espace personnel', 'telabotanica')
         );
       else :
-        echo sprintf(
+        printf(
           '<h1 class="cover-home-title">%s</h1>',
           $data->title
         );
@@ -80,9 +80,9 @@
         if ( $credits ) :
           echo '<div class="cover-credits">';
           if ($credits['link']) {
-            echo sprintf(__('%s par %s', 'telabotanica'), '<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>', $credits['author']);
+            printf(__('%s par %s', 'telabotanica'), '<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>', $credits['author']);
           } else {
-            echo sprintf(__('%s par %s', 'telabotanica'), $data->image['title'], $credits['author']);
+            printf(__('%s par %s', 'telabotanica'), $data->image['title'], $credits['author']);
           }
           echo '</div>';
         endif;

@@ -66,7 +66,7 @@
 					// Lien
 					else :
 
-						echo sprintf(
+						printf(
 							'<li class="component-links-item-link"><a href="%s" target="%s" title="%s">%s%s</a></li>',
 							$item->href,
 							$item->target,

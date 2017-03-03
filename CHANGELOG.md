@@ -19,6 +19,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `list-articles` : ajout des liens vers les auteurs
 * module `meta-news` : ajout des liens vers les auteurs
 * module `nav-dashboard` ajouté
+* template `single` : support de la catégorie "En kiosque"
 * ACF : utiliser le premier composant image comme vignette, si l'article n'en a pas
 
 ## 0.0.6 (2017-03-01)

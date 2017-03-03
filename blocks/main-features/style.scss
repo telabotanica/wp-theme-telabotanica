@@ -36,9 +36,14 @@
       justify-content: center;
       margin-bottom: 3rem;
 
-      svg, img {
+      img {
         max-height: 4rem;
         max-width: 4rem;
+      }
+
+      svg {
+        height: 4rem;
+        width: 4rem;
       }
     }
 

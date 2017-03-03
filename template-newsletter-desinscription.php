@@ -26,21 +26,14 @@ get_header();
 
 <?php
 // Détection du plugin Tela Botanica
-// @WARNING attention à ne pas renommer le dossier @TODO trouver mieux
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
-	// Chargement de la lib de gestion de liste
-	include_once( ABSPATH . 'wp-content/plugins/tela-botanica/lib/liste.php' );
+// détecte si le plugin TB est activé, sans avoir à mentionner le nom du dossier
+if (function_exists('tbChargerConfigPlugin')) {
 
 	// adresse de la liste "lettre d'actu"
 	$newsletter_config = json_decode(get_option('tb_newsletter_config'), true);
 	if (! empty($newsletter_config['newsletter_recipient'])) {
-		/**
-		 * Affiche le formulaire de désinscription, et le traite une fois posté :
-		 * appelle le service ezmlm-php avec un jeton administrateur pour désinscrire
-		 * l'adresse email fournie de la liste configurée
-		 */
 		if (! empty($_POST['name'])) {
 			//robot
 		} elseif (!empty ($_POST['email'])) {
@@ -69,7 +62,7 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 						xprofile_set_field_data($id_case, $utilisateur->ID, false);
 						?>
 						<p>
-							<?php echo sprintf(__("Votre profil a été mis à jour", 'telabotanica'), $email) ?>.
+							<?php printf(__("Votre profil a été mis à jour", 'telabotanica'), $email) ?>.
 						</p>
 						<?php
 					} // else message ?
@@ -124,7 +117,7 @@ if (is_plugin_active( 'tela-botanica/tela-botanica.php')) {
 			   placeholder="<?php _e('Votre adresse e-mail', 'telabotanica') ?>">
 		<?php the_telabotanica_module('button', [
 			'tag' => 'button',
-			'extra_attributes' => 'type="submit"',
+			'extra_attributes' => ['type' => 'submit'],
 			'icon_before' => 'mail',
 			'text' => __( 'Me désinscrire', 'telabotanica' )
 		] ); ?>

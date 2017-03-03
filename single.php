@@ -115,6 +115,8 @@ get_header(); ?>
 											'items' => $info_items
 										]);
 
+										the_telabotanica_component('map');
+
 										if ( get_field('contact') && !empty( get_field('contact')->name ) ) {
 											the_telabotanica_component('contact', get_field('contact'));
 										}

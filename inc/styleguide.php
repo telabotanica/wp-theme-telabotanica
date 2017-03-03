@@ -87,6 +87,7 @@ $telabotanica_components = [
   'info',
 	'intro',
 	'links',
+  'map',
 	'tools',
 	'text',
 	'title',

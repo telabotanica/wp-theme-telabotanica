@@ -5,7 +5,7 @@
 		font-size: 2.6rem;
 		font-weight: $bold;
 		line-height: 3.6rem;
-		margin: 0;
+		margin: 0 0 2rem;
 
 		a {
 			border-bottom: 0.2rem solid transparent;
@@ -20,10 +20,9 @@
 		}
 	}
 
-	&-title,
 	&-image,
 	> .component-intro {
-		margin-bottom: 2.5rem;
+		margin-bottom: 3rem;
 	}
 
 	&-image {
@@ -35,5 +34,10 @@
 	// moins de margin-top lorsque précédé de breadcrumbs
 	.breadcrumbs + & {
 		margin-top: 3rem;
+	}
+
+	h2 {
+		color: $gris33;
+		font-weight: $light;
 	}
 }

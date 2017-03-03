@@ -44,16 +44,12 @@ require get_template_directory() . '/inc/excerpt.php';
 // Pages d'options (avec ACF)
 require get_template_directory() . '/inc/options.php';
 
-/**
- * Chargement des types de contenus sur mesure (Custom Post Types)
- * cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
- */
+// Chargement des types de contenus sur mesure (Custom Post Types)
+// cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
 require get_template_directory() . '/inc/custom-post-types.php';
 
-/**
- * Chargement des taxonomies sur mesure (Custom Taxonomies)
- * cf. https://codex.wordpress.org/Taxonomies#Custom_Taxonomies
- */
+// Chargement des taxonomies sur mesure (Custom Taxonomies)
+// cf. https://codex.wordpress.org/Taxonomies#Custom_Taxonomies
 require get_template_directory() . '/inc/custom-taxonomies.php';
 
 // Options WPML
@@ -75,6 +71,9 @@ require get_template_directory() . '/inc/profile.php';
 if ( class_exists( 'Algolia_Plugin' ) ) {
 	require get_template_directory() . '/inc/algolia.php';
 }
+
+// Customisation ACF
+require get_template_directory() . '/inc/acf.php';
 
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :

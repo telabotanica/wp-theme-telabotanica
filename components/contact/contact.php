@@ -21,7 +21,7 @@
 			'phone'				=> $contact->phone,
 			'email'				=> $contact->email,
 			'website'			=> $contact->website,
-			'link'				=> $contact->link,
+			'link'				=> @$contact->link,
 			'modifiers'		=> []
 		];
 	}

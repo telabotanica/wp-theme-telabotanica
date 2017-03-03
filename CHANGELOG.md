@@ -11,21 +11,23 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
-* block `mosaic` : liens vers Identiplante
+* bloc `mosaic` : liens vers Identiplante
+* composants : diverses amélioration du rendu dans les articles
 * module `cover-home` : ajout des icônes prévues
 * module `footer` : petits changements (réseaux sociaux et licence CC)
 * module `header` : refactoring
 * module `nav-dashboard` ajouté
+* ACF : utiliser le premier composant image comme vignette, si l'article n'en a pas
 
 ## 0.0.6 (2017-03-01)
 
-* block `focus` :
+* bloc `focus` :
 	* correction de la taille des composants `embed`
 	* centrage des composants `image` placés en haut
-* block `maps` ajouté
-* block `list-features` :
+* bloc `maps` ajouté
+* bloc `list-features` :
 	* correction bug icône Chrome
-* block `mosaic` ajouté
+* bloc `mosaic` ajouté
 * composant `buttons` : champ passé en optionnel dans ACF
 * composant `image` : ajout des crédits
 * composant `links` :

@@ -5,6 +5,7 @@
   position: relative;
 
   & + & {margin-top: 0;}
+  .component + & {margin-top: 4rem;}
 
   &.level-2 {
     margin-top: 6rem;

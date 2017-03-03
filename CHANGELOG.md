@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* block `mosaic` : liens vers Identiplante
 * module `cover-home` : ajout des icônes prévues
 * module `nav-dashboard` ajouté
 

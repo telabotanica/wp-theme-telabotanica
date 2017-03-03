@@ -53,7 +53,7 @@ function telabotanica_block_mosaic($data) {
 	$images_feed = json_decode(file_get_contents('http://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=' . $images_count . '&masque.type=adeterminer&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc'));
 	$images = array_map(function($resultat) {
 		return (object) [
-			'href' => '#' . $resultat->id_observation, // TODO
+			'href' => 'http://www.tela-botanica.org/appli:identiplante#obs~' . $resultat->id_observation,
 			'src' => str_replace('XL.', 'CRL.', $resultat->images[0]->{'binaire.href'}),
 			'alt' => @$resultat->{'determination.ns'} ?: __( 'Indéterminé', 'telabotanica' )
 		];

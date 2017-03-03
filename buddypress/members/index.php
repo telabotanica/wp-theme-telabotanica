@@ -14,7 +14,6 @@
 do_action( 'bp_before_directory_members_page' ); ?>
 
 <div id="buddypress">
-
 	<?php
 
 	/**

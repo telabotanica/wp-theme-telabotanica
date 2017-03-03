@@ -56,10 +56,6 @@ get_header(); ?>
 
                       endwhile;
 
-                  else :
-
-                      // no layouts found
-
                   endif;
                   ?>
                 </article>

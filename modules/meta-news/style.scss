@@ -5,12 +5,17 @@
 
   &-item {
     border-top: 0.1rem solid $grisDD;
-    padding-top: 1.5rem;
-    margin-top: 1.5rem;
+		padding: 1.5rem 0;
+		position: relative;
 
     .button + & {
       margin-top: 2rem; // pour aligner sur breadcrumbs
     }
+
+		> .icon {
+			top: 50%;
+			transform: translateY(-50%);
+		}
 
     .icon {
       fill: $taupe;
@@ -28,6 +33,16 @@
   &-date {
     time {cursor: help;}
   }
+
+  &-author a {
+		color: $taupe;
+		text-decoration: none;
+		&:hover,
+		&:focus {
+			color: $marron-fonce;
+			text-decoration: underline;
+		}
+	}
 
   &-categories {
     .icon {vertical-align: middle;}

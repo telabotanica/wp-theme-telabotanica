@@ -13,9 +13,10 @@
           </div>
 
           <ul class="footer-about-tela-social-items">
-            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'facebook-disc']) ?> Facebook</a></li>
-            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'twitter-disc']) ?> Twitter</a></li>
-            <li class="footer-about-tela-social-item"><a href="#" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'pinterest-disc']) ?> Pinterest</a></li>
+            <li class="footer-about-tela-social-item"><a href="https://www.facebook.com/telabotanica/" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'facebook-disc']) ?> Facebook</a></li>
+            <li class="footer-about-tela-social-item"><a href="https://twitter.com/TelaBotanica" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'twitter-disc']) ?> Twitter</a></li>
+            <li class="footer-about-tela-social-item"><a href="https://vimeo.com/telabotanica" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'vimeo-disc']) ?> Vimeo</a></li>
+            <li class="footer-about-tela-social-item"><a href="https://github.com/telabotanica" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'github-disc']) ?> Github</a></li>
           </ul>
         </div>
 
@@ -43,7 +44,7 @@
             'depth'          => 1,
           ] );
         ?>
-        <a href="http://creativecommons.org/licenses/by-sa/2.0/fr/" target="_blank" rel="nofollow" class="footer-nav-license">CC BY-SA 2.0</a>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.<?php echo ICL_LANGUAGE_CODE ?>" target="_blank" rel="nofollow" class="footer-nav-license">CC BY-SA 4.0</a>
       </nav>
     <?php endif; ?>
   </footer><!-- .site-footer -->

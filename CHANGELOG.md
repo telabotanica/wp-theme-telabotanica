@@ -12,6 +12,7 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * bloc `mosaic` : liens vers Identiplante
+* composant `info` ajouté
 * composants : diverses amélioration du rendu dans les articles
 * module `cover-home` : ajout des icônes prévues
 * module `footer` : petits changements (réseaux sociaux et licence CC)

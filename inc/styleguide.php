@@ -84,6 +84,7 @@ $telabotanica_components = [
 	'contact',
 	'embed',
 	'image',
+  'info',
 	'intro',
 	'links',
 	'tools',

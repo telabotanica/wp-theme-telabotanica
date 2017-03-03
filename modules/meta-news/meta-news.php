@@ -11,6 +11,16 @@
     ] );
   endif;
 
+	if ( get_field('place') ) :
+		echo '<div class="meta-news-item meta-news-place">';
+		the_telabotanica_module('icon', ['icon' => 'marker']);
+		printf(
+			'<span>%s</span>',
+			telabotanica_format_place( get_field( 'place' ), false )
+		);
+		echo '</div>';
+	endif;
+
   echo '<div class="meta-news-item meta-news-date">';
   the_telabotanica_module('icon', ['icon' => 'clock']);
   printf(

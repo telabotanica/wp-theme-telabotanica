@@ -1,40 +1,45 @@
 .meta-news {
-  color: $taupe;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
+	color: $taupe;
+	font-size: 1.2rem;
+	line-height: 1.6rem;
 
-  &-item {
-    border-top: 0.1rem solid $grisDD;
+	&-item {
+		border-top: 0.1rem solid $grisDD;
 		padding: 1.5rem 0;
 		position: relative;
 
-    .button + & {
-      margin-top: 2rem; // pour aligner sur breadcrumbs
-    }
+		.button + & {
+			margin-top: 2rem; // pour aligner sur breadcrumbs
+		}
 
 		> .icon {
 			top: 50%;
 			transform: translateY(-50%);
 		}
 
-    .icon {
-      fill: $taupe;
-      margin-right: 1rem;
-      position: absolute;
-      vertical-align: top;
-    }
+		.icon {
+			fill: $taupe;
+			margin-right: 1rem;
+			position: absolute;
+			vertical-align: top;
+		}
 
-    .icon + * {
-      display: block;
-      margin-left: 2.6rem;
-    }
-  }
+		.icon + * {
+			display: block;
+			margin-left: 2.6rem;
+		}
+	}
 
-  &-date {
-    time {cursor: help;}
-  }
+	&-place {
+		color: $orange;
+		.icon {fill: $orange;}
+	}
 
-  &-author a {
+	&-date {
+		time {cursor: help;}
+	}
+
+	&-author a {
 		color: $taupe;
 		text-decoration: none;
 		&:hover,
@@ -44,30 +49,30 @@
 		}
 	}
 
-  &-categories {
-    .icon {vertical-align: middle;}
-  }
+	&-categories {
+		.icon {vertical-align: middle;}
+	}
 
-  &-share {
-    .icon {
-      position: static;
-    }
+	&-share {
+		.icon {
+			position: static;
+		}
 
-    .share-item > a {
-      align-items: center;
-      background-color: transparentize($taupe, 0.8);
-      border-radius: 50%;
-      fill: $marron;
-      display: inline-flex;
-      height: 3.4rem;
-      justify-content: center;
-      width: 3.4rem;
+		.share-item > a {
+			align-items: center;
+			background-color: transparentize($taupe, 0.8);
+			border-radius: 50%;
+			fill: $marron;
+			display: inline-flex;
+			height: 3.4rem;
+			justify-content: center;
+			width: 3.4rem;
 
-      &:hover, &:focus {
-        background-color: transparentize($taupe, 0.6);
-        fill: $gris33;
-      }
-    }
-  }
+			&:hover, &:focus {
+				background-color: transparentize($taupe, 0.6);
+				fill: $gris33;
+			}
+		}
+	}
 
 }

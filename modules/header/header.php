@@ -57,7 +57,7 @@
 				$current_user = wp_get_current_user();
 				$avatar_url = get_avatar_url($current_user->ID, [ 'size' => 22 ]); ?>
 				<li class="header-links-item header-links-item-user">
-					<a href="<?php echo admin_url(); ?>">
+					<a href="<?php echo bp_loggedin_user_domain(); ?>">
 						<span class="header-links-item-text">
 							<?php echo $current_user->display_name; ?>
 							<span class="header-links-item-user-avatar" style="background-image: url(<?php echo $avatar_url ?>);"></span>

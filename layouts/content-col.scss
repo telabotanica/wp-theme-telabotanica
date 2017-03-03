@@ -116,4 +116,26 @@
 			}
 		}
 	}
+
+	// Tableau de bord
+	&.is-dashboard {
+		> .layout-wrapper {
+			width: 100%;
+
+			> .layout-column {
+				flex: 0 0 26rem;
+				padding: 0;
+				width: 26rem;
+
+				&:before {display: none;}
+
+				> * {height: 100%;}
+			}
+
+			> .layout-content {
+				margin-left: 0;
+				padding: 4rem 5rem;
+			}
+		}
+	}
 }

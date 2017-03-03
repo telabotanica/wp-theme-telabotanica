@@ -82,7 +82,14 @@
 
 						printf(
 							'<span class="list-articles-author">%s</span>',
-							sprintf( __( 'par %s', 'telabotanica' ), get_the_author() )
+							sprintf(
+								__( 'par %s', 'telabotanica' ),
+								sprintf(
+									'<a href="%s">%s</a>',
+									esc_url( bp_core_get_user_domain( get_the_author_meta( 'ID' ) ) ),
+									get_the_author()
+								)
+							)
 						);
 
 						the_telabotanica_module('categories-labels');

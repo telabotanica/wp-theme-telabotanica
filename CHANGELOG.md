@@ -16,6 +16,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `cover-home` : ajout des icônes prévues
 * module `footer` : petits changements (réseaux sociaux et licence CC)
 * module `header` : refactoring
+* module `list-articles` : ajout des liens vers les auteurs
 * module `nav-dashboard` ajouté
 * ACF : utiliser le premier composant image comme vignette, si l'article n'en a pas
 

@@ -1,47 +1,48 @@
 .component-title {
-  color: $gris33;
-  font-family: $ubuntu;
-  margin: 4rem 0 2rem;
-  position: relative;
+	color: $gris33;
+	font-family: $ubuntu;
+	margin: 4rem 0 2rem;
+	position: relative;
 
-  & + & {margin-top: 0;}
-  .component + & {margin-top: 4rem;}
+	& + & {margin-top: 0;}
+	.component + & {margin-top: 4rem;}
+	& + .component {margin-top: 2rem;}
 
-  &.level-2 {
-    margin-top: 6rem;
+	&.level-2 {
+		margin-top: 6rem;
 
-    &:before {
-      background-color: $vert-clair-vif;
-      content: "";
-      display: block;
-      height: 100%;
-      position: absolute;
-      left: -5rem;
-      width: 0.4rem;
-    }
-  }
+		&:before {
+			background-color: $vert-clair-vif;
+			content: "";
+			display: block;
+			height: 100%;
+			position: absolute;
+			left: -5rem;
+			width: 0.4rem;
+		}
+	}
 
-  h2 {
-    font-size: 2.6rem;
-    font-weight: $bold;
-    line-height: 3.2rem;
-    margin: 0;
-  }
+	h2 {
+		font-size: 2.6rem;
+		font-weight: $bold;
+		line-height: 3.2rem;
+		margin: 0;
+	}
 
-  h3 {
-    font-size: 2.4rem;
-    font-weight: $light;
-    line-height: 3rem;
-    margin: 0;
-  }
+	h3 {
+		font-size: 2.4rem;
+		font-weight: $light;
+		line-height: 3rem;
+		margin: 0;
+	}
 
-  h4 {
-    font-size: 2rem;
-    font-weight: $light;
-    line-height: 2.6rem;
-    margin: 0;
-  }
+	h4 {
+		font-size: 2rem;
+		font-weight: $light;
+		line-height: 2.6rem;
+		margin: 0;
+	}
 
-  &:first-child {margin-top: 0;}
+	&:first-child {margin-top: 0;}
 
 }

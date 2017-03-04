@@ -20,6 +20,10 @@ get_header(); ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?>>
 									<?php
 
+									if ( post_is_in_descendant_category( 'offres-emploi' ) && has_post_thumbnail() ) :
+										the_post_thumbnail( 'post-thumbnail', ['class' => 'article-thumbnail'] );
+									endif;
+
 									the_title( '<h1 class="article-title">', '</h1>' );
 
 									if ( post_is_in_descendant_category( 'evenements' ) ) :
@@ -33,12 +37,60 @@ get_header(); ?>
 									endif;
 
 									if ( get_field('intro') ) :
-
 										the_telabotanica_component('intro', [
 											'text' => get_field('intro')
 										]);
-
 									endif;
+
+									// OFFRE D'EMPLOI
+									if ( post_is_in_descendant_category( 'offres-emploi' ) ) :
+
+										if ( get_field('context') ) :
+											the_telabotanica_component('title', [
+												'title' => __( "Contexte", 'telabotanica' )
+											]);
+											the_telabotanica_component('text', [
+												'text' => get_field('context')
+											]);
+										endif;
+
+										if ( get_field('missions') ) :
+											the_telabotanica_component('title', [
+												'title' => __( "Missions", 'telabotanica' )
+											]);
+											the_telabotanica_component('text', [
+												'text' => get_field('missions')
+											]);
+										endif;
+
+										if ( get_field('profile') ) :
+											the_telabotanica_component('title', [
+												'title' => __( "Profil recherché", 'telabotanica' )
+											]);
+											the_telabotanica_component('text', [
+												'text' => get_field('profile')
+											]);
+										endif;
+
+										if ( get_field('conditions') ) :
+											the_telabotanica_component('title', [
+												'title' => __( "Poste et conditions", 'telabotanica' )
+											]);
+											the_telabotanica_component('text', [
+												'text' => get_field('conditions')
+											]);
+										endif;
+
+										if ( get_field('how_to_apply') ) :
+											the_telabotanica_component('title', [
+												'title' => __( "Modalités de candidature", 'telabotanica' )
+											]);
+											the_telabotanica_component('text', [
+												'text' => get_field('how_to_apply')
+											]);
+										endif;
+
+									endif; // FIN OFFRE D'EMPLOI
 
 									// EN KIOSQUE
 									if ( has_category('en-kiosque') ) :
@@ -123,11 +175,11 @@ get_header(); ?>
 
 										the_telabotanica_component('map');
 
-										if ( get_field('contact') && !empty( get_field('contact')->name ) ) {
-											the_telabotanica_component('contact', get_field('contact'));
-										}
-
 									endif; // FIN EVENEMENT
+
+									if ( get_field('contact') && !empty( get_field('contact')->name ) ) {
+										the_telabotanica_component('contact', get_field('contact'));
+									}
 									?>
 								</article>
 							</div>

@@ -31,7 +31,11 @@
 
 	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-		echo '<div class="component-contact-image" style="background-image: url(' . (! empty($data->image) ? $data->image : '') . ')"></div>';
+		if ( !empty($data->image) ) :
+			echo '<div class="component-contact-image" style="background-image: url(' . $data->image . ')"></div>';
+		else :
+			echo '<div class="component-contact-image">' . get_telabotanica_module('icon', ['icon' => 'mail-outline']) . '</div>';
+		endif;
 
 		echo '<div class="component-contact-text">';
 			if (! empty($data->link)) :

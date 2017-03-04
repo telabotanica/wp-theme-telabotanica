@@ -12,6 +12,7 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * bloc `mosaic` : liens vers Identiplante
+* composant `contact` : icône mail par défaut quand pas d'image
 * composant `info` ajouté
 * composant `map` ajouté
 * composants : diverses amélioration du rendu dans les articles
@@ -32,6 +33,7 @@ plus de détails sur http://semver.org/lang/fr/
 * template `single` :
 	* support de la catégorie "En kiosque"
 	* support de la catégorie "Évènements"
+	* support de la catégorie "Offres d'emploi"
 * ACF : utiliser le premier composant image comme vignette, si l'article n'en a pas
 * PostCSS :
 	* mise à jour d'`autoprefixer` (ajout automatique des vendor prefixes)

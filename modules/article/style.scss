@@ -31,6 +31,11 @@
 		img {display: block;}
 	}
 
+	&-thumbnail {
+		float: right;
+		margin-left: 2rem;
+	}
+
 	// moins de margin-top lorsque précédé de breadcrumbs
 	.breadcrumbs + & {
 		margin-top: 3rem;

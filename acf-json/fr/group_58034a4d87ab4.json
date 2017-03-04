@@ -7,7 +7,7 @@
             "label": "Intro",
             "name": "intro",
             "type": "textarea",
-            "instructions": "Pour les CDD\/CDI : [structure] recherche un.e [titre de poste] en [type du contrat\/dur\u00e9e]<br \/>\r\nPour les stages : [structure] propose un stage de [dur\u00e9e]",
+            "instructions": "Pour les CDD\/CDI : [structure] recherche un.e [titre de poste] en [type du contrat\/durée]<br \/>\r\nPour les stages : [structure] propose un stage de [durée]",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -25,7 +25,7 @@
             "key": "field_58034aa1ef07d",
             "label": "Contexte",
             "name": "context",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -35,17 +35,17 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_58034ab6ef07e",
             "label": "Missions",
             "name": "missions",
-            "type": "textarea",
-            "instructions": "Noter les missions confi\u00e9es au poste ou au stagiaire",
+            "type": "wysiwyg",
+            "instructions": "Noter les missions confiées au poste ou au stagiaire",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -54,17 +54,17 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_58034acaef07f",
-            "label": "Profil recherch\u00e9",
+            "label": "Profil recherché",
             "name": "profile",
-            "type": "textarea",
-            "instructions": "Noter le profil recherch\u00e9",
+            "type": "wysiwyg",
+            "instructions": "Noter le profil recherché",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -73,16 +73,16 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_58034adeef080",
             "label": "Poste \/ conditions",
             "name": "conditions",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "Noter les conditions du recrutement ou du stage",
             "required": 1,
             "conditional_logic": 0,
@@ -92,17 +92,17 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_58034b05ef081",
-            "label": "Modalit\u00e9s de candidature",
+            "label": "Modalités de candidature",
             "name": "how_to_apply",
-            "type": "textarea",
-            "instructions": "Candidatures (CV & L.M) \u00e0 envoyer avant le [date limite] \u00e0 [contact]",
+            "type": "wysiwyg",
+            "instructions": "Candidatures (CV & L.M) à envoyer avant le [date limite] à [contact]",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -111,29 +111,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
-        },
-        {
-            "key": "field_58034b20ef082",
-            "label": "Renseignements \/ contacts suppl\u00e9mentaires",
-            "name": "additional_info",
-            "type": "textarea",
-            "instructions": "Noter les contacts pour demande de renseignements",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -197,5 +178,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479228751
+    "modified": 1488651317
 }

@@ -33,6 +33,10 @@ plus de détails sur http://semver.org/lang/fr/
 	* support de la catégorie "En kiosque"
 	* support de la catégorie "Évènements"
 * ACF : utiliser le premier composant image comme vignette, si l'article n'en a pas
+* PostCSS :
+	* mise à jour d'`autoprefixer` (ajout automatique des vendor prefixes)
+	* ajout de `pixrem` (fallback `px` pour les navigateurs ne supportant pas `rem`)
+	* ajout de `css-mqpacker` (pour grouper les media queries à la fin du CSS)
 
 ## 0.0.6 (2017-03-01)
 

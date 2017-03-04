@@ -1,6 +1,4 @@
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
-const pixrem = require('pixrem')
 const postcss = require('postcss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
@@ -83,16 +81,7 @@ module.exports = {
 		extractLoginStyle,
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.LoaderOptionsPlugin({
-			minimize: true,
-			postcss: [
-				autoprefixer({
-					browsers: [
-						'last 5 versions',
-						'android 4',
-						'opera 12',
-					],
-				}),
-			],
+			minimize: true
 		}),
 		// Make $ and jQuery available in every module without writing require("jquery")
 		new webpack.ProvidePlugin({

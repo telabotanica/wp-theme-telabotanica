@@ -1,23 +1,31 @@
 <?php
-// Si un post n'a pas de vignette, utiliser le premier composant image
+// Si un post n'a pas de vignette, essayer d'en ajouter une
 function telabotanica_set_featured_image( $post_id ) {
-
-	$flexible_content = get_field('components', $post_id, false);
-
-	// ne pas réécrire une vignette existante
+	// Ne pas réécrire une vignette existante
 	if ( has_post_thumbnail( $post_id ) ) return;
+
+	// Pour les évènements (qui contiennent un champ image optionnel)
+	$image = get_field('image', $post_id, false);
+
+	if ( $image ) {
+		// Définir comme vignette
+		update_post_meta($post_id, '_thumbnail_id', $image);
+		return;
+	}
+
+	// Pour les posts utilisant des composants
+	$flexible_content = get_field('components', $post_id, false);
 
 	if ( $flexible_content ) {
 		foreach ($flexible_content as $row) {
-			// check if the image is set in certain layout
+			// Trouver le premier composant image
 			if ( $row['acf_fc_layout'] == 'image' && isset($row['field_582c849d8668f_field_582c67ba3c90e']) ){
-				// update the featured image
+				// Définir comme vignette
 				update_post_meta($post_id, '_thumbnail_id', $row['field_582c849d8668f_field_582c67ba3c90e']);
 				break;
 			}
 		}
 	}
-
 }
-// run after ACF saves the $_POST['acf'] data
+// Déclenché quand ACF sauve les données $_POST['acf']
 add_action('acf/save_post', 'telabotanica_set_featured_image', 20);

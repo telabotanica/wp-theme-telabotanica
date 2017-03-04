@@ -12,7 +12,7 @@
 	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-image'], $data->modifiers);
 
 	if (empty($data->image)) {
-		$image = get_sub_field('image');
+		$image = get_sub_field('image') ?: get_field('image');
 		$data->image = $image['sizes']['large'];
 
 		// Le srcset est analysé selon les tailles proposées.

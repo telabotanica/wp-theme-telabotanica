@@ -24,9 +24,12 @@ get_header(); ?>
 
 									if ( post_is_in_descendant_category( 'evenements' ) ) :
 										the_telabotanica_module('event-dates', [
-											'modifiers' => 'float-left',
+											'modifiers' => get_field('image') ? 'absolute-top-left' : 'float-left',
 											'tag' => 'div'
 										]);
+										if ( get_field('image') ) :
+											the_telabotanica_component('image');
+										endif;
 									endif;
 
 									if ( get_field('intro') ) :
@@ -40,55 +43,51 @@ get_header(); ?>
 									// EN KIOSQUE
 									if ( has_category('en-kiosque') ) :
 
-										the_telabotanica_component('text', [
-											'text' => get_field('presentation')
-										]);
+										if ( get_field('presentation') ) :
+											the_telabotanica_component('text', [
+												'text' => get_field('presentation')
+											]);
+										endif;
 
 										if ( get_field('author') ) :
-
 											the_telabotanica_component('title', [
 												'title' => __( "L'auteur", 'telabotanica' )
 											]);
 											the_telabotanica_component('text', [
 												'text' => get_field('author')
 											]);
-
 										endif;
 
 										if ( get_field('references') ) :
-
 											the_telabotanica_component('title', [
 												'title' => __( "Informations pratiques", 'telabotanica' )
 											]);
 											the_telabotanica_component('text', [
 												'text' => get_field('references')
 											]);
-
 										endif;
 
-										the_telabotanica_component('title', [
-											'title' => __( "Comment se procurer l'ouvrage ?", 'telabotanica' )
-										]);
-										the_telabotanica_component('text', [
-											'text' => get_field('how_to_buy')
-										]);
+										if ( get_field('how_to_buy') ) :
+											the_telabotanica_component('title', [
+												'title' => __( "Comment se procurer l'ouvrage ?", 'telabotanica' )
+											]);
+											the_telabotanica_component('text', [
+												'text' => get_field('how_to_buy')
+											]);
+										endif;
 
 									endif; // FIN EN KIOSQUE
 
 									if ( get_field('description') ) :
-
 										the_telabotanica_component('text', [
 											'text' => get_field('description')
 										]);
-
 									endif;
 
 									if ( !empty( get_the_content() ) ) :
-
 										the_telabotanica_component('text', [
 											'text' => apply_filters('the_content', get_the_content())
 										]);
-
 									endif;
 
 									// Si la page utilise des composants

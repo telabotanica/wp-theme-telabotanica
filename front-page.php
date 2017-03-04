@@ -44,12 +44,12 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
 									'text' => get_the_excerpt()
 								]);
 							endwhile;
-							wp_reset_postdata();
 
 							the_telabotanica_module('button', [
 								'href' => get_permalink(),
 								'text' => __('Lire la suite', 'telabotanica')
 							]);
+							wp_reset_postdata();
 						endif;
 
 

@@ -27,30 +27,7 @@
 			);
 
 				if ( $is_event ) :
-					$date_timestamp = strtotime( get_field( 'date', null, false ) );
-					$date_end_timestamp = strtotime( get_field( 'date_end', null, false ) );
-					$date_title = date_i18n( get_option( 'date_format' ), $date_timestamp );
-					if ( $date_end_timestamp ) :
-						$date_title = sprintf( _x( 'Du %s au %s', '%s = dates', 'telabotanica' ), $date_title, date_i18n( get_option( 'date_format' ), $date_end_timestamp ) );
-					else :
-						$date_title = sprintf( _x( 'Le %s', '%s = date', 'telabotanica' ), $date_title );
-					endif;
-					echo '<a href="' . esc_url( get_permalink() ) . '" class="list-articles-dates" title="' . $date_title . '">';
-					printf(
-						'<time datetime="%s" class="list-articles-dates-item"><div class="list-articles-dates-day">%s</div><div class="list-articles-dates-month">%s</div></time>',
-						date_i18n('Y-m-d', $date_timestamp),
-						date_i18n('j', $date_timestamp),
-						date_i18n('M', $date_timestamp)
-					);
-					if ( $date_end_timestamp ) {
-						printf(
-							'<time datetime="%s" class="list-articles-dates-item is-end"><div class="list-articles-dates-day">%s</div><div class="list-articles-dates-month">%s</div></time>',
-							date_i18n('Y-m-d', $date_end_timestamp),
-							date_i18n('j', $date_end_timestamp),
-							date_i18n('M', $date_end_timestamp)
-						);
-					}
-					echo '</a>';
+					the_telabotanica_module('event-dates', ['modifiers' => 'float-left']);
 				else :
 					printf(
 						'<a href="%s" class="list-articles-image">%s</a>',

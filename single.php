@@ -22,6 +22,13 @@ get_header(); ?>
 
 									the_title( '<h1 class="article-title">', '</h1>' );
 
+									if ( post_is_in_descendant_category( 'evenements' ) ) :
+										the_telabotanica_module('event-dates', [
+											'modifiers' => 'float-left',
+											'tag' => 'div'
+										]);
+									endif;
+
 									if ( get_field('intro') ) :
 
 										the_telabotanica_component('intro', [

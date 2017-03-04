@@ -19,8 +19,7 @@
 		</div>
 		<ul class="upcoming-events-items">
 			<?php
-			$events = get_posts( [
-				'posts_per_page' => 3,
+			$query = new WP_Query([
 				'meta_query' => [
 					[
 						'key' => 'date',
@@ -29,33 +28,33 @@
 						'type' => 'DATE'
 					]
 				],
+				'posts_per_page' => 3,
 				'orderby' => 'meta_value_num',
 				'meta_key' => 'date',
 				'order' => 'ASC',
-			] );
+			]);
 
-			if ( $events ) :
-				foreach ( $events as $event ) :
-					$date_timestamp = strtotime( get_field( 'date', $event, false ) );
+			if ( $query->have_posts() ) :
+				while ( $query->have_posts() ) : $query->the_post();
 					echo '<li class="upcoming-events-item">';
 					printf(
 						'<a href="%s" class="upcoming-events-item-link">
-							<div class="upcoming-events-date">
-								<div class="upcoming-events-date-day">%s</div>
-								<div class="upcoming-events-date-month">%s</div>
-							</div>
+							%s
 							<div class="upcoming-events-name">%s</div>
 							<div class="upcoming-events-place">%s</div>
 						</a>',
-						get_permalink($event),
-						date_i18n('j', $date_timestamp),
-						date_i18n('M', $date_timestamp),
-						get_the_title($event),
-						telabotanica_format_place( get_field( 'place', $event ), false )
+						get_permalink(),
+						get_telabotanica_module('event-dates', [
+							'date' => get_field( 'date', null, false ),
+							'date_end' => get_field( 'date_end', null, false ),
+							'modifiers' => 'small',
+							'tag' => 'div'
+						]),
+						get_the_title(),
+						telabotanica_format_place( get_field( 'place' ), false )
 					);
 					echo '</li>';
-				endforeach;
-				wp_reset_postdata();
+				endwhile;
 			endif;
 			?>
 		</ul>
@@ -67,4 +66,6 @@
 	] );
 
 	echo '</div>';
+
+	wp_reset_postdata();
 }

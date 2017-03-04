@@ -1,134 +1,85 @@
 .list-articles {
-  margin: 3rem 0 20rem;
+	margin: 3rem 0 20rem;
 
-  &.only-events {
-    .list-articles-item + .list-articles-item {
-      border-top: 0.1rem solid $grisDD;
-      margin-top: 3rem;
-      padding-top: 3rem;
-    }
-  }
+	&.only-events {
+		.list-articles-item + .list-articles-item {
+			border-top: 0.1rem solid $grisDD;
+			margin-top: 3rem;
+			padding-top: 3rem;
+		}
+	}
 
-  &-item {
-    color: $gris33;
-    line-height: 2.4rem;
-    overflow: hidden;
+	&-item {
+		color: $gris33;
+		line-height: 2.4rem;
+		overflow: hidden;
 
-    & + & {margin-top: 5rem;}
-  }
+		& + & {margin-top: 5rem;}
+	}
 
-  &-image,
-  &-dates {
-    float: left;
-    margin-right: 2.5rem;
-  }
+	&-image {
+		float: left;
+		margin-right: 2.5rem;
+	}
 
-  &-image {
-    background-color: $grisF0;
-    height: 16rem;
-    width: 22rem;
+	&-image {
+		background-color: $grisF0;
+		height: 16rem;
+		width: 22rem;
 
-    &, img {
-      display: block;
-    }
-  }
+		&, img {
+			display: block;
+		}
+	}
 
-  &-dates {
-    color: $orange;
-    font-family: $ubuntu;
-    font-weight: $medium;
-    text-align: center;
-    text-decoration: none;
-    width: 8rem;
+	&-text {
+		margin-left: 24.5rem;
 
-    &:hover, &:focus {
-      color: darken($orange, 10%);
-    }
+		.list-articles-item.is-event & {
+			margin-left: 10.5rem;
+		}
+	}
 
-    &-item {
-      background-color: lighten($orange, 35%);
-      display: block;
-      height: 7rem;
-      padding: 1.4rem 0.5rem;
+	&-meta {
+		color: $taupe;
+		fill: $taupe;
+		font-size: 1.2rem;
+		font-weight: $regular;
+		line-height: 2.2rem;
+		margin-bottom: 1rem;
+		overflow: hidden;
+		position: relative;
+		white-space: nowrap;
 
-      &.is-end {
-        background-color: lighten($orange, 42%);
-        position: relative;
+		.icon {
+			height: 1.5rem;
+			vertical-align: middle;
+			width: 1.5rem;
+		}
 
-        &:before {
-          border-top: solid 1rem lighten($orange, 35%);
-          border-left: solid 1rem transparent;
-          border-right: solid 1rem transparent;
-          content: '';
-          height: 0;
-          position: absolute;
-          top: 0;
-          transform: translateX(-50%);
-          width: 0;
-        }
-      }
-    }
+		&:after {
+			background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+			content: "";
+			display: block;
+			height: 2.2rem;
+			pointer-events: none;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 2.2rem;
+		}
+	}
 
-    &-day {
-      font-size: 2.6rem;
-    }
-    &-month {
-      font-size: 1rem;
-      letter-spacing: 0.1rem;
-      overflow: hidden;
-      text-transform: uppercase;
-      text-overflow: ellipsis;
-    }
-  }
+	&-place {
+		color: $orange;
+		display: inline-block;
+		fill: $orange;
+		margin-right: 1.5rem;
+	}
 
-  &-text {
-    margin-left: 24.5rem;
-
-    .list-articles-item.is-event & {
-      margin-left: 10.5rem;
-    }
-  }
-
-  &-meta {
-    color: $taupe;
-    fill: $taupe;
-    font-size: 1.2rem;
-    font-weight: $regular;
-    line-height: 2.2rem;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-
-    .icon {
-      height: 1.5rem;
-      vertical-align: middle;
-      width: 1.5rem;
-    }
-
-    &:after {
-      background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-      content: "";
-      display: block;
-      height: 2.2rem;
-      pointer-events: none;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 2.2rem;
-    }
-  }
-
-  &-place {
-    color: $orange;
-    display: inline-block;
-    fill: $orange;
-    margin-right: 1.5rem;
-  }
-
-  &-date {
-    cursor: help;
-  }
+	&-date {
+		cursor: help;
+	}
 
 	&-author a {
 		color: $taupe;
@@ -140,31 +91,31 @@
 		}
 	}
 
-  .categories-labels {
-    margin-left: 1rem;
-  }
+	.categories-labels {
+		margin-left: 1rem;
+	}
 
-  &-title {
-    font-family: $ubuntu;
-    font-size: 1.9rem;
-    font-weight: $medium;
-    margin: 0;
+	&-title {
+		font-family: $ubuntu;
+		font-size: 1.9rem;
+		font-weight: $medium;
+		margin: 0;
 
-    &, a {
-      color: $gris23;
-    }
+		&, a {
+			color: $gris23;
+		}
 
-    a {
-      text-decoration: none;
-      transition: color 0.2s ease;
+		a {
+			text-decoration: none;
+			transition: color 0.2s ease;
 
-      &:hover {color: $turquoise-fonce;}
-      .list-articles-item.is-event &:hover {color: darken($orange, 30%);}
-    }
-  }
+			&:hover {color: $turquoise-fonce;}
+			.list-articles-item.is-event &:hover {color: darken($orange, 30%);}
+		}
+	}
 
-  p {
-    margin: 1rem 0 0;
-  }
+	p {
+		margin: 1rem 0 0;
+	}
 
 }

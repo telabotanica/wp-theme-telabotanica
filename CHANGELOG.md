@@ -16,13 +16,19 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `map` ajouté
 * composants : diverses amélioration du rendu dans les articles
 * module `cover-home` : ajout des icônes prévues
+* module `event-dates` ajouté
 * module `footer` : petits changements (réseaux sociaux et licence CC)
 * module `header` : refactoring
-* module `list-articles` : ajout des liens vers les auteurs
+* module `list-articles` :
+	* ajout des liens vers les auteurs
+	* refactoring avec `event-dates`
 * module `meta-news` :
 	* ajout des liens vers les auteurs
 	* ajout du lieu pour les évènements
 * module `nav-dashboard` ajouté
+* module `upcoming-events` :
+	* correction bug get_posts
+	* refactoring avec `event-dates`
 * template `single` :
 	* support de la catégorie "En kiosque"
 	* support de la catégorie "Évènements"

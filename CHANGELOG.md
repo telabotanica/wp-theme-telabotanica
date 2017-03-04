@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+## 0.0.7 (2017-03-04)
+
 * bloc `mosaic` : liens vers Identiplante
 * composant `contact` : icône mail par défaut quand pas d'image
 * composant `info` ajouté

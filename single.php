@@ -24,7 +24,7 @@ get_header(); ?>
 
 									if ( post_is_in_descendant_category( 'evenements' ) ) :
 										the_telabotanica_module('event-dates', [
-											'modifiers' => get_field('image') ? 'absolute-top-left' : 'float-left',
+											'modifiers' => get_field('image') ? 'absolute' : 'float-left',
 											'tag' => 'div'
 										]);
 										if ( get_field('image') ) :

@@ -3,30 +3,11 @@
     "title": "Article - En kiosque",
     "fields": [
         {
-            "key": "field_58034e8c9fc17",
-            "label": "Pr\u00e9sentation",
-            "name": "presentation",
-            "type": "textarea",
-            "instructions": "Pr\u00e9sentation de l'ouvrage",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
-        },
-        {
             "key": "field_58034eab9fc18",
             "label": "Auteur",
             "name": "author",
             "type": "textarea",
-            "instructions": "Pr\u00e9sentation de l'auteur",
+            "instructions": "Présentation de l'auteur",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -45,7 +26,7 @@
             "label": "Informations pratiques",
             "name": "references",
             "type": "textarea",
-            "instructions": "Renseigner les r\u00e9f\u00e9rences de l'ouvrage",
+            "instructions": "Renseigner les références de l'ouvrage",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -53,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Titre de l'ouvrage\r\nAuteur(s)\r\n\u00c9ditions, date de publication\r\nNombre de pages, format ...\r\nISBN\r\nPrix indicatif",
+            "default_value": "Titre de l'ouvrage\r\nAuteur(s)\r\nÉditions, date de publication\r\nNombre de pages, format ...\r\nISBN\r\nPrix indicatif",
             "placeholder": "",
             "maxlength": "",
             "rows": "",
@@ -64,7 +45,7 @@
             "label": "Pour se procurer l'ouvrage",
             "name": "how_to_buy",
             "type": "textarea",
-            "instructions": "Donner un lien vers le site de l'\u00e9diteur pour pouvoir acqu\u00e9rir l'ouvrage",
+            "instructions": "Donner un lien vers le site de l'éditeur pour pouvoir acquérir l'ouvrage",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -72,7 +53,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Commander l'ouvrage en ligne sur le site des \u00e9ditions [X] [url de la page du livre]",
+            "default_value": "Commander l'ouvrage en ligne sur le site des éditions [X] [url de la page du livre]",
             "placeholder": "",
             "maxlength": "",
             "rows": "",
@@ -94,7 +75,7 @@
         ]
     ],
     "menu_order": 1,
-    "position": "acf_after_title",
+    "position": "normal",
     "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -104,5 +85,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479227808
+    "modified": 1488652095
 }

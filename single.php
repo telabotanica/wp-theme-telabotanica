@@ -92,14 +92,20 @@ get_header(); ?>
 
 									endif; // FIN OFFRE D'EMPLOI
 
+									if ( get_field('description') ) :
+										the_telabotanica_component('text', [
+											'text' => get_field('description')
+										]);
+									endif;
+
+									if ( !empty( get_the_content() ) ) :
+										the_telabotanica_component('text', [
+											'text' => apply_filters('the_content', get_the_content())
+										]);
+									endif;
+
 									// EN KIOSQUE
 									if ( has_category('en-kiosque') ) :
-
-										if ( get_field('presentation') ) :
-											the_telabotanica_component('text', [
-												'text' => get_field('presentation')
-											]);
-										endif;
 
 										if ( get_field('author') ) :
 											the_telabotanica_component('title', [
@@ -129,18 +135,6 @@ get_header(); ?>
 										endif;
 
 									endif; // FIN EN KIOSQUE
-
-									if ( get_field('description') ) :
-										the_telabotanica_component('text', [
-											'text' => get_field('description')
-										]);
-									endif;
-
-									if ( !empty( get_the_content() ) ) :
-										the_telabotanica_component('text', [
-											'text' => apply_filters('the_content', get_the_content())
-										]);
-									endif;
 
 									// Si la page utilise des composants
 									if( have_rows('components') ) :

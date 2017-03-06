@@ -8,7 +8,7 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Composer la newsletter',
 		'menu_slug' 	=> 'newsletter_compose',
 		'parent_slug'	=> 'newsletter',
-		'capability'	=> 'edit_posts',
+		'capability'	=> 'administrator',
 		'redirect'		=> false
 	));
 

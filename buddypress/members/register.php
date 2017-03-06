@@ -10,6 +10,12 @@
 
 <div id="buddypress">
 
+	<?php the_telabotanica_module('cover'); ?>
+
+	<div class="layout-full-width">
+		<div class="layout-wrapper">
+			<div id="registration-form">
+
 	<?php
 
 	/**
@@ -64,8 +70,16 @@
 
 			</div>
 
-			<p><?php _e( 'Registering for this site is easy. Just fill in the fields below, and we\'ll get a new account set up for you in no time.', 'buddypress' ); ?></p>
-
+			<div id="registration-instructions">
+				<h2>?</h2>
+				<?php
+				// On boucle sur les composants ACF
+				while ( have_rows('components') ) :
+					the_row();
+					the_telabotanica_component(get_row_layout());
+				endwhile;
+				?>
+			</div>
 			<?php
 
 			/**
@@ -350,8 +364,18 @@
 			 */
 			do_action( 'bp_before_registration_submit_buttons' ); ?>
 
-			<div class="submit">
-				<input type="submit" name="signup_submit" id="signup_submit" value="<?php esc_attr_e( 'Complete Sign Up', 'buddypress' ); ?>" />
+			<div class="submit complete-registration">
+			<?php
+			the_telabotanica_module('button', [
+				'tag' => 'button',
+				'extra_attributes' => [
+					'type' => 'submit',
+					'name' => 'signup_submit',
+					'id' => 'signup_submit'
+				],
+				'text' => esc_attr__( 'Complete Sign Up', 'buddypress' )
+			]);
+			?>
 			</div>
 
 			<?php
@@ -386,7 +410,7 @@
 			 */
 			do_action( 'bp_before_registration_confirmed' ); ?>
 
-			<div id="template-notices" role="alert" aria-atomic="true">
+			<div id="template-notices" class="notice-registration-complete" role="alert" aria-atomic="true">
 				<?php if ( bp_registration_needs_activation() ) : ?>
 					<p><?php _e( 'You have successfully created your account! To begin using this site you will need to activate your account via the email we have just sent to your address.', 'buddypress' ); ?></p>
 				<?php else : ?>
@@ -427,4 +451,9 @@
 	 */
 	do_action( 'bp_after_register_page' ); ?>
 
+			</div>
+		</div>
+	</div>
 </div><!-- #buddypress -->
+
+<div style="clear: both;"></div>

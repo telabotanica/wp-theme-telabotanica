@@ -10,6 +10,11 @@
 
 <div id="buddypress">
 
+	<?php the_telabotanica_module('cover'); ?>
+
+	<div class="layout-full-width">
+		<div class="layout-wrapper">
+
 	<?php
 
 	/**
@@ -21,7 +26,7 @@
 
 	<div class="page" id="activate-page">
 
-		<div id="template-notices" role="alert" aria-atomic="true">
+		<div id="template-notices" class="notice-registration" role="alert" aria-atomic="true">
 			<?php
 
 			/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
@@ -82,5 +87,8 @@
 	 * @since 1.1.0
 	 */
 	do_action( 'bp_after_activation_page' ); ?>
+
+		</div>
+	</div>
 
 </div><!-- #buddypress -->

@@ -58,6 +58,7 @@
 
 				endif;
 
+				$data->button['href'] = $data->button['url'];
 				$data->button['text'] = $data->button['title'];
 				$data->button['modifiers'] = ['block', 'orange'];
 				the_telabotanica_module('button', $data->button);

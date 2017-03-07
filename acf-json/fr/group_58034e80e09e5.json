@@ -44,7 +44,7 @@
             "key": "field_58034ee99fc1a",
             "label": "Pour se procurer l'ouvrage",
             "name": "how_to_buy",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "Donner un lien vers le site de l'éditeur pour pouvoir acquérir l'ouvrage",
             "required": 1,
             "conditional_logic": 0,
@@ -53,11 +53,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Commander l'ouvrage en ligne sur le site des éditions [X] [url de la page du livre]",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -85,5 +85,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1488652095
+    "modified": 1488910291
 }

@@ -1,0 +1,60 @@
+.notice {
+	border: 0.1rem solid;
+	border-radius: 0.4rem;
+	line-height: 2rem;
+	padding: 1rem 1.5rem;
+	position: relative;
+	text-align: center;
+
+	&-confirm {
+		background-color: $vert-tres-clair;
+		border-color: darken($vert-tres-clair, 20%);
+		color: darken($vert-fonce, 10%);
+		fill: darken($vert-fonce, 10%);
+	}
+
+	&-info {
+		background-color: $turquoise-clair;
+		border-color: darken($turquoise-clair, 20%);
+		color: $turquoise-fonce;
+		fill: $turquoise-fonce;
+	}
+
+	&-warning {
+		background-color: $jaune-clair;
+		border-color: darken($jaune-clair, 30%);
+		color: $marron;
+		fill: $marron;
+	}
+
+	&-alert {
+		background-color: $orange-clair;
+		border-color: darken($orange-clair, 20%);
+		color: darken($orange, 20%);
+		fill: darken($orange, 20%);
+	}
+
+	&.is-closable {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+
+	&-close {
+		align-items: center;
+		background: none;
+		border: 0;
+		color: inherit;
+		cursor: pointer;
+		display: flex;
+		height: 4.25rem;
+		padding: 1rem;
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		&:hover {
+			fill: $gris23;
+		}
+	}
+
+}

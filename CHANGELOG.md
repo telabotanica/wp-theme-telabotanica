@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* module `notice` ajouté
+
 ## 0.0.7 (2017-03-04)
 
 * bloc `mosaic` : liens vers Identiplante

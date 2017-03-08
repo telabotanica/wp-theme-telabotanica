@@ -1,0 +1,16 @@
+include ../icon/icon-mixin
+
+//- This file is only meant to be included in other modules
+//- and then used as a mixin: +notice({ ... })
+mixin notice(data)
+	- var modifiers = "notice-" + data.type;
+	if data.closable
+		- modifiers = modifiers + " is-closable"
+	.notice(class=modifiers)
+		if data.title
+			strong.notice-title= data.title
+			= ' '
+		span.notice-text= data.text
+		if data.closable
+			button.notice-close
+				+icon({icon: 'close'})

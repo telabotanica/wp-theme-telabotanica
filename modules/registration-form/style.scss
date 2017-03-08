@@ -108,13 +108,10 @@
 			float: none;
 		}
 	}
+}
 
-	.register-section {
-
-		.field-visibility-settings-toggle {
-			display: none;
-		}
-	}
+#buddypress .field-visibility-settings-toggle {
+	display: none;
 }
 
 #activate-page {

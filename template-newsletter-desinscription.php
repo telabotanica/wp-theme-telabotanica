@@ -91,30 +91,28 @@ if (function_exists('tbChargerConfigPlugin')) {
 						error_log($message);
 					}
 				}
-				?>
-				<p class="notice notice-warning">
-					<?php _e("Une erreur est survenue lors de la désinscription, nous en avons été informés", 'telabotanica') ?>.
-					<br>
-					<?php _e("Pour plus d'informations n'hésitez pas à nous contacter", 'telabotanica') ?>.
-				</p>
-				<?php
+				the_telabotanica_module('notice', [
+					'type' => 'warning',
+					'text' =>
+						__( "Une erreur est survenue lors de la désinscription, nous en avons été informés.", 'telabotanica' )
+						. ' '
+						. __( "Pour plus d'informations n'hésitez pas à nous contacter", 'telabotanica' )
+
+				]);
 			}
 		}
 	} else {
 		// erreur config lettre
-		?>
-		<p class="notice notice-warning">
-			<?php _e("Configuration incomplète") ?>.
-			<br/>
-			<?php _e("Vérifiez les réglages de la lettre d'actualités") ?>.
-		</p>
-		<?php
+		the_telabotanica_module('notice', [
+			'type' => 'warning',
+			'title' => __( "Configuration incomplète", 'telabotanica' )
+			'text' => __( "Vérifiez les réglages de la lettre d'actualités", 'telabotanica' )
+		]);
 	}
 	?>
 	<form method="post" action="" class="form-newsletter layout-column">
 		<input type="hidden" name="name" id="name">
-		<input class="form-newsletter-email" name="email" type="email" required
-			   placeholder="<?php _e('Votre adresse e-mail', 'telabotanica') ?>">
+		<input class="form-newsletter-email" name="email" type="email" required placeholder="<?php _e('Votre adresse e-mail', 'telabotanica') ?>">
 		<?php the_telabotanica_module('button', [
 			'tag' => 'button',
 			'extra_attributes' => ['type' => 'submit'],

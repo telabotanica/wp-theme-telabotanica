@@ -71,8 +71,13 @@
 			</div>
 
 			<div id="registration-instructions">
-				<h2>?</h2>
 				<?php
+				printf(
+					'<h2>%s<span class="hidden-accessibly">%s</span></h2>',
+					get_telabotanica_module('icon', ['icon' => 'help-circle']),
+					__( 'Aide', 'telabotanica' )
+				);
+
 				// On boucle sur les composants ACF
 				while ( have_rows('components') ) :
 					the_row();

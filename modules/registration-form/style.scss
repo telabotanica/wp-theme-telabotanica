@@ -1,0 +1,119 @@
+#registration-form {
+
+
+	#signup_form.standard-form {
+		color: $gris23;
+		margin-top: 4rem;
+
+		#template-notices {
+
+			> #message {
+				>p {
+					border: none;
+					background-color: transparent;
+					margin: 0;
+				}
+			}
+
+			&.notice-registration-complete {
+				margin: 4rem auto;
+				width: 70%;
+				text-align: center;
+			}
+		}
+
+		#basic-details-section {
+			float: none;
+
+			#pass-strength-result {
+				float: right;
+			}
+		}
+
+		#profile-details-section {
+			float: none;
+			margin-top: 4rem;
+		}
+
+		#registration-instructions {
+			float: right;
+			width: 48%;
+			//border: solid blue 1px;
+			padding: 1rem;
+			color: $gris23;
+			background-color: $beige2;
+
+			> h2 {
+				fill: $taupe;
+				margin-top: 0;
+				.icon {
+					height: 4rem;
+					width: 4rem;
+				}
+			}
+		}
+
+		button {
+			font-size: 1.3rem;
+			background-color: $green-button;
+			color: $blanc;
+			padding: 1.25rem 2rem;
+			text-align: center;
+			text-decoration: none;
+
+			&:hover, &:focus {
+				background-color: lighten($green-button, 8%);
+				color: $blanc;
+			}
+		}
+
+		input[type="text"], input[type="email"], input[type="password"] {
+			width: 100%;
+			border: .1rem solid #ddd;
+			border-radius: .3rem;
+			padding: 1rem;
+		}
+
+		label {
+			display: block;
+			margin-top: 2rem;
+			margin-bottom: .4rem;
+			color: #606060;
+			font-size: 1.5rem;
+		}
+
+		div {
+			div.error {
+				width: 100%;
+				padding-left: 1rem;
+				border-radius: 2px;
+			}
+		}
+
+		.checkbox-options {
+
+			> label {
+				margin-top: 0.5rem;
+
+				> input {
+					vertical-align: middle;
+				}
+			}
+		}
+
+		div.submit.complete-registration {
+			margin: 4rem 0;
+			width: 48%;
+			text-align: right;
+			float: none;
+		}
+	}
+}
+
+#buddypress .field-visibility-settings-toggle {
+	display: none;
+}
+
+#activate-page {
+	margin: 4rem 0;
+}

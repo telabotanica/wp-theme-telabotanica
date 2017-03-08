@@ -20,7 +20,17 @@
           </ul>
         </div>
 
-        <?php the_telabotanica_module('newsletter', ['modifiers' => 'layout-column'] ); ?>
+        <?php
+          global $footer_no_newsletter;
+          global $footer_newsletter_no_subscription;
+          if ($footer_no_newsletter !== true) {
+            $newsletter_module_options = ['modifiers' => 'layout-column'];
+            if ($footer_newsletter_no_subscription === true) {
+              $newsletter_module_options['button'] = false;
+            }
+            the_telabotanica_module('newsletter',  $newsletter_module_options);
+          }
+        ?>
       </div>
     </div>
 

@@ -21,6 +21,7 @@ do_action( 'bp_before_member_header' ); ?>
 	<a id="header-cover-image" href="<?php bp_displayed_user_link(); ?>"></a>
 
 	<div id="item-header-cover-image">
+		<?php the_title('<h1>', '</h1>'); ?>
 		<div id="item-header-avatar">
 			<a href="<?php bp_displayed_user_link(); ?>">
 

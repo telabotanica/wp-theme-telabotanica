@@ -1,7 +1,8 @@
 <?php function telabotanica_module_newsletter($data) {
 
 	$defaults = [
-		'modifiers' => []
+		'modifiers' => [],
+		'button' => true
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);
@@ -22,10 +23,12 @@
 			__( "Chaque jeudi, recevez un condensé de l'actualité du réseau, les évènements et les offres d'emplois directement dans votre boîte mail.", 'telabotanica' )
 		);
 
-		the_telabotanica_module('button', [
-			'href' => is_user_logged_in() ? '#' : '#', // TODO
-			'text' => __( "S'abonner", 'telabotanica' )
-		] );
+		if ($data->button) {
+			the_telabotanica_module('button', [
+				'href' => is_user_logged_in() ? '#' : '#', // TODO
+				'text' => __( "S'abonner", 'telabotanica' )
+			] );
+		}
 
 	echo '</div>';
 }

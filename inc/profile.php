@@ -6,9 +6,8 @@
  * 
  */
  
-add_action("admin_init","bpdev_redirect_user_to_bp_profile");
- 
-function bpdev_redirect_user_to_bp_profile(){
+add_action("admin_init","tb_redirect_user_to_bp_profile");
+function tb_redirect_user_to_bp_profile(){
 	if ( !defined('IS_PROFILE_PAGE') )
 	return false;//if this is not the profile page, do not do anything
 	 
@@ -18,36 +17,37 @@ function bpdev_redirect_user_to_bp_profile(){
 }
 
 /**
- * Enléve le champ pseudo de la page d'inscription
- *
- * @return string
+ * Enlève le champ "pseudo" de la page d'inscription
  */
- // supprime le champ
-add_filter( 'xprofile_group_fields', 'dk_bp_remove_xprofile_fullname_field', 10, 2 );
-function dk_bp_remove_xprofile_fullname_field( $fields ){
-    if( ! bp_is_register_page() )
+add_filter( 'xprofile_group_fields', 'tb_bp_remove_xprofile_fullname_field', 10, 2 );
+function tb_bp_remove_xprofile_fullname_field( $fields ) {
+    if( ! bp_is_register_page() ) {
 		return $fields;
+	}
     // Remove item from array.
     foreach ($fields as $key => $value ) {
 		if ( $value->id == 1 ) {
-			$fields[ $key ] = array();
+			// produit des "notice" dans le formulaire, mais pas trouvé comment
+			// faire mieux
+			$fields[$key] = array();
 		}
     }
     // Return the fields
     return $fields;
 }
 
-//ajoute un champ caché
-add_action( 'bp_after_signup_profile_fields', 'dk_bp_add_xprofile_fullname_field_hidden' );
-function dk_bp_add_xprofile_fullname_field_hidden(){
-    if( ! bp_is_register_page() )
+// Ajoute un champ caché
+add_action( 'bp_after_signup_profile_fields', 'tb_bp_add_xprofile_fullname_field_hidden' );
+function tb_bp_add_xprofile_fullname_field_hidden(){
+    if( ! bp_is_register_page() ) {
 		return;
-
-    echo '<input type="hidden" name="field_1" id="field_1" value="x"/>';
+	}
+    echo '<input type="hidden" name="field_1" id="field_1" value=""/>';
 }
 
-add_action( 'bp_core_signup_user', 'dk_bp_core_signup_user' );
-function dk_bp_core_signup_user( $user_id ) {
+// Recopie la valeur de l'identifiant WP dans le champ "pseudo" de BP
+add_action( 'bp_core_signup_user', 'tb_bp_core_signup_user' );
+function tb_bp_core_signup_user( $user_id ) {
     $user = get_userdata( $user_id );
     xprofile_set_field_data( BP_XPROFILE_FULLNAME_FIELD_NAME, $user_id, $user->user_login );
     $userdata = array(

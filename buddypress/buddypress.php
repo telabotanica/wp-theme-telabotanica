@@ -10,18 +10,18 @@ if (bp_is_group_create()) {
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
 
       <?php if ( have_posts() ) :
         while ( have_posts() ) : the_post();
 
-          if ( !(
+          /*if ( !(
             bp_is_group() ||
             bp_is_groups_directory()
           ) ) :
             the_title( '<h1>', '</h1>' );
-          endif;
+          endif;*/
 
       		the_content();
 
@@ -31,4 +31,7 @@ get_header(); ?>
     </main><!-- .site-main -->
   </div><!-- .content-area -->
 
-<?php get_footer(); ?>
+<?php
+	$footer_newsletter_no_subscription = bp_is_register_page();
+	get_footer();
+?>

@@ -67,6 +67,9 @@ require get_template_directory() . '/inc/login.php';
 // Synchronisation et améliorations des profils wordpress et buddypress
 require get_template_directory() . '/inc/profile.php';
 
+// Suppression de la barre d'outils pour les non-admins
+require get_template_directory() . '/inc/remove-toolbar.php';
+
 // Customisation du plugin Algolia
 if ( class_exists( 'Algolia_Plugin' ) ) {
 	require get_template_directory() . '/inc/algolia.php';

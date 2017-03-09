@@ -14,26 +14,26 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /main\.scss$/,
-				loader: extractBundle.extract({
-					fallbackLoader: 'style-loader',
-					loader: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
+				use: extractBundle.extract({
+					fallback: 'style-loader',
+					use: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
 				})
 			},
 			{
 				test: /editor-style\.scss$/,
-				loader: extractEditorStyle.extract({
-					fallbackLoader: 'style-loader',
-					loader: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
+				use: extractEditorStyle.extract({
+					fallback: 'style-loader',
+					use: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
 				})
 			},
 			{
 				test: /login-style\.scss$/,
-				loader: extractLoginStyle.extract({
-					fallbackLoader: 'style-loader',
-					loader: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
+				use: extractLoginStyle.extract({
+					fallback: 'style-loader',
+					use: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
 				})
 			},
 			{
@@ -41,21 +41,21 @@ module.exports = {
 				include: [
 					path.resolve(__dirname, "modules")
 				],
-				loader: 'pug-loader'
+				use: 'pug-loader'
 			},
 			{
 				test: /\.svg$/,
 				include: [
 					path.resolve(__dirname, "assets/icons")
 				],
-				loader: 'svg-sprite-loader?name=icon-[name]'
+				use: 'svg-sprite-loader?name=icon-[name]'
 			},
 			{
 				test: /\.(eot|svg|ttf|woff|woff2)$/,
 				include: [
 					path.resolve(__dirname, "assets/fonts")
 				],
-				loader: 'file-loader?name=fonts/[name].[ext]'
+				use: 'file-loader?name=fonts/[name].[ext]'
 			},
 			{
 				test: /\.svg$/,
@@ -63,7 +63,7 @@ module.exports = {
 					path.resolve(__dirname, "assets/fonts"),
 					path.resolve(__dirname, "assets/icons")
 				],
-				loader: 'svg-url-loader'
+				use: 'svg-url-loader'
 			},
 			{
 				test: /\.(jpe?g|png|gif)$/i,
@@ -71,7 +71,7 @@ module.exports = {
 					path.resolve(__dirname, "assets/fonts"),
 					path.resolve(__dirname, "assets/icons")
 				],
-				loader: 'url-loader?limit=10000'
+				use: 'url-loader?limit=10000'
 			},
 		]
 	},

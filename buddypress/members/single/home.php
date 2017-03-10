@@ -59,32 +59,32 @@ else :
 						'dot' => true,
 						'current' => bp_is_user_messages()
 					],
-					// [
-					// 	'href' => '#',
-					// 	'text' => __( 'Mes outils', 'telabotanica' ),
-					// 	'icon' => 'tool'
-					// ],
+					[
+						'href' => bp_loggedin_user_domain() . 'outils/',
+						'text' => __( 'Mes outils', 'telabotanica' ),
+						'icon' => 'tool'
+					],
 					[
 						'href' => bp_loggedin_user_domain() . 'groups/',
 						'text' => __( 'Mes projets', 'telabotanica' ),
 						'icon' => 'projects',
 						'current' => bp_is_user_groups()
 					],
-					// [
-					// 	'href' => '#',
-					// 	'text' => __( 'Mes thématiques', 'telabotanica' ),
-					// 	'icon' => 'bookmark'
-					// ],
 					[
-						'href' => '#',
+						'href' => bp_loggedin_user_domain() . 'thematiques/',
+						'text' => __( 'Mes thématiques', 'telabotanica' ),
+						'icon' => 'bookmark'
+					],
+					[
+						'href' => bp_loggedin_user_domain() . 'documents/',
 						'text' => __( 'Mes documents', 'telabotanica' ),
 						'icon' => 'doc'
 					],
-					// [
-					// 	'href' => '#',
-					// 	'text' => __( 'Mes contributions', 'telabotanica' ),
-					// 	'icon' => 'hand'
-					// ],
+					[
+						'href' => bp_loggedin_user_domain() . 'contributions/',
+						'text' => __( 'Mes contributions', 'telabotanica' ),
+						'icon' => 'hand'
+					],
 					[
 						'href' => bp_loggedin_user_domain() . 'profile/edit/',
 						'text' => __( 'Mon profil', 'telabotanica' ),
@@ -97,11 +97,11 @@ else :
 						'icon' => 'settings',
 						'current' => bp_is_user_settings()
 					],
-					// [
-					// 	'href' => '#',
-					// 	'text' => __( 'Mes dons', 'telabotanica' ),
-					// 	'icon' => 'heart'
-					// ],
+					[
+						'href' => bp_loggedin_user_domain() . 'dons/',
+						'text' => __( 'Mes dons', 'telabotanica' ),
+						'icon' => 'heart'
+					],
 					[
 						'href' => wp_logout_url( home_url() ),
 						'text' => __( 'Me déconnecter', 'telabotanica' ),
@@ -198,6 +198,21 @@ else :
 
 				elseif ( bp_is_user_settings() ) :
 					bp_get_template_part( 'members/single/settings' );
+
+				elseif ( bp_is_current_component('documents') ) :
+					bp_get_template_part( 'members/single/documents' );
+
+				elseif ( bp_is_current_component('thematiques') ) :
+					bp_get_template_part( 'members/single/thematiques' );
+
+				elseif ( bp_is_current_component('outils') ) :
+					bp_get_template_part( 'members/single/outils' );
+
+				elseif ( bp_is_current_component('contributions') ) :
+					bp_get_template_part( 'members/single/contributions' );
+
+				elseif ( bp_is_current_component('dons') ) :
+					bp_get_template_part( 'members/single/dons' );
 
 				// If nothing sticks, load a generic template
 				else :

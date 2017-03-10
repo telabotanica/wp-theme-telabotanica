@@ -62,7 +62,8 @@ else :
 					[
 						'href' => bp_loggedin_user_domain() . 'outils/',
 						'text' => __( 'Mes outils', 'telabotanica' ),
-						'icon' => 'tool'
+						'icon' => 'tool',
+						'current' =>  bp_is_current_component('outils')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'groups/',
@@ -73,17 +74,20 @@ else :
 					[
 						'href' => bp_loggedin_user_domain() . 'thematiques/',
 						'text' => __( 'Mes thématiques', 'telabotanica' ),
-						'icon' => 'bookmark'
+						'icon' => 'bookmark',
+						'current' =>  bp_is_current_component('thematiques')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'documents/',
 						'text' => __( 'Mes documents', 'telabotanica' ),
-						'icon' => 'doc'
+						'icon' => 'doc',
+						'current' =>  bp_is_current_component('documents')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'contributions/',
 						'text' => __( 'Mes contributions', 'telabotanica' ),
-						'icon' => 'hand'
+						'icon' => 'hand',
+						'current' =>  bp_is_current_component('contributions')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'profile/edit/',
@@ -100,7 +104,8 @@ else :
 					[
 						'href' => bp_loggedin_user_domain() . 'dons/',
 						'text' => __( 'Mes dons', 'telabotanica' ),
-						'icon' => 'heart'
+						'icon' => 'heart',
+						'current' =>  bp_is_current_component('dons')
 					],
 					[
 						'href' => wp_logout_url( home_url() ),

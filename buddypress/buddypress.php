@@ -8,6 +8,11 @@ if (	bp_is_group_create()
 	||	bp_is_user_messages()
 	||	bp_is_user_groups()
 	||	bp_is_user_settings()
+	||	bp_is_current_component('documents')
+	||	bp_is_current_component('contributions')
+	||	bp_is_current_component('dons')
+	||	bp_is_current_component('outils')
+	||	bp_is_current_component('thematiques')
 		) {
 	// Force a small header (without use cases navigation) on group creation pages
 	$header_small = true;

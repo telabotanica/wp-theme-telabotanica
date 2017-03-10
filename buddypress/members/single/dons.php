@@ -1,8 +1,8 @@
 <?php
 /**
- * Tela Botanica - Users Documents Template
+ * Tela Botanica - Users Dons Template
  *
- * copied from "plugins" template; displays the "documents" sub-page for the
+ * copied from "plugins" template; displays the "dons" sub-page for the
  * members component
  *
  * @package telabotanica
@@ -13,11 +13,13 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_member_documents_template' ); ?>
+do_action( 'bp_before_member_documents_template' );
 
-<h1>Mes dons</h1>
+the_telabotanica_module('header-dashboard', [
+	'title' => __('Mes dons', 'telabotanica')
+]);
 
-<?php if ( ! bp_is_current_component_core() ) : ?>
+if ( ! bp_is_current_component_core() ) : ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
 	<ul>

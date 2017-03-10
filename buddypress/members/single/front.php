@@ -8,7 +8,99 @@
 
 $current_user = wp_get_current_user();
 
-printf(
-	'<h1 class="cover-home-title">%s</h1>',
-	sprintf(__('Bienvenue %s !', 'telabotanica'), $current_user->display_name)
-);
+the_telabotanica_module('header-dashboard', [
+	'title' => sprintf(__('Bonjour %s !', 'telabotanica'), $current_user->display_name),
+	// TODO replace `true` by a real condition below
+	// TODO add number of messages
+	'message' => true ? sprintf(
+		__('Vous avez un <a href="%s">nouveau message</a>', 'telabotanica'),
+		bp_loggedin_user_domain() . 'messages/'
+	) : false
+]);
+
+?>
+<div class="layout-2-col larger-first-col">
+	<div class="layout-wrapper">
+		<div class="layout-column">
+			<?php
+			the_telabotanica_module('block-dashboard', [
+				'title' => [
+					'title' => __('Mes observations', 'telabotanica'),
+					'suffix' => '128', // TODO
+					'href' => '#'
+				],
+				'html_content' => get_telabotanica_component('map'),
+				'button' => [
+					'href' => '#', // TODO
+					'text' => __('Ajouter une observation', 'telabotanica')
+				]
+			]);
+
+			the_telabotanica_module('block-dashboard', [
+				'title' => [
+					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),
+					'suffix' => '12', // TODO
+					'href' => '#'
+				],
+				'html_content' => 'TODO list observations', // TODO
+				'button' => [
+					'href' => '#', // TODO
+					'text' => __('Tout afficher', 'telabotanica')
+				]
+			]);
+			?>
+		</div>
+		<div class="layout-column">
+			<?php
+			the_telabotanica_module('block-dashboard', [
+				'title' => [
+					'title' => __('Mes photos', 'telabotanica'),
+					'suffix' => '31', // TODO
+					'href' => '#'
+				],
+				'html_content' => 'TODO mosaic photos', // TODO
+				'button' => [
+					'href' => '#', // TODO
+					'text' => __('Envoyer une photo', 'telabotanica')
+				]
+			]);
+
+			the_telabotanica_module('block-dashboard', [
+				'title' => [
+					'title' => __('Mes actualités', 'telabotanica'),
+					'href' => '#'
+				],
+				'html_content' => 'mosaic photos', // TODO
+				'empty' => [
+					'icon' => 'news',
+					'text' => __("Vous n'avez pas encore ajouté d'actualités", 'telabotanica'),
+					'button' => [
+						'href' => '#', // TODO
+						'text' => __('Proposer une actualité', 'telabotanica')
+					]
+				],
+				'is_empty' => true
+			]);
+
+			the_telabotanica_module('block-dashboard', [
+				'title' => [
+					'title' => __('Mes dons', 'telabotanica'),
+					'href' => bp_loggedin_user_domain() . 'dons/'
+				],
+				'html_content' => 'mosaic photos', // TODO
+				'empty' => [
+					'icon' => 'heart-outline',
+					'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
+					'button' => [
+						'href' => '#', // TODO
+						'text' => __('Faites un don !', 'telabotanica'),
+						'modifiers' => 'rouge'
+					]
+				],
+				'is_empty' => true
+			]);
+			?>
+		</div>
+	</div>
+</div>
+<?php

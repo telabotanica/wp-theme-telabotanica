@@ -4,6 +4,7 @@
  */
 
 if (	bp_is_group_create()
+	||	bp_is_user_front()
 	||	bp_is_user_profile()
 	||	bp_is_user_messages()
 	||	bp_is_user_groups()

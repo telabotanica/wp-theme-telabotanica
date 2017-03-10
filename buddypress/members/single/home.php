@@ -35,7 +35,7 @@ else :
 
 	// Tableau de bord
 ?>
-<div id="buddypress" class="layout-content-col is-dashboard reversed-colors">
+<div class="layout-content-col is-dashboard reversed-colors">
 	<div class="layout-wrapper">
 		<aside class="layout-column">
 			<?php
@@ -63,7 +63,7 @@ else :
 						'href' => bp_loggedin_user_domain() . 'outils/',
 						'text' => __( 'Mes outils', 'telabotanica' ),
 						'icon' => 'tool',
-						'current' =>  bp_is_current_component('outils')
+						'current' => bp_is_current_component('outils')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'groups/',
@@ -75,25 +75,25 @@ else :
 						'href' => bp_loggedin_user_domain() . 'thematiques/',
 						'text' => __( 'Mes thématiques', 'telabotanica' ),
 						'icon' => 'bookmark',
-						'current' =>  bp_is_current_component('thematiques')
+						'current' => bp_is_current_component('thematiques')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'documents/',
 						'text' => __( 'Mes documents', 'telabotanica' ),
 						'icon' => 'doc',
-						'current' =>  bp_is_current_component('documents')
+						'current' => bp_is_current_component('documents')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'contributions/',
 						'text' => __( 'Mes contributions', 'telabotanica' ),
 						'icon' => 'hand',
-						'current' =>  bp_is_current_component('contributions')
+						'current' => bp_is_current_component('contributions')
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'profile/edit/',
 						'text' => __( 'Mon profil', 'telabotanica' ),
 						'icon' => 'user',
-						'current' => bp_is_user_profile() && bp_current_action() === 'edit'
+						'current' => bp_is_user_profile()
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'settings/',
@@ -105,7 +105,7 @@ else :
 						'href' => bp_loggedin_user_domain() . 'dons/',
 						'text' => __( 'Mes dons', 'telabotanica' ),
 						'icon' => 'heart',
-						'current' =>  bp_is_current_component('dons')
+						'current' => bp_is_current_component('dons')
 					],
 					[
 						'href' => wp_logout_url( home_url() ),

@@ -8,7 +8,7 @@ Tela.components = Tela.components || {};
 Tela.components.map = (function(){
 
 	var defaultOptions = {
-		center: false,
+		center: {lat: 43.6038, lng: 3.87406},
 		zoom: 15,
 		geojson: false // URL of the GeoJSON to display on the map
 	};
@@ -27,7 +27,7 @@ Tela.components.map = (function(){
 				zoom: options.zoom
 			});
 
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			L.tileLayer('https://osm.tela-botanica.org/tuiles/osmfr/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 		}

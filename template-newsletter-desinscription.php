@@ -105,7 +105,7 @@ if (function_exists('tbChargerConfigPlugin')) {
 		// erreur config lettre
 		the_telabotanica_module('notice', [
 			'type' => 'warning',
-			'title' => __( "Configuration incomplète", 'telabotanica' )
+			'title' => __( "Configuration incomplète", 'telabotanica' ),
 			'text' => __( "Vérifiez les réglages de la lettre d'actualités", 'telabotanica' )
 		]);
 	}

@@ -31,6 +31,7 @@ $telabotanica_modules = [
 	'column-links',
 	'cover',
 	'cover-home',
+	'cover-member',
 	'cover-project',
 	'cover-search',
 	'event-dates',

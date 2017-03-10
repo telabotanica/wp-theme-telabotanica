@@ -6,8 +6,35 @@
  * @subpackage bp-legacy
  */
 
-?>
+if ( bp_is_user_front() && bp_displayed_user_id() !== get_current_user_id() ) :
 
+	// Profil public d'un autre utilisateur
+
+	the_telabotanica_module('cover-member');
+
+	?>
+	<div class="layout-central-col">
+  	<div class="layout-wrapper">
+    	<div class="layout-content"><?php
+
+			// Display XProfile
+			if ( bp_is_active( 'xprofile' ) )
+				bp_get_template_part( 'members/single/profile/profile-loop' );
+
+			// Display WordPress profile (fallback)
+			else
+				bp_get_template_part( 'members/single/profile/profile-wp' );
+
+		?>
+		</div>
+	</div>
+</div>
+<?php
+
+else :
+
+	// Tableau de bord
+?>
 <div id="buddypress" class="layout-content-col is-dashboard reversed-colors">
 	<div class="layout-wrapper">
 		<aside class="layout-column">
@@ -23,7 +50,7 @@
 						'href' => bp_loggedin_user_domain(),
 						'text' => __( 'Mon espace personnel', 'telabotanica' ),
 						'icon' => 'dashboard',
-						'current' => bp_is_user_profile() && bp_current_action() === 'public'
+						'current' => bp_is_user_front()
 					],
 					[
 						'href' => bp_loggedin_user_domain() . 'messages/',
@@ -32,32 +59,32 @@
 						'dot' => true,
 						'current' => bp_is_user_messages()
 					],
-					[
-						'href' => '#',
-						'text' => __( 'Mes outils', 'telabotanica' ),
-						'icon' => 'tool'
-					],
+					// [
+					// 	'href' => '#',
+					// 	'text' => __( 'Mes outils', 'telabotanica' ),
+					// 	'icon' => 'tool'
+					// ],
 					[
 						'href' => bp_loggedin_user_domain() . 'groups/',
 						'text' => __( 'Mes projets', 'telabotanica' ),
 						'icon' => 'projects',
 						'current' => bp_is_user_groups()
 					],
-					[
-						'href' => '#',
-						'text' => __( 'Mes thématiques', 'telabotanica' ),
-						'icon' => 'bookmark'
-					],
+					// [
+					// 	'href' => '#',
+					// 	'text' => __( 'Mes thématiques', 'telabotanica' ),
+					// 	'icon' => 'bookmark'
+					// ],
 					[
 						'href' => '#',
 						'text' => __( 'Mes documents', 'telabotanica' ),
 						'icon' => 'doc'
 					],
-					[
-						'href' => '#',
-						'text' => __( 'Mes contributions', 'telabotanica' ),
-						'icon' => 'hand'
-					],
+					// [
+					// 	'href' => '#',
+					// 	'text' => __( 'Mes contributions', 'telabotanica' ),
+					// 	'icon' => 'hand'
+					// ],
 					[
 						'href' => bp_loggedin_user_domain() . 'profile/edit/',
 						'text' => __( 'Mon profil', 'telabotanica' ),
@@ -65,10 +92,16 @@
 						'current' => bp_is_user_profile() && bp_current_action() === 'edit'
 					],
 					[
-						'href' => '#',
-						'text' => __( 'Mes dons', 'telabotanica' ),
-						'icon' => 'heart'
+						'href' => bp_loggedin_user_domain() . 'settings/',
+						'text' => __( 'Mes réglages', 'telabotanica' ),
+						'icon' => 'settings',
+						'current' => bp_is_user_settings()
 					],
+					// [
+					// 	'href' => '#',
+					// 	'text' => __( 'Mes dons', 'telabotanica' ),
+					// 	'icon' => 'heart'
+					// ],
 					[
 						'href' => wp_logout_url( home_url() ),
 						'text' => __( 'Me déconnecter', 'telabotanica' ),
@@ -105,7 +138,7 @@
 
 			</div><!-- #item-header -->
 
-			<div id="item-nav">
+			<!-- <div id="item-nav">
 				<div class="item-list-tabs no-ajax" id="object-nav" aria-label="<?php esc_attr_e( 'Member primary navigation', 'buddypress' ); ?>" role="navigation">
 					<ul>
 
@@ -122,7 +155,7 @@
 
 					</ul>
 				</div>
-			</div><!-- #item-nav -->
+			</div>-->
 
 			<div id="item-body">
 
@@ -136,6 +169,7 @@
 				do_action( 'bp_before_member_body' );
 
 				if ( bp_is_user_front() ) :
+					// Accueil du tableau de bord
 					bp_displayed_user_front_template_part();
 
 				elseif ( bp_is_user_activity() ) :
@@ -191,3 +225,5 @@
 		</div>
 	</div>
 </div><!-- #buddypress -->
+<?php
+endif;

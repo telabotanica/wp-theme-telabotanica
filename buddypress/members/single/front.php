@@ -69,8 +69,8 @@ the_telabotanica_module('header-dashboard', [
 					]
 				]
 			];
-			$html_content_observations = '';
 
+			$html_content_observations = '';
 			foreach ( $observations as $obs ) {
 				$html_content_observations .= get_telabotanica_module('feed-item', $obs);
 			}
@@ -92,13 +92,35 @@ the_telabotanica_module('header-dashboard', [
 		</div>
 		<div class="layout-column">
 			<?php
+			$photos = [
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129797CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129789CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129777CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129768CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129757CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129710CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129705CRXS.jpg'],
+				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129701CRXS.jpg']
+			];
+
+			$html_content_photos = '<div class="block-dashboard-content-images">';
+			foreach ( $photos as $photo ) {
+				$html_content_photos .= sprintf(
+					'<a href="%s"><img src="%s" alt="%s" /></a>',
+					$photo['href'],
+					$photo['image'],
+					''
+				);
+			}
+			$html_content_photos .= '</div>';
+
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
 					'suffix' => '31', // TODO
 					'href' => '#'
 				],
-				'html_content' => 'TODO mosaic photos', // TODO
+				'html_content' => $html_content_photos,
 				'button' => [
 					'href' => '#', // TODO
 					'text' => __('Envoyer une photo', 'telabotanica')

@@ -55,14 +55,14 @@
 
 		button {
 			font-size: 1.3rem;
-			background-color: $green-button;
+			background-color: $vert-bouton;
 			color: $blanc;
 			padding: 1.25rem 2rem;
 			text-align: center;
 			text-decoration: none;
 
 			&:hover, &:focus {
-				background-color: lighten($green-button, 8%);
+				background-color: lighten($vert-bouton, 8%);
 				color: $blanc;
 			}
 		}

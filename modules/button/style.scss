@@ -1,110 +1,126 @@
 .button {
-  background-color: $green-button;
-  border-radius: 0.2rem;
-  border: 0 none;
-  cursor: pointer;
-  color: $blanc;
-  display: inline-block;
-  font-family: $ubuntu;
-  font-size: 1.3rem;
-  font-weight: $medium;
-  letter-spacing: 0.1rem;
-  line-height: 1.5rem;
-  padding: 1.25rem 2rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background 0.2s ease;
+	background-color: $vert-bouton;
+	border-radius: 0.2rem;
+	border: 0 none;
+	cursor: pointer;
+	color: $blanc;
+	display: inline-block;
+	font-family: $ubuntu;
+	font-size: 1.3rem;
+	font-weight: $medium;
+	letter-spacing: 0.1rem;
+	line-height: 1.5rem;
+	padding: 1.25rem 2rem;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background 0.2s ease;
 
-  &:hover, &:focus {
-    background-color: lighten($green-button, 8%);
-  }
+	&:hover, &:focus {
+		background-color: lighten($vert-bouton, 8%);
+	}
 
-  & + & {
-    margin-left: 2rem;
-  }
+	& + & {
+		margin-left: 2rem;
+	}
 
-  &.orange {
-    background-color: $orange;
+	&.orange {
+		background-color: $orange;
 
-    &:hover, &:focus {
-      background-color: lighten($orange, 8%);
-    }
-  }
+		&:hover, &:focus {
+			background-color: lighten($orange, 8%);
+		}
+	}
 
-  &.block {
-    display: block;
-  }
+	&.rouge {
+		background-color: $rouge;
 
-  &.outline {
-    background: transparent;
-    border: 0.2rem solid;
-    font-weight: $regular;
-    padding: 1.3rem 1.8rem;
-    transition: opacity 0.2s ease;
+		&:hover, &:focus {
+			background-color: lighten($rouge, 8%);
+		}
+	}
 
-    &:hover, &:focus {
-      opacity: 0.7;
-    }
-  }
+	&.block {
+		display: block;
+	}
 
-  &.link {
-    background-color: transparent;
-    border-radius: 0;
-    color: $vert-fonce;
-    padding: 0;
+	&.outline {
+		background: transparent;
+		border: 0.2rem solid;
+		font-weight: $regular;
+		padding: 1.3rem 1.8rem;
+		transition: opacity 0.2s ease;
 
-    > .icon {
-      height: 1.4rem;
-    }
+		&:hover, &:focus {
+			opacity: 0.7;
+		}
+	}
 
-    & + & {
-      margin-left: 3rem;
-    }
+	&.link {
+		background-color: transparent;
+		border-radius: 0;
+		color: $vert-fonce;
+		padding: 0;
 
-    &:after {
-      content: ">";
-      display: inline-block;
-      margin-left: 0.5rem;
-    }
+		> .icon {
+			height: 1.4rem;
+		}
 
-    &:hover, &:focus {
-      background-color: transparent;
-      color: lighten($vert-fonce, 8%);
-    }
+		& + & {
+			margin-left: 3rem;
+		}
 
-    &.orange {
-      color: $orange;
+		&:after {
+			content: ">";
+			display: inline-block;
+			margin-left: 0.5rem;
+		}
 
-      &:hover, &:focus {
-        color: lighten($orange, 8%);
-      }
-    }
+		&:hover, &:focus {
+			background-color: transparent;
+			color: lighten($vert-fonce, 8%);
+		}
 
-    &.white {
-      color: $blanc;
+		&.orange {
+			color: $orange;
 
-      &:hover, &:focus {
-        opacity: 0.7;
-      }
-    }
+			&:hover, &:focus {
+				color: lighten($orange, 8%);
+			}
+		}
 
-    &.back {
-      &:after {display: none;}
-    }
-  }
+		&.rouge {
+			color: $rouge;
 
-  > .icon {
-    fill: currentColor;
-    vertical-align: sub;
-  }
+			&:hover, &:focus {
+				color: lighten($rouge, 8%);
+			}
+		}
 
-  &-text {
-    display: inline-block;
+		&.white {
+			color: $blanc;
 
-    .icon + &,
-    & + .icon {
-      margin-left: 1rem;
-    }
-  }
+			&:hover, &:focus {
+				opacity: 0.7;
+			}
+		}
+
+		&.back {
+			&:after {display: none;}
+		}
+	}
+
+	> .icon {
+		fill: currentColor;
+		vertical-align: sub;
+	}
+
+	&-text {
+		display: inline-block;
+
+		.icon + &,
+		& + .icon {
+			margin-left: 1rem;
+		}
+	}
 }

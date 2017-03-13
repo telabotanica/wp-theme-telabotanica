@@ -120,7 +120,7 @@
         border: none;
         margin-top: 1rem;
         cursor: pointer;
-        background-color: $green-button;
+        background-color: $vert-bouton;
         border-radius: .2rem;
         color: $blanc;
         display: inline-block;
@@ -136,7 +136,7 @@
         transition: background .2s ease;
 
         &:focus, &:hover {
-            background-color: lighten($green-button, 8%);
+            background-color: lighten($vert-bouton, 8%);
         }
 
         &[disabled] {
@@ -212,7 +212,7 @@
                 }
 
                 &.accept {
-                    background-color: $green-button;
+                    background-color: $vert-bouton;
                 }
             }
         }
@@ -252,7 +252,7 @@
                 }
 
                 &.member-promote-to-mod, &.member-promote-to-admin {
-                    background-color: $green-button;
+                    background-color: $vert-bouton;
                 }
             }
         }

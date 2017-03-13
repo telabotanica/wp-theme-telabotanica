@@ -11,7 +11,7 @@ the_telabotanica_module('header-dashboard', [
 ]);
 
 ?>
-
+<div id="buddypress">
 <div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
 	<ul>
 
@@ -111,3 +111,5 @@ switch ( bp_current_action() ) :
 		bp_get_template_part( 'members/single/plugins' );
 		break;
 endswitch;
+?>
+</div>

@@ -4,6 +4,8 @@
 
   background-color: $beige;
   height: $height;
+  position: relative;
+  z-index: 1500;
 
   &.is-small {
     height: $height-fixed;

@@ -39,6 +39,12 @@
 
 	}
 
+	&.transparent-content {
+		.block-dashboard-content {
+			background: transparent;
+		}
+	}
+
 	&-empty-text {
 		font-style: italic;
 		margin-bottom: 2.5rem;

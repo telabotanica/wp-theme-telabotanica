@@ -36,17 +36,57 @@ the_telabotanica_module('header-dashboard', [
 				]
 			]);
 
+
+			$observations = [
+				[
+					'type' => 'feed-item',
+					'href' => '#',
+					'image' => 'https://api.tela-botanica.org/img:001125636CRXS.jpg',
+					'title' => 'Allium vineale ??',
+					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
+					'meta' => [
+						'place' => 'Saturargues (34)'
+					]
+				],
+				[
+					'type' => 'feed-item',
+					'href' => '#',
+					'image' => 'https://api.tela-botanica.org/img:001129856CRXS.jpg',
+					'title' => '??',
+					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
+					'meta' => [
+						'place' => 'Murol (63)'
+					]
+				],
+				[
+					'type' => 'feed-item',
+					'href' => '#',
+					'image' => 'https://api.tela-botanica.org/img:001129797CRXS.jpg',
+					'title' => '??',
+					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
+					'meta' => [
+						'place' => 'Grenoble (38)'
+					]
+				]
+			];
+			$html_content_observations = '';
+
+			foreach ( $observations as $obs ) {
+				$html_content_observations .= get_telabotanica_module('feed-item', $obs);
+			}
+
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
 					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),
 					'suffix' => '12', // TODO
 					'href' => '#'
 				],
-				'html_content' => 'TODO list observations', // TODO
+				'html_content' => $html_content_observations,
 				'button' => [
 					'href' => '#', // TODO
 					'text' => __('Tout afficher', 'telabotanica')
-				]
+				],
+				'modifiers' => 'transparent-content'
 			]);
 			?>
 		</div>

@@ -16,6 +16,10 @@ plus de détails sur http://semver.org/lang/fr/
 * module `button` : ajout de la couleur rouge
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
+* module `feed` ajouté
+* module `feed-date` ajouté
+* module `feed-item` ajouté
+* module `header` : fix `z-index`
 * module `header-dashboard` ajouté
 * module `notice` ajouté
 * module `title` : support d'un suffixe optionnel

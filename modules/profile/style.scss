@@ -1,0 +1,19 @@
+#field-visibility-settings-toggle-, #field-visibility-settings- {
+	display: none;
+}
+
+.field_ville {
+	.aa-suggestion {
+		padding: 1rem;
+		cursor: pointer;
+		font-size: 1.4rem;
+
+		&:hover {
+			background-color: $grisF0;
+		}
+
+		> p {
+			margin: 0;
+		}
+	}
+}

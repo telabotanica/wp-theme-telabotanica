@@ -18,10 +18,11 @@
       if ($completeDescription) {
         $descriptionToDisplay = $completeDescription;
       }
+
+			the_telabotanica_component('text', [
+				'text' => $descriptionToDisplay
+			]);
       ?>
-      <div class="project-front-description"><?php _e("", 'telabotanica') ?>
-        <?php echo $descriptionToDisplay; ?>
-      </div>
     </div>
   </div>
 </div>

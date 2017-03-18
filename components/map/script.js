@@ -8,8 +8,8 @@ Tela.components = Tela.components || {};
 Tela.components.map = (function(){
 
 	var defaultOptions = {
-		center: {lat: 43.6038, lng: 3.87406},
-		zoom: 15,
+		center: {lat: 46.5, lng: 2},
+		zoom: 5,
 		geojson: false // URL of the GeoJSON to display on the map
 	};
 

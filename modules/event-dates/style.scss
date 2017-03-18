@@ -43,7 +43,6 @@
 					border-top-width: 0.5rem;
 					border-left-width: 0.5rem;
 					border-right-width: 0.5rem;
-					left: 50%;
 				}
 			}
 		}
@@ -75,6 +74,7 @@
 				border-right: 1rem solid transparent;
 				content: '';
 				height: 0;
+				left: 50%;
 				position: absolute;
 				top: 0;
 				transform: translateX(-50%);

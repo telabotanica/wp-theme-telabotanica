@@ -4,6 +4,8 @@
 
   background-color: $beige;
   height: $height;
+  position: relative;
+  z-index: 1500;
 
   &.is-small {
     height: $height-fixed;
@@ -48,6 +50,15 @@
       margin-bottom: 0.5rem;
       width: 14rem;
     }
+
+		body.bp-user & {
+			width: 26rem;
+
+			> a {
+				justify-content: flex-start;
+				padding-left: 3rem;
+			}
+		}
   }
 
   &-nav {

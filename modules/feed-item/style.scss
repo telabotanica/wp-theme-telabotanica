@@ -1,0 +1,171 @@
+.feed-item {
+	background-color: $blanc;
+	border: 0.1rem solid $grisEB;
+	color: $gris99;
+	font-size: 1.2rem;
+	padding: 2rem;
+	position: relative;
+
+	& + & {
+		margin-top: 0.4rem;
+	}
+
+	&.has-link {
+		border: none;
+		padding: 0;
+	}
+
+	&.has-image {
+		min-height: 8rem;
+		padding-left: 10rem;
+
+		&.has-link {
+			padding-left: 0;
+
+			.feed-item-link {
+				padding-left: 10rem;
+			}
+
+			.feed-item-image {
+				left: 0;
+				top: 0;
+			}
+		}
+	}
+
+	&.has-images {
+		padding-top: 10rem;
+
+		&.has-link {
+			padding-top: 0;
+
+			.feed-item-link {
+				padding-top: 10rem;
+			}
+
+			.feed-item-images {
+				left: 0;
+				right: 0;
+				top: 0;
+			}
+		}
+
+		.feed-item-meta {
+			bottom: 2rem;
+			transform: none;
+			top: auto;
+		}
+	}
+
+	&.is-article {
+		.feed-item-image {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+
+			&:before {
+				background-color: transparentize($noir, 0.7);
+				content: "";
+				display: block;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+		}
+	}
+
+	&.has-only-text {
+		text-align: center;
+
+		a {
+			border-bottom: 0.2rem solid;
+			color: $vert-fonce;
+			text-decoration: none;
+			transition: border 0.2s ease-in-out;
+
+			&:hover, &:focus {
+				color: $gris23;
+			}
+		}
+	}
+
+	&-link {
+		border: 0.1rem solid $grisEB;
+		color: inherit;
+		display: block;
+		padding: 2rem;
+		text-decoration: none;
+		transition: border 0.2s ease-in-out;
+
+		&:hover, &:focus {
+			.feed-item-title {
+				border-bottom: 0.2rem solid;
+			}
+		}
+	}
+
+	&-image,
+	&-images {
+		height: 8rem;
+		left: -0.1rem;
+		position: absolute;
+		top: -0.1rem;
+	}
+
+	&-image {
+		width: 8rem;
+
+		.icon {
+			fill: $blanc;
+			height: 3.4rem;
+			position: relative;
+			width: 3.4rem;
+		}
+	}
+
+	&-images {
+		overflow: hidden;
+		white-space: nowrap;
+		right: -0.1rem;
+
+		img {
+			height: 8rem;
+			width: 8rem;
+		}
+	}
+
+	&.has-only-text .feed-item-text,
+	&-title {
+		color: $gris23;
+		font-family: $ubuntu;
+		font-size: 1.5rem;
+		font-weight: $bold;
+	}
+
+	&-title {
+		border-bottom: 0.2rem solid transparent;
+		display: inline-block;
+		margin: 0;
+		transition: border 0.2s ease-in-out;
+	}
+
+	&-title + &-text {
+		margin-top: 0.5rem;
+	}
+
+	&-meta {
+		position: absolute;
+		right: 2rem;
+		top: 50%;
+		transform: translateY(-50%);
+
+		.icon {
+			fill: $vert-bouton;
+			margin-left: 0.5rem;
+			vertical-align: text-bottom;
+		}
+	}
+
+}

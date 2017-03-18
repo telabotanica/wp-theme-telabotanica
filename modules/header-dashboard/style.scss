@@ -1,0 +1,24 @@
+.header-dashboard {
+	border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+	margin-bottom: 2.5rem;
+	padding-bottom: 3rem;
+
+	&-title {
+		color: $gris33;
+		font-family: $ubuntu;
+		font-size: 2.6rem;
+		margin: 0;
+	}
+
+	&-message {
+		color: $gris77;
+		font-size: 1.6rem;
+		margin-top: 0.5rem;
+		max-width: 60rem;
+
+		a {
+			color: $gris77;
+			&:hover, &:focus {text-decoration: none;}
+		}
+	}
+}

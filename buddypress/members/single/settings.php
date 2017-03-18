@@ -6,6 +6,9 @@
  * @subpackage bp-legacy
  */
 
+the_telabotanica_module('header-dashboard', [
+	'title' => __('Mes réglages', 'telabotanica')
+]);
 ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">

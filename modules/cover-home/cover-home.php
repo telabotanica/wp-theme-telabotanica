@@ -26,7 +26,7 @@
         );
         printf(
           '<div class="cover-home-link"><a href="%s">%s</a></div>',
-          '#', // TODO
+          bp_loggedin_user_domain(),
           __('Accéder à votre espace personnel', 'telabotanica')
         );
       else :

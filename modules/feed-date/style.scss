@@ -1,0 +1,21 @@
+.feed-date {
+
+	&-wrapper {
+		background-color: $grisF4;
+		border: 0.2rem solid $taupe;
+		border-radius: 2rem;
+		color: $taupe;
+		display: inline-block;
+		font-family: $ubuntu;
+		font-size: 1.4rem;
+		line-height: 3rem;
+		padding: 0 1rem;
+	}
+
+	.icon {
+		fill: $taupe;
+		margin-right: 0.5rem;
+		vertical-align: sub;
+	}
+
+}

@@ -70,6 +70,9 @@ require get_template_directory() . '/inc/profile.php';
 // Suppression de la barre d'outils pour les non-admins
 require get_template_directory() . '/inc/remove-toolbar.php';
 
+// Ajout de sous-pages au profil
+require get_template_directory() . '/inc/profile-subpages.php';
+
 // Customisation du plugin Algolia
 if ( class_exists( 'Algolia_Plugin' ) ) {
 	require get_template_directory() . '/inc/algolia.php';

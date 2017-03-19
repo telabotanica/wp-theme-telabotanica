@@ -16,6 +16,8 @@ plus de détails sur http://semver.org/lang/fr/
 * bloc `main-features` : style des liens
 * composant `accordion` : correction bug quand plusieurs accordéons sur la même page
 * composant `image` : amélioration affichage petites images
+* composant `contact` :
+	* ajout du support de `action_before`
 * composant `map` : centre optionnel
 * composant `text` : style basique pour les tableaux
 * composant `title` : ajout d'un offset pour les ancres (hauteur du header)
@@ -35,6 +37,8 @@ plus de détails sur http://semver.org/lang/fr/
 * module `header-dashboard` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
+* module `search-box` :
+	* ajout du support de `id`, `action`, `input_id` et `input_name`
 * module `title` : support d'un suffixe optionnel
 * module `toc` :
 	* ajout du comportement "affix" (reste fixe lors du scroll)

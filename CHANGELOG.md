@@ -12,6 +12,8 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * tableau de bord
+* composant `contact` :
+	* ajout du support de `action_before`
 * composant `map` : centre optionnel
 * module `block-dashboard` ajouté
 * module `button` : ajout de la couleur rouge
@@ -24,6 +26,8 @@ plus de détails sur http://semver.org/lang/fr/
 * module `header-dashboard` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
+* module `search-box` :
+	* ajout du support de `id`, `action`, `input_id` et `input_name`
 * module `title` : support d'un suffixe optionnel
 * layout `2-col` : ajout d'une version `larger-first-col`
 * layout `content-col` : ajout d'une largeur max en version `is-dashboard`

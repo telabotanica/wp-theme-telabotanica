@@ -1,28 +1,30 @@
 <?php function telabotanica_component_contact($data) {
 
 	$defaults = [
-		'image'				=> '',
-		'name'				=> '',
-		'description'	=> '',
-		'phone'				=> '',
-		'email'				=> '',
-		'website'			=> '',
-		'link'				=> '',
-		'modifiers'		=> []
+		'image' => '',
+		'name' => '',
+		'description' => '',
+		'phone' => '',
+		'email' => '',
+		'website' => '',
+		'link' => '',
+		'action_before' => false,
+		'modifiers' => []
 	];
 
 	$contact = get_sub_field('contact');
 	if ($contact !== false) {
 		$contact = (object) $contact[0];
 		$defaults = [
-			'image'				=> $contact->image['sizes']['thumbnail'],
-			'name'				=> $contact->name,
-			'description'	=> $contact->description,
-			'phone'				=> $contact->phone,
-			'email'				=> $contact->email,
-			'website'			=> $contact->website,
-			'link'				=> @$contact->link,
-			'modifiers'		=> []
+			'image' => $contact->image['sizes']['thumbnail'],
+			'name' => $contact->name,
+			'description' => $contact->description,
+			'phone' => $contact->phone,
+			'email' => $contact->email,
+			'website' => $contact->website,
+			'link' => @$contact->link,
+			'action_before' => false,
+			'modifiers' => []
 		];
 	}
 
@@ -30,6 +32,12 @@
 	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-contact'], $data->modifiers);
 
 	echo '<div class="' . implode(' ', $data->modifiers) . '">';
+
+		if ( $data->action_before ) :
+			echo '<div class="component-contact-before">';
+			do_action( $data->action_before );
+			echo '</div>';
+		endif;
 
 		if ( !empty($data->image) ) :
 			echo '<div class="component-contact-image" style="background-image: url(' . $data->image . ')"></div>';

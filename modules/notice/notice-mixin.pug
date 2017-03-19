@@ -10,7 +10,7 @@ mixin notice(data)
 		if data.title
 			strong.notice-title= data.title
 			= ' '
-		span.notice-text= data.text
+		span.notice-text!= data.text
 		if data.closable
 			button.notice-close
 				+icon({icon: 'close'})

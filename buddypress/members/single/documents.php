@@ -19,6 +19,12 @@ the_telabotanica_module('header-dashboard', [
 	'title' => __('Mes documents', 'telabotanica')
 ]);
 
+the_telabotanica_module('notice', [
+	'type' => 'info',
+	'title' => __('Bientôt disponible.', 'telabotanica'),
+	'text' => __('Vous retrouverez prochainement ici tous les documents que vous avez publiés.', 'telabotanica')
+]);
+
 if ( ! bp_is_current_component_core() ) : ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">

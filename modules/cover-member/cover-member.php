@@ -1,7 +1,26 @@
 <?php
 function telabotanica_module_cover_member($data) {
 
-	echo '<div class="cover-member">';
+	$defaults = [
+		'back' => [
+			'href' => bp_get_members_directory_permalink(),
+			'text' => __( "Retour à l'annuaire", 'telabotanica' )
+		],
+		'button' => [
+			'href' => '#', // TODO
+			'text' => __( 'Envoyer un message', 'telabotanica' ),
+			'icon_before' => 'mail'
+		],
+		'modifiers' => []
+	];
+
+	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array('cover-member', $data->modifiers);
+
+	printf(
+		'<div class="%s">',
+		implode(' ', $data->modifiers)
+	);
 
 		$cover_image_url = bp_attachments_get_attachment('url', array(
 			'object_dir' => 'members',
@@ -17,19 +36,12 @@ function telabotanica_module_cover_member($data) {
 
 		echo '<h1 class="cover-member-title">' . bp_get_displayed_user_fullname() . '</h1>';
 
-		the_telabotanica_module('button', [
-			'href' => '#', // TODO
-			'text' => __( "Retour à l'annuaire", 'telabotanica' ),
-			'modifiers' => 'cover-member-back white link back'
-		] );
+		$data->back['modifiers'] = 'cover-member-back white link back';
+		the_telabotanica_module('button', $data->back);
 
 		echo '<div class="cover-member-meta">';
-			the_telabotanica_module('button', [
-				'href' => '#', // TODO
-				'text' => __( 'Envoyer un message', 'telabotanica' ),
-				'icon_before' => 'mail',
-				'modifiers' => 'outline'
-			]);
+			$data->button['modifiers'] = 'outline';
+			the_telabotanica_module('button', $data->button);
 		echo '</div>';
 
 	echo '</div>';

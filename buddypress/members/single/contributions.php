@@ -19,6 +19,12 @@ the_telabotanica_module('header-dashboard', [
 	'title' => __('Mes contributions', 'telabotanica')
 ]);
 
+the_telabotanica_module('notice', [
+	'type' => 'info',
+	'title' => __('Bientôt disponible.', 'telabotanica'),
+	'text' => __('Vous retrouverez prochainement ici la liste complète de vos contributions.<br />Pour le moment, seules les plus récentes sont affichées.', 'telabotanica')
+]);
+
 the_telabotanica_module('feed', [
 	'title' => [
 		'title' => "Mon flux d'activité",

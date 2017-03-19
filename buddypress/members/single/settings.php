@@ -9,18 +9,29 @@
 the_telabotanica_module('header-dashboard', [
 	'title' => __('Mes réglages', 'telabotanica')
 ]);
+
+if ( bp_core_can_edit_settings() ) :
+	$nav_tabs_items = array_map(function($item){
+		if ($item->parent !== 'settings') return;
+
+		$item = [
+			'href' => $item->link,
+			'text' => $item->name,
+			'current' => in_array('current-menu-item', $item->class)
+		];
+
+		return (object) $item;
+	}, bp_get_nav_menu_items());
+
+	the_telabotanica_module('nav-tabs', [
+		'label' => __( 'Member secondary navigation', 'buddypress' ),
+		'items' => array_filter($nav_tabs_items)
+	]);
+endif;
+
 ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
-	<ul>
-		<?php if ( bp_core_can_edit_settings() ) : ?>
-
-			<?php bp_get_options_nav(); ?>
-
-		<?php endif; ?>
-	</ul>
-</div>
-
+<div id="buddypress">
 <?php
 
 switch ( bp_current_action() ) :
@@ -43,3 +54,5 @@ switch ( bp_current_action() ) :
 		bp_get_template_part( 'members/single/plugins'                 );
 		break;
 endswitch;
+?>
+</div>

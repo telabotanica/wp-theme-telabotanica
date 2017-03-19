@@ -71,12 +71,13 @@ else :
 						'icon' => 'projects',
 						'current' => bp_is_user_groups()
 					],
-					[
-						'href' => bp_loggedin_user_domain() . 'thematiques/',
-						'text' => __( 'Mes thématiques', 'telabotanica' ),
-						'icon' => 'bookmark',
-						'current' => bp_is_current_component('thematiques')
-					],
+					// TODO: réafficher quand la page est prête
+					// [
+					// 	'href' => bp_loggedin_user_domain() . 'thematiques/',
+					// 	'text' => __( 'Mes thématiques', 'telabotanica' ),
+					// 	'icon' => 'bookmark',
+					// 	'current' => bp_is_current_component('thematiques')
+					// ],
 					[
 						'href' => bp_loggedin_user_domain() . 'documents/',
 						'text' => __( 'Mes documents', 'telabotanica' ),
@@ -90,7 +91,7 @@ else :
 						'current' => bp_is_current_component('contributions')
 					],
 					[
-						'href' => bp_loggedin_user_domain() . 'profile/edit/',
+						'href' => bp_loggedin_user_domain() . 'profile/',
 						'text' => __( 'Mon profil', 'telabotanica' ),
 						'icon' => 'user',
 						'current' => bp_is_user_profile()
@@ -101,12 +102,13 @@ else :
 						'icon' => 'settings',
 						'current' => bp_is_user_settings()
 					],
-					[
-						'href' => bp_loggedin_user_domain() . 'dons/',
-						'text' => __( 'Mes dons', 'telabotanica' ),
-						'icon' => 'heart',
-						'current' => bp_is_current_component('dons')
-					],
+					// TODO: réafficher quand la page est prête
+					// [
+					// 	'href' => bp_loggedin_user_domain() . 'dons/',
+					// 	'text' => __( 'Mes dons', 'telabotanica' ),
+					// 	'icon' => 'heart',
+					// 	'current' => bp_is_current_component('dons')
+					// ],
 					[
 						'href' => wp_logout_url( home_url() ),
 						'text' => __( 'Me déconnecter', 'telabotanica' ),

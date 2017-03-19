@@ -11,6 +11,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* tableau de bord
 * composant `map` : centre optionnel
 * module `block-dashboard` ajouté
 * module `button` : ajout de la couleur rouge
@@ -21,6 +22,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `feed-item` ajouté
 * module `header` : fix `z-index`
 * module `header-dashboard` ajouté
+* module `nav-tabs` ajouté
 * module `notice` ajouté
 * module `title` : support d'un suffixe optionnel
 * layout `2-col` : ajout d'une version `larger-first-col`

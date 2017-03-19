@@ -48,6 +48,7 @@ $telabotanica_modules = [
 	'meta-news',
 	'nav-dashboard',
 	'nav-project',
+	'nav-tabs',
 	'notice',
 	'newsletter',
 	'pagination',

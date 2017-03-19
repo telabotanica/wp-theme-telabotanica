@@ -6,26 +6,37 @@
  * @subpackage bp-legacy
  */
 
+if ( bp_is_messages_inbox() || bp_is_messages_sentbox() ) :
+
+	echo '<div style="float: right">';
+	bp_message_search_form();
+	echo '</div>';
+
+endif;
+
 the_telabotanica_module('header-dashboard', [
 	'title' => __('Mes messages', 'telabotanica')
 ]);
 
+$nav_tabs_items = array_map(function($item){
+	if ($item->parent !== 'messages') return;
+
+	$item = [
+		'href' => $item->link,
+		'text' => $item->name,
+		'current' => in_array('current-menu-item', $item->class)
+	];
+
+	return (object) $item;
+}, bp_get_nav_menu_items());
+
+the_telabotanica_module('nav-tabs', [
+	'label' => __( 'Member secondary navigation', 'buddypress' ),
+	'items' => array_filter($nav_tabs_items)
+]);
+
 ?>
 <div id="buddypress">
-<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
-	<ul>
-
-		<?php bp_get_options_nav(); ?>
-
-	</ul>
-
-	<?php if ( bp_is_messages_inbox() || bp_is_messages_sentbox() ) : ?>
-
-		<div class="message-search"><?php bp_message_search_form(); ?></div>
-
-	<?php endif; ?>
-
-</div><!-- .item-list-tabs -->
 
 <?php
 switch ( bp_current_action() ) :

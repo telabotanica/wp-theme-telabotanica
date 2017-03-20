@@ -16,6 +16,7 @@ do_action( 'bp_before_directory_members_page' );
 $search_input_name = bp_core_get_component_search_query_arg();
 the_telabotanica_module('cover', [
 	'title' => __( 'Annuaire des telabotanistes', 'telabotanica' ),
+	'subtitle' => __( 'Recherchez et contactez les autres inscrits', 'telabotanica' ),
 	'search' => [
 		'id' => bp_current_component() . '-dir-search',
 		'action' => '',

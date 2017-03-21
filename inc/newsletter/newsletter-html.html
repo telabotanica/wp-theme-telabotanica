@@ -11,6 +11,26 @@
 
 </intro>
 
+{% if featured is not empty %}
+<featured>
+
+	<h2>À la une</h2>
+
+	{% if featured.thumbnail %}
+	<img src="{{ featured.thumbnail }}" alt="">
+	{% endif %}
+
+	<h3>{{ featured.post.post_title }}</h3>
+
+	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
+
+	<p>
+		{{ featured.post.post_content|striptags|truncate(200, true) }} <a href="{{ featured.link }}">Lire l'article</a>
+	</p>
+
+</featured>
+{% endif %}
+
 {% for category_id, category in categories %}
 
 	<category class="{{ category.slug }}">
@@ -31,7 +51,11 @@
 
 				<h3>{{ item.post.post_title }}</h3>
 
-				<place>{{ item.place }}</place> - Publié par {{ item.author }}
+				<place>{{ item.event.place }}</place> - Publié par {{ item.author }}
+
+				<p>
+					{{ item.event.details|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire l'article</a>
+				</p>
 
 			{% else %}
 
@@ -43,11 +67,11 @@
 
 				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
-			{% endif %}
+				<p>
+					{{ item.post.post_content|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire l'article</a>
+				</p>
 
-			<p>
-				{{ item.post.post_content|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire la suite</a>
-			</p>
+			{% endif %}
 
 		{% endfor %}
 
@@ -55,7 +79,15 @@
 
 	{% endfor %}
 
+	{% if 'actualites' == category.slug %}
+		<a href="{{ category.url }}">Toutes les actualités</a>
+	{% elseif 'evenements' == category.slug %}
+		<a href="{{ category.url }}">Tous les évènements</a>
+	{% elseif 'offres-emploi' == category.slug %}
+		<a href="{{ category.url }}">Toutes les offres d'emploi</a>
+	{% else %}
 		<a href="{{ category.url }}">Tous les articles de {{ category.name }}</a>
+	{% endif %}
 
 	</category>
 

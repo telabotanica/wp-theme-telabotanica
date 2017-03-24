@@ -1,11 +1,11 @@
 <script type="text/template" id="tmpl-dropdown-menu">
 	<div class="search-results aa-dropdown-menu-wrapper">
-		<div class="search-results-index aa-dataset aa-dataset-0"></div>
 		<div class="search-results-index aa-dataset aa-dataset-1"></div>
 		<div class="search-results-index aa-dataset aa-dataset-2"></div>
 		<div class="search-results-index aa-dataset aa-dataset-3"></div>
 		<div class="search-results-index aa-dataset aa-dataset-4"></div>
 		<div class="search-results-index aa-dataset aa-dataset-5"></div>
+		<div class="search-results-index aa-dataset aa-dataset-6"></div>
 	</div>
 </script>
 
@@ -45,7 +45,7 @@
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-taxon-suggestion">
-	<a class="search-results-hit-link" href="{{ data.bdtfx.url }}" title="{{ data.bdtfx.scientific_name }}">
+	<a class="search-results-hit-link" href="{{ data.bdtfx.permalink }}" title="{{ data.bdtfx.scientific_name }}">
 		<span class="search-results-hit-post-title">{{{ data._highlightResult.bdtfx.scientific_name.value }}}</span>
 		<span class="search-results-hit-post-content">{{{ data._highlightResult.bdtfx.common_name.value }}}</span>
 	</a>
@@ -80,7 +80,7 @@
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-syntaxon-suggestion">
-	<a class="search-results-hit-link" href="{{ data.url }}" target="_blank" title="{{ data.commonName }}">
+	<a class="search-results-hit-link" href="{{ data.permalink }}" target="_blank" title="{{ data.commonName }}">
 		<span class="search-results-hit-post-title">{{{ data._highlightResult.syntaxon.value }}}</span>
 	</a>
 </script>

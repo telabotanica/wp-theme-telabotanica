@@ -3,6 +3,7 @@
 	color: $marron;
 	line-height: 1rem;
 	padding: 1.8rem 0 1.7rem;
+	margin-bottom: 2rem;
 
 	&-items {
 		@include reset-list;
@@ -19,6 +20,11 @@
 	// pas de padding-top lorsqu'on est dans un layout central-col
 	.layout-central-col & {
 		padding-top: 0;
+	}
+
+	// pas de margin-botto, lorsqu'on est dans un layout content-col full-width
+	.layout-content-col.full-width  & {
+		margin-bottom: 0;
 	}
 
 	&-item {

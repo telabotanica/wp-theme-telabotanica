@@ -45,9 +45,10 @@
 		}
 
 		> .layout-content {
+			flex: 1;
 			float: right;
 			margin-left: 5rem;
-			flex: 1;
+			padding-bottom: 5rem;
 			width: 62rem;
 		}
 	}

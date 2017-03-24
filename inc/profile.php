@@ -16,7 +16,8 @@ function tb_redirect_user_to_bp_profile(){
 
 /**
  * Enlève le champ "pseudo" (BP "name") de la page d'inscription; seul le champ
- * WP "user_login" reste, car il est obligatoire, et celui-ci est copié dans 
+ * WP "user_login" reste, car il est obligatoire, et celui-ci est copié dans le
+ * pseudo BP
  */
 add_filter( 'xprofile_group_fields', 'tb_bp_remove_xprofile_fullname_field', 10, 2 );
 function tb_bp_remove_xprofile_fullname_field( $fields ) {

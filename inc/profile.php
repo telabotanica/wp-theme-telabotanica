@@ -104,14 +104,32 @@ function tb_bp_xprofile_save_sync_pseudo( $xprofileData ) {
 	if ($xprofileData->field_id == 1) { // le champs BP "name" (pseudo) est toujours le n°1
 		// le "user_nicename" détermine l'URL du profil; il doit être unique
 		// mais néanmoins être changeable, par respect de la vie privée
-		$nicename = $xprofileData->value;
-		while (bp_core_get_userid_from_nicename($nicename) != null) {
-			$nicename = $xprofileData->value . '-' . rand(0, 1000);
+		$new_nicename = $xprofileData->value;
+		$existing_id = bp_core_get_userid_from_nicename($new_nicename);
+		// on ne suffixe pas le nicename si c'est l'utilisateur en cours qui le porte déjà
+		$current_user_id = get_current_user_id();
+		if ($existing_id != null) {
+			if ($existing_id != $current_user_id) {
+				$current_user = new WP_User($current_user_id);
+				// si le nicename courant est déjà un suffixe du nicename demandé,
+				// on le conserve pour éviter des suffixages en boucle ou inutiles
+				$motif = '/^' . $new_nicename . '-[0-9]+/i';
+				if (! preg_match($motif, $current_user->data->user_nicename)) {
+					// sinon, on suffixe
+					while ($existing_id != null) {
+						$new_nicename = $xprofileData->value . '-' . rand(0, 1000);
+						$existing_id = bp_core_get_userid_from_nicename($new_nicename);
+					}
+				} else {
+					// ça matche, on garde le suffixe actuel
+					$new_nicename = $current_user->data->user_nicename;
+				}
+			}
 		}
 		// mise à jour
 		$userdata = array(
 			'ID' => $xprofileData->user_id,
-			'user_nicename' => $nicename,
+			'user_nicename' => $new_nicename,
 			'display_name' => $xprofileData->value,
 			'nickname' => $xprofileData->value
 		);

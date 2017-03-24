@@ -1,11 +1,9 @@
 <?php
 
 /**
- * redirect user to their buddypress profile if they are trying to view their wp profile
+ * Redirect users to their BP profile if they're trying to view their WP profile
  * https://buddydev.com/buddypress/playing-with-buddypress-and-wordpress-some-codes-for-the-site-admins/
- * 
  */
- 
 add_action("admin_init","tb_redirect_user_to_bp_profile");
 function tb_redirect_user_to_bp_profile(){
 	if ( !defined('IS_PROFILE_PAGE') )
@@ -17,7 +15,9 @@ function tb_redirect_user_to_bp_profile(){
 }
 
 /**
- * Enlève le champ "pseudo" de la page d'inscription
+ * Enlève le champ "pseudo" (BP "name") de la page d'inscription; seul le champ
+ * WP "user_login" reste, car il est obligatoire, et celui-ci est copié dans le
+ * pseudo BP
  */
 add_filter( 'xprofile_group_fields', 'tb_bp_remove_xprofile_fullname_field', 10, 2 );
 function tb_bp_remove_xprofile_fullname_field( $fields ) {
@@ -36,7 +36,11 @@ function tb_bp_remove_xprofile_fullname_field( $fields ) {
     return $fields;
 }
 
-// Ajoute un champ caché
+/**
+ * Ajoute un champ caché "pseudo" (BP "name") dans lequel sera copié la valeur
+ * saisie à l'inscription dans le champ WP "user_login"; pour avoir un vrai
+ * pseudo, il faudra aller le changer ensuite dans son profil
+ */
 add_action( 'bp_after_signup_profile_fields', 'tb_bp_add_xprofile_fullname_field_hidden' );
 function tb_bp_add_xprofile_fullname_field_hidden(){
     if( ! bp_is_register_page() ) {
@@ -45,8 +49,11 @@ function tb_bp_add_xprofile_fullname_field_hidden(){
     echo '<input type="hidden" name="field_1" id="field_1" value=""/>';
 }
 
-// Recopie la valeur de l'identifiant WP dans le champ "pseudo" de BP
-add_action( 'bp_core_signup_user', 'tb_bp_core_signup_user' );
+/**
+ * Recopie la valeur de l'identifiant WP (user_login) dans le champ "pseudo"
+ * (BP "name")
+ */
+add_action( 'bp_core_signup_user', 'tb_bp_core_signup_user', 10, 1 );
 function tb_bp_core_signup_user( $user_id ) {
     $user = get_userdata( $user_id );
     xprofile_set_field_data( BP_XPROFILE_FULLNAME_FIELD_NAME, $user_id, $user->user_login );
@@ -59,8 +66,76 @@ function tb_bp_core_signup_user( $user_id ) {
     wp_update_user( $userdata );
 }
 
-// Empêche un utilisateur non identifié d'accéder à des pages membres
-// @TODO comprendre pourquoi ce test et pourquoi 2 hooks
+/**
+ * Recopie la valeur du nom et du prénom BP (champs perso TB "Prénom" et "Nom")
+ * dans les champs WP "first_name" et "last_name", lorsque le profil est modifié
+ * 
+ * @WARNING penser à *désactiver* "Synchronisation des profils" dans Réglages >
+ * BuddyPress > Options, sans quoi les valeurs seront écrasées par la suite
+ */
+add_action('xprofile_data_after_save', 'tb_bp_xprofile_save_sync_first_and_last_name');
+function tb_bp_xprofile_save_sync_first_and_last_name( $xprofileData ) {
+	$champ = xprofile_get_field($xprofileData->field_id);
+	if ($champ->name == "Prénom") {
+		update_user_meta(
+			$xprofileData->user_id,
+			'first_name',
+			$xprofileData->value
+		);
+	}
+	if ($champ->name == "Nom") {
+		update_user_meta(
+			$xprofileData->user_id,
+			'last_name',
+			$xprofileData->value
+		);
+	}
+}
+
+/**
+ * Recopie la valeur du pseudo BP (champ BP "name") dans les champs WP
+ * "user_nicename", "nickname" et "display_name", lorsque le profil est modifié
+ * 
+ * @WARNING penser à *désactiver* "Synchronisation des profils" dans Réglages >
+ * BuddyPress > Options, sans quoi les valeurs seront écrasées par la suite
+ */
+add_action('xprofile_data_after_save', 'tb_bp_xprofile_save_sync_pseudo');
+function tb_bp_xprofile_save_sync_pseudo( $xprofileData ) {
+	if ($xprofileData->field_id == 1) { // le champs BP "name" (pseudo) est toujours le n°1
+		// le "user_nicename" détermine l'URL du profil; il doit être unique
+		// mais néanmoins être changeable, par respect de la vie privée
+		$nicename = $xprofileData->value;
+		while (bp_core_get_userid_from_nicename($nicename) != null) {
+			$nicename = $xprofileData->value . '-' . rand(0, 1000);
+		}
+		// mise à jour
+		$userdata = array(
+			'ID' => $xprofileData->user_id,
+			'user_nicename' => $nicename,
+			'display_name' => $xprofileData->value,
+			'nickname' => $xprofileData->value
+		);
+		wp_update_user( $userdata );
+	}
+}
+
+/**
+ * Si le display_name WP a changé suite à un changement de pseudo BP (fonction
+ * ci-dessus), l'URL du profil change et on se prend une 404 après traitement du
+ * formulaire
+ */
+add_action( 'xprofile_updated_profile', 'tb_bp_xprofile_updated_profile_redirection', 10, 1 );
+function tb_bp_xprofile_updated_profile_redirection( $user_id ) { 
+	$user = new WP_User($user_id);
+	$url_profil = site_url() . '/' . bp_get_members_root_slug() . '/' . $user->data->user_nicename . '/profile/edit';
+	wp_redirect($url_profil);
+	exit;
+}
+
+/**
+ * Empêche un utilisateur non identifié d'accéder à des pages membres
+ * @TODO comprendre pourquoi ce test et pourquoi 2 hooks
+ */
 if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page')) {
 	add_action('wp','members_page_only_for_logged_in_users');
 } else {

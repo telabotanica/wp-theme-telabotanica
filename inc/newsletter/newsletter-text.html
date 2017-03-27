@@ -1,5 +1,4 @@
 {% autoescape false %}
-{% spaceless %}
 
 ================================================
 
@@ -10,6 +9,21 @@
 
 
 {{ intro|striptags }}
+
+{% if featured is not empty %}
+### À la une ###
+
+* {{ featured.post.post_title }} *
+
+	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
+
+{{ featured.post.post_content|striptags|truncate(500, true) }}
+
+>>>>> Lire l'article : {{ featured.link }}
+
+
+
+{% endif %}
 
 {% for category_id, category in categories %}
 
@@ -35,7 +49,11 @@
 
 {{ item.event.place }} - Publié par {{ item.author }}
 
-{{ item.event.details|striptags|truncate(300, true) }} Lire l'article : {{ item.link }}
+{{ item.event.details|striptags|truncate(300, true) }}
+
+>>>>> Lire l'article : {{ item.link }}
+
+
 
 			{% else %}
 
@@ -43,7 +61,11 @@
 
 Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
-{{ item.post.post_content|striptags|truncate(300, true) }} Lire l'article : {{ item.link }}
+{{ item.post.post_content|striptags|truncate(300, true) }}
+
+>>>>> Lire l'article : {{ item.link }}
+
+
 
 			{% endif %}
 
@@ -69,5 +91,9 @@ Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par 
 
 {{ outro|striptags }}
 
-{% endspaceless %}
+
+
+================================================
+================================================
+
 {% endautoescape %}

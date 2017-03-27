@@ -12,6 +12,7 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * tableau de bord
+* composant `accordion` : correction bug quand plusieurs accordéons sur la même page
 * composant `map` : centre optionnel
 * composant `title` : ajout d'un offset pour les ancres (hauteur du header)
 * module `block-dashboard` ajouté

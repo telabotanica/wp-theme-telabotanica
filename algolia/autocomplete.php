@@ -80,7 +80,7 @@
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-syntaxon-suggestion">
-	<a class="search-results-hit-link" href="{{ data.permalink }}" target="_blank" title="{{ data.commonName }}">
+	<a class="search-results-hit-link" href="{{ data.permalink }}" title="{{ data.commonName }}">
 		<span class="search-results-hit-post-title">{{{ data._highlightResult.syntaxon.value }}}</span>
 	</a>
 </script>

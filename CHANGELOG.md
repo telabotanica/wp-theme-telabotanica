@@ -15,7 +15,9 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `map` : centre optionnel
 * module `block-dashboard` ajouté
 * module `button` : ajout de la couleur rouge
-* module `breadcrumbs` : ajout d'espace en-dessous
+* module `breadcrumbs` :
+	* ajout d'espace en-dessous
+	* support de multiples pages parentes
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
 * module `feed` ajouté

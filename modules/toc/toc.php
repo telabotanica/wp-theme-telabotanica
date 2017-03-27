@@ -41,6 +41,7 @@ function telabotanica_module_toc($data) {
           'title_li' => null,
           'walker' => new TocWalker()
         ] );
+
         // Affichage des pages soeurs de la page actuelle
         wp_list_pages( [
           'child_of' => wp_get_post_parent_id( get_the_ID() ),

@@ -4,7 +4,7 @@
 
 class TocWalker extends Walker_Page {
 
-  /**
+	/**
 	 * Outputs the beginning of the current element in the tree.
 	 *
 	 * @see Walker::start_el()
@@ -69,23 +69,23 @@ class TocWalker extends Walker_Page {
 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
 		$args['single_page'] = array_key_exists( 'single_page', $args ) ? $args['single_page'] : false;
 
-    // Quand single_page is true, on n'affiche pas le nom de la page
-    if ( $args['single_page'] === true ) {
-      $output .= $indent . sprintf(
-  			'<li class="%s">',
-  			$css_classes
-  		);
-    } else {
-  		$output .= $indent . sprintf(
-  			'<li class="%s"><a href="%s" class="toc-item-link">%s%s%s</a>',
-  			$css_classes,
-  			get_permalink( $page->ID ),
-  			$args['link_before'],
-  			/** This filter is documented in wp-includes/post-template.php */
-  			apply_filters( 'the_title', $page->post_title, $page->ID ),
-  			$args['link_after']
-  		);
-    }
+		// Quand single_page is true, on n'affiche pas le nom de la page
+		if ( $args['single_page'] === true ) {
+			$output .= $indent . sprintf(
+				'<li class="%s">',
+				$css_classes
+			);
+		} else {
+			$output .= $indent . sprintf(
+				'<li class="%s"><a href="%s" class="toc-item-link">%s%s%s</a>',
+				$css_classes,
+				get_permalink( $page->ID ),
+				$args['link_before'],
+				/** This filter is documented in wp-includes/post-template.php */
+				apply_filters( 'the_title', $page->post_title, $page->ID ),
+				$args['link_after']
+			);
+		}
 
 		if ( ! empty( $args['show_date'] ) ) {
 			if ( 'modified' == $args['show_date'] ) {
@@ -98,38 +98,39 @@ class TocWalker extends Walker_Page {
 			$output .= " " . mysql2date( $date_format, $time );
 		}
 
-    // Sommaire de la page en cours
-    $current_toc = '';
-    if ( $page->ID == $current_page ) {
-      // Si la page utilise des composants
-      if ( have_rows('components') ) {
-        $first = true;
-        // On boucle sur les composants
-        while ( have_rows('components') ) : the_row();
+		// Sommaire de la page en cours
+		$current_toc = '';
+		if ( $page->ID == $current_page ) {
+			// Si la page utilise des composants
+			if ( have_rows('components') ) {
+				$first = true;
+				// On boucle sur les composants
+				while ( have_rows('components') ) : the_row();
 
-          // On garde seulement les intertitres
-          if (get_row_layout() !== 'title') continue;
+					// On garde seulement les intertitres
+					if (get_row_layout() !== 'title') continue;
 
-          // On garde seulement les intertitres de niveau 2
-          if (get_sub_field('level') !== '2') continue;
+					// On garde seulement les intertitres de niveau 2
+					if (get_sub_field('level') !== '2') continue;
 
-          $current_toc .= sprintf(
-            '<li class="%s"><a href="%s" class="toc-subitem-link">%s</a></li>',
-            'toc-subitem' . ( $first ? ' is-active' : '' ),
-            '#' . get_sub_field('anchor'),
-            get_sub_field('title')
-          );
+					$current_toc .= sprintf(
+						'<li class="%s"><a href="%s" class="toc-subitem-link">%s%s</a></li>',
+						'toc-subitem' . ( $first ? ' is-active' : '' ),
+						'#' . get_sub_field('anchor'),
+						get_telabotanica_module('icon', ['icon' => 'tela-leaf']),
+						get_sub_field('title')
+					);
 
-          $first = false;
+					$first = false;
 
-        endwhile;
+				endwhile;
 
-        if ( !empty($current_toc) ) {
-          $current_toc = '<ul class="toc-subitems">' . $current_toc . '</ul>';
-        }
-      }
-      $output .= $current_toc;
-    }
+				if ( !empty($current_toc) ) {
+					$current_toc = '<ul class="toc-subitems">' . $current_toc . '</ul>';
+				}
+			}
+			$output .= $current_toc;
+		}
 	}
 
 }

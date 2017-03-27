@@ -1,3 +1,5 @@
+@import "../../modules/header/_variables";
+
 .component-title {
 	color: $gris33;
 	font-family: $ubuntu;
@@ -27,6 +29,20 @@
 		font-weight: $bold;
 		line-height: 3.2rem;
 		margin: 0;
+
+		// offset for fixed header
+		&:before {
+			content: "";
+			display: block;
+			height: $header-height-fixed + 4rem;
+			margin: 0;
+			margin-top: -$header-height-fixed - 4rem;
+
+			body.admin-bar & {
+				height: $header-height-fixed + 4rem + $header-admin-bar-height;
+				margin-top: -$header-height-fixed - 4rem - $header-admin-bar-height;
+			}
+		}
 	}
 
 	h3 {

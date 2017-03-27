@@ -13,6 +13,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 * tableau de bord
 * composant `map` : centre optionnel
+* composant `title` : ajout d'un offset pour les ancres (hauteur du header)
 * module `block-dashboard` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :
@@ -28,6 +29,9 @@ plus de détails sur http://semver.org/lang/fr/
 * module `nav-tabs` ajouté
 * module `notice` ajouté
 * module `title` : support d'un suffixe optionnel
+* module `toc` :
+	* ajout du comportement "affix" (reste fixe lors du scroll)
+	* ajout du comportement "scrollspy" (mise en évidence de l'item en cours)
 * layout `2-col` : ajout d'une version `larger-first-col`
 * layout `content-col` :
 	* ajout d'une largeur max en version `is-dashboard`

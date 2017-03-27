@@ -1,14 +1,13 @@
-.header {
-  $height: 17rem;
-  $height-fixed: 5.5rem;
+@import "_variables";
 
+.header {
   background-color: $beige;
-  height: $height;
+  height: $header-height;
   position: relative;
   z-index: 1500;
 
   &.is-small {
-    height: $height-fixed;
+    height: $header-height-fixed;
   }
 
   &-fixed {
@@ -16,7 +15,7 @@
     font-family: $ubuntu;
     font-size: 0; // cache les espaces entre éléments dans le code HTML
     font-weight: $medium;
-    height: $height-fixed;
+    height: $header-height-fixed;
     letter-spacing: 0.1rem;
     position: fixed;
     width: 100%;
@@ -36,7 +35,7 @@
       align-items: center;
       color: $blanc;
       display: flex;
-      height: $height-fixed;
+      height: $header-height-fixed;
       justify-content: center;
       text-decoration: none;
       transition: background 0.2s ease;
@@ -78,7 +77,7 @@
         color: $gris60;
         display: block;
         font-size: 1.2rem;
-        line-height: $height-fixed;
+        line-height: $header-height-fixed;
         position: relative;
         padding: 0 1rem;
         text-decoration: none;
@@ -117,7 +116,7 @@
         color: $grisB3;
         display: flex;
         font-size: 1.2rem;
-        height: $height-fixed;
+        height: $header-height-fixed;
         padding-left: 1rem;
         text-decoration: none;
         transition: color 0.2s ease;
@@ -181,7 +180,7 @@
 
   &-nav-usecases {
     font-size: 0; // cache les espaces entre éléments dans le code HTML
-    padding-top: $height-fixed;
+    padding-top: $header-height-fixed;
     margin: 0 auto;
     width: 100rem;
 

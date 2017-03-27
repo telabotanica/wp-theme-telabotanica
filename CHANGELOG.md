@@ -12,6 +12,8 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * tableau de bord
+* bloc `list-features` : style des liens
+* bloc `main-features` : style des liens
 * composant `accordion` : correction bug quand plusieurs accordéons sur la même page
 * composant `image` : amélioration affichage petites images
 * composant `map` : centre optionnel

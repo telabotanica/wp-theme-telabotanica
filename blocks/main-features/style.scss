@@ -1,67 +1,79 @@
 .block-main-features {
-  padding-bottom: 5rem;
-  padding-top: 5rem;
+	padding-bottom: 5rem;
+	padding-top: 5rem;
 
-  &-title {
-    color: $gris33;
-    font-family: $ubuntu;
-    font-size: 3.2rem;
-    font-weight: $light;
-    line-height: 3.6rem;
-    margin: 0 0 7rem;
-    text-align: center;
-  }
+	&-title {
+		color: $gris33;
+		font-family: $ubuntu;
+		font-size: 3.2rem;
+		font-weight: $light;
+		line-height: 3.6rem;
+		margin: 0 0 7rem;
+		text-align: center;
+	}
 
-  &-items {
-    @include reset-list;
-    display: flex;
-    align-content: flex-start;
-    text-align: center;
-  }
+	&-items {
+		@include reset-list;
+		display: flex;
+		align-content: flex-start;
+		text-align: center;
+	}
 
-  &-item {
-    overflow: hidden;
-    padding: 1.5rem 3rem;
-    width: 50%;
+	&-item {
+		overflow: hidden;
+		padding: 1.5rem 3rem;
+		width: 50%;
 
-    & + & {
-      border-left: 0.1rem solid $grisF0;
-    }
+		& + & {
+			border-left: 0.1rem solid $grisF0;
+		}
 
-    &-icon {
-      align-items: center;
-      display: flex;
-      fill: $vert-bouton;
-      height: 4rem;
-      justify-content: center;
-      margin-bottom: 3rem;
+		&-icon {
+			align-items: center;
+			display: flex;
+			fill: $vert-bouton;
+			height: 4rem;
+			justify-content: center;
+			margin-bottom: 3rem;
 
-      img {
-        max-height: 4rem;
-        max-width: 4rem;
-      }
+			img {
+				max-height: 4rem;
+				max-width: 4rem;
+			}
 
-      svg {
-        height: 4rem;
-        width: 4rem;
-      }
-    }
+			svg {
+				height: 4rem;
+				width: 4rem;
+			}
+		}
 
-    &-title {
-      color: $gris33;
-      font-family: $ubuntu;
-      font-size: 1.8rem;
-      font-weight: $bold;
-      margin-bottom: 1rem;
-      margin-top: 0;
-    }
+		&-title {
+			color: $gris33;
+			font-family: $ubuntu;
+			font-size: 1.8rem;
+			font-weight: $bold;
+			margin-bottom: 1rem;
+			margin-top: 0;
+		}
 
-    &-description {
-      font-size: 1.4rem;
-      line-height: 2.2rem;
-      margin: 0 auto;
-      max-width: 20rem;
-    }
-  }
+		&-description {
+			font-size: 1.4rem;
+			line-height: 2.2rem;
+			margin: 0 auto;
+			max-width: 20rem;
+
+			a {
+				border-bottom: 0.1rem solid;
+				color: $turquoise-fonce;
+				font-weight: $regular;
+				text-decoration: none;
+				transition: background 0.2s ease;
+
+				&:hover, &:focus {
+					background-color: transparentize($turquoise-fonce, 0.9);
+				}
+			}
+		}
+	}
 
 }

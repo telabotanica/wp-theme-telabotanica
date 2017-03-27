@@ -21,7 +21,7 @@ function tb_bp_profile_subpages() {
 			'default_subnav_slug' => 'contributions',
 			'item_css_id' => 'contributions',
 			'position' => 40,
-			'show_for_displayed_user' => true,
+			'show_for_displayed_user' => false,
 			'screen_function' => 'tb_profile_contributions'
 		)
 	);

@@ -19,4 +19,14 @@
   }
 
   b, strong {font-weight: $bold;}
+
+	table {
+		border-collapse: collapse;
+
+		th,
+		td {
+			border: 0.1rem solid $grisDD;
+			padding: 0.5rem;
+		}
+	}
 }

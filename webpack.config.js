@@ -10,7 +10,7 @@ const extractLoginStyle = new ExtractTextPlugin('login-style.css');
 module.exports = {
 	entry: './assets/scripts/main.js',
 	output: {
-		path: './dist',
+		path: path.resolve(__dirname, './dist'),
 		filename: 'bundle.js'
 	},
 	module: {

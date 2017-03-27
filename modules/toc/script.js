@@ -12,7 +12,7 @@ var Tela = window.Tela || {};
 Tela.toc = (function(){
 
 	var defaultOptions = {
-		anchorsSelector: 'h2[id]'
+		anchorsSelector: '.component-title.level-2 .component-title-anchor'
 	};
 
 	function module(selector, userOptions){
@@ -48,7 +48,7 @@ Tela.toc = (function(){
 			items = _.map($anchors, function(anchor, index) {
 				var $anchor = $(anchor);
 				return {
-					id: $anchor.attr('id'),
+					id: $anchor.attr('name'),
 					top: $anchor.offset().top
 				};
 			});

@@ -30,6 +30,7 @@ plus de détails sur http://semver.org/lang/fr/
 * layout `content-col` :
 	* ajout d'une largeur max en version `is-dashboard`
 	* ajout de padding en bas du contenu
+* template `archive-tb_thematique` ajouté
 * template `single-tb_thematique` ajouté
 
 ## 0.0.7 (2017-03-04)

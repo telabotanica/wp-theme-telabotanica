@@ -9,11 +9,11 @@
  */
 
 /**
- * Fires at the start of the member documents template.
+ * Fires at the start of the member outils template.
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_member_documents_template' );
+do_action( 'bp_before_member_outils_template' );
 
 the_telabotanica_module('header-dashboard', [
 	'title' => __('Mes outils', 'telabotanica')

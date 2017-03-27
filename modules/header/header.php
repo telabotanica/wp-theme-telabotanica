@@ -55,7 +55,10 @@
 
 			if ( is_user_logged_in() ) :
 				$current_user = wp_get_current_user();
-				$avatar_url = get_avatar_url($current_user->ID, [ 'size' => 22 ]); ?>
+				$avatar_url = bp_core_fetch_avatar( [
+					'item_id' => $current_user->ID,
+					'html' => false
+				] ); ?>
 				<li class="header-links-item header-links-item-user">
 					<a href="<?php echo bp_loggedin_user_domain(); ?>">
 						<span class="header-links-item-text">

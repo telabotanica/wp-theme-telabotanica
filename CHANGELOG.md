@@ -25,7 +25,9 @@ plus de détails sur http://semver.org/lang/fr/
 * module `feed` ajouté
 * module `feed-date` ajouté
 * module `feed-item` ajouté
-* module `header` : fix `z-index`
+* module `header` :
+	* fix `z-index`
+	* utilise maintenant l'avatar BuddyPress
 * module `header-dashboard` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté

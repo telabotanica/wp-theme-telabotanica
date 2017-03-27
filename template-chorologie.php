@@ -102,9 +102,9 @@ function template_chorologie_entete() {
 					<p>
 						Consultez la répartition des espèces de France métropolitaine par département.
 						<br>
-						Ces données proviennent de la base <!--<a href="#">-->"Chorologie départementale" de Philippe Julve<!--</a>-->
+						Ces données proviennent de la base <!--<a href="#">-->"Chorologie départementale" de Philippe Julve<!--</a>-->.
 						<br>
-						Signalez une nouvelle entrée ou une erreur sur le <a href="http://www.tela-botanica.org/projets-9">projet chorologie départementale</a>
+						Signalez une nouvelle entrée ou une erreur sur le <a href="http://www.tela-botanica.org/projets-9">projet chorologie départementale</a>.
 					</p>
 				</div>
 <?php }

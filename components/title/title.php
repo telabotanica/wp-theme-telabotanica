@@ -10,18 +10,21 @@
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array(['component', 'component-title'], $data->modifiers);
 
-	$modifiers[] = 'level-' . $data->level;
+	$data->modifiers[] = 'level-' . $data->level;
 
 	if ( empty($data->anchor) ) {
 		$data->anchor = sanitize_title_with_dashes($data->title);
 	}
 
-	echo '<div class="' . implode(' ', $data->modifiers) . '">';
+	printf(
+		'<div id="%s" class="%s">',
+		$data->anchor,
+	  implode(' ', $data->modifiers)
+	);
 
 		printf(
-			'<h%s id="%s">%s</h%s>',
+			'<h%s>%s</h%s>',
 			$data->level,
-			$data->anchor,
 			$data->title,
 			$data->level
 		);

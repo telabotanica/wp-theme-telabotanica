@@ -1,19 +1,19 @@
 <?php
 /**
- * Tela Botanica - Users Documents Template
+ * Tela Botanica - Users Thematiques Template
  *
- * copied from "plugins" template; displays the "documents" sub-page for the
+ * copied from "plugins" template; displays the "thematiques" sub-page for the
  * members component
  *
  * @package telabotanica
  */
 
 /**
- * Fires at the start of the member documents template.
+ * Fires at the start of the member thematiques template.
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_member_documents_template' );
+do_action( 'bp_before_member_thematiques_template' );
 
 the_telabotanica_module('header-dashboard', [
 	'title' => __('Mes thématiques', 'telabotanica')

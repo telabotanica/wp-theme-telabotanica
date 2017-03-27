@@ -17,9 +17,9 @@
 	}
 
 	printf(
-		'<div id="%s" class="%s">',
-		$data->anchor,
-	  implode(' ', $data->modifiers)
+		'<div class="%s"><a class="component-title-anchor" name="%s"></a>',
+		implode(' ', $data->modifiers),
+		str_replace('#', '', $data->anchor)
 	);
 
 		printf(

@@ -54,8 +54,24 @@ function tb_bp_profile_subpages() {
 			'default_subnav_slug' => 'thematiques',
 			'item_css_id' => 'thematiques',
 			'position' => 40,
-			'show_for_displayed_user' => true,
+			'show_for_displayed_user' => false,
 			'screen_function' => 'tb_profile_thematiques'
+		)
+	);
+	// si on modifie la page associée au composant "groupes" de BP, redéfinir la
+	// navigation ici permet d'éviter un warning curieux;
+	$pagesBP = get_option("bp-pages");
+	$groupsPage = get_post($pagesBP["groups"]);
+	$groupsSlug = $groupsPage->post_name;
+	// bp_get_groups_slug() ne fonctionne pas ici (retourne toujours "groups")
+	bp_core_new_nav_item(
+		array(
+			'name' => 'Projets',
+			'slug' => $groupsSlug,
+			'default_subnav_slug' => $groupsSlug,
+			'item_css_id' => 'projets',
+			'position' => 40,
+			'show_for_displayed_user' => true
 		)
 	);
 }

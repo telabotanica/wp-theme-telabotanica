@@ -66,7 +66,7 @@ else :
 						'current' => bp_is_current_component('outils')
 					],
 					[
-						'href' => bp_loggedin_user_domain() . 'groups/',
+						'href' => bp_loggedin_user_domain() . 'projets/',
 						'text' => __( 'Mes projets', 'telabotanica' ),
 						'icon' => 'projects',
 						'current' => bp_is_user_groups()

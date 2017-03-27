@@ -24,9 +24,12 @@
 			$srcset[$image['sizes'][$size . '-width']] = $image['sizes'][$size] . ' ' . $image['sizes'][$size . '-width'] . 'w';
 		}
 
-		$data->srcset = implode($srcset, ', ');
-		$components_width = is_page() ? '620px' : '700px';
-		$data->sizes = '(min-width: 1160px) ' . $components_width . ', 100vw';
+		$components_width = is_page() ? 620 : 700;
+
+		if ($image['width'] > $components_width) {
+			$data->srcset = implode($srcset, ', ');
+			$data->sizes = '(min-width: 1160px) ' . $components_width . 'px, 100vw';
+		}
 
 		if (empty($data->alt)) $data->alt = $image['title'];
 	}

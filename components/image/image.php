@@ -59,11 +59,17 @@
 						$caption
 					);
 				}
-				printf(
-					__('%s par %s', 'telabotanica'),
-					$caption,
-					$credits['author']
-				);
+
+				if ($credits['author']) {
+					printf(
+						__('%s par %s', 'telabotanica'),
+						$caption,
+						$credits['author']
+					);
+				} else {
+					echo $title;
+				}
+
 				echo '</div>';
 			endif;
 		endif;

@@ -53,19 +53,21 @@
 			$credits = get_fields( $data->image['ID'] );
 			if ( $credits ) :
 				echo '<div class="cover-credits">';
-				if ($credits['link']) {
-					printf(
-						__('%s par %s', 'telabotanica'),
-						'<a href="' . $credits['link'] . '" target="_blank">' . $data->image['title'] . '</a>',
-						$credits['author']
-					);
-				} else {
-					printf(
-						__('%s par %s', 'telabotanica'),
-						$data->image['title'],
-						$credits['author']
-					);
-				}
+					$title = $data->image['title'];
+
+					if ($credits['link']) {
+						$title = '<a href="' . $credits['link'] . '" target="_blank">' . $title . '</a>';
+					}
+
+					if ($credits['author']) {
+						printf(
+							__('%s par %s', 'telabotanica'),
+							$title,
+							$credits['author']
+						);
+					} else {
+						echo $title;
+					}
 				echo '</div>';
 			endif;
 		endif;

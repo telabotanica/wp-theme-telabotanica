@@ -88,6 +88,18 @@
 		margin: 1.5rem 0;
 
 		p {margin: 0;}
+
+		p a {
+			border-bottom: 0.1rem solid;
+			color: $turquoise-fonce;
+			font-weight: $regular;
+			text-decoration: none;
+			transition: background 0.2s ease;
+
+			&:hover, &:focus {
+				background-color: transparentize($turquoise-fonce, 0.9);
+			}
+		}
 	}
 
 	&-meta {

@@ -48,10 +48,16 @@
 			<?php if ( isset( $_GET['e'] ) ) : ?>
 				<p><?php _e( 'Your account was activated successfully! Your account details have been sent to you in a separate email.', 'buddypress' ); ?></p>
 			<?php else : ?>
-				<p><?php printf( __( 'Your account was activated successfully! You can now <a href="%s">log in</a> with the username and password you provided when you signed up.', 'buddypress' ), wp_login_url( bp_get_root_domain() ) ); ?></p>
+				<p><?php printf( __('Votre compte est validé ! Vous pouvez maintenant <a href="%s">vous connecter</a> avec les identifiant et mot de passe que vous avez renseignés  à l\'inscription. N\'oubliez pas de compléter les informations de votre profil !', 'telabotanica'), wp_login_url( bp_get_root_domain() )); ?></p>
 			<?php endif; ?>
 
 		<?php else : ?>
+
+			<div class="notice notice-info">
+				<?php _e("Si vous vous trouvez ici, c'est probablement que votre compte a déjà été activé", 'telabotanica'); ?>.
+				<br>
+				<?php printf(__('<strong><a href="%s">Cliquez ici</a></strong> pour vous identifier', 'telabotanica'), wp_login_url(home_url())) ?>.
+			</div>
 
 			<p><?php _e( 'Please provide a valid activation key.', 'buddypress' ); ?></p>
 

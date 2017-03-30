@@ -113,7 +113,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 <?php else: ?>
 
-	<div id="message" class="info">
+	<div id="message" class="notice notice-warning info">
 		<p><?php _e( "Sorry, no members were found.", 'buddypress' ); ?></p>
 	</div>
 

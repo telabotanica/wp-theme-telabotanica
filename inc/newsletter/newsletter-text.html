@@ -8,7 +8,7 @@
 ###### Lettre d'information du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} ######
 
 
-{{ intro|striptags }}
+{{ intro|linktotext|striptags|raw|unescape }}
 
 {% if featured is not empty %}
 ### À la une ###
@@ -17,12 +17,13 @@
 
 	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
 
-
 {% if featured.intro is not empty %}
-	{{ featured.intro|striptags }}
+	{% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
+{% else %}
+	{% set content = featured.post.post_content %}
 {% endif %}
 
-{{ featured.post.post_content|striptags|truncate(500, true) }}
+{{ content|striptags|truncate(500, true)|raw|unescape }}
 
 >>>>> Lire l'article : {{ featured.link }}
 
@@ -54,7 +55,7 @@
 
 {{ item.event.place }} - Publié par {{ item.author }}
 
-{{ item.event.details|striptags|truncate(300, true) }}
+{{ item.event.details|striptags|truncate(300, true)|raw|unescape }}
 
 >>>>> Lire l'article : {{ item.link }}
 
@@ -67,10 +68,12 @@
 Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
 {% if item.intro is not empty %}
-	{{ item.intro|striptags }}
+	{% set content = item.intro ~ ' ' ~ item.post.post_content %}
+{% else %}
+	{% set content = item.post.post_content %}
 {% endif %}
 
-{{ item.post.post_content|striptags|truncate(300, true) }}
+{{ content|striptags|truncate(300, true)|raw|unescape }}
 
 >>>>> Lire l'article : {{ item.link }}
 
@@ -98,7 +101,7 @@ Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par 
 
 {% endfor %}
 
-{{ outro|striptags }}
+{{ outro|linktotext|striptags|raw|unescape }}
 
 
 

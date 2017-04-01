@@ -25,6 +25,9 @@
 	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
 
 	<p>
+		{% if featured.intro is not empty %}
+			{{ featured.intro|striptags }}
+		{% endif %}
 		{{ featured.post.post_content|striptags|truncate(200, true) }} <a href="{{ featured.link }}">Lire l'article</a>
 	</p>
 
@@ -68,6 +71,9 @@
 				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
 				<p>
+					{% if item.intro is not empty %}
+						{{ item.intro|striptags }}
+					{% endif %}
 					{{ item.post.post_content|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire l'article</a>
 				</p>
 

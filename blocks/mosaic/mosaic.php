@@ -16,6 +16,7 @@ function telabotanica_block_mosaic_item($item) {
 				if ( is_array($item->button['modifiers']) && !in_array( 'block', $item->button['modifiers'] ) ) $item->button['modifiers'][] = 'block';
 				if ( $item->i % 2 === 1 ) $item->button['modifiers'][] = 'orange';
 				$item->button['text'] = $item->button_text;
+				$item->button['href'] = $item->button['url'];
 				the_telabotanica_module('button', $item->button);
 
 			echo '</div>';

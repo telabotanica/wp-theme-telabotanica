@@ -8,7 +8,8 @@
 
 	& + & {margin-top: 0;}
 	.component + & {margin-top: 4rem;}
-	& + .component {margin-top: 2rem;}
+	& + .component-text,
+	& + .component-intro {margin-top: 2rem;}
 
 	&.level-2 {
 		margin-top: 6rem;

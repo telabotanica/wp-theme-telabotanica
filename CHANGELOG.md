@@ -15,9 +15,12 @@ plus de détails sur http://semver.org/lang/fr/
 * bloc `list-features` : style des liens
 * bloc `main-features` : style des liens
 * composant `accordion` : correction bug quand plusieurs accordéons sur la même page
+* composant `articles` ajouté
 * composant `image` : amélioration affichage petites images
 * composant `map` : centre optionnel
-* composant `text` : style basique pour les tableaux
+* composant `text` :
+	* style basique pour les tableaux
+	* pas de `margin` pour le dernier paragraphe
 * composant `title` : ajout d'un offset pour les ancres (hauteur du header)
 * module `article` :
 	* meilleure réutilisation (`text` et `intro` optionnels, ajout de `title_level`)
@@ -52,6 +55,9 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout de padding en bas du contenu
 * template `archive-tb_thematique` ajouté
 * template `single-tb_thematique` ajouté
+* template `page-comment-participer` ajouté
+* ajout d'une taxonomie Catégorie de moyens de participer
+* groupe de champs ACF "Composant liste d'articles" ajouté
 
 ## 0.0.7 (2017-03-04)
 

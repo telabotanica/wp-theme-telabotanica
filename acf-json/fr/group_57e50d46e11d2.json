@@ -15,9 +15,9 @@
                 "class": "",
                 "id": ""
             },
+            "button_label": "Ajouter un composant",
             "min": "",
             "max": "",
-            "button_label": "Ajouter un composant",
             "layouts": [
                 {
                     "key": "57e50d66aeb0c",
@@ -164,6 +164,37 @@
                             },
                             "clone": [
                                 "group_581780cf64012"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58e1541ed69c0",
+                    "name": "articles",
+                    "label": "Liste d'articles",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58e15426d69c1",
+                            "label": "Articles",
+                            "name": "articles",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e153226ea54"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -368,5 +399,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Composants rédactionnels utilisables dans les pages",
-    "modified": 1488203776
+    "modified": 1491162545
 }

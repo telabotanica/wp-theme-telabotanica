@@ -5,15 +5,15 @@
 
 get_header();
 
-$taxonomy_name = 'tb_outils_category';
-$tools_categories = get_terms( [
-	'taxonomy'	 => $taxonomy_name,
+$taxonomy_name = 'tb_participer_category';
+$participer_categories = get_terms( [
+	'taxonomy'   => $taxonomy_name,
 	'hide_empty' => false,
-	'fields'		 => 'all',
-	'parent'		 => 0
+	'fields'     => 'all',
+	'parent'     => 0
 ] );
 
-function tools_category($term) {
+function participer_category($term) {
 	global $taxonomy_name;
 
 	the_telabotanica_component( 'title', [
@@ -29,7 +29,7 @@ function tools_category($term) {
 	}
 
 	$items = get_posts( [
-		'post_type' => 'tb_outil',
+		'post_type' => 'tb_participer',
 		'tax_query' => [
 			[
 				'taxonomy' => $taxonomy_name,
@@ -42,7 +42,9 @@ function tools_category($term) {
 		'sort_order' => 'asc',
 		'numberposts' => -1
 	] );
-	the_telabotanica_component('tools', [
+
+	the_telabotanica_component('articles', [
+		'title_level' => $term->parent === 0 ? 3 : 4,
 		'items' => $items
 	] );
 
@@ -84,7 +86,7 @@ function tools_category($term) {
 
 							endwhile;
 
-							$toc_items = array_merge($toc_items, $tools_categories);
+							$toc_items = array_merge($toc_items, $participer_categories);
 						}
 
 						the_telabotanica_module('toc', [
@@ -97,7 +99,7 @@ function tools_category($term) {
 						?>
 					</aside>
 					<div class="layout-content">
-						<?php the_telabotanica_module('breadcrumbs'); ?>
+						<?php the_telabotanica_module('breadcrumbs', []); ?>
 						<article>
 							<?php
 							// Si la page utilise des composants
@@ -110,15 +112,19 @@ function tools_category($term) {
 
 									endwhile;
 
+							else :
+
+									// no layouts found
+
 							endif;
 
-							foreach ( $tools_categories as $term ) :
+							foreach ( $participer_categories as $term ) :
 
-								tools_category($term);
+								participer_category($term);
 
 								foreach ( get_term_children( $term->term_id, $taxonomy_name ) as $child ) :
 									$term_child = get_term_by( 'id', $child, $taxonomy_name );
-									tools_category($term_child);
+									participer_category($term_child);
 								endforeach;
 
 							endforeach;

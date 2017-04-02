@@ -89,6 +89,7 @@ array_walk($telabotanica_blocks, function ($block) {
  */
 $telabotanica_components = [
 	'accordion',
+	'articles',
 	'buttons',
 	'contact',
 	'embed',

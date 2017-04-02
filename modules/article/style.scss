@@ -65,15 +65,15 @@
 		img {display: block;}
 	}
 
-	// margin-top lorsque précédé de breadcrumbs ou d'un autre article
-	& + &,
+	// margin-top lorsque précédé de breadcrumbs
 	.breadcrumbs + & {
 		margin-top: 3rem;
 	}
 
 	& + & {
 		border-top: 0.1rem solid $grisDD;
-		padding-top: 3rem;
+		margin-top: 2.5rem;
+		padding-top: 2.5rem;
 	}
 
 	.component-title,

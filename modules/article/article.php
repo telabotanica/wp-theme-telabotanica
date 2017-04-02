@@ -1,6 +1,7 @@
 <?php function telabotanica_module_article($data) {
 
 	$defaults = [
+		'tag' => 'article',
 		'href' => get_the_permalink(),
 		'title' => get_the_title(),
 		'title_level' => 1,
@@ -14,7 +15,7 @@
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('article', $data->modifiers);
 
-	echo '<div class="' . implode(' ', $data->modifiers) . '">';
+	echo '<' . $data->tag . ' class="' . implode(' ', $data->modifiers) . '">';
 
 		if ( $data->thumbnail ) :
 			printf(
@@ -57,6 +58,6 @@
 
 		echo '</div>';
 
-	echo '</div>';
+	echo '</' . $data->tag . '>';
 
 }

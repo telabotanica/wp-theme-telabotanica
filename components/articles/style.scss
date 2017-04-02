@@ -1,0 +1,5 @@
+.component-articles {
+	&-items {
+		@include reset-list;
+	}
+}

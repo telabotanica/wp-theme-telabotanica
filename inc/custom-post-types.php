@@ -155,7 +155,7 @@ function telabotanica_participer_post_type() {
       'labels' => $labels,
       'description' => __( 'Moyens de participer', 'telabotanica' ),
       'public' => true,
-      'has_archive' => true,
+      'has_archive' => false,
       'menu_position' => 23,
       'menu_icon' => 'dashicons-megaphone',
       'capability_type' => 'page',

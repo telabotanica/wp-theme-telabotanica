@@ -19,6 +19,8 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `map` : centre optionnel
 * composant `text` : style basique pour les tableaux
 * composant `title` : ajout d'un offset pour les ancres (hauteur du header)
+* module `article` :
+	* meilleure réutilisation (`text` et `intro` optionnels, ajout de `title_level`)
 * module `block-dashboard` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :

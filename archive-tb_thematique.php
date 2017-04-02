@@ -32,15 +32,13 @@ get_header(); ?>
 						query_posts( $query_string . '&order=ASC&orderby=name&posts_per_page=-1' );
 
 						if ( have_posts() ) : ?>
-							<?php while ( have_posts() ) : the_post(); ?>
-								<article id="post-<?php the_ID(); ?>" <?php post_class('article'); ?>>
-									<?php
-									the_telabotanica_module('article', [
-										'text' => get_field('cover_subtitle')
-									]);
-									?>
-								</article>
-							<?php endwhile;
+							<?php while ( have_posts() ) : the_post();
+								the_telabotanica_module('article', [
+									'title_level' => 2,
+									'text' => get_field('cover_subtitle'),
+									'modifiers' => 'is-small'
+								]);
+							endwhile;
 
 							the_posts_pagination( [
 								'prev_text'          => __( 'Page précédente', 'telabotanica' ),

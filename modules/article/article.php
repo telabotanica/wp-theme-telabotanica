@@ -3,7 +3,9 @@
 	$defaults = [
 		'href' => get_the_permalink(),
 		'title' => get_the_title(),
+		'title_level' => 1,
 		'image' => false,
+		'intro' => '',
 		'text' => '',
 		'modifiers' => []
 	];
@@ -15,10 +17,10 @@
 
 		printf(
 			'<h%s class="article-title"><a href="%s">%s</a></h%s>',
-			1,
+			$data->title_level,
 			esc_url( $data->href ),
 			$data->title,
-			1
+			$data->title_level
 		);
 
 		if ( $data->image ) :
@@ -29,9 +31,17 @@
 			);
 		endif;
 
-		the_telabotanica_component('intro', [
-			'text' => $data->text
-		]);
+		if ( $data->intro ) :
+			the_telabotanica_component('intro', [
+				'text' => $data->intro
+			]);
+		endif;
+
+		if ( $data->text ) :
+			the_telabotanica_component('text', [
+				'text' => $data->text
+			]);
+		endif;
 
 	echo '</div>';
 

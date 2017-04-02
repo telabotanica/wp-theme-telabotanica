@@ -3,8 +3,8 @@
   "version": "0.0.7",
   "description": "TelaBotanica est un thème créé sur mesure pour le site tela-botanica.org",
   "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack"
+    "start": "webpack --watch -d --devtool cheap-module-eval-source-map",
+    "build": "webpack -p --devtool cheap-module-source-map"
   },
   "repository": {
     "type": "git",

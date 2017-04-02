@@ -8,16 +8,48 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover'); ?>
+			<?php the_telabotanica_module('cover'); ?>
 
-      <div class="layout-content-col">
-        <div class="layout-wrapper">
-          <aside class="layout-column">
-            <?php the_telabotanica_module('toc'); ?>
-            <?php the_telabotanica_module('button-top'); ?>
-          </aside>
-          <div class="layout-content">
-            <?php
+			<div class="layout-content-col">
+				<div class="layout-wrapper">
+					<aside class="layout-column">
+						<?php
+						// Si la page utilise des composants
+						if ( have_rows('components') ) {
+							$toc_items = [];
+							$first = true;
+
+							// On boucle sur les composants
+							while ( have_rows('components') ) : the_row();
+
+								// On garde seulement les intertitres
+								if (get_row_layout() !== 'title') continue;
+
+								// On garde seulement les intertitres de niveau 2
+								if (get_sub_field('level') !== '2') continue;
+
+								$toc_items[] = [
+									'active' => $first,
+									'text' => get_sub_field('title'),
+									'href' => '#' . get_sub_field('anchor')
+								];
+
+								$first = false;
+
+							endwhile;
+						}
+
+						the_telabotanica_module('toc', [
+							'items' => [
+								[ 'items' => $toc_items ]
+							]
+						] );
+
+						the_telabotanica_module('button-top');
+						?>
+					</aside>
+					<div class="layout-content">
+						<?php
 						$breadcrumbs_items = [ 'home' ];
 						$breadcrumbs_items[] = [
 							'href' => get_post_type_archive_link( 'tb_thematique' ),
@@ -30,30 +62,30 @@ get_header(); ?>
 						]);
 
 						?>
-            <article>
-              <?php
-              // Si la page utilise des composants
-              if( have_rows('components') ):
+						<article>
+							<?php
+							// Si la page utilise des composants
+							if( have_rows('components') ):
 
-                  // On boucle sur les composants
-                  while ( have_rows('components') ) : the_row();
+									// On boucle sur les composants
+									while ( have_rows('components') ) : the_row();
 
-                    the_telabotanica_component(get_row_layout());
+										the_telabotanica_component(get_row_layout());
 
-                  endwhile;
+									endwhile;
 
-              else :
+							else :
 
-                  // no layouts found
+									// no layouts found
 
-              endif;
-              ?>
-            </article>
-          </div>
-        </div>
-      </div>
+							endif;
+							?>
+						</article>
+					</div>
+				</div>
+			</div>
 
-    </main><!-- .site-main -->
-  </div><!-- .content-area -->
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
 
 <?php get_footer(); ?>

@@ -19,7 +19,7 @@ function telabotanica_module_cover_project($data) {
 		endif;
 
 		echo '<h1 class="cover-project-title">' . bp_get_group_name() . '</h1>';
-		echo '<div class="cover-project-description">' . bp_get_group_description_excerpt() . '</div>';
+		echo '<div class="cover-project-description">' . strip_tags(bp_get_group_description_excerpt()) . '</div>';
 
 		the_telabotanica_module('button', [
 			'href' => '#', // TODO

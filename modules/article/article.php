@@ -24,6 +24,8 @@
 			);
 		endif;
 
+		echo '<div class="article-content">';
+
 		printf(
 			'<h%s class="article-title"><a href="%s">%s</a>%s</h%s>',
 			$data->title_level,
@@ -52,6 +54,8 @@
 				'text' => $data->text
 			]);
 		endif;
+
+		echo '</div>';
 
 	echo '</div>';
 

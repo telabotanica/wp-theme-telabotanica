@@ -1,6 +1,8 @@
 .article {
 
 	&.is-small {
+		align-items: center;
+		display: flex;
 		overflow: hidden;
 
 		.article-title {
@@ -42,7 +44,7 @@
 
 		.icon {
 			height: 1.2rem;
-			margin-left: 1rem;
+			margin-left: 0.5rem;
 			width: 1.2rem;
 		}
 	}

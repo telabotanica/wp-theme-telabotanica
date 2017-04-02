@@ -14,9 +14,10 @@ get_header(); ?>
 				<div class="layout-wrapper">
 					<aside class="layout-column">
 						<?php
+						$toc_items = [];
+
 						// Si la page utilise des composants
 						if ( have_rows('components') ) {
-							$toc_items = [];
 							$first = true;
 
 							// On boucle sur les composants

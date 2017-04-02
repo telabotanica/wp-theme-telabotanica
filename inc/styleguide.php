@@ -21,7 +21,7 @@ $telabotanica_modules = [
 	'article',
 	'autocomplete',
 	'breadcrumbs',
-  'block-dashboard',
+	'block-dashboard',
 	'button',
 	'button-top',
 	'card-project',
@@ -218,13 +218,9 @@ function telabotanica_styleguide_data($defaults, $data) {
 
 // Interprétation des modifiers
 function telabotanica_styleguide_modifiers_array($default, $modifiers) {
+	if (!is_array($default))   $default = explode(' ', $default);
 	if (!is_array($modifiers)) $modifiers = explode(' ', $modifiers);
-	if (!is_array($default)) {
-		array_unshift($modifiers, $default);
-	} else {
-		$modifiers = $default + $modifiers;
-	}
-	return $modifiers;
+	return array_merge($default, $modifiers);
 }
 
 // Définition des paramètres d'URL

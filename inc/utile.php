@@ -84,3 +84,16 @@ function telabotanica_format_place( $place, $icon = true ) {
 
  	return $place;
 }
+
+/**
+ * Maintenance page
+ */
+if ( ! function_exists( 'telabotanica_maintenance_mode' ) ) {
+	function telabotanica_maintenance_mode() {
+		if ( file_exists( ABSPATH . '.maintenance' ) ) {
+			include_once get_stylesheet_directory() . '/maintenance.php';
+			die();
+		}
+	}
+	add_action( 'wp', 'telabotanica_maintenance_mode' );
+}

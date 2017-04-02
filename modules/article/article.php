@@ -1,8 +1,8 @@
 <?php function telabotanica_module_article($data) {
 
 	$defaults = [
-		'href' => '',
-		'title' => '',
+		'href' => get_the_permalink(),
+		'title' => get_the_title(),
 		'image' => false,
 		'text' => '',
 		'modifiers' => []

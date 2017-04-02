@@ -21,7 +21,6 @@ get_header(); ?>
 					<div class="layout-content">
 						<?php
 						$breadcrumbs_items = [ 'home' ];
-
 						$breadcrumbs_items[] = [ 'text' => __('Thématiques', 'telabotanica') ];
 
 						the_telabotanica_module('breadcrumbs', [
@@ -36,8 +35,9 @@ get_header(); ?>
 							<?php while ( have_posts() ) : the_post(); ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class('article'); ?>>
 									<?php
-									the_title( sprintf( '<h2 class="article-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-									the_field('cover_subtitle');
+									the_telabotanica_module('article', [
+										'text' => get_field('cover_subtitle')
+									]);
 									?>
 								</article>
 							<?php endwhile;

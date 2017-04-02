@@ -29,6 +29,9 @@ plus de détails sur http://semver.org/lang/fr/
 * module `feed` ajouté
 * module `feed-date` ajouté
 * module `feed-item` ajouté
+* module `footer` :
+	* ajout des icônes de flèche au dernier item des colonnes du menu
+	* ajout de l'icône CC
 * module `header` :
 	* fix `z-index`
 	* utilise maintenant l'avatar BuddyPress

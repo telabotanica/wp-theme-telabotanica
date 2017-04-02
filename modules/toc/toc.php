@@ -35,16 +35,20 @@ function telabotanica_module_toc($data) {
 					] );
 				}
 			} else {
+				$parent_id = wp_get_post_parent_id( get_the_ID() );
+
 				// Affichage de la page parente de la page actuelle
-				wp_list_pages( [
-					'include' => wp_get_post_parent_id( get_the_ID() ),
-					'title_li' => null,
-					'walker' => new TocWalker()
-				] );
+				if ( get_post( $parent_id )->post_name !== 'flore' ) : // sauf pour Flore
+					wp_list_pages( [
+						'include' => $parent_id,
+						'title_li' => null,
+						'walker' => new TocWalker()
+					] );
+				endif;
 
 				// Affichage des pages soeurs de la page actuelle
 				wp_list_pages( [
-					'child_of' => wp_get_post_parent_id( get_the_ID() ),
+					'child_of' => $parent_id,
 					'title_li' => null,
 					'sort_column' => 'menu_order',
 					'walker' => new TocWalker()

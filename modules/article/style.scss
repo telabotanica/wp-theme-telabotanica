@@ -1,10 +1,23 @@
 .article {
 
 	&.is-small {
+		overflow: hidden;
+
 		.article-title {
 			font-size: 1.9rem;
 			line-height: 2.8rem;
 			margin-bottom: 0;
+		}
+
+		.article-thumbnail {
+			background: center center no-repeat;
+			background-size: cover;
+			border-radius: 50%;
+			float: left;
+			height: 10rem;
+			margin: 0 2.5rem 0 0;
+			min-width: 10rem;
+			overflow: hidden;
 		}
 	}
 
@@ -26,6 +39,17 @@
 				border-bottom-color: $gris23;
 			}
 		}
+
+		.icon {
+			height: 1.2rem;
+			margin-left: 1rem;
+			width: 1.2rem;
+		}
+	}
+
+	&-thumbnail {
+		float: right;
+		margin-left: 2.5rem;
 	}
 
 	&-image,
@@ -39,15 +63,15 @@
 		img {display: block;}
 	}
 
-	&-thumbnail {
-		float: right;
-		margin-left: 2rem;
-	}
-
 	// margin-top lorsque précédé de breadcrumbs ou d'un autre article
 	& + &,
 	.breadcrumbs + & {
 		margin-top: 3rem;
+	}
+
+	& + & {
+		border-top: 0.1rem solid $grisDD;
+		padding-top: 3rem;
 	}
 
 	.component-title,

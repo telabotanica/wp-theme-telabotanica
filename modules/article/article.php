@@ -4,6 +4,7 @@
 		'href' => get_the_permalink(),
 		'title' => get_the_title(),
 		'title_level' => 1,
+		'thumbnail' => false,
 		'image' => false,
 		'intro' => '',
 		'text' => '',
@@ -15,11 +16,20 @@
 
 	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
+		if ( $data->thumbnail ) :
+			printf(
+				'<a href="%s" class="article-thumbnail" style="background-image: url(%s)"></a>',
+				esc_url( $data->href ),
+				$data->thumbnail['sizes']['thumbnail']
+			);
+		endif;
+
 		printf(
-			'<h%s class="article-title"><a href="%s">%s</a></h%s>',
+			'<h%s class="article-title"><a href="%s">%s</a>%s</h%s>',
 			$data->title_level,
 			esc_url( $data->href ),
 			$data->title,
+			in_array('is-small', $data->modifiers) ? get_telabotanica_module('icon', ['icon' => 'angle-right', 'color' => 'orange']) : '',
 			$data->title_level
 		);
 

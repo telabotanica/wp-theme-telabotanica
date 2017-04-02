@@ -21,6 +21,8 @@ plus de détails sur http://semver.org/lang/fr/
 * composant `title` : ajout d'un offset pour les ancres (hauteur du header)
 * module `article` :
 	* meilleure réutilisation (`text` et `intro` optionnels, ajout de `title_level`)
+	* ajout d'un modifier `is-small`
+	* support d'un `thumbnail`
 * module `block-dashboard` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :

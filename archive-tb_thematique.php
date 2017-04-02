@@ -31,10 +31,11 @@ get_header(); ?>
 						global $query_string;
 						query_posts( $query_string . '&order=ASC&orderby=name&posts_per_page=-1' );
 
-						if ( have_posts() ) : ?>
-							<?php while ( have_posts() ) : the_post();
+						if ( have_posts() ) :
+							while ( have_posts() ) : the_post();
 								the_telabotanica_module('article', [
 									'title_level' => 2,
+									'thumbnail' => get_field('cover_image'),
 									'text' => get_field('cover_subtitle'),
 									'modifiers' => 'is-small'
 								]);

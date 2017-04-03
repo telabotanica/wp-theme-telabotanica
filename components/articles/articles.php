@@ -21,6 +21,7 @@
 				if (gettype($item) === 'object' && get_class($item) === 'WP_Post') :
 
 					$item->title = $item->post_title;
+					$item->text = get_the_excerpt($item);
 					$item->href = get_permalink($item);
 
 					$fields = (object) get_fields($item->ID);
@@ -41,6 +42,7 @@
 							break;
 
 						default :
+							$item->thumbnail = has_post_thumbnail($item) ? get_the_post_thumbnail_url( $item, 'post-thumbnail' ) : false;
 							break;
 					endswitch;
 

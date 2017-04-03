@@ -5,14 +5,14 @@
 		width: 121.2rem;
 	}
 
-  &-items {
-    @include reset-list;
-    display: flex;
-    flex-wrap: wrap;
+	&-items {
+		@include reset-list;
+		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
-  }
+	}
 
-  .card-project {
+	.card-project {
 		&:after {
 			background: linear-gradient(to bottom, transparentize($blanc,1) 0%, transparentize($blanc,0) 100%);
 			bottom: 0;
@@ -24,6 +24,6 @@
 			position: absolute;
 			width: 100%;
 		}
-  }
+	}
 
 }

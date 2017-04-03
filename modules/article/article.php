@@ -21,7 +21,7 @@
 			printf(
 				'<a href="%s" class="article-thumbnail" style="background-image: url(%s)"></a>',
 				esc_url( $data->href ),
-				$data->thumbnail['sizes']['thumbnail']
+				is_array($data->thumbnail) ? $data->thumbnail['sizes']['thumbnail'] : $data->thumbnail
 			);
 		endif;
 

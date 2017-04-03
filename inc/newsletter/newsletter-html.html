@@ -17,18 +17,20 @@
 	<h2>À la une</h2>
 
 	{% if featured.thumbnail %}
-	<img src="{{ featured.thumbnail }}" alt="">
+	<a href="{{ featured.link }}"><img src="{{ featured.thumbnail }}" alt=""></a>
 	{% endif %}
 
-	<h3>{{ featured.post.post_title }}</h3>
+	<h3><a href="{{ featured.link }}">{{ featured.post.post_title }}</a></h3>
 
 	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
 
 	<p>
 		{% if featured.intro is not empty %}
-			{{ featured.intro|striptags }}
+			{% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
+		{% else %}
+			{% set content = featured.post.post_content %}
 		{% endif %}
-		{{ featured.post.post_content|striptags|truncate(200, true) }} <a href="{{ featured.link }}">Lire l'article</a>
+		{{ content|striptags|truncate(300, true)|raw }} <a href="{{ featured.link }}">Lire l'article</a>
 	</p>
 
 </featured>
@@ -52,12 +54,12 @@
 				<date-end>{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date-end>
 				{% endif %}
 
-				<h3>{{ item.post.post_title }}</h3>
+				<h3><a href="{{ item.link }}">{{ item.post.post_title }}</a></h3>
 
 				<place>{{ item.event.place }}</place> - Publié par {{ item.author }}
 
 				<p>
-					{{ item.event.details|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire l'article</a>
+					{{ item.event.details|striptags|truncate(200, true)|raw }} <a href="{{ item.link }}">Lire l'article</a>
 				</p>
 
 			{% else %}
@@ -66,15 +68,17 @@
 				<img src="{{ item.thumbnail }}" alt="">
 				{% endif %}
 
-				<h3>{{ item.post.post_title }}</h3>
+				<h3><a href="{{ item.link }}">{{ item.post.post_title }}</a></h3>
 
 				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
 				<p>
 					{% if item.intro is not empty %}
-						{{ item.intro|striptags }}
+						{% set content = item.intro ~ ' ' ~ item.post.post_content %}
+					{% else %}
+						{% set content = item.post.post_content %}
 					{% endif %}
-					{{ item.post.post_content|striptags|truncate(200, true) }} <a href="{{ item.link }}">Lire l'article</a>
+					{{ content|striptags|truncate(200, true)|raw }} <a href="{{ item.link }}">Lire l'article</a>
 				</p>
 
 			{% endif %}

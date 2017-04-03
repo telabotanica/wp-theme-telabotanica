@@ -13,6 +13,7 @@ plus de détails sur http://semver.org/lang/fr/
 
 * tableau de bord
 * bloc `list-features` : style des liens
+* bloc `list-projects` : ajout d'un dégradé en bas des `card-project`
 * bloc `main-features` : style des liens
 * composant `accordion` : correction bug quand plusieurs accordéons sur la même page
 * composant `articles` ajouté
@@ -31,6 +32,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `breadcrumbs` :
 	* ajout d'espace en-dessous
 	* support de multiples pages parentes
+* module `card-project` : pas de lien dans la description
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
 * module `feed` ajouté

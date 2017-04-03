@@ -96,7 +96,7 @@
 
 			printf(
 				'<li class="header-links-item header-links-item-donate"><a href="%s">%s</a></li>',
-				get_permalink( get_page_by_path( 'faire-un-don' ) ),
+				get_permalink( get_page_by_path( 'presentation/soutenir' ) ),
 				__( 'Faites un don !', 'telabotanica' )
 			);
 			printf(

@@ -16,6 +16,12 @@ Tela.profile = (function(){
         $currentRequestEspece,
         $pays;
 
+    function init() {        
+      initAutocompleteVille();
+      initAutocompleteEspece();
+      initRestrictionDepartements();
+    }
+
     function initAutocompleteVille(){
       $searchInputVille = $el.find('.field_ville input[type="text"]');
       $currentRequestVille = false;
@@ -81,9 +87,7 @@ Tela.profile = (function(){
 
     function initRestrictionDepartements() {
       $pays = $el.find('.field_pays > select');
-      $pays.click(function() {
-        linkPaysDepartement();
-      });
+      $pays.click(linkPaysDepartement);
       linkPaysDepartement();
     }
 
@@ -100,9 +104,7 @@ Tela.profile = (function(){
       }
     }
 
-    initAutocompleteVille();
-    initAutocompleteEspece();
-    initRestrictionDepartements();
+    init();
 
     return $el;
   }

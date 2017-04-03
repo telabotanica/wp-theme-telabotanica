@@ -17,7 +17,7 @@
 	<h2>À la une</h2>
 
 	{% if featured.thumbnail %}
-	<img src="{{ featured.thumbnail }}" alt="Image {{ featured.post.post_title }}">
+	<a href="{{ featured.link }}"><img src="{{ featured.thumbnail }}" alt=""></a>
 	{% endif %}
 
 	<h3><a href="{{ featured.link }}">{{ featured.post.post_title }}</a></h3>

@@ -114,7 +114,7 @@ function tb_bp_xprofile_save_sync_pseudo( $xprofileData ) {
 				// si le nicename courant est déjà un suffixe du nicename demandé,
 				// on le conserve pour éviter des suffixages en boucle ou inutiles
 				$motif = '/^' . $new_nicename . '-[0-9]+/i';
-				if (! preg_match($motif, $current_user->data->user_nicename)) {
+				if ((! isset($current_user->data->user_nicename)) || (! preg_match($motif, $current_user->data->user_nicename))) {
 					// sinon, on suffixe
 					while ($existing_id != null) {
 						$new_nicename = $xprofileData->value . '-' . rand(0, 1000);

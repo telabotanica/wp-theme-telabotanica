@@ -39,7 +39,7 @@ function participer_category($term) {
 			]
 		],
 		'orderby' => 'menu_order',
-		'sort_order' => 'asc',
+		'order' => 'ASC',
 		'numberposts' => -1
 	] );
 

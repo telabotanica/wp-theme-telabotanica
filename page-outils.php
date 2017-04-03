@@ -39,7 +39,7 @@ function tools_category($term) {
 			]
 		],
 		'orderby' => 'menu_order',
-		'sort_order' => 'asc',
+		'order' => 'ASC',
 		'numberposts' => -1
 	] );
 	the_telabotanica_component('tools', [

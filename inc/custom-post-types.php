@@ -106,7 +106,8 @@ function telabotanica_outil_post_type() {
       'capability_type' => 'page',
       'supports' => array(
         'title',
-        'revisions'
+        'revisions',
+        'page-attributes'
       ),
       'rewrite' => $rewrite
     )
@@ -161,7 +162,8 @@ function telabotanica_participer_post_type() {
       'capability_type' => 'page',
       'supports' => array(
         'title',
-        'revisions'
+        'revisions',
+        'page-attributes'
       ),
       'rewrite' => $rewrite
     )

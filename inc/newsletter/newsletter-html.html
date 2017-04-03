@@ -17,10 +17,10 @@
 	<h2>À la une</h2>
 
 	{% if featured.thumbnail %}
-	<img src="{{ featured.thumbnail }}" alt="">
+	<img src="{{ featured.thumbnail }}" alt="Image {{ featured.post.post_title }}">
 	{% endif %}
 
-	<a href="{{ featured.link }}"><h3>{{ featured.post.post_title }}</h3></a>
+	<h3><a href="{{ featured.link }}">{{ featured.post.post_title }}</a></h3>
 
 	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
 
@@ -54,7 +54,7 @@
 				<date-end>{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date-end>
 				{% endif %}
 
-				<a href="{{ item.link }}"><h3>{{ item.post.post_title }}</h3></a>
+				<h3><a href="{{ item.link }}">{{ item.post.post_title }}</a></h3>
 
 				<place>{{ item.event.place }}</place> - Publié par {{ item.author }}
 
@@ -68,7 +68,7 @@
 				<img src="{{ item.thumbnail }}" alt="">
 				{% endif %}
 
-				<a href="{{ item.link }}"><h3>{{ item.post.post_title }}</h3></a>
+				<h3><a href="{{ item.link }}">{{ item.post.post_title }}</a></h3>
 
 				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 

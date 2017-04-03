@@ -24,7 +24,7 @@
 		visibility: hidden;
 
 		body.admin-bar & {
-			margin-top: -$header-height-fixed - 4rem - $header-admin-bar-height;
+			margin-top: -$header-height-fixed + 4rem - $header-admin-bar-height;
 		}
 	}
 

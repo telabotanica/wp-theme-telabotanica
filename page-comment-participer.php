@@ -85,9 +85,9 @@ function participer_category($term) {
 								$first = false;
 
 							endwhile;
-
-							$toc_items = array_merge($toc_items, $participer_categories);
 						}
+
+						$toc_items = array_merge($toc_items, $participer_categories);
 
 						the_telabotanica_module('toc', [
 							'items' => [

@@ -83,9 +83,9 @@ function tools_category($term) {
 								$first = false;
 
 							endwhile;
-
-							$toc_items = array_merge($toc_items, $tools_categories);
 						}
+
+						$toc_items = array_merge($toc_items, $tools_categories);
 
 						the_telabotanica_module('toc', [
 							'items' => [

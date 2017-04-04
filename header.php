@@ -18,18 +18,20 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		  ga('create', 'UA-57885-1', 'auto');
-		  ga('send', 'pageview');
+			ga('create', 'UA-57885-1', 'auto');
+			ga('send', 'pageview');
 
 	</script>
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-  <?php
+	<?php
 	// TODO: add skip links ?>
 	<!-- <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'telabotanica' ); ?></a> -->
 
-  <?php the_telabotanica_module('header'); ?>
+	<?php
+	if ( !isset($GLOBALS['is_error']) ) the_telabotanica_module('header');
+	?>
 
 	<div id="content" class="site-content">

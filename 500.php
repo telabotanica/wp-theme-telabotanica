@@ -3,8 +3,8 @@ $GLOBALS['is_error'] = true;
 get_header();
 
 	the_telabotanica_module('error', [
-		'type' => 404,
-		'title' => __("La page que vous demandez est introuvable.", 'telabotanica')
+		'type' => 500,
+		'title' => __("Erreur interne au serveur.", 'telabotanica')
 	]);
 
 get_footer();

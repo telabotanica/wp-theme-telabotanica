@@ -35,6 +35,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `card-project` : pas de lien dans la description
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
+* module `error` ajouté
 * module `feed` ajouté
 * module `feed-date` ajouté
 * module `feed-item` ajouté
@@ -60,6 +61,7 @@ plus de détails sur http://semver.org/lang/fr/
 * template `page-comment-participer` ajouté
 * ajout d'une taxonomie Catégorie de moyens de participer
 * groupe de champs ACF "Composant liste d'articles" ajouté
+* pages d'erreur 404, 500, maintenance
 
 ## 0.0.7 (2017-03-04)
 

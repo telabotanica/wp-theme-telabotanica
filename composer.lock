@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cefc8bad75a12b1e6149b36c322af3ff",
+    "content-hash": "78c10e9b0f7a5b4b8b1926cc9bdf3778",
     "packages": [
         {
             "name": "js-phpize/js-phpize",
@@ -47,17 +47,54 @@
             "time": "2017-02-14T09:43:13+00:00"
         },
         {
-            "name": "pug-php/pug",
-            "version": "2.5.4",
+            "name": "proteusthemes/wai-aria-walker-nav-menu",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pug-php/pug.git",
-                "reference": "feb835c2f9565c1cf11713b6a0e044dba78a6780"
+                "url": "https://github.com/proteusthemes/WAI-ARIA-Walker_Nav_Menu.git",
+                "reference": "094b11d8e77143e29f337d128f892f15bab3ef92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/pug/zipball/feb835c2f9565c1cf11713b6a0e044dba78a6780",
-                "reference": "feb835c2f9565c1cf11713b6a0e044dba78a6780",
+                "url": "https://api.github.com/repos/proteusthemes/WAI-ARIA-Walker_Nav_Menu/zipball/094b11d8e77143e29f337d128f892f15bab3ef92",
+                "reference": "094b11d8e77143e29f337d128f892f15bab3ef92",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "aria-walker-nav-menu.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "Primoz Cigler",
+                    "email": "primoz@proteusnet.com"
+                },
+                {
+                    "name": "Marko Prelec",
+                    "email": "marko.prelec@proteusnet.com"
+                }
+            ],
+            "description": "WordPress menu walker which adds appropriate WIA-ARIA roles to dropdown menus.",
+            "time": "2016-05-18T18:48:49+00:00"
+        },
+        {
+            "name": "pug-php/pug",
+            "version": "2.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pug-php/pug.git",
+                "reference": "7049adeead44619b4d6624a894b4d4a37a278a99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pug-php/pug/zipball/7049adeead44619b4d6624a894b4d4a37a278a99",
+                "reference": "7049adeead44619b4d6624a894b4d4a37a278a99",
                 "shasum": ""
             },
             "require": {
@@ -202,7 +239,7 @@
                 "pug",
                 "template"
             ],
-            "time": "2017-02-15T09:27:11+00:00"
+            "time": "2017-02-16T15:00:27+00:00"
         }
     ],
     "packages-dev": [],

@@ -1,5 +1,6 @@
 {
     "require": {
-        "pug-php/pug": "^2.5"
+        "pug-php/pug": "^2.5",
+        "proteusthemes/wai-aria-walker-nav-menu": "^1.2"
     }
 }

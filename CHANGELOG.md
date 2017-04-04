@@ -45,6 +45,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `header` :
 	* fix `z-index`
 	* utilise maintenant l'avatar BuddyPress
+	* menus déroulants
 * module `header-dashboard` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté

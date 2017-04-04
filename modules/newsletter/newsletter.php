@@ -25,7 +25,7 @@
 
 		if ($data->button) {
 			the_telabotanica_module('button', [
-				'href' => is_user_logged_in() ? '#' : '#', // TODO
+				'href' => is_user_logged_in() ? bp_loggedin_user_domain() . 'profile/edit' : bp_get_signup_page(),
 				'text' => __( "S'abonner", 'telabotanica' )
 			] );
 		}

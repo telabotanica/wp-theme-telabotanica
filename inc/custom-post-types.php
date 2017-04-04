@@ -2,7 +2,7 @@
 
 // Pages thématiques
 function telabotanica_thematique_post_type() {
-  $labels = array(
+	$labels = array(
 		'name'                  => _x( 'Thématiques', 'Post Type General Name', 'telabotanica' ),
 		'singular_name'         => _x( 'Thématique', 'Post Type Singular Name', 'telabotanica' ),
 		'menu_name'             => __( 'Thématiques', 'telabotanica' ),
@@ -28,40 +28,40 @@ function telabotanica_thematique_post_type() {
 		'items_list'            => __( 'Liste des thématiques', 'telabotanica' ),
 		'items_list_navigation' => __( 'Items list navigation', 'telabotanica' ),
 		'filter_items_list'     => __( 'Filter items list', 'telabotanica' ),
-  	);
+		);
 
-  $rewrite = array(
+	$rewrite = array(
 		'slug'                  => 'thematiques',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
 	);
 
-  register_post_type( 'tb_thematique',
-    array(
-      'labels' => $labels,
-      'description' => __( 'Page thématique', 'telabotanica' ),
-      'public' => true,
-      'has_archive' => true,
-      'menu_position' => 21,
-      'menu_icon' => 'dashicons-media-document',
-      'capability_type' => 'page',
-      'supports' => array(
-        'title',
-        'editor',
-        'revisions',
-        'page-attributes'
-      ),
-      'hierarchical' => true,
-      'rewrite' => $rewrite
-    )
-  );
+	register_post_type( 'tb_thematique',
+		array(
+			'labels' => $labels,
+			'description' => __( 'Page thématique', 'telabotanica' ),
+			'public' => true,
+			'has_archive' => true,
+			'menu_position' => 21,
+			'menu_icon' => 'dashicons-media-document',
+			'capability_type' => 'page',
+			'supports' => array(
+				'title',
+				'editor',
+				'revisions',
+				'page-attributes'
+			),
+			'hierarchical' => true,
+			'rewrite' => $rewrite
+		)
+	);
 }
 add_action( 'init', 'telabotanica_thematique_post_type' );
 
 // Outils
 function telabotanica_outil_post_type() {
-  $labels = array(
+	$labels = array(
 		'name'                  => _x( 'Outils', 'Post Type General Name', 'telabotanica' ),
 		'singular_name'         => _x( 'Outil', 'Post Type Singular Name', 'telabotanica' ),
 		'menu_name'             => __( 'Outils', 'telabotanica' ),
@@ -86,38 +86,38 @@ function telabotanica_outil_post_type() {
 		'items_list'            => __( 'Liste des outils', 'telabotanica' ),
 		'items_list_navigation' => __( 'Items list navigation', 'telabotanica' ),
 		'filter_items_list'     => __( 'Filter items list', 'telabotanica' ),
-  	);
+		);
 
-  $rewrite = array(
+	$rewrite = array(
 		'slug'                  => 'outils',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
 	);
 
-  register_post_type( 'tb_outil',
-    array(
-      'labels' => $labels,
-      'description' => __( 'Outil', 'telabotanica' ),
-      'public' => true,
-      'has_archive' => false,
-      'menu_position' => 22,
-      'menu_icon' => 'dashicons-admin-tools',
-      'capability_type' => 'page',
-      'supports' => array(
-        'title',
-        'revisions',
-        'page-attributes'
-      ),
-      'rewrite' => $rewrite
-    )
-  );
+	register_post_type( 'tb_outil',
+		array(
+			'labels' => $labels,
+			'description' => __( 'Outil', 'telabotanica' ),
+			'public' => true,
+			'has_archive' => false,
+			'menu_position' => 22,
+			'menu_icon' => 'dashicons-admin-tools',
+			'capability_type' => 'page',
+			'supports' => array(
+				'title',
+				'revisions',
+				'page-attributes'
+			),
+			'rewrite' => $rewrite
+		)
+	);
 }
 add_action( 'init', 'telabotanica_outil_post_type' );
 
 // Moyens de participer
 function telabotanica_participer_post_type() {
-  $labels = array(
+	$labels = array(
 		'name'                  => _x( 'Moyens de participer', 'Post Type General Name', 'telabotanica' ),
 		'singular_name'         => _x( 'Moyen de participer', 'Post Type Singular Name', 'telabotanica' ),
 		'menu_name'             => __( 'Participer', 'telabotanica' ),
@@ -140,33 +140,33 @@ function telabotanica_participer_post_type() {
 		'insert_into_item'      => __( 'Insert into item', 'telabotanica' ),
 		'uploaded_to_this_item' => __( 'Uploaded to this item', 'telabotanica' ),
 		'items_list'            => __( 'Liste des moyens de participer', 'telabotanica' ),
-    'items_list_navigation' => __( 'Items list navigation', 'telabotanica' ),
+		'items_list_navigation' => __( 'Items list navigation', 'telabotanica' ),
 		'filter_items_list'     => __( 'Filter items list', 'telabotanica' ),
-  	);
+		);
 
-  $rewrite = array(
+	$rewrite = array(
 		'slug'                  => 'comment-participer',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
 	);
 
-  register_post_type( 'tb_participer',
-    array(
-      'labels' => $labels,
-      'description' => __( 'Moyens de participer', 'telabotanica' ),
-      'public' => true,
-      'has_archive' => false,
-      'menu_position' => 23,
-      'menu_icon' => 'dashicons-megaphone',
-      'capability_type' => 'page',
-      'supports' => array(
-        'title',
-        'revisions',
-        'page-attributes'
-      ),
-      'rewrite' => $rewrite
-    )
-  );
+	register_post_type( 'tb_participer',
+		array(
+			'labels' => $labels,
+			'description' => __( 'Moyens de participer', 'telabotanica' ),
+			'public' => true,
+			'has_archive' => false,
+			'menu_position' => 23,
+			'menu_icon' => 'dashicons-megaphone',
+			'capability_type' => 'page',
+			'supports' => array(
+				'title',
+				'revisions',
+				'page-attributes'
+			),
+			'rewrite' => $rewrite
+		)
+	);
 }
 add_action( 'init', 'telabotanica_participer_post_type' );

@@ -103,7 +103,7 @@ add_filter( 'algolia_autocomplete_config', 'telabotanica_algolia_autocomplete_co
 
 // Add custom query_var `index` (for search page)
 function telabotanica_algolia_add_query_vars( $vars ){
-  $vars[] = "index";
-  return $vars;
+	$vars[] = "index";
+	return $vars;
 }
 add_filter( 'query_vars', 'telabotanica_algolia_add_query_vars' );

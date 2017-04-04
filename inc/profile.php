@@ -8,7 +8,7 @@ add_action("admin_init","tb_redirect_user_to_bp_profile");
 function tb_redirect_user_to_bp_profile(){
 	if ( !defined('IS_PROFILE_PAGE') )
 	return false;//if this is not the profile page, do not do anything
-	 
+
 	$current_user = wp_get_current_user();
 	$bp_profile_link=bp_core_get_user_domain( $current_user->ID);
 	bp_core_redirect($bp_profile_link);
@@ -21,19 +21,19 @@ function tb_redirect_user_to_bp_profile(){
  */
 add_filter( 'xprofile_group_fields', 'tb_bp_remove_xprofile_fullname_field', 10, 2 );
 function tb_bp_remove_xprofile_fullname_field( $fields ) {
-    if( ! bp_is_register_page() ) {
+		if( ! bp_is_register_page() ) {
 		return $fields;
 	}
-    // Remove item from array.
-    foreach ($fields as $key => $value ) {
-		if ( $value->id == 1 ) {
-			// produit des "notice" dans le formulaire, mais pas trouvé comment
-			// faire mieux
-			$fields[$key] = array();
-		}
-    }
-    // Return the fields
-    return $fields;
+	// Remove item from array.
+	foreach ($fields as $key => $value ) {
+	if ( $value->id == 1 ) {
+		// produit des "notice" dans le formulaire, mais pas trouvé comment
+		// faire mieux
+		$fields[$key] = array();
+	}
+	}
+	// Return the fields
+	return $fields;
 }
 
 /**
@@ -43,10 +43,10 @@ function tb_bp_remove_xprofile_fullname_field( $fields ) {
  */
 add_action( 'bp_after_signup_profile_fields', 'tb_bp_add_xprofile_fullname_field_hidden' );
 function tb_bp_add_xprofile_fullname_field_hidden(){
-    if( ! bp_is_register_page() ) {
-		return;
-	}
-    echo '<input type="hidden" name="field_1" id="field_1" value=""/>';
+	if( ! bp_is_register_page() ) {
+	return;
+}
+	echo '<input type="hidden" name="field_1" id="field_1" value=""/>';
 }
 
 /**
@@ -55,21 +55,21 @@ function tb_bp_add_xprofile_fullname_field_hidden(){
  */
 add_action( 'bp_core_signup_user', 'tb_bp_core_signup_user', 10, 1 );
 function tb_bp_core_signup_user( $user_id ) {
-    $user = get_userdata( $user_id );
-    xprofile_set_field_data( BP_XPROFILE_FULLNAME_FIELD_NAME, $user_id, $user->user_login );
-    $userdata = array(
-		'ID' => $user_id,
-		'user_nicename' => $user->user_login,
-		'display_name' => $user->user_login,
-		'nickname' => $user->user_login
-    );
-    wp_update_user( $userdata );
+	$user = get_userdata( $user_id );
+	xprofile_set_field_data( BP_XPROFILE_FULLNAME_FIELD_NAME, $user_id, $user->user_login );
+	$userdata = array(
+	'ID' => $user_id,
+	'user_nicename' => $user->user_login,
+	'display_name' => $user->user_login,
+	'nickname' => $user->user_login
+	);
+	wp_update_user( $userdata );
 }
 
 /**
  * Recopie la valeur du nom et du prénom BP (champs perso TB "Prénom" et "Nom")
  * dans les champs WP "first_name" et "last_name", lorsque le profil est modifié
- * 
+ *
  * @WARNING penser à *désactiver* "Synchronisation des profils" dans Réglages >
  * BuddyPress > Options, sans quoi les valeurs seront écrasées par la suite
  */
@@ -95,7 +95,7 @@ function tb_bp_xprofile_save_sync_first_and_last_name( $xprofileData ) {
 /**
  * Recopie la valeur du pseudo BP (champ BP "name") dans les champs WP
  * "user_nicename", "nickname" et "display_name", lorsque le profil est modifié
- * 
+ *
  * @WARNING penser à *désactiver* "Synchronisation des profils" dans Réglages >
  * BuddyPress > Options, sans quoi les valeurs seront écrasées par la suite
  */
@@ -143,7 +143,7 @@ function tb_bp_xprofile_save_sync_pseudo( $xprofileData ) {
  * formulaire
  */
 add_action( 'xprofile_updated_profile', 'tb_bp_xprofile_updated_profile_redirection', 10, 1 );
-function tb_bp_xprofile_updated_profile_redirection( $user_id ) { 
+function tb_bp_xprofile_updated_profile_redirection( $user_id ) {
 	$user = new WP_User($user_id);
 	$url_profil = site_url() . '/' . bp_get_members_root_slug() . '/' . $user->data->user_nicename . '/profile/edit';
 	wp_redirect($url_profil);

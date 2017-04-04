@@ -25,6 +25,11 @@ function telabotanica_outils_categories_taxonomy() {
 		'items_list'                 => __( 'Items list', 'telabotanica' ),
 		'items_list_navigation'      => __( 'Items list navigation', 'telabotanica' ),
 	);
+	$rewrite = array(
+		'slug'                       => 'outils',
+		'with_front'                 => true,
+		'hierarchical'               => true,
+	);
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => true,
@@ -33,7 +38,7 @@ function telabotanica_outils_categories_taxonomy() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
-		'rewrite'                    => false,
+		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'tb_outils_category', array( 'tb_outil' ), $args );
 
@@ -65,6 +70,11 @@ function telabotanica_participer_categories_taxonomy() {
 		'items_list'                 => __( 'Items list', 'telabotanica' ),
 		'items_list_navigation'      => __( 'Items list navigation', 'telabotanica' ),
 	);
+	$rewrite = array(
+		'slug'                       => 'comment-participer',
+		'with_front'                 => true,
+		'hierarchical'               => true,
+	);
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => true,
@@ -73,7 +83,7 @@ function telabotanica_participer_categories_taxonomy() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
-		'rewrite'                    => false,
+		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'tb_participer_category', array( 'tb_participer' ), $args );
 

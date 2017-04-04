@@ -18,13 +18,13 @@
 	&-anchor {
 		display: block;
 		height: 0;
-		margin-top: -$header-height-fixed + 4rem; // offset for fixed header
+		margin-top: -1 * ($header-height-fixed); // offset for fixed header
 		position: absolute;
 		top: 0;
 		visibility: hidden;
 
 		body.admin-bar & {
-			margin-top: -$header-height-fixed + 4rem - $header-admin-bar-height;
+			margin-top: -1 * ($header-height-fixed + $header-admin-bar-height);
 		}
 	}
 

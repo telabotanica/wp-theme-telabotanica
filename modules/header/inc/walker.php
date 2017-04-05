@@ -1,14 +1,21 @@
 <?php
 // Conserver le dernier élément parent dans les args pour pouvoir le réutiliser dans le walker
 function telabotanica_header_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
-
 	if ( $args->theme_location === 'secondary' && $depth === 0 ) {
 		$args->last_parent_el = $item;
 	}
-
 	return $item_output;
 }
 add_filter('walker_nav_menu_start_el', 'telabotanica_header_walker_nav_menu_start_el', 10, 4);
+
+// Remplacer à la volée les liens vers les catégories d'outils et de moyens de participer par des ancres
+function telabotanica_header_nav_menu_link_attributes($atts, $item, $args, $depth) {
+	if ( $args->theme_location === 'secondary' && in_array( $item->object, ['tb_outils_category', 'tb_participer_category'] ) ) {
+		$atts['href'] = preg_replace("/(.+)\/(.+)\/$/", "$1#$2", $atts['href']);
+	}
+	return $atts;
+}
+add_filter('nav_menu_link_attributes', 'telabotanica_header_nav_menu_link_attributes', 10, 4);
 
 
 // Walker spécifique, basé sur Aria_Walker_Nav_Menu

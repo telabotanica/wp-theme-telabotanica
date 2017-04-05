@@ -12,6 +12,7 @@
 
 	&-fixed {
 		background-color: $blanc;
+		box-shadow: 0 0.1rem 0.2rem 0 transparentize($noir, 0.9);
 		font-family: $ubuntu;
 		font-size: 0; // cache les espaces entre éléments dans le code HTML
 		font-weight: $medium;

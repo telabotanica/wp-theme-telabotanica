@@ -12,7 +12,8 @@ var Tela = window.Tela || {};
 Tela.toc = (function(){
 
 	var defaultOptions = {
-		anchorsSelector: '.component-title.level-2 .component-title-anchor'
+		anchorsSelector: '.component-title.level-2 .component-title-anchor',
+		anchorOffset: 40 // should be the same as $title-anchor-offset in component title style
 	};
 
 	function module(selector, userOptions){
@@ -49,7 +50,7 @@ Tela.toc = (function(){
 				var $anchor = $(anchor);
 				return {
 					id: $anchor.attr('name'),
-					top: $anchor.offset().top
+					top: $anchor.offset().top + options.anchorOffset
 				};
 			});
 

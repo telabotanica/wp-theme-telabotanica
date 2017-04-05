@@ -33,6 +33,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout d'espace en-dessous
 	* support de multiples pages parentes
 * module `card-project` : pas de lien dans la description
+* module `comment-form` ajouté
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
 * module `error` ajouté
@@ -54,6 +55,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout du comportement "affix" (reste fixe lors du scroll)
 	* ajout du comportement "scrollspy" (mise en évidence de l'item en cours)
 * layout `2-col` : ajout d'une version `larger-first-col`
+* layout `central-col` : ajout d'un modifier `background-beige`
 * layout `content-col` :
 	* ajout d'une largeur max en version `is-dashboard`
 	* ajout de padding en bas du contenu

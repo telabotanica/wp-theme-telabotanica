@@ -30,6 +30,7 @@ $telabotanica_modules = [
 	'column-articles',
 	'column-features',
 	'column-links',
+	'comment-form',
 	'cover',
 	'cover-home',
 	'cover-member',

@@ -48,7 +48,13 @@
 		box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
 		padding: 1.2rem;
 		width: 100%;
+
+		.comments & {
+			background-color: $beige2;
+			box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.8);
+		}
 	}
+
 
 	.required {
 		color: $turquoise-fonce;

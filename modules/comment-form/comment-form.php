@@ -13,7 +13,8 @@
 	);
 
 		comment_form([
-			'class_submit' => 'button'
+			'class_submit' => 'button',
+			'label_submit' => __('Publier', 'telabotanica')
 		]);
 
 	echo '</div>';

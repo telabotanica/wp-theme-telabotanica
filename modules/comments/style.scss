@@ -1,0 +1,117 @@
+.comments {
+	margin-bottom: 5rem;
+
+	&-title {
+		color: $gris23;
+		font-family: $ubuntu;
+		font-size: 2.6rem;
+		font-weight: $bold;
+		margin: 5rem 0;
+
+		.icon {
+			height: 3rem;
+			margin-right: 2rem;
+			vertical-align: bottom;
+			width: 3.8rem;
+		}
+	}
+
+	&-items {
+		&, ol {
+			@include reset-list;
+		}
+
+		.comment {
+			a {
+				color: inherit;
+				text-decoration: none;
+
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
+			}
+
+			&-meta {
+				overflow: hidden;
+			}
+
+			&-author {
+				color: $gris23;
+				font-family: $ubuntu;
+				font-size: 1.9rem;
+				font-weight: $bold;
+				margin: 0;
+
+				.avatar {
+					border-radius: 50%;
+					float: left;
+					height: 4.5rem;
+					margin-right: 1rem;
+					width: 4.5rem;
+				}
+
+				.says {@include hidden-accessibly;}
+			}
+
+			&-metadata,
+			&-awaiting-moderation,
+			.edit-link {
+				font-size: 1.4rem;
+				display: inline-block;
+			}
+
+			&-awaiting-moderation {
+				color: $violet;
+				margin: 0 0 0 1rem;
+			}
+
+			.edit-link {margin-left: 1rem;}
+
+			&-content {
+				font-size: 1.6rem;
+			}
+
+			.comment-reply {
+				&-link,
+				&-title small a {
+					border-bottom: 0.1rem solid;
+					color: $turquoise-fonce;
+					font-family: $muli;
+					font-size: 1.5rem;
+					font-weight: $regular;
+					text-decoration: none;
+					transition: background 0.2s ease;
+
+					&:hover, &:focus {
+						background-color: transparentize($turquoise-fonce, 0.9);
+						text-decoration: none;
+					}
+				}
+
+				&-title {
+					color: $gris23;
+					font-family: $ubuntu;
+					font-size: 1.9rem;
+					font-weight: $bold;
+
+					small {
+						float: right;
+					}
+				}
+			}
+
+			&-respond,
+			.children {
+				margin: 4rem 0 0 5.5rem;
+			}
+		}
+
+		.comment + .comment,
+		.children {
+			border-top: 0.1rem solid transparentize($taupe, 0.8);
+			margin-top: 3rem;
+			padding-top: 3rem;
+		}
+	}
+}

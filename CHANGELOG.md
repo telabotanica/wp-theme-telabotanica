@@ -34,6 +34,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* support de multiples pages parentes
 * module `card-project` : pas de lien dans la description
 * module `comment-form` ajouté
+* module `comments` ajouté
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
 * module `error` ajouté

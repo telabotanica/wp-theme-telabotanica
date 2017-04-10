@@ -55,7 +55,7 @@ function telabotanica_block_mosaic($data) {
 	$images = array_map(function($resultat) {
 		return (object) [
 			'href' => 'http://www.tela-botanica.org/appli:identiplante#obs~' . $resultat->id_observation,
-			'src' => str_replace('XL.', 'CRL.', $resultat->images[0]->{'binaire.href'}),
+			'src' => str_replace('XL.', 'CRS.', $resultat->images[0]->{'binaire.href'}),
 			'alt' => @$resultat->{'determination.ns'} ?: __( 'Indéterminé', 'telabotanica' )
 		];
 	}, $images_feed->resultats);

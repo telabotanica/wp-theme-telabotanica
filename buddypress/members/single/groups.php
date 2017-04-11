@@ -99,10 +99,6 @@ if (bp_is_my_profile() || is_super_admin()) :
 	endswitch;
 
 else:
-	global $wp_query;
-	$wp_query->set_403();
-	status_header(403);
-	nocache_headers();
 	?>
 	<div class="notice notice-warning">
 		<?php _e('Cette page est privée', 'telabotanica') ?>

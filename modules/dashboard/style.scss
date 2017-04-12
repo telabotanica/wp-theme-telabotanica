@@ -11,6 +11,11 @@ body.bp-user {
 			padding: 1rem 1rem;
 			text-align: center;
 
+			background-color: $turquoise-clair;
+			border-color: darken($turquoise-clair, 20%);
+			color: $turquoise-fonce;
+			fill: $turquoise-fonce;
+
 			&.error {
 				background-color: $orange-clair;
 				border-color: darken($orange-clair, 20%);

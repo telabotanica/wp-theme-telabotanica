@@ -37,7 +37,7 @@ $telabotanica_modules = [
 	'cover-member',
 	'cover-project',
 	'cover-search',
-	'error',
+	'error-page',
 	'event-dates',
 	'feed',
 	'feed-date',

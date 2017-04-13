@@ -1,26 +1,16 @@
 body.bp-user {
 
 	#template-notices {
-		padding: 0.1rem;
-		margin-bottom: 1rem;
-
 		> .bp-template-notice {
-			margin: 0 0 1rem 0;
-			border: 0.1rem solid;
-			border-radius: 0.4rem;
-			padding: 1rem 1rem;
-			text-align: center;
-
-			background-color: $turquoise-clair;
-			border-color: darken($turquoise-clair, 20%);
-			color: $turquoise-fonce;
-			fill: $turquoise-fonce;
+			@extend .notice;
+			@extend .notice-info;
 
 			&.error {
-				background-color: $orange-clair;
-				border-color: darken($orange-clair, 20%);
-				color: darken($orange, 20%);
-				fill: darken($orange, 20%);
+				@extend .notice-alert;
+			}
+
+			&:last-child {
+				margin-bottom: 3rem;
 			}
 
 			> p {

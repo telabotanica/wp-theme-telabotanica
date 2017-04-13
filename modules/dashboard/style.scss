@@ -1,0 +1,21 @@
+body.bp-user {
+
+	#template-notices {
+		> .bp-template-notice {
+			@extend .notice;
+			@extend .notice-info;
+
+			&.error {
+				@extend .notice-alert;
+			}
+
+			&:last-child {
+				margin-bottom: 3rem;
+			}
+
+			> p {
+				margin: 0;
+			}
+		}
+	}
+}

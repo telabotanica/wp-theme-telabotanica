@@ -14,8 +14,8 @@ if ( bp_is_user_front() && bp_displayed_user_id() !== get_current_user_id() ) :
 
 	?>
 	<div class="layout-central-col">
-  	<div class="layout-wrapper">
-    	<div class="layout-content"><?php
+		<div class="layout-wrapper">
+			<div class="layout-content"><?php
 
 			// Display XProfile
 			if ( bp_is_active( 'xprofile' ) )
@@ -166,6 +166,12 @@ else :
 
 			<div id="item-body">
 
+				<div id="template-notices" role="alert" aria-atomic="true">
+					<?php
+					/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
+					do_action( 'template_notices' ); ?>
+				</div>
+
 				<?php
 
 				/**
@@ -183,22 +189,22 @@ else :
 					bp_get_template_part( 'members/single/activity' );
 
 				elseif ( bp_is_user_blogs() ) :
-					bp_get_template_part( 'members/single/blogs'    );
+					bp_get_template_part( 'members/single/blogs' );
 
 				elseif ( bp_is_user_friends() ) :
-					bp_get_template_part( 'members/single/friends'  );
+					bp_get_template_part( 'members/single/friends' );
 
 				elseif ( bp_is_user_groups() ) :
-					bp_get_template_part( 'members/single/groups'   );
+					bp_get_template_part( 'members/single/groups' );
 
 				elseif ( bp_is_user_messages() ) :
 					bp_get_template_part( 'members/single/messages' );
 
 				elseif ( bp_is_user_profile() ) :
-					bp_get_template_part( 'members/single/profile'  );
+					bp_get_template_part( 'members/single/profile' );
 
 				elseif ( bp_is_user_forums() ) :
-					bp_get_template_part( 'members/single/forums'   );
+					bp_get_template_part( 'members/single/forums' );
 
 				elseif ( bp_is_user_notifications() ) :
 					bp_get_template_part( 'members/single/notifications' );
@@ -223,7 +229,7 @@ else :
 
 				// If nothing sticks, load a generic template
 				else :
-					bp_get_template_part( 'members/single/plugins'  );
+					bp_get_template_part( 'members/single/plugins' );
 
 				endif;
 

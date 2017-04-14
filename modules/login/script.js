@@ -1,38 +1,70 @@
 'use strict';
 
+var iconTemplate = require('../icon/icon.pug');
+
 var Tela = window.Tela || {};
 
 Tela.login = (function(){
 
-  function login(selector){
-    var $el     = $(selector),
-      $links;
+	function login(selector){
+		var $el = $(selector),
+			$inputLogin,
+			$defaultProvider,
+			$labelsProviders,
+			$radiosProviders;
 
-    function init(){
-      console.log('login', $el);
+		function init(){
+			$el.addClass('has-js');
 
-      // $links.on('click', onClickLink);
-    }
+			$inputLogin = $('#user_login');
+			$labelsProviders = $el.find('.login-providers label');
+			$defaultProvider = $labelsProviders.filter('.login-provider-default');
+			$radiosProviders = $el.find('.login-providers input');
 
-    function onClickLink(e){
-      e.preventDefault();
-      e.stopPropagation();
-      openInNewWindow($(this).attr('href'));
-    }
+			$defaultProvider.hide();
+			replaceDefaultWithIcon();
 
-    init();
+			$radiosProviders.on('change', onChangeRadio);
+		}
 
-    return $el;
-  }
+		function replaceDefaultWithIcon(){
+			var iconClose = iconTemplate({data: {icon: 'close'}});
 
-  return function(selector){
-    return $(selector).each(function(){
-      login(this);
-    });
-  };
+			// Remove text nodes
+			$defaultProvider.contents().filter(function(){return this.nodeType === 3;}).remove();
+
+			// Append icon
+			$defaultProvider.append(iconClose);
+		}
+
+		function onChangeRadio(e){
+			var $this = $(this);
+			$labelsProviders.removeClass('active');
+			if ($this.is(':checked')) {
+				$this.closest('label').addClass('active');
+			}
+
+			// Show the default provider only if another one was checked
+			$defaultProvider.toggle($this.val() !== '');
+
+			// Focus the login input
+			$inputLogin.trigger('focus');
+		}
+
+
+		init();
+
+		return $el;
+	}
+
+	return function(selector){
+		return $(selector).each(function(){
+			login(this);
+		});
+	};
 
 })();
 
 $(document).ready(function(){
-  Tela.login('#login');
+	Tela.login('#login');
 });

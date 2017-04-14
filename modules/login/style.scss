@@ -5,72 +5,117 @@ Certaines couleurs n'utilisent pas les variables de colors.scss pour la même ra
 */
 
 body.login {
-  background-color: $grisF4;
+	background-color: $grisF4;
 }
 
-.login  {
-  #login_error,
-  .message {
-    border-color: $orange;
-  }
-
-  #backtoblog,
-  #nav,
-  h1 {
-    a:hover {
-      color: $turquoise;
-    }
-  }
-}
-
-#login,
 .login {
-  h1 {
-    a {
-      background-image: url(../images/logo-login.png);
-      margin-bottom: 1.5rem;
-    }
-  }
+	#login_error,
+	.message {
+		border-color: $orange;
+	}
 
-  .button-primary {
-    background-color: $green-button;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    padding-bottom: 0;
-    text-shadow: none;
+	#backtoblog,
+	#nav,
+	h1 {
+		a:hover {
+			color: $turquoise;
+		}
+	}
+}
 
-    &:hover, &:focus {
-      background-color: lighten($green-button, 8%);
-    }
-  }
+#login {
+	h1 {
+		a {
+			background-image: url('../images/logo-login.png');
+			margin-bottom: 1.5rem;
+		}
+	}
 
-  input[type="text"]:focus,
-  input[type="password"]:focus,
-  input[type="checkbox"]:focus {
-    border-color: $green-button;
-    box-shadow: 0 0 0.2rem transparentize($green-button, 0.8);
-  }
+	.button-primary {
+		background-color: $vert-bouton;
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		padding-bottom: 0;
+		text-shadow: none;
 
-  & label,
-  &-providers {
-    color: $taupe;
-    font-size: 1.4rem;
-  }
+		&:hover, &:focus {
+			background-color: lighten($vert-bouton, 8%);
+		}
+	}
 
-  #login &-providers {
-    margin-bottom: 2rem;
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	input[type="checkbox"]:focus {
+		border-color: $vert-bouton;
+		box-shadow: 0 0 0.2rem transparentize($vert-bouton, 0.8);
+	}
 
-    label {
-      background-color: #fbfbfb;
-      border: 0.1rem solid #ddd;
-      color: #32373c;
-      display: inline-block;
-      margin: 0.5rem 1rem 0 0;
-      line-height: 3rem;
-      padding: 0 1.2rem;
-    }
-  }
+	label,
+	.login-providers {
+		color: $taupe;
+		font-size: 1.4rem;
+	}
 
-  &-provider-default {@include hidden-accessibly;}
+	.login-providers {
+		margin-bottom: 2rem;
+
+		label {
+			background-color: #fbfbfb;
+			border: 0.1rem solid $grisDD;
+			color: #32373c;
+			display: inline-block;
+			margin: 0.5rem 1rem 0 0;
+			line-height: 3rem;
+			padding: 0 1.2rem;
+
+			&.active {
+				font-weight: bold;
+				filter: none;
+			}
+		}
+	}
+
+	&.has-js {
+		.login-providers {
+			label {
+				background-color: $blanc;
+				border: 0;
+			}
+
+			input {
+				@include hidden-accessibly;
+			}
+		}
+
+		.login-provider-default {
+			float: right;
+			margin-right: 0;
+			padding: 0;
+
+			.icon {
+				fill: $grisB3;
+				height: 2.4rem;
+				margin-top: 0.4rem;
+				width: 2.4rem;
+			}
+		}
+
+		.login-provider-plantnet,
+		.login-provider-recolnat {
+			background: left center no-repeat;
+			background-size: 2.5rem auto;
+			filter: grayscale(100%);
+			padding-left: 3rem;
+		}
+
+		.login-provider-plantnet {
+			background-image: url('../../modules/login/icon-plantnet.svg');
+		}
+
+		.login-provider-recolnat {
+			background-image: url('../../modules/login/icon-recolnat.png');
+		}
+	}
+
 }

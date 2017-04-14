@@ -123,9 +123,12 @@ function telabotanica_module_header($data) {
 			// Recherche
 
 			printf(
-				'<li class="header-links-item header-links-item-search"><a href="%s"><span class="header-links-item-text">%s</span></a></li>',
-				get_search_link(),
-				get_telabotanica_module('icon', ['icon' => 'search'])
+				'<li class="header-links-item header-links-item-search">%s</li>',
+				get_telabotanica_module('search-box', [
+					'placeholder' => __('Rechercher...', 'telabotanica'),
+					'modifiers' => ['tiny']
+				])
+				// get_search_link(),
 			);
 		echo '</ul>';
 	echo '</div>';

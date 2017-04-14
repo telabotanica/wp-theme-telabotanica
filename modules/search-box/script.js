@@ -20,7 +20,9 @@ Tela.searchBox = (function(){
 			sources = [],
 			search,
 			index,
+			isTiny = false,
 			$searchInput,
+			$button,
 			$wrapper,
 			$menu,
 			$suggestions,
@@ -30,6 +32,13 @@ Tela.searchBox = (function(){
 			client = algoliasearch(algolia.application_id, algolia.search_api_key);
 			$wrapper = $el.find('.search-box-wrapper');
 			$searchInput = $el.find('.search-box-input');
+			$button = $el.find('.search-box-button');
+
+			// Tiny mode
+			if ($el.hasClass('tiny')) {
+				isTiny = true;
+				$button.on('click', onTinyClickButton);
+			}
 
 			// The autocomplete can be disabled by setting the `data-autocomplete` to false
 			if ($el.data('autocomplete') === false) {
@@ -73,6 +82,14 @@ Tela.searchBox = (function(){
 				PubSub.publish('search-box.results', false);
 			}
 			index.search(val, onSearchResults);
+		}
+
+		function onTinyClickButton(e) {
+			if (!$el.hasClass('is-open')) {
+				e.preventDefault();
+				$el.addClass('is-open');
+				$searchInput.trigger('focus');
+			}
 		}
 
 		function onSearchResults(err, data) {
@@ -136,8 +153,9 @@ Tela.searchBox = (function(){
 			var tetherConfig = {
 				element: $menu,
 				target: $wrapper,
-				attachment: 'top left',
-				targetAttachment: 'bottom left',
+				attachment: isTiny ? 'top right' : 'top left',
+				targetAttachment: isTiny ? 'bottom right' : 'bottom left',
+				offset: isTiny ? '-9px 0' : '-5px 0',
 				constraints: [
 					{
 						to: 'window',

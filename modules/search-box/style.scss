@@ -9,8 +9,45 @@
 	}
 
 	// modifiers
+	&.tiny {
+		height: 3.2rem;
+		// transition: width 0.3s ease;
+
+		.search-box-wrapper {
+			height: 3.2rem;
+		}
+
+		.search-box-input {
+			background-color: $grisF4;
+			padding: 0;
+			transition: width 0.3s ease;
+			width: 0;
+		}
+
+		.search-box-button {
+			align-items: center;
+			border-radius: 0;
+			display: flex;
+			padding: 0;
+			justify-content: center;
+			width: 3.4rem;
+
+			.icon {
+				height: 1.2rem;
+				width: 1.2rem;
+			}
+		}
+
+		&.is-open {
+			.search-box-input {
+				padding: 0 0.8rem;
+				width: 16rem;
+			}
+		}
+	}
+
 	&.large {
-		&-wrapper {
+		.search-box-wrapper {
 			background-color: transparent;
 			height: 5.6rem;
 		}
@@ -98,6 +135,12 @@
 	}
 
 	@include large-and-medium {
+
+		&.tiny {
+			.search-box-input {
+				font-size: 1.2rem;
+			}
+		}
 
 		&.large {
 			.search-box-input {

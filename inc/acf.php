@@ -29,3 +29,11 @@ function telabotanica_set_featured_image( $post_id ) {
 }
 // Déclenché quand ACF sauve les données $_POST['acf']
 add_action('acf/save_post', 'telabotanica_set_featured_image', 20);
+
+
+// Ajout d'une query_var `categorie` (pour la page "Proposer une actulité")
+function telabotanica_add_categorie_query_var( $vars ){
+	$vars[] = "categorie";
+	return $vars;
+}
+add_filter( 'query_vars', 'telabotanica_add_categorie_query_var' );

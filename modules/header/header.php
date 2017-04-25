@@ -128,7 +128,6 @@ function telabotanica_module_header($data) {
 					'placeholder' => __('Rechercher...', 'telabotanica'),
 					'modifiers' => ['tiny']
 				])
-				// get_search_link(),
 			);
 		echo '</ul>';
 	echo '</div>';

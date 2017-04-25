@@ -1,5 +1,6 @@
 'use strict';
 
+require('velocity-animate');
 var algoliasearch = require('algoliasearch');
 var algoliaAutocomplete = require('autocomplete.js');
 var Tether = require('tether');
@@ -14,6 +15,7 @@ Tela.searchBox = (function(){
 
 	function module(selector){
 		var $el = $(selector),
+			$primarySearchBox,
 			client,
 			tether,
 			config,
@@ -33,11 +35,15 @@ Tela.searchBox = (function(){
 			$wrapper = $el.find('.search-box-wrapper');
 			$searchInput = $el.find('.search-box-input');
 			$button = $el.find('.search-box-button');
+			$primarySearchBox = $('.search-box.is-primary').first();
 
 			// Tiny mode
 			if ($el.hasClass('tiny')) {
 				isTiny = true;
 				$button.on('click', onTinyClickButton);
+
+				// There is a primary search box on the page, so we do not setup the autocomplete
+				if ($primarySearchBox.length) return;
 			}
 
 			// The autocomplete can be disabled by setting the `data-autocomplete` to false
@@ -85,7 +91,10 @@ Tela.searchBox = (function(){
 		}
 
 		function onTinyClickButton(e) {
-			if (!$el.hasClass('is-open')) {
+			if ($primarySearchBox.length) {
+				e.preventDefault();
+				$primarySearchBox.velocity("scroll", {offset: -250}).find('.search-box-input').trigger('focus');
+			} else if (!$el.hasClass('is-open')) {
 				e.preventDefault();
 				$el.addClass('is-open');
 				$searchInput.trigger('focus');

@@ -20,7 +20,8 @@
 			echo '<div class="cover-search-content">';
 
 			the_telabotanica_module('search-box', [
-				'autocomplete' => false
+				'autocomplete' => false,
+				'modifiers' => ['large', 'is-primary']
 			]);
 
 			if ( get_search_query() && !empty( $data->total_results ) ) :

@@ -37,6 +37,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `comments` ajouté
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
+* module `cover-project` : bouton vers site externe ajouté
 * module `error-page` ajouté
 * module `feed` ajouté
 * module `feed-date` ajouté

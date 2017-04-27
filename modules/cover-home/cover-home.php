@@ -38,7 +38,8 @@
 
 			the_telabotanica_module('search-box', [
 				// TODO: make the suggestions configurable
-				'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc']
+				'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc'],
+				'modifiers' => ['large', 'is-primary']
 			]);
 
 			echo '</div>';

@@ -9,6 +9,7 @@ Tela.blockDashboardImages = (function(){
 			$titleSuffix,
 			$content,
 			apiUrl,
+			maxItems = 8,
 			data = {
 				total: '',
 				items: []
@@ -32,7 +33,7 @@ Tela.blockDashboardImages = (function(){
 				url: apiUrl,
 				dataType: "xml",
 				success: function(xml){
-					$(xml).find('entry').each(function(){
+					$(xml).find('entry').slice(0, maxItems).each(function(){
 						var $this = $(this);
 						data.items.push({
 							href: $this.find('link').attr('href'),

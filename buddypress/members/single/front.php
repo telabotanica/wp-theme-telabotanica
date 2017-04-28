@@ -8,12 +8,16 @@
 
 $current_user = wp_get_current_user();
 
+$has_messages = bp_has_message_threads( array(
+	'box' => 'inbox',
+	'type' => 'unread'
+) );
+
 the_telabotanica_module('header-dashboard', [
 	'title' => sprintf(__('Bonjour %s !', 'telabotanica'), $current_user->display_name),
-	// TODO replace `true` by a real condition below
-	// TODO add number of messages
-	'message' => true ? sprintf(
-		__('Vous avez un <a href="%s">nouveau message</a>', 'telabotanica'),
+	'message' => $has_messages ? sprintf(
+		__('Vous avez %s <a href="%s">nouveau(x) message(s)</a>', 'telabotanica'),
+		bp_get_total_unread_messages_count(),
 		bp_loggedin_user_domain() . 'messages/'
 	) : false
 ]);

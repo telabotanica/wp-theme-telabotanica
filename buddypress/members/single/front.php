@@ -103,24 +103,12 @@ the_telabotanica_module('header-dashboard', [
 				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129701CRXS.jpg']
 			];
 
-			$html_content_photos = '<div class="block-dashboard-content-images">';
-			foreach ( $photos as $photo ) {
-				$html_content_photos .= sprintf(
-					'<a href="%s"><img src="%s" alt="%s" /></a>',
-					$photo['href'],
-					$photo['image'],
-					''
-				);
-			}
-			$html_content_photos .= '</div>';
-
-			the_telabotanica_module('block-dashboard', [
+			the_telabotanica_module('block-dashboard-images', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
-					'suffix' => '31', // TODO
-					'href' => '#'
+					'suffix' => '', // TODO
+					'href' => '#' // TODO
 				],
-				'html_content' => $html_content_photos,
 				'button' => [
 					'href' => '#', // TODO
 					'text' => __('Envoyer une photo', 'telabotanica')

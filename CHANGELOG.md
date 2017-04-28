@@ -28,6 +28,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout d'un modifier `is-small`
 	* support d'un `thumbnail`
 * module `block-dashboard` ajouté
+* module `block-dashboard-images` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :
 	* ajout d'espace en-dessous

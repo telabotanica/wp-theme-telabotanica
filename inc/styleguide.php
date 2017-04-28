@@ -22,6 +22,7 @@ $telabotanica_modules = [
 	'autocomplete',
 	'breadcrumbs',
 	'block-dashboard',
+	'block-dashboard-images',
 	'button',
 	'button-top',
 	'card-project',

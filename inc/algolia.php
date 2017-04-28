@@ -1,9 +1,5 @@
 <?php
 
-require_once get_template_directory() . '/algolia/class-algolia-actualites-index.php';
-require_once get_template_directory() . '/algolia/class-algolia-evenements-index.php';
-require_once get_template_directory() . '/algolia/class-algolia-projets-index.php';
-
 /**
  * Dequeue default CSS & JS files.
  *
@@ -42,16 +38,6 @@ function telabotanica_blacklist_custom_taxonomies( array $blacklist ) {
 	return $blacklist;
 }
 add_filter( 'algolia_taxonomies_blacklist', 'telabotanica_blacklist_custom_taxonomies' );
-
-// Customize indices
-function telabotanica_algolia_indices( array $indices ) {
-	$indices[] = new Algolia_Actualites_Index();
-	$indices[] = new Algolia_Evenements_Index();
-	$indices[] = new Algolia_Projets_Index();
-
-	return $indices;
-}
-add_filter( 'algolia_indices', 'telabotanica_algolia_indices' );
 
 // Customize searchable posts (it will be displayed as the "Pages" index)
 function telabotanica_algolia_should_index_searchable_post( bool $should_index, WP_Post $post ) {

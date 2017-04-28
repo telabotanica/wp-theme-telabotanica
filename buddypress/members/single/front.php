@@ -120,23 +120,23 @@ the_telabotanica_module('header-dashboard', [
 				'is_empty' => true
 			]);
 
-			the_telabotanica_module('block-dashboard', [
-				'title' => [
-					'title' => __('Mes dons', 'telabotanica'),
-					'href' => bp_loggedin_user_domain() . 'dons/'
-				],
-				'html_content' => 'mosaic photos', // TODO
-				'empty' => [
-					'icon' => 'heart-outline',
-					'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
-					'button' => [
-						'href' => '#', // TODO
-						'text' => __('Faites un don !', 'telabotanica'),
-						'modifiers' => 'rouge'
-					]
-				],
-				'is_empty' => true
-			]);
+			// the_telabotanica_module('block-dashboard', [
+			// 	'title' => [
+			// 		'title' => __('Mes dons', 'telabotanica'),
+			// 		'href' => bp_loggedin_user_domain() . 'dons/'
+			// 	],
+			// 	'html_content' => 'mosaic photos', // TODO
+			// 	'empty' => [
+			// 		'icon' => 'heart-outline',
+			// 		'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
+			// 		'button' => [
+			// 			'href' => '#', // TODO
+			// 			'text' => __('Faites un don !', 'telabotanica'),
+			// 			'modifiers' => 'rouge'
+			// 		]
+			// 	],
+			// 	'is_empty' => true
+			// ]);
 			?>
 		</div>
 	</div>

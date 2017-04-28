@@ -23,6 +23,7 @@ $telabotanica_modules = [
 	'breadcrumbs',
 	'block-dashboard',
 	'block-dashboard-images',
+	'block-dashboard-observations',
 	'button',
 	'button-top',
 	'card-project',

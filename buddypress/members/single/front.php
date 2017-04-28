@@ -23,13 +23,12 @@ the_telabotanica_module('header-dashboard', [
 	<div class="layout-wrapper">
 		<div class="layout-column">
 			<?php
-			the_telabotanica_module('block-dashboard', [
+			the_telabotanica_module('block-dashboard-observations', [
 				'title' => [
 					'title' => __('Mes observations', 'telabotanica'),
-					'suffix' => '128', // TODO
-					'href' => '#'
+					'suffix' => '...',
+					'href' => '#' // TODO
 				],
-				'html_content' => get_telabotanica_component('map'),
 				'button' => [
 					'href' => '#', // TODO
 					'text' => __('Ajouter une observation', 'telabotanica')
@@ -92,21 +91,10 @@ the_telabotanica_module('header-dashboard', [
 		</div>
 		<div class="layout-column">
 			<?php
-			$photos = [
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129797CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129789CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129777CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129768CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129757CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129710CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129705CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129701CRXS.jpg']
-			];
-
 			the_telabotanica_module('block-dashboard-images', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
-					'suffix' => '', // TODO
+					'suffix' => '...', // TODO
 					'href' => '#' // TODO
 				],
 				'button' => [

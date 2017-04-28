@@ -29,6 +29,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* support d'un `thumbnail`
 * module `block-dashboard` ajouté
 * module `block-dashboard-images` ajouté
+* module `block-dashboard-observations` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :
 	* ajout d'espace en-dessous

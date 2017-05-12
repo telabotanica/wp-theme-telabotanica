@@ -2,7 +2,7 @@
 	$defaults = [
 		'title' => [],
 		'modifiers' => ['block-dashboard-observations'],
-		'iframe_url' => 'http://www.tela-botanica.org/widget:cel:cartoPoint?utilisateur=' . bp_get_displayed_user_email(),
+		'iframe_url' => 'https://www.tela-botanica.org/widget:cel:cartoPoint?utilisateur=' . bp_get_displayed_user_email() . '&logo=0',
 		'api_url' => '/wp-content/themes/telabotanica/modules/block-dashboard-observations/test.json'
 	];
 

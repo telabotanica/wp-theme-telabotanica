@@ -1,5 +1,6 @@
 'use strict';
 
+var PubSub = require('pubsub-js');
 var Tela = window.Tela || {};
 
 Tela.blockDashboardImages = (function(){
@@ -22,6 +23,9 @@ Tela.blockDashboardImages = (function(){
 			// Get the URL to the API from the data-* attribute
 			apiUrl = $el.data('apiUrl');
 
+			// Subscribe to the total of images that will be retrieved by block-dashboard-observations
+			PubSub.subscribe('block-dashboard-observations.images', onTotalImages);
+
 			loadData();
 		}
 
@@ -41,13 +45,15 @@ Tela.blockDashboardImages = (function(){
 						});
 					});
 
-					// TODO: use the real number of images
-					data.total = data.items.length;
-
-					updateSuffix();
 					renderContent();
 				}
 			});
+		}
+
+		function onTotalImages(e, images) {
+			// images contains the total of images for this user
+			data.total = images;
+			updateSuffix();
 		}
 
 		function updateSuffix(){

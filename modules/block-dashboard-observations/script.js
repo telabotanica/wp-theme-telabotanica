@@ -1,5 +1,6 @@
 'use strict';
 
+var PubSub = require('pubsub-js');
 var Tela = window.Tela || {};
 
 Tela.blockDashboardObservations = (function(){
@@ -22,16 +23,21 @@ Tela.blockDashboardObservations = (function(){
 		}
 
 		function loadData(){
-
 			// Call the API
 			$.getJSON( apiUrl, function( json ) {
 				data.total = json.observations;
 				updateSuffix();
+				publishTotalImages(json.images);
 			});
 		}
 
 		function updateSuffix(){
 			$titleSuffix.text(data.total);
+		}
+
+		function publishTotalImages(data){
+			// data contains the total of images for this user
+			PubSub.publish('block-dashboard-observations.images', data);
 		}
 
 

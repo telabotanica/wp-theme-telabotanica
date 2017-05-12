@@ -27,7 +27,7 @@ the_telabotanica_module('header-dashboard', [
 	<div class="layout-wrapper">
 		<div class="layout-column">
 			<?php
-			the_telabotanica_module('block-dashboard-observations', [
+			the_telabotanica_module('block-dashboard-map', [
 				'title' => [
 					'title' => __('Mes observations', 'telabotanica'),
 					'suffix' => '...',
@@ -39,58 +39,17 @@ the_telabotanica_module('header-dashboard', [
 				]
 			]);
 
-
-			$observations = [
-				[
-					'type' => 'feed-item',
-					'href' => '#',
-					'image' => 'https://api.tela-botanica.org/img:001125636CRXS.jpg',
-					'title' => 'Allium vineale ??',
-					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
-					'meta' => [
-						'place' => 'Saturargues (34)'
-					]
-				],
-				[
-					'type' => 'feed-item',
-					'href' => '#',
-					'image' => 'https://api.tela-botanica.org/img:001129856CRXS.jpg',
-					'title' => '??',
-					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
-					'meta' => [
-						'place' => 'Murol (63)'
-					]
-				],
-				[
-					'type' => 'feed-item',
-					'href' => '#',
-					'image' => 'https://api.tela-botanica.org/img:001129797CRXS.jpg',
-					'title' => '??',
-					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
-					'meta' => [
-						'place' => 'Grenoble (38)'
-					]
-				]
-			];
-
-			$html_content_observations = '';
-			foreach ( $observations as $obs ) {
-				$html_content_observations .= get_telabotanica_module('feed-item', $obs);
-			}
-
-			$url_observations_reseau = '#'; // TODO
-			the_telabotanica_module('block-dashboard', [
+			the_telabotanica_module('block-dashboard-observations', [
 				'title' => [
 					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),
-					'suffix' => '12', // TODO
-					'href' => $url_observations_reseau
+					'suffix' => '...', // TODO
+					'href' => '#' // TODO
 				],
-				'html_content' => $html_content_observations,
+				// 'api_url' => 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=5&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc',
 				'button' => [
-					'href' => $url_observations_reseau,
-					'text' => __('Tout afficher', 'telabotanica')
-				],
-				'modifiers' => 'transparent-content'
+					'href' => get_permalink( get_page_by_path( 'carnet-en-ligne', OBJECT, 'tb_outil' ) ),
+					'text' => __('Ajouter une observation', 'telabotanica')
+				]
 			]);
 			?>
 		</div>
@@ -128,7 +87,8 @@ the_telabotanica_module('header-dashboard', [
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
 					'title' => __('Mes dons', 'telabotanica'),
-					'href' => bp_loggedin_user_domain() . 'dons/'
+					'href' => '#' // TODO
+					// 'href' => bp_loggedin_user_domain() . 'dons/'
 				],
 				'html_content' => 'mes dons', // TODO
 				'empty' => [

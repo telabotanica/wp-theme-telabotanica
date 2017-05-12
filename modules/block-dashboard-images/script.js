@@ -23,8 +23,8 @@ Tela.blockDashboardImages = (function(){
 			// Get the URL to the API from the data-* attribute
 			apiUrl = $el.data('apiUrl');
 
-			// Subscribe to the total of images that will be retrieved by block-dashboard-observations
-			PubSub.subscribe('block-dashboard-observations.images', onTotalImages);
+			// Subscribe to the total of images that will be retrieved by block-dashboard-map
+			PubSub.subscribe('block-dashboard-map.images', onTotalImages);
 
 			loadData();
 		}

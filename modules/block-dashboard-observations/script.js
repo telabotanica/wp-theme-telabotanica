@@ -1,5 +1,9 @@
 'use strict';
 
+var feedItemTemplate = require('../feed-item/feed-item.pug');
+
+var _ = _ || {};
+_.each = require('lodash.foreach');
 var PubSub = require('pubsub-js');
 var Tela = window.Tela || {};
 
@@ -8,13 +12,16 @@ Tela.blockDashboardObservations = (function(){
 	function blockDashboardObservations(selector){
 		var $el = $(selector),
 			$titleSuffix,
+			$content,
 			apiUrl,
 			data = {
-				total: 0
+				total: 0,
+				items: []
 			};
 
 		function init(){
 			$titleSuffix = $el.find('.title-suffix');
+			$content = $el.find('.block-dashboard-content');
 
 			// Get the URL to the API from the data-* attribute
 			apiUrl = $el.data('apiUrl');
@@ -25,9 +32,22 @@ Tela.blockDashboardObservations = (function(){
 		function loadData(){
 			// Call the API
 			$.getJSON( apiUrl, function( json ) {
-				data.total = json.observations;
+				data.total = json.entete.total;
+				_.each(json.resultats, function (item) {
+					data.items.push({
+						type: 'feed-item',
+						href: '#' + item.id_observation,
+						image: item.images[0]['binaire.href'].replace('XL.', 'XS.'),
+						title: item['determination.ns'] || '???',
+						text: 'Le ' + item.date_observation + ' - Par ' + item['auteur.prenom'] + ' ' + item['auteur.nom'],
+						meta: {
+							place: item.zone_geo
+						}
+					});
+				});
+				console.log(data);
 				updateSuffix();
-				publishTotalImages(json.images);
+				renderContent();
 			});
 		}
 
@@ -35,9 +55,12 @@ Tela.blockDashboardObservations = (function(){
 			$titleSuffix.text(data.total);
 		}
 
-		function publishTotalImages(data){
-			// data contains the total of images for this user
-			PubSub.publish('block-dashboard-observations.images', data);
+		function renderContent(){
+			var content = '';
+			_.each(data.items, function(item){
+				content += feedItemTemplate({data: item});
+			})
+			$content.prepend(content);
 		}
 
 

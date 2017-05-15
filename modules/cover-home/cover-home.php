@@ -45,9 +45,9 @@
 			echo '</div>';
 
 			// TODO: brancher les liens
-			$users_link = '#';
+			$users_link = get_permalink( get_page_by_path( 'telabotanistes' ) );
 			$user_count = bp_get_total_member_count();
-			$observations_link = '#';
+			$observations_link = get_permalink( get_page_by_path( 'cartographies/observations-botaniques' ) );
 			// TODO: définir cette URL en config + mettre en cache
 			$observations_count = file_get_contents('https://api.tela-botanica.org/service:cel:CelStatistiqueTxt/NbObsPubliques');
 			$get_involved_link = get_permalink( get_page_by_path( 'comment-participer' ) );

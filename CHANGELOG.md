@@ -34,6 +34,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `card-project` : pas de lien dans la description
 * module `comment-form` ajouté
 * module `comments` ajouté
+* module `cover` : utilise désormais une image au hasard si aucune n'est définie
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
 * module `cover-project` : bouton vers site externe ajouté

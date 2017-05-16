@@ -92,44 +92,45 @@ function telabotanica_image_credits( $image, $class = '' ) {
 	if ( !$image ) return;
 
 	$credits = get_fields( $image['ID'] );
-	if ( $credits ) :
-		printf('<div class="%s-credits">', $class);
+
+	printf('<div class="%s-credits">', $class);
 
 		// Use caption by default
 		$caption = $image['caption'];
 
-		// If empty, use title
-		if ( empty( $caption ) ) $caption = $image['title'];
+		if ( $credits ) :
+			// If empty, use title (only if credits exist, we don't want default titles)
+			if ( empty( $caption ) ) $caption = $image['title'];
 
-		// Add link if present
-		if ( $credits['link'] ) {
-			$caption = sprintf(
-				'<a href="%s" target="_blank" class="%s-credits-title">%s</a>',
-				$credits['link'],
-				$class,
-				$caption
-			);
-		} else {
-			$caption = sprintf(
-				'<span class="%s-credits-title">%s</span>',
-				$class,
-				$caption
-			);
-		}
+			// Add link if present
+			if ( $credits['link'] ) {
+				$caption = sprintf(
+					'<a href="%s" target="_blank" class="%s-credits-title">%s</a>',
+					$credits['link'],
+					$class,
+					$caption
+				);
+			} else {
+				$caption = sprintf(
+					'<span class="%s-credits-title">%s</span>',
+					$class,
+					$caption
+				);
+			}
 
-		// Add author if present
-		if ($credits['author']) {
-			$caption = sprintf(
-				__('%s par %s', 'telabotanica'),
-				$caption,
-				$credits['author']
-			);
-		}
+			// Add author if present, and there is no caption
+			if (empty( $caption ) && $credits['author']) {
+				$caption = sprintf(
+					__('%s par %s', 'telabotanica'),
+					$caption,
+					$credits['author']
+				);
+			}
+		endif;
 
 		echo $caption;
 
-		echo '</div>';
-	endif;
+	echo '</div>';
 }
 
 /**

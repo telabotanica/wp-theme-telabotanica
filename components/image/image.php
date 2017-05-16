@@ -44,7 +44,7 @@
 			$data->alt
 		);
 
-		telabotanica_image_credits( $data->image, 'component-image' );
+		telabotanica_image_credits( $image, 'component-image' );
 
 	echo '</div>';
 }

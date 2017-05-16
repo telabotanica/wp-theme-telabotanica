@@ -26,7 +26,7 @@ function telabotanica_outils_categories_taxonomy() {
 		'items_list_navigation'      => __( 'Items list navigation', 'telabotanica' ),
 	);
 	$rewrite = array(
-		'slug'                       => 'outils',
+		'slug'                       => 'outils/categorie',
 		'with_front'                 => true,
 		'hierarchical'               => true,
 	);

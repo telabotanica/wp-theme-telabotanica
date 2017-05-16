@@ -86,6 +86,53 @@ function telabotanica_format_place( $place, $icon = true ) {
 }
 
 /**
+ * Display image credits
+ */
+function telabotanica_image_credits( $image, $class = '' ) {
+	if ( !$image ) return;
+
+	$credits = get_fields( $image['ID'] );
+	if ( $credits ) :
+		printf('<div class="%s-credits">', $class);
+
+		// Use caption by default
+		$caption = $image['caption'];
+
+		// If empty, use title
+		if ( empty( $caption ) ) $caption = $image['title'];
+
+		// Add link if present
+		if ( $credits['link'] ) {
+			$caption = sprintf(
+				'<a href="%s" target="_blank" class="%s-credits-title">%s</a>',
+				$credits['link'],
+				$class,
+				$caption
+			);
+		} else {
+			$caption = sprintf(
+				'<span class="%s-credits-title">%s</span>',
+				$class,
+				$caption
+			);
+		}
+
+		// Add author if present
+		if ($credits['author']) {
+			$caption = sprintf(
+				__('%s par %s', 'telabotanica'),
+				$caption,
+				$credits['author']
+			);
+		}
+
+		echo $caption;
+
+		echo '</div>';
+	endif;
+}
+
+/**
  * Maintenance page
  */
 if ( ! function_exists( 'telabotanica_maintenance_mode' ) ) {

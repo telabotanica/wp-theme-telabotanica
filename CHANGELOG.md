@@ -69,6 +69,7 @@ plus de détails sur http://semver.org/lang/fr/
 * template `page-comment-participer` ajouté
 * ajout d'une taxonomie Catégorie de moyens de participer
 * groupe de champs ACF "Composant liste d'articles" ajouté
+* refactoring crédits des images
 * pages d'erreur 404, 500, maintenance
 
 ## 0.0.7 (2017-03-04)

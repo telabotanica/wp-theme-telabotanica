@@ -44,38 +44,7 @@
 			$data->alt
 		);
 
-		if ( $data->image ) :
-			$credits = get_fields( $image['ID'] );
-			if ( $credits ) :
-				echo '<div class="component-image-credits">';
-				$caption = $image['caption'];
-				if ( empty( $caption ) ) $caption = $image['title'];
-				if ( $credits['link'] ) {
-					$caption = sprintf(
-						'<a href="%s" target="_blank" class="component-image-credits-title">%s</a>',
-						$credits['link'],
-						$caption
-					);
-				} else {
-					$caption = sprintf(
-						'<span class="component-image-credits-title">%s</span>',
-						$caption
-					);
-				}
-
-				if ($credits['author']) {
-					printf(
-						__('%s par %s', 'telabotanica'),
-						$caption,
-						$credits['author']
-					);
-				} else {
-					echo $title;
-				}
-
-				echo '</div>';
-			endif;
-		endif;
+		telabotanica_image_credits( $data->image, 'component-image' );
 
 	echo '</div>';
 }

@@ -112,27 +112,8 @@
 
 		endif;
 
-		if ( $data->background === 'image' && $data->background_image ) :
-			$credits = get_fields( $data->background_image['ID'] );
-			if ( $credits ) :
-				echo '<div class="cover-credits">';
-					$title = $data->background_image['title'];
-
-					if ($credits['link']) {
-						$title = '<a href="' . $credits['link'] . '" target="_blank">' . $title . '</a>';
-					}
-
-					if ($credits['author']) {
-						printf(
-							__('%s par %s', 'telabotanica'),
-							$title,
-							$credits['author']
-						);
-					} else {
-						echo $title;
-					}
-				echo '</div>';
-			endif;
+		if ( $data->background === 'image' ) :
+			telabotanica_image_credits( $data->background_image, 'block-focus' );
 		endif;
 
 	echo '</div>';

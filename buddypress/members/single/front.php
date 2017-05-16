@@ -72,21 +72,38 @@ the_telabotanica_module('header-dashboard', [
 				]
 			]);
 
+			$user_posts_query = new WP_Query([
+				'posts_per_page' => 3,
+				'author' => get_current_user_id(),
+			]);
+			$user_posts = '';
+			if ( $user_posts_query->have_posts() ) :
+				while ( $user_posts_query->have_posts() ) : $user_posts_query->the_post();
+					$user_posts .= get_telabotanica_module('feed-item', [
+						'article' => true,
+						'href' => get_permalink(),
+						'title' => html_entity_decode(get_the_title()),
+						'text' => html_entity_decode(wp_trim_words(get_the_excerpt(), 8))
+					]);
+				endwhile;
+			endif;
+			wp_reset_postdata();
+			$user_posts_button = [
+				'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
+				'text' => __('Proposer une actualité', 'telabotanica')
+			];
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
-					'title' => __('Mes actualités', 'telabotanica'),
-					'href' => '#'
+					'title' => __('Mes actualités', 'telabotanica')
 				],
-				'html_content' => '', // TODO
+				'html_content' => $user_posts,
 				'empty' => [
 					'icon' => 'news',
 					'text' => __("Vous n'avez pas encore ajouté d'actualités", 'telabotanica'),
-					'button' => [
-						'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
-						'text' => __('Proposer une actualité', 'telabotanica')
-					]
+					'button' => $user_posts_button
 				],
-				'is_empty' => true // TODO: ajouter la logique "si l'utilisateur a soumis des actualités"
+				'is_empty' => $user_posts === '',
+				'button' => $user_posts_button
 			]);
 
 			the_telabotanica_module('block-dashboard', [

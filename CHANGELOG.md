@@ -12,6 +12,7 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * tableau de bord
+* bloc `contribute` : amélioration du remplissage aléatoire
 * bloc `list-features` : style des liens
 * bloc `list-projects` : ajout d'un dégradé en bas des `card-project`
 * bloc `main-features` : style des liens

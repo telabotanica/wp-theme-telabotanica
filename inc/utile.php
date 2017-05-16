@@ -119,7 +119,7 @@ function telabotanica_image_credits( $image, $class = '' ) {
 			}
 
 			// Add author if present, and there is no caption
-			if (empty( $caption ) && $credits['author']) {
+			if (empty( $image['caption'] ) && $credits['author']) {
 				$caption = sprintf(
 					__('%s par %s', 'telabotanica'),
 					$caption,

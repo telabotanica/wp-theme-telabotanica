@@ -5,6 +5,7 @@
 		'level' => 1,
 		'suffix' => false,
 		'href' => false,
+		'target' => false,
 		'modifiers' => []
 	];
 
@@ -17,8 +18,9 @@
 
 	if ( $data->href ) :
 		$data->title = sprintf(
-			'<a href="%s">%s</a>',
+			'<a href="%s" target="%s">%s</a>',
 			$data->href,
+			$data->target,
 			$data->title
 		);
 	endif;

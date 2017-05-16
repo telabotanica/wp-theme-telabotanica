@@ -30,12 +30,14 @@ the_telabotanica_module('header-dashboard', [
 			the_telabotanica_module('block-dashboard-map', [
 				'title' => [
 					'title' => __('Mes observations', 'telabotanica'),
-					'suffix' => '...',
-					'href' => 'https://www.tela-botanica.org/appli:cel'
+					'suffix' => '',
+					'href' => 'https://www.tela-botanica.org/appli:cel',
+					'target' => '_blank'
 				],
 				'button' => [
 					'href' => get_permalink( get_page_by_path( 'carnet-en-ligne', OBJECT, 'tb_outil' ) ),
-					'text' => __('Ajouter une observation', 'telabotanica')
+					'text' => __('Ajouter une observation', 'telabotanica'),
+					'target' => '_blank'
 				]
 			]);
 
@@ -43,11 +45,13 @@ the_telabotanica_module('header-dashboard', [
 				'title' => [
 					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),
 					'suffix' => '',
-					'href' => 'http://www.tela-botanica.org/appli:identiplante?masque.type=adeterminer&page=1&pas=12&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc'
+					'href' => 'http://www.tela-botanica.org/appli:identiplante?masque.type=adeterminer&page=1&pas=12&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc',
+					'target' => '_blank'
 				],
 				'button' => [
 					'href' => get_permalink( get_page_by_path( 'carnet-en-ligne', OBJECT, 'tb_outil' ) ),
-					'text' => __('Ajouter une observation', 'telabotanica')
+					'text' => __('Ajouter une observation', 'telabotanica'),
+					'target' => '_blank'
 				]
 			]);
 			?>
@@ -58,11 +62,13 @@ the_telabotanica_module('header-dashboard', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
 					'suffix' => '',
-					'href' => 'https://www.tela-botanica.org/appli:pictoflora?masque.auteur=' . bp_get_displayed_user_email()
+					'href' => 'https://www.tela-botanica.org/appli:pictoflora?masque.auteur=' . bp_get_displayed_user_email(),
+					'target' => '_blank'
 				],
 				'button' => [
 					'href' => 'https://www.tela-botanica.org/widget:cel:saisie',
-					'text' => __('Envoyer une photo', 'telabotanica')
+					'text' => __('Envoyer une photo', 'telabotanica'),
+					'target' => '_blank'
 				]
 			]);
 

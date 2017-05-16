@@ -44,7 +44,6 @@
 
 			echo '</div>';
 
-			// TODO: brancher les liens
 			$users_link = get_permalink( get_page_by_path( 'telabotanistes' ) );
 			$user_count = bp_get_total_member_count();
 			$observations_link = get_permalink( get_page_by_path( 'cartographies/observations-botaniques' ) );

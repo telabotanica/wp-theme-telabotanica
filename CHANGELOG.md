@@ -15,7 +15,6 @@ plus de détails sur http://semver.org/lang/fr/
 * bloc `list-features` : style des liens
 * bloc `list-projects` : ajout d'un dégradé en bas des `card-project`
 * bloc `main-features` : style des liens
-* composant `accordion` : correction bug quand plusieurs accordéons sur la même page
 * composant `articles` ajouté
 * composant `image` : amélioration affichage petites images
 * composant `map` : centre optionnel

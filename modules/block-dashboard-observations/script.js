@@ -4,6 +4,14 @@ var feedItemTemplate = require('../feed-item/feed-item.pug');
 
 var _ = _ || {};
 _.each = require('lodash.foreach');
+
+var moment = require('moment');
+moment.locale('fr');
+
+var numeral = require('numeral');
+require('numeral/locales/fr');
+numeral.locale('fr');
+
 var PubSub = require('pubsub-js');
 var Tela = window.Tela || {};
 
@@ -34,25 +42,25 @@ Tela.blockDashboardObservations = (function(){
 			$.getJSON( apiUrl, function( json ) {
 				data.total = json.entete.total;
 				_.each(json.resultats, function (item) {
+					var dateObservation = moment(item.date_observation);
 					data.items.push({
 						type: 'feed-item',
-						href: '#' + item.id_observation,
-						image: item.images[0]['binaire.href'].replace('XL.', 'XS.'),
-						title: item['determination.ns'] || '???',
-						text: 'Le ' + item.date_observation + ' - Par ' + item['auteur.prenom'] + ' ' + item['auteur.nom'],
+						href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
+						image: item.images[0]['binaire.href'].replace('XL.', 'CRXS.'),
+						title: item['determination.ns'] || '?',
+						text: 'Observé le ' + dateObservation.format('ll') + ' - Par ' + item['auteur.prenom'] + ' ' + item['auteur.nom'],
 						meta: {
 							place: item.zone_geo
 						}
 					});
 				});
-				console.log(data);
 				updateSuffix();
 				renderContent();
 			});
 		}
 
 		function updateSuffix(){
-			$titleSuffix.text(data.total);
+			$titleSuffix.text(numeral(data.total).format('0,0'));
 		}
 
 		function renderContent(){

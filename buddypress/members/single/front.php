@@ -42,10 +42,9 @@ the_telabotanica_module('header-dashboard', [
 			the_telabotanica_module('block-dashboard-observations', [
 				'title' => [
 					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),
-					'suffix' => '...', // TODO
-					'href' => '#' // TODO
+					'suffix' => '',
+					'href' => 'http://www.tela-botanica.org/appli:identiplante?masque.type=adeterminer&page=1&pas=12&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc'
 				],
-				// 'api_url' => 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=5&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc',
 				'button' => [
 					'href' => get_permalink( get_page_by_path( 'carnet-en-ligne', OBJECT, 'tb_outil' ) ),
 					'text' => __('Ajouter une observation', 'telabotanica')
@@ -58,7 +57,7 @@ the_telabotanica_module('header-dashboard', [
 			the_telabotanica_module('block-dashboard-images', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
-					'suffix' => '...', // TODO
+					'suffix' => '',
 					'href' => 'https://www.tela-botanica.org/appli:pictoflora?masque.auteur=' . bp_get_displayed_user_email()
 				],
 				'button' => [
@@ -72,7 +71,7 @@ the_telabotanica_module('header-dashboard', [
 					'title' => __('Mes actualités', 'telabotanica'),
 					'href' => '#'
 				],
-				'html_content' => 'mes actualités', // TODO
+				'html_content' => '', // TODO
 				'empty' => [
 					'icon' => 'news',
 					'text' => __("Vous n'avez pas encore ajouté d'actualités", 'telabotanica'),
@@ -87,10 +86,10 @@ the_telabotanica_module('header-dashboard', [
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
 					'title' => __('Mes dons', 'telabotanica'),
-					'href' => '#' // TODO
+					'href' => '#' // TODO: remettre le lien ci-dessous quand la page Dons sera dispo
 					// 'href' => bp_loggedin_user_domain() . 'dons/'
 				],
-				'html_content' => 'mes dons', // TODO
+				'html_content' => '', // TODO
 				'empty' => [
 					'icon' => 'heart-outline',
 					'text' => __("Retrouvez prochainement ici la liste de vos dons", 'telabotanica'),

@@ -2,7 +2,9 @@
 	$defaults = [
 		'title' => [],
 		'modifiers' => ['block-dashboard-images'],
-		'api_url' => '/wp-content/themes/telabotanica/modules/block-dashboard-images/test.xml'
+		'api_url' => 'https://api.tela-botanica.org/service:cel:CelSyndicationImage/multicriteres/atom/M?utilisateur=' . bp_get_displayed_user_email()
+		// For local debugging:
+		// 'api_url' => '/wp-content/themes/telabotanica/modules/block-dashboard-images/test.xml'
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);

@@ -51,7 +51,9 @@
 // Personnalisation des boutons précédent / suivant dans les paginations buddypress
 function telabotanica_bp_get_pagination_links($links) {
 	$links = str_replace('&larr;', __( 'Page précédente', 'telabotanica' ), $links);
+	$links = str_replace('←', __( 'Page précédente', 'telabotanica' ), $links);
 	$links = str_replace('&rarr;', __( 'Page suivante', 'telabotanica' ), $links);
+	$links = str_replace('→', __( 'Page suivante', 'telabotanica' ), $links);
 	return $links;
 }
 add_filter( 'bp_get_members_pagination_links', 'telabotanica_bp_get_pagination_links', 10, 1 );

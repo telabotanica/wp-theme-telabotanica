@@ -39,28 +39,7 @@
 			echo '</div>';
 		echo '</div>';
 
-		if ( $data->image ) :
-			$credits = get_fields( $data->image['ID'] );
-			if ( $credits ) :
-				echo '<div class="cover-credits">';
-					$title = $data->image['title'];
-
-					if ($credits['link']) {
-						$title = '<a href="' . $credits['link'] . '" target="_blank">' . $title . '</a>';
-					}
-
-					if ($credits['author']) {
-						printf(
-							__('%s par %s', 'telabotanica'),
-							$title,
-							$credits['author']
-						);
-					} else {
-						echo $title;
-					}
-				echo '</div>';
-			endif;
-		endif;
+		telabotanica_image_credits( $data->image, 'cover' );
 
 	echo '</div>';
 }

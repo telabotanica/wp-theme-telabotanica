@@ -180,7 +180,7 @@ function members_page_only_for_logged_in_users() {
 
 	if (is_user_logged_in() == false && strpos($current_url, '/' . $nomPageMembres . '/') !== false) {
 		$redirect_url = wp_login_url();
-		header('Location: ' . $redirect_url);
+		wp_redirect($redirect_url);
 		die();
 	}
 }

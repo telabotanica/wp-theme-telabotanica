@@ -96,7 +96,7 @@ function telabotanica_image_credits( $image, $class = '' ) {
 	printf('<div class="%s-credits">', $class);
 
 		// Use caption by default
-		$caption = $image['caption'];
+		$caption = @$image['caption'] ;
 
 		if ( $credits ) :
 			// If empty, use title (only if credits exist, we don't want default titles)

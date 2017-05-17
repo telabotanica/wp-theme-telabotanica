@@ -48,25 +48,16 @@
          *
          * @since 1.1.0
          */
-        do_action( 'bp_before_group_members_content' ); ?>
+        do_action( 'bp_before_group_members_content' );
 
-        <div id="pag-top" class="pagination">
+				the_telabotanica_module('pagination', [
+					'id' => 'pag-top',
+					'count_id' => 'member-count-top',
+					'links_id' => 'member-pag-top',
+					'context' => 'buddypress',
+					'type' => 'members'
+				]);
 
-          <div class="pag-count" id="member-count-top">
-
-            <?php bp_members_pagination_count(); ?>
-
-          </div>
-
-          <div class="pagination-links" id="member-pag-top">
-
-            <?php bp_members_pagination_links(); ?>
-
-          </div>
-
-        </div>
-
-        <?php
 
         /**
          * Fires before the display of the group members list.
@@ -131,25 +122,16 @@
          *
          * @since 1.1.0
          */
-        do_action( 'bp_after_group_members_list' ); ?>
+        do_action( 'bp_after_group_members_list' );
 
-        <div id="pag-bottom" class="pagination">
+				the_telabotanica_module('pagination', [
+					'id' => 'pag-bottom',
+					'count_id' => 'member-count-bottom',
+					'links_id' => 'member-pag-bottom',
+					'context' => 'buddypress',
+					'type' => 'members'
+				]);
 
-          <div class="pag-count" id="member-count-bottom">
-
-            <?php bp_members_pagination_count(); ?>
-
-          </div>
-
-          <div class="pagination-links" id="member-pag-bottom">
-
-            <?php bp_members_pagination_links(); ?>
-
-          </div>
-
-        </div>
-
-        <?php
 
         /**
          * Fires after the display of the group members content.

@@ -56,6 +56,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `header-dashboard` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
+* module `pagination` : support de la pagination Buddypress
 * module `search-box` :
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page
 * module `title` : support d'un suffixe optionnel

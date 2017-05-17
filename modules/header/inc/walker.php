@@ -11,7 +11,7 @@ add_filter('walker_nav_menu_start_el', 'telabotanica_header_walker_nav_menu_star
 // Remplacer à la volée les liens vers les catégories d'outils et de moyens de participer par des ancres
 function telabotanica_header_nav_menu_link_attributes($atts, $item, $args, $depth) {
 	if ( $args->theme_location === 'secondary' && in_array( $item->object, ['tb_outils_category', 'tb_participer_category'] ) ) {
-		$atts['href'] = preg_replace("/(.+)\/(.+)\/$/", "$1/#$2", $atts['href']);
+		$atts['href'] = preg_replace("/(.+)\/categorie\/(.+)\/$/", "$1/#$2", $atts['href']);
 	}
 	return $atts;
 }

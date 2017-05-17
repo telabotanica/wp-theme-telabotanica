@@ -15,6 +15,17 @@ if ( $post_category_slug && !$post_category ) {
 	get_template_part( 404 ); exit();
 }
 
+// Sanitize values
+function my_kses_post( $value ) {
+	if( is_array($value) ) {
+		return array_map('my_kses_post', $value);
+	}
+	return wp_kses_post( $value );
+}
+add_filter('acf/update_value', 'my_kses_post', 10, 1);
+
+// post_category = $post_category_slug
+
 acf_form_head();
 get_header(); ?>
 
@@ -71,7 +82,7 @@ get_header(); ?>
 										/* (array) An array of post data used to create a post. See wp_insert_post for available parameters.
 										The above 'post_id' setting must contain a value of 'new_post' */
 										'new_post' => [
-											'post_category' => [ $post_category_slug ],
+											'post_category' => [ $post_category->cat_ID ],
 											'post_status' => 'draft'
 										],
 
@@ -107,7 +118,7 @@ get_header(); ?>
 										'submit_value' => __("Envoyer", 'telabotanica'),
 
 										/* (string) A message displayed above the form after being redirected. Can also be set to false for no message */
-										'updated_message' => __("Actualité envoyée", 'telabotanica'),
+										'updated_message' => false,
 
 										/* (string) Determines where field labels are places in relation to fields. Defaults to 'top'.
 										Choices of 'top' (Above fields) or 'left' (Beside fields) */

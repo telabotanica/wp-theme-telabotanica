@@ -54,6 +54,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* utilise maintenant l'avatar BuddyPress
 	* menus déroulants
 * module `header-dashboard` ajouté
+* module `map-events` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
 * module `pagination` : support de la pagination Buddypress

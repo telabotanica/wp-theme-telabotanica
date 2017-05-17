@@ -28,6 +28,9 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout d'un modifier `is-small`
 	* support d'un `thumbnail`
 * module `block-dashboard` ajouté
+* module `block-dashboard-images` ajouté
+* module `block-dashboard-map` ajouté
+* module `block-dashboard-observations` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :
 	* ajout d'espace en-dessous
@@ -42,7 +45,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `error-page` ajouté
 * module `feed` ajouté
 * module `feed-date` ajouté
-* module `feed-item` ajouté
+* module `feed-item` : ajouté + refactoring avec Pug
 * module `footer` :
 	* ajout des icônes de flèche au dernier item des colonnes du menu
 	* ajout de l'icône CC

@@ -90,6 +90,8 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: "jquery"
 		}),
+		// Load only fr locale in moment.js
+		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/),
 	],
 	externals: {
 		// require("jquery") is external and available

@@ -24,8 +24,6 @@ function my_kses_post( $value ) {
 }
 add_filter('acf/update_value', 'my_kses_post', 10, 1);
 
-// post_category = $post_category_slug
-
 acf_form_head();
 get_header(); ?>
 

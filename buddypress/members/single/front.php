@@ -82,6 +82,7 @@ the_telabotanica_module('header-dashboard', [
 					$user_posts .= get_telabotanica_module('feed-item', [
 						'article' => true,
 						'href' => get_permalink(),
+						'target' => '_blank',
 						'title' => html_entity_decode(get_the_title()),
 						'text' => html_entity_decode(wp_trim_words(get_the_excerpt(), 8))
 					]);

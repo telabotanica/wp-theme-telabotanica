@@ -46,6 +46,7 @@ Tela.blockDashboardObservations = (function(){
 					data.items.push({
 						type: 'feed-item',
 						href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
+						target: '_blank',
 						image: item.images[0]['binaire.href'].replace('XL.', 'CRXS.'),
 						title: item['determination.ns'] || '?',
 						text: 'Observé le ' + dateObservation.format('ll') + ' - Par ' + item['auteur.prenom'] + ' ' + item['auteur.nom'],

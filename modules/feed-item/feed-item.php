@@ -7,6 +7,7 @@ function telabotanica_module_feed_item($data) {
 		'image' => false,
 		'images' => false,
 		'href' => false,
+		'target' => false,
 		'title' => '',
 		'text' => '',
 		'meta' => false,

@@ -2,7 +2,7 @@ include ../icon/icon-mixin
 
 mixin feed-item-link(data)
 	if data.href
-		a.feed-item-link(href=data.href)
+		a.feed-item-link(href=data.href target=data.target)
 			block
 	else
 		block

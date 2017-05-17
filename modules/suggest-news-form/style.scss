@@ -1,0 +1,28 @@
+.suggest-news-form.acf-form {
+	input,
+	textarea {
+		border: 0.1rem solid $grisE5;
+	}
+
+	.acf-fields > .acf-field {
+		padding: 2rem 0;
+	}
+
+	.acf-label {
+		.description {
+			color: $gris60;
+			font-size: 1.4rem;
+		}
+	}
+
+	.acf-field--post-title input {
+		font-size: 2rem;
+		height: auto;
+		padding: 1rem;
+	}
+
+	.acf-form-submit {
+		text-align: center;
+	}
+
+}

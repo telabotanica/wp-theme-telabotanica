@@ -4,7 +4,16 @@
  */
 
 // A-t-on défini une catégorie?
-$post_category = get_query_var( 'categorie', false );
+$post_category_slug = get_query_var( 'categorie', false );
+$post_category = get_category_by_slug($post_category_slug);
+
+// 404 si la catégorie passée en paramètre n'existe pas
+if ( $post_category_slug && !$post_category ) {
+	global $wp_query;
+	$wp_query->set_404();
+	status_header( 404 );
+	get_template_part( 404 ); exit();
+}
 
 acf_form_head();
 get_header(); ?>
@@ -14,18 +23,29 @@ get_header(); ?>
 
 			<?php the_telabotanica_module('cover'); ?>
 
-			<div class="layout-content-col">
+			<div class="layout-central-col">
 				<div class="layout-wrapper">
-					<aside class="layout-column">
-						<?php the_telabotanica_module('toc'); ?>
-						<?php the_telabotanica_module('button-top'); ?>
-					</aside>
 					<div class="layout-content">
-						<?php the_telabotanica_module('breadcrumbs'); ?>
-						<article class="article">
-							<?php
+						<?php
 
-							if ($post_category) :
+							if ($post_category_slug) :
+
+								$breadcrumbs_items = [
+									'home',
+									[
+										'text' => __( 'Proposer une actualité', 'telabotanica' ),
+										'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) )
+									],
+									[
+										'text' => $post_category->name
+									]
+								];
+
+								the_telabotanica_module('breadcrumbs', [
+									'items' => $breadcrumbs_items
+								]);
+
+								echo '<article class="article">';
 
 								// Si l'utilisateur n'est pas connecté
 								if ( ! is_user_logged_in() ) :
@@ -42,7 +62,7 @@ get_header(); ?>
 
 									$options = array(
 										/* (string) Unique identifier for the form. Defaults to 'acf-form' */
-										'id' => 'acf-form',
+										'id' => 'suggest-news-form',
 
 										/* (int|string) The post ID to load data from and save data to. Defaults to the current post ID.
 										Can also be set to 'new_post' to create a new post on submit */
@@ -51,11 +71,12 @@ get_header(); ?>
 										/* (array) An array of post data used to create a post. See wp_insert_post for available parameters.
 										The above 'post_id' setting must contain a value of 'new_post' */
 										'new_post' => [
-											'post_category' => [ $post_category ]
+											'post_category' => [ $post_category_slug ],
+											'post_status' => 'draft'
 										],
 
 										/* (array) An array of field group IDs/keys to override the fields displayed in this form */
-										// 'field_groups' => [ 'group_582b32a8aa10c', 'group_5817760bb75a4' ],
+										// 'field_groups' => [ ],
 
 										/* (array) An array of field IDs/keys to override the fields displayed in this form */
 										// 'fields' => false,
@@ -70,7 +91,7 @@ get_header(); ?>
 										'form' => true,
 
 										/* (array) An array or HTML attributes for the form element */
-										'form_attributes' => array(),
+										'form_attributes' => array('class' => 'acf-form suggest-news-form'),
 
 										/* (string) The URL to be redirected to after the form is submit. Defaults to the current URL with a GET parameter '?updated=true'.
 										A special placeholder '%post_url%' will be converted to post's permalink (handy if creating a new post) */
@@ -109,11 +130,54 @@ get_header(); ?>
 
 									);
 
+									switch ($post_category_slug) {
+
+										case 'en-kiosque':
+											// $options['post_content'] = false;
+											$options['field_groups'] = [
+												'group_582b32a8aa10c', // Intro d'article
+												'group_58034e80e09e5' // Article – En kiosque
+											];
+											break;
+
+										case 'congres-conferences':
+										case 'expositions':
+										case 'sorties-de-terrain':
+										case 'stages-et-ateliers':
+											$options['post_content'] = false;
+											$options['field_groups'] = [
+												'group_5803515c20ffc' // Article - Évènement
+											];
+											break;
+
+										case 'cdd-cdi':
+										case 'stages':
+										case 'service-civique':
+											$options['post_content'] = false;
+											$options['field_groups'] = [
+												'group_58034a4d87ab4' // Article - Offre d'emploi
+											];
+											break;
+
+										default:
+											$options['field_groups'] = [
+												'group_582b32a8aa10c' // Intro d'article
+											];
+											break;
+
+									}
+
 									acf_form( $options );
 
 								endif;
 
+								echo '</article>';
+
 							else :
+
+								the_telabotanica_module('breadcrumbs');
+
+								echo '<article class="article">';
 
 								// Si la page utilise des composants
 								if( have_rows('components') ):
@@ -162,10 +226,11 @@ get_header(); ?>
 
 								the_telabotanica_component('text', ['text' => $list_categories_html]);
 
+								echo '</article>';
+
 							endif;
 
 							?>
-						</article>
 					</div>
 				</div>
 			</div>

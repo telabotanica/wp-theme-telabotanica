@@ -12,7 +12,7 @@
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('title', $data->modifiers);
 
-	if ( $data->suffix ) :
+	if ( $data->suffix !== false ) :
 		$data->title .= sprintf( '<span class="title-suffix">%s</span>', $data->suffix );
 	endif;
 

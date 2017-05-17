@@ -3,9 +3,13 @@
  * Page "Proposer une actualité"
  */
 
+// Force a small header (without use cases navigation)
+$header_small = true;
+
 // A-t-on défini une catégorie?
 $post_category_slug = get_query_var( 'categorie', false );
 $post_category = get_category_by_slug($post_category_slug);
+$confirmation = get_query_var( 'confirmation', false );
 
 // 404 si la catégorie passée en paramètre n'existe pas
 if ( $post_category_slug && !$post_category ) {
@@ -37,6 +41,23 @@ get_header(); ?>
 					<div class="layout-content">
 						<?php
 
+						if ($confirmation) :
+
+							the_telabotanica_module('notice', [
+								'type' => 'confirm',
+								'title' => __("Félicitations, votre article a bien été enregistré.", 'telabotanica'),
+								'text' => __("Un membre de l'équipe Tela Botanica en a été informé et mettra votre article en ligne d'ici quelques jours.", 'telabotanica')
+							]);
+
+							echo '<p style="text-align: center">';
+								the_telabotanica_module('button', [
+									'href' => get_category_link( get_category_by_slug( 'actualites' ) ),
+									'text' => __( 'Retour aux actualités', 'telabotanica' )
+								]);
+							echo '</p>';
+
+						else :
+
 							if ($post_category_slug) :
 
 								$breadcrumbs_items = [
@@ -59,13 +80,15 @@ get_header(); ?>
 								// Si l'utilisateur n'est pas connecté
 								if ( ! is_user_logged_in() ) :
 
-									the_telabotanica_module('notice', [
+									the_telabotanica_module('warning', [
 										'text' => __('Vous devez être connecté(e) à votre compte pour pouvoir proposer une actualité.', 'telabotanica')
 									]);
-									the_telabotanica_module('button', [
-										'href' => wp_login_url( get_permalink() ),
-										'text' => __( 'Connexion', 'telabotanica' )
-									]);
+									echo '<p style="text-align: center">';
+										the_telabotanica_module('button', [
+											'href' => wp_login_url( get_permalink() ),
+											'text' => __( 'Connexion', 'telabotanica' )
+										]);
+									echo '</p>';
 
 								else :
 
@@ -104,7 +127,7 @@ get_header(); ?>
 
 										/* (string) The URL to be redirected to after the form is submit. Defaults to the current URL with a GET parameter '?updated=true'.
 										A special placeholder '%post_url%' will be converted to post's permalink (handy if creating a new post) */
-										'return' => '',
+										'return' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ) . '?confirmation=true',
 
 										/* (string) Extra HTML to add before the fields */
 										'html_before_fields' => '',
@@ -239,7 +262,9 @@ get_header(); ?>
 
 							endif;
 
-							?>
+						endif;
+
+						?>
 					</div>
 				</div>
 			</div>

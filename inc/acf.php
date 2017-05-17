@@ -31,9 +31,10 @@ function telabotanica_set_featured_image( $post_id ) {
 add_action('acf/save_post', 'telabotanica_set_featured_image', 20);
 
 
-// Ajout d'une query_var `categorie` (pour la page "Proposer une actulité")
-function telabotanica_add_categorie_query_var( $vars ){
+// Ajout d'une query_var `categorie` (pour la page "Proposer une actualité")
+function telabotanica_add_acf_query_vars( $vars ){
 	$vars[] = "categorie";
+	$vars[] = "confirmation";
 	return $vars;
 }
-add_filter( 'query_vars', 'telabotanica_add_categorie_query_var' );
+add_filter( 'query_vars', 'telabotanica_add_acf_query_vars' );

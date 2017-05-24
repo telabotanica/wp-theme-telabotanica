@@ -3,8 +3,9 @@ preset: recommended
 risky: false
 
 disabled:
-  - no_tab_indentation
   - concat_without_spaces
+  - no_tab_indentation
+  - trailing_comma_in_multiline_array
 
 enabled:
   - concat_with_spaces

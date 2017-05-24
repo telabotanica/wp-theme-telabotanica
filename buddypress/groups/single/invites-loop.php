@@ -1,11 +1,7 @@
 <?php
 /**
- * BuddyPress - Group Invites Loop
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+ * BuddyPress - Group Invites Loop.
  */
-
 ?>
 <div class="left-menu">
 
@@ -15,7 +11,7 @@
 			<?php bp_new_group_invite_friend_list(); ?>
 		</ul>
 
-		<?php wp_nonce_field( 'groups_invite_uninvite_user', '_wpnonce_invite_uninvite_user' ); ?>
+		<?php wp_nonce_field('groups_invite_uninvite_user', '_wpnonce_invite_uninvite_user'); ?>
 
 	</div>
 
@@ -25,14 +21,14 @@
 
 	<?php
 
-	/**
-	 * Fires before the display of the group send invites list.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'bp_before_group_send_invites_list' ); ?>
+    /**
+     * Fires before the display of the group send invites list.
+     *
+     * @since 1.1.0
+     */
+    do_action('bp_before_group_send_invites_list'); ?>
 
-	<?php if ( bp_group_has_invites( bp_ajax_querystring( 'invite' ) . '&per_page=10' ) ) : ?>
+	<?php if (bp_group_has_invites(bp_ajax_querystring('invite').'&per_page=10')) : ?>
 
 		<div id="pag-top" class="pagination">
 
@@ -53,7 +49,7 @@
 		<?php /* The ID 'friend-list' is important for AJAX support. */ ?>
 		<ul id="friend-list" class="item-list">
 
-		<?php while ( bp_group_invites() ) : bp_group_the_invite(); ?>
+		<?php while (bp_group_invites()) : bp_group_the_invite(); ?>
 
 			<li id="<?php bp_group_invite_item_id(); ?>">
 				<?php bp_group_invite_user_avatar(); ?>
@@ -63,24 +59,24 @@
 
 				<?php
 
-				/**
-				 * Fires inside the invite item listing.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_group_send_invites_item' ); ?>
+                /**
+                 * Fires inside the invite item listing.
+                 *
+                 * @since 1.1.0
+                 */
+                do_action('bp_group_send_invites_item'); ?>
 
 				<div class="action">
-					<a class="button remove" href="<?php bp_group_invite_user_remove_invite_url(); ?>" id="<?php bp_group_invite_item_id(); ?>"><?php _e( 'Remove Invite', 'buddypress' ); ?></a>
+					<a class="button remove" href="<?php bp_group_invite_user_remove_invite_url(); ?>" id="<?php bp_group_invite_item_id(); ?>"><?php _e('Remove Invite', 'buddypress'); ?></a>
 
 					<?php
 
-					/**
-					 * Fires inside the action area for a send invites item.
-					 *
-					 * @since 1.1.0
-					 */
-					do_action( 'bp_group_send_invites_item_action' ); ?>
+                    /**
+                     * Fires inside the action area for a send invites item.
+                     *
+                     * @since 1.1.0
+                     */
+                    do_action('bp_group_send_invites_item_action'); ?>
 				</div>
 			</li>
 
@@ -107,7 +103,7 @@
 	<?php else : ?>
 
 		<div id="message" class="info">
-			<p><?php _e( 'Select friends to invite.', 'buddypress' ); ?></p>
+			<p><?php _e('Select friends to invite.', 'buddypress'); ?></p>
 		</div>
 
 	<?php endif; ?>
@@ -119,6 +115,6 @@
  *
  * @since 1.1.0
  */
-do_action( 'bp_after_group_send_invites_list' ); ?>
+do_action('bp_after_group_send_invites_list'); ?>
 
 </div><!-- .main-column -->

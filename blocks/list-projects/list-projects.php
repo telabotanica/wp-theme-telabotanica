@@ -1,42 +1,45 @@
-<?php function telabotanica_block_list_projects($data) {
-	$defaults = [
-		'background_color' => get_sub_field('background_color'),
-		'query' => [
-			'type' => 'random',
-			'group_type' => get_sub_field('category')->name,
-			'max' => 4
-		],
-		'modifiers' => []
-	];
+<?php
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array(['block', 'block-list-projects'], $data->modifiers);
+function telabotanica_block_list_projects($data)
+{
+    $defaults = [
+        'background_color' => get_sub_field('background_color'),
+        'query'            => [
+            'type'       => 'random',
+            'group_type' => get_sub_field('category')->name,
+            'max'        => 4,
+        ],
+        'modifiers' => [],
+    ];
 
-	printf(
-		'<div class="%s" style="background-color: %s">',
-		implode(' ', $data->modifiers),
-		$data->background_color
-	);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array(['block', 'block-list-projects'], $data->modifiers);
 
-		echo '<div class="layout-wrapper">';
-			echo '<ul class="block-list-projects-items">';
+    printf(
+        '<div class="%s" style="background-color: %s">',
+        implode(' ', $data->modifiers),
+        $data->background_color
+    );
 
-			if ( bp_has_groups($data->query) ) :
+    echo '<div class="layout-wrapper">';
+    echo '<ul class="block-list-projects-items">';
 
-				while ( bp_groups() ) : bp_the_group();
+    if (bp_has_groups($data->query)) :
 
-					the_telabotanica_module('card-project', [
-						'tag' => 'li',
-						'meta' => false,
-						'modifiers' => 'with-large-cover'
-					]);
+                while (bp_groups()) : bp_the_group();
 
-				endwhile;
+    the_telabotanica_module('card-project', [
+                        'tag'       => 'li',
+                        'meta'      => false,
+                        'modifiers' => 'with-large-cover',
+                    ]);
 
-			endif;
+    endwhile;
 
-			echo '</ul>';
-		echo '</div>';
+    endif;
 
-	echo '</div>';
+    echo '</ul>';
+    echo '</div>';
+
+    echo '</div>';
 }

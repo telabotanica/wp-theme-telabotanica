@@ -1,4 +1,5 @@
 <?php
+
 return [
-  "Standard" => ['title' => 'Titre', 'subtitle' => 'Sous-titre'],
+  'Standard' => ['title' => 'Titre', 'subtitle' => 'Sous-titre'],
 ];

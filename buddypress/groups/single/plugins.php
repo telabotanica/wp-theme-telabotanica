@@ -1,9 +1,6 @@
 <?php
 /**
- * BuddyPress - Groups plugins
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+ * BuddyPress - Groups plugins.
  */
 
 /**
@@ -11,7 +8,7 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_group_plugin_template' ); ?>
+do_action('bp_before_group_plugin_template'); ?>
 
 <?php
 
@@ -20,7 +17,7 @@ do_action( 'bp_before_group_plugin_template' ); ?>
  *
  * @since 1.0.0
  */
-do_action( 'bp_template_content' ); ?>
+do_action('bp_template_content'); ?>
 
 <?php
 
@@ -29,4 +26,4 @@ do_action( 'bp_template_content' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_group_plugin_template' );
+do_action('bp_after_group_plugin_template');

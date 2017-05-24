@@ -1,9 +1,6 @@
 <?php
 /**
- * BuddyPress - Groups Send Invites
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+ * BuddyPress - Groups Send Invites.
  */
 
 /**
@@ -11,26 +8,26 @@
  *
  * @since 1.1.0
  */
-do_action( 'bp_before_group_send_invites_content' ); ?>
+do_action('bp_before_group_send_invites_content'); ?>
 
 <?php
 /* Does the user have friends that could be invited to the group? */
-if ( bp_get_new_group_invite_friend_list() ) : ?>
+if (bp_get_new_group_invite_friend_list()) : ?>
 
-	<h2 class="bp-screen-reader-text"><?php _e( 'Send invites', 'buddypress' ); ?></h2>
+	<h2 class="bp-screen-reader-text"><?php _e('Send invites', 'buddypress'); ?></h2>
 
 	<?php /* 'send-invite-form' is important for AJAX support */ ?>
 	<form action="<?php bp_group_send_invite_form_action(); ?>" method="post" id="send-invite-form" class="standard-form">
 
 		<div class="invite" aria-live="polite" aria-atomic="false" aria-relevant="all">
-			<?php bp_get_template_part( 'groups/single/invites-loop' ); ?>
+			<?php bp_get_template_part('groups/single/invites-loop'); ?>
 		</div>
 
 		<div class="submit">
-			<input type="submit" name="submit" id="submit" value="<?php esc_attr_e( 'Send Invites', 'buddypress' ); ?>" />
+			<input type="submit" name="submit" id="submit" value="<?php esc_attr_e('Send Invites', 'buddypress'); ?>" />
 		</div>
 
-		<?php wp_nonce_field( 'groups_send_invites', '_wpnonce_send_invites' ); ?>
+		<?php wp_nonce_field('groups_send_invites', '_wpnonce_send_invites'); ?>
 
 		<?php /* This is important, don't forget it */ ?>
 		<input type="hidden" name="group_id" id="group_id" value="<?php bp_group_id(); ?>" />
@@ -39,11 +36,11 @@ if ( bp_get_new_group_invite_friend_list() ) : ?>
 
 <?php
 /* No eligible friends? Maybe the user doesn't have any friends yet. */
-elseif ( 0 == bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>
+elseif (0 == bp_get_total_friend_count(bp_loggedin_user_id())) : ?>
 
 	<div id="message" class="info">
-		<p class="notice"><?php _e( 'Group invitations can only be extended to friends.', 'buddypress' ); ?></p>
-		<p class="message-body"><?php _e( "Once you've made some friendships, you'll be able to invite those members to this group.", 'buddypress' ); ?></p>
+		<p class="notice"><?php _e('Group invitations can only be extended to friends.', 'buddypress'); ?></p>
+		<p class="message-body"><?php _e("Once you've made some friendships, you'll be able to invite those members to this group.", 'buddypress'); ?></p>
 	</div>
 
 <?php
@@ -51,7 +48,7 @@ elseif ( 0 == bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>
 else : ?>
 
 	<div id="message" class="info">
-		<p class="notice"><?php _e( 'All of your friends already belong to this group.', 'buddypress' ); ?></p>
+		<p class="notice"><?php _e('All of your friends already belong to this group.', 'buddypress'); ?></p>
 	</div>
 
 <?php endif; ?>
@@ -63,4 +60,4 @@ else : ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_group_send_invites_content' ); ?>
+do_action('bp_after_group_send_invites_content'); ?>

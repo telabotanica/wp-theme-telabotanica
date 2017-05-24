@@ -125,10 +125,12 @@
 		}
 
 		.bp_mda_bulk_actions_container {
-			//border: solid red 1px;
 			float: right;
-			//margin-bottom: 1rem;
-			
+
+			.bp_mda_bulk_actions_options {
+				color: $gris33;
+			}
+
 			.bp_mda_bulk_actions_submit {
 				border-radius: .2rem;
 				background-color: $vert-bouton;

@@ -22,7 +22,7 @@ the_telabotanica_module('cover', [
 		'action' => '',
 		'input_id' => bp_current_component() . '_search',
 		'input_name' => $search_input_name,
-		'placeholder' => __("Rechercher un utilisateur...", 'telabotanica'),
+		'placeholder' => __("Rechercher des telabotanistes...", 'telabotanica'),
 		'value' => $search_input_name && ! empty( $_REQUEST[ $search_input_name ] ) ? wp_unslash( $_REQUEST[ $search_input_name ] ) : false,
 		'modifiers' => ['dir-search', 'large']
 	]

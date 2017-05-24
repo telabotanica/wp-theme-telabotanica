@@ -75,7 +75,7 @@ require get_template_directory() . '/inc/profile-subpages.php';
 
 // Customisation du plugin Algolia
 if ( class_exists( 'Algolia_Plugin' ) ) {
-	require get_template_directory() . '/inc/algolia.php';
+	#require get_template_directory() . '/inc/algolia.php';
 }
 
 // Customisation ACF

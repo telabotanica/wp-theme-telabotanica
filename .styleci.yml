@@ -5,6 +5,7 @@ risky: false
 disabled:
   - concat_without_spaces
   - no_tab_indentation
+  - phpdoc_summary
   - trailing_comma_in_multiline_array
 
 enabled:

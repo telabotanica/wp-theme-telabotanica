@@ -1,18 +1,18 @@
 .aa-dropdown-menu {
-  /* we set the width in JS */
+  // we set the width in JS
+  background-color: $blanc;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-top: 0;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.25), 0 0 0.1rem rgba(0, 0, 0, 0.35);
   color: $gris23;
   font-size: 1.2rem;
   z-index: 999999;
-  background-color: $blanc;
-  border-top: none;
-  border-bottom-left-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  box-shadow: 0 0.1rem 0.2rem rgba(0,0,0,.25),0 0 0.1rem rgba(0,0,0,.35);
 
   @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    min-width: inherit;
+    // For mobile phones:
     max-width: inherit;
+    min-width: inherit;
     width: 70%;
   }
 
@@ -20,6 +20,7 @@
   .aa-hint {
     width: 100%;
   }
+
   .aa-hint {color: $gris60;}
 
   .clear {

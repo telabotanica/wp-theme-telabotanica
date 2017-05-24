@@ -37,8 +37,8 @@ Tela.searchBox = (function(){
 				var currentIndexId = $el.find('input[name="index"]').val();
 				var currentIndex = _.find(algolia.autocomplete.sources, ['index_id', currentIndexId]);
 
-				index = client.initIndex(currentIndex['index_name']);
-				index.setSettings(currentIndex['settings']);
+				index = client.initIndex(currentIndex.index_name);
+				index.setSettings(currentIndex.settings);
 
 				$searchInput.on('input', onInput);
 
@@ -96,7 +96,7 @@ Tela.searchBox = (function(){
 		function initSources(){
 			$.each(algolia.autocomplete.sources, function(i, config) {
 				sources.push({
-					source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), config['settings']),
+					source: algoliaAutocomplete.sources.hits(client.initIndex(config.index_name), config.settings),
 					templates: {
 						header: function(data, algoliaResponse) {
 							return wp.template('autocomplete-header')({

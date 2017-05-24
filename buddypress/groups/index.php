@@ -13,7 +13,12 @@
  */
 do_action( 'bp_before_directory_groups_page' );
 
+$projects_page = get_page_by_path( 'projets' );
 the_telabotanica_module('cover', [
+	// toujours utiliser l'image de cover de la page Projets
+	'image' => get_field('cover_image', $projects_page),
+	'title' => get_the_title($projects_page),
+	'subtitle' => get_field('cover_subtitle', $projects_page),
 	'search' => [
 		'index' => 'projets',
 		'placeholder' => __('Rechercher un projet...', 'telabotanica')

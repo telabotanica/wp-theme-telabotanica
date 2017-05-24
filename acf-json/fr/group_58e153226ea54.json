@@ -1,0 +1,53 @@
+{
+    "key": "group_58e153226ea54",
+    "title": "Composant liste d'articles",
+    "fields": [
+        {
+            "key": "field_58e153228822d",
+            "label": "Articles",
+            "name": "items",
+            "type": "relationship",
+            "instructions": "Choisissez les articles que vous souhaitez afficher.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "tb_thematique",
+                "tb_participer"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1491162596
+}

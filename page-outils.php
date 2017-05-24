@@ -7,44 +7,44 @@ get_header();
 
 $taxonomy_name = 'tb_outils_category';
 $tools_categories = get_terms( [
-  'taxonomy'   => $taxonomy_name,
-  'hide_empty' => false,
-  'fields'     => 'all',
-  'parent'     => 0
+	'taxonomy'	 => $taxonomy_name,
+	'hide_empty' => false,
+	'fields'		 => 'all',
+	'parent'		 => 0
 ] );
 
 function tools_category($term) {
-  global $taxonomy_name;
+	global $taxonomy_name;
 
-  the_telabotanica_component( 'title', [
-    "level" => $term->parent === 0 ? 2 : 3,
-    "anchor" => $term->slug,
-    "title" => $term->name
-  ] );
+	the_telabotanica_component( 'title', [
+		"level" => $term->parent === 0 ? 2 : 3,
+		"anchor" => $term->slug,
+		"title" => $term->name
+	] );
 
-  if ( !empty( $term->description ) ) {
-    the_telabotanica_component( 'text', [
-      "text" => sprintf( "<p>%s</p>", $term->description )
-    ] );
-  }
+	if ( !empty( $term->description ) ) {
+		the_telabotanica_component( 'text', [
+			"text" => sprintf( "<p>%s</p>", $term->description )
+		] );
+	}
 
-  $tools = get_posts( [
-    'post_type' => 'tb_outil',
-    'tax_query' => [
-      [
-        'taxonomy' => $taxonomy_name,
-        'field' => 'term_id',
-        'terms' => $term->term_id,
-        'include_children' => false
-      ]
-    ],
-    'orderby' => 'menu_order',
-    'sort_order' => 'asc',
-    'numberposts' => -1
-  ] );
-  the_telabotanica_component('tools', [
-    'items' => $tools
-  ] );
+	$items = get_posts( [
+		'post_type' => 'tb_outil',
+		'tax_query' => [
+			[
+				'taxonomy' => $taxonomy_name,
+				'field' => 'term_id',
+				'terms' => $term->term_id,
+				'include_children' => false
+			]
+		],
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'numberposts' => -1
+	] );
+	the_telabotanica_component('tools', [
+		'items' => $items
+	] );
 
 }
 
@@ -53,56 +53,83 @@ function tools_category($term) {
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', []); ?>
+			<?php the_telabotanica_module('cover'); ?>
 
-      <div class="layout-content-col">
-        <div class="layout-wrapper">
-          <aside class="layout-column">
-            <?php the_telabotanica_module('toc', [
-              'items' => [
-                [ 'items' => $tools_categories ]
-              ]
-            ] ); ?>
-            <?php the_telabotanica_module('button-top'); ?>
-          </aside>
-          <div class="layout-content">
-            <?php the_telabotanica_module('breadcrumbs', []); ?>
-            <article>
-              <?php
-              // Si la page utilise des composants
-              if( have_rows('components') ):
+			<div class="layout-content-col">
+				<div class="layout-wrapper">
+					<aside class="layout-column">
+						<?php
+						$toc_items = [];
 
-                  // On boucle sur les composants
-                  while ( have_rows('components') ) : the_row();
+						// Si la page utilise des composants
+						if ( have_rows('components') ) {
+							$first = true;
 
-                    the_telabotanica_component(get_row_layout(), []);
+							// On boucle sur les composants
+							while ( have_rows('components') ) : the_row();
 
-                  endwhile;
+								// On garde seulement les intertitres
+								if (get_row_layout() !== 'title') continue;
 
-              else :
+								// On garde seulement les intertitres de niveau 2
+								if (get_sub_field('level') !== '2') continue;
 
-                  // no layouts found
+								$toc_items[] = [
+									'active' => $first,
+									'text' => get_sub_field('title'),
+									'href' => '#' . get_sub_field('anchor')
+								];
 
-              endif;
+								$first = false;
 
-              foreach ( $tools_categories as $term ) :
+							endwhile;
+						}
 
-                tools_category($term);
+						$toc_items = array_merge($toc_items, $tools_categories);
 
-                foreach ( get_term_children( $term->term_id, $taxonomy_name ) as $child ) :
-                  $term_child = get_term_by( 'id', $child, $taxonomy_name );
-                  tools_category($term_child);
-                endforeach;
+						the_telabotanica_module('toc', [
+							'items' => [
+								[ 'items' => $toc_items ]
+							]
+						] );
 
-              endforeach;
+						the_telabotanica_module('button-top');
+						?>
+					</aside>
+					<div class="layout-content">
+						<?php the_telabotanica_module('breadcrumbs'); ?>
+						<article>
+							<?php
+							// Si la page utilise des composants
+							if( have_rows('components') ):
 
-              ?>
-            </article>
-          </div>
-        </div>
-      </div>
+									// On boucle sur les composants
+									while ( have_rows('components') ) : the_row();
 
-    </main><!-- .site-main -->
-  </div><!-- .content-area -->
+										the_telabotanica_component(get_row_layout(), []);
+
+									endwhile;
+
+							endif;
+
+							foreach ( $tools_categories as $term ) :
+
+								tools_category($term);
+
+								foreach ( get_term_children( $term->term_id, $taxonomy_name ) as $child ) :
+									$term_child = get_term_by( 'id', $child, $taxonomy_name );
+									tools_category($term_child);
+								endforeach;
+
+							endforeach;
+
+							?>
+						</article>
+					</div>
+				</div>
+			</div>
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
 
 <?php get_footer(); ?>

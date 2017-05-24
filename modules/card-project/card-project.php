@@ -20,7 +20,7 @@
 			'html' => false
 		] ),
 		'name' => bp_get_group_name(),
-		'description' => bp_get_group_description_excerpt(),
+		'description' => strip_tags(bp_get_group_description_excerpt()),
 		'meta' => [
 			[
 				'icon' => 'members',

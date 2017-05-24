@@ -7,7 +7,7 @@
             "label": "Composants (optionnels)",
             "name": "components",
             "type": "flexible_content",
-            "instructions": "Vous pouvez ajouter des composants \u00e0 la suite du contenu de votre article.",
+            "instructions": "Vous pouvez ajouter des composants à la suite du contenu de votre article.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -146,7 +146,7 @@
                 {
                     "key": "5817910237e00",
                     "name": "links",
-                    "label": "Liens ou t\u00e9l\u00e9chargements",
+                    "label": "Liens ou téléchargements",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -164,6 +164,37 @@
                             },
                             "clone": [
                                 "group_581780cf64012"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58e1545da0284",
+                    "name": "articles",
+                    "label": "Liste d'articles",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58e1546ca0285",
+                            "label": "Articles",
+                            "name": "articles",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e153226ea54"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -239,12 +270,12 @@
                 {
                     "key": "581795f9075cb",
                     "name": "embed",
-                    "label": "Contenu int\u00e9gr\u00e9",
+                    "label": "Contenu intégré",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_581795fe075cc",
-                            "label": "\u00c9l\u00e9ment \u00e0 int\u00e9grer",
+                            "label": "Élément à intégrer",
                             "name": "embed",
                             "type": "clone",
                             "instructions": "",
@@ -270,12 +301,12 @@
                 {
                     "key": "582c83e996f94",
                     "name": "accordion",
-                    "label": "Accord\u00e9on",
+                    "label": "Accordéon",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_582c83f496f95",
-                            "label": "Accord\u00e9on",
+                            "label": "Accordéon",
                             "name": "accordion",
                             "type": "clone",
                             "instructions": "",
@@ -348,6 +379,6 @@
     "instruction_placement": "field",
     "hide_on_screen": "",
     "active": 1,
-    "description": "Composants r\u00e9dactionnels utilisables dans les articles",
-    "modified": 1479373506
+    "description": "Composants rédactionnels utilisables dans les articles",
+    "modified": 1491162558
 }

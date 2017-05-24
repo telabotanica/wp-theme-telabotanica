@@ -1,5 +1,6 @@
 'use strict';
 
+require('velocity-animate');
 var algoliasearch = require('algoliasearch');
 var algoliaAutocomplete = require('autocomplete.js');
 var Tether = require('tether');
@@ -14,13 +15,16 @@ Tela.searchBox = (function(){
 
 	function module(selector){
 		var $el = $(selector),
+			$primarySearchBox,
 			client,
 			tether,
 			config,
 			sources = [],
 			search,
 			index,
+			isTiny = false,
 			$searchInput,
+			$button,
 			$wrapper,
 			$menu,
 			$suggestions,
@@ -30,6 +34,17 @@ Tela.searchBox = (function(){
 			client = algoliasearch(algolia.application_id, algolia.search_api_key);
 			$wrapper = $el.find('.search-box-wrapper');
 			$searchInput = $el.find('.search-box-input');
+			$button = $el.find('.search-box-button');
+			$primarySearchBox = $('.search-box.is-primary').first();
+
+			// Tiny mode
+			if ($el.hasClass('tiny')) {
+				isTiny = true;
+				$button.on('click', onTinyClickButton);
+
+				// There is a primary search box on the page, so we do not setup the autocomplete
+				if ($primarySearchBox.length) return;
+			}
 
 			// The autocomplete can be disabled by setting the `data-autocomplete` to false
 			if ($el.data('autocomplete') === false) {
@@ -73,6 +88,17 @@ Tela.searchBox = (function(){
 				PubSub.publish('search-box.results', false);
 			}
 			index.search(val, onSearchResults);
+		}
+
+		function onTinyClickButton(e) {
+			if ($primarySearchBox.length) {
+				e.preventDefault();
+				$primarySearchBox.velocity("scroll", {offset: -250}).find('.search-box-input').trigger('focus');
+			} else if (!$el.hasClass('is-open')) {
+				e.preventDefault();
+				$el.addClass('is-open');
+				$searchInput.trigger('focus');
+			}
 		}
 
 		function onSearchResults(err, data) {
@@ -136,8 +162,9 @@ Tela.searchBox = (function(){
 			var tetherConfig = {
 				element: $menu,
 				target: $wrapper,
-				attachment: 'top left',
-				targetAttachment: 'bottom left',
+				attachment: isTiny ? 'top right' : 'top left',
+				targetAttachment: isTiny ? 'bottom right' : 'bottom left',
+				offset: isTiny ? '-9px 0' : '-5px 0',
 				constraints: [
 					{
 						to: 'window',

@@ -79,7 +79,7 @@ body.group-admin .toc-items {
         }
     }
 
-    input[type="text"], textarea {
+    input[type="text"], input[type="url"], textarea {
         width: 100%;
         border: solid $grisDD .1rem;
         border-radius: .3rem;

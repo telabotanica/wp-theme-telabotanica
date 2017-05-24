@@ -68,9 +68,9 @@ function telabotanica_block_contribute($data) {
 			echo '<div class="layout-wrapper">';
 				echo '<ul class="block-contribute-items">';
 
-				if ( !empty($data->items) ) :
+				$items_id = [];
 
-					$items_id = [];
+				if ( !empty($data->items) ) :
 
 					foreach ($data->items as $item) :
 
@@ -92,18 +92,19 @@ function telabotanica_block_contribute($data) {
 
 					endforeach;
 
-					// S'il y a moins de 3 items sélectionnés, on en ajoute pour arriver à 3
-					$items_count = count($data->items);
-					if ($items_count < 3) {
-						$data->query = new WP_Query([
-							'post_type' => 'tb_participer',
-							'posts_per_page' => 3 - $items_count,
-							'post__not_in' => $items_id,
-							'orderby' => 'rand'
-						]);
-					}
-
 				endif;
+
+				// S'il y a moins de 3 items sélectionnés, on en ajoute pour arriver à 3
+				$items_count = count($items_id);
+				if ($items_count < 3) {
+					$data->query = new WP_Query([
+						'post_type' => 'tb_participer',
+						'posts_per_page' => 3 - $items_count,
+						'post__not_in' => $items_id,
+						'orderby' => 'rand'
+					]);
+				}
+
 				if ( $data->query && get_class($data->query) === 'WP_Query' ) :
 
 					while ( $data->query->have_posts() ) : $data->query->the_post();

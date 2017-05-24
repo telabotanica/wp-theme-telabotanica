@@ -21,7 +21,10 @@ $telabotanica_modules = [
 	'article',
 	'autocomplete',
 	'breadcrumbs',
-  'block-dashboard',
+	'block-dashboard',
+	'block-dashboard-images',
+	'block-dashboard-map',
+	'block-dashboard-observations',
 	'button',
 	'button-top',
 	'card-project',
@@ -30,11 +33,14 @@ $telabotanica_modules = [
 	'column-articles',
 	'column-features',
 	'column-links',
+	'comment-form',
+	'comments',
 	'cover',
 	'cover-home',
 	'cover-member',
 	'cover-project',
 	'cover-search',
+	'error-page',
 	'event-dates',
 	'feed',
 	'feed-date',
@@ -45,6 +51,7 @@ $telabotanica_modules = [
 	'icon',
 	'list-articles',
 	'list-projects',
+	'map-events',
 	'meta-news',
 	'nav-dashboard',
 	'nav-project',
@@ -89,6 +96,7 @@ array_walk($telabotanica_blocks, function ($block) {
  */
 $telabotanica_components = [
 	'accordion',
+	'articles',
 	'buttons',
 	'contact',
 	'embed',
@@ -218,13 +226,9 @@ function telabotanica_styleguide_data($defaults, $data) {
 
 // Interprétation des modifiers
 function telabotanica_styleguide_modifiers_array($default, $modifiers) {
+	if (!is_array($default))   $default = explode(' ', $default);
 	if (!is_array($modifiers)) $modifiers = explode(' ', $modifiers);
-	if (!is_array($default)) {
-		array_unshift($modifiers, $default);
-	} else {
-		$modifiers = $default + $modifiers;
-	}
-	return $modifiers;
+	return array_merge($default, $modifiers);
 }
 
 // Définition des paramètres d'URL

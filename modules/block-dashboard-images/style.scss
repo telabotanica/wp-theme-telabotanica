@@ -1,0 +1,27 @@
+.block-dashboard-images {
+
+	.block-dashboard-content {
+
+		&-images {
+			line-height: 0;
+
+			a, img {
+				display: inline-block;
+			}
+
+			a {
+				transition: opacity 0.2s ease;
+				width: 25%;
+
+				&:hover {
+					opacity: 0.85;
+				}
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+}

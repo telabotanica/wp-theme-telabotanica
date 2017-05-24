@@ -5,6 +5,9 @@
 @import "autocomplete/style";
 @import "breadcrumbs/style";
 @import "block-dashboard/style";
+@import "block-dashboard-images/style";
+@import "block-dashboard-map/style";
+@import "block-dashboard-observations/style";
 @import "button/style";
 @import "button-top/style";
 @import "card-project/style";
@@ -13,11 +16,15 @@
 @import "column-articles/style";
 @import "column-features/style";
 @import "column-links/style";
+@import "comment-form/style";
+@import "comments/style";
 @import "cover/style";
 @import "cover-home/style";
 @import "cover-member/style";
 @import "cover-project/style";
 @import "cover-search/style";
+@import "dashboard/style";
+@import "error-page/style";
 @import "event-dates/style";
 @import "feed/style";
 @import "feed-date/style";
@@ -29,6 +36,9 @@
 @import "list-articles/style";
 @import "list-projects/style";
 @import "members-directory/style";
+// Login n'est pas inclus dans le bundle mais dans login-style.scss
+// @import "login/style";
+@import "map-events/style";
 @import "meta-news/style";
 @import "nav-dashboard/style";
 @import "nav-project/style";
@@ -38,9 +48,6 @@
 @import "notice/style";
 @import "pagination/style";
 @import "profile/style";
-@import "search-box/style";
-@import "search-filters/style";
-@import "search-results/style";
 @import "project-documents/style";
 @import "project-forum/style";
 @import "project-flora-data/style";
@@ -49,7 +56,11 @@
 @import "project-settings/style";
 @import "project-wiki/style";
 @import "registration-form/style";
+@import "search-box/style";
+@import "search-filters/style";
+@import "search-results/style";
 @import "share/style";
+@import "suggest-news-form/style";
 @import "title/style";
 @import "toc/style";
 @import "upcoming-events/style";

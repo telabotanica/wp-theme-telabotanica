@@ -74,6 +74,7 @@
 		font-family: $ubuntu;
 		font-size: 1.8rem;
 		font-weight: $bold;
+		line-height: 1.4;
 		margin: 0;
 
 		span {
@@ -85,21 +86,9 @@
 	&-description {
 		font-size: 1.4rem;
 		line-height: 2.2rem;
-		margin: 1.5rem 0;
+		margin: 0.5rem 0;
 
 		p {margin: 0;}
-
-		p a {
-			border-bottom: 0.1rem solid;
-			color: $turquoise-fonce;
-			font-weight: $regular;
-			text-decoration: none;
-			transition: background 0.2s ease;
-
-			&:hover, &:focus {
-				background-color: transparentize($turquoise-fonce, 0.9);
-			}
-		}
 	}
 
 	&-meta {

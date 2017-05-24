@@ -19,12 +19,16 @@ function telabotanica_module_cover_project($data) {
 		endif;
 
 		echo '<h1 class="cover-project-title">' . bp_get_group_name() . '</h1>';
-		echo '<div class="cover-project-description">' . bp_get_group_description_excerpt() . '</div>';
+		echo '<div class="cover-project-description">' . strip_tags(bp_get_group_description_excerpt()) . '</div>';
 
-		// the_telabotanica_module('button', [
-		//	 'href' => '#',
-		//	 'text' => __( 'Visiter le site web', 'telabotanica' )
-		// ] );
+		$external_site_url = groups_get_groupmeta(bp_get_group_id(), 'url-site');
+		if ('' !== $external_site_url) {
+			the_telabotanica_module('button', [
+				'href' => $external_site_url,
+				'text' => __( 'Visiter le site web', 'telabotanica' ),
+				'target' => '_blank'
+			] );
+		}
 
 		the_telabotanica_module('button', [
 			'href' => bp_get_groups_directory_permalink(),

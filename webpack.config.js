@@ -8,6 +8,7 @@ const extractEditorStyle = new ExtractTextPlugin('editor-style.css');
 const extractLoginStyle = new ExtractTextPlugin('login-style.css');
 
 module.exports = {
+	devtool: 'source-map',
 	entry: './assets/scripts/main.js',
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -79,7 +80,9 @@ module.exports = {
 		extractBundle,
 		extractEditorStyle,
 		extractLoginStyle,
-		new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			sourcemap: true
+		}),
 		new webpack.LoaderOptionsPlugin({
 			minimize: true
 		}),
@@ -87,6 +90,8 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: "jquery"
 		}),
+		// Load only fr locale in moment.js
+		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/),
 	],
 	externals: {
 		// require("jquery") is external and available

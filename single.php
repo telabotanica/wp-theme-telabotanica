@@ -180,7 +180,11 @@ get_header(); ?>
 						<?php endwhile; ?>
 					</div>
 				</div>
-			<?php endif; ?>
+			<?php
+
+			comments_template();
+
+			endif; ?>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->

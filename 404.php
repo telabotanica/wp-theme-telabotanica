@@ -1,12 +1,10 @@
 <?php
-get_header(); ?>
+$GLOBALS['is_error'] = true;
+get_header();
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	the_telabotanica_module('error-page', [
+		'type' => 404,
+		'title' => __("La page que vous demandez est introuvable.", 'telabotanica')
+	]);
 
-      <h1>Page non trouvée (erreur 404)</h1>
-
-    </main><!-- .site-main -->
-  </div><!-- .content-area -->
-
-<?php get_footer(); ?>
+get_footer();

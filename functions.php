@@ -76,10 +76,8 @@ require get_template_directory() . '/inc/profile-subpages.php';
 // Redirection des non-admins vers la page d'accueil lors du login
 require get_template_directory() . '/inc/redirect-after-login.php';
 
-// Customisation du plugin Algolia
-if ( class_exists( 'Algolia_Plugin' ) ) {
-	require get_template_directory() . '/inc/algolia.php';
-}
+// Intégration d'Algolia
+require get_template_directory() . '/inc/algolia.php';
 
 // Customisation ACF
 require get_template_directory() . '/inc/acf.php';

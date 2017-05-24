@@ -38,10 +38,7 @@ Tela.searchBox = (function(){
 				var currentIndex = _.find(algolia.autocomplete.sources, ['index_id', currentIndexId]);
 
 				index = client.initIndex(currentIndex['index_name']);
-				index.setSettings({
-					hitsPerPage: currentIndex['max_suggestions'],
-					facetFilters: currentIndex['default_facet_filters']
-				});
+				index.setSettings(currentIndex['settings']);
 
 				$searchInput.on('input', onInput);
 
@@ -99,10 +96,7 @@ Tela.searchBox = (function(){
 		function initSources(){
 			$.each(algolia.autocomplete.sources, function(i, config) {
 				sources.push({
-					source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
-						hitsPerPage: config['max_suggestions'],
-						facetFilters: config['default_facet_filters']
-					}),
+					source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), config['settings']),
 					templates: {
 						header: function(data, algoliaResponse) {
 							return wp.template('autocomplete-header')({

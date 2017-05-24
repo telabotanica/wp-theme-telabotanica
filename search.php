@@ -12,15 +12,16 @@ get_header();
 		<main id="main" class="site-main">
 
 			<?php
+			if ( telabotanica_algolia_check(true) ) :
 
-			// Get Algolia instance
-			if ( class_exists( 'Algolia_Plugin' ) ) :
-				$algolia = Algolia_Plugin::get_instance();
+				// Get Algolia instance
+				$algolia_client = telabotanica_algolia_client();
+				$algolia_autocomplete_config = telabotanica_algolia_autocomplete_config();
 
 				if ( $current_index ) :
 
 					// Retrieve the label for the current index
-					$indices = $algolia->get_autocomplete_config()->get_config();
+					$indices = $algolia_autocomplete_config['sources'];
 					foreach ( $indices as $index ) :
 						if ( $index['index_id'] === $current_index ) {
 							$current_index_label = $index['label'];
@@ -29,7 +30,7 @@ get_header();
 					endforeach;
 
 					// Perform the search
-					$index = $algolia->get_api()->get_client()->initIndex($current_index_name);
+					$index = $algolia_client->initIndex($current_index_name);
 					$results = $index->search(get_search_query());
 
 					the_telabotanica_module('cover-search', [
@@ -75,18 +76,17 @@ get_header();
 				else :
 					// Perform several queries in a single API call
 					$queries = [];
-					$indices = $algolia->get_autocomplete_config()->get_config();
 
-					foreach ( $indices as $index ) :
+					foreach ( $algolia_autocomplete_config['sources'] as $index ) :
 						$queries[] = [
 							'indexName' => $index['index_name'],
 							'query' => get_search_query(),
-							'hitsPerPage' => $index['max_suggestions'] * 2,
-							'facetFilters' => array_key_exists('default_facet_filters', $index) ? $index['default_facet_filters'] : null
+							'hitsPerPage' => $index['settings']['hitsPerPage'] * 2,
+							'facetFilters' => array_key_exists('facetFilters', $index['settings']) ? $index['settings']['facetFilters'] : null
 						];
 					endforeach;
 
-					$results = $algolia->get_api()->get_client()->multipleQueries($queries);
+					$results = $algolia_client->multipleQueries($queries);
 					$total_results = array_sum(array_column($results['results'], 'nbHits'));
 
 					the_telabotanica_module('cover-search', [

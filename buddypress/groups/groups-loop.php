@@ -37,23 +37,16 @@ do_action( 'bp_before_groups_loop' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_after_directory_groups_list' ); ?>
+	do_action( 'bp_after_directory_groups_list' );
 
-	<div id="pag-bottom" class="pagination">
-
-		<div class="pag-count" id="group-dir-count-bottom">
-
-			<?php bp_groups_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="group-dir-pag-bottom">
-
-			<?php bp_groups_pagination_links(); ?>
-
-		</div>
-
-	</div>
+	the_telabotanica_module('pagination', [
+		'id' => 'pag-bottom',
+		'count_id' => 'group-dir-count-bottom',
+		'links_id' => 'group-dir-pag-bottom',
+		'context' => 'buddypress',
+		'type' => 'groups'
+	]);
+	?>
 
 <?php else: ?>
 

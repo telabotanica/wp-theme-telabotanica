@@ -37,6 +37,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `header-dashboard` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
+* module `pagination` : support de la pagination Buddypress
 * module `search-box` :
 	* ajout du support de `id`, `action`, `input_id` et `input_name`
 * module `title` : support d'un suffixe optionnel

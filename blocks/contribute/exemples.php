@@ -1,17 +1,18 @@
 <?php
+
 return [
-  "Standard" => [
+  'Standard' => [
 		'background_color' => '#f8f5ef',
-		'title' => 'Contribuez dès maintenant',
-		'buttons' => [
+		'title'            => 'Contribuez dès maintenant',
+		'buttons'          => [
 			'display' => 'buttons',
-			'items' => [
+			'items'   => [
 				[
-					'href' => '#',
-					'text' => __('Trouver un moyen de participer', 'telabotanica'),
-					'modifiers' => 'orange'
-				]
-			]
-		]
-	]
+					'href'      => '#',
+					'text'      => __('Trouver un moyen de participer', 'telabotanica'),
+					'modifiers' => 'orange',
+				],
+			],
+		],
+	],
 ];

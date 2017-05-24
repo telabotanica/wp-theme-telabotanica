@@ -1,28 +1,32 @@
-<?php function telabotanica_module_button($data) {
+<?php
 
-	$defaults = [
-		'tag' => 'a',
-		'href' => '#',
-		'target' => '',
-		'text' => 'Bouton',
-		'title' => '',
-		'icon_before' => false,
-		'icon_after' => false,
-		'modifiers' => [],
-		'extra_attributes' => []
+function telabotanica_module_button($data)
+{
+    $defaults = [
+		'tag'              => 'a',
+		'href'             => '#',
+		'target'           => '',
+		'text'             => 'Bouton',
+		'title'            => '',
+		'icon_before'      => false,
+		'icon_after'       => false,
+		'modifiers'        => [],
+		'extra_attributes' => [],
 	];
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array('button', $data->modifiers);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array('button', $data->modifiers);
 
-  if ( $data->modifiers && in_array('back', $data->modifiers) ) $data->icon_before = 'arrow-left';
+    if ($data->modifiers && in_array('back', $data->modifiers)) {
+        $data->icon_before = 'arrow-left';
+    }
 
-  $extra_attributes = '';
-  foreach ($data->extra_attributes as $name => $value) {
-    $extra_attributes .= sprintf('%s="%s" ', $name, $value);
-  }
+    $extra_attributes = '';
+    foreach ($data->extra_attributes as $name => $value) {
+        $extra_attributes .= sprintf('%s="%s" ', $name, $value);
+    }
 
-  printf(
+    printf(
     '<%s href="%s" %s class="%s" target="%s" title="%s">%s<span class="button-text">%s</span>%s</%s>',
     $data->tag,
     $data->href,

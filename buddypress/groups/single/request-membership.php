@@ -1,9 +1,6 @@
 <?php
 /**
- * BuddyPress - Groups Request Membership
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+ * BuddyPress - Groups Request Membership.
  */
 ?>
 
@@ -18,18 +15,18 @@
  *
  * @since 1.1.0
  */
-do_action( 'bp_before_group_request_membership_content' ); ?>
+do_action('bp_before_group_request_membership_content'); ?>
 
-<?php if ( !bp_group_has_requested_membership() ) : ?>
+<?php if (!bp_group_has_requested_membership()) : ?>
 	<h2 class="bp-screen-reader-text"><?php
 		/* translators: accessibility text */
-		_e( 'Request form', 'buddypress' );
+		_e('Request form', 'buddypress');
 	?></h2>
 
-	<h3><?php printf( __( "You are requesting to become a member of the group '%s'.", 'buddypress' ), bp_get_group_name( false ) ); ?></h3>
+	<h3><?php printf(__("You are requesting to become a member of the group '%s'.", 'buddypress'), bp_get_group_name(false)); ?></h3>
 
-	<form action="<?php bp_group_form_action('request-membership' ); ?>" method="post" name="request-membership-form" id="request-membership-form" class="standard-form">
-		<label for="group-request-membership-comments"><?php _e( 'Comments (optional)', 'buddypress' ); ?></label>
+	<form action="<?php bp_group_form_action('request-membership'); ?>" method="post" name="request-membership-form" id="request-membership-form" class="standard-form">
+		<label for="group-request-membership-comments"><?php _e('Comments (optional)', 'buddypress'); ?></label>
 		<textarea name="group-request-membership-comments" id="group-request-membership-comments"></textarea>
 
 		<?php
@@ -39,11 +36,11 @@ do_action( 'bp_before_group_request_membership_content' ); ?>
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_group_request_membership_content' ); ?>
+		do_action('bp_group_request_membership_content'); ?>
 
-		<p><input class="button" type="submit" name="group-request-send" id="group-request-send" value="<?php esc_attr_e( 'Send Request', 'buddypress' ); ?>" />
+		<p><input class="button" type="submit" name="group-request-send" id="group-request-send" value="<?php esc_attr_e('Send Request', 'buddypress'); ?>" />
 
-		<?php wp_nonce_field( 'groups_request_membership' ); ?>
+		<?php wp_nonce_field('groups_request_membership'); ?>
 	</form><!-- #request-membership-form -->
 <?php endif; ?>
 
@@ -54,7 +51,7 @@ do_action( 'bp_before_group_request_membership_content' ); ?>
  *
  * @since 1.1.0
  */
-do_action( 'bp_after_group_request_membership_content' ); ?>
+do_action('bp_after_group_request_membership_content'); ?>
 
 			</div>
 		</div>

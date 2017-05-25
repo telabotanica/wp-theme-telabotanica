@@ -2,7 +2,7 @@
 	$defaults = [
 		'autocomplete' => true,
 		'placeholder' => __('Rechercher une plante, un projet, un mot clé...', 'telabotanica'),
-		'value' => get_search_query() ?: $_GET['q'],
+		'value' => get_search_query() ?: get_query_var( 'q', false ),
 		'index' => false,
 		'suggestions' => false,
 		'modifiers' => ['large']
@@ -22,13 +22,13 @@
 		);
 			printf(
 				'<input name="s" type="text" class="search-box-input" placeholder="%s" value="%s" autocomplete="off" spellcheck="false" />',
-				$data->placeholder,
-				$data->value
+				esc_attr( $data->placeholder ),
+				esc_attr( $data->value )
 			);
 			if ($data->index) :
 				printf(
 					'<input name="index" type="hidden" value="%s" />',
-					$data->index
+					esc_attr( sanitize_key( $data->index ) )
 				);
 			endif;
 			printf(

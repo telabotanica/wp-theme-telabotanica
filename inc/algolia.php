@@ -145,6 +145,7 @@ add_filter( 'wp_footer', 'telabotanica_algolia_add_templates', PHP_INT_MAX );
  */
 function telabotanica_algolia_add_query_vars( $vars ){
 	$vars[] = "index";
+	$vars[] = "q";
 	return $vars;
 }
 add_filter( 'query_vars', 'telabotanica_algolia_add_query_vars' );

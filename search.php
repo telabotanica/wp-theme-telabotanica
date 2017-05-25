@@ -1,6 +1,9 @@
 <?php
+
+$search_query = sanitize_text_field( get_search_query() );
+
 // Are we searching in a specific index?
-$current_index = get_query_var( 'index', false );
+$current_index = sanitize_key( get_query_var( 'index', false ) );
 
 // Redirect some indices to the category or page, while preserving the query
 switch ($current_index) {
@@ -18,7 +21,7 @@ switch ($current_index) {
 }
 
 if ( isset($redirect_url) ) {
-	wp_redirect( $redirect_url . '?q=' . get_search_query() );
+	wp_redirect( $redirect_url . '?q=' . $search_query );
 	exit;
 }
 
@@ -51,7 +54,7 @@ get_header();
 
 					// Perform the search
 					$index = $algolia_client->initIndex($current_index_name);
-					$results = $index->search(get_search_query());
+					$results = $index->search( $search_query );
 
 					the_telabotanica_module('cover-search', [
 						'total_results' => false
@@ -71,7 +74,7 @@ get_header();
 									the_telabotanica_module('breadcrumbs', [
 										'items' => [
 											[
-												'href' => esc_url( home_url( '/' ) . '?s=' . get_search_query() ),
+												'href' => esc_url( home_url( '/' ) . '?s=' . $search_query ),
 												'text' => __('Recherche', 'telabotanica')
 											],
 											[
@@ -100,7 +103,7 @@ get_header();
 					foreach ( $algolia_autocomplete_config['sources'] as $index ) :
 						$queries[] = [
 							'indexName' => $index['index_name'],
-							'query' => get_search_query(),
+							'query' => $search_query,
 							'hitsPerPage' => $index['settings']['hitsPerPage'] * 2,
 							'facetFilters' => array_key_exists('facetFilters', $index['settings']) ? $index['settings']['facetFilters'] : null
 						];

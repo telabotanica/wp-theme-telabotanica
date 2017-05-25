@@ -1,0 +1,28 @@
+//- This file is only meant to be included in other modules
+//- and then used as a mixin: +search-hit({ ... })
+mixin search-hit(data)
+	.search-hit
+		//- TODO: refactor with dynamic mixin when supported by pug-php
+		//- https://github.com/pug-php/pug/issues/138
+		//- +#{'search-hit-' + data.type}(data)
+		case data.type
+			when 'flore'
+				+search-hit-flore(data)
+			when 'vegetation'
+				+search-hit-vegetation(data)
+
+mixin search-hit-flore(data)
+	- var title = data._highlightResult.bdtfx.scientific_name.value
+	- var text = data._highlightResult.bdtfx.common_name.value
+	h3.search-hit-title
+		a(href=data.bdtfx.permalink)!= title
+	if text
+		.search-hit-text!= text
+
+mixin search-hit-vegetation(data)
+	- var title = data._highlightResult.syntaxon.value
+	- var text = data._highlightResult.commonName.value
+	h3.search-hit-title
+		a(href=data.permalink)!= title
+	if text
+		.search-hit-text!= text

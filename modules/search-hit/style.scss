@@ -1,0 +1,33 @@
+.search-hit {
+	& + & {
+		margin-top: 3.5rem;
+	}
+
+	em {
+		background-color: $jaune-clair;
+		color: $noir;
+		font-style: normal;
+	}
+
+	&-title {
+		font-family: $ubuntu;
+		font-size: 1.9rem;
+		font-weight: $medium;
+		margin: 0;
+
+		&, a {
+			color: $gris23;
+		}
+
+		a {
+			text-decoration: none;
+			transition: color 0.2s ease;
+
+			&:hover {color: $turquoise-fonce;}
+		}
+	}
+
+	&-text {
+		margin-top: 0.5rem;
+	}
+}

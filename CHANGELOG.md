@@ -60,6 +60,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `pagination` : support de la pagination Buddypress
 * module `search-box` :
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page
+* module `search-hit` ajouté
 * module `title` : support d'un suffixe optionnel
 * module `toc` :
 	* ajout du comportement "affix" (reste fixe lors du scroll)

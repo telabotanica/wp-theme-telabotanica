@@ -67,6 +67,9 @@ function telabotanica_algolia_autocomplete_config() {
 			'settings' => [
 				'hitsPerPage' => 5,
 				'attributesToHighlight' => [ 'syntaxon' ]
+			],
+			'filters' => [
+				'habitat'
 			]
 		],
 		[

@@ -61,6 +61,7 @@ $telabotanica_modules = [
 	'pagination',
 	'search-box',
 	'search-filters',
+  'search-hit',
 	'search-results',
 	'share',
 	'title',

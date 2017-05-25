@@ -49,6 +49,8 @@ get_header();
 						if ( $index['index_id'] === $current_index ) {
 							$current_index_label = $index['label'];
 							$current_index_name = $index['index_name'];
+							$current_index_filters = @$index['filters'] ?: [];
+							break;
 						}
 					endforeach;
 
@@ -65,7 +67,9 @@ get_header();
 						<div class="layout-wrapper">
 								<aside class="layout-column">
 									<?php
-									the_telabotanica_module('search-filters');
+									the_telabotanica_module('search-filters', [
+										'filters' => $current_index_filters
+									]);
 									the_telabotanica_module('button-top');
 									?>
 								</aside>
@@ -89,7 +93,14 @@ get_header();
 										]
 									]);
 
-									var_dump($results);
+									echo '<div id="search-hits">';
+										foreach ($results['hits'] as $hit) {
+											$hit['type'] = $current_index;
+											the_telabotanica_module('search-hit', $hit);
+										}
+									echo '</div>';
+
+									// TODO: add pagination
 									?>
 								</div>
 							</div>

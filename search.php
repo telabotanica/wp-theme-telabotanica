@@ -2,6 +2,26 @@
 // Are we searching in a specific index?
 $current_index = get_query_var( 'index', false );
 
+// Redirect some indices to the category or page, while preserving the query
+switch ($current_index) {
+	case 'actualites':
+		$redirect_url = get_category_link( get_category_by_slug( 'actualites' ) );
+		break;
+
+	case 'evenements':
+		$redirect_url = get_category_link( get_category_by_slug( 'evenements' ) );
+		break;
+
+	case 'projets':
+		$redirect_url = get_permalink(get_page_by_path( 'projets' ));
+		break;
+}
+
+if ( isset($redirect_url) ) {
+	wp_redirect( $redirect_url . '?q=' . get_search_query() );
+	exit;
+}
+
 // Force a small header (without use cases navigation)
 $header_small = true;
 get_header();

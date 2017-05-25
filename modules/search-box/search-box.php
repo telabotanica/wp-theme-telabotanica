@@ -2,7 +2,7 @@
 	$defaults = [
 		'autocomplete' => true,
 		'placeholder' => __('Rechercher une plante, un projet, un mot clé...', 'telabotanica'),
-		'value' => get_search_query(),
+		'value' => get_search_query() ?: $_GET['q'],
 		'index' => false,
 		'suggestions' => false,
 		'modifiers' => ['large']

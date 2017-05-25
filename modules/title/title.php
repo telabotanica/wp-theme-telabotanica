@@ -5,20 +5,22 @@
 		'level' => 1,
 		'suffix' => false,
 		'href' => false,
+		'target' => false,
 		'modifiers' => []
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('title', $data->modifiers);
 
-	if ( $data->suffix ) :
+	if ( $data->suffix !== false ) :
 		$data->title .= sprintf( '<span class="title-suffix">%s</span>', $data->suffix );
 	endif;
 
 	if ( $data->href ) :
 		$data->title = sprintf(
-			'<a href="%s">%s</a>',
+			'<a href="%s" target="%s">%s</a>',
 			$data->href,
+			$data->target,
 			$data->title
 		);
 	endif;

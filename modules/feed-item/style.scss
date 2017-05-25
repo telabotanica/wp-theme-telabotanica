@@ -161,6 +161,14 @@
 		top: 50%;
 		transform: translateY(-50%);
 
+		&-place {
+			display: inline-block;
+			max-width: 10rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
 		.icon {
 			fill: $vert-bouton;
 			margin-left: 0.5rem;

@@ -3,6 +3,8 @@
 		'title' => [],
 		'message' => false,
 		'modifiers' => [],
+		'html_content' => '',
+		'extra_attributes' => [],
 		'is_empty' => false
 	];
 
@@ -13,9 +15,15 @@
 		$data->modifiers[] = 'is-empty';
 	endif;
 
+	$extra_attributes = '';
+	foreach ($data->extra_attributes as $name => $value) {
+		$extra_attributes .= sprintf('%s="%s" ', $name, $value);
+	}
+
 	printf(
-		'<div class="%s">',
-		implode(' ', $data->modifiers)
+		'<div class="%s" %s>',
+		implode(' ', $data->modifiers),
+		$extra_attributes
 	);
 
 		$data->title['level'] = 2;

@@ -37,7 +37,9 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 			<div class="layout-content-col">
 				<div class="layout-wrapper">
 					<aside class="layout-column">
-						<?php the_telabotanica_module('categories', [
+						<?php
+
+						the_telabotanica_module('categories', [
 							'modifiers' => 'layout-column-item'
 						] );
 
@@ -45,19 +47,15 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 							?>
 							<div class="layout-column-item background-white with-shadow with-padding">
 								<?php the_telabotanica_module('button', [
-									'href' => '#', // TODO
+									'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
 									'text' => __( 'Proposer un évènement', 'telabotanica' ),
 									'modifiers' => 'block orange'
 								] ); ?>
 							</div>
-							<div class="layout-column-item background-white with-shadow with-padding">
+							<div class="layout-column-item background-white with-shadow">
 								<?php
-								// TODO: ajouter l'image
-								the_telabotanica_module('button', [
-									'href' => '#', // TODO
-									'text' => __( 'Carte des évènements', 'telabotanica' ),
-									'modifiers' => 'block orange'
-								] ); ?>
+								the_telabotanica_module('map-events');
+								?>
 							</div>
 							<?php
 						else :

@@ -56,7 +56,10 @@ else :
 						'href' => bp_loggedin_user_domain() . 'messages/',
 						'text' => __( 'Mes messages', 'telabotanica' ),
 						'icon' => 'mail',
-						'dot' => true,
+						'dot' => bp_has_message_threads( array(
+							'box' => 'inbox',
+							'type' => 'unread'
+						) ),
 						'current' => bp_is_user_messages()
 					],
 					[

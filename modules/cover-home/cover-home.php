@@ -38,15 +38,15 @@
 
 			the_telabotanica_module('search-box', [
 				// TODO: make the suggestions configurable
-				'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc']
+				'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc'],
+				'modifiers' => ['large', 'is-primary']
 			]);
 
 			echo '</div>';
 
-			// TODO: brancher les liens
-			$users_link = '#';
+			$users_link = get_permalink( get_page_by_path( 'telabotanistes' ) );
 			$user_count = bp_get_total_member_count();
-			$observations_link = '#';
+			$observations_link = get_permalink( get_page_by_path( 'cartographies/observations-botaniques' ) );
 			// TODO: définir cette URL en config + mettre en cache
 			$observations_count = file_get_contents('https://api.tela-botanica.org/service:cel:CelStatistiqueTxt/NbObsPubliques');
 			$get_involved_link = get_permalink( get_page_by_path( 'comment-participer' ) );
@@ -75,28 +75,7 @@
 		<?php
 		echo '</div>';
 
-			if ( $data->image ) :
-				$credits = get_fields( $data->image['ID'] );
-				if ( $credits ) :
-					echo '<div class="cover-credits">';
-						$title = $data->image['title'];
-
-						if ($credits['link']) {
-							$title = '<a href="' . $credits['link'] . '" target="_blank">' . $title . '</a>';
-						}
-
-						if ($credits['author']) {
-							printf(
-								__('%s par %s', 'telabotanica'),
-								$title,
-								$credits['author']
-							);
-						} else {
-							echo $title;
-						}
-					echo '</div>';
-				endif;
-		endif;
+		telabotanica_image_credits( $data->image, 'cover' );
 
 		echo '</div>';
 }

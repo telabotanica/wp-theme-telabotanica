@@ -81,7 +81,7 @@ module.exports = {
 		extractEditorStyle,
 		extractLoginStyle,
 		new webpack.optimize.UglifyJsPlugin({
-			sourcemap: true
+			// sourceMap: true
 		}),
 		new webpack.LoaderOptionsPlugin({
 			minimize: true

@@ -59,6 +59,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `notice` ajouté
 * module `pagination` : support de la pagination Buddypress
 * module `search-box` :
+	* refactoring avec deux cas : instantsearch ou autocomplete
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page
 * module `search-hit` ajouté
 * module `title` : support d'un suffixe optionnel

@@ -1,12 +1,51 @@
 .search-filters {
-  font-family: $ubuntu;
-  font-weight: $regular;
-  margin-bottom: 4rem;
+	font-family: $ubuntu;
+	font-weight: $regular;
+	margin-bottom: 4rem;
 
-  &-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+	&-items {
+		list-style: none;
+		margin: 2rem 0 0;
+		padding: 0;
+	}
 
+	&-menu {
+		&-title {
+			font-size: 1.55rem;
+			font-weight: $bold;
+			margin-bottom: 1rem;
+		}
+
+		&-item {
+			cursor: pointer;
+			margin-top: 0.5rem;
+		}
+
+		&-link {
+			border-left: 0.2rem solid;
+			color: $taupe;
+			display: inline-block;
+			font-size: 1.4rem;
+			font-weight: $medium;
+			padding: 0.5rem 1rem;
+			text-decoration: none;
+			transition: all 0.2s ease;
+
+			&:hover, &:focus {
+				color: $gris33;
+			}
+
+			.is-active & {
+				background-color: $taupe;
+				border-color: $taupe;
+				color: $blanc;
+			}
+		}
+
+		&-count {
+			font-weight: $bold;
+			margin-left: 0.5rem;
+			opacity: 0.8;
+		}
+	}
 }

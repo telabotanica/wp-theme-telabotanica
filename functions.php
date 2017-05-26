@@ -76,11 +76,11 @@ require get_template_directory() . '/inc/profile-subpages.php';
 // Redirection des non-admins vers la page d'accueil lors du login
 require get_template_directory() . '/inc/redirect-after-login.php';
 
-// Intégration d'Algolia
-require get_template_directory() . '/inc/algolia.php';
-
 // Customisation ACF
 require get_template_directory() . '/inc/acf.php';
+
+// Intégration d'Algolia
+require get_template_directory() . '/algolia/functions.php';
 
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :

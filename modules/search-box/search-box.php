@@ -1,6 +1,7 @@
 <?php function telabotanica_module_search_box($data) {
 	$defaults = [
 		'autocomplete' => true,
+		'instantsearch' => false,
 		'placeholder' => __('Rechercher une plante, un projet, un mot clé...', 'telabotanica'),
 		'value' => get_search_query() ?: get_query_var( 'q', false ),
 		'index' => false,
@@ -12,9 +13,10 @@
 	$data->modifiers = telabotanica_styleguide_modifiers_array('search-box', $data->modifiers);
 
 	printf(
-		'<div class="%s" data-autocomplete="%s">',
+		'<div class="%s" data-autocomplete="%s" data-instantsearch="%s">',
 		implode(' ', $data->modifiers),
-		var_export($data->autocomplete, true)
+		var_export($data->autocomplete, true),
+		var_export($data->instantsearch, true)
 	);
 		printf(
 			'<form role="search" method="get" action="%s" class="search-box-wrapper">',

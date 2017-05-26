@@ -16,14 +16,14 @@
 			'level' => 2,
 			'modifiers' => ['search-filters-title', 'with-border-bottom']
 		]);
-	  echo '<ul class="search-filters-items" id="search-filters">';
+		echo '<ul class="search-filters-items" id="search-filters">';
 
-			foreach ($data->filters as $filter) {
+			foreach ($data->filters as $id => $filter) {
 				printf( '<li class="search-filters-item" id="search-filter-%s"></li>',
-					$filter
+					$id
 				);
 			}
 
-	  echo '</ul>';
-  echo '</div>';
+		echo '</ul>';
+	echo '</div>';
 }

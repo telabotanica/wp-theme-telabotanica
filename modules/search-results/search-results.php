@@ -27,7 +27,7 @@ function telabotanica_module_search_results_hit($index_id, $hit) {
 function telabotanica_module_search_results($data) {
 	if ( !telabotanica_algolia_check(true) ) { return; }
 
-	$algolia_autocomplete_config = telabotanica_algolia_autocomplete_config();
+	$algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
 
 	// Retrieve the label for each index
 	$indices_ids = [];

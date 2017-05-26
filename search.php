@@ -39,7 +39,7 @@ get_header();
 
 				// Get Algolia instance
 				$algolia_client = telabotanica_algolia_client();
-				$algolia_autocomplete_config = telabotanica_algolia_autocomplete_config();
+				$algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
 
 				if ( $current_index ) :
 
@@ -47,19 +47,24 @@ get_header();
 					$indices = $algolia_autocomplete_config['sources'];
 					foreach ( $indices as $index ) :
 						if ( $index['index_id'] === $current_index ) {
-							$current_index_label = $index['label'];
-							$current_index_name = $index['index_name'];
-							$current_index_filters = @$index['filters'] ?: [];
+							$current_index = [
+								'id' => $current_index,
+								'label' => $index['label'],
+								'name' => $index['index_name'],
+								'filters' => @$index['filters'] ?: []
+							];
 							break;
 						}
 					endforeach;
 
 					// Perform the search
-					$index = $algolia_client->initIndex($current_index_name);
+					$index = $algolia_client->initIndex($current_index['name']);
 					$results = $index->search( $search_query );
 
 					the_telabotanica_module('cover-search', [
-						'total_results' => false
+						'index' => $current_index['id'],
+						'total_results' => false,
+						'instantsearch' => true
 					]);
 					?>
 
@@ -68,7 +73,7 @@ get_header();
 								<aside class="layout-column">
 									<?php
 									the_telabotanica_module('search-filters', [
-										'filters' => $current_index_filters
+										'filters' => $current_index['filters']
 									]);
 									the_telabotanica_module('button-top');
 									?>
@@ -82,20 +87,20 @@ get_header();
 												'text' => __('Recherche', 'telabotanica')
 											],
 											[
-												'text' => $current_index_label
+												'text' => $current_index['label']
 											],
-											[ 'text' => sprintf( _n(
+											[ 'text' => '<span id="search-stats">' . sprintf( _n(
 												'%s résultat trouvé',
 												'%s résultats trouvés',
 												$results['nbHits'],
 												'telabotanica'
-											), number_format_i18n( $results['nbHits'] ) ) ]
+											), number_format_i18n( $results['nbHits'] ) ) . '</span>' ]
 										]
 									]);
 
 									echo '<div id="search-hits">';
 										foreach ($results['hits'] as $hit) {
-											$hit['type'] = $current_index;
+											$hit['type'] = $current_index['id'];
 											the_telabotanica_module('search-hit', $hit);
 										}
 									echo '</div>';
@@ -105,7 +110,6 @@ get_header();
 								</div>
 							</div>
 						</div>
-
 				<?php
 				else :
 					// Perform several queries in a single API call

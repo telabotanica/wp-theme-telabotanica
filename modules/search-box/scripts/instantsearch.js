@@ -1,5 +1,3 @@
-'use strict';
-
 var searchHitTemplate = require('../search-hit/search-hit.pug');
 var instantsearch = require('instantsearch.js/dist/instantsearch-preact.js');
 var numeral = require('numeral');
@@ -11,8 +9,10 @@ var _ = {
 };
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
+Tela.modules.searchBox = Tela.modules.searchBox || {};
 
-Tela.searchBoxInstantsearch = (function(){
+Tela.modules.searchBox.instantsearch = (function(){
 
 	function module(selector){
 		var $el = $(selector),
@@ -74,7 +74,7 @@ Tela.searchBoxInstantsearch = (function(){
 			search.once('render', function(){
 				$el.find('.search-box-input:not(.ais-search-box--input)').remove();
 				$el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
-			})
+			});
 		}
 
 		function initStats(){
@@ -152,5 +152,5 @@ Tela.searchBoxInstantsearch = (function(){
 })();
 
 $(document).ready(function(){
-	Tela.searchBoxInstantsearch('.search-box[data-instantsearch="true"]');
+	Tela.modules.searchBox.instantsearch('.search-box[data-instantsearch="true"]');
 });

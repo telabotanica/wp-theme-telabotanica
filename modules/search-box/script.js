@@ -1,5 +1,3 @@
-'use strict';
-
 // This module has different logic depending on the case
 
 // Use Algolia autocomplete.js when it has data-autocomplete="true"

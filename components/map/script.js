@@ -1,5 +1,3 @@
-'use strict';
-
 var L = require('leaflet');
 
 var Tela = window.Tela || {};

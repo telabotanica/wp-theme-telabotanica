@@ -1,5 +1,3 @@
-'use strict';
-
 var feedItemTemplate = require('../feed-item/feed-item.pug');
 
 var _ = _ || {};
@@ -13,11 +11,13 @@ require('numeral/locales/fr');
 numeral.locale('fr');
 
 var PubSub = require('pubsub-js');
+
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.blockDashboardObservations = (function(){
+Tela.modules.blockDashboardObservations = (function(){
 
-	function blockDashboardObservations(selector){
+	function module(selector){
 		var $el = $(selector),
 			$titleSuffix,
 			$content,
@@ -80,12 +80,12 @@ Tela.blockDashboardObservations = (function(){
 
 	return function(selector){
 		return $(selector).each(function(){
-			blockDashboardObservations(this);
+			module(this);
 		});
 	};
 
 })();
 
 $(document).ready(function(){
-	Tela.blockDashboardObservations('.block-dashboard-observations');
+	Tela.modules.blockDashboardObservations('.block-dashboard-observations');
 });

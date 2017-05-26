@@ -1,11 +1,11 @@
-'use strict';
-
 var PubSub = require('pubsub-js');
+
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.blockDashboardMap = (function(){
+Tela.modules.blockDashboardMap = (function(){
 
-	function blockDashboardMap(selector){
+	function module(selector){
 		var $el = $(selector),
 			$titleSuffix,
 			apiUrl,
@@ -48,12 +48,12 @@ Tela.blockDashboardMap = (function(){
 
 	return function(selector){
 		return $(selector).each(function(){
-			blockDashboardMap(this);
+			module(this);
 		});
 	};
 
 })();
 
 $(document).ready(function(){
-	Tela.blockDashboardMap('.block-dashboard-map');
+	Tela.modules.blockDashboardMap('.block-dashboard-map');
 });

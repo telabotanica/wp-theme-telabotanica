@@ -1,4 +1,4 @@
-var searchHitTemplate = require('../search-hit/search-hit.pug');
+var searchHitTemplate = require('../../search-hit/search-hit.pug');
 var instantsearch = require('instantsearch.js/dist/instantsearch-preact.js');
 var numeral = require('numeral');
 require('numeral/locales/fr');

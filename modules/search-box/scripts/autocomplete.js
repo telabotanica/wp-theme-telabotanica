@@ -1,5 +1,3 @@
-'use strict';
-
 require('velocity-animate');
 var algoliasearch = require('algoliasearch');
 var algoliaAutocomplete = require('autocomplete.js');
@@ -7,8 +5,10 @@ var Tether = require('tether');
 var PubSub = require('pubsub-js');
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
+Tela.modules.searchBox = Tela.modules.searchBox || {};
 
-Tela.searchBoxAutocomplete = (function(){
+Tela.modules.searchBox.autocomplete = (function(){
 
 	function module(selector){
 		var $el = $(selector),
@@ -99,14 +99,14 @@ Tela.searchBoxAutocomplete = (function(){
 					templates: {
 						header: function(data, algoliaResponse) {
 							return wp.template('autocomplete-header')({
-								label: config['label'],
+								label: config.label,
 								nbHits: algoliaResponse.nbHits,
 								 // TODO improve composition of URL to search results
-								resultsUrl: '/?s=' + algoliaResponse.query + '&index=' + config['index_id']
+								resultsUrl: '/?s=' + algoliaResponse.query + '&index=' + config.index_id
 							});
 						},
 						empty: wp.template('autocomplete-empty'),
-						suggestion: wp.template(config['tmpl_suggestion'])
+						suggestion: wp.template(config.tmpl_suggestion)
 					}
 				});
 
@@ -198,5 +198,5 @@ Tela.searchBoxAutocomplete = (function(){
 })();
 
 $(document).ready(function(){
-	Tela.searchBoxAutocomplete('.search-box[data-autocomplete="true"]');
+	Tela.modules.searchBox.autocomplete('.search-box[data-autocomplete="true"]');
 });

@@ -1,8 +1,7 @@
-'use strict';
-
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.register = (function(){
+Tela.modules.register = (function(){
 
   function unbind(){
     // prevents Buddypress[.min.js] from displaying a "leave page" warning
@@ -27,5 +26,5 @@ Tela.register = (function(){
 })();
 
 $(document).ready(function(){
-  Tela.register('#signup_form');
+  Tela.modules.register('#signup_form');
 });

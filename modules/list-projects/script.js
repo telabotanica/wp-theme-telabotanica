@@ -1,11 +1,10 @@
-'use strict';
-
 var PubSub = require('pubsub-js');
 var cardProjectTemplate = require('../card-project/card-project.pug');
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.listProjects = (function(){
+Tela.modules.listProjects = (function(){
 
 	function module(selector){
 		var $el = $(selector),
@@ -71,5 +70,5 @@ Tela.listProjects = (function(){
 })();
 
 $(document).ready(function(){
-	Tela.listProjects('.list-projects');
+	Tela.modules.listProjects('.list-projects');
 });

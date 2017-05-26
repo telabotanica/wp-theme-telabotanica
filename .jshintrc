@@ -5,6 +5,7 @@
 		"document": false,
 		"$": false,
 		"require": false,
-		"window": true
+		"window": true,
+		"wp": false
 	}
 }

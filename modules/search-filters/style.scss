@@ -31,7 +31,8 @@
 			text-decoration: none;
 			transition: all 0.2s ease;
 
-			&:hover, &:focus {
+			&:hover,
+			&:focus {
 				color: $gris33;
 			}
 

@@ -17,8 +17,8 @@
 	}
 
 	&-link {
-		font-weight: $regular;
 		font-size: 1.8rem;
+		font-weight: $regular;
 		margin-top: 0.5rem;
 
 		a {
@@ -27,12 +27,10 @@
 			text-decoration: none;
 			transition: border 0.2s ease;
 
-			&:hover, &:focus {
+			&:hover,
+			&:focus {
 				border-bottom-color: transparent;
 			}
 		}
-	}
-
-	&-content {
 	}
 }

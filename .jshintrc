@@ -1,0 +1,10 @@
+{
+	"globals": {
+		"algolia": false,
+		"console": false,
+		"document": false,
+		"$": false,
+		"require": false,
+		"window": true
+	}
+}

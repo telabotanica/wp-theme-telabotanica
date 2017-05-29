@@ -1,9 +1,6 @@
 <?php
 /**
- * BuddyPress - Members Friends Requests
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+ * BuddyPress - Members Friends Requests.
  */
 
 /**
@@ -11,13 +8,13 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_member_friend_requests_content' ); ?>
+do_action('bp_before_member_friend_requests_content'); ?>
 
-<?php if ( bp_has_members( 'type=alphabetical&include=' . bp_get_friendship_requests() ) ) : ?>
+<?php if (bp_has_members('type=alphabetical&include='.bp_get_friendship_requests())) : ?>
 
 	<h2 class="bp-screen-reader-text"><?php
 		/* translators: accessibility text */
-		_e( 'Friendship requests', 'buddypress' );
+		_e('Friendship requests', 'buddypress');
 	?></h2>
 
 	<div id="pag-top" class="pagination no-ajax">
@@ -37,7 +34,7 @@ do_action( 'bp_before_member_friend_requests_content' ); ?>
 	</div>
 
 	<ul id="friend-list" class="item-list">
-		<?php while ( bp_members() ) : bp_the_member(); ?>
+		<?php while (bp_members()) : bp_the_member(); ?>
 
 			<li id="friendship-<?php bp_friend_friendship_id(); ?>">
 				<div class="item-avatar">
@@ -54,13 +51,13 @@ do_action( 'bp_before_member_friend_requests_content' ); ?>
 					 *
 					 * @since 1.1.0
 					 */
-					do_action( 'bp_friend_requests_item' );
+					do_action('bp_friend_requests_item');
 					?>
 				</div>
 
 				<div class="action">
-					<a class="button accept" href="<?php bp_friend_accept_request_link(); ?>"><?php _e( 'Accept', 'buddypress' ); ?></a> &nbsp;
-					<a class="button reject" href="<?php bp_friend_reject_request_link(); ?>"><?php _e( 'Reject', 'buddypress' ); ?></a>
+					<a class="button accept" href="<?php bp_friend_accept_request_link(); ?>"><?php _e('Accept', 'buddypress'); ?></a> &nbsp;
+					<a class="button reject" href="<?php bp_friend_reject_request_link(); ?>"><?php _e('Reject', 'buddypress'); ?></a>
 
 					<?php
 
@@ -69,7 +66,7 @@ do_action( 'bp_before_member_friend_requests_content' ); ?>
 					 *
 					 * @since 1.1.0
 					 */
-					do_action( 'bp_friend_requests_item_action' ); ?>
+					do_action('bp_friend_requests_item_action'); ?>
 				</div>
 			</li>
 
@@ -83,7 +80,7 @@ do_action( 'bp_before_member_friend_requests_content' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_friend_requests_content' ); ?>
+	do_action('bp_friend_requests_content'); ?>
 
 	<div id="pag-bottom" class="pagination no-ajax">
 
@@ -104,10 +101,10 @@ do_action( 'bp_before_member_friend_requests_content' ); ?>
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'You have no pending friendship requests.', 'buddypress' ); ?></p>
+		<p><?php _e('You have no pending friendship requests.', 'buddypress'); ?></p>
 	</div>
 
-<?php endif;?>
+<?php endif; ?>
 
 <?php
 
@@ -116,4 +113,4 @@ do_action( 'bp_before_member_friend_requests_content' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_member_friend_requests_content' ); ?>
+do_action('bp_after_member_friend_requests_content'); ?>

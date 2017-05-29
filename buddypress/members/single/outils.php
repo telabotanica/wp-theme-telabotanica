@@ -1,11 +1,9 @@
 <?php
 /**
- * Tela Botanica - Users Outils Template
+ * Tela Botanica - Users Outils Template.
  *
  * copied from "plugins" template; displays the "outils" sub-page for the
  * members component
- *
- * @package telabotanica
  */
 
 /**
@@ -13,21 +11,21 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_member_outils_template' );
+do_action('bp_before_member_outils_template');
 
 the_telabotanica_module('header-dashboard', [
-	'title' => __('Mes outils', 'telabotanica')
+	'title' => __('Mes outils', 'telabotanica'),
 ]);
 
 the_telabotanica_module('notice', [
-	'type' => 'info',
+	'type'  => 'info',
 	'title' => __('Bientôt disponible.', 'telabotanica'),
-	'text' => __('Vous retrouverez prochainement ici un accès rapide à tous les outils que vous avez utilisés.', 'telabotanica')
+	'text'  => __('Vous retrouverez prochainement ici un accès rapide à tous les outils que vous avez utilisés.', 'telabotanica'),
 ]);
 
-if ( ! bp_is_current_component_core() ) : ?>
+if (!bp_is_current_component_core()) : ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e('Member secondary navigation', 'buddypress'); ?>" role="navigation">
 	<ul>
 		<?php bp_get_options_nav(); ?>
 
@@ -38,13 +36,13 @@ if ( ! bp_is_current_component_core() ) : ?>
 		 *
 		 * @since 1.2.2
 		 */
-		do_action( 'bp_member_documents_options_nav' ); ?>
+		do_action('bp_member_documents_options_nav'); ?>
 	</ul>
 </div><!-- .item-list-tabs -->
 
 <?php endif; ?>
 
-<?php if ( has_action( 'bp_template_title' ) ) : ?>
+<?php if (has_action('bp_template_title')) : ?>
 	<h3><?php
 
 	/**
@@ -52,7 +50,7 @@ if ( ! bp_is_current_component_core() ) : ?>
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'bp_template_title' ); ?></h3>
+	do_action('bp_template_title'); ?></h3>
 
 <?php endif; ?>
 
@@ -63,7 +61,7 @@ if ( ! bp_is_current_component_core() ) : ?>
  *
  * @since 1.0.0
  */
-do_action( 'bp_template_content' ); ?>
+do_action('bp_template_content'); ?>
 
 <?php
 
@@ -72,4 +70,4 @@ do_action( 'bp_template_content' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_member_documents_template' ); ?>
+do_action('bp_after_member_documents_template'); ?>

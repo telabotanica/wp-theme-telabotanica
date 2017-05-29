@@ -1,13 +1,14 @@
 <?php
+
 return [
-  "Standard" => [
+  'Standard' => [
 		'items' => [
 			[
 				'link' => [
-					'url' => '#'
+					'url' => '#',
 				],
-				'text' => 'Bouton'
-			]
-		]
-  ]
+				'text' => 'Bouton',
+			],
+		],
+  ],
 ];

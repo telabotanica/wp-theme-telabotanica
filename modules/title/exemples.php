@@ -1,10 +1,11 @@
 <?php
+
 return [
 	'Standard' => [
-		'title' => 'Un titre'
+		'title' => 'Un titre',
 	],
 	'Forcer un niveau de titre' => [
 		'title' => 'Un titre',
-		'level' => 3
-	]
+		'level' => 3,
+	],
 ];

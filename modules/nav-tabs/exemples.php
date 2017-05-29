@@ -1,20 +1,21 @@
 <?php
+
 return [
 	'Standard' => [
 		'items' => [
 			[
-				'href' => '#',
-				'text' => 'Premier lien',
-				'current' => true
+				'href'    => '#',
+				'text'    => 'Premier lien',
+				'current' => true,
 			],
 			[
 				'href' => '#',
-				'text' => 'Deuxième lien'
+				'text' => 'Deuxième lien',
 			],
 			[
 				'href' => '#',
-				'text' => 'Troisième lien'
-			]
-		]
-	]
+				'text' => 'Troisième lien',
+			],
+		],
+	],
 ];

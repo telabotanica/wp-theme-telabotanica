@@ -1,26 +1,27 @@
 <?php
 
 /**
- * Get current page depth
+ * Get current page depth.
  *
- * @return integer
+ * @return int
  */
-function get_current_page_depth(){
-	global $wp_query;
+function get_current_page_depth()
+{
+    global $wp_query;
 
-	$object = $wp_query->get_queried_object();
-	$parent_id = $object->post_parent;
-	$depth = 0;
-	while($parent_id > 0){
-		$page = get_page($parent_id);
-		$parent_id = $page->post_parent;
-		$depth++;
-	}
+    $object = $wp_query->get_queried_object();
+    $parent_id = $object->post_parent;
+    $depth = 0;
+    while ($parent_id > 0) {
+        $page = get_page($parent_id);
+        $parent_id = $page->post_parent;
+        $depth++;
+    }
 
- 	return $depth;
+    return $depth;
 }
 
-/**
+/*
  * Tests if any of a post's assigned categories are descendants of target categories
  * source: http://wordpress.stackexchange.com/questions/155332/check-if-a-post-is-in-any-child-category-of-a-parent-category
  *
@@ -33,85 +34,97 @@ function get_current_page_depth(){
  * @version 2.7
  * @link http://codex.wordpress.org/Function_Reference/in_category#Testing_if_a_post_is_in_a_descendant_category
  */
-if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
-		function post_is_in_descendant_category( $cats, $_post = null ) {
-				foreach ( (array) $cats as $cat ) {
-						// get_term_children() accepts integer ID only
-						if ( is_string( $cat ) ) $cat = get_category_by_slug( $cat )->cat_ID;
-						$descendants = get_term_children( (int) $cat, 'category' );
-						if ( $descendants && in_category( $descendants, $_post ) )
-								return true;
-				}
-				return false;
-		}
+if (!function_exists('post_is_in_descendant_category')) {
+    function post_is_in_descendant_category($cats, $_post = null)
+    {
+        foreach ((array) $cats as $cat) {
+            // get_term_children() accepts integer ID only
+						if (is_string($cat)) {
+						    $cat = get_category_by_slug($cat)->cat_ID;
+						}
+            $descendants = get_term_children((int) $cat, 'category');
+            if ($descendants && in_category($descendants, $_post)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 /**
- * Format place (saved using ACF field Algolia Places)
+ * Format place (saved using ACF field Algolia Places).
  *
  * @return string
  */
-function telabotanica_format_place( $place, $icon = true ) {
+function telabotanica_format_place($place, $icon = true)
+{
+    if (!is_object($place)) {
+        return $place;
+    }
 
-	if ( !is_object( $place ) ) return $place;
+    $template = '%s %s (%s)';
 
-	$template = '%s %s (%s)';
+    if ($icon) {
+        $icon = get_telabotanica_module('icon', ['icon' => 'marker']);
+    }
 
-	if ( $icon ) {
-		$icon = get_telabotanica_module('icon', ['icon' => 'marker']);
-	}
+    if ($place->countryCode !== 'fr') {
+        $code = strtoupper($place->countryCode);
+    } elseif (isset($place->postcode)) {
+        $code = substr($place->postcode, 0, 2);
+    } else {
+        $code = $place->administrative;
+    }
 
-	if ( $place->countryCode !== 'fr' ) {
-		$code = strtoupper( $place->countryCode );
-	} else if ( isset( $place->postcode ) ) {
-		$code = substr( $place->postcode, 0, 2 );
-	} else {
-		$code = $place->administrative;
-	}
+    if (isset($place->city)) {
+        $city = $place->city;
+    } else {
+        $city = $place->name;
+    }
 
-	if ( isset( $place->city ) ) {
-		$city = $place->city;
-	} else {
-		$city = $place->name;
-	}
-
-	$place = sprintf(
+    $place = sprintf(
 		$template,
 		$icon,
 		$city,
 		$code
 	);
 
- 	return $place;
+    return $place;
 }
 
 /**
- * Display image credits
+ * Display image credits.
  */
-function telabotanica_image_credits( $image, $class = '' ) {
-	if ( !$image ) return;
+function telabotanica_image_credits($image, $class = '')
+{
+    if (!$image) {
+        return;
+    }
 
-	$credits = get_fields( $image['ID'] );
+    $credits = get_fields($image['ID']);
 
-	printf('<div class="%s-credits">', $class);
+    printf('<div class="%s-credits">', $class);
 
 		// Use caption by default
-		$caption = @$image['caption'] ;
+		$caption = @$image['caption'];
 
-		if ( $credits ) :
+    if ($credits) :
 			// If empty, use title (only if credits exist, we don't want default titles)
-			if ( empty( $caption ) ) $caption = $image['title'];
+			if (empty($caption)) {
+			    $caption = $image['title'];
+			}
 
 			// Add link if present
-			if ( $credits['link'] ) {
-				$caption = sprintf(
+			if ($credits['link']) {
+			    $caption = sprintf(
 					'<a href="%s" target="_blank" class="%s-credits-title">%s</a>',
 					$credits['link'],
 					$class,
 					$caption
 				);
 			} else {
-				$caption = sprintf(
+			    $caption = sprintf(
 					'<span class="%s-credits-title">%s</span>',
 					$class,
 					$caption
@@ -119,29 +132,30 @@ function telabotanica_image_credits( $image, $class = '' ) {
 			}
 
 			// Add author if present, and there is no caption
-			if (empty( $image['caption'] ) && $credits['author']) {
-				$caption = sprintf(
+			if (empty($image['caption']) && $credits['author']) {
+			    $caption = sprintf(
 					__('%s par %s', 'telabotanica'),
 					$caption,
 					$credits['author']
 				);
 			}
-		endif;
+    endif;
 
-		echo $caption;
+    echo $caption;
 
-	echo '</div>';
+    echo '</div>';
 }
 
-/**
+/*
  * Maintenance page
  */
-if ( ! function_exists( 'telabotanica_maintenance_mode' ) ) {
-	function telabotanica_maintenance_mode() {
-		if ( file_exists( ABSPATH . '.maintenance' ) ) {
-			include_once get_stylesheet_directory() . '/maintenance.php';
-			die();
-		}
-	}
-	add_action( 'wp', 'telabotanica_maintenance_mode' );
+if (!function_exists('telabotanica_maintenance_mode')) {
+    function telabotanica_maintenance_mode()
+    {
+        if (file_exists(ABSPATH.'.maintenance')) {
+            include_once get_stylesheet_directory().'/maintenance.php';
+            die();
+        }
+    }
+    add_action('wp', 'telabotanica_maintenance_mode');
 }

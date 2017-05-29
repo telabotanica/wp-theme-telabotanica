@@ -1,67 +1,67 @@
-<?php function telabotanica_module_block_dashboard($data) {
-	$defaults = [
-		'title' => [],
-		'message' => false,
-		'modifiers' => [],
-		'html_content' => '',
+<?php
+
+function telabotanica_module_block_dashboard($data)
+{
+    $defaults = [
+		'title'            => [],
+		'message'          => false,
+		'modifiers'        => [],
+		'html_content'     => '',
 		'extra_attributes' => [],
-		'is_empty' => false
+		'is_empty'         => false,
 	];
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array('block-dashboard', $data->modifiers);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array('block-dashboard', $data->modifiers);
 
-	if ( $data->is_empty === true ) :
+    if ($data->is_empty === true) :
 		$data->modifiers[] = 'is-empty';
-	endif;
+    endif;
 
-	$extra_attributes = '';
-	foreach ($data->extra_attributes as $name => $value) {
-		$extra_attributes .= sprintf('%s="%s" ', $name, $value);
-	}
+    $extra_attributes = '';
+    foreach ($data->extra_attributes as $name => $value) {
+        $extra_attributes .= sprintf('%s="%s" ', $name, $value);
+    }
 
-	printf(
+    printf(
 		'<div class="%s" %s>',
 		implode(' ', $data->modifiers),
 		$extra_attributes
 	);
 
-		$data->title['level'] = 2;
-		the_telabotanica_module('title', $data->title);
+    $data->title['level'] = 2;
+    the_telabotanica_module('title', $data->title);
 
-		echo '<div class="block-dashboard-content">';
+    echo '<div class="block-dashboard-content">';
 
-		if ( $data->is_empty === true ) :
+    if ($data->is_empty === true) :
 
 			the_telabotanica_module('icon', [
-				'icon' => $data->empty['icon']
+				'icon' => $data->empty['icon'],
 			]);
 
-			printf(
+    printf(
 				'<div class="block-dashboard-empty-text">%s</div>',
 				$data->empty['text']
 			);
 
-			the_telabotanica_module('button', $data->empty['button']);
+    the_telabotanica_module('button', $data->empty['button']); else :
 
-		else :
-
-			if ( $data->html_content ) {
-				echo $data->html_content;
+			if ($data->html_content) {
+			    echo $data->html_content;
 			}
 
-			echo '<div class="block-dashboard-footer">';
+    echo '<div class="block-dashboard-footer">';
 
-				if ( $data->button ) {
-					the_telabotanica_module('button', $data->button);
-				}
+    if ($data->button) {
+        the_telabotanica_module('button', $data->button);
+    }
 
-			echo '</div>';
+    echo '</div>';
 
-		endif;
+    endif;
 
-		echo '</div>';
+    echo '</div>';
 
-	echo '</div>';
-
+    echo '</div>';
 }

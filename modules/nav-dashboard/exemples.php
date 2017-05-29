@@ -1,60 +1,61 @@
 <?php
+
 return [
 	'Standard' => [
 		'items' => [
 			[
-				'href' => '#',
-				'text' => 'Mon espace personnel',
-				'icon' => 'dashboard',
-				'current' => true
+				'href'    => '#',
+				'text'    => 'Mon espace personnel',
+				'icon'    => 'dashboard',
+				'current' => true,
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes messages',
 				'icon' => 'mail',
-				'dot' => true
+				'dot'  => true,
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes outils',
-				'icon' => 'tool'
+				'icon' => 'tool',
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes projets',
-				'icon' => 'projects'
+				'icon' => 'projects',
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes thématiques',
-				'icon' => 'bookmark'
+				'icon' => 'bookmark',
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes documents',
-				'icon' => 'doc'
+				'icon' => 'doc',
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes contributions',
-				'icon' => 'hand'
+				'icon' => 'hand',
 			],
 			[
 				'href' => '#',
 				'text' => 'Mon profil',
-				'icon' => 'user'
+				'icon' => 'user',
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes dons',
-				'icon' => 'heart'
+				'icon' => 'heart',
 			],
 			[
-				'href' => '#',
-				'text' => 'Me déconnecter',
-				'icon' => 'log-off',
-				'modifiers' => 'is-last'
-			]
-		]
-	]
+				'href'      => '#',
+				'text'      => 'Me déconnecter',
+				'icon'      => 'log-off',
+				'modifiers' => 'is-last',
+			],
+		],
+	],
 ];

@@ -1,53 +1,52 @@
 <?php
 /**
- * Page
+ * Page.
  */
-
 get_header();
 
 $taxonomy_name = 'tb_participer_category';
-$participer_categories = get_terms( [
+$participer_categories = get_terms([
 	'taxonomy'   => $taxonomy_name,
 	'hide_empty' => false,
 	'fields'     => 'all',
-	'parent'     => 0
-] );
+	'parent'     => 0,
+]);
 
-function participer_category($term) {
-	global $taxonomy_name;
+function participer_category($term)
+{
+    global $taxonomy_name;
 
-	the_telabotanica_component( 'title', [
-		"level" => $term->parent === 0 ? 2 : 3,
-		"anchor" => $term->slug,
-		"title" => $term->name
-	] );
+    the_telabotanica_component('title', [
+		'level'  => $term->parent === 0 ? 2 : 3,
+		'anchor' => $term->slug,
+		'title'  => $term->name,
+	]);
 
-	if ( !empty( $term->description ) ) {
-		the_telabotanica_component( 'text', [
-			"text" => sprintf( "<p>%s</p>", $term->description )
-		] );
-	}
+    if (!empty($term->description)) {
+        the_telabotanica_component('text', [
+			'text' => sprintf('<p>%s</p>', $term->description),
+		]);
+    }
 
-	$items = get_posts( [
+    $items = get_posts([
 		'post_type' => 'tb_participer',
 		'tax_query' => [
 			[
-				'taxonomy' => $taxonomy_name,
-				'field' => 'term_id',
-				'terms' => $term->term_id,
-				'include_children' => false
-			]
+				'taxonomy'         => $taxonomy_name,
+				'field'            => 'term_id',
+				'terms'            => $term->term_id,
+				'include_children' => false,
+			],
 		],
-		'orderby' => 'menu_order',
-		'order' => 'ASC',
-		'numberposts' => -1
-	] );
+		'orderby'     => 'menu_order',
+		'order'       => 'ASC',
+		'numberposts' => -1,
+	]);
 
-	the_telabotanica_component('articles', [
+    the_telabotanica_component('articles', [
 		'title_level' => $term->parent === 0 ? 3 : 4,
-		'items' => $items
-	] );
-
+		'items'       => $items,
+	]);
 }
 
 ?>
@@ -64,36 +63,40 @@ function participer_category($term) {
 						$toc_items = [];
 
 						// Si la page utilise des composants
-						if ( have_rows('components') ) {
-							$first = true;
+						if (have_rows('components')) {
+						    $first = true;
 
 							// On boucle sur les composants
-							while ( have_rows('components') ) : the_row();
+							while (have_rows('components')) : the_row();
 
 								// On garde seulement les intertitres
-								if (get_row_layout() !== 'title') continue;
+								if (get_row_layout() !== 'title') {
+								    continue;
+								}
 
 								// On garde seulement les intertitres de niveau 2
-								if (get_sub_field('level') !== '2') continue;
+								if (get_sub_field('level') !== '2') {
+								    continue;
+								}
 
-								$toc_items[] = [
+						    $toc_items[] = [
 									'active' => $first,
-									'text' => get_sub_field('title'),
-									'href' => '#' . get_sub_field('anchor')
+									'text'   => get_sub_field('title'),
+									'href'   => '#'.get_sub_field('anchor'),
 								];
 
-								$first = false;
+						    $first = false;
 
-							endwhile;
+						    endwhile;
 						}
 
 						$toc_items = array_merge($toc_items, $participer_categories);
 
 						the_telabotanica_module('toc', [
 							'items' => [
-								[ 'items' => $toc_items ]
-							]
-						] );
+								['items' => $toc_items],
+							],
+						]);
 
 						the_telabotanica_module('button-top');
 						?>
@@ -103,10 +106,10 @@ function participer_category($term) {
 						<article>
 							<?php
 							// Si la page utilise des composants
-							if( have_rows('components') ):
+							if (have_rows('components')):
 
 									// On boucle sur les composants
-									while ( have_rows('components') ) : the_row();
+									while (have_rows('components')) : the_row();
 
 										the_telabotanica_component(get_row_layout(), []);
 
@@ -118,12 +121,12 @@ function participer_category($term) {
 
 							endif;
 
-							foreach ( $participer_categories as $term ) :
+							foreach ($participer_categories as $term) :
 
 								participer_category($term);
 
-								foreach ( get_term_children( $term->term_id, $taxonomy_name ) as $child ) :
-									$term_child = get_term_by( 'id', $child, $taxonomy_name );
+								foreach (get_term_children($term->term_id, $taxonomy_name) as $child) :
+									$term_child = get_term_by('id', $child, $taxonomy_name);
 									participer_category($term_child);
 								endforeach;
 

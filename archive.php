@@ -9,6 +9,7 @@ $category = get_category( get_query_var('cat') );
 $category_actualites = get_category_by_slug( 'actualites' );
 $category_emploi = get_category_by_slug( 'offres-emploi' );
 $category_evenements = get_category_by_slug( 'evenements' );
+$is_category_emploi = is_category( $category_emploi ) || cat_is_ancestor_of( $category_emploi, $category );
 $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of( $category_evenements, $category );
 ?>
 
@@ -16,6 +17,22 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 		<main id="main" class="site-main" role="main">
 
 			<?php
+			if ($is_category_emploi) {
+				$cover_search = false;
+			} elseif ($is_category_events) {
+				$cover_search = [
+					'index' => 'evenements',
+					'placeholder' => __('Rechercher un évènement...', 'telabotanica'),
+					'instantsearch' => true
+				];
+			} else {
+				$cover_search = [
+					'index' => 'actualites',
+					'placeholder' => __("Rechercher une actualité...", 'telabotanica'),
+					'instantsearch' => true
+				];
+			}
+
 			the_telabotanica_module('cover', [
 				'title' => $category_actualites->name,
 				'subtitle' => sprintf(
@@ -25,15 +42,7 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 					get_category_link( $category_evenements )
 				),
 				'image' => get_field( 'cover_image', get_queried_object() ),
-				'search' => $is_category_events ? [
-					'index' => 'evenements',
-					'placeholder' => __('Rechercher un évènement...', 'telabotanica'),
-					'instantsearch' => true
-				] : [
-					'index' => 'actualites',
-					'placeholder' => __("Rechercher une actualité...", 'telabotanica'),
-					'instantsearch' => true
-				]
+				'search' => $cover_search
 			] ); ?>
 
 			<div class="layout-content-col">

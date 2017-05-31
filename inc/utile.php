@@ -51,15 +51,11 @@ if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
  *
  * @return string
  */
-function telabotanica_format_place( $place, $icon = true ) {
+function telabotanica_format_place( $place ) {
 
 	if ( !is_object( $place ) ) return $place;
 
-	$template = '%s %s (%s)';
-
-	if ( $icon ) {
-		$icon = get_telabotanica_module('icon', ['icon' => 'marker']);
-	}
+	$template = '%s (%s)';
 
 	if ( $place->countryCode !== 'fr' ) {
 		$code = strtoupper( $place->countryCode );
@@ -77,7 +73,6 @@ function telabotanica_format_place( $place, $icon = true ) {
 
 	$place = sprintf(
 		$template,
-		$icon,
 		$city,
 		$code
 	);

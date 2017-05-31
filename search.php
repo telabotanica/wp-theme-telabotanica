@@ -59,7 +59,9 @@ get_header();
 
 					// Perform the search
 					$index = $algolia_client->initIndex($current_index['name']);
-					$results = $index->search( $search_query );
+					$results = $index->search($search_query, [
+						'hitsPerPage' => 20
+					]);
 
 					the_telabotanica_module('cover-search', [
 						'index' => $current_index['id'],

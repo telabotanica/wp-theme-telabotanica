@@ -13,10 +13,11 @@
 	$data->modifiers = telabotanica_styleguide_modifiers_array('search-box', $data->modifiers);
 
 	printf(
-		'<div class="%s" data-autocomplete="%s" data-instantsearch="%s">',
+		'<div class="%s" data-autocomplete="%s" data-instantsearch="%s" data-index="%s">',
 		implode(' ', $data->modifiers),
 		var_export($data->autocomplete, true),
-		var_export($data->instantsearch, true)
+		var_export($data->instantsearch, true),
+		$data->index
 	);
 		printf(
 			'<form role="search" method="get" action="%s" class="search-box-wrapper">',

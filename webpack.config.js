@@ -7,11 +7,20 @@ const extractBundle = new ExtractTextPlugin('bundle.css');
 const extractEditorStyle = new ExtractTextPlugin('editor-style.css');
 const extractLoginStyle = new ExtractTextPlugin('login-style.css');
 
+const PATHS = {
+  assets: {
+		fonts: path.join(__dirname, 'assets', 'fonts'),
+		icons: path.join(__dirname, 'assets', 'icons'),
+	},
+  modules: path.join(__dirname, 'modules'),
+  dist: path.join(__dirname, 'dist'),
+};
+
 module.exports = {
 	devtool: 'source-map',
 	entry: './assets/scripts/main.js',
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: PATHS.dist,
 		filename: 'bundle.js'
 	},
 	module: {
@@ -40,37 +49,37 @@ module.exports = {
 			{
 				test: /\.pug$/,
 				include: [
-					path.resolve(__dirname, "modules")
+					PATHS.modules
 				],
 				use: 'pug-loader'
 			},
 			{
 				test: /\.svg$/,
 				include: [
-					path.resolve(__dirname, "assets/icons")
+					PATHS.assets.icons
 				],
 				use: 'svg-sprite-loader?name=icon-[name]'
 			},
 			{
 				test: /\.(eot|svg|ttf|woff|woff2)$/,
 				include: [
-					path.resolve(__dirname, "assets/fonts")
+					PATHS.assets.fonts
 				],
 				use: 'file-loader?name=fonts/[name].[ext]'
 			},
 			{
 				test: /\.svg$/,
 				exclude: [
-					path.resolve(__dirname, "assets/fonts"),
-					path.resolve(__dirname, "assets/icons")
+					PATHS.assets.fonts,
+					PATHS.assets.icons,
 				],
 				use: 'svg-url-loader'
 			},
 			{
 				test: /\.(jpe?g|png|gif)$/i,
 				exclude: [
-					path.resolve(__dirname, "assets/fonts"),
-					path.resolve(__dirname, "assets/icons")
+					PATHS.assets.fonts,
+					PATHS.assets.icons,
 				],
 				use: 'url-loader?limit=10000'
 			},

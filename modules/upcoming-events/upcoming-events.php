@@ -48,7 +48,7 @@
 							'modifiers' => 'small'
 						]),
 						get_the_title(),
-						telabotanica_format_place( get_field( 'place' ), false )
+						telabotanica_format_place( get_field( 'place' ) )
 					);
 					echo '</li>';
 				endwhile;

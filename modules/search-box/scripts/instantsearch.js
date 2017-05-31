@@ -1,5 +1,5 @@
 var searchHitTemplate = require('../../search-hit/search-hit.pug');
-var instantsearch = require('instantsearch.js/dist/instantsearch-preact.js');
+var instantsearch = require('instantsearch.js');
 
 var moment = require('moment');
 moment.locale('fr');
@@ -40,7 +40,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 			$searchHits = $('#search-hits');
 			$button = $el.find('.search-box-button');
 
-			var indexId = $el.find('input[name="index"]').val();
+			var indexId = $el.data('index');
 			index = _.find(algolia.autocomplete.sources, ['index_id', indexId]);
 
 			var mapping = {};
@@ -52,9 +52,12 @@ Tela.modules.searchBox.instantsearch = (function(){
 				appId: algolia.application_id,
 				apiKey: algolia.search_api_key,
 				indexName: index.index_name,
+				searchParameters: {
+					hitsPerPage: 20
+				},
 				urlSync: {
 					mapping: mapping,
-					trackedParameters: ['query', 'attribute:*', 'page']
+					trackedParameters: ['query', 'attribute:*']
 				},
 				searchFunction: search
 			});
@@ -67,21 +70,23 @@ Tela.modules.searchBox.instantsearch = (function(){
 			search.start();
 
 			// Remove other elements
-			$el.find('.search-box-input:not(.ais-search-box--input)').remove();
+			$el.find('input:not(.ais-search-box--input)').remove();
 			$el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
 		}
 
 		function search(helper) {
 			// If no query has been made, do nothing
 			if (helper.state.query === '') {
-				$searchFilters.hide();
-				$searchHits.hide();
-				$initialContent.show();
-				return;
+				search.helper.once('result', function(){
+					$searchFilters.hide();
+					$searchHits.hide();
+					$initialContent.show();
+				});
 			}
 
 			// Force index (instead of using the one from the URL)
-			search.helper.setIndex(index.index_name);
+			helper.setIndex(index.index_name);
+
 			helper.search();
 
 			// Show hits
@@ -126,7 +131,6 @@ Tela.modules.searchBox.instantsearch = (function(){
 			search.addWidget(
 				instantsearch.widgets.infiniteHits({
 					container: $searchHits.get(0),
-					hitsPerPage: 20,
 					transformData: {
 						item: function(data) {
 							data.type = index.index_id;
@@ -158,6 +162,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 						container: '#search-filter-' + id,
 						attributeName: id,
 						limit: 10,
+						sortBy: ['count:desc', 'name:asc'],
 						cssClasses: {
 							root: 'search-filters-' + filter.type,
 							header: 'search-filters-' + filter.type + '-title',

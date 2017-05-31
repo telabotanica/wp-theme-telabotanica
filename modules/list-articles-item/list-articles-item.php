@@ -9,7 +9,7 @@
 		'title' => get_the_title(),
 		'text' => get_the_excerpt(),
 		'thumbnail' => has_post_thumbnail() ? get_the_post_thumbnail( null, 'post-thumbnail', array( 'class' => 'list-articles-item-image' ) ) : '',
-		'place' => telabotanica_format_place( get_field( 'place' ), false ),
+		'place' => telabotanica_format_place( get_field( 'place' ) ),
 		'dates' => [],
 		'date' => [
 			'title' => sprintf( _x( '%s à %s', '%s = date et %s = heure', 'telabotanica' ),

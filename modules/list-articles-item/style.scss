@@ -27,6 +27,25 @@
 		}
 	}
 
+	&-title {
+		font-family: $ubuntu;
+		font-size: 1.9rem;
+		font-weight: $medium;
+		margin: 0 0 0.5rem;
+
+		&, a {
+			color: $gris23;
+		}
+
+		a {
+			text-decoration: none;
+			transition: color 0.2s ease;
+
+			&:hover {color: $turquoise-fonce;}
+			.list-articles-item.is-event &:hover {color: darken($orange, 30%);}
+		}
+	}
+
 	&-text {
 		margin-left: 24.5rem;
 
@@ -88,25 +107,6 @@
 
 	.categories-labels {
 		margin-left: 1rem;
-	}
-
-	&-title {
-		font-family: $ubuntu;
-		font-size: 1.9rem;
-		font-weight: $medium;
-		margin: 0;
-
-		&, a {
-			color: $gris23;
-		}
-
-		a {
-			text-decoration: none;
-			transition: color 0.2s ease;
-
-			&:hover {color: $turquoise-fonce;}
-			.list-articles-item.is-event &:hover {color: darken($orange, 30%);}
-		}
 	}
 
 	p {

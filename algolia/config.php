@@ -78,7 +78,7 @@ return [
 				'filters' => [
 					'category' => [
 						'type' => 'menu',
-						'label' => __('Par catégorie', 'telabotanica')
+						'label' => __("Par type d'évènement", 'telabotanica')
 					]
 				]
 			],

@@ -58,10 +58,6 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 							}
 						endforeach;
 
-						the_telabotanica_module('search-filters', [
-							'filters' => $current_index['filters']
-						]);
-
 						the_telabotanica_module('categories', [
 							'modifiers' => 'layout-column-item'
 						] );
@@ -97,8 +93,13 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 								'modifiers' => 'layout-column-item background-white with-shadow with-padding'
 							] );
 						endif;
+
+						the_telabotanica_module('search-filters', [
+							'filters' => $current_index['filters']
+						]);
+
+						the_telabotanica_module('button-top');
 						?>
-						<?php the_telabotanica_module('button-top'); ?>
 					</aside>
 					<div class="layout-content">
 						<?php

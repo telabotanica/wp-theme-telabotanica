@@ -150,6 +150,9 @@ Tela.modules.searchBox.instantsearch = (function(){
 
 		function initFilters(){
 			$.each(index.filters, function(id, filter){
+				// Only menu is supported for now
+				if (filter.type != 'menu') return;
+
 				search.addWidget(
 					instantsearch.widgets[filter.type]({
 						container: '#search-filter-' + id,

@@ -1,3 +1,5 @@
+include ../list-articles-item/list-articles-item-mixin
+
 //- This file is only meant to be included in other modules
 //- and then used as a mixin: +search-hit({ ... })
 mixin search-hit(data)
@@ -6,10 +8,29 @@ mixin search-hit(data)
 		//- https://github.com/pug-php/pug/issues/138
 		//- +#{'search-hit-' + data.type}(data)
 		case data.type
+			when 'actualites'
+				+search-hit-actualites(data)
+			when 'evenements'
+				+search-hit-evenements(data)
 			when 'flore'
 				+search-hit-flore(data)
 			when 'vegetation'
 				+search-hit-vegetation(data)
+
+mixin search-hit-actualites(data)
+	- data.id = data.post_id
+	- data.href = data.permalink
+	- data.title = data._highlightResult.post_title.value
+	- data.text = data._snippetResult.post_content.value
+	- data.thumbnail_url = data.thumbnail
+	//- the relative date below (`text`) is processed at runtime in instantsearch.js
+	- data.date = {title: data.post_date.formatted, datetime: data.post_date.datetime, text: data.post_date.text}
+	- data.author = {prefix: 'par', text: data.post_author.display_name, href: data.post_author.permalink}
+	- data.categories = data.category_links
+	+list-articles-item(data)
+
+mixin search-hit-evenements(data)
+	= 'search-hit-evenements'
 
 mixin search-hit-flore(data)
 	//- bdtfx is the default referentiel, else take the first in array

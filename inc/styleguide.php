@@ -50,6 +50,7 @@ $telabotanica_modules = [
 	'header-dashboard',
 	'icon',
 	'list-articles',
+	'list-articles-item',
 	'list-projects',
 	'map-events',
 	'meta-news',

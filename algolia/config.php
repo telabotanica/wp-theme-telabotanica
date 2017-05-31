@@ -33,6 +33,12 @@ return [
 				'settings' => [
 					'hitsPerPage' => 5,
 					'attributesToSnippet' => [ 'post_content:7' ]
+				],
+				'filters' => [
+					'category' => [
+						'type' => 'menu',
+						'label' => __('Par catégorie', 'telabotanica')
+					]
 				]
 			],
 			[
@@ -68,6 +74,12 @@ return [
 				'settings' => [
 					'hitsPerPage' => 5,
 					'attributesToSnippet' => [ 'post_content:7' ]
+				],
+				'filters' => [
+					'category' => [
+						'type' => 'menu',
+						'label' => __('Par catégorie', 'telabotanica')
+					]
 				]
 			],
 			// TODO: enable when ready

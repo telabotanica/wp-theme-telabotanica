@@ -27,10 +27,12 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 				'image' => get_field( 'cover_image', get_queried_object() ),
 				'search' => $is_category_events ? [
 					'index' => 'evenements',
-					'placeholder' => __('Rechercher un évènement...', 'telabotanica')
+					'placeholder' => __('Rechercher un évènement...', 'telabotanica'),
+					'instantsearch' => true
 				] : [
 					'index' => 'actualites',
-					'placeholder' => __("Rechercher une actualité...", 'telabotanica')
+					'placeholder' => __("Rechercher une actualité...", 'telabotanica'),
+					'instantsearch' => true
 				]
 			] ); ?>
 
@@ -38,6 +40,27 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 				<div class="layout-wrapper">
 					<aside class="layout-column">
 						<?php
+
+						$algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
+						$current_index = $is_category_events ? 'evenements' : 'actualites';
+
+						// Retrieve the label for the current index
+						$indices = $algolia_autocomplete_config['sources'];
+						foreach ( $indices as $index ) :
+							if ( $index['index_id'] === $current_index ) {
+								$current_index = [
+									'id' => $current_index,
+									'label' => $index['label'],
+									'name' => $index['index_name'],
+									'filters' => @$index['filters'] ?: []
+								];
+								break;
+							}
+						endforeach;
+
+						the_telabotanica_module('search-filters', [
+							'filters' => $current_index['filters']
+						]);
 
 						the_telabotanica_module('categories', [
 							'modifiers' => 'layout-column-item'
@@ -88,7 +111,11 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 							);
 						endif;
 						the_telabotanica_module('breadcrumbs', ['button' => $rss_button]);
+
 						the_telabotanica_module('list-articles');
+
+						// Container for instantsearch hits
+						echo '<div class="list-articles" id="search-hits"></div>';
 						?>
 					</div>
 				</div>

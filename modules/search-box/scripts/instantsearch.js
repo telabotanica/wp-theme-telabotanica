@@ -1,8 +1,13 @@
 var searchHitTemplate = require('../../search-hit/search-hit.pug');
 var instantsearch = require('instantsearch.js/dist/instantsearch-preact.js');
+
+var moment = require('moment');
+moment.locale('fr');
+
 var numeral = require('numeral');
 require('numeral/locales/fr');
 numeral.locale('fr');
+
 var PubSub = require('pubsub-js');
 var _ = {
 	find: require('lodash.find')
@@ -18,7 +23,10 @@ Tela.modules.searchBox.instantsearch = (function(){
 		var $el = $(selector),
 			index,
 			search,
+			$initialContent,
 			$searchInput,
+			$searchFilters,
+			$searchHits,
 			$button
 			;
 
@@ -26,27 +34,29 @@ Tela.modules.searchBox.instantsearch = (function(){
 			// The logic for autocomplete is in script-autocomplete.js
 			if ($el.data('autocomplete') === true) {return;}
 
+			$initialContent = $('.layout-content .list-articles, .layout-column .layout-column-item');
 			$searchInput = $el.find('.search-box-input');
+			$searchFilters = $('#search-filters').closest('.search-filters');
+			$searchHits = $('#search-hits');
 			$button = $el.find('.search-box-button');
 
 			var indexId = $el.find('input[name="index"]').val();
 			index = _.find(algolia.autocomplete.sources, ['index_id', indexId]);
 
-			console.log(index);
+			var mapping = {};
+			if (isSearchPage()) {
+				mapping = {'q': 's'};
+			}
 
 			search = instantsearch({
 				appId: algolia.application_id,
 				apiKey: algolia.search_api_key,
 				indexName: index.index_name,
 				urlSync: {
-					mapping: {'q': 's'},
-					trackedParameters: ['query', 'attribute:*', 'page', 'hitsPerPage']
+					mapping: mapping,
+					trackedParameters: ['query', 'attribute:*', 'page']
 				},
-				searchFunction: function(helper) {
-					// Force index (instead of using the one from the URL)
-					search.helper.setIndex(index.index_name);
-					helper.search();
-				}
+				searchFunction: search
 			});
 
 			initSearchBox();
@@ -55,13 +65,36 @@ Tela.modules.searchBox.instantsearch = (function(){
 			initFilters();
 
 			search.start();
+
+			// Remove other elements
+			$el.find('.search-box-input:not(.ais-search-box--input)').remove();
+			$el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
+		}
+
+		function search(helper) {
+			// If no query has been made, do nothing
+			if (helper.state.query === '') {
+				$searchFilters.hide();
+				$searchHits.hide();
+				$initialContent.show();
+				return;
+			}
+
+			// Force index (instead of using the one from the URL)
+			search.helper.setIndex(index.index_name);
+			helper.search();
+
+			// Show hits
+			$initialContent.hide();
+			$searchFilters.show();
+			$searchHits.show();
 		}
 
 		function initSearchBox(){
 			search.addWidget(
 				instantsearch.widgets.searchBox({
 					container: $el.find('.search-box-wrapper').get(0),
-					placeholder: 'Rechercher une plante, un projet, un mot clé...',
+					placeholder: $searchInput.attr('placeholder'),
 					wrapInput: false,
 					poweredBy: algolia.powered_by_enabled,
 					cssClasses: {
@@ -69,15 +102,10 @@ Tela.modules.searchBox.instantsearch = (function(){
 					}
 				})
 			);
-
-			// Remove other elements
-			search.once('render', function(){
-				$el.find('.search-box-input:not(.ais-search-box--input)').remove();
-				$el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
-			});
 		}
 
 		function initStats(){
+			if ($('#search-stats').length === 0) return;
 			search.addWidget(
 				instantsearch.widgets.stats({
 					container: '#search-stats',
@@ -97,11 +125,17 @@ Tela.modules.searchBox.instantsearch = (function(){
 		function initHits(){
 			search.addWidget(
 				instantsearch.widgets.infiniteHits({
-					container: '#search-hits',
+					container: $searchHits.get(0),
 					hitsPerPage: 20,
 					transformData: {
 						item: function(data) {
 							data.type = index.index_id;
+
+							// Process relative date
+							if (data.post_date && data.post_date.timestamp) {
+								data.post_date.text = moment.unix(data.post_date.timestamp).fromNow();
+							}
+
 							return {data: data};
 						}
 					},
@@ -136,6 +170,10 @@ Tela.modules.searchBox.instantsearch = (function(){
 					})
 				);
 			});
+		}
+
+		function isSearchPage(){
+			return $('body').hasClass('search');
 		}
 
 		init();

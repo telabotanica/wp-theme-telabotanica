@@ -1,0 +1,35 @@
+include ../categories-labels/categories-labels-mixin
+include ../event-dates/event-dates-mixin
+include ../icon/icon-mixin
+
+//- This file is only meant to be included in other modules
+//- and then used as a mixin: +list-articles-item({ ... })
+mixin list-articles-item(data)
+	article.list-articles-item(class=data.modifiers id="post-" + data.id)
+		if data.event
+			- var dates = {href: data.href, start: data.dates.start, end: data.dates.end, title: data.dates.title, modifiers: 'float-left'}
+			+event-dates(dates)
+		else
+			a.list-articles-item-image(href=data.href)
+				if data.thumbnail_url
+					img.list-articles-item-image(src=data.thumbnail_url)
+				else
+					!= data.thumbnail
+		.list-articles-item-text
+			.list-articles-item-meta
+				if data.event && data.place
+					span.list-articles-item-place
+						+icon({icon: 'marker'})
+						= data.place
+				span.list-articles-item-date(title=data.date.title)
+					+icon({icon: 'clock'})
+					= " "
+					time(datetime=data.date.datetime)= data.date.text
+				= " – "
+				span.list-articles-item-author
+					= data.author.prefix + " "
+					a(href=data.author.href)= data.author.text
+				+categories-labels({items: data.categories})
+			h2.list-articles-item-title
+				a(href=data.href rel="bookmark")!= data.title
+			!= data.text

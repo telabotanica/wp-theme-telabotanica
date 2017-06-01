@@ -59,7 +59,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 					mapping: mapping,
 					trackedParameters: ['query', 'attribute:*']
 				},
-				searchFunction: search
+				searchFunction: searchFunction
 			});
 
 			initSearchBox();
@@ -74,7 +74,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 			$el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
 		}
 
-		function search(helper) {
+		function searchFunction(helper) {
 			// If no query has been made, do nothing
 			if (helper.state.query === '') {
 				search.helper.once('result', function(){

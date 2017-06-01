@@ -61,10 +61,10 @@ function telabotanica_algolia_add_templates() {
 add_filter( 'wp_footer', 'telabotanica_algolia_add_templates', PHP_INT_MAX );
 
 /*
- * Add custom query_var `index` (for search page)
+ * Add custom query_vars `q` and `in` (for search page)
  */
 function telabotanica_algolia_add_query_vars( $vars ){
-	$vars[] = "index";
+	$vars[] = "in";
 	$vars[] = "q";
 	return $vars;
 }

@@ -3,7 +3,7 @@
 $search_query = sanitize_text_field( get_search_query() );
 
 // Are we searching in a specific index?
-$current_index = sanitize_key( get_query_var( 'index', false ) );
+$current_index = sanitize_key( get_query_var( 'in', false ) );
 
 // Redirect some indices to the category or page, while preserving the query
 switch ($current_index) {

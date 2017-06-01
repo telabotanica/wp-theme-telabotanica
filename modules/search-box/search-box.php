@@ -30,7 +30,7 @@
 			);
 			if ($data->index) :
 				printf(
-					'<input name="index" type="hidden" value="%s" />',
+					'<input name="in" type="hidden" value="%s" />',
 					esc_attr( sanitize_key( $data->index ) )
 				);
 			endif;

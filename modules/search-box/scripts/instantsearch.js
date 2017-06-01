@@ -34,7 +34,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 			// The logic for autocomplete is in script-autocomplete.js
 			if ($el.data('autocomplete') === true) {return;}
 
-			$initialContent = $('.layout-content .list-articles, .layout-column .layout-column-item');
+			$initialContent = $('.layout-content .list-articles:not(#search-hits), .layout-column .layout-column-item');
 			$searchInput = $el.find('.search-box-input');
 			$searchFilters = $('#search-filters').closest('.search-filters');
 			$searchHits = $('#search-hits');
@@ -84,9 +84,6 @@ Tela.modules.searchBox.instantsearch = (function(){
 				});
 			}
 
-			// Force index (instead of using the one from the URL)
-			helper.setIndex(index.index_name);
-
 			helper.search();
 
 			// Show hits
@@ -100,8 +97,11 @@ Tela.modules.searchBox.instantsearch = (function(){
 				instantsearch.widgets.searchBox({
 					container: $el.find('.search-box-wrapper').get(0),
 					placeholder: $searchInput.attr('placeholder'),
-					wrapInput: false,
 					poweredBy: algolia.powered_by_enabled,
+					wrapInput: false,
+					autofocus: false,
+					// the option below can be enabled to limit the number of requests
+					// searchOnEnterKeyPressOnly: true,
 					cssClasses: {
 						input: 'search-box-input'
 					}

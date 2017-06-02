@@ -197,3 +197,20 @@
 	}
 
 }
+
+// instantsearch
+
+.ais-infinite-hits {
+	&--showmore {
+		text-align: center;
+
+		button {
+			@extend .button;
+		}
+
+		// Hide instantsearch infiniteHits button when disabled
+		button[disabled] {
+			display: none;
+		}
+	}
+}

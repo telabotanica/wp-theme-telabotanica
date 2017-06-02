@@ -1,5 +1,8 @@
 .search-hit {
-	margin-bottom: 3rem;
+	border-bottom: 0.1rem solid $grisDD;
+	font-size: 1.4rem;
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
 
 	em {
 		background-color: $jaune-clair;
@@ -9,7 +12,7 @@
 
 	&-title {
 		font-family: $ubuntu;
-		font-size: 1.8rem;
+		font-size: 1.75rem;
 		font-weight: $bold;
 		margin: 0;
 
@@ -25,25 +28,57 @@
 			&:hover {color: $turquoise-fonce;}
 		}
 
+		&-suffix {
+			font-size: 1.6rem;
+			font-weight: normal;
+			margin-left: 0.5rem;
+		}
+
 		.search-hit-tag {
-			background-color: $vert-bouton;
-			border-radius: 0.2rem;
-			display: inline-block;
-			font-size: 1.25rem;
+			float: right;
 			margin-left: 1rem;
-			padding: 0.25rem 0.5rem;
 			vertical-align: bottom;
 
 			&,
 			&:hover {
 				color: $blanc;
 			}
-
-			&:hover {background-color: $turquoise-fonce;}
 		}
 	}
 
+	&-tag {
+		background-color: $vert-bouton;
+		border-radius: 0.2rem;
+		color: $blanc;
+		display: inline-block;
+		font-size: 1.25rem;
+		padding: 0.25rem 0.5rem;
+
+		&:link:hover {background-color: $vert-fonce;}
+
+		&-bdtfx {background-color: $vert-bouton;}
+		&-bdtfx:link:hover {background-color: darken($vert-bouton, 10);}
+		&-bdtxa {background-color: $orange;}
+		&-bdtxa:link:hover {background-color: darken($orange, 10);}
+		&-isfan {background-color: $violet;}
+		&-isfan:link:hover {background-color: darken($violet, 10);}
+		&-apd {background-color: $turquoise;}
+		&-apd:link:hover {background-color: darken($turquoise, 10);}
+	}
+
 	&-text {
-		margin-top: 0.5rem;
+		font-weight: bold;
+	}
+
+	&-synonyms {
+		@include reset-list;
+		color: $gris60;
+		font-size: 1.2rem;
+	}
+
+	&-text,
+	&-synonyms {
+		line-height: 1.4;
+		margin-top: 0.4rem;
 	}
 }

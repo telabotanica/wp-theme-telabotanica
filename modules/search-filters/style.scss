@@ -9,6 +9,10 @@
 		padding: 0;
 	}
 
+	&-item {
+		margin-bottom: 3rem;
+	}
+
 	&-menu {
 		&-title {
 			font-size: 1.55rem;
@@ -41,6 +45,11 @@
 				border-color: $taupe;
 				color: $blanc;
 			}
+		}
+
+		.search-hit-tag {
+			margin: 0 0.5rem 0 0;
+			vertical-align: text-top;
 		}
 
 		&-count {

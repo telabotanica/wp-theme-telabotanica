@@ -19,6 +19,9 @@
 		echo '<ul class="search-filters-items" id="search-filters">';
 
 			foreach ($data->filters as $id => $filter) {
+				// Support for filters containing a dot
+				$id = str_replace('.', '_', $id);
+
 				printf( '<li class="search-filters-item" id="search-filter-%s"></li>',
 					$id
 				);

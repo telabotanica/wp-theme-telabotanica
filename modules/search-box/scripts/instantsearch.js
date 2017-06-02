@@ -77,7 +77,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 		function searchFunction(helper) {
 			// If no query has been made, do nothing
 			if (helper.state.query === '') {
-				search.helper.once('result', function(){
+				search.helper.once('result', function() {
 					$searchFilters.hide();
 					$searchHits.hide();
 					$initialContent.show();
@@ -157,27 +157,50 @@ Tela.modules.searchBox.instantsearch = (function(){
 				// Only menu is supported for now
 				if (filter.type != 'menu') return;
 
+				// Support for filters containing a dot
+				var containerId = '#search-filter-' + id.replace('.', '_');
+
+				var options = {
+					container: containerId,
+					attributeName: id,
+					limit: 10,
+					sortBy: ['count:desc', 'name:asc'],
+					cssClasses: {
+						root: 'search-filters-' + filter.type,
+						header: 'search-filters-' + filter.type + '-title',
+						list: 'search-filters-' + filter.type + '-items',
+						item: 'search-filters-' + filter.type + '-item',
+						link: 'search-filters-' + filter.type + '-link',
+						active: 'is-active',
+						count: 'search-filters-' + filter.type + '-count'
+					},
+					templates: {
+						header: filter.label
+					}
+				};
+
+				// Special options for referentiels
+				if ('referentiels' == id) {
+					options.transformData = transformFilterReferentiel;
+					options.templates.item = '<a class="{{cssClasses.link}}" href="{{url}}"><span class="search-hit-tag search-hit-tag-{{value}}">{{label}}</span> {{fullLabel}} <span class="{{cssClasses.count}}">{{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}</span></a>';
+				}
+
 				search.addWidget(
-					instantsearch.widgets[filter.type]({
-						container: '#search-filter-' + id,
-						attributeName: id,
-						limit: 10,
-						sortBy: ['count:desc', 'name:asc'],
-						cssClasses: {
-							root: 'search-filters-' + filter.type,
-							header: 'search-filters-' + filter.type + '-title',
-							list: 'search-filters-' + filter.type + '-items',
-							item: 'search-filters-' + filter.type + '-item',
-							link: 'search-filters-' + filter.type + '-link',
-							active: 'is-active',
-							count: 'search-filters-' + filter.type + '-count'
-						},
-						templates: {
-							header: filter.label
-						}
-					})
+					instantsearch.widgets[filter.type](options)
 				);
 			});
+		}
+
+		function transformFilterReferentiel(data){
+			// TODO: extract this in I18n files
+			var full = {
+				bdtfx: 'France métropolitaine',
+				bdtxa: 'Antilles françaises',
+				isfan: 'Afrique du nord',
+				apd: 'Afrique tropicale',
+			};
+			data.fullLabel = full[data.label];
+			return data;
 		}
 
 		function isSearchPage(){

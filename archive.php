@@ -17,33 +17,44 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 		<main id="main" class="site-main" role="main">
 
 			<?php
-			if ($is_category_emploi) {
-				$cover_search = false;
-			} elseif ($is_category_events) {
-				$cover_search = [
-					'index' => 'evenements',
-					'placeholder' => __('Rechercher un évènement...', 'telabotanica'),
-					'instantsearch' => true
-				];
-			} else {
-				$cover_search = [
-					'index' => 'actualites',
-					'placeholder' => __("Rechercher une actualité...", 'telabotanica'),
-					'instantsearch' => true
-				];
-			}
+			$cover_image = get_field('cover_image', get_queried_object());
 
-			the_telabotanica_module('cover', [
-				'title' => $category_actualites->name,
-				'subtitle' => sprintf(
-					__('Toute l\'<a href="%s">actualité</a>, les <a href="%s">offres d\'emploi</a> et les <a href="%s">évènements</a>', 'telabotanica'),
-					get_category_link( $category_actualites ),
-					get_category_link( $category_emploi ),
-					get_category_link( $category_evenements )
-				),
-				'image' => get_field( 'cover_image', get_queried_object() ),
-				'search' => $cover_search
-			] ); ?>
+			if ($is_category_emploi) {
+				the_telabotanica_module('cover', [
+					'title' => $category_emploi->name,
+					'subtitle' => __("Toutes les offres d'emploi, de stage et de service civique", 'telabotanica'),
+					'image' => $cover_image,
+					'search' => false
+				] );
+			} elseif ($is_category_events) {
+				the_telabotanica_module('cover', [
+					'title' => $category_evenements->name,
+					'subtitle' => __('Tous les évènements à venir', 'telabotanica'),
+					'image' => $cover_image,
+					'search' => [
+						'index' => 'evenements',
+						'placeholder' => __('Rechercher un évènement...', 'telabotanica'),
+						'instantsearch' => true
+					]
+				] );
+			} else {
+				the_telabotanica_module('cover', [
+					'title' => $category_actualites->name,
+					'subtitle' => sprintf(
+						__('Toute l\'<a href="%s">actualité</a>, les <a href="%s">offres d\'emploi</a> et les <a href="%s">évènements</a>', 'telabotanica'),
+						get_category_link( $category_actualites ),
+						get_category_link( $category_emploi ),
+						get_category_link( $category_evenements )
+					),
+					'image' => get_field( 'cover_image', get_queried_object() ),
+					'search' => [
+						'index' => 'actualites',
+						'placeholder' => __("Rechercher une actualité...", 'telabotanica'),
+						'instantsearch' => true
+					]
+				] );
+			}
+			?>
 
 			<div class="layout-content-col">
 				<div class="layout-wrapper">

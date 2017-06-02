@@ -79,6 +79,18 @@ return [
 					'category' => [
 						'type' => 'menu',
 						'label' => __("Par type d'évènement", 'telabotanica')
+					],
+					'event_date.month' => [
+						'type' => 'menu',
+						'label' => __("Par date", 'telabotanica')
+					],
+					'event_place.country' => [
+						'type' => 'menu',
+						'label' => __("Par pays", 'telabotanica')
+					],
+					'event_place.city' => [
+						'type' => 'menu',
+						'label' => __("Par ville", 'telabotanica')
 					]
 				]
 			],

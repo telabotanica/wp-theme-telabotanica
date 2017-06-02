@@ -65,15 +65,34 @@ mixin search-hit-flore(data)
 	//- bdtfx is the default referentiel, else take the first in array
 	- var referentiel = data.bdtfx ? 'bdtfx' : data.referentiels[0];
 	- var title = data._highlightResult[referentiel].scientific_name.value
+	- var suffix = []
+	- if (data[referentiel].author) suffix.push(data[referentiel].author)
+	- if (data[referentiel].year) suffix.push('[' + data[referentiel].year + ']')
 	- var href = data[referentiel].permalink
 	- var text = data._highlightResult[referentiel].common_name.value
+	- var synonyms = data._highlightResult[referentiel].synonyms
 	h3.search-hit-title
-		a(href=href)!= title
+		a(href=href)
+			!= title
+			if suffix.length
+				span.search-hit-title-suffix= suffix.join(' ')
 		each ref in data.referentiels
-			a.search-hit-tag(href=data[ref].permalink)= ref
+			a.search-hit-tag(href=data[ref].permalink class="search-hit-tag-" + ref)= ref
 	if text
 		.search-hit-text
 			!= text
+	if synonyms
+		- var firstSynonyms = synonyms.slice(0, 2)
+		- var diffSynonyms = synonyms.length - firstSynonyms.length
+		ul.search-hit-synonyms
+			each synonym in firstSynonyms
+				li.search-hit-synonyms-item
+					strong= 'syn.'
+					!= ' ' + synonym.value
+			if diffSynonyms > 1
+				li.search-hit-synonyms-item= "+ " + diffSynonyms + " autres synonymes"
+			else if diffSynonyms == 1
+				li.search-hit-synonyms-item= "+ un autre synonyme"
 
 mixin search-hit-vegetation(data)
 	- var title = data._highlightResult.syntaxon.value

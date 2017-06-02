@@ -3,3 +3,4 @@ vendor/
 /nbproject
 /dist
 npm-debug.log
+/cache

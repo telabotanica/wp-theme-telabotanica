@@ -5,7 +5,7 @@ var Tela = window.Tela || {};
 Tela.notice = (function(){
 
   function module(selector){
-    var $el     = $(selector),
+    var $el = $(selector),
       $closeButton;
 
     function init(){

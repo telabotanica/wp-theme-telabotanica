@@ -4,7 +4,6 @@
 		'text' => __("En poursuivant votre navigation sur tela-botanica.org, vous acceptez le dépôt de cookies sur votre terminal et l'utilisation de ceux-ci à des fins statistiques.", 'telabotanica'),
 		'buttons' => [
 			[
-				'href' => '#',
 				'text' => __("J'accepte", 'telabotanica'),
 				'modifiers' => ['white'],
 				'extra_attributes' => ['data-action' => 'accept-cookies']

@@ -1,6 +1,4 @@
-'use strict';
 require('velocity-animate');
-
 var PubSub = require('pubsub-js');
 var Cookies = require('js-cookie');
 
@@ -46,7 +44,7 @@ Tela.modules.noticeCookies = (function(){
 					$el.remove();
 				}
 			});
-		};
+		}
 
 		function open(){
 			$el.velocity({
@@ -59,7 +57,7 @@ Tela.modules.noticeCookies = (function(){
 					PubSub.publish('notice-cookies.opened');
 				}
 			});
-		};
+		}
 
 		init();
 

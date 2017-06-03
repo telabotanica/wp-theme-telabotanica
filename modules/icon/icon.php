@@ -1,13 +1,16 @@
-<?php function telabotanica_module_icon($data) {
-	global $pug;
+<?php
 
-	$defaults = [
-		'color' => false
-	];
+function telabotanica_module_icon($data)
+{
+    global $pug;
 
-	$data = telabotanica_styleguide_data($defaults, $data);
+    $defaults = [
+        'color' => false,
+    ];
 
-	echo $pug->render(__DIR__ . '/icon.pug', [
-		'data' => $data
-	]);
+    $data = telabotanica_styleguide_data($defaults, $data);
+
+    echo $pug->render(__DIR__.'/icon.pug', [
+        'data' => $data,
+    ]);
 }

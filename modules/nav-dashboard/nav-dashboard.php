@@ -1,50 +1,52 @@
-<?php function telabotanica_module_nav_dashboard($data) {
-	$defaults = [
-		'items' => [],
-		'modifiers' => []
-	];
+<?php
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard', $data->modifiers);
+function telabotanica_module_nav_dashboard($data)
+{
+    $defaults = [
+        'items'     => [],
+        'modifiers' => [],
+    ];
 
-	printf(
-		'<div class="%s">',
-		implode(' ', $data->modifiers)
-	);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard', $data->modifiers);
 
-		echo '<ul class="nav-dashboard-items">';
+    printf(
+        '<div class="%s">',
+        implode(' ', $data->modifiers)
+    );
 
-		$item_defaults = [
-			'modifiers' => []
-		];
+    echo '<ul class="nav-dashboard-items">';
 
-		foreach ( $data->items as $item ) :
+    $item_defaults = [
+            'modifiers' => [],
+        ];
 
-			$item = telabotanica_styleguide_data($item_defaults, $item);
-			$item->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard-item', $item->modifiers);
+    foreach ($data->items as $item) :
 
-			if ( isset( $item->current ) && $item->current === true ) {
-				$item->modifiers[] = 'is-current';
-			}
-			if ( isset( $item->dot ) && $item->dot === true ) {
-				$item->modifiers[] = 'with-dot';
-			}
+            $item = telabotanica_styleguide_data($item_defaults, $item);
+    $item->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard-item', $item->modifiers);
 
-			printf(
-				'<li class="%s">',
-				implode(' ', $item->modifiers)
-			);
-				printf(
-					'<a href="%s">%s<span class="nav-dashboard-item-text">%s</span></a>',
-					$item->href,
-					get_telabotanica_module('icon', ['icon' => $item->icon]),
-					$item->text
-				);
-			echo '</li>';
+    if (isset($item->current) && $item->current === true) {
+        $item->modifiers[] = 'is-current';
+    }
+    if (isset($item->dot) && $item->dot === true) {
+        $item->modifiers[] = 'with-dot';
+    }
 
-		endforeach;
+    printf(
+                '<li class="%s">',
+                implode(' ', $item->modifiers)
+            );
+    printf(
+                    '<a href="%s">%s<span class="nav-dashboard-item-text">%s</span></a>',
+                    $item->href,
+                    get_telabotanica_module('icon', ['icon' => $item->icon]),
+                    $item->text
+                );
+    echo '</li>';
 
-		echo '</ul>';
-	echo '</div>';
+    endforeach;
 
+    echo '</ul>';
+    echo '</div>';
 }

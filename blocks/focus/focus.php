@@ -1,120 +1,124 @@
-<?php function telabotanica_block_focus($data) {
-	$defaults = [
-		'background' => get_sub_field('background'),
-		'background_color' => get_sub_field('background_color'),
-		'background_image' => get_sub_field('background_image'),
-		'main_component_place' => get_sub_field('main_component_place'),
-		'main_component' => get_sub_field('main_component'),
-		'title_icon' => get_sub_field('title_icon'),
-		'title' => get_sub_field('title'),
-		'intro' => get_sub_field('intro'),
-		'text' => get_sub_field('text'),
-		'display_buttons' => get_sub_field('display_buttons'),
-		'intro_buttons' => get_sub_field('intro_buttons'),
-		'content_buttons' => get_sub_field('content_buttons'),
-		'modifiers' => []
-	];
+<?php
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array(['block', 'block-focus'], $data->modifiers);
+function telabotanica_block_focus($data)
+{
+    $defaults = [
+        'background'           => get_sub_field('background'),
+        'background_color'     => get_sub_field('background_color'),
+        'background_image'     => get_sub_field('background_image'),
+        'main_component_place' => get_sub_field('main_component_place'),
+        'main_component'       => get_sub_field('main_component'),
+        'title_icon'           => get_sub_field('title_icon'),
+        'title'                => get_sub_field('title'),
+        'intro'                => get_sub_field('intro'),
+        'text'                 => get_sub_field('text'),
+        'display_buttons'      => get_sub_field('display_buttons'),
+        'intro_buttons'        => get_sub_field('intro_buttons'),
+        'content_buttons'      => get_sub_field('content_buttons'),
+        'modifiers'            => [],
+    ];
 
-	if (!$data->display_buttons) $data->display_buttons = [];
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array(['block', 'block-focus'], $data->modifiers);
 
-	$data->main_component['modifiers'] = []; // annule les modifiers du composant image
+    if (!$data->display_buttons) {
+        $data->display_buttons = [];
+    }
 
-	if ( $data->background === 'image' && $data->background_image ) :
-		$background = sprintf( 'background-image: url(%s)', $data->background_image['url'] );
-		$data->modifiers[] = 'with-background-image';
-	elseif ( $data->background === 'color' && $data->background_color ) :
-		$background = sprintf( 'background-color: %s', $data->background_color );
-	endif;
+    $data->main_component['modifiers'] = []; // annule les modifiers du composant image
 
-	printf(
-		'<div class="%s" style="%s">',
-		implode(' ', $data->modifiers),
-		@$background ?: ''
-	);
+    if ($data->background === 'image' && $data->background_image) :
+        $background = sprintf('background-image: url(%s)', $data->background_image['url']);
+    $data->modifiers[] = 'with-background-image'; elseif ($data->background === 'color' && $data->background_color) :
+        $background = sprintf('background-color: %s', $data->background_color);
+    endif;
 
-		if ( $data->main_component_place === 'top' && have_rows('main_component') ) :
+    printf(
+        '<div class="%s" style="%s">',
+        implode(' ', $data->modifiers),
+        @$background ?: ''
+    );
 
-			while ( have_rows('main_component') ) : the_row();
+    if ($data->main_component_place === 'top' && have_rows('main_component')) :
 
-				the_telabotanica_component(get_row_layout(), $data->main_component);
+            while (have_rows('main_component')) : the_row();
 
-			endwhile;
+    the_telabotanica_component(get_row_layout(), $data->main_component);
 
-		endif;
+    endwhile;
 
-		echo '<div class="block-focus-header">';
+    endif;
 
-			if ( $data->title_icon ) :
+    echo '<div class="block-focus-header">';
 
-				printf(
-					'<div class="block-focus-title-icon">%s</div>',
-					get_telabotanica_module('icon', ['icon' => $data->title_icon, 'color' => 'vert-clair'])
-				);
+    if ($data->title_icon) :
 
-			endif;
+                printf(
+                    '<div class="block-focus-title-icon">%s</div>',
+                    get_telabotanica_module('icon', ['icon' => $data->title_icon, 'color' => 'vert-clair'])
+                );
 
-			echo '<h2 class="block-focus-title">' . $data->title . '</h2>';
+    endif;
 
-			if ( $data->intro ) :
+    echo '<h2 class="block-focus-title">'.$data->title.'</h2>';
 
-				echo '<div class="block-focus-intro">' . $data->intro . '</div>';
+    if ($data->intro) :
 
-			endif;
+                echo '<div class="block-focus-intro">'.$data->intro.'</div>';
 
-			if ( in_array('intro', $data->display_buttons) && $data->intro_buttons ) :
+    endif;
 
-				$data->intro_buttons['display'] = [ $data->intro_buttons['display'], 'seamless' ];
-				the_telabotanica_component( 'buttons', $data->intro_buttons );
+    if (in_array('intro', $data->display_buttons) && $data->intro_buttons) :
 
-			endif;
+                $data->intro_buttons['display'] = [$data->intro_buttons['display'], 'seamless'];
+    the_telabotanica_component('buttons', $data->intro_buttons);
 
-		echo '</div>';
+    endif;
 
-		if ( ( $data->main_component_place === 'left' && have_rows('main_component') ) || $data->text || $data->content_buttons['items'] ) :
+    echo '</div>';
 
-			echo '<div class="block-focus-content">';
+    if (($data->main_component_place === 'left' && have_rows('main_component')) || $data->text || $data->content_buttons['items']) :
 
-				if ( $data->main_component_place === 'left' && have_rows('main_component') ) :
+            echo '<div class="block-focus-content">';
 
-					while ( have_rows('main_component') ) : the_row();
+    if ($data->main_component_place === 'left' && have_rows('main_component')) :
 
-						the_telabotanica_component(get_row_layout(), $data->main_component);
+                    while (have_rows('main_component')) : the_row();
 
-					endwhile;
+    the_telabotanica_component(get_row_layout(), $data->main_component);
 
-				endif;
+    endwhile;
 
-				if ( $data->text || $data->content_buttons['items'] ) :
+    endif;
 
-					echo '<div class="block-focus-content-text">';
+    if ($data->text || $data->content_buttons['items']) :
 
-						if ( $data->text ) :
+                    echo '<div class="block-focus-content-text">';
 
-							the_telabotanica_component( 'text', $data->text );
+    if ($data->text) :
 
-						endif;
+                            the_telabotanica_component('text', $data->text);
 
-						if ( in_array('content', $data->display_buttons) && $data->content_buttons['items'] ) :
+    endif;
 
-							$data->content_buttons['display'] = [ $data->content_buttons['display'], 'seamless' ];
-							the_telabotanica_component( 'buttons', $data->content_buttons );
+    if (in_array('content', $data->display_buttons) && $data->content_buttons['items']) :
 
-						endif;
+                            $data->content_buttons['display'] = [$data->content_buttons['display'], 'seamless'];
+    the_telabotanica_component('buttons', $data->content_buttons);
 
-					echo '</div>';
+    endif;
 
-				endif;
+    echo '</div>';
 
-			echo '</div>';
+    endif;
 
-		endif;
+    echo '</div>';
 
-		if ( $data->background === 'image' ) :
-			telabotanica_image_credits( $data->background_image, 'block-focus' );
-		endif;
+    endif;
 
-	echo '</div>';
+    if ($data->background === 'image') :
+            telabotanica_image_credits($data->background_image, 'block-focus');
+    endif;
+
+    echo '</div>';
 }

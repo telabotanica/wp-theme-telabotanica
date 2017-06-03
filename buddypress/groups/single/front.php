@@ -1,9 +1,6 @@
 <?php
 /**
- * BuddyPress - Group - Custom front page for Tela Botanica
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+ * BuddyPress - Group - Custom front page for Tela Botanica.
  */
 ?>
 
@@ -16,12 +13,12 @@
       $descriptionToDisplay = $group->description;
       $completeDescription = groups_get_groupmeta($group->id, 'description-complete');
       if ($completeDescription) {
-        $descriptionToDisplay = $completeDescription;
+          $descriptionToDisplay = $completeDescription;
       }
 
-			the_telabotanica_component('text', [
-				'text' => $descriptionToDisplay
-			]);
+            the_telabotanica_component('text', [
+                'text' => $descriptionToDisplay,
+            ]);
       ?>
     </div>
   </div>

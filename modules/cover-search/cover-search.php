@@ -1,45 +1,48 @@
-<?php function telabotanica_module_cover_search($data) {
-	global $wp_query;
+<?php
 
-	$defaults = [
-		'image' => get_field('cover_image'),
-		'total_results' => $wp_query->found_posts,
-		'modifiers' => []
-	];
+function telabotanica_module_cover_search($data)
+{
+    global $wp_query;
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array(['cover', 'cover-search'], $data->modifiers);
+    $defaults = [
+        'image'         => get_field('cover_image'),
+        'total_results' => $wp_query->found_posts,
+        'modifiers'     => [],
+    ];
 
-	printf(
-		'<div class="%s" style="background-image: url(%s);">',
-		implode(' ', $data->modifiers),
-		$data->image['url']
-	);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array(['cover', 'cover-search'], $data->modifiers);
 
-		echo '<div class="layout-wrapper">';
-			echo '<div class="cover-search-content">';
+    printf(
+        '<div class="%s" style="background-image: url(%s);">',
+        implode(' ', $data->modifiers),
+        $data->image['url']
+    );
 
-			the_telabotanica_module('search-box', [
-				'autocomplete' => false,
-				'modifiers' => ['large', 'is-primary']
-			]);
+    echo '<div class="layout-wrapper">';
+    echo '<div class="cover-search-content">';
 
-			if ( get_search_query() && !empty( $data->total_results ) ) :
-				printf(
-					'<h1 class="cover-search-title">%s</h1>',
-					sprintf( _n(
-						'%s résultat trouvé',
-						'%s résultats trouvés',
-						$data->total_results,
-						'telabotanica'
-					), number_format_i18n( $data->total_results ) )
-				);
-			endif;
+    the_telabotanica_module('search-box', [
+                'autocomplete' => false,
+                'modifiers'    => ['large', 'is-primary'],
+            ]);
 
-			echo '</div>';
-		echo '</div>';
+    if (get_search_query() && !empty($data->total_results)) :
+                printf(
+                    '<h1 class="cover-search-title">%s</h1>',
+                    sprintf(_n(
+                        '%s résultat trouvé',
+                        '%s résultats trouvés',
+                        $data->total_results,
+                        'telabotanica'
+                    ), number_format_i18n($data->total_results))
+                );
+    endif;
 
-		telabotanica_image_credits( $data->image, 'cover' );
+    echo '</div>';
+    echo '</div>';
 
-	echo '</div>';
+    telabotanica_image_credits($data->image, 'cover');
+
+    echo '</div>';
 }

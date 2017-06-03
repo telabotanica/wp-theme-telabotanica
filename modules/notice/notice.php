@@ -1,13 +1,16 @@
-<?php function telabotanica_module_notice($data) {
-	global $pug;
+<?php
 
-	$defaults = [
-		'type' => 'info'
-	];
+function telabotanica_module_notice($data)
+{
+    global $pug;
 
-	$data = telabotanica_styleguide_data($defaults, $data);
+    $defaults = [
+        'type' => 'info',
+    ];
 
-	echo $pug->render(__DIR__ . '/notice.pug', [
-		'data' => $data
-	]);
+    $data = telabotanica_styleguide_data($defaults, $data);
+
+    echo $pug->render(__DIR__.'/notice.pug', [
+        'data' => $data,
+    ]);
 }

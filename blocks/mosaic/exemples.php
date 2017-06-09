@@ -1,10 +1,11 @@
 <?php
+
 return [
-  "Standard" => [
+  'Standard' => [
 		'items' => [
 			[
-				'title' => "Besoin d'aide pour identifier une plante ?",
-				'text' => "Envoyez la photo d'une plante et indiquez son emplacement pour obtenir de l'aide",
+				'title'  => "Besoin d'aide pour identifier une plante ?",
+				'text'   => "Envoyez la photo d'une plante et indiquez son emplacement pour obtenir de l'aide",
 				'button' => [
 					'href' => '#',
 					'text' => 'Envoyez votre photo',
@@ -17,11 +18,11 @@ return [
 				]
 			],
 			[
-				'title' => "Aidez à identifier les observations du réseau",
-				'text' => "Mettez votre savoir à contribution pour aider à enrichir la base de données botaniques",
+				'title'  => 'Aidez à identifier les observations du réseau',
+				'text'   => 'Mettez votre savoir à contribution pour aider à enrichir la base de données botaniques',
 				'button' => [
-					'href' => '#',
-					'text' => 'Proposez vos déterminations',
+					'href'      => '#',
+					'text'      => 'Proposez vos déterminations',
 					'modifiers' => ['orange']
 				],
 				'images' => [

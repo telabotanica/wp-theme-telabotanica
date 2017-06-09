@@ -1,10 +1,11 @@
 <?php
+
 return [
 	'Standard' => [
 		'items' => [
 			[
-				'href' => '#',
-				'text' => 'Premier lien',
+				'href'    => '#',
+				'text'    => 'Premier lien',
 				'current' => true
 			],
 			[

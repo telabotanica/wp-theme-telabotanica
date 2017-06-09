@@ -1,58 +1,60 @@
-<?php function telabotanica_module_column_features($data) {
+<?php
 
-	$defaults = [
-		'items' => [],
+function telabotanica_module_column_features($data)
+{
+    $defaults = [
+		'items'     => [],
 		'modifiers' => []
 	];
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array('column-features', $data->modifiers);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array('column-features', $data->modifiers);
 
-	echo '<div class="' . implode(' ', $data->modifiers) . '">';
+    echo '<div class="' . implode(' ', $data->modifiers) . '">';
 
-		echo '<ul class="column-features-items">';
+    echo '<ul class="column-features-items">';
 
-		if ( !empty($data->items) ) :
+    if (!empty($data->items)) :
 
 			foreach ($data->items as $item) :
 
 				$item = (object) $item;
 
-				echo '<li class="column-features-item">';
+    echo '<li class="column-features-item">';
 
-					printf(
+    printf(
 						'<a href="%s" title="%s" target="%s" class="column-features-item-link">',
-						esc_url( $item->link['url'] ),
+						esc_url($item->link['url']),
 						$item->link['title'],
 						$item->link['target']
 					);
 
-						if ( $item->icon ) {
-							printf(
+    if ($item->icon) {
+        printf(
 								'<div class="column-features-item-icon" style="color: %s; fill: %s">%s</div>',
 								$item->color,
 								$item->color,
 								'<img src="' . $item->icon . '" alt="" class="style-svg" />'
 							);
-						}
+    }
 
-						printf(
+    printf(
 							'<h3 class="column-features-item-title"><span>%s</span></h3>',
 							$item->title
 						);
 
-						printf(
+    printf(
 							'<div class="column-features-item-text">%s</div>',
-							wp_trim_words( $item->text, 18 )
+							wp_trim_words($item->text, 18)
 						);
 
-					echo '</a>';
+    echo '</a>';
 
-				echo '</li>';
-			endforeach;
+    echo '</li>';
+    endforeach;
 
-		endif;
+    endif;
 
-		echo '</ul>';
-	echo '</div>';
+    echo '</ul>';
+    echo '</div>';
 }

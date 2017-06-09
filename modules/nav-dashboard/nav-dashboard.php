@@ -1,50 +1,52 @@
-<?php function telabotanica_module_nav_dashboard($data) {
-	$defaults = [
-		'items' => [],
+<?php
+
+function telabotanica_module_nav_dashboard($data)
+{
+    $defaults = [
+		'items'     => [],
 		'modifiers' => []
 	];
 
-	$data = telabotanica_styleguide_data($defaults, $data);
-	$data->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard', $data->modifiers);
+    $data = telabotanica_styleguide_data($defaults, $data);
+    $data->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard', $data->modifiers);
 
-	printf(
+    printf(
 		'<div class="%s">',
 		implode(' ', $data->modifiers)
 	);
 
-		echo '<ul class="nav-dashboard-items">';
+    echo '<ul class="nav-dashboard-items">';
 
-		$item_defaults = [
+    $item_defaults = [
 			'modifiers' => []
 		];
 
-		foreach ( $data->items as $item ) :
+    foreach ($data->items as $item) :
 
 			$item = telabotanica_styleguide_data($item_defaults, $item);
-			$item->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard-item', $item->modifiers);
+    $item->modifiers = telabotanica_styleguide_modifiers_array('nav-dashboard-item', $item->modifiers);
 
-			if ( isset( $item->current ) && $item->current === true ) {
-				$item->modifiers[] = 'is-current';
-			}
-			if ( isset( $item->dot ) && $item->dot === true ) {
-				$item->modifiers[] = 'with-dot';
-			}
+    if (isset($item->current) && $item->current === true) {
+        $item->modifiers[] = 'is-current';
+    }
+    if (isset($item->dot) && $item->dot === true) {
+        $item->modifiers[] = 'with-dot';
+    }
 
-			printf(
+    printf(
 				'<li class="%s">',
 				implode(' ', $item->modifiers)
 			);
-				printf(
+    printf(
 					'<a href="%s">%s<span class="nav-dashboard-item-text">%s</span></a>',
 					$item->href,
 					get_telabotanica_module('icon', ['icon' => $item->icon]),
 					$item->text
 				);
-			echo '</li>';
+    echo '</li>';
 
-		endforeach;
+    endforeach;
 
-		echo '</ul>';
-	echo '</div>';
-
+    echo '</ul>';
+    echo '</div>';
 }

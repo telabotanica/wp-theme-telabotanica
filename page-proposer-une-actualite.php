@@ -7,24 +7,27 @@
 $header_small = true;
 
 // A-t-on défini une catégorie?
-$post_category_slug = get_query_var( 'categorie', false );
+$post_category_slug = get_query_var('categorie', false);
 $post_category = get_category_by_slug($post_category_slug);
-$confirmation = get_query_var( 'confirmation', false );
+$confirmation = get_query_var('confirmation', false);
 
 // 404 si la catégorie passée en paramètre n'existe pas
-if ( $post_category_slug && !$post_category ) {
-	global $wp_query;
-	$wp_query->set_404();
-	status_header( 404 );
-	get_template_part( 404 ); exit();
+if ($post_category_slug && !$post_category) {
+    global $wp_query;
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+    exit();
 }
 
 // Sanitize values
-function my_kses_post( $value ) {
-	if( is_array($value) ) {
-		return array_map('my_kses_post', $value);
-	}
-	return wp_kses_post( $value );
+function my_kses_post($value)
+{
+    if (is_array($value)) {
+        return array_map('my_kses_post', $value);
+    }
+
+    return wp_kses_post($value);
 }
 add_filter('acf/update_value', 'my_kses_post', 10, 1);
 
@@ -44,15 +47,15 @@ get_header(); ?>
 						if ($confirmation) :
 
 							the_telabotanica_module('notice', [
-								'type' => 'confirm',
-								'title' => __("Félicitations, votre article a bien été enregistré.", 'telabotanica'),
-								'text' => __("Un membre de l'équipe Tela Botanica en a été informé et mettra votre article en ligne d'ici quelques jours.", 'telabotanica')
+								'type'  => 'confirm',
+								'title' => __('Félicitations, votre article a bien été enregistré.', 'telabotanica'),
+								'text'  => __("Un membre de l'équipe Tela Botanica en a été informé et mettra votre article en ligne d'ici quelques jours.", 'telabotanica')
 							]);
 
 							echo '<p style="text-align: center">';
 								the_telabotanica_module('button', [
-									'href' => get_category_link( get_category_by_slug( 'actualites' ) ),
-									'text' => __( 'Retour aux actualités', 'telabotanica' )
+									'href' => get_category_link(get_category_by_slug('actualites')),
+									'text' => __('Retour aux actualités', 'telabotanica')
 								]);
 							echo '</p>';
 
@@ -63,8 +66,8 @@ get_header(); ?>
 								$breadcrumbs_items = [
 									'home',
 									[
-										'text' => __( 'Proposer une actualité', 'telabotanica' ),
-										'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) )
+										'text' => __('Proposer une actualité', 'telabotanica'),
+										'href' => get_permalink(get_page_by_path('proposer-une-actualite'))
 									],
 									[
 										'text' => $post_category->name
@@ -78,21 +81,21 @@ get_header(); ?>
 								echo '<article class="article">';
 
 								// Si l'utilisateur n'est pas connecté
-								if ( ! is_user_logged_in() ) :
+								if (!is_user_logged_in()) :
 
 									the_telabotanica_module('warning', [
 										'text' => __('Vous devez être connecté(e) à votre compte pour pouvoir proposer une actualité.', 'telabotanica')
 									]);
 									echo '<p style="text-align: center">';
 										the_telabotanica_module('button', [
-											'href' => wp_login_url( get_permalink() ),
-											'text' => __( 'Connexion', 'telabotanica' )
+											'href' => wp_login_url(get_permalink()),
+											'text' => __('Connexion', 'telabotanica')
 										]);
 									echo '</p>';
 
 								else :
 
-									$options = array(
+									$options = [
 										/* (string) Unique identifier for the form. Defaults to 'acf-form' */
 										'id' => 'suggest-news-form',
 
@@ -103,8 +106,8 @@ get_header(); ?>
 										/* (array) An array of post data used to create a post. See wp_insert_post for available parameters.
 										The above 'post_id' setting must contain a value of 'new_post' */
 										'new_post' => [
-											'post_category' => [ $post_category->cat_ID ],
-											'post_status' => 'draft'
+											'post_category' => [$post_category->cat_ID],
+											'post_status'   => 'draft'
 										],
 
 										/* (array) An array of field group IDs/keys to override the fields displayed in this form */
@@ -123,11 +126,11 @@ get_header(); ?>
 										'form' => true,
 
 										/* (array) An array or HTML attributes for the form element */
-										'form_attributes' => array('class' => 'acf-form suggest-news-form'),
+										'form_attributes' => ['class' => 'acf-form suggest-news-form'],
 
 										/* (string) The URL to be redirected to after the form is submit. Defaults to the current URL with a GET parameter '?updated=true'.
 										A special placeholder '%post_url%' will be converted to post's permalink (handy if creating a new post) */
-										'return' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ) . '?confirmation=true',
+										'return' => get_permalink(get_page_by_path('proposer-une-actualite')) . '?confirmation=true',
 
 										/* (string) Extra HTML to add before the fields */
 										'html_before_fields' => '',
@@ -136,7 +139,7 @@ get_header(); ?>
 										'html_after_fields' => '',
 
 										/* (string) The text displayed on the submit button */
-										'submit_value' => __("Envoyer", 'telabotanica'),
+										'submit_value' => __('Envoyer', 'telabotanica'),
 
 										/* (string) A message displayed above the form after being redirected. Can also be set to false for no message */
 										'updated_message' => false,
@@ -160,7 +163,7 @@ get_header(); ?>
 										/* (boolean) Whether to include a hidden input field to capture non human form submission. Defaults to true. Added in v5.3.4 */
 										'honeypot' => true
 
-									);
+									];
 
 									switch ($post_category_slug) {
 
@@ -199,7 +202,7 @@ get_header(); ?>
 
 									}
 
-									acf_form( $options );
+									acf_form($options);
 
 								endif;
 
@@ -212,10 +215,10 @@ get_header(); ?>
 								echo '<article class="article">';
 
 								// Si la page utilise des composants
-								if( have_rows('components') ):
+								if (have_rows('components')):
 
 										// On boucle sur les composants
-										while ( have_rows('components') ) : the_row();
+										while (have_rows('components')) : the_row();
 
 											the_telabotanica_component(get_row_layout());
 
@@ -224,26 +227,26 @@ get_header(); ?>
 								endif;
 
 								$categories = get_categories([
-									'exclude' => [ 1 ],
+									'exclude'    => [1],
 									'hide_empty' => false,
-									'orderby' => 'none',
-									'parent' => 0
-								] );
+									'orderby'    => 'none',
+									'parent'     => 0
+								]);
 
 								ob_start();
 								echo '<ul>';
 									foreach ($categories as $category):
 										echo '<li>';
 											echo $category->description;
-											$subcategories = get_term_children( $category->term_id, 'category' );
+											$subcategories = get_term_children($category->term_id, 'category');
 											if ($subcategories) :
 											echo '<ul>';
 												foreach ($subcategories as $subcategory_id):
-													$subcategory = get_term_by( 'id', $subcategory_id, 'category' );
+													$subcategory = get_term_by('id', $subcategory_id, 'category');
 													echo '<li>';
 														printf(
 															'<a href="%s">%s</a>%s',
-															esc_url( '?categorie=' . $subcategory->slug ),
+															esc_url('?categorie=' . $subcategory->slug),
 															$subcategory->name,
 															$subcategory->description ? ' – ' . $subcategory->description : ''
 														);

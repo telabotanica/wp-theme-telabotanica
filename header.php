@@ -2,15 +2,14 @@
 /**
  * Header
  */
-
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<?php if (is_singular() && pings_open(get_queried_object())) : ?>
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<?php endif; ?>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -27,11 +26,13 @@
 
 <body <?php body_class(); ?>>
 	<?php
-	// TODO: add skip links ?>
-	<!-- <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'telabotanica' ); ?></a> -->
+	// TODO: add skip links?>
+	<!-- <a class="skip-link screen-reader-text" href="#content"><?php _e('Skip to content', 'telabotanica'); ?></a> -->
 
 	<?php
-	if ( !isset($GLOBALS['is_error']) ) the_telabotanica_module('header');
+	if (!isset($GLOBALS['is_error'])) {
+	    the_telabotanica_module('header');
+	}
 	?>
 
 	<div id="content" class="site-content">

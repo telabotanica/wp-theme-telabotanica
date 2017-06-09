@@ -1,18 +1,19 @@
 <?php
+
 return [
 	'Standard' => [
 		'items' => [
 			[
-				'href' => '#',
-				'text' => 'Mon espace personnel',
-				'icon' => 'dashboard',
+				'href'    => '#',
+				'text'    => 'Mon espace personnel',
+				'icon'    => 'dashboard',
 				'current' => true
 			],
 			[
 				'href' => '#',
 				'text' => 'Mes messages',
 				'icon' => 'mail',
-				'dot' => true
+				'dot'  => true
 			],
 			[
 				'href' => '#',
@@ -50,9 +51,9 @@ return [
 				'icon' => 'heart'
 			],
 			[
-				'href' => '#',
-				'text' => 'Me déconnecter',
-				'icon' => 'log-off',
+				'href'      => '#',
+				'text'      => 'Me déconnecter',
+				'icon'      => 'log-off',
 				'modifiers' => 'is-last'
 			]
 		]

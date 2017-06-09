@@ -3,11 +3,7 @@
  * BuddyPress - Groups Loop
  *
  * Querystring is set via AJAX in _inc/ajax.php - bp_legacy_theme_object_filter().
- *
- * @package BuddyPress
- * @subpackage bp-legacy
  */
-
 ?>
 
 <?php
@@ -17,9 +13,9 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_groups_loop' ); ?>
+do_action('bp_before_groups_loop'); ?>
 
-<?php if ( bp_has_groups( bp_ajax_querystring( 'groups' ) ) ) : ?>
+<?php if (bp_has_groups(bp_ajax_querystring('groups'))) : ?>
 
 	<?php
 
@@ -28,30 +24,30 @@ do_action( 'bp_before_groups_loop' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_groups_list' );
+	do_action('bp_before_directory_groups_list');
 
 	the_telabotanica_module('list-projects');
 
-	/**
+	/*
 	 * Fires after the listing of the groups list.
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_after_directory_groups_list' );
+	do_action('bp_after_directory_groups_list');
 
 	the_telabotanica_module('pagination', [
-		'id' => 'pag-bottom',
+		'id'       => 'pag-bottom',
 		'count_id' => 'group-dir-count-bottom',
 		'links_id' => 'group-dir-pag-bottom',
-		'context' => 'buddypress',
-		'type' => 'groups'
+		'context'  => 'buddypress',
+		'type'     => 'groups'
 	]);
 	?>
 
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'There were no groups found.', 'buddypress' ); ?></p>
+		<p><?php _e('There were no groups found.', 'buddypress'); ?></p>
 	</div>
 
 <?php endif; ?>
@@ -63,4 +59,4 @@ do_action( 'bp_before_groups_loop' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_groups_loop' ); ?>
+do_action('bp_after_groups_loop'); ?>

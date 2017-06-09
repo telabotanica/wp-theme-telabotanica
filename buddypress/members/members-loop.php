@@ -3,9 +3,6 @@
  * BuddyPress - Members Loop
  *
  * Querystring is set via AJAX in _inc/ajax.php - bp_legacy_theme_object_filter()
- *
- * @package BuddyPress
- * @subpackage bp-legacy
  */
 
 /**
@@ -13,9 +10,9 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_members_loop' ); ?>
+do_action('bp_before_members_loop'); ?>
 
-<?php if ( bp_get_current_member_type() ) : ?>
+<?php if (bp_get_current_member_type()) : ?>
 	<p class="current-member-type"><?php bp_current_member_type_message() ?></p>
 <?php endif; ?>
 
@@ -23,7 +20,7 @@ do_action( 'bp_before_members_loop' ); ?>
 	// IMPORTANT at the moment (2017-02) this plugin guarantees compatibility
 	// with BP Profile Search only if the member loop is initiated with default
 	// parameters (type="active")
-	if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
+	if (bp_has_members(bp_ajax_querystring('members'))) : ?>
 
 	<div id="pag-top" class="pagination">
 
@@ -47,11 +44,11 @@ do_action( 'bp_before_members_loop' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_members_list' ); ?>
+	do_action('bp_before_directory_members_list'); ?>
 
 	<ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
 
-	<?php while ( bp_members() ) : bp_the_member(); ?>
+	<?php while (bp_members()) : bp_the_member(); ?>
 
 		<li <?php bp_member_class(); ?>>
 			<?php
@@ -61,7 +58,7 @@ do_action( 'bp_before_members_loop' ); ?>
 			 *
 			 * @since 1.1.0
 			 */
-			do_action( 'bp_directory_before_members_item' ); ?>
+			do_action('bp_directory_before_members_item'); ?>
 
 			<div class="item-avatar">
 				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
@@ -71,7 +68,7 @@ do_action( 'bp_before_members_loop' ); ?>
 				<div class="item-title">
 					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
 
-					<?php if ( bp_get_member_latest_update() ) : ?>
+					<?php if (bp_get_member_latest_update()) : ?>
 
 						<span class="update"> <?php bp_member_latest_update(); ?></span>
 
@@ -79,7 +76,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 				</div>
 
-				<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div>
+				<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date(bp_get_member_last_active(['relative' => false])); ?>"><?php bp_member_last_active(); ?></span></div>
 
 				<?php
 
@@ -88,7 +85,7 @@ do_action( 'bp_before_members_loop' ); ?>
 				 *
 				 * @since 1.1.0
 				 */
-				do_action( 'bp_directory_members_item' ); ?>
+				do_action('bp_directory_members_item'); ?>
 
 				<?php
 				 /***
@@ -110,7 +107,7 @@ do_action( 'bp_before_members_loop' ); ?>
 				 *
 				 * @since 1.1.0
 				 */
-				do_action( 'bp_directory_members_actions' ); ?>
+				do_action('bp_directory_members_actions'); ?>
 
 			</div>
 
@@ -128,22 +125,22 @@ do_action( 'bp_before_members_loop' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_after_directory_members_list' ); ?>
+	do_action('bp_after_directory_members_list'); ?>
 
 	<?php bp_member_hidden_fields(); ?>
 
 	<?php the_telabotanica_module('pagination', [
-		'id' => 'pag-bottom',
+		'id'       => 'pag-bottom',
 		'count_id' => 'member-dir-count-bottom',
 		'links_id' => 'member-dir-pag-bottom',
-		'context' => 'buddypress',
-		'type' => 'members'
+		'context'  => 'buddypress',
+		'type'     => 'members'
 	]); ?>
 
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( "Sorry, no members were found.", 'buddypress' ); ?></p>
+		<p><?php _e('Sorry, no members were found.', 'buddypress'); ?></p>
 	</div>
 
 <?php endif; ?>
@@ -155,4 +152,4 @@ do_action( 'bp_before_members_loop' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_members_loop' ); ?>
+do_action('bp_after_members_loop'); ?>

@@ -1,9 +1,6 @@
 <?php
 /**
  * BuddyPress - Group - Large centered content
- *
- * @package BuddyPress
- * @subpackage bp-legacy
  */
 ?>
 
@@ -16,7 +13,7 @@
        *
        * @since 1.2.0
        */
-      do_action( 'bp_before_group_plugin_template' ); ?>
+      do_action('bp_before_group_plugin_template'); ?>
 
       <?php
       /**
@@ -24,7 +21,7 @@
        *
        * @since 1.0.0
        */
-      do_action( 'bp_template_content' ); ?>
+      do_action('bp_template_content'); ?>
 
       <?php
       /**
@@ -32,7 +29,7 @@
        *
        * @since 1.2.0
        */
-      do_action( 'bp_after_group_plugin_template' );
+      do_action('bp_after_group_plugin_template');
       ?>
     </div>
   </div>

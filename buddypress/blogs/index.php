@@ -1,9 +1,6 @@
 <?php
 /**
  * BuddyPress - Blogs
- *
- * @package BuddyPress
- * @subpackage bp-legacy
  */
 
 /**
@@ -11,7 +8,7 @@
  *
  * @since 2.3.0
  */
-do_action( 'bp_before_directory_blogs_page' ); ?>
+do_action('bp_before_directory_blogs_page'); ?>
 
 <div id="buddypress">
 
@@ -22,7 +19,7 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_before_directory_blogs' ); ?>
+	do_action('bp_before_directory_blogs'); ?>
 
 	<?php
 
@@ -31,10 +28,10 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_blogs_content' ); ?>
+	do_action('bp_before_directory_blogs_content'); ?>
 
 	<?php /* Backward compatibility for inline search form. Use template part instead. */ ?>
-	<?php if ( has_filter( 'bp_directory_blogs_search_form' ) ) : ?>
+	<?php if (has_filter('bp_directory_blogs_search_form')) : ?>
 
 		<div id="blog-dir-search" class="dir-search" role="search">
 			<?php bp_directory_blogs_search_form(); ?>
@@ -42,7 +39,7 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 
 	<?php else : ?>
 
-		<?php bp_get_template_part( 'common/search/dir-search-form' ); ?>
+		<?php bp_get_template_part('common/search/dir-search-form'); ?>
 
 	<?php endif; ?>
 
@@ -53,17 +50,17 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 2.3.0
 	 */
-	do_action( 'bp_before_directory_blogs_tabs' ); ?>
+	do_action('bp_before_directory_blogs_tabs'); ?>
 
 	<form action="" method="post" id="blogs-directory-form" class="dir-form">
 
-		<div class="item-list-tabs" aria-label="<?php esc_attr_e( 'Sites directory main navigation', 'buddypress' ); ?>" role="navigation">
+		<div class="item-list-tabs" aria-label="<?php esc_attr_e('Sites directory main navigation', 'buddypress'); ?>" role="navigation">
 			<ul>
-				<li class="selected" id="blogs-all"><a href="<?php bp_root_domain(); ?>/<?php bp_blogs_root_slug(); ?>"><?php printf( __( 'All Sites %s', 'buddypress' ), '<span>' . bp_get_total_blog_count() . '</span>' ); ?></a></li>
+				<li class="selected" id="blogs-all"><a href="<?php bp_root_domain(); ?>/<?php bp_blogs_root_slug(); ?>"><?php printf(__('All Sites %s', 'buddypress'), '<span>' . bp_get_total_blog_count() . '</span>'); ?></a></li>
 
-				<?php if ( is_user_logged_in() && bp_get_total_blog_count_for_user( bp_loggedin_user_id() ) ) : ?>
+				<?php if (is_user_logged_in() && bp_get_total_blog_count_for_user(bp_loggedin_user_id())) : ?>
 
-					<li id="blogs-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_blogs_slug(); ?>"><?php printf( __( 'My Sites %s', 'buddypress' ), '<span>' . bp_get_total_blog_count_for_user( bp_loggedin_user_id() ) . '</span>' ); ?></a></li>
+					<li id="blogs-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_blogs_slug(); ?>"><?php printf(__('My Sites %s', 'buddypress'), '<span>' . bp_get_total_blog_count_for_user(bp_loggedin_user_id()) . '</span>'); ?></a></li>
 
 				<?php endif; ?>
 
@@ -74,12 +71,12 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_blogs_directory_blog_types' ); ?>
+				do_action('bp_blogs_directory_blog_types'); ?>
 
 			</ul>
 		</div><!-- .item-list-tabs -->
 
-		<div class="item-list-tabs" id="subnav" aria-label="<?php esc_attr_e( 'Sites directory secondary navigation', 'buddypress' ); ?>" role="navigation">
+		<div class="item-list-tabs" id="subnav" aria-label="<?php esc_attr_e('Sites directory secondary navigation', 'buddypress'); ?>" role="navigation">
 			<ul>
 
 				<?php
@@ -89,15 +86,15 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 				 *
 				 * @since 1.5.0
 				 */
-				do_action( 'bp_blogs_directory_blog_sub_types' ); ?>
+				do_action('bp_blogs_directory_blog_sub_types'); ?>
 
 				<li id="blogs-order-select" class="last filter">
 
-					<label for="blogs-order-by"><?php _e( 'Order By:', 'buddypress' ); ?></label>
+					<label for="blogs-order-by"><?php _e('Order By:', 'buddypress'); ?></label>
 					<select id="blogs-order-by">
-						<option value="active"><?php _e( 'Last Active', 'buddypress' ); ?></option>
-						<option value="newest"><?php _e( 'Newest', 'buddypress' ); ?></option>
-						<option value="alphabetical"><?php _e( 'Alphabetical', 'buddypress' ); ?></option>
+						<option value="active"><?php _e('Last Active', 'buddypress'); ?></option>
+						<option value="newest"><?php _e('Newest', 'buddypress'); ?></option>
+						<option value="alphabetical"><?php _e('Alphabetical', 'buddypress'); ?></option>
 
 						<?php
 
@@ -106,7 +103,7 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 						 *
 						 * @since 1.2.0
 						 */
-						do_action( 'bp_blogs_directory_order_options' ); ?>
+						do_action('bp_blogs_directory_order_options'); ?>
 
 					</select>
 				</li>
@@ -115,12 +112,12 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 
 		<h2 class="bp-screen-reader-text"><?php
 			/* translators: accessibility text */
-			_e( 'Sites directory', 'buddypress' );
+			_e('Sites directory', 'buddypress');
 		?></h2>
 
 		<div id="blogs-dir-list" class="blogs dir-list">
 
-			<?php bp_get_template_part( 'blogs/blogs-loop' ); ?>
+			<?php bp_get_template_part('blogs/blogs-loop'); ?>
 
 		</div><!-- #blogs-dir-list -->
 
@@ -131,9 +128,9 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_directory_blogs_content' ); ?>
+		do_action('bp_directory_blogs_content'); ?>
 
-		<?php wp_nonce_field( 'directory_blogs', '_wpnonce-blogs-filter' ); ?>
+		<?php wp_nonce_field('directory_blogs', '_wpnonce-blogs-filter'); ?>
 
 		<?php
 
@@ -142,7 +139,7 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_after_directory_blogs_content' ); ?>
+		do_action('bp_after_directory_blogs_content'); ?>
 
 	</form><!-- #blogs-directory-form -->
 
@@ -153,7 +150,7 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_after_directory_blogs' ); ?>
+	do_action('bp_after_directory_blogs'); ?>
 
 </div>
 
@@ -164,4 +161,4 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
  *
  * @since 2.3.0
  */
-do_action( 'bp_after_directory_blogs_page' );
+do_action('bp_after_directory_blogs_page');

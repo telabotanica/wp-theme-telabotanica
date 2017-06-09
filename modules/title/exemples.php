@@ -1,4 +1,5 @@
 <?php
+
 return [
 	'Standard' => [
 		'title' => 'Un titre'

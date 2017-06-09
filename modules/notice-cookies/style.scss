@@ -1,0 +1,28 @@
+.notice-cookies {
+	background: $vert-moyen;
+	bottom: 0;
+	color: $blanc;
+	// hidden by default, shown if needed using JS
+	display: none;
+	font-family: $ubuntu;
+	font-size: 1.6rem;
+	font-weight: $regular;
+	left: 0;
+	overflow: hidden;
+	padding: 3rem;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+
+	&-text {
+		border-left: 0.4rem solid $vert-clair-vif;
+		float: left;
+		line-height: 1.4;
+		max-width: 80rem;
+		padding-left: 3rem;
+	}
+
+	&-buttons {
+		float: right;
+	}
+}

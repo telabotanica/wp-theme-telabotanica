@@ -57,6 +57,7 @@ $telabotanica_modules = [
 	'nav-project',
 	'nav-tabs',
 	'notice',
+	'notice-cookies',
 	'newsletter',
 	'pagination',
 	'search-box',

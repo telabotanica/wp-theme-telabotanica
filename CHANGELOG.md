@@ -57,6 +57,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `map-events` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
+* module `notice-cookies` ajouté
 * module `pagination` : support de la pagination Buddypress
 * module `search-box` :
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page

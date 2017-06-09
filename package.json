@@ -31,6 +31,7 @@
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.10.1",
     "jquery-accessible-accordion-aria": "^2.3.0",
+    "js-cookie": "^2.1.4",
     "leaflet": "^1.0.3",
     "lodash.debounce": "^4.0.8",
     "lodash.defer": "^4.1.0",

@@ -1,5 +1,3 @@
-'use strict';
-
 var _ = _ || {};
 _.defer = require('lodash.defer');
 _.each = require('lodash.foreach');
@@ -7,9 +5,11 @@ _.map = require('lodash.map');
 _.throttle = require('lodash.throttle');
 
 require('./affix.js');
-var Tela = window.Tela || {};
 
-Tela.toc = (function(){
+var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
+
+Tela.modules.toc = (function(){
 
 	var defaultOptions = {
 		anchorsSelector: '.component-title.level-2 .component-title-anchor',
@@ -105,5 +105,5 @@ Tela.toc = (function(){
 })();
 
 $(document).ready(function(){
-	Tela.toc('.toc');
+	Tela.modules.toc('.toc');
 });

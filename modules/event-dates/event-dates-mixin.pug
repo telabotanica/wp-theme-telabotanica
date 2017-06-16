@@ -1,0 +1,13 @@
+//- This file is only meant to be included in other modules
+//- and then used as a mixin: +event-dates({ ... })
+mixin event-dates(data)
+	- var tag = data.href ? 'a' : 'div'
+	#{tag}.event-dates(href=data.href class=data.modifiers title=data.title)
+		if data.start
+			time.event-dates-item(datetime=data.start.datetime)
+				.event-dates-day= data.start.day
+				.event-dates-month= data.start.month
+		if data.end
+			time.event-dates-item.is-end(datetime=data.end.datetime)
+				.event-dates-day= data.end.day
+				.event-dates-month= data.end.month

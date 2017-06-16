@@ -36,6 +36,7 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout d'espace en-dessous
 	* support de multiples pages parentes
 * module `card-project` : pas de lien dans la description
+* module `categories-labels` : refactoring avec Pug
 * module `comment-form` ajouté
 * module `comments` ajouté
 * module `cover` : utilise désormais une image au hasard si aucune n'est définie
@@ -43,6 +44,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `cover-member` ajouté
 * module `cover-project` : bouton vers site externe ajouté
 * module `error-page` ajouté
+* module `event-dates` : refactoring avec Pug
 * module `feed` ajouté
 * module `feed-date` ajouté
 * module `feed-item` : ajouté + refactoring avec Pug
@@ -54,13 +56,17 @@ plus de détails sur http://semver.org/lang/fr/
 	* utilise maintenant l'avatar BuddyPress
 	* menus déroulants
 * module `header-dashboard` ajouté
+* module `list-articles` : refactoring avec `list-articles-item`
+* module `list-articles-item` ajouté
 * module `map-events` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
 * module `notice-cookies` ajouté
 * module `pagination` : support de la pagination Buddypress
 * module `search-box` :
+	* refactoring avec deux cas : instantsearch ou autocomplete
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page
+* module `search-hit` ajouté
 * module `title` : support d'un suffixe optionnel
 * module `toc` :
 	* ajout du comportement "affix" (reste fixe lors du scroll)

@@ -1,7 +1,22 @@
 <?php function telabotanica_module_categories_labels($data) {
+	global $pug;
 
-  echo '<span class="categories-labels">';
-  the_category( ' ' );
-  echo '</span>';
+	$defaults = [
+		'items' => []
+	];
 
+	$data = telabotanica_styleguide_data($defaults, $data);
+
+	if ( empty($data->items) ) {
+		foreach ( get_the_category() as $category ) {
+			$data->items[] = [
+				'href' => get_category_link( $category->term_id ),
+				'text' => $category->name
+			];
+		}
+	}
+
+	echo $pug->render(__DIR__ . '/categories-labels.pug', [
+		'data' => $data
+	]);
 }

@@ -1,8 +1,7 @@
-'use strict';
-
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.notice = (function(){
+Tela.modules.notice = (function(){
 
   function module(selector){
     var $el = $(selector),
@@ -33,5 +32,5 @@ Tela.notice = (function(){
 })();
 
 $(document).ready(function(){
-  Tela.notice('.notice');
+  Tela.modules.notice('.notice');
 });

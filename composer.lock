@@ -4,20 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78c10e9b0f7a5b4b8b1926cc9bdf3778",
+    "content-hash": "cd4d0ce48b2aec431a0e7a61a8b12cd9",
     "packages": [
         {
-            "name": "js-phpize/js-phpize",
-            "version": "1.3.0",
+            "name": "algolia/algoliasearch-client-php",
+            "version": "1.18.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pug-php/js-phpize.git",
-                "reference": "32d49ff4766329792e19df89b4c0b88256d664b9"
+                "url": "https://github.com/algolia/algoliasearch-client-php.git",
+                "reference": "77aeb5f3856c1460432e2ccb9df5634c37c0b9f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/32d49ff4766329792e19df89b4c0b88256d664b9",
-                "reference": "32d49ff4766329792e19df89b4c0b88256d664b9",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/77aeb5f3856c1460432e2ccb9df5634c37c0b9f3",
+                "reference": "77aeb5f3856c1460432e2ccb9df5634c37c0b9f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "satooshi/php-coveralls": "0.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "AlgoliaSearch": "src/",
+                    "AlgoliaSearch\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Algolia Team",
+                    "email": "contact@algolia.com"
+                },
+                {
+                    "name": "Ryan T. Catlin",
+                    "email": "ryan.catlin@gmail.com"
+                },
+                {
+                    "name": "Jonathan H. Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Algolia Search API Client for PHP",
+            "homepage": "https://github.com/algolia/algoliasearch-client-php",
+            "time": "2017-05-22T14:50:28+00:00"
+        },
+        {
+            "name": "js-phpize/js-phpize",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pug-php/js-phpize.git",
+                "reference": "46d602e3c36b66089c6a38844211676fc877a36f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/46d602e3c36b66089c6a38844211676fc877a36f",
+                "reference": "46d602e3c36b66089c6a38844211676fc877a36f",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +95,49 @@
                 }
             ],
             "description": "Convert js-like syntax to standalone PHP code.",
-            "time": "2017-02-14T09:43:13+00:00"
+            "time": "2017-05-25T14:19:37+00:00"
+        },
+        {
+            "name": "nodejs-php-fallback/nodejs-php-fallback",
+            "version": "1.2.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kylekatarnls/nodejs-php-fallback.git",
+                "reference": "b7a1e744ec5ad3e642da2c5d20c6fc69047e4b37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kylekatarnls/nodejs-php-fallback/zipball/b7a1e744ec5ad3e642da2c5d20c6fc69047e4b37",
+                "reference": "b7a1e744ec5ad3e642da2c5d20c6fc69047e4b37",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "composer/composer": "^1.2",
+                "phpunit/phpunit": ">=4.8 <6.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "NodejsPhpFallback\\ComposerPlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "NodejsPhpFallback\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Kyle",
+                    "email": "kylekatarnls@gmail.com"
+                }
+            ],
+            "description": "Allow you to call node.js module or scripts throught PHP and call a fallback function if node.js is not available",
+            "time": "2017-05-12T10:16:01+00:00"
         },
         {
             "name": "proteusthemes/wai-aria-walker-nav-menu",
@@ -85,20 +178,21 @@
         },
         {
             "name": "pug-php/pug",
-            "version": "2.5.5",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pug-php/pug.git",
-                "reference": "7049adeead44619b4d6624a894b4d4a37a278a99"
+                "reference": "403c8c0a3af5e71b6cea8c44a50564caf7052bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/pug/zipball/7049adeead44619b4d6624a894b4d4a37a278a99",
-                "reference": "7049adeead44619b4d6624a894b4d4a37a278a99",
+                "url": "https://api.github.com/repos/pug-php/pug/zipball/403c8c0a3af5e71b6cea8c44a50564caf7052bd6",
+                "reference": "403c8c0a3af5e71b6cea8c44a50564caf7052bd6",
                 "shasum": ""
             },
             "require": {
                 "js-phpize/js-phpize": "^1.2",
+                "nodejs-php-fallback/nodejs-php-fallback": "^1.2",
                 "php": ">=5.3.0"
             },
             "replace": {
@@ -109,6 +203,11 @@
                 "phpunit/phpunit": ">=4.8 <6.0"
             },
             "type": "library",
+            "extra": {
+                "npm": {
+                    "pug-cli": "^1.0.0-alpha6"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Pug\\": "src/",
@@ -239,7 +338,7 @@
                 "pug",
                 "template"
             ],
-            "time": "2017-02-16T15:00:27+00:00"
+            "time": "2017-05-29T14:34:40+00:00"
         }
     ],
     "packages-dev": [],

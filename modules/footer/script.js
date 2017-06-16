@@ -1,12 +1,11 @@
-'use strict';
-
 var iconTemplate = require('../icon/icon.pug');
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.footer = (function(){
+Tela.modules.footer = (function(){
 
-	function footer(selector){
+	function module(selector){
 		var $el		 = $(selector),
 			$itemsMore;
 
@@ -24,12 +23,12 @@ Tela.footer = (function(){
 
 	return function(selector){
 		return $(selector).each(function(){
-			footer(this);
+			module(this);
 		});
 	};
 
 })();
 
 $(document).ready(function(){
-	Tela.footer('.footer');
+	Tela.modules.footer('.footer');
 });

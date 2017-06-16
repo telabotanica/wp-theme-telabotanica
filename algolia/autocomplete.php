@@ -19,14 +19,14 @@
 
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
 	<a class="search-results-hit-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-		<# if ( data.images.thumbnail ) { #>
-			<img class="search-results-hit-post-thumbnail" src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" />
+		<# if ( data.featured_image ) { #>
+			<img class="search-results-hit-post-thumbnail" src="{{ data.featured_image }}" alt="{{ data.post_title }}" />
 		<# } #>
 		<div class="search-results-hit-post-attributes">
 			<span class="search-results-hit-post-title">{{{ data._highlightResult.post_title.value }}}</span>
 
 			<#
-			var attributes = ['content', 'title6', 'title5', 'title4', 'title3', 'title2', 'title1'];
+			var attributes = ['post_content'];
 			var attribute_name;
 			var relevant_content = '';
 			for ( var index in attributes ) {

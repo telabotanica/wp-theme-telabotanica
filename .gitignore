@@ -2,3 +2,5 @@ node_modules/
 vendor/
 /nbproject
 /dist
+npm-debug.log
+/cache

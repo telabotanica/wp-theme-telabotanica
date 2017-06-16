@@ -1,11 +1,11 @@
-'use strict';
-
 var PubSub = require('pubsub-js');
+
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.blockDashboardImages = (function(){
+Tela.modules.blockDashboardImages = (function(){
 
-	function blockDashboardImages(selector){
+	function module(selector){
 		var $el = $(selector),
 			$titleSuffix,
 			$content,
@@ -77,12 +77,12 @@ Tela.blockDashboardImages = (function(){
 
 	return function(selector){
 		return $(selector).each(function(){
-			blockDashboardImages(this);
+			module(this);
 		});
 	};
 
 })();
 
 $(document).ready(function(){
-	Tela.blockDashboardImages('.block-dashboard-images');
+	Tela.modules.blockDashboardImages('.block-dashboard-images');
 });

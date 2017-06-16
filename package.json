@@ -24,12 +24,13 @@
   "devDependencies": {
     "accessible-mega-menu": "git+https://github.com/adobe-accessibility/Accessible-Mega-Menu.git",
     "algoliasearch": "^3.21.1",
-    "autocomplete.js": "^0.27.0",
+    "autocomplete.js": "^0.28.1",
     "autoprefixer": "^6.7.7",
     "css-loader": "^0.26.4",
     "css-mqpacker": "^5.0.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.10.1",
+    "instantsearch.js": "^2.0.0-beta.4",
     "jquery-accessible-accordion-aria": "^2.3.0",
     "js-cookie": "^2.1.4",
     "leaflet": "^1.0.3",
@@ -57,6 +58,6 @@
     "tether": "^1.4.0",
     "url-loader": "^0.5.7",
     "velocity-animate": "^1.5.0",
-    "webpack": "^2.5.1"
+    "webpack": "^2.6.1"
   }
 }

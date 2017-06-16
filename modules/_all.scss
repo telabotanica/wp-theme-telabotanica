@@ -34,6 +34,7 @@
 @import "header-dashboard/style";
 @import "icon/style";
 @import "list-articles/style";
+@import "list-articles-item/style";
 @import "list-projects/style";
 // Login n'est pas inclus dans le bundle mais dans login-style.scss
 // @import "login/style";
@@ -58,6 +59,7 @@
 @import "registration-form/style";
 @import "search-box/style";
 @import "search-filters/style";
+@import "search-hit/style";
 @import "search-results/style";
 @import "share/style";
 @import "suggest-news-form/style";

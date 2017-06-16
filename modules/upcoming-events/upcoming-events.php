@@ -45,13 +45,10 @@
 						</a>',
 						get_permalink(),
 						get_telabotanica_module('event-dates', [
-							'date' => get_field( 'date', null, false ),
-							'date_end' => get_field( 'date_end', null, false ),
-							'modifiers' => 'small',
-							'tag' => 'div'
+							'modifiers' => 'small'
 						]),
 						get_the_title(),
-						telabotanica_format_place( get_field( 'place' ), false )
+						telabotanica_format_place( get_field( 'place' ) )
 					);
 					echo '</li>';
 				endwhile;

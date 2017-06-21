@@ -45,7 +45,7 @@
 							'{structures_count}'
 						], [
 							number_format_i18n( 110 ), // TODO
-							number_format_i18n( bp_get_total_member_count() ),
+							bp_get_total_member_count(),
 							number_format_i18n( 172 ) // TODO
 						], $item['title']);
 						return $item;

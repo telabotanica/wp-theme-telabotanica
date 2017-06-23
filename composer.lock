@@ -59,16 +59,16 @@
         },
         {
             "name": "js-phpize/js-phpize",
-            "version": "1.4.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pug-php/js-phpize.git",
-                "reference": "46d602e3c36b66089c6a38844211676fc877a36f"
+                "reference": "c5c2a913fd75d4e65d783639dbfea09547ed1d06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/46d602e3c36b66089c6a38844211676fc877a36f",
-                "reference": "46d602e3c36b66089c6a38844211676fc877a36f",
+                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/c5c2a913fd75d4e65d783639dbfea09547ed1d06",
+                "reference": "c5c2a913fd75d4e65d783639dbfea09547ed1d06",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +95,7 @@
                 }
             ],
             "description": "Convert js-like syntax to standalone PHP code.",
-            "time": "2017-05-25T14:19:37+00:00"
+            "time": "2017-06-20T21:00:49+00:00"
         },
         {
             "name": "nodejs-php-fallback/nodejs-php-fallback",
@@ -178,16 +178,16 @@
         },
         {
             "name": "pug-php/pug",
-            "version": "2.6.0",
+            "version": "2.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pug-php/pug.git",
-                "reference": "403c8c0a3af5e71b6cea8c44a50564caf7052bd6"
+                "reference": "dad6659df28275a8bc3f99f4d5b5589b2d9cded5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/pug/zipball/403c8c0a3af5e71b6cea8c44a50564caf7052bd6",
-                "reference": "403c8c0a3af5e71b6cea8c44a50564caf7052bd6",
+                "url": "https://api.github.com/repos/pug-php/pug/zipball/dad6659df28275a8bc3f99f4d5b5589b2d9cded5",
+                "reference": "dad6659df28275a8bc3f99f4d5b5589b2d9cded5",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "pug",
                 "template"
             ],
-            "time": "2017-05-29T14:34:40+00:00"
+            "time": "2017-06-18T10:20:47+00:00"
         }
     ],
     "packages-dev": [],

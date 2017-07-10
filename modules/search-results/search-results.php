@@ -40,7 +40,7 @@ function telabotanica_module_search_results($data) {
 	echo '<div class="search-results">';
 
 	foreach ( $data->results as $results ) :
-		$link_more = '/?s=' . $results['query'] . '&in=' . $indices_ids[$results['index']]; // TODO
+		$link_more = home_url() . '/?s=' . $results['query'] . '&in=' . $indices_ids[$results['index']]; // TODO
 
 		echo '<div class="search-results-index has-more">';
 

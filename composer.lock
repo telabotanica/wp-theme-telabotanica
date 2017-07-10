@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "3fb8633695ae8f0c6a504f74df9157a9",
     "content-hash": "cd4d0ce48b2aec431a0e7a61a8b12cd9",
     "packages": [
         {
@@ -55,20 +56,20 @@
             ],
             "description": "Algolia Search API Client for PHP",
             "homepage": "https://github.com/algolia/algoliasearch-client-php",
-            "time": "2017-05-22T14:50:28+00:00"
+            "time": "2017-05-22 14:50:28"
         },
         {
             "name": "js-phpize/js-phpize",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pug-php/js-phpize.git",
-                "reference": "c5c2a913fd75d4e65d783639dbfea09547ed1d06"
+                "reference": "e15d84b476a4d34815810396f8eb05d8c56f2164"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/c5c2a913fd75d4e65d783639dbfea09547ed1d06",
-                "reference": "c5c2a913fd75d4e65d783639dbfea09547ed1d06",
+                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/e15d84b476a4d34815810396f8eb05d8c56f2164",
+                "reference": "e15d84b476a4d34815810396f8eb05d8c56f2164",
                 "shasum": ""
             },
             "require": {
@@ -95,20 +96,20 @@
                 }
             ],
             "description": "Convert js-like syntax to standalone PHP code.",
-            "time": "2017-06-20T21:00:49+00:00"
+            "time": "2017-06-30 16:33:40"
         },
         {
             "name": "nodejs-php-fallback/nodejs-php-fallback",
-            "version": "1.2.8",
+            "version": "1.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kylekatarnls/nodejs-php-fallback.git",
-                "reference": "b7a1e744ec5ad3e642da2c5d20c6fc69047e4b37"
+                "reference": "e89c8e7d784d8faa2550abeefe3ee5141924f09e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kylekatarnls/nodejs-php-fallback/zipball/b7a1e744ec5ad3e642da2c5d20c6fc69047e4b37",
-                "reference": "b7a1e744ec5ad3e642da2c5d20c6fc69047e4b37",
+                "url": "https://api.github.com/repos/kylekatarnls/nodejs-php-fallback/zipball/e89c8e7d784d8faa2550abeefe3ee5141924f09e",
+                "reference": "e89c8e7d784d8faa2550abeefe3ee5141924f09e",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +138,7 @@
                 }
             ],
             "description": "Allow you to call node.js module or scripts throught PHP and call a fallback function if node.js is not available",
-            "time": "2017-05-12T10:16:01+00:00"
+            "time": "2017-06-25 12:09:52"
         },
         {
             "name": "proteusthemes/wai-aria-walker-nav-menu",
@@ -174,7 +175,7 @@
                 }
             ],
             "description": "WordPress menu walker which adds appropriate WIA-ARIA roles to dropdown menus.",
-            "time": "2016-05-18T18:48:49+00:00"
+            "time": "2016-05-18 18:48:49"
         },
         {
             "name": "pug-php/pug",
@@ -338,7 +339,7 @@
                 "pug",
                 "template"
             ],
-            "time": "2017-06-18T10:20:47+00:00"
+            "time": "2017-06-18 10:20:47"
         }
     ],
     "packages-dev": [],

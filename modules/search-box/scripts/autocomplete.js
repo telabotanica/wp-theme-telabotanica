@@ -101,8 +101,7 @@ Tela.modules.searchBox.autocomplete = (function(){
 							return wp.template('autocomplete-header')({
 								label: config.label,
 								nbHits: algoliaResponse.nbHits,
-								 // TODO improve composition of URL to search results
-								resultsUrl: '/?s=' + algoliaResponse.query + '&in=' + config.index_id
+								resultsUrl: algolia.home_url + '/?s=' + algoliaResponse.query + '&in=' + config.index_id
 							});
 						},
 						empty: wp.template('autocomplete-empty'),

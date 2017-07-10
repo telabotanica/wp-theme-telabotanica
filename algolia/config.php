@@ -1,5 +1,6 @@
 <?php
 return [
+	'home_url'            => home_url(),
 	'debug'               => defined( 'WP_DEBUG' ) && WP_DEBUG,
 	'application_id'      => ALGOLIA_APPLICATION_ID,
 	'search_api_key'      => ALGOLIA_SEARCH_API_KEY,

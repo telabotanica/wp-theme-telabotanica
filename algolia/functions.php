@@ -18,11 +18,11 @@ function telabotanica_algolia_check($notice = false) {
 /*
  * Initialize the client
  */
-function telabotanica_algolia_client() {
+function telabotanica_algolia_client($admin = false) {
 	if ( !telabotanica_algolia_check(true) ) { return; }
 	$private_config = telabotanica_algolia_config(true);
 
-	return new \AlgoliaSearch\Client($private_config['application_id'], $private_config['admin_api_key']);
+	return new \AlgoliaSearch\Client($private_config['application_id'], $admin ? $private_config['admin_api_key'] : $private_config['search_api_key']);
 }
 
 /*

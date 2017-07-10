@@ -13,10 +13,16 @@ Installer les dépendences du projet
 		composer install
 
 Définir les constantes suivantes dans `wp-config.php`:
-* `ALGOLIA_APPLICATION_ID`
-* `ALGOLIA_SEARCH_API_KEY`
-* `ALGOLIA_ADMIN_API_KEY`
-* `ALGOLIA_PREFIX` (correspondant à l'environnement en cours, par exemple `prod_`)
+```php
+/**
+ * Remplir ces valeurs avec les clés d'API du compte Algolia
+ */
+define('ALGOLIA_APPLICATION_ID',);
+define('ALGOLIA_SEARCH_API_KEY',);
+define('ALGOLIA_ADMIN_API_KEY',);
+define('ALGOLIA_PREFIX',); // (correspondant à l'environnement en cours, par exemple `prod_`)
+```
+
 
 ### Pendant le développement
 

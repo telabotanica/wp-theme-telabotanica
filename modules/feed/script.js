@@ -43,7 +43,10 @@ Tela.modules.feed = (function(){
 			// Call the APIs
 			console.log('load data !');
 			$.when(loadActualites(), loadObservations(), loadImages())
-				.then(renderContent);
+				.done(renderContent)
+				.fail(function(){
+					console.log('FAIL');
+				});
 		}
 
 		function loadActualites() {

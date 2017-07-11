@@ -36,7 +36,7 @@ mixin feed-item(data)
 			if data.title
 				h3.feed-item-title= data.title
 			if data.text
-				.feed-item-text= data.text
+				.feed-item-text!= data.text
 			if data.meta
 				.feed-item-meta
 					if data.meta.place

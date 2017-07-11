@@ -2,11 +2,11 @@ var feedItemTemplate = require('../feed-item/feed-item.pug');
 
 var _ = _ || {};
 _.each = require('lodash.foreach');
-_.groupBy = require('lodash.groupby');
-_.sortBy = require('lodash.sortby');
-_.maxBy = require('lodash.maxby');
-_.map = require('lodash.map');
 _.flatten = require('lodash.flatten');
+_.groupBy = require('lodash.groupby');
+_.map = require('lodash.map');
+_.maxBy = require('lodash.maxby');
+_.sortBy = require('lodash.sortby');
 
 var moment = require('moment');
 moment.locale('fr');
@@ -71,7 +71,7 @@ Tela.modules.feed = (function(){
 
 		function loadObservations() {
 			console.log('load obs !');
-			$.getJSON(apiUrls.observations, function(json){
+			return $.getJSON(apiUrls.observations, function(json){
 				_.each(json.resultats, function (item) {
 					data.items.push({
 						type: 'feed-item',
@@ -91,7 +91,7 @@ Tela.modules.feed = (function(){
 
 		function loadImages() {
 			console.log('load img !');
-			$.ajax({
+			return $.ajax({
 				type: "GET",
 				url: apiUrls.images,
 				dataType: "xml",
@@ -106,6 +106,7 @@ Tela.modules.feed = (function(){
 							image: $this.find('id').text().replace('L.', 'CRXS.')
 						});
 					});
+
 					// grouper par jour
 					var imagesByDay = _.groupBy(images, 'day');
 
@@ -129,7 +130,7 @@ Tela.modules.feed = (function(){
 		}
 
 		function renderContent(){
-			//console.log(data);
+			console.log('renderContent');
 			data.items = _.sortBy(data.items, 'date');
 			data.items = data.items.reverse();
 			data.items = _.groupBy(data.items, 'day');

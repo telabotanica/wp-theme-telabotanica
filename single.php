@@ -170,8 +170,8 @@ get_header(); ?>
 
 									endif; // FIN EVENEMENT
 
-									if ( get_field('contact') && !empty( get_field('contact')->name ) ) {
-										the_telabotanica_component('contact', get_field('contact'));
+									if ( get_field('contact_info') && !empty( get_field('contact_info')['contact'][0]['name'] ) ) {
+										the_telabotanica_component('contact', get_field('contact_info')['contact'][0]);
 									}
 									?>
 								</article>

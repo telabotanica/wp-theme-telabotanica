@@ -25,9 +25,9 @@ Tela.modules.blockDashboardMap = (function(){
 		function loadData(){
 			// Call the API
 			$.getJSON( apiUrl, function( json ) {
-				data.total = json.observations;
+				data.total = json.observationsPubliques;
 				updateSuffix();
-				publishTotalImages(json.images);
+				publishTotalImages(json.imagesLieesPubliques);
 			});
 		}
 

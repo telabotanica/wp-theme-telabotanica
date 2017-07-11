@@ -1,3 +1,5 @@
+var feedItemTemplate = require('../feed-item/feed-item.pug');
+
 var _ = _ || {};
 _.each = require('lodash.foreach');
 _.groupBy = require('lodash.groupby');
@@ -126,16 +128,6 @@ Tela.modules.feed = (function(){
 			});
 		}
 
-		function onTotalImages(e, images) {
-			// images contains the total of images for this user
-			data.total = images;
-			updateSuffix();
-		}
-
-		function updateSuffix(){
-			$titleSuffix.text(data.total);
-		}
-
 		function renderContent(){
 			//console.log(data);
 			data.items = _.sortBy(data.items, 'date');
@@ -152,12 +144,12 @@ Tela.modules.feed = (function(){
 			data.items = _.flatten(groupedItems);
 
 			console.log(data.items);
-			/*var content = '<div class="block-dashboard-content-images">';
-			$.each(data.items, function(){
-				content += '<a href="' + this.href + '"><img src="' + this.image + '" alt="" /></a>';
-			})
-			content += '</div>';
-			$content.prepend(content);*/
+
+			var content = '';
+			_.each(data.items, function(item){
+				content += feedItemTemplate({data: item});
+			});
+			$content.append(content);
 		}
 
 

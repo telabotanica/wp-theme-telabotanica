@@ -238,3 +238,14 @@ function telabotanica_admin_theme_style() {
 	wp_enqueue_style('telabotanica', get_template_directory_uri() . '/admin/style.css');
 }
 add_action('admin_enqueue_scripts', 'telabotanica_admin_theme_style');
+
+/**
+ * Adds "upload_files" capability to "contributor" role after theme switch
+ *
+ * @since TelaBotanica 0.1
+ */
+function telabotanica_add_upload_capability_to_contributor_role() {
+	$contributor = get_role('contributor');
+	$contributor->add_cap('upload_files');
+}
+add_action( 'after_switch_theme', 'telabotanica_add_upload_capability_to_contributor_role' );

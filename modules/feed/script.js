@@ -8,6 +8,8 @@ _.map = require('lodash.map');
 _.maxBy = require('lodash.maxby');
 _.sortBy = require('lodash.sortby');
 
+var he = require('he');
+
 var moment = require('moment');
 moment.locale('fr');
 
@@ -27,14 +29,15 @@ Tela.modules.feed = (function(){
 
 		function init(){
 			$content = $el.find('.feed-items');
+			var userId = $el.data('userId');
 
 			// Get the URL to the API from the data-* attribute
 			apiUrls = {
-				// @TODO n° de l'auteur avec get_user_id()
-				actualites: 'http://localhost/test/wp-json/wp/v2/posts?author=1&_embed',
-				// @TODO vraies URL et format CRXS
+				actualites: 'http://localhost/test/wp-json/wp/v2/posts?author=' + userId + '&_embed',
 				observations: 'http://localhost/test/wp-content/themes/telabotanica/modules/feed/observations.json',
-				images: 'http://localhost/test/wp-content/themes/telabotanica/modules/feed/images.xml'
+				images: 'http://localhost/test/wp-content/themes/telabotanica/modules/feed/images.xml',
+				_observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
+				_images: 'https://api.tela-botanica.org/service:cel:CelSyndicationImage/multicriteres/atom/M?utilisateur=mathias@tela-botanica.org'
 			};
 
 			loadData();
@@ -57,7 +60,7 @@ Tela.modules.feed = (function(){
 						article: true,
 						href: item.link,
 						image: 'wp:featuredmedia' in item._embedded ? item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url : false,
-						title: item.title.rendered,
+						title: he.decode(item.title.rendered),
 						date: item.modified_gmt,
 						day: item.modified_gmt.substring(0,10),
 						text: item.excerpt.rendered,
@@ -78,7 +81,7 @@ Tela.modules.feed = (function(){
 						type: 'feed-item',
 						href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
 						target: '_blank',
-						image: ('images' in item && item.images.length) ? item.images[0]['binaire.href'] : false,
+						image: ('images' in item && item.images.length) ? item.images[0]['binaire.href'].replace('XL.', 'CRXS.') : false,
 						title: item['determination.ns'],
 						date: item.date_transmission,
 						day: item.date_transmission.substring(0,10),

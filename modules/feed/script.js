@@ -30,6 +30,7 @@ Tela.modules.feed = (function(){
 
 			// Get the URL to the API from the data-* attribute
 			apiUrls = {
+				// @TODO n° de l'auteur avec get_user_id()
 				actualites: 'http://localhost/test/wp-json/wp/v2/posts?author=1&_embed',
 				// @TODO vraies URL et format CRXS
 				observations: 'http://localhost/test/wp-content/themes/telabotanica/modules/feed/observations.json',
@@ -41,7 +42,6 @@ Tela.modules.feed = (function(){
 
 		function loadData(){
 			// Call the APIs
-			console.log('load data !');
 			$.when(loadActualites(), loadObservations(), loadImages())
 				.done(renderContent)
 				.fail(function(){
@@ -50,7 +50,6 @@ Tela.modules.feed = (function(){
 		}
 
 		function loadActualites() {
-			console.log('load actu !');
 			return $.getJSON(apiUrls.actualites, function(json){
 				_.each(json, function (item) {
 					data.items.push({
@@ -73,12 +72,12 @@ Tela.modules.feed = (function(){
 		}
 
 		function loadObservations() {
-			console.log('load obs !');
 			return $.getJSON(apiUrls.observations, function(json){
 				_.each(json.resultats, function (item) {
 					data.items.push({
 						type: 'feed-item',
 						href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
+						target: '_blank',
 						image: ('images' in item && item.images.length) ? item.images[0]['binaire.href'] : false,
 						title: item['determination.ns'],
 						date: item.date_transmission,
@@ -93,7 +92,6 @@ Tela.modules.feed = (function(){
 		}
 
 		function loadImages() {
-			console.log('load img !');
 			return $.ajax({
 				type: "GET",
 				url: apiUrls.images,
@@ -118,9 +116,10 @@ Tela.modules.feed = (function(){
 						data.items.push({
 							type: 'feed-item',
 							href: 'http://www.tela-botanica.org/appli:cel',
+							target: '_blank',
 							images: _.map(item, 'image').slice(0,maxItems),
 							title: item.length + ' photo' + (item.length > 1 ? 's' : '') + ' ajoutée' + (item.length > 1 ? 's' : ''),
-							date: _.maxBy(item, 'date'),
+							date: _.maxBy(item, 'date').date,
 							day: item[0].day,
 							text: 'Au Carnet en Ligne',
 							meta: {
@@ -133,21 +132,19 @@ Tela.modules.feed = (function(){
 		}
 
 		function renderContent(){
-			console.log('renderContent');
 			data.items = _.sortBy(data.items, 'date');
 			data.items = data.items.reverse();
 			data.items = _.groupBy(data.items, 'day');
 			var groupedItems = [];
 			for (var day in data.items) {
+				var d = data.items[day];
 				groupedItems.push({
 					type: 'feed-date',
-					text: moment(day).calendar()
+					text: moment(d[0].date).calendar()
 				});
 				groupedItems.push(data.items[day]);
 			}
 			data.items = _.flatten(groupedItems);
-
-			console.log(data.items);
 
 			var content = '';
 			_.each(data.items, function(item){

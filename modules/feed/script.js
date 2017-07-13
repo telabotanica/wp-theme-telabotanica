@@ -46,7 +46,7 @@ Tela.modules.feed = (function(){
 
 		function loadData(){
 			// Call the APIs
-			$.when(loadActualites(), loadObservations(), loadImages())
+			$.when(loadActualites()/*, loadObservations(), loadImages()*/)
 				.done(renderContent)
 				.fail(function(){
 					console.log('FAIL');
@@ -56,6 +56,11 @@ Tela.modules.feed = (function(){
 		function loadActualites() {
 			return $.getJSON(apiUrls.actualites, function(json){
 				_.each(json, function (item) {
+					console.log(item._embedded);
+					var categories = 'wp:term' in item._embedded ? _.map(item._embedded['wp:term'][0], function(term) {
+						return term.name;
+					}) : [];
+					categories = categories.join(', ');
 					data.items.push({
 						type: 'feed-item',
 						article: true,
@@ -66,9 +71,7 @@ Tela.modules.feed = (function(){
 						day: item.modified_gmt.substring(0,10),
 						text: item.excerpt.rendered,
 						meta: {
-							categories: 'wp:term' in item._embedded ? _.map(item._embedded['wp:term'][0], function(term) {
-								return term.name;
-							}) : []
+							categories: categories
 						}
 					});
 				});

@@ -30,14 +30,15 @@ Tela.modules.feed = (function(){
 		function init(){
 			$content = $el.find('.feed-items');
 			var userId = $el.data('userId');
+			//userId = 21236; //debug compte Mathias
 
 			// Get the URL to the API from the data-* attribute
 			apiUrls = {
 				actualites: 'http://localhost/test/wp-json/wp/v2/posts?author=' + userId + '&_embed',
-				observations: 'http://localhost/test/wp-content/themes/telabotanica/modules/feed/observations.json',
-				images: 'http://localhost/test/wp-content/themes/telabotanica/modules/feed/images.xml',
-				_observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
-				_images: 'https://api.tela-botanica.org/service:cel:CelSyndicationImage/multicriteres/atom/M?utilisateur=mathias@tela-botanica.org'
+				observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
+				images: 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId,
+				__observations: 'http://localhost/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
+				__images: 'http://localhost/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId
 			};
 
 			loadData();
@@ -95,42 +96,36 @@ Tela.modules.feed = (function(){
 		}
 
 		function loadImages() {
-			return $.ajax({
-				type: "GET",
-				url: apiUrls.images,
-				dataType: "xml",
-				success: function(xml){
-					var images = [];
-					$(xml).find('entry').each(function(){
-						var $this = $(this);
-						var date = $this.find('updated').text();
-						images.push({
-							date: date,
-							day: date.substring(0,10),
-							image: $this.find('id').text().replace('L.', 'CRXS.')
-						});
+			return $.getJSON(apiUrls.images, function(json){
+				var images = [];
+				_.each(json.resultats, function (item) {
+					var date = item.observation.date_transmission;
+					images.push({
+						date: date,
+						day: date.substring(0,10),
+						image: item['binaire.href']
 					});
+				});
 
-					// grouper par jour
-					var imagesByDay = _.groupBy(images, 'day');
+				// grouper par jour
+				var imagesByDay = _.groupBy(images, 'day');
 
-					// pousser des multi-items
-					_.each(imagesByDay, function (item, day) {
-						data.items.push({
-							type: 'feed-item',
-							href: 'http://www.tela-botanica.org/appli:cel',
-							target: '_blank',
-							images: _.map(item, 'image').slice(0,maxItems),
-							title: item.length + ' photo' + (item.length > 1 ? 's' : '') + ' ajoutée' + (item.length > 1 ? 's' : ''),
-							date: _.maxBy(item, 'date').date,
-							day: item[0].day,
-							text: 'Au Carnet en Ligne',
-							meta: {
-								text: ''
-							}
-						});
+				// pousser des multi-items
+				_.each(imagesByDay, function (item, day) {
+					data.items.push({
+						type: 'feed-item',
+						href: 'http://www.tela-botanica.org/appli:cel',
+						target: '_blank',
+						images: _.map(item, 'image').slice(0,maxItems),
+						title: item.length + ' photo' + (item.length > 1 ? 's' : '') + ' ajoutée' + (item.length > 1 ? 's' : ''),
+						date: _.maxBy(item, 'date').date,
+						day: item[0].day,
+						text: 'Au Carnet en Ligne',
+						meta: {
+							text: ''
+						}
 					});
-				}
+				});
 			});
 		}
 

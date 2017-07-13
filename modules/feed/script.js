@@ -37,8 +37,8 @@ Tela.modules.feed = (function(){
 				actualites: 'http://localhost/test/wp-json/wp/v2/posts?author=' + userId + '&_embed',
 				observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
 				images: 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId,
-				__observations: 'http://localhost/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
-				__images: 'http://localhost/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId
+				_observations: 'http://localhost/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
+				_images: 'http://localhost/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId
 			};
 
 			loadData();
@@ -46,7 +46,7 @@ Tela.modules.feed = (function(){
 
 		function loadData(){
 			// Call the APIs
-			$.when(loadActualites()/*, loadObservations(), loadImages()*/)
+			$.when(loadActualites(), loadObservations(), loadImages())
 				.done(renderContent)
 				.fail(function(){
 					console.log('FAIL');
@@ -56,7 +56,6 @@ Tela.modules.feed = (function(){
 		function loadActualites() {
 			return $.getJSON(apiUrls.actualites, function(json){
 				_.each(json, function (item) {
-					console.log(item._embedded);
 					var categories = 'wp:term' in item._embedded ? _.map(item._embedded['wp:term'][0], function(term) {
 						return term.name;
 					}) : [];
@@ -67,8 +66,8 @@ Tela.modules.feed = (function(){
 						href: item.link,
 						image: 'wp:featuredmedia' in item._embedded ? item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url : false,
 						title: he.decode(item.title.rendered),
-						date: item.modified_gmt,
-						day: item.modified_gmt.substring(0,10),
+						date: item.modified,
+						day: item.modified.substring(0,10),
 						text: item.excerpt.rendered,
 						meta: {
 							categories: categories

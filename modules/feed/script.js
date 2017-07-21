@@ -64,7 +64,12 @@ Tela.modules.feed = (function(){
 						type: 'feed-item',
 						article: true,
 						href: item.link,
-						image: 'wp:featuredmedia' in item._embedded ? item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url : false,
+						image: function() {
+							try {
+								return item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url;
+							} catch(e) {}
+							return false;
+						}(),
 						title: he.decode(item.title.rendered),
 						date: item.modified,
 						day: item.modified.substring(0,10),

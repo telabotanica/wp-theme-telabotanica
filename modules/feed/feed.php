@@ -8,7 +8,7 @@
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('feed', $data->modifiers);
 
-	echo '<div class="' . implode(' ', $data->modifiers) . '">';
+	echo '<div class="' . implode(' ', $data->modifiers) . '" data-user-id="' . get_current_user_id() . '">';
 
 		if ($data->title) {
 			the_telabotanica_module('title', $data->title);

@@ -11,6 +11,8 @@ mixin feed-item-link(data)
 //- and then used as a mixin: +feed-item({ ... })
 mixin feed-item(data)
 	- var modifiers = "feed-item";
+	if data.date && !data.text
+		- modifiers = modifiers + " is-date"
 	if data.image
 		- modifiers = modifiers + " has-image"
 	if data.images
@@ -36,7 +38,11 @@ mixin feed-item(data)
 			if data.title
 				h3.feed-item-title= data.title
 			if data.text
-				.feed-item-text= data.text
+				.feed-item-text!= data.text
+			else if data.date
+				.feed-item-text
+					+icon({icon: 'clock'})
+					!= data.date
 			if data.meta
 				.feed-item-meta
 					if data.meta.place

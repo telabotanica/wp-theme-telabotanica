@@ -30,23 +30,19 @@ Tela.modules.blockDashboardImages = (function(){
 		}
 
 		function loadData(){
+			// useful for local debugging:
+			// apiUrl = '/wp-content/themes/telabotanica/modules/feed/images.json';
 
 			// Call the API
-			$.ajax({
-				type: "GET",
-				url: apiUrl,
-				dataType: "xml",
-				success: function(xml){
-					$(xml).find('entry').slice(0, maxItems).each(function(){
-						var $this = $(this);
-						data.items.push({
-							href: $this.find('link').attr('href'),
-							image: $this.find('id').text().replace('L.', 'CRXS.')
-						});
+			$.getJSON(apiUrl, function(json){
+				_.each(json.resultats.slice(0, maxItems), function (item) {
+					data.items.push({
+						href: '#',
+						image: item['binaire.href']
 					});
+				});
 
-					renderContent();
-				}
+				renderContent();
 			});
 		}
 

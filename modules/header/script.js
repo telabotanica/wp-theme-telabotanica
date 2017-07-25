@@ -1,4 +1,4 @@
-require('accessible-mega-menu');
+require('jquery-accessible-subnav-dropdown/jquery-accessible-subnav-dropdown.js');
 var iconTemplate = require('../icon/icon.pug');
 
 var Tela = window.Tela || {};
@@ -17,13 +17,13 @@ Tela.modules.header = (function(){
 			var iconEdit = iconTemplate({data: {icon: 'edit'}});
 			$itemsContribute.prepend(iconEdit);
 
-			$nav.accessibleMegaMenu({
-				panelClass: "sub-menu",
-				topNavItemClass: "menu-item-has-children",
-				hoverClass: "is-hover",
-				focusClass: "is-focus",
-				openClass: "is-open"
-			});
+			// $nav.accessibleMegaMenu({
+			// 	panelClass: "sub-menu",
+			// 	topNavItemClass: "menu-item-has-children",
+			// 	hoverClass: "is-hover",
+			// 	focusClass: "is-focus",
+			// 	openClass: "is-open"
+			// });
 		}
 
 		init();

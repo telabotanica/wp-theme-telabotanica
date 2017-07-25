@@ -53,7 +53,7 @@ function telabotanica_module_header($data) {
 					wp_nav_menu( [
 						'container'      => false,
 						'theme_location' => 'secondary',
-						'menu_class'     => 'header-nav-items',
+						'menu_class'     => 'header-nav-items js-nav-system',
 						'depth'          => 2,
 						'walker'         => new HeaderNavWalker(),
 						'items_wrap'     => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>'

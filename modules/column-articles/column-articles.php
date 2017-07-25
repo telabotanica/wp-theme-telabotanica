@@ -31,7 +31,7 @@ function telabotanica_module_column_articles_item($item) {
 
 		echo '<div class="column-articles-item-meta">';
 			printf(
-				'<div class="column-articles-item-date" title="%s">%s <time datetime="%s">%s</time></span>',
+				'<div class="column-articles-item-date" title="%s">%s <time datetime="%s">%s</time></div>',
 				sprintf( _x( '%s à %s', '%s = date et %s = heure', 'telabotanica' ),
 					date_i18n( get_option( 'date_format' ), $item->time ),
 					date_i18n( get_option( 'time_format' ), $item->time )

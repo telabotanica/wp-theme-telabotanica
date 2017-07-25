@@ -30,26 +30,30 @@ Tela.modules.feed = (function(){
 		function init(){
 			$content = $el.find('.feed-items');
 			var userId = $el.data('userId');
-			//userId = 21236; //debug compte Mathias
 
-			// Get the URL to the API from the data-* attribute
 			apiUrls = {
-				actualites: 'http://localhost/test/wp-json/wp/v2/posts?author=' + userId + '&_embed',
 				observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
 				images: 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId,
-				_observations: 'http://localhost/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
-				_images: 'http://localhost/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId
+				actualites: '/wp-json/wp/v2/posts?author=' + userId + '&_embed',
+				// useful for local debugging:
+				// observations: '/wp-content/themes/telabotanica/modules/feed/observations.json',
+				// images: '/wp-content/themes/telabotanica/modules/feed/images.json',
 			};
 
 			loadData();
 		}
 
 		function loadData(){
+			$content.before('<div class="feed-loading">Chargement...</div>');
+
 			// Call the APIs
 			$.when(loadActualites(), loadObservations(), loadImages())
 				.done(renderContent)
 				.fail(function(){
-					console.log('FAIL');
+					$content.before('<div>Erreur lors du chargement du flux.</div>');
+				})
+				.always(function(){
+					$el.find('.feed-loading').remove();
 				});
 		}
 
@@ -59,9 +63,7 @@ Tela.modules.feed = (function(){
 					var categories = 'wp:term' in item._embedded ? _.map(item._embedded['wp:term'][0], function(term) {
 						return term.name;
 					}) : [];
-					categories = categories.join(', ');
 					data.items.push({
-						type: 'feed-item',
 						article: true,
 						href: item.link,
 						image: function() {
@@ -75,7 +77,7 @@ Tela.modules.feed = (function(){
 						day: item.modified.substring(0,10),
 						text: item.excerpt.rendered,
 						meta: {
-							categories: categories
+							text: categories.join(', ')
 						}
 					});
 				});
@@ -86,7 +88,6 @@ Tela.modules.feed = (function(){
 			return $.getJSON(apiUrls.observations, function(json){
 				_.each(json.resultats, function (item) {
 					data.items.push({
-						type: 'feed-item',
 						href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
 						target: '_blank',
 						image: ('images' in item && item.images.length) ? item.images[0]['binaire.href'].replace('XL.', 'CRXS.') : false,
@@ -120,7 +121,6 @@ Tela.modules.feed = (function(){
 				// pousser des multi-items
 				_.each(imagesByDay, function (item, day) {
 					data.items.push({
-						type: 'feed-item',
 						href: 'http://www.tela-botanica.org/appli:cel',
 						target: '_blank',
 						images: _.map(item, 'image').slice(0,maxItems),
@@ -144,8 +144,7 @@ Tela.modules.feed = (function(){
 			for (var day in data.items) {
 				var d = data.items[day];
 				groupedItems.push({
-					type: 'feed-date',
-					text: moment(d[0].date).calendar()
+					date: moment(d[0].date).calendar()
 				});
 				groupedItems.push(data.items[day]);
 			}

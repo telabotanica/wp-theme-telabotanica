@@ -46,7 +46,6 @@ plus de détails sur http://semver.org/lang/fr/
 * module `error-page` ajouté
 * module `event-dates` : refactoring avec Pug
 * module `feed` ajouté
-* module `feed-date` ajouté
 * module `feed-item` : ajouté + refactoring avec Pug
 * module `footer` :
 	* ajout des icônes de flèche au dernier item des colonnes du menu

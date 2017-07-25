@@ -43,7 +43,6 @@ $telabotanica_modules = [
 	'error-page',
 	'event-dates',
 	'feed',
-	'feed-date',
 	'feed-item',
 	'footer',
 	'header',

@@ -4,6 +4,7 @@ function telabotanica_module_feed_item($data) {
 
 	$defaults = [
 		'article' => false,
+		'date' => false,
 		'image' => false,
 		'images' => false,
 		'href' => false,

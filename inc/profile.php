@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redirect users to their BP profile if they're trying to view their WP profile
+ * Redirect non-admin users to their BP profile if they're trying to view their WP profile
  * https://buddydev.com/buddypress/playing-with-buddypress-and-wordpress-some-codes-for-the-site-admins/
  */
 add_action("admin_init","tb_redirect_user_to_bp_profile");
@@ -10,8 +10,10 @@ function tb_redirect_user_to_bp_profile(){
 	return false;//if this is not the profile page, do not do anything
 
 	$current_user = wp_get_current_user();
-	$bp_profile_link=bp_core_get_user_domain( $current_user->ID);
-	bp_core_redirect($bp_profile_link);
+	if ($current_user->ID != 1) {
+		$bp_profile_link=bp_core_get_user_domain( $current_user->ID);
+		bp_core_redirect($bp_profile_link);
+	}
 }
 
 /**

@@ -30,11 +30,12 @@ Tela.modules.feed = (function(){
 		function init(){
 			$content = $el.find('.feed-items');
 			var userId = $el.data('userId');
+			var siteUrl = $el.data('siteUrl');
 
 			apiUrls = {
 				observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
 				images: 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId,
-				actualites: '/wp-json/wp/v2/posts?author=' + userId + '&_embed',
+				actualites: siteUrl + '/wp-json/wp/v2/posts?author=' + userId + '&_embed',
 				// useful for local debugging:
 				// observations: '/wp-content/themes/telabotanica/modules/feed/observations.json',
 				// images: '/wp-content/themes/telabotanica/modules/feed/images.json',

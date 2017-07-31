@@ -19,14 +19,14 @@
 
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
 	<a class="search-results-hit-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-		<# if ( data.images.thumbnail ) { #>
-			<img class="search-results-hit-post-thumbnail" src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" />
+		<# if ( data.featured_image ) { #>
+			<img class="search-results-hit-post-thumbnail" src="{{ data.featured_image }}" alt="{{ data.post_title }}" />
 		<# } #>
 		<div class="search-results-hit-post-attributes">
 			<span class="search-results-hit-post-title">{{{ data._highlightResult.post_title.value }}}</span>
 
 			<#
-			var attributes = ['content', 'title6', 'title5', 'title4', 'title3', 'title2', 'title1'];
+			var attributes = ['post_content'];
 			var attribute_name;
 			var relevant_content = '';
 			for ( var index in attributes ) {
@@ -47,7 +47,22 @@
 <script type="text/html" id="tmpl-autocomplete-taxon-suggestion">
 	<a class="search-results-hit-link" href="{{ data.bdtfx.permalink }}" title="{{ data.bdtfx.scientific_name }}">
 		<span class="search-results-hit-post-title">{{{ data._highlightResult.bdtfx.scientific_name.value }}}</span>
-		<span class="search-results-hit-post-content">{{{ data._highlightResult.bdtfx.common_name.value }}}</span>
+		<#
+		// par défaut, affichage du nom commun
+		var postContent = data._highlightResult.bdtfx.common_name.value;
+		// boucler sur les synonymes dans "data._highlightResult.bdtfx.synonyms" à la recherche du premier matchLevel "full"
+		if (data._highlightResult.bdtfx.synonyms) {
+			for (var i=0; i < data._highlightResult.bdtfx.synonyms.length; i++) {
+				var currentData = data._highlightResult.bdtfx.synonyms[i];
+				if (currentData.matchLevel == "full") {
+					// si présent, remplace le nom commun par le synonyme qui a matché
+					postContent = currentData.value;
+					break;
+				}
+			}
+		}
+		#>
+		<span class="search-results-hit-post-content">{{{ postContent }}}</span>
 	</a>
 </script>
 

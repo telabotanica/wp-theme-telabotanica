@@ -1,12 +1,11 @@
-'use strict';
-
 var iconTemplate = require('../icon/icon.pug');
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.login = (function(){
+Tela.modules.login = (function(){
 
-	function login(selector){
+	function module(selector){
 		var $el = $(selector),
 			$inputLogin,
 			$defaultProvider,
@@ -59,12 +58,12 @@ Tela.login = (function(){
 
 	return function(selector){
 		return $(selector).each(function(){
-			login(this);
+			module(this);
 		});
 	};
 
 })();
 
 $(document).ready(function(){
-	Tela.login('#login');
+	Tela.modules.login('#login');
 });

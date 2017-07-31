@@ -47,8 +47,13 @@
 			$users_link = get_permalink( get_page_by_path( 'telabotanistes' ) );
 			$user_count = bp_get_total_member_count();
 			$observations_link = get_permalink( get_page_by_path( 'cartographies/observations-botaniques' ) );
-			// TODO: définir cette URL en config + mettre en cache
-			$observations_count = file_get_contents('https://api.tela-botanica.org/service:cel:CelStatistiqueTxt/NbObsPubliques');
+
+			if ( false === ( $observations_count = get_transient( 'cover_home_observations_count' ) ) ) {
+				// TODO: définir cette URL en config
+				$observations_count = file_get_contents('https://api.tela-botanica.org/service:cel:CelStatistiqueTxt/NbObsPubliques');
+				set_transient( 'cover_home_observations_count', $observations_count, 1 * HOUR_IN_SECONDS );
+			}
+
 			$get_involved_link = get_permalink( get_page_by_path( 'comment-participer' ) );
 			$get_involved_count = wp_count_posts('tb_participer')->publish;
 			?>
@@ -56,7 +61,7 @@
 				<li class="cover-home-stats-item cover-home-stats-item-users">
 					<a href="<?php echo $users_link ?>">
 						<div class="cover-home-stats-icon"><?php the_telabotanica_module('icon', ['icon' => 'users-outline']) ?></div>
-						<?php printf(__('%s telabotanistes', 'telabotanica'), '<var>' . number_format_i18n($user_count) . '</var>') ?>
+						<?php printf(__('%s telabotanistes', 'telabotanica'), '<var>' . $user_count . '</var>') ?>
 					</a>
 				</li>
 				<li class="cover-home-stats-item cover-home-stats-item-observations">

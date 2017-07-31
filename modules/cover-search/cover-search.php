@@ -4,6 +4,8 @@
 	$defaults = [
 		'image' => get_field('cover_image'),
 		'total_results' => $wp_query->found_posts,
+		'index' => false,
+		'instantsearch' => false,
 		'modifiers' => []
 	];
 
@@ -21,6 +23,8 @@
 
 			the_telabotanica_module('search-box', [
 				'autocomplete' => false,
+				'instantsearch' => $data->instantsearch,
+				'index' => $data->index,
 				'modifiers' => ['large', 'is-primary']
 			]);
 

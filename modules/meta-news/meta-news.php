@@ -16,7 +16,7 @@
 		the_telabotanica_module('icon', ['icon' => 'marker']);
 		printf(
 			'<span>%s</span>',
-			telabotanica_format_place( get_field( 'place' ), false )
+			telabotanica_format_place( get_field( 'place' ) )
 		);
 		echo '</div>';
 	endif;

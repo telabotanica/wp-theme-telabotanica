@@ -1,12 +1,12 @@
-'use strict';
-
 var algoliaAutocomplete = require('autocomplete.js');
 var _ = {
   debounce: require('lodash.debounce')
 };
-var Tela = window.Tela || {};
 
-Tela.profile = (function(){
+var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
+
+Tela.modules.profile = (function(){
 
   function module(selector){
     var $el = $(selector),
@@ -16,7 +16,7 @@ Tela.profile = (function(){
         $currentRequestEspece,
         $pays;
 
-    function init() {        
+    function init() {
       initAutocompleteVille();
       initAutocompleteEspece();
       initRestrictionDepartements();
@@ -118,5 +118,5 @@ Tela.profile = (function(){
 })();
 
 $(document).ready(function(){
-  Tela.profile('#profile-edit-form, #profile-details-section');
+  Tela.modules.profile('#profile-edit-form, #profile-details-section');
 });

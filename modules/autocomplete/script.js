@@ -1,16 +1,15 @@
-'use strict';
-
 var algoliaAutocomplete = require('autocomplete.js');
 var _ = {
   debounce: require('lodash.debounce')
 };
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.autocomplete = (function(){
+Tela.modules.autocomplete = (function(){
 
-  function autocomplete(selector){
-    var $el     = $(selector),
+  function module(selector){
+    var $el = $(selector),
       $searchInput;
 
     function init(){
@@ -46,12 +45,12 @@ Tela.autocomplete = (function(){
 
   return function(selector){
     return $(selector).each(function(){
-      autocomplete(this);
+      module(this);
     });
   };
 
 })();
 
 $(document).ready(function(){
-  Tela.autocomplete('.autocomplete');
+  Tela.modules.autocomplete('.autocomplete');
 });

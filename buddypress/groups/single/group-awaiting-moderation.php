@@ -36,7 +36,7 @@ the_telabotanica_module('cover-project', []);
 			$group = groups_get_group(array('group_id' => $group_id));
 
 			if (get_current_user_id() == $group->creator_id):
-				$notice_text .= ' ' . __("Vous recevrez une notification dès qu'il sera accepté", 'telabotanica')
+				$notice_text .= ' ' . __("Vous recevrez une notification dès qu'il sera accepté", 'telabotanica');
 			endif;
 
 			the_telabotanica_module('notice', [

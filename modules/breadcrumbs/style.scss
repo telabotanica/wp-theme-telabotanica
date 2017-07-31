@@ -59,6 +59,8 @@
 				pointer-events: none;
 			}
 		}
+
+		div { display: inline-block; }
 	}
 
 	&-item + &-item:before {

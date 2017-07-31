@@ -1,10 +1,9 @@
-'use strict';
-
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.epForum = (function(){
+Tela.modules.epForum = (function(){
 
-  function manageForum(selector){
+  function module(selector){
     var $formAbonnement = $(selector),
         $boutonAbonnement = $formAbonnement.find('input[type="submit"]');
 
@@ -26,12 +25,12 @@ Tela.epForum = (function(){
 
   return function(selector){
     $(selector).each(function() {
-      manageForum(this);
+      module(this);
     });
   };
 
 })();
 
 $(document).ready(function(){
-  Tela.epForum('#tb-forum-inscription');
+  Tela.modules.epForum('#tb-forum-inscription');
 });

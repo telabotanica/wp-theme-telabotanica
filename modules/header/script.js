@@ -1,11 +1,10 @@
-'use strict';
-
 require('accessible-mega-menu');
 var iconTemplate = require('../icon/icon.pug');
 
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.header = (function(){
+Tela.modules.header = (function(){
 
 	function module(selector){
 		var $el = $(selector),
@@ -41,5 +40,5 @@ Tela.header = (function(){
 })();
 
 $(document).ready(function(){
-	Tela.header('.header');
+	Tela.modules.header('.header');
 });

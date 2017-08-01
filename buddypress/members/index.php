@@ -27,7 +27,7 @@ the_telabotanica_module('cover', [
 		'modifiers' => ['dir-search', 'large']
 	]
 ]); ?>
-<form action="" method="post" id="members-directory-form" class="dir-form">
+
 <div class="layout-content-col">
 	<div class="layout-wrapper">
 		<aside class="layout-column">
@@ -110,64 +110,66 @@ the_telabotanica_module('cover', [
 			</div>
 
 		</aside>
-		<div class="layout-content">
-		<?php
+		<div class="layout-content">	
+			<form action="" method="post" id="members-directory-form" class="dir-form">
+			<?php
 
-		/**
-		 * Fires before the display of the members.
-		 *
-		 * @since 1.1.0
-		 */
-		do_action( 'bp_before_directory_members' ); ?>
-
-		<?php
-
-		/**
-		 * Fires before the display of the members content.
-		 *
-		 * @since 1.1.0
-		 */
-		do_action( 'bp_before_directory_members_content' );
-
-		?>
-
-			<div id="members-dir-list" class="members dir-list">
-				<?php bp_get_template_part( 'members/members-loop' ); ?>
-			</div><!-- #members-dir-list -->
+			/**
+			 * Fires before the display of the members.
+			 *
+			 * @since 1.1.0
+			 */
+			do_action( 'bp_before_directory_members' ); ?>
 
 			<?php
 
 			/**
-			 * Fires and displays the members content.
+			 * Fires before the display of the members content.
 			 *
 			 * @since 1.1.0
 			 */
-			do_action( 'bp_directory_members_content' ); ?>
+			do_action( 'bp_before_directory_members_content' );
 
-			<?php wp_nonce_field( 'directory_members', '_wpnonce-member-filter' ); ?>
+			?>
+
+				<div id="members-dir-list" class="members dir-list">
+					<?php bp_get_template_part( 'members/members-loop' ); ?>
+				</div><!-- #members-dir-list -->
+
+				<?php
+
+				/**
+				 * Fires and displays the members content.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_directory_members_content' ); ?>
+
+				<?php wp_nonce_field( 'directory_members', '_wpnonce-member-filter' ); ?>
+
+				<?php
+
+				/**
+				 * Fires after the display of the members content.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_after_directory_members_content' ); ?>
+
+			</form><!-- #members-directory-form -->
 
 			<?php
 
 			/**
-			 * Fires after the display of the members content.
+			 * Fires after the display of the members.
 			 *
 			 * @since 1.1.0
 			 */
-			do_action( 'bp_after_directory_members_content' ); ?>
-
-		<?php
-
-		/**
-		 * Fires after the display of the members.
-		 *
-		 * @since 1.1.0
-		 */
-		do_action( 'bp_after_directory_members' ); ?>
+			do_action( 'bp_after_directory_members' ); ?>
 
 		</div>
 	</div>
 </div>
-</form><!-- #members-directory-form -->
 
 <?php
 

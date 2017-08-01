@@ -13,6 +13,13 @@
  */
 do_action( 'bp_before_directory_members_page' );
 
+
+// nom (slug) de la page associée au composant "membres" de Buddypress
+// (utiliser le slug du post courant ne marche pas toujours lorsqu'une recherche
+// via le bandeau a été effectuée !)
+$pages_bp = get_option('bp-pages');
+$nom_page_membres = get_post_field('post_name', $pages_bp['members']);
+
 $search_input_name = bp_core_get_component_search_query_arg();
 the_telabotanica_module('cover', [
 	'title' => __( 'Annuaire des telabotanistes', 'telabotanica' ),
@@ -24,7 +31,8 @@ the_telabotanica_module('cover', [
 		'input_name' => $search_input_name,
 		'placeholder' => __("Rechercher des telabotanistes...", 'telabotanica'),
 		'value' => $search_input_name && ! empty( $_REQUEST[ $search_input_name ] ) ? wp_unslash( $_REQUEST[ $search_input_name ] ) : false,
-		'modifiers' => ['dir-search', 'large']
+		'modifiers' => ['dir-search', 'large'],
+		'pageurl' => $nom_page_membres
 	]
 ]); ?>
 

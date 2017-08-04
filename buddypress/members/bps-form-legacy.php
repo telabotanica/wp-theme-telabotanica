@@ -50,40 +50,41 @@
 		$name = sanitize_title ($f->name);
 		$alt = ($j++ % 2)? 'alt': '';
 		$class = "editfield $f->code field_$name $alt";
+                $label_unslashed = wp_unslash($f->label);
 
 		echo "<div class='$class'>\n";
 
 		switch ($f->display)
 		{
 		case 'range':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<input style='width: 10%; display: inline;' type='text' name='{$f->code}_min' id='$f->code' value='$f->min'>";
 			echo '&nbsp;-&nbsp;';
 			echo "<input style='width: 10%; display: inline;' type='text' name='{$f->code}_max' value='$f->max'>\n";
 			break;
 
 		case 'textbox':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<input type='text' name='$f->code' id='$f->code' value='$f->value'>\n";
 			break;
 
 		case 'number':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<input type='number' name='$f->code' id='$f->code' value='$f->value'>\n";
 			break;
 
 		case 'url':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<input type='text' inputmode='url' name='$f->code' id='$f->code' value='$f->value'>\n";
 			break;
 
 		case 'textarea':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<textarea rows='5' cols='40' name='$f->code' id='$f->code'>$f->value</textarea>\n";
 			break;
 
 		case 'selectbox':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<select name='$f->code' id='$f->code'>\n";
 
 			$no_selection = apply_filters ('bps_field_selectbox_no_selection', '', $f);
@@ -99,7 +100,7 @@
 			break;
 
 		case 'multiselectbox':
-			echo "<label for='$f->code'>$f->label</label>\n";
+			echo "<label for='$f->code'>" . $label_unslashed . "</label>\n";
 			echo "<select name='{$f->code}[]' id='$f->code' multiple='multiple'>\n";
 
 			foreach ($f->options as $key => $label)
@@ -112,7 +113,7 @@
 
 		case 'radio':
 			echo "<div class='radio'>\n";
-			echo "<span class='label'>$f->label</span>\n";
+			echo "<span class='label'>" . $label_unslashed . "</span>\n";
 			echo "<div id='$f->code'>\n";
 
 			foreach ($f->options as $key => $label)
@@ -127,7 +128,7 @@
 
 		case 'checkbox':
 			echo "<div class='checkbox'>\n";
-			echo "<span class='label'>$f->label</span>\n";
+			echo "<span class='label'>" . $label_unslashed . "</span>\n";
 
 			foreach ($f->options as $key => $label)
 			{

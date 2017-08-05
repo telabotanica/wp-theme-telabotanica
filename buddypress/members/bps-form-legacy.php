@@ -50,7 +50,7 @@
 		$name = sanitize_title ($f->name);
 		$alt = ($j++ % 2)? 'alt': '';
 		$class = "editfield $f->code field_$name $alt";
-                $label_unslashed = wp_unslash($f->label);
+		$label_unslashed = wp_unslash($f->label);
 
 		echo "<div class='$class'>\n";
 

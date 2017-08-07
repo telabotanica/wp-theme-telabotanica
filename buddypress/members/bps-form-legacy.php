@@ -114,7 +114,8 @@
 		case 'radio':
 			echo "<div class='radio'>\n";
 			echo "<span class='label'>" . $label_unslashed . "</span>\n";
-			echo "<div id='$f->code'>\n";
+			// 3 lines commented to follow style
+                        //echo "<div id='$f->code'>\n";
 
 			foreach ($f->options as $key => $label)
 			{
@@ -122,8 +123,8 @@
 				echo "<label><input $checked type='radio' name='$f->code' value='$key'>$label</label>\n";
 			}
 			echo "</div>\n";
-			echo "<a style='display: inline;' class='clear-value' href='javascript:clear(\"$f->code\");'>". __('Clear', 'buddypress'). "</a>\n";
-			echo "</div>\n";
+			//echo "<a style='display: inline;' class='clear-value' href='javascript:clear(\"$f->code\");'>". __('Clear', 'buddypress'). "</a>\n";
+			//echo "</div>\n";
 			break;
 
 		case 'checkbox':
@@ -136,7 +137,7 @@
 				echo "<label><input $checked type='checkbox' name='{$f->code}[]' value='$key'>$label</label>\n";
 			}
 			echo "</div>\n";
-			break;
+                        break;
 
 		default:
 			echo "<p>BP Profile Search: don't know how to display the <em>$f->display</em> field type.</p>\n";

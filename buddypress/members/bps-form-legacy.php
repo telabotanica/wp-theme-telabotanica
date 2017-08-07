@@ -137,7 +137,7 @@
 				echo "<label><input $checked type='checkbox' name='{$f->code}[]' value='$key'>$label</label>\n";
 			}
 			echo "</div>\n";
-                        break;
+			break;
 
 		default:
 			echo "<p>BP Profile Search: don't know how to display the <em>$f->display</em> field type.</p>\n";

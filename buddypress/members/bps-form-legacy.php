@@ -94,7 +94,7 @@
 			foreach ($f->options as $key => $label)
 			{
 				$selected = in_array ($key, $f->values)? "selected='selected'": "";
-				echo "<option $selected value='$key'>$label</option>\n";
+				echo "<option $selected value='$key'>" . wp_unslash($label) . "</option>\n";
 			}
 			echo "</select>\n";
 			break;
@@ -106,7 +106,7 @@
 			foreach ($f->options as $key => $label)
 			{
 				$selected = in_array ($key, $f->values)? "selected='selected'": "";
-				echo "<option $selected value='$key'>$label</option>\n";
+				echo "<option $selected value='$key'>" . wp_unslash($label) . "</option>\n";
 			}
 			echo "</select>\n";
 			break;
@@ -119,7 +119,7 @@
 			foreach ($f->options as $key => $label)
 			{
 				$checked = in_array ($key, $f->values)? "checked='checked'": "";
-				echo "<label><input $checked type='radio' name='$f->code' value='$key'>$label</label>\n";
+				echo "<label><input $checked type='radio' name='$f->code' value='$key'>" . wp_unslash($label) . "</label>\n";
 			}
 			echo "</div>\n";
 			echo "<a style='display: inline;' class='clear-value' href='javascript:clear(\"$f->code\");'>". __('Clear', 'buddypress'). "</a>\n";
@@ -133,7 +133,7 @@
 			foreach ($f->options as $key => $label)
 			{
 				$checked = in_array ($key, $f->values)? "checked='checked'": "";
-				echo "<label><input $checked type='checkbox' name='{$f->code}[]' value='$key'>$label</label>\n";
+				echo "<label><input $checked type='checkbox' name='{$f->code}[]' value='$key'>" . wp_unslash($label) . "</label>\n";
 			}
 			echo "</div>\n";
 			break;
@@ -144,7 +144,7 @@
 		}
 
 		if (!empty ($f->description) && $f->description != '-')
-			echo "<p class='description'>$f->description</p>\n";
+			echo "<p class='description'>" . wp_unslash($f->description) . "</p>\n";
 
 		echo "</div>\n";
 	}

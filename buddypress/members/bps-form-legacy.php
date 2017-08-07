@@ -114,17 +114,13 @@
 		case 'radio':
 			echo "<div class='radio'>\n";
 			echo "<span class='label'>" . $label_unslashed . "</span>\n";
-			// 3 lines commented to follow style
-                        //echo "<div id='$f->code'>\n";
-
+			
 			foreach ($f->options as $key => $label)
 			{
 				$checked = in_array ($key, $f->values)? "checked='checked'": "";
 				echo "<label><input $checked type='radio' name='$f->code' value='$key'>$label</label>\n";
 			}
 			echo "</div>\n";
-			//echo "<a style='display: inline;' class='clear-value' href='javascript:clear(\"$f->code\");'>". __('Clear', 'buddypress'). "</a>\n";
-			//echo "</div>\n";
 			break;
 
 		case 'checkbox':

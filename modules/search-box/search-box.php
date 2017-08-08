@@ -6,7 +6,8 @@
 		'value' => get_search_query() ?: get_query_var( 'q', false ),
 		'index' => false,
 		'suggestions' => false,
-		'modifiers' => ['large']
+		'modifiers' => ['large'],
+		'pageurl' => ''
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);
@@ -21,7 +22,7 @@
 	);
 		printf(
 			'<form role="search" method="get" action="%s" class="search-box-wrapper">',
-			esc_url( home_url( '/' ) )
+			esc_url( home_url( '/' . $data->pageurl ) )
 		);
 			printf(
 				'<input name="s" type="text" class="search-box-input" placeholder="%s" value="%s" autocomplete="off" spellcheck="false" />',

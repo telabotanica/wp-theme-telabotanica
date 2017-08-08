@@ -23,25 +23,8 @@ do_action( 'bp_before_members_loop' ); ?>
 	// IMPORTANT at the moment (2017-02) this plugin guarantees compatibility
 	// with BP Profile Search only if the member loop is initiated with default
 	// parameters (type="active")
-	if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
+	if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) :
 
-	<div id="pag-top" class="pagination">
-
-		<div class="pag-count" id="member-dir-count-top">
-
-			<?php bp_members_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="member-dir-pag-top">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
-
-	<?php
 	/**
 	 * Fires before the display of the members list.
 	 *
@@ -49,77 +32,65 @@ do_action( 'bp_before_members_loop' ); ?>
 	 */
 	do_action( 'bp_before_directory_members_list' ); ?>
 
-	<ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
+	<div id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<li <?php bp_member_class(); ?>>
-			<?php
+		<?php
 
-			/**
-			 * Fires before the display of a directory member item.
-			 *
-			 * @since 1.1.0
-			 */
-			do_action( 'bp_directory_before_members_item' ); ?>
+		/**
+		 * Fires before the display of a directory member item.
+		 *
+		 * @since 1.1.0
+		 */
+		// do_action( 'bp_directory_before_members_item' );
 
-			<div class="item-avatar">
-				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
-			</div>
+                //strip classes values from bp_get_member_class()
+                $pattern = "/^class=\"(.*?)\"/";
+                if (preg_match($pattern, bp_get_member_class(), $matches)) {
+                    $inHTMLClassStrippedValues = $matches[1];
+                } else {
+                    $inHTMLClassStrippedValues = bp_get_member_class();
+                }
 
-			<div class="item">
-				<div class="item-title">
-					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
+		the_telabotanica_component('contact', [
+			'image' => bp_core_fetch_avatar(array(
+				'item_id' => bp_get_member_user_id(),
+				'html' => 'false',
+				'type' => 'full'
+			)),
+			'name' => bp_get_member_name(),
+			'description' => bp_get_member_last_active(),
+			'link' => bp_get_member_permalink(),
+			'modifiers' => $inHTMLClassStrippedValues,
+			'action_before' => 'bp_directory_before_members_item'
+		]);
 
-					<?php if ( bp_get_member_latest_update() ) : ?>
+		/**
+		 * Fires inside the display of a directory member item.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'bp_directory_members_item' );
 
-						<span class="update"> <?php bp_member_latest_update(); ?></span>
+		/***
+		 * If you want to show specific profile fields here you can,
+		 * but it'll add an extra query for each member in the loop
+		 * (only one regardless of the number of fields you show):
+		 *
+		 * bp_member_profile_data( 'field=the field name' );
+		 */
 
-					<?php endif; ?>
+		/**
+		 * Fires inside the members action HTML markup to display actions.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'bp_directory_members_actions' );
 
-				</div>
+	endwhile; ?>
 
-				<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div>
-
-				<?php
-
-				/**
-				 * Fires inside the display of a directory member item.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_directory_members_item' ); ?>
-
-				<?php
-				 /***
-				  * If you want to show specific profile fields here you can,
-				  * but it'll add an extra query for each member in the loop
-				  * (only one regardless of the number of fields you show):
-				  *
-				  * bp_member_profile_data( 'field=the field name' );
-				  */
-				?>
-			</div>
-
-			<div class="action">
-
-				<?php
-
-				/**
-				 * Fires inside the members action HTML markup to display actions.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_directory_members_actions' ); ?>
-
-			</div>
-
-			<div class="clear"></div>
-		</li>
-
-	<?php endwhile; ?>
-
-	</ul>
+</div>
 
 	<?php
 
@@ -142,7 +113,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 <?php else: ?>
 
-	<div id="message" class="info">
+	<div id="message" class="notice notice-warning info">
 		<p><?php _e( "Sorry, no members were found.", 'buddypress' ); ?></p>
 	</div>
 

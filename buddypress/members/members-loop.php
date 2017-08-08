@@ -45,6 +45,14 @@ do_action( 'bp_before_members_loop' ); ?>
 		 */
 		// do_action( 'bp_directory_before_members_item' );
 
+                //strip classes values from bp_get_member_class()
+                $pattern = "/^class=\"(.*?)\"/";
+                if (preg_match($pattern, bp_get_member_class(), $matches)) {
+                    $inHTMLClassStrippedValues = $matches[1];
+                } else {
+                    $inHTMLClassStrippedValues = bp_get_member_class();
+                }
+
 		the_telabotanica_component('contact', [
 			'image' => bp_core_fetch_avatar(array(
 				'item_id' => bp_get_member_user_id(),
@@ -54,7 +62,7 @@ do_action( 'bp_before_members_loop' ); ?>
 			'name' => bp_get_member_name(),
 			'description' => bp_get_member_last_active(),
 			'link' => bp_get_member_permalink(),
-			'modifiers' => bp_get_member_class(),
+			'modifiers' => $inHTMLClassStrippedValues,
 			'action_before' => 'bp_directory_before_members_item'
 		]);
 

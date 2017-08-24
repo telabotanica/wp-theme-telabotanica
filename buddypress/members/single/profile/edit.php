@@ -91,7 +91,7 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 				 */
 				do_action( 'bp_custom_profile_edit_fields' ); ?>
 
-				<p class="description"><?php bp_the_profile_field_description(); ?></p>
+				<!--Commented to remove double description<p class="description">--><?php //bp_the_profile_field_description(); ?><!--</p>-->
 			</div>
 
 		<?php endwhile; ?>

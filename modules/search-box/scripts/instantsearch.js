@@ -1,5 +1,5 @@
 var searchHitTemplate = require('../../search-hit/search-hit.pug');
-var instantsearch = require('instantsearch.js');
+var instantsearch = require('instantsearch.js/dist/instantsearch.js');
 
 var moment = require('moment');
 moment.locale('fr');
@@ -31,7 +31,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 			;
 
 		function init(){
-			// The logic for autocomplete is in script-autocomplete.js
+			// The logic for autocomplete is in scripts/autocomplete.js
 			if ($el.data('autocomplete') === true) {return;}
 
 			$initialContent = $('.layout-content .list-articles:not(#search-hits), .layout-column .layout-column-item');
@@ -48,7 +48,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 				mapping = {'q': 's'};
 			}
 
-			search = instantsearch({
+			var options = {
 				appId: algolia.application_id,
 				apiKey: algolia.search_api_key,
 				indexName: index.index_name,
@@ -60,7 +60,9 @@ Tela.modules.searchBox.instantsearch = (function(){
 					trackedParameters: ['query', 'attribute:*']
 				},
 				searchFunction: searchFunction
-			});
+			};
+
+			search = instantsearch(options);
 
 			initSearchBox();
 			initStats();
@@ -70,7 +72,7 @@ Tela.modules.searchBox.instantsearch = (function(){
 			search.start();
 
 			// Remove other elements
-			$el.find('input:not(.ais-search-box--input)').remove();
+			$el.find('input.search-box-input:not(.ais-search-box--input)').remove();
 			$el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
 		}
 
@@ -100,6 +102,8 @@ Tela.modules.searchBox.instantsearch = (function(){
 					poweredBy: algolia.powered_by_enabled,
 					wrapInput: false,
 					autofocus: false,
+					magnifier: false,
+					reset: false,
 					// the option below can be enabled to limit the number of requests
 					// searchOnEnterKeyPressOnly: true,
 					cssClasses: {

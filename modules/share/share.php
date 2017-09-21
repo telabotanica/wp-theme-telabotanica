@@ -20,8 +20,8 @@
       get_telabotanica_module('icon', ['icon' => 'twitter'])
     );
     printf(
-      '<li class="share-item"><a href="%s" target="_blank" title="%s">%s</a></li>',
-      'mailto:?subject=' . urlencode( get_the_title() ) . '&body=' . urlencode( $url ),
+      '<li class="share-item"><a href="%s" title="%s">%s</a></li>',
+      'mailto:?subject=' . rawurlencode( get_the_title() ) . '&body=' . urlencode( $url ),
       __( 'Partager par courriel', 'telabotanica' ),
       get_telabotanica_module('icon', ['icon' => 'mail'])
     );

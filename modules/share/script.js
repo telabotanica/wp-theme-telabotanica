@@ -14,6 +14,7 @@ Tela.modules.share = (function(){
     }
 
     function onClickLink(e){
+      if ($(this).attr('target') != '_blank') {return;}
       e.preventDefault();
       e.stopPropagation();
       openInNewWindow($(this).attr('href'));

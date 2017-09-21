@@ -49,6 +49,12 @@ return [
 				'tmpl_suggestion' => 'autocomplete-group-suggestion',
 				'settings' => [
 					'hitsPerPage' => 3
+				],
+				'filters' => [
+					'categories' => [
+						'type' => 'menu',
+						'label' => __("Par catégorie", 'telabotanica')
+					]
 				]
 			],
 			[

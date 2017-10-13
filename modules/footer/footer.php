@@ -7,8 +7,8 @@
 						<img src="<?php echo get_template_directory_uri() . '/modules/footer/logo.svg'; ?>" alt="Tela Botanica" />
 					</div>
 					<div class="footer-about-tela-details">
-						<div class="footer-about-tela-details-adresse">4 rue de Belfort, 34000 Montpellier, France</div>
-						<div class="footer-about-tela-details-tel"><?php _e( 'Téléphone', 'telabotanica' ) ?> : +33 (4) 67 52 41 22</div>
+						<div class="footer-about-tela-details-adresse">1b rue de Verdun, 34000 Montpellier, France</div>
+						<div class="footer-about-tela-details-tel"><?php _e( 'Téléphone', 'telabotanica' ) ?> : +33 (0)4 67 52 41 22</div>
 						<div class="footer-about-tela-details-mail"><a href="mailto:accueil@tela-botanica.org">accueil@tela-botanica.org</a></div>
 					</div>
 

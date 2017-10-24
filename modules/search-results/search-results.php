@@ -25,14 +25,14 @@ function telabotanica_module_search_results_hit($index_id, $hit) {
 }
 
 function telabotanica_module_search_results($data) {
-	if ( !class_exists( 'Algolia_Plugin' ) ) { return; }
-	$algolia = Algolia_Plugin::get_instance();
+	if ( !telabotanica_algolia_check(true) ) { return; }
+
+	$algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
 
 	// Retrieve the label for each index
 	$indices_ids = [];
 	$indices_labels = [];
-	$indices = $algolia->get_autocomplete_config()->get_config();
-	foreach ( $indices as $index ) :
+	foreach ( $algolia_autocomplete_config['sources'] as $index ) :
 		$indices_ids[$index['index_name']] = $index['index_id'];
 		$indices_labels[$index['index_name']] = $index['label'];
 	endforeach;
@@ -40,7 +40,7 @@ function telabotanica_module_search_results($data) {
 	echo '<div class="search-results">';
 
 	foreach ( $data->results as $results ) :
-		$link_more = '/?s=' . $results['query'] . '&index=' . $indices_ids[$results['index']]; // TODO
+		$link_more = home_url() . '/?s=' . $results['query'] . '&in=' . $indices_ids[$results['index']]; // TODO
 
 		echo '<div class="search-results-index has-more">';
 

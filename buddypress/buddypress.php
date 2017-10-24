@@ -15,7 +15,7 @@ if (	bp_is_group_create()
 	||	bp_is_current_component('outils')
 	||	bp_is_current_component('thematiques')
 		) {
-	// Force a small header (without use cases navigation) on group creation pages
+	// Force a small header (without use cases navigation)
 	$header_small = true;
 }
 

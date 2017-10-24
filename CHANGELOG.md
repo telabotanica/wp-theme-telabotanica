@@ -12,10 +12,10 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * tableau de bord
+* bloc `contribute` : amélioration du remplissage aléatoire
 * bloc `list-features` : style des liens
 * bloc `list-projects` : ajout d'un dégradé en bas des `card-project`
 * bloc `main-features` : style des liens
-* composant `accordion` : correction bug quand plusieurs accordéons sur la même page
 * composant `articles` ajouté
 * composant `image` : amélioration affichage petites images
 * composant `map` : centre optionnel
@@ -28,20 +28,25 @@ plus de détails sur http://semver.org/lang/fr/
 	* ajout d'un modifier `is-small`
 	* support d'un `thumbnail`
 * module `block-dashboard` ajouté
+* module `block-dashboard-images` ajouté
+* module `block-dashboard-map` ajouté
+* module `block-dashboard-observations` ajouté
 * module `button` : ajout de la couleur rouge
 * module `breadcrumbs` :
 	* ajout d'espace en-dessous
 	* support de multiples pages parentes
 * module `card-project` : pas de lien dans la description
+* module `categories-labels` : refactoring avec Pug
 * module `comment-form` ajouté
 * module `comments` ajouté
+* module `cover` : utilise désormais une image au hasard si aucune n'est définie
 * module `cover-home` : ajout du lien vers le tableau de bord
 * module `cover-member` ajouté
 * module `cover-project` : bouton vers site externe ajouté
 * module `error-page` ajouté
+* module `event-dates` : refactoring avec Pug
 * module `feed` ajouté
-* module `feed-date` ajouté
-* module `feed-item` ajouté
+* module `feed-item` : ajouté + refactoring avec Pug
 * module `footer` :
 	* ajout des icônes de flèche au dernier item des colonnes du menu
 	* ajout de l'icône CC
@@ -50,10 +55,17 @@ plus de détails sur http://semver.org/lang/fr/
 	* utilise maintenant l'avatar BuddyPress
 	* menus déroulants
 * module `header-dashboard` ajouté
+* module `list-articles` : refactoring avec `list-articles-item`
+* module `list-articles-item` ajouté
+* module `map-events` ajouté
 * module `nav-tabs` ajouté
 * module `notice` ajouté
+* module `notice-cookies` ajouté
+* module `pagination` : support de la pagination Buddypress
 * module `search-box` :
+	* refactoring avec deux cas : instantsearch ou autocomplete
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page
+* module `search-hit` ajouté
 * module `title` : support d'un suffixe optionnel
 * module `toc` :
 	* ajout du comportement "affix" (reste fixe lors du scroll)
@@ -68,6 +80,7 @@ plus de détails sur http://semver.org/lang/fr/
 * template `page-comment-participer` ajouté
 * ajout d'une taxonomie Catégorie de moyens de participer
 * groupe de champs ACF "Composant liste d'articles" ajouté
+* refactoring crédits des images
 * pages d'erreur 404, 500, maintenance
 
 ## 0.0.7 (2017-03-04)

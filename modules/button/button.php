@@ -2,7 +2,7 @@
 
 	$defaults = [
 		'tag' => 'a',
-		'href' => '#',
+		'href' => '',
 		'target' => '',
 		'text' => 'Bouton',
 		'title' => '',
@@ -17,19 +17,31 @@
 
   if ( $data->modifiers && in_array('back', $data->modifiers) ) $data->icon_before = 'arrow-left';
 
-  $extra_attributes = '';
+  $attributes = '';
+
   foreach ($data->extra_attributes as $name => $value) {
-    $extra_attributes .= sprintf('%s="%s" ', $name, $value);
+    $attributes .= sprintf('%s="%s" ', $name, $value);
   }
 
+	if (!empty($data->href)) {
+		$attributes .= sprintf('href="%s"', $data->href);
+	} else {
+		$data->tag = 'button';
+	}
+
+	if (!empty($data->target)) {
+		$attributes .= sprintf('target="%s"', $data->target);
+	}
+
+	if (!empty($data->title)) {
+		$attributes .= sprintf('title="%s"', $data->title);
+	}
+
   printf(
-    '<%s href="%s" %s class="%s" target="%s" title="%s">%s<span class="button-text">%s</span>%s</%s>',
+    '<%s %s class="%s">%s<span class="button-text">%s</span>%s</%s>',
     $data->tag,
-    $data->href,
-    $extra_attributes,
+    $attributes,
     implode($data->modifiers, ' '),
-    $data->target,
-    $data->title,
     $data->icon_before ? get_telabotanica_module('icon', ['icon' => $data->icon_before]) : '',
     $data->text,
     $data->icon_after ? get_telabotanica_module('icon', ['icon' => $data->icon_after]) : '',

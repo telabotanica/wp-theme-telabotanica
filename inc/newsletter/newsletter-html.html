@@ -1,114 +1,736 @@
 {% autoescape 'html' %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Newsletter</title>
+		<style type="text/css">
+			/* /\/\/\/\/\/\/\/\/ CLIENT-SPECIFIC STYLES /\/\/\/\/\/\/\/\/ */
+			#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
+			.ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
+			body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+			table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+			img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
 
-<bandeau>Lettre d'information du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM") }}</bandeau>
-<logos-sociaux></logos-sociaux>
+			/* /\/\/\/\/\/\/\/\/ RESET STYLES /\/\/\/\/\/\/\/\/ */
+			body{margin:0; padding:0;}
+			img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+			table{border-collapse:collapse !important;}
+			body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important;}
 
-<intro>
+			/* /\/\/\/\/\/\/\/\/ TEMPLATE STYLES /\/\/\/\/\/\/\/\/ */
 
-	<logo-tela></logo-tela>
+			/* ========== Page Styles ========== */
 
-	{{ intro|raw }}
+			#bodyCell{padding:20px;}
+			#templatePreheader,
+			#templateContainer{width:600px;}
 
-</intro>
+			/**
+			* @tab Page
+			* @section background style
+			* @tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+			* @theme page
+			*/
+			body, #bodyTable{
+				/*@editable*/ background-color:#FFFFFF;
+			}
 
-{% if featured is not empty %}
-<featured>
+			/**
+			* @tab Page
+			* @section background style
+			* @tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+			* @theme page
+			*/
+			#bodyCell{
+				/*@editable*/ border-top: 0;
+			}
 
-	<h2>À la une</h2>
+			/**
+			* @tab Page
+			* @section email border
+			* @tip Set the border for your email.
+			*/
+			#templateContainer{
+				/*@editable*/ border:0;
+			}
 
-	{% if featured.thumbnail %}
-	<a href="{{ featured.link }}"><img src="{{ featured.thumbnail }}" alt=""></a>
-	{% endif %}
+			/**
+			* @tab Page
+			* @section heading 1
+			* @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+			* @style heading 1
+			*/
+			h1{
+				/*@editable*/ color:#202020 !important;
+				display:block;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:26px;
+				/*@editable*/ font-style:normal;
+				/*@editable*/ font-weight:bold;
+				/*@editable*/ line-height:100%;
+				/*@editable*/ letter-spacing:normal;
+				margin-top:0;
+				margin-right:0;
+				margin-bottom:10px;
+				margin-left:0;
+				/*@editable*/ text-align:left;
+			}
 
-	<h3><a href="{{ featured.link }}">{{ featured.post.post_title }}</a></h3>
+			/**
+			* @tab Page
+			* @section heading 2
+			* @tip Set the styling for all second-level headings in your emails.
+			* @style heading 2
+			*/
+			h2{
+				/*@editable*/ color:#70961c !important;
+				display:block;
+				/*@editable*/ font-family:Arial, "Helvetica Neue", sans-serif;
+				/*@editable*/ font-size:14px;
+				/*@editable*/ font-style:normal;
+				/*@editable*/ font-weight:normal;
+				/*@editable*/ line-height:100%;
+				/*@editable*/ letter-spacing:1px;
+				margin-top:0;
+				margin-right:0;
+				margin-bottom:20px;
+				margin-left:0;
+				/*@editable*/ text-align:left;
+				text-transform: uppercase;
+			}
 
-	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
+			/**
+			* @tab Page
+			* @section heading 3
+			* @tip Set the styling for all third-level headings in your emails.
+			* @style heading 3
+			*/
+			h3{
+				/*@editable*/ color:#232323 !important;
+				display:block;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:16px;
+				/*@editable*/ font-style:normal;
+				/*@editable*/ font-weight:bold;
+				/*@editable*/ line-height:130%;
+				/*@editable*/ letter-spacing:normal;
+				margin-top:0;
+				margin-right:0;
+				margin-bottom:0;
+				margin-left:0;
+				/*@editable*/ text-align:left;
+			}
 
-	<p>
-		{% if featured.intro is not empty %}
-			{% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
-		{% else %}
-			{% set content = featured.post.post_content %}
-		{% endif %}
-		{{ content|striptags|truncate(300, true)|raw }} <a href="{{ featured.link }}">Lire l'article</a>
-	</p>
+			.bodyFeatured h3{
+				font-size:20px;
+				margin-top:15px;
+			}
 
-</featured>
-{% endif %}
+			.bodyContent h3 a:link, .bodyContent h3 a:visited, /* Yahoo! Mail Override */ .bodyContent h3 a .yshortcuts /* Yahoo! Mail Override */{
+				color:#232323;
+				font-weight: bold;
+				text-decoration: none;
+			}
 
-{% for category_id, category in categories %}
+			/**
+			* @tab Page
+			* @section heading 4
+			* @tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+			* @style heading 4
+			*/
+			h4{
+				/*@editable*/ color:#808080 !important;
+				display:block;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:14px;
+				/*@editable*/ font-style:italic;
+				/*@editable*/ font-weight:normal;
+				/*@editable*/ line-height:100%;
+				/*@editable*/ letter-spacing:normal;
+				margin-top:0;
+				margin-right:0;
+				margin-bottom:10px;
+				margin-left:0;
+				/*@editable*/ text-align:left;
+			}
 
-	<category class="{{ category.slug }}">
+			.colorEmploi {color: #006979 !important;}
+			.colorEvenements {color: #e16e38 !important;}
 
-	{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+			.button {
+				background-color: #a2b93b;
+	      border-top: 8px solid #a2b93b;
+	      border-right: 20px solid #a2b93b;
+	      border-bottom: 8px solid #a2b93b;
+	      border-left: 20px solid #a2b93b;
+				border-radius: 2px;
+				color: #FFFFFF !important;
+				font-size: 11px !important;
+				font-weight: bold !important;
+				letter-spacing: 1px;
+				text-decoration: none !important;
+				text-transform: uppercase;
+			}
+			.button.bgcolorEmploi {
+				background-color: #006979 !important;
+	      border-top: 8px solid #006979;
+	      border-right: 20px solid #006979;
+	      border-bottom: 8px solid #006979;
+	      border-left: 20px solid #006979;
+			}
+			.button.bgcolorEvenements {
+				background-color: #e16e38 !important;
+	      border-top: 8px solid #e16e38;
+	      border-right: 20px solid #e16e38;
+	      border-bottom: 8px solid #e16e38;
+	      border-left: 20px solid #e16e38;
+			}
 
-		<h2>{{ subcategory }}</h2>
+			/* ========== Header Styles ========== */
 
-		{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+			/**
+			* @tab Header
+			* @section preheader style
+			* @tip Set the background color and bottom border for your email's preheader area.
+			* @theme header
+			*/
+			#templatePreheaderContainer{
+				/*@editable*/ background-color:#b2cb43;
+			}
+			#templatePreheader{
+			}
 
-			{% if item.event.date %}
+			/**
+			* @tab Header
+			* @section preheader text
+			* @tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+			*/
+			.preheaderContent{
+				/*@editable*/ color:#FFFFFF;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:14px;
+				/*@editable*/ line-height:125%;
+				/*@editable*/ text-align:left;
+			}
 
-				<date>{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date>
+			/**
+			* @tab Header
+			* @section preheader link
+			* @tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+			*/
+			.preheaderContent a:link, .preheaderContent a:visited, /* Yahoo! Mail Override */ .preheaderContent a .yshortcuts /* Yahoo! Mail Override */{
+				/*@editable*/ color:#FFFFFF;
+				/*@editable*/ font-weight:normal;
+				/*@editable*/ text-decoration:underline;
+			}
 
-				{% if item.event.date_end %}
-				<date-end>{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") }}</date-end>
-				{% endif %}
+			/**
+			* @tab Header
+			* @section header text
+			* @tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+			*/
+			.headerContent{
+				/*@editable*/ color:#505050;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:20px;
+				/*@editable*/ font-weight:bold;
+				/*@editable*/ line-height:100%;
+				/*@editable*/ padding-top:0;
+				/*@editable*/ padding-right:0;
+				/*@editable*/ padding-bottom:0;
+				/*@editable*/ padding-left:0;
+				/*@editable*/ text-align:left;
+				/*@editable*/ vertical-align:middle;
+			}
 
-				<h3><a href="{{ item.link }}">{{ item.post.post_title }}</a></h3>
+			/**
+			* @tab Header
+			* @section header link
+			* @tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+			*/
+			.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
+				/*@editable*/ color:#EB4102;
+				/*@editable*/ font-weight:normal;
+				/*@editable*/ text-decoration:underline;
+			}
 
-				<place>{{ item.event.place }}</place> - Publié par {{ item.author }}
+			#featuredImage{
+				height:auto;
+				max-width:600px;
+			}
 
-				<p>
-					{{ item.event.details|striptags|truncate(200, true)|raw }} <a href="{{ item.link }}">Lire l'article</a>
-				</p>
+			/* ========== Body Styles ========== */
 
-			{% else %}
+			/**
+			* @tab Body
+			* @section body style
+			* @tip Set the background color and borders for your email's body area.
+			*/
+			#templateBody{
+				/*@editable*/ background-color:#FFFFFF;
+				/*@editable*/ border-top:0;
+				/*@editable*/ border-bottom:0;
+			}
 
-				{% if item.thumbnail %}
-				<img src="{{ item.thumbnail }}" alt="">
-				{% endif %}
+			/**
+			* @tab Body
+			* @section body text
+			* @tip Set the styling for your email's main content text. Choose a size and color that is easy to read.
+			* @theme main
+			*/
+			.bodyContent{
+				border-bottom:1px solid #dddddd;
+				/*@editable*/ color:#444444;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:14px;
+				/*@editable*/ line-height:150%;
+				padding-top:30px;
+				padding-right:0;
+				padding-bottom:30px;
+				padding-left:0;
+				/*@editable*/ text-align:left;
+			}
 
-				<h3><a href="{{ item.link }}">{{ item.post.post_title }}</a></h3>
+			.bodyContentSection {
+				padding-bottom:30px;
+			}
+			.bodyContentSectionImage {
+				width: 130px;
+			}
+			.bodyContentSectionImage img {
+				padding-right: 20px;
+				width: 110px;
+			}
+			.bodyContentSectionDates {
+				width: 86px;
+				padding-bottom: 30px;
+			}
+			.bodyContentSectionDates a {
+				text-decoration: none !important;
+			}
+			.bodyContentSectionDate {
+				background-color: #F9E2D7;
+				border-radius: 2px;
+				font-size: 10px;
+				color: #e16e38;
+				letter-spacing: 1px;
+				padding-bottom: 5px !important;
+				padding-top: 8px !important;
+				text-align: center;
+				text-transform: uppercase;
+				width: 55px;
+			}
+			.bodyContentSectionDate span {
+				display: block;
+				font-size: 26px;
+			}
+			.bodyContentSectionDateBottom {
+				background-color: #F8F5EF;
+				border-radius: 0 0 2px 2px;
+			}
+			.bodyContentButton {
+				border-bottom: 0;
+				text-align: center;
+			}
 
-				Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
+			/**
+			* @tab Body
+			* @section body link
+			* @tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
+			*/
+			.bodyContent a:link, .bodyContent a:visited, /* Yahoo! Mail Override */ .bodyContent a .yshortcuts /* Yahoo! Mail Override */{
+				/*@editable*/ color:#70961c;
+				/*@editable*/ font-weight:normal;
+				/*@editable*/ text-decoration:underline;
+			}
 
-				<p>
-					{% if item.intro is not empty %}
-						{% set content = item.intro ~ ' ' ~ item.post.post_content %}
-					{% else %}
-						{% set content = item.post.post_content %}
-					{% endif %}
-					{{ content|striptags|truncate(200, true)|raw }} <a href="{{ item.link }}">Lire l'article</a>
-				</p>
+			.bodyMeta {
+				color: #929292;
+				font-size: 13px;
+			}
 
-			{% endif %}
+			.bodyContent img{
+				display:inline;
+				height:auto;
+				max-width:560px;
+			}
 
-		{% endfor %}
+			/* ========== Footer Styles ========== */
 
-		<hr>
+			/**
+			* @tab Footer
+			* @section footer style
+			* @tip Set the background color and borders for your email's footer area.
+			* @theme footer
+			*/
+			#templateFooter{
+				/*@editable*/ background-color:#f7f6f6;
+				/*@editable*/ border-top:0;
+			}
 
-	{% endfor %}
+			/**
+			* @tab Footer
+			* @section footer text
+			* @tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+			* @theme footer
+			*/
+			.footerContent{
+				/*@editable*/ color:#929292;
+				/*@editable*/ font-family:sans-serif;
+				/*@editable*/ font-size:13px;
+				/*@editable*/ line-height:150%;
+				padding-top:20px;
+				padding-right:20px;
+				padding-bottom:20px;
+				padding-left:20px;
+				/*@editable*/ text-align:center;
+			}
 
-	{% if 'actualites' == category.slug %}
-		<a href="{{ category.url }}">Toutes les actualités</a>
-	{% elseif 'evenements' == category.slug %}
-		<a href="{{ category.url }}">Tous les évènements</a>
-	{% elseif 'offres-emploi' == category.slug %}
-		<a href="{{ category.url }}">Toutes les offres d'emploi</a>
-	{% else %}
-		<a href="{{ category.url }}">Tous les articles de {{ category.name }}</a>
-	{% endif %}
+			/**
+			* @tab Footer
+			* @section footer link
+			* @tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+			*/
+			.footerContent a:link, .footerContent a:visited, /* Yahoo! Mail Override */ .footerContent a .yshortcuts, .footerContent a span /* Yahoo! Mail Override */{
+				/*@editable*/ color:#e16e38;
+				/*@editable*/ font-weight:normal;
+				/*@editable*/ text-decoration:underline;
+			}
 
-	</category>
+			/* /\/\/\/\/\/\/\/\/ MOBILE STYLES /\/\/\/\/\/\/\/\/ */
 
-{% endfor %}
+			@media only screen and (max-width: 480px){
+				/* /\/\/\/\/\/\/ CLIENT-SPECIFIC MOBILE STYLES /\/\/\/\/\/\/ */
+				body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important;} /* Prevent Webkit platforms from changing default text sizes */
+				body{width:100% !important; min-width:100% !important;} /* Prevent iOS Mail from adding padding to the body */
 
-<outro>
+				/* /\/\/\/\/\/\/ MOBILE RESET STYLES /\/\/\/\/\/\/ */
+				#bodyCell{padding:10px !important;}
 
-	<logo-tela></logo-tela>
+				/* /\/\/\/\/\/\/ MOBILE TEMPLATE STYLES /\/\/\/\/\/\/ */
 
-	{{ outro|raw }}
+				/* ======== Page Styles ======== */
 
-</outro>
+				/**
+				* @tab Mobile Styles
+				* @section template width
+				* @tip Make the template fluid for portrait or landscape view adaptability. If a fluid layout doesn't work for you, set the width to 300px instead.
+				*/
+				#templatePreheader,
+				#templateContainer{
+					max-width:600px !important;
+					/*@editable*/ width:100% !important;
+				}
 
+				/**
+				* @tab Mobile Styles
+				* @section heading 1
+				* @tip Make the first-level headings larger in size for better readability on small screens.
+				*/
+				h1{
+					/*@editable*/ font-size:24px !important;
+					/*@editable*/ line-height:100% !important;
+				}
+
+				/**
+				* @tab Mobile Styles
+				* @section heading 2
+				* @tip Make the second-level headings larger in size for better readability on small screens.
+				*/
+				h2{
+					/*@editable*/ font-size:13px !important;
+					/*@editable*/ line-height:100% !important;
+				}
+
+				/**
+				* @tab Mobile Styles
+				* @section heading 3
+				* @tip Make the third-level headings larger in size for better readability on small screens.
+				*/
+				h3{
+					/*@editable*/ font-size:16px !important;
+					/*@editable*/ line-height:120% !important;
+					margin-bottom: 5px !important;
+				}
+
+				/**
+				* @tab Mobile Styles
+				* @section heading 4
+				* @tip Make the fourth-level headings larger in size for better readability on small screens.
+				*/
+				h4{
+					/*@editable*/ font-size:16px !important;
+					/*@editable*/ line-height:100% !important;
+				}
+
+				/* ======== Header Styles ======== */
+
+				.preheaderContent{
+					display: block !important;
+					padding-left: 0 !important;
+					padding-right: 0 !important;
+					text-align: center !important;
+					width: 100% !important;
+				}
+				.preheaderContent strong {
+					display: block !important;
+				}
+
+				/**
+				* @tab Mobile Styles
+				* @section header image
+				* @tip Make the main header image fluid for portrait or landscape view adaptability, and set the image's original width as the max-width. If a fluid setting doesn't work, set the image width to half its original size instead.
+				*/
+				#featuredImage{
+					height:auto !important;
+					/*@editable*/ max-width:600px !important;
+					/*@editable*/ width:100% !important;
+				}
+
+				/**
+				* @tab Mobile Styles
+				* @section header text
+				* @tip Make the header content text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+				*/
+				.headerContent{
+					/*@editable*/ font-size:20px !important;
+					/*@editable*/ line-height:125% !important;
+				}
+
+				/* ======== Body Styles ======== */
+
+				/**
+				* @tab Mobile Styles
+				* @section body text
+				* @tip Make the body content text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+				*/
+				.bodyContent{
+					/*@editable*/ font-size:13px !important;
+					/*@editable*/ line-height:125% !important;
+				}
+
+				.bodyContentSectionImage {
+					display:none !important;
+				}
+
+				/* ======== Footer Styles ======== */
+
+				/**
+				* @tab Mobile Styles
+				* @section footer text
+				* @tip Make the body content text larger in size for better readability on small screens.
+				*/
+				.footerContent{
+					/*@editable*/ font-size:14px !important;
+					/*@editable*/ line-height:115% !important;
+				}
+
+				.footerContent a{display:block !important;} /* Place footer social and utility links on their own lines, for easier access */
+			}
+		</style>
+	</head>
+	<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin: 0;padding: 0;background-color: #FFFFFF;height: 100% !important;width: 100% !important;">
+		<center>
+			<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 0;background-color: #FFFFFF;border-collapse: collapse !important;height: 100% !important;width: 100% !important;">
+				<tr>
+					<td align="center" valign="top" id="bodyCell" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 20px;border-top: 0;height: 100% !important;width: 100% !important;">
+						<!-- BEGIN TEMPLATE // -->
+						<!-- BEGIN PREHEADER // -->
+						<table border="0" cellpadding="0" cellspacing="0" width="100%" id="templatePreheaderContainer" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #b2cb43;border-collapse: collapse !important;">
+							<tr>
+								<td align="center" valign="top" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+									<table border="0" cellpadding="0" cellspacing="0" id="templatePreheader" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 600px;border-collapse: collapse !important;">
+										<tr>
+											<td valign="center" width="180" class="preheaderContent" style="padding-top: 10px;padding-right: 0;padding-bottom: 12px;padding-left: 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #FFFFFF;font-family: sans-serif;font-size: 14px;line-height: 125%;text-align: left;">
+												<a href="http://www.tela-botanica.org" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: underline;"><strong><img src="{{ logotela }}" height="39" width="150" alt="Tela Botanica" style="-ms-interpolation-mode: bicubic;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;"></strong></a>
+											</td>
+											<td valign="center" class="preheaderContent" style="padding-top: 10px;padding-right: 0;padding-bottom: 12px;padding-left: 20px;text-align: right;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #FFFFFF;font-family: sans-serif;font-size: 14px;line-height: 125%;">
+												<strong>Lettre d'information</strong> du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM yyyy") }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- // END PREHEADER -->
+						<table border="0" cellpadding="0" cellspacing="0" id="templateContainer" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 600px;border: 0;border-collapse: collapse !important;">
+							<tr>
+								<td align="center" valign="top" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+									<!-- BEGIN BODY // -->
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #FFFFFF;border-top: 0;border-bottom: 0;border-collapse: collapse !important;">
+										<tr>
+											<td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
+												{{ intro|addstyletolinks('style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;"')|raw }}
+											</td>
+										</tr>
+										{% if featured is not empty %}
+										<tr>
+											<td align="center" valign="top" class="bodyContent bodyFeatured" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
+												<h2 style="display: block;font-family: Arial, &quot;Helvetica Neue&quot;, sans-serif;font-size: 14px;font-style: normal;font-weight: normal;line-height: 100%;letter-spacing: 1px;margin-top: 0;margin-right: 0;margin-bottom: 20px;margin-left: 0;text-align: left;text-transform: uppercase;color: #70961c !important;">À la Une</h2>
+												{% if featured.thumbnail %}
+												<table border="0" cellpadding="0" cellspacing="0" width="100%" id="featuredHeader" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+													<tr>
+														<td valign="top" class="headerContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: sans-serif;font-size: 20px;font-weight: bold;line-height: 100%;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;text-align: left;vertical-align: middle;">
+															<a href="{{ featured.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;"><img src="{{ featured.thumbnail }}" style="max-width: 600px;-ms-interpolation-mode: bicubic;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;display: inline;" id="featuredImage"></a>
+														</td>
+													</tr>
+												</table>
+												{% endif %}
+												<h3 style="display: block;font-family: sans-serif;font-size: 20px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 15px;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ featured.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ featured.post.post_title }}</a></h3>
+												<span class="bodyMeta" style="color: #929292;font-size: 13px;">{{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}</span>
+												<br>
+												{% if featured.intro is not empty %}
+													{% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
+												{% else %}
+													{% set content = featured.post.post_content %}
+												{% endif %}
+												{{ content|striptags|truncate(300, true)|raw }}
+												<a href="{{ featured.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;">Lire la suite</a>
+											</td>
+										</tr>
+										{% endif %}
+
+										{% for category_id, category in categories if 'actualites' == category.slug %}
+										<tr>
+											<td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
+												{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+												<h2 style="display: block;font-family: Arial, &quot;Helvetica Neue&quot;, sans-serif;font-size: 14px;font-style: normal;font-weight: normal;line-height: 100%;letter-spacing: 1px;margin-top: 0;margin-right: 0;margin-bottom: 20px;margin-left: 0;text-align: left;text-transform: uppercase;color: #70961c !important;">{{ subcategory }}</h2>
+												<table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+													{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+													<tr>
+														<td valign="top" class="bodyContentSectionImage" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 130px;">
+															<a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;"><img src="{{ item.thumbnail }}" style="-ms-interpolation-mode: bicubic;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;padding-right: 20px;width: 110px;display: inline;max-width: 560px;"></a>
+														</td>
+														<td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
+															<h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
+															<span class="bodyMeta" style="color: #929292;font-size: 13px;">{{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}</span>
+															<br>
+															{% if item.intro is not empty %}
+																{% set content = item.intro ~ ' ' ~ item.post.post_content %}
+															{% else %}
+																{% set content = item.post.post_content %}
+															{% endif %}
+															{{ content|striptags|truncate(200, true)|raw }}
+															<a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;">Lire la suite</a>
+														</td>
+													</tr>
+													{% endfor %}
+												</table>
+												{% endfor %}
+											</td>
+										</tr>
+										<tr>
+											<td valign="top" class="bodyContent bodyContentButton" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 0;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: center;">
+												<a href="{{ category.url }}" class="button" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #a2b93b;border-top: 8px solid #a2b93b;border-right: 20px solid #a2b93b;border-bottom: 8px solid #a2b93b;border-left: 20px solid #a2b93b;border-radius: 2px;letter-spacing: 1px;text-transform: uppercase;color: #FFFFFF !important;font-weight: bold !important;text-decoration: none !important;font-size: 11px !important;">Toutes les actualités</a>
+											</td>
+										</tr>
+										{% endfor %}
+
+										{% for category_id, category in categories if 'offres-emploi' == category.slug %}
+										<tr>
+											<td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
+												{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+												<h2 class="colorEmploi" style="display: block;font-family: Arial, &quot;Helvetica Neue&quot;, sans-serif;font-size: 14px;font-style: normal;font-weight: normal;line-height: 100%;letter-spacing: 1px;margin-top: 0;margin-right: 0;margin-bottom: 20px;margin-left: 0;text-align: left;text-transform: uppercase;color: #006979 !important;">{{ subcategory }}</h2>
+												<table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+													{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+													<tr>
+														<td valign="top" class="bodyContentSectionImage" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 130px;">
+															<a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;"><img src="{{ item.thumbnail }}" style="-ms-interpolation-mode: bicubic;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;padding-right: 20px;width: 110px;display: inline;max-width: 560px;"></a>
+														</td>
+														<td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
+															<h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
+															<span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEmploi" style="color: #006979 !important;">Lorraine (88)</span> - Offre publiée le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM yyyy") }} - par {{ item.author }}</span>
+															<br>
+															{% if item.intro is not empty %}
+																{% set content = item.intro ~ ' ' ~ item.post.post_content %}
+															{% else %}
+																{% set content = item.post.post_content %}
+															{% endif %}
+															{{ content|striptags|truncate(200, true)|raw }}
+															<a href="{{ item.link }}" class="colorEmploi" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #006979 !important;font-weight: normal;text-decoration: underline;">Lire la suite</a>
+														</td>
+													</tr>
+													{% endfor %}
+												</table>
+												{% endfor %}
+											</td>
+										</tr>
+										<tr>
+											<td valign="top" class="bodyContent bodyContentButton" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 0;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: center;">
+												<a href="{{ category.url }}" class="button bgcolorEmploi" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #006979 !important;border-top: 8px solid #006979;border-right: 20px solid #006979;border-bottom: 8px solid #006979;border-left: 20px solid #006979;border-radius: 2px;letter-spacing: 1px;text-transform: uppercase;color: #FFFFFF !important;font-weight: bold !important;text-decoration: none !important;font-size: 11px !important;">Toutes les offres d'emploi</a>
+											</td>
+										</tr>
+										{% endfor %}
+
+										{% for category_id, category in categories if 'evenements' == category.slug %}
+										<tr>
+											<td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
+												{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+												<h2 class="colorEvenements" style="display: block;font-family: Arial, &quot;Helvetica Neue&quot;, sans-serif;font-size: 14px;font-style: normal;font-weight: normal;line-height: 100%;letter-spacing: 1px;margin-top: 0;margin-right: 0;margin-bottom: 20px;margin-left: 0;text-align: left;text-transform: uppercase;color: #e16e38 !important;">{{ subcategory }}</h2>
+												<table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+													{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+													<tr>
+														<td valign="top" class="bodyContentSectionDates" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 86px;padding-bottom: 30px;">
+															<a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: none !important;">
+																<table border="0" cellpadding="0" cellspacing="0" width="66px" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+																	<tr>
+																		<td valign="top" class="bodyContentSectionDate" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #F9E2D7;border-radius: 2px;font-size: 10px;color: #e16e38;letter-spacing: 1px;text-align: center;text-transform: uppercase;width: 55px;padding-bottom: 5px !important;padding-top: 8px !important;">
+																			<span style="display: block;font-size: 26px;">{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d") }}</span> {{ item.event.date|localizeddate("none", "none", "fr-FR", null, "MMM") }}
+																		</td>
+																	</tr>
+																	{% if item.event.date_end %}
+																	<tr>
+																		<td valign="top" class="bodyContentSectionDate bodyContentSectionDateBottom" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #F8F5EF;border-radius: 0 0 2px 2px;font-size: 10px;color: #e16e38;letter-spacing: 1px;text-align: center;text-transform: uppercase;width: 55px;padding-bottom: 5px !important;padding-top: 8px !important;">
+																			<span style="display: block;font-size: 26px;">{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d") }}</span> {{ item.event.date|localizeddate("none", "none", "fr-FR", null, "MMM") }}
+																		</td>
+																	</tr>
+																	{% endif %}
+																</table>
+															</a>
+														</td>
+														<td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
+															<h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
+															<span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEvenements" style="color: #e16e38 !important;">{{ item.event.place }}</span> -  Publié par {{ item.author }}</span>
+															<br>
+															{{ item.event.details|striptags|truncate(200, true)|raw }}
+															<a href="{{ item.link }}" class="colorEvenements" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #e16e38 !important;font-weight: normal;text-decoration: underline;">Lire la suite</a>
+														</td>
+													</tr>
+													{% endfor %}
+												</table>
+												{% endfor %}
+											</td>
+										</tr>
+										<tr>
+											<td valign="top" class="bodyContent bodyContentButton" style="padding-bottom: 50px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 0;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-left: 0;text-align: center;">
+												<a href="{{ category.url }}" class="button bgcolorEvenements" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #e16e38 !important;border-top: 8px solid #e16e38;border-right: 20px solid #e16e38;border-bottom: 8px solid #e16e38;border-left: 20px solid #e16e38;border-radius: 2px;letter-spacing: 1px;text-transform: uppercase;color: #FFFFFF !important;font-weight: bold !important;text-decoration: none !important;font-size: 11px !important;">Tous les évènements</a>
+											</td>
+										</tr>
+										{% endfor %}
+									</table>
+									<!-- // END BODY -->
+								</td>
+							</tr>
+							<tr>
+								<td align="center" valign="top" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+									<!-- BEGIN FOOTER // -->
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #f7f6f6;border-top: 0;border-collapse: collapse !important;">
+										<tr>
+											<td valign="top" class="footerContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #929292;font-family: sans-serif;font-size: 13px;line-height: 150%;padding-top: 20px;padding-right: 20px;padding-bottom: 20px;padding-left: 20px;text-align: center;">
+												{{ outro|addstyletolinks('style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #70961c;font-weight: normal;text-decoration: underline;"')|raw }}
+											</td>
+										</tr>
+									</table>
+									<!-- // END FOOTER -->
+								</td>
+							</tr>
+						</table>
+						<!-- // END TEMPLATE -->
+					</td>
+				</tr>
+			</table>
+		</center>
+	</body>
+</html>
 {% endautoescape %}

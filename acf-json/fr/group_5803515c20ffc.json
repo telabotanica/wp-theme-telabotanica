@@ -1,13 +1,13 @@
 {
     "key": "group_5803515c20ffc",
-    "title": "Article - \u00c9v\u00e8nement",
+    "title": "Article - Évènement",
     "fields": [
         {
             "key": "field_580364c892ee1",
             "label": "Date",
             "name": "date",
             "type": "date_picker",
-            "instructions": "(ou date de d\u00e9but si l'\u00e9v\u00e8nement dure plusieurs jours)",
+            "instructions": "(ou date de début si l'évènement dure plusieurs jours)",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -24,7 +24,7 @@
             "label": "Date de fin",
             "name": "date_end",
             "type": "date_picker",
-            "instructions": "Laisser vide si l'\u00e9v\u00e8nement dure seulement un jour",
+            "instructions": "Laisser vide si l'évènement dure seulement un jour",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -52,14 +52,15 @@
             "default_value": "",
             "tabs": "all",
             "toolbar": "full",
-            "media_upload": 0
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5803a5d09a5d0",
             "label": "Gratuit ?",
             "name": "is_free",
             "type": "true_false",
-            "instructions": "Cocher si l'\u00e9v\u00e8nement est gratuit",
+            "instructions": "Cocher si l'évènement est gratuit",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -68,7 +69,10 @@
                 "id": ""
             },
             "message": "",
-            "default_value": 0
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_5803a6059a5d1",
@@ -100,7 +104,7 @@
         {
             "key": "field_580e45279024d",
             "label": "Contact",
-            "name": "contact",
+            "name": "contact_info",
             "type": "clone",
             "instructions": "Tous ces champs sont optionnels.",
             "required": 0,
@@ -232,5 +236,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479778549
+    "modified": 1499777694
 }

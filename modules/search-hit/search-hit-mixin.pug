@@ -1,0 +1,124 @@
+//- This file is only meant to be included in other modules
+//- and then used as a mixin: +search-hit({ ... })
+mixin search-hit(data)
+	+#{'search-hit-' + data.type}(data)
+
+mixin search-hit-actualites(data)
+	include ../list-articles-item/list-articles-item-mixin
+	-
+		var itemData = {
+			modifiers: data.post_classes,
+			id: data.post_id,
+			href: data.permalink,
+			title: data._highlightResult.post_title.value,
+			text: data._snippetResult.post_content.value,
+			thumbnail_url: data.thumbnail,
+			date: {
+				title: data.post_date.formatted,
+				datetime: data.post_date.datetime,
+				//- the relative date below is processed at runtime in instantsearch.js
+				text: data.post_date.text,
+			},
+			author: {
+				prefix: 'par',
+				text: data.post_author.display_name,
+				href: data.post_author.permalink,
+			},
+			categories: data.category_links,
+		}
+	.search-hit
+		+list-articles-item(itemData)
+
+mixin search-hit-evenements(data)
+	include ../list-articles-item/list-articles-item-mixin
+	-
+		var itemData = {
+			modifiers: data.post_classes,
+			id: data.post_id,
+			href: data.permalink,
+			title: data._highlightResult.post_title.value,
+			text: data._snippetResult.post_content.value,
+			thumbnail_url: data.thumbnail,
+			date: {
+				title: data.post_date.formatted,
+				datetime: data.post_date.datetime,
+				//- the relative date below is processed at runtime in instantsearch.js
+				text: data.post_date.text,
+			},
+			author: {
+				prefix: 'par',
+				text: data.post_author.display_name,
+				href: data.post_author.permalink,
+			},
+			categories: data.category_links,
+			//- specific to events
+			event: true,
+			dates: {
+				start: data.event_date,
+				end: data.event_date_end ? data.event_date_end : null,
+			},
+			place: data.event_place.formatted
+		}
+	.search-hit
+		+list-articles-item(itemData)
+
+mixin search-hit-flore(data)
+	//- bdtfx is the default referentiel, else take the first in array
+	- var referentiel = data.bdtfx ? 'bdtfx' : data.referentiels[0];
+	- var title = data._highlightResult[referentiel].scientific_name.value
+	- var suffix = []
+	- if (data[referentiel].author) suffix.push(data[referentiel].author)
+	- if (data[referentiel].year) suffix.push('[' + data[referentiel].year + ']')
+	- var href = data[referentiel].permalink
+	- var text = data._highlightResult[referentiel].common_name.value
+	- var synonyms = data._highlightResult[referentiel].synonyms
+	.search-hit
+		h3.search-hit-title
+			a(href=href)
+				!= title
+				if suffix.length
+					span.search-hit-title-suffix= suffix.join(' ')
+			each ref in data.referentiels
+				a.search-hit-tag(href=data[ref].permalink class="search-hit-tag-" + ref)= ref
+		if text
+			.search-hit-text
+				!= text
+		if synonyms
+			- var firstSynonyms = synonyms.slice(0, 2)
+			- var diffSynonyms = synonyms.length - firstSynonyms.length
+			ul.search-hit-synonyms
+				each synonym in firstSynonyms
+					li.search-hit-synonyms-item
+						strong= 'syn.'
+						!= ' ' + synonym.value
+				if diffSynonyms > 1
+					li.search-hit-synonyms-item= "+ " + diffSynonyms + " autres synonymes"
+				else if diffSynonyms == 1
+					li.search-hit-synonyms-item= "+ un autre synonyme"
+
+mixin search-hit-vegetation(data)
+	- var title = data._highlightResult.syntaxon.value
+	- var href = data.permalink
+	- var text = data._highlightResult.commonName.value
+	.search-hit
+		h3.search-hit-title
+			a(href=href)!= title
+		if text
+			.search-hit-text!= text
+
+mixin search-hit-projets(data)
+	include ../card-project/card-project-mixin
+	-
+		var itemData = {
+			permalink: data.permalink,
+			cover_image_url: data.cover_image,
+			tela: data.tela,
+			tela_title: 'Un projet Tela Botanica',
+			avatar: data.image,
+			name: data.name,
+			description: data.description,
+			meta: [
+				{icon: 'members', text: data.member_count}
+			]
+		}
+	+card-project(itemData)

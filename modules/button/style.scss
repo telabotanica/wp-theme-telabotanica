@@ -16,7 +16,8 @@
 	text-transform: uppercase;
 	transition: background 0.2s ease;
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		background-color: lighten($vert-bouton, 8%);
 	}
 
@@ -27,7 +28,8 @@
 	&.orange {
 		background-color: $orange;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			background-color: lighten($orange, 8%);
 		}
 	}
@@ -35,8 +37,19 @@
 	&.rouge {
 		background-color: $rouge;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			background-color: lighten($rouge, 8%);
+		}
+	}
+
+	&.white {
+		background-color: $blanc;
+		color: $vert-fonce;
+
+		&:hover,
+		&:focus {
+			background-color: $grisF0;
 		}
 	}
 

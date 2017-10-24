@@ -28,8 +28,7 @@ get_header(); ?>
 
 									if ( post_is_in_descendant_category( 'evenements' ) ) :
 										the_telabotanica_module('event-dates', [
-											'modifiers' => get_field('image') ? 'absolute' : 'float-left',
-											'tag' => 'div'
+											'modifiers' => get_field('image') ? 'absolute' : 'float-left'
 										]);
 										if ( get_field('image') ) :
 											the_telabotanica_component('image');
@@ -171,8 +170,8 @@ get_header(); ?>
 
 									endif; // FIN EVENEMENT
 
-									if ( get_field('contact') && !empty( get_field('contact')->name ) ) {
-										the_telabotanica_component('contact', get_field('contact'));
+									if ( get_field('contact_info') && !empty( get_field('contact_info')['contact'][0]['name'] ) ) {
+										the_telabotanica_component('contact', get_field('contact_info')['contact'][0]);
 									}
 									?>
 								</article>

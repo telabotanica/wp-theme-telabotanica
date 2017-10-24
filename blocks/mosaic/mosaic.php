@@ -51,14 +51,18 @@ function telabotanica_block_mosaic($data) {
 	$images_per_item = 4;
 	$images_count = count($data->items) * $images_per_item;
 
-	$images_feed = json_decode(file_get_contents('http://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=' . $images_count . '&masque.type=adeterminer&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc'));
-	$images = array_map(function($resultat) {
-		return (object) [
-			'href' => 'http://www.tela-botanica.org/appli:identiplante#obs~' . $resultat->id_observation,
-			'src' => str_replace('XL.', 'CRS.', $resultat->images[0]->{'binaire.href'}),
-			'alt' => @$resultat->{'determination.ns'} ?: __( 'Indéterminé', 'telabotanica' )
-		];
-	}, $images_feed->resultats);
+	if ( false === ( $images = get_transient( 'module_mosaic_images' ) ) ) {
+		$images_feed = json_decode(file_get_contents('http://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=' . $images_count . '&masque.type=adeterminer&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc'));
+		$images = array_map(function($resultat) {
+			return (object) [
+				'href' => 'http://www.tela-botanica.org/appli:identiplante#obs~' . $resultat->id_observation,
+				'src' => str_replace('XL.', 'CRS.', $resultat->images[0]->{'binaire.href'}),
+				'alt' => @$resultat->{'determination.ns'} ?: __( 'Indéterminé', 'telabotanica' )
+			];
+		}, $images_feed->resultats);
+		set_transient( 'module_mosaic_images', $images, 1 * HOUR_IN_SECONDS );
+	}
+
 	$images = array_chunk($images, $images_per_item);
 
 	printf(

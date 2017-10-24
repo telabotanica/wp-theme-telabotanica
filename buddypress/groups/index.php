@@ -21,7 +21,8 @@ the_telabotanica_module('cover', [
 	'subtitle' => get_field('cover_subtitle', $projects_page),
 	'search' => [
 		'index' => 'projets',
-		'placeholder' => __('Rechercher un projet...', 'telabotanica')
+		'placeholder' => __('Rechercher un projet...', 'telabotanica'),
+		'instantsearch' => true
 	]
 ]);
 
@@ -96,6 +97,27 @@ the_telabotanica_module('cover', [
 				endif;
 				echo '</div>';
 
+				$algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
+				$current_index = 'projets';
+
+				// Retrieve the label for the current index
+				$indices = $algolia_autocomplete_config['sources'];
+				foreach ( $indices as $index ) :
+					if ( $index['index_id'] === $current_index ) {
+						$current_index = [
+							'id' => $current_index,
+							'label' => $index['label'],
+							'name' => $index['index_name'],
+							'filters' => @$index['filters'] ?: []
+						];
+						break;
+					}
+				endforeach;
+
+				the_telabotanica_module('search-filters', [
+					'filters' => $current_index['filters']
+				]);
+
 				the_telabotanica_module('button-top');
 
 				/**
@@ -126,30 +148,34 @@ the_telabotanica_module('cover', [
 				]); ?>
 
 				<div id="template-notices" role="alert" aria-atomic="true">
-								<?php
-								/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
-								do_action( 'template_notices' );
-					?>
-						</div>
-
-							<?php bp_get_template_part( 'groups/groups-loop' ); ?>
-
 					<?php
-					/**
-					 * Fires and displays the group content.
-					 *
-					 * @since 1.1.0
-					 */
-					do_action( 'bp_directory_groups_content' );
+					/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
+					do_action( 'template_notices' );
+					?>
+				</div>
 
-					wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' );
+				<?php bp_get_template_part( 'groups/groups-loop' ); ?>
 
-					/**
-					 * Fires after the display of the groups content.
-					 *
-					 * @since 1.1.0
-					 */
-					do_action( 'bp_after_directory_groups_content' ); ?>
+				<?php
+				/**
+				 * Fires and displays the group content.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_directory_groups_content' );
+
+				wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' );
+
+				/**
+				 * Fires after the display of the groups content.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_after_directory_groups_content' );
+
+				// Container for instantsearch hits
+				echo '<div class="list-projects" id="search-hits"></div>';
+				?>
 
 			</div>
 		</div>

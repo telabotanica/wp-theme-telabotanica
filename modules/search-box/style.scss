@@ -1,4 +1,32 @@
-@import "../../algolia/algolia-autocomplete";
+.aa-dropdown-menu {
+	// we set the width in JS
+	background-color: $blanc;
+	border-bottom-left-radius: 0.4rem;
+	border-bottom-right-radius: 0.4rem;
+	border-top: 0;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.25), 0 0 0.1rem rgba(0, 0, 0, 0.35);
+	color: $gris23;
+	font-size: 1.2rem;
+	z-index: 999999;
+
+	@media only screen and (max-width: 768px) {
+		// For mobile phones:
+		max-width: inherit;
+		min-width: inherit;
+		width: 70%;
+	}
+
+	.aa-input,
+	.aa-hint {
+		width: 100%;
+	}
+
+	.aa-hint {color: $gris60;}
+
+	.clear {
+		clear: both;
+	}
+}
 
 .search-box {
 	&-wrapper {
@@ -65,6 +93,20 @@
 			border: 0;
 			transform: translateX(-4.5rem);
 			width: 62.5rem;
+		}
+
+		.ais-search-box--powered-by {
+			bottom: -2.5rem;
+			color: transparentize($grisF0, 0.25);
+			font-size: 1.2rem;
+			position: absolute;
+			right: 0;
+
+			a {
+				color: $grisF0;
+				text-decoration: none;
+				&:hover {border-bottom: 0.1rem solid;}
+			}
 		}
 	}
 
@@ -154,4 +196,21 @@
 
 	}
 
+}
+
+// instantsearch
+
+.ais-infinite-hits {
+	&--showmore {
+		text-align: center;
+
+		button {
+			@extend .button;
+		}
+
+		// Hide instantsearch infiniteHits button when disabled
+		button[disabled] {
+			display: none;
+		}
+	}
 }

@@ -132,21 +132,13 @@ do_action( 'bp_before_members_loop' ); ?>
 
 	<?php bp_member_hidden_fields(); ?>
 
-	<div id="pag-bottom" class="pagination">
-
-		<div class="pag-count" id="member-dir-count-bottom">
-
-			<?php bp_members_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="member-dir-pag-bottom">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
+	<?php the_telabotanica_module('pagination', [
+		'id' => 'pag-bottom',
+		'count_id' => 'member-dir-count-bottom',
+		'links_id' => 'member-dir-pag-bottom',
+		'context' => 'buddypress',
+		'type' => 'members'
+	]); ?>
 
 <?php else: ?>
 

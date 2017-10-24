@@ -1,10 +1,9 @@
-'use strict';
-
 var Tela = window.Tela || {};
+Tela.modules = Tela.modules || {};
 
-Tela.epFloraData = (function(){
+Tela.modules.epFloraData = (function(){
 
-  function manageTabs(menuSelector, bodySelector){
+  function module(menuSelector, bodySelector){
     var $zoneMenu = $(menuSelector),
         $zoneOutils = $(bodySelector),
         $tabs,
@@ -59,12 +58,12 @@ Tela.epFloraData = (function(){
 
   return function(selector, menuSelector, bodySelector){
     $(selector).each(function() {
-      manageTabs(menuSelector, bodySelector);
+      module(menuSelector, bodySelector);
     });
   };
 
 })();
 
 $(document).ready(function(){
-  Tela.epFloraData('.project-flora-data', '#ep-flora-data-menu', '#ep-flora-data-tabs');
+  Tela.modules.epFloraData('.project-flora-data', '#ep-flora-data-menu', '#ep-flora-data-tabs');
 });

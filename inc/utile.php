@@ -51,15 +51,11 @@ if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
  *
  * @return string
  */
-function telabotanica_format_place( $place, $icon = true ) {
+function telabotanica_format_place( $place ) {
 
 	if ( !is_object( $place ) ) return $place;
 
-	$template = '%s %s (%s)';
-
-	if ( $icon ) {
-		$icon = get_telabotanica_module('icon', ['icon' => 'marker']);
-	}
+	$template = '%s (%s)';
 
 	if ( $place->countryCode !== 'fr' ) {
 		$code = strtoupper( $place->countryCode );
@@ -77,12 +73,59 @@ function telabotanica_format_place( $place, $icon = true ) {
 
 	$place = sprintf(
 		$template,
-		$icon,
 		$city,
 		$code
 	);
 
  	return $place;
+}
+
+/**
+ * Display image credits
+ */
+function telabotanica_image_credits( $image, $class = '' ) {
+	if ( !$image ) return;
+
+	$credits = get_fields( $image['ID'] );
+
+	printf('<div class="%s-credits">', $class);
+
+		// Use caption by default
+		$caption = @$image['caption'] ;
+
+		if ( $credits ) :
+			// If empty, use title (only if credits exist, we don't want default titles)
+			if ( empty( $caption ) ) $caption = $image['title'];
+
+			// Add link if present
+			if ( $credits['link'] ) {
+				$caption = sprintf(
+					'<a href="%s" target="_blank" class="%s-credits-title">%s</a>',
+					$credits['link'],
+					$class,
+					$caption
+				);
+			} else {
+				$caption = sprintf(
+					'<span class="%s-credits-title">%s</span>',
+					$class,
+					$caption
+				);
+			}
+
+			// Add author if present, and there is no caption
+			if (empty( $image['caption'] ) && $credits['author']) {
+				$caption = sprintf(
+					__('%s par %s', 'telabotanica'),
+					$caption,
+					$credits['author']
+				);
+			}
+		endif;
+
+		echo $caption;
+
+	echo '</div>';
 }
 
 /**

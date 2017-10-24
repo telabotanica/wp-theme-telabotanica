@@ -8,12 +8,16 @@
 
 $current_user = wp_get_current_user();
 
+$has_messages = bp_has_message_threads( array(
+	'box' => 'inbox',
+	'type' => 'unread'
+) );
+
 the_telabotanica_module('header-dashboard', [
 	'title' => sprintf(__('Bonjour %s !', 'telabotanica'), $current_user->display_name),
-	// TODO replace `true` by a real condition below
-	// TODO add number of messages
-	'message' => true ? sprintf(
-		__('Vous avez un <a href="%s">nouveau message</a>', 'telabotanica'),
+	'message' => $has_messages ? sprintf(
+		__('Vous avez %s <a href="%s">nouveau(x) message(s)</a>', 'telabotanica'),
+		bp_get_total_unread_messages_count(),
 		bp_loggedin_user_domain() . 'messages/'
 	) : false
 ]);
@@ -23,143 +27,104 @@ the_telabotanica_module('header-dashboard', [
 	<div class="layout-wrapper">
 		<div class="layout-column">
 			<?php
-			the_telabotanica_module('block-dashboard', [
+			the_telabotanica_module('block-dashboard-map', [
 				'title' => [
 					'title' => __('Mes observations', 'telabotanica'),
-					'suffix' => '128', // TODO
-					'href' => '#'
+					'suffix' => '',
+					'href' => 'https://www.tela-botanica.org/appli:cel',
+					'target' => '_blank'
 				],
-				'html_content' => get_telabotanica_component('map'),
 				'button' => [
-					'href' => '#', // TODO
-					'text' => __('Ajouter une observation', 'telabotanica')
+					'href' => get_permalink( get_page_by_path( 'carnet-en-ligne', OBJECT, 'tb_outil' ) ),
+					'text' => __('Ajouter une observation', 'telabotanica'),
+					'target' => '_blank'
 				]
 			]);
 
-
-			$observations = [
-				[
-					'type' => 'feed-item',
-					'href' => '#',
-					'image' => 'https://api.tela-botanica.org/img:001125636CRXS.jpg',
-					'title' => 'Allium vineale ??',
-					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
-					'meta' => [
-						'place' => 'Saturargues (34)'
-					]
-				],
-				[
-					'type' => 'feed-item',
-					'href' => '#',
-					'image' => 'https://api.tela-botanica.org/img:001129856CRXS.jpg',
-					'title' => '??',
-					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
-					'meta' => [
-						'place' => 'Murol (63)'
-					]
-				],
-				[
-					'type' => 'feed-item',
-					'href' => '#',
-					'image' => 'https://api.tela-botanica.org/img:001129797CRXS.jpg',
-					'title' => '??',
-					'text' => 'Le 15 Juin 2016 - Par Hervé Lot',
-					'meta' => [
-						'place' => 'Grenoble (38)'
-					]
-				]
-			];
-
-			$html_content_observations = '';
-			foreach ( $observations as $obs ) {
-				$html_content_observations .= get_telabotanica_module('feed-item', $obs);
-			}
-
-			the_telabotanica_module('block-dashboard', [
+			the_telabotanica_module('block-dashboard-observations', [
 				'title' => [
 					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),
-					'suffix' => '12', // TODO
-					'href' => '#'
+					'suffix' => '',
+					'href' => 'http://www.tela-botanica.org/appli:identiplante?masque.type=adeterminer&page=1&pas=12&masque.pninscritsseulement=1&tri=date_transmission&ordre=desc',
+					'target' => '_blank'
 				],
-				'html_content' => $html_content_observations,
 				'button' => [
-					'href' => '#', // TODO
-					'text' => __('Tout afficher', 'telabotanica')
-				],
-				'modifiers' => 'transparent-content'
+					'href' => get_permalink( get_page_by_path( 'carnet-en-ligne', OBJECT, 'tb_outil' ) ),
+					'text' => __('Ajouter une observation', 'telabotanica'),
+					'target' => '_blank'
+				]
 			]);
 			?>
 		</div>
 		<div class="layout-column">
 			<?php
-			$photos = [
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129797CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129789CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129777CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129768CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129757CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129710CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129705CRXS.jpg'],
-				['href' => '#', 'image' => 'https://api.tela-botanica.org/img:001129701CRXS.jpg']
-			];
-
-			$html_content_photos = '<div class="block-dashboard-content-images">';
-			foreach ( $photos as $photo ) {
-				$html_content_photos .= sprintf(
-					'<a href="%s"><img src="%s" alt="%s" /></a>',
-					$photo['href'],
-					$photo['image'],
-					''
-				);
-			}
-			$html_content_photos .= '</div>';
-
-			the_telabotanica_module('block-dashboard', [
+			the_telabotanica_module('block-dashboard-images', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
-					'suffix' => '31', // TODO
-					'href' => '#'
+					'suffix' => '',
+					'href' => 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=8&tri=date_transmission&ordre=desc&format=CRXS&masque.auteur=' . get_current_user_id(),
+					'target' => '_blank'
 				],
-				'html_content' => $html_content_photos,
 				'button' => [
-					'href' => '#', // TODO
-					'text' => __('Envoyer une photo', 'telabotanica')
+					'href' => 'https://www.tela-botanica.org/widget:cel:saisie',
+					'text' => __('Envoyer une photo', 'telabotanica'),
+					'target' => '_blank'
 				]
 			]);
 
+			$user_posts_query = new WP_Query([
+				'posts_per_page' => 3,
+				'author' => get_current_user_id(),
+			]);
+			$user_posts = '';
+			if ( $user_posts_query->have_posts() ) :
+				while ( $user_posts_query->have_posts() ) : $user_posts_query->the_post();
+					$user_posts .= get_telabotanica_module('feed-item', [
+						'article' => true,
+						'href' => get_permalink(),
+						'target' => '_blank',
+						'title' => html_entity_decode(get_the_title()),
+						'text' => html_entity_decode(wp_trim_words(get_the_excerpt(), 8))
+					]);
+				endwhile;
+			endif;
+			wp_reset_postdata();
+			$user_posts_button = [
+				'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
+				'text' => __('Proposer une actualité', 'telabotanica')
+			];
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
-					'title' => __('Mes actualités', 'telabotanica'),
-					'href' => '#'
+					'title' => __('Mes actualités', 'telabotanica')
 				],
-				'html_content' => 'mosaic photos', // TODO
+				'html_content' => $user_posts,
 				'empty' => [
 					'icon' => 'news',
 					'text' => __("Vous n'avez pas encore ajouté d'actualités", 'telabotanica'),
-					'button' => [
-						'href' => '#', // TODO
-						'text' => __('Proposer une actualité', 'telabotanica')
-					]
+					'button' => $user_posts_button
 				],
-				'is_empty' => true
+				'is_empty' => $user_posts === '',
+				'button' => $user_posts_button
 			]);
 
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
 					'title' => __('Mes dons', 'telabotanica'),
-					'href' => bp_loggedin_user_domain() . 'dons/'
+					'href' => '#' // TODO: remettre le lien ci-dessous quand la page Dons sera dispo
+					// 'href' => bp_loggedin_user_domain() . 'dons/'
 				],
-				'html_content' => 'mosaic photos', // TODO
+				'html_content' => '', // TODO
 				'empty' => [
 					'icon' => 'heart-outline',
-					'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
+					'text' => __("Retrouvez prochainement ici la liste de vos dons", 'telabotanica'),
+					// 'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
 					'button' => [
-						'href' => '#', // TODO
+						'href' => get_permalink( get_page_by_path( 'soutenir' ) ),
 						'text' => __('Faites un don !', 'telabotanica'),
 						'modifiers' => 'rouge'
 					]
 				],
-				'is_empty' => true
+				'is_empty' => true // TODO: ajouter la logique "si l'utilisateur a fait des dons"
 			]);
 			?>
 		</div>

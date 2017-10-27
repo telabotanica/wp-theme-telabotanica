@@ -69,7 +69,7 @@ the_telabotanica_module('cover', [
 					$categories_items[] = [
 						'text' => __('Mes projets', 'telabotanica'),
 						'number' => bp_get_total_group_count_for_user( bp_loggedin_user_id() ),
-						'href' => trailingslashit( bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups' )
+						'href' => trailingslashit( bp_loggedin_user_domain() . 'projets' )
 					];
 				endif;
 

@@ -45,11 +45,13 @@
 
 		<?php if ( bp_account_was_activated() ) : ?>
 
-			<?php if ( isset( $_GET['e'] ) ) : ?>
-				<p><?php _e( 'Your account was activated successfully! Your account details have been sent to you in a separate email.', 'buddypress' ); ?></p>
-			<?php else : ?>
-				<p><?php printf( __('Votre compte est validé ! Vous pouvez maintenant <a href="%s">vous connecter</a> avec les identifiant et mot de passe que vous avez renseignés  à l\'inscription. N\'oubliez pas de compléter les informations de votre profil !', 'telabotanica'), wp_login_url( bp_get_root_domain() )); ?></p>
-			<?php endif; ?>
+			<div class="notice notice-confirm">
+				<?php if ( isset( $_GET['e'] ) ) : ?>
+					<p><?php _e( 'Your account was activated successfully! Your account details have been sent to you in a separate email.', 'buddypress' ); ?></p>
+				<?php else : ?>
+					<p><?php printf( __('Votre compte est validé ! Vous pouvez maintenant <strong><a href="%s">vous connecter</a></strong> avec les identifiant et mot de passe que vous avez renseignés  à l\'inscription. N\'oubliez pas de compléter les informations de votre profil !', 'telabotanica'), wp_login_url( bp_get_root_domain() )); ?></p>
+				<?php endif; ?>
+			</div>
 
 		<?php else : ?>
 

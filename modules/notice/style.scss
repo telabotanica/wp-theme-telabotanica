@@ -11,6 +11,16 @@
 		border-color: darken($vert-tres-clair, 20%);
 		color: darken($vert-fonce, 10%);
 		fill: darken($vert-fonce, 10%);
+
+		a {
+			color: $vert-fonce;
+			fill: $vert-fonce;
+
+			&:hover {
+				color: darken($vert-fonce, 10%);
+				fill: darken($vert-fonce, 10%);
+			}
+		}
 	}
 
 	&-info {
@@ -18,6 +28,16 @@
 		border-color: darken($turquoise-clair, 20%);
 		color: $turquoise-fonce;
 		fill: $turquoise-fonce;
+
+		a {
+			color: $turquoise-fonce;
+			fill: $turquoise-fonce;
+
+			&:hover {
+				color: darken($turquoise-fonce, 10%);
+				fill: darken($turquoise-fonce, 10%);
+			}
+		}
 	}
 
 	&-warning {

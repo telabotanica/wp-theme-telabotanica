@@ -53,6 +53,16 @@
 			}
 		}
 
+		a {
+			color: $turquoise-fonce;
+			fill: $turquoise-fonce;
+
+			&:hover {
+				color: darken($turquoise-fonce, 10%);
+				fill: darken($turquoise-fonce, 10%);
+			}
+		}
+
 		button {
 			font-size: 1.3rem;
 			background-color: $vert-bouton;

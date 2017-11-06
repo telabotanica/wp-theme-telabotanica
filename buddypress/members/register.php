@@ -241,7 +241,7 @@
 							 */
 							do_action( 'bp_custom_profile_edit_fields' ); ?>
 
-							<p class="description"><?php bp_the_profile_field_description(); ?></p>
+							<!-- <p class="description"><?php //bp_the_profile_field_description(); ?></p> -->
 
 						</div>
 
@@ -416,11 +416,13 @@
 			do_action( 'bp_before_registration_confirmed' ); ?>
 
 			<div id="template-notices" class="notice-registration-complete" role="alert" aria-atomic="true">
-				<?php if ( bp_registration_needs_activation() ) : ?>
-					<p><?php _e( 'You have successfully created your account! To begin using this site you will need to activate your account via the email we have just sent to your address.', 'buddypress' ); ?></p>
-				<?php else : ?>
-					<p><?php _e( 'You have successfully created your account! Please log in using the username and password you have just created.', 'buddypress' ); ?></p>
-				<?php endif; ?>
+				<div class="notice notice-confirm">
+					<?php if ( bp_registration_needs_activation() ) : ?>
+						<p><?php _e( 'You have successfully created your account! To begin using this site you will need to activate your account via the email we have just sent to your address.', 'buddypress' ); ?></p>
+					<?php else : ?>
+						<p><?php _e( 'You have successfully created your account! Please log in using the username and password you have just created.', 'buddypress' ); ?></p>
+					<?php endif; ?>
+				</div>
 			</div>
 
 			<?php

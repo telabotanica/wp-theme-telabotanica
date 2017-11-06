@@ -1,0 +1,7 @@
+#activate-page {
+  .notice-registration,
+  & > p:nth-child(3), // trouver mieux, ce paragraphe n'a pas de class(e)
+  #activation-form {
+    display: none;
+  }
+}

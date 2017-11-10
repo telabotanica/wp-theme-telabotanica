@@ -6,7 +6,7 @@
 
 	$data = telabotanica_styleguide_data($defaults, $data);
 
-	echo $pug->render(__DIR__ . '/search-hit.pug', [
+	echo $pug->renderFile(__DIR__ . '/search-hit.pug', [
 		'data' => $data
 	]);
 }

@@ -66,7 +66,7 @@
 		}
 	}
 
-	echo $pug->render(__DIR__ . '/list-articles-item.pug', [
+	echo $pug->renderFile(__DIR__ . '/list-articles-item.pug', [
 		'data' => $data
 	]);
 }

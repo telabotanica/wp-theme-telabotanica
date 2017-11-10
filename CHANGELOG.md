@@ -78,6 +78,7 @@ plus de détails sur http://semver.org/lang/fr/
 * template `archive-tb_thematique` ajouté
 * template `single-tb_thematique` ajouté
 * template `page-comment-participer` ajouté
+* template `flore` ajouté
 * ajout d'une taxonomie Catégorie de moyens de participer
 * groupe de champs ACF "Composant liste d'articles" ajouté
 * refactoring crédits des images

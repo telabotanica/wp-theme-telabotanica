@@ -24,6 +24,19 @@ if (is_dir($dossier_eflore)) {
 	// Rendu
 	$content_class = [ 'main-content-inner' ];
 	get_header();
+
+	// bandeau avec moteur de recherche
+	$eflore_page = get_page_by_path( 'eflore' );
+	the_telabotanica_module('cover', [
+		'image' => get_field('cover_image', $eflore_page),
+		'title' => get_the_title($eflore_page),
+		'subtitle' => get_field('cover_subtitle', $eflore_page),
+		'search' => [
+			'index' => 'Flore',
+			'placeholder' => __('Rechercher dans eFlore...', 'telabotanica')
+		]
+	]);
+
 	echo eflore_get_contenu(); // défini dans eflore_wordpress.php
 } else {
 	get_header();

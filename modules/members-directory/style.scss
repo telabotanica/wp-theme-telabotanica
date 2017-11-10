@@ -30,7 +30,7 @@
 				font-size: 1.6rem;
 				font-weight: 700;
 			}
-			
+
 			.submit {
 				margin-top: 3rem;
 
@@ -136,6 +136,15 @@
 				color: $gris33;
 			}
 		}
+
+		.component-accordion {
+			margin-bottom: 3rem;
+		}
+
+		.component-accordion:last-child {
+			// hidden when contact form isn't here
+			display: none;
+		}
 	}
 
 	#pag-bottom {
@@ -161,7 +170,7 @@
 					display: inline;
 				}
 			}
-			
+
 			.bp_mda_action_submit {
 				margin-top: 1em;
 				float: right;

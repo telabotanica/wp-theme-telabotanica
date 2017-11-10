@@ -22,8 +22,9 @@ $nom_page_membres = get_post_field('post_name', $pages_bp['members']);
 
 $search_input_name = bp_core_get_component_search_query_arg();
 the_telabotanica_module('cover', [
-	'title' => __( 'Annuaire des telabotanistes', 'telabotanica' ),
-	'subtitle' => __( 'Recherchez et contactez les autres inscrits', 'telabotanica' ),
+	'image' => get_field('cover_image'),
+	'title' => get_the_title(),
+	'subtitle' => get_field('cover_subtitle'),
 	'search' => [
 		'id' => bp_current_component() . '-dir-search',
 		'action' => '',
@@ -92,11 +93,11 @@ the_telabotanica_module('cover', [
 				// BP Profile Search advanced search form hooks here
 				?>
 			</div>
-			
+
 			</div>
 
 		</aside>
-		<div class="layout-content">	
+		<div class="layout-content">
 			<form action="" method="post" id="members-directory-form" class="dir-form">
 			<?php
 
@@ -145,6 +146,20 @@ the_telabotanica_module('cover', [
 			</form><!-- #members-directory-form -->
 
 			<?php
+
+			/**
+			 * Displays ACF content for current page
+			 * i.e. members index action disclaimer (if set)
+			 */
+			add_action('display_acf_content', 'display_acf_content', 10, 1);
+			function display_acf_content($current_page_id) {
+				// On boucle sur les composants ACF
+				while ( have_rows('components', $current_page_id) ) :
+					the_row();
+					the_telabotanica_component(get_row_layout());
+				endwhile;
+			}
+			do_action( 'display_acf_content', get_queried_object()->ID );
 
 			/**
 			 * Fires after the display of the members.

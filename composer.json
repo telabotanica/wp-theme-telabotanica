@@ -1,7 +1,7 @@
 {
     "require": {
-        "pug-php/pug": "^2.5",
+        "pug-php/pug": "^3.0",
         "proteusthemes/wai-aria-walker-nav-menu": "^1.2",
-        "algolia/algoliasearch-client-php": "^1.18"
+        "algolia/algoliasearch-client-php": "^1.23"
     }
 }

@@ -32,7 +32,8 @@ require get_template_directory() . '/vendor/autoload.php';
 // Création d'une instance de Pug pour le rendu des templates *.pug
 // TODO: configurer le cache, voir https://github.com/pug-php/pug
 $pug = new \Pug\Pug([
-	'pugjs' => true,
+	'strict' => true,
+	// 'pugjs' => true,
 	// 'expressionLanguage' => 'js',
 	'basedir' => get_template_directory() . '/modules',
 	'cache' => get_template_directory() . '/cache/pug',

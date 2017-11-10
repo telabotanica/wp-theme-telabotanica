@@ -16,7 +16,7 @@
 		}
 	}
 
-	echo $pug->render(__DIR__ . '/categories-labels.pug', [
+	echo $pug->renderFile(__DIR__ . '/categories-labels.pug', [
 		'data' => $data
 	]);
 }

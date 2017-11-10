@@ -35,7 +35,7 @@
 		$data->title = sprintf( _x( 'Le %s', '%s = date', 'telabotanica' ), $date_title );
 	}
 
-	echo $pug->render(__DIR__ . '/event-dates.pug', [
+	echo $pug->renderFile(__DIR__ . '/event-dates.pug', [
 		'data' => $data
 	]);
 

@@ -17,7 +17,7 @@ function telabotanica_module_feed_item($data) {
 
 	$data = telabotanica_styleguide_data($defaults, $data);
 
-	echo $pug->render(__DIR__ . '/feed-item.pug', [
+	echo $pug->renderFile(__DIR__ . '/feed-item.pug', [
 		'data' => $data
 	]);
 }

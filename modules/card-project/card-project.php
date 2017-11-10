@@ -31,7 +31,7 @@
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('card-project', $data->modifiers);
 
-	echo $pug->render(__DIR__ . '/card-project.pug', [
+	echo $pug->renderFile(__DIR__ . '/card-project.pug', [
 		'data' => $data
 	]);
 

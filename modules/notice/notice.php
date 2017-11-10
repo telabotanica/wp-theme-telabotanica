@@ -7,7 +7,7 @@
 
 	$data = telabotanica_styleguide_data($defaults, $data);
 
-	echo $pug->render(__DIR__ . '/notice.pug', [
+	echo $pug->renderFile(__DIR__ . '/notice.pug', [
 		'data' => $data
 	]);
 }

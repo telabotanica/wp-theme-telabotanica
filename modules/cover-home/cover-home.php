@@ -12,7 +12,7 @@
 	printf(
 		'<div class="%s" style="background-image: url(%s);">',
 		implode(' ', $data->modifiers),
-		$data->image['url']
+		wp_get_attachment_image_url( $data->image['ID'], 'cover-background' )
 	);
 
 		echo '<div class="layout-wrapper">';

@@ -5,14 +5,13 @@
 		'title' => __('Bienvenue sur Tela Botanica, <br />le réseau des botanistes francophones', 'telabotanica'),
 		'modifiers' => []
 	];
-
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array(['cover', 'cover-home'], $data->modifiers);
 
 	printf(
 		'<div class="%s" style="background-image: url(%s);">',
 		implode(' ', $data->modifiers),
-		wp_get_attachment_image_url( $data->image['ID'], 'cover-background' )
+		$data->image['sizes']['cover-background']
 	);
 
 		echo '<div class="layout-wrapper">';

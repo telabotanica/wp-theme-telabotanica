@@ -23,7 +23,7 @@
 	$data->main_component['modifiers'] = []; // annule les modifiers du composant image
 
 	if ( $data->background === 'image' && $data->background_image ) :
-		$background = sprintf( 'background-image: url(%s)', wp_get_attachment_image_url( $data->background_image['ID'], 'cover-background' ) );
+		$background = sprintf( 'background-image: url(%s)', $data->background_image['sizes']['cover-background']);
 		$data->modifiers[] = 'with-background-image';
 	elseif ( $data->background === 'color' && $data->background_color ) :
 		$background = sprintf( 'background-color: %s', $data->background_color );

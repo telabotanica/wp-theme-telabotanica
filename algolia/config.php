@@ -6,7 +6,7 @@ return [
 	'search_api_key'      => ALGOLIA_SEARCH_API_KEY,
 	// The following admin_api_key will not be accessible on front-end
 	'admin_api_key'       => ALGOLIA_ADMIN_API_KEY,
-	'powered_by_enabled'  => true,
+	'powered_by_enabled'  => false,
 	'query' 			   			=> isset( $_GET['s'] ) ? esc_html( $_GET['s'] ) : '',
 	'autocomplete' => [
 		'sources' => [
@@ -49,6 +49,12 @@ return [
 				'tmpl_suggestion' => 'autocomplete-group-suggestion',
 				'settings' => [
 					'hitsPerPage' => 3
+				],
+				'filters' => [
+					'categories' => [
+						'type' => 'menu',
+						'label' => __("Par catégorie", 'telabotanica')
+					]
 				]
 			],
 			[

@@ -19,14 +19,13 @@
 	);
 
 		echo '<div class="layout-wrapper">';
-			echo '<ul class="block-list-projects-items">';
+			echo '<div class="block-list-projects-items">';
 
 			if ( bp_has_groups($data->query) ) :
 
 				while ( bp_groups() ) : bp_the_group();
 
 					the_telabotanica_module('card-project', [
-						'tag' => 'li',
 						'meta' => false,
 						'modifiers' => 'with-large-cover'
 					]);
@@ -35,7 +34,7 @@
 
 			endif;
 
-			echo '</ul>';
+			echo '</div>';
 		echo '</div>';
 
 	echo '</div>';

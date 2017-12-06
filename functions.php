@@ -127,6 +127,7 @@ function telabotanica_setup() {
 	add_image_size( 'medium_square', 250, 250, array( 'center', 'center') );
 	add_image_size( 'home-latest-post', 600, 365, array( 'center', 'center') );
 	add_image_size( 'home-post-thumbnail', 65, 50, array( 'center', 'center') );
+	add_image_size( 'cover-background', 1920, 500, array( 'center', 'center') );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( [

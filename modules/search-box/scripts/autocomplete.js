@@ -28,7 +28,7 @@ Tela.modules.searchBox.autocomplete = (function(){
 			dropdownMinWidth;
 
 		function init(){
-			// The logic for instantsearch is in script-instantsearch.js
+			// The logic for instantsearch is in scripts/instantsearch.js
 			if ($el.data('instantsearch') === true) {return;}
 
 			client = algoliasearch(algolia.application_id, algolia.search_api_key);

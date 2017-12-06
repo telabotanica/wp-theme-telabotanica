@@ -32,7 +32,7 @@
 				$cover_image_query->the_post();
 				$data->image = [
 					'ID' => get_the_ID(),
-					'url' => wp_get_attachment_url( get_the_ID() ),
+					'url' => wp_get_attachment_image_url( get_the_ID(), 'cover-background' ),
 					'title' => get_the_title()
 				];
 			endwhile;
@@ -45,7 +45,6 @@
 		implode(' ', $data->modifiers),
 		$data->image['url']
 	);
-
 		echo '<div class="layout-wrapper">';
 
 			if ($data->search) :

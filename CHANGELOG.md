@@ -18,6 +18,8 @@ plus de détails sur http://semver.org/lang/fr/
 * bloc `main-features` : style des liens
 * composant `articles` ajouté
 * composant `image` : amélioration affichage petites images
+* composant `contact` :
+	* ajout du support de `action_before`
 * composant `map` : centre optionnel
 * composant `text` :
 	* style basique pour les tableaux
@@ -63,6 +65,7 @@ plus de détails sur http://semver.org/lang/fr/
 * module `notice-cookies` ajouté
 * module `pagination` : support de la pagination Buddypress
 * module `search-box` :
+	* ajout du support de `id`, `action`, `input_id` et `input_name`
 	* refactoring avec deux cas : instantsearch ou autocomplete
 	* éviter que plusieurs modules utilisent l'autocomplete sur la même page
 * module `search-hit` ajouté

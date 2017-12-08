@@ -32,7 +32,7 @@
 				$cover_image_query->the_post();
 				$data->image = [
 					'ID' => get_the_ID(),
-					'url' => wp_get_attachment_image_url( get_the_ID(), 'cover-background' ),
+					'url' => wp_get_attachment_url( get_the_ID() ),
 					'title' => get_the_title()
 				];
 			endwhile;
@@ -43,7 +43,7 @@
 	printf(
 		'<div class="%s" style="background-image: url(%s);">',
 		implode(' ', $data->modifiers),
-		$data->image['url']
+		$data->image["sizes"]["cover-background"]
 	);
 		echo '<div class="layout-wrapper">';
 

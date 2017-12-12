@@ -43,7 +43,7 @@
 	printf(
 		'<div class="%s" style="background-image: url(%s);">',
 		implode(' ', $data->modifiers),
-		$data->image['url']
+		$data->image["sizes"]["cover-background"]
 	);
 		echo '<div class="layout-wrapper">';
 

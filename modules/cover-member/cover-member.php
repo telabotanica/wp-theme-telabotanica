@@ -41,6 +41,10 @@ function telabotanica_module_cover_member($data) {
 
 		echo '<div class="cover-member-meta">';
 			$data->button['modifiers'] = 'outline';
+			$button_href =  bp_loggedin_user_domain() .  bp_get_messages_slug();
+			$button_href .= '/compose/?r=' . bp_get_displayed_user_fullname();
+			$button_href = wp_nonce_url($button_href);
+			$data->button['href'] = $button_href;
 			the_telabotanica_module('button', $data->button);
 		echo '</div>';
 

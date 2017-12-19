@@ -92,7 +92,7 @@ do_action( 'bp_before_group_settings_admin' ); ?>
 	</fieldset>
 
 <?php endif; ?>
-
+<!--
 <fieldset class="group-create-invitations">
 
 	<legend><?php _e( 'Group Invitations', 'buddypress' ); ?></legend>
@@ -110,7 +110,7 @@ do_action( 'bp_before_group_settings_admin' ); ?>
 	</div>
 
 </fieldset>
-
+--> 
 <?php
 
 /**

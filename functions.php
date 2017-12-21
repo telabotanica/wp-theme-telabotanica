@@ -256,7 +256,7 @@ add_action( 'after_switch_theme', 'telabotanica_add_upload_capability_to_contrib
  * (utilisation de chevrons non supportée par plusieurs clients mails)
  */
 function fix_password_reset_link($message, $key, $user_login, $user_data) {
-	$message .= "\r\n".__( 'Link not working? Copy and paste the following into your browser address bar: ', 'telabotanica' )."\r\n\r\n";
+	$message .= "\r\n".__( 'Le lien n’apparaît pas ? Copiez-collez l’adresse ci-dessous dans la barre d’adresse de votre navigateur : ', 'telabotanica' )."\r\n\r\n";
 	$message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
 	return $message;
 }

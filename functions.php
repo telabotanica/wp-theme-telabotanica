@@ -250,3 +250,14 @@ function telabotanica_add_upload_capability_to_contributor_role() {
 	$contributor->add_cap('upload_files');
 }
 add_action( 'after_switch_theme', 'telabotanica_add_upload_capability_to_contributor_role' );
+
+/*
+ * Visibilité du lien récupération de mot de passe dans l'email texte
+ * (utilisation de chevrons non supportée par plusieurs clients mails)
+ */
+function fix_password_reset_link($message, $key, $user_login, $user_data) {
+	$message .= "\r\n".__( 'Link not working? Copy and paste the following into your browser address bar: ', 'telabotanica' )."\r\n\r\n";
+	$message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
+	return $message;
+}
+add_filter( 'retrieve_password_message', 'fix_password_reset_link', 10, 4);

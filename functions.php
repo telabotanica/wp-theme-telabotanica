@@ -261,18 +261,3 @@ function fix_password_reset_link($message, $key, $user_login, $user_data) {
 	return $message;
 }
 add_filter( 'retrieve_password_message', 'fix_password_reset_link', 10, 4);
-
-/*
- * Petit message aux utilisateurs au moment de saisir un nouveau mot de passe
- */
-function reset_password_message($hint){
-	return $hint = __( '<span style="font-weight:900"><span style="color:#E16E38">Warning : </span> Change the password above or remember it well.</span><br><br>Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; ).' );
-}
-add_filter('password_hint','reset_password_message');
-/*
-traduction sur la page : 
-https://beta.tela-botanica.org/preprod/wp-admin/admin.php?page=wpml-string-translation%2Fmenu%2Fstring-translation.php#icl-st-toggle-translations
-
-traduction :
-<span style="font-weight:900"><span style="color:#E16E38">Attention :</span> Changez le mot de passe ci-dessus ou retenez-le bien.</span><br><br>Astuce : Le mot de passe doit comporter au moins douze caractères. Pour le rendre plus fort, utilisez des lettres majuscules et minuscules, des chiffres et des symboles comme! "? $% ^ &).
-*/

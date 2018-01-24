@@ -40,6 +40,8 @@
 		wp_reset_postdata();
 	endif;
 
+	var_dump($data->image['url']);
+
 	printf(
 		'<div class="%s" style="background-image: url(%s);">',
 		implode(' ', $data->modifiers),

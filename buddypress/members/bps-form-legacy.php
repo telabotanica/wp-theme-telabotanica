@@ -20,18 +20,37 @@
 	{
 ?>
 	<div class="item-list-tabs bps_header">
-		<li class="toc-item"><?php echo $F->header; ?></li>
+		<ul>
+			<li class="toc-item"><?php echo $F->header; ?></li>
 <?php
-		if ($F->toggle)
-		{
+			if ($F->toggle)
+			{
 ?>
-		<li class="last">
-		  <input id="<?php echo $toggle_id; ?>" type="submit" value="<?php echo $F->toggle_text; ?>">
-		</li>
+				<li class="last">
+				  <input id="<?php echo $toggle_id; ?>" type="submit" value="<?php echo $F->toggle_text; ?>">
+				</li>
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						var departement = $('#field_592').parent();
+						var pays = $('#field_3');
+
+						$('#<?php echo $form_id; ?>').hide();
+						if(pays.val() !== "France") departement.hide();
+
+						$('#<?php echo $toggle_id; ?>').click(function(){
+							$('#<?php echo $form_id; ?>').toggle('slow');
+						});
+
+						pays.change(function() {
+							($(this).val() === "France") ? departement.show() : departement.hide();
+						});
+					});
+				</script>
 
 <?php
-		}
+			}
 ?>
+		</ul>
 	</div>
 <?php
 	}

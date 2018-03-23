@@ -31,10 +31,18 @@
 				</li>
 				<script type="text/javascript">
 					jQuery(document).ready(function($) {
+						var departement = $('#field_592').parent();
+						var pays = $('#field_3');
+
 						$('#<?php echo $form_id; ?>').hide();
+						if(pays.val() !== "France") departement.hide();
 
 						$('#<?php echo $toggle_id; ?>').click(function(){
 							$('#<?php echo $form_id; ?>').toggle('slow');
+						});
+
+						pays.change(function() {
+							($(this).val() === "France") ? departement.show() : departement.hide();
 						});
 					});
 				</script>

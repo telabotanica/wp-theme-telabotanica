@@ -56,6 +56,7 @@
 	if ($filters)
 	{
 		echo "<div class='bps_filters'>\n";
+		echo "<h3 class='section-header'>Filtres de recherche</h3>";
 		echo "<p>\n";
 		echo implode(' | ', $filters);
 		echo "</p>\n";

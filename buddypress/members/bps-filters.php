@@ -16,7 +16,7 @@
 		{
 		case 'range':
 			if ($f->min === '' && $f->max === '')  break;
-			$filter = "<strong>$f->label:</strong>";
+			$filter = "<strong>$f->label :</strong>";
 			if ($f->min !== '')
 				$filter .= " <strong>". __('min', 'bp-profile-search'). "</strong> $f->min";
 			if ($f->max !== '')
@@ -32,7 +32,7 @@
 		case 'textarea':
 		case 'url':
 			if ($f->value === '')  break;
-		$filters[] = "<strong>$f->label:</strong> $f->value";
+		$filters[] = "<strong>$f->label :</strong> <span>$f->value</span>";
 			break;
 
 		case 'selectbox':
@@ -44,7 +44,7 @@
 				if (in_array ($key, $f->values))  $values[] = $label;
 			$values = implode (', ', $values);
 			if ($values === '')  break;
-			$filters[] = "<strong>$f->label:</strong> $values";
+			$filters[] = "<strong>$f->label :</strong> <span>$values</span>";
 			break;
 
 		default:
@@ -55,11 +55,16 @@
 
 	if ($filters)
 	{
-		echo "<p class='bps_filters component-text'>\n";
+		echo "<div class='bps_filters'>\n";
+		echo "<p>\n";
 		echo implode(' | ', $filters);
-		echo "<br>";
-		echo "<a href='$F->action'>". __('Réinitialiser les filtres', 'telabotanica'). "</a><br>\n";
 		echo "</p>\n";
+		echo "<p>\n";
+		echo "<a class='button' href='$F->action'>";
+		echo "<span class='button-text'>". __('Réinitialiser les filtres', 'telabotanica'). "</span>";
+		echo "</a>\n";
+		echo "</p>\n";
+		echo "<div>\n";
 	}
 
 // BP Profile Search - end of template

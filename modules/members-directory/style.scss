@@ -99,7 +99,7 @@
 		}
 
 		.bp_mda_select_all_search_results {
-			margin-bottom: .6rem;
+			margin-bottom: 1rem;
 			padding-top: .5rem;
 
 			> label {
@@ -118,7 +118,7 @@
 
 			> label {
 				&::after {
-					content: "Sélectionner toute la page";
+					content: "Sélectionner les resultats de cette page";
 				}
 				> .bp_mda_all_page_items_checkbox {
 				}
@@ -130,7 +130,8 @@
 		}
 
 		.bp_mda_bulk_actions_container {
-			float: right;
+			margin-bottom: 1rem;
+			padding-top: .5rem;
 
 			.bp_mda_bulk_actions_options {
 				color: $gris33;

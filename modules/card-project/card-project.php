@@ -29,7 +29,7 @@
 	$data = telabotanica_styleguide_data($defaults, $data);
 	$data->modifiers = telabotanica_styleguide_modifiers_array('card-project', $data->modifiers);
 
-	echo '<div class="card-project">';
+	echo '<div class="' . implode(' ', $data->modifiers) . '">';
 		echo '<a class="card-project-link" href="' . $data->permalink . '">';
 
 			echo sprintf(

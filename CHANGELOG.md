@@ -11,6 +11,9 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+* retour au rendu PHP pour les modules :
+  * `icon`
+  * `card-project`
 * tableau de bord
 * bloc `contribute` : amélioration du remplissage aléatoire
 * bloc `list-features` : style des liens

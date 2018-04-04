@@ -29,19 +29,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 // Chargement des dépendances installées avec Composer
 require get_template_directory() . '/vendor/autoload.php';
 
-// Création d'une instance de Pug pour le rendu des templates *.pug
-// TODO: configurer le cache, voir https://github.com/pug-php/pug
-$pug = new \Pug\Pug([
-	'pugjs' => true,
-	// 'expressionLanguage' => 'js',
-	'basedir' => get_template_directory() . '/modules',
-	'cache' => get_template_directory() . '/cache/pug',
-	// 'upToDateCheck' => false,
-]);
-// list($success, $errors) = $pug->cacheDirectory(get_template_directory() . '/modules');
-// echo "$success files have been cached\n";
-// echo "$errors errors occurred\n";
-
 // Fonctions utiles
 require get_template_directory() . '/inc/utile.php';
 

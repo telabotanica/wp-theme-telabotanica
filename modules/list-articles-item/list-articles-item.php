@@ -1,6 +1,4 @@
 <?php function telabotanica_module_list_articles_item($data) {
-	global $pug;
-
 	$defaults = [
 		'modifiers' => get_post_class(),
 		'event' => !empty( get_field( 'date' ) ),
@@ -28,6 +26,7 @@
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array('list-articles-item', $data->modifiers);
 
 	if ($data->event) {
 		$data->modifiers[] = 'is-event';
@@ -66,7 +65,78 @@
 		}
 	}
 
-	echo $pug->render(__DIR__ . '/list-articles-item.pug', [
-		'data' => $data
-	]);
+	echo '<article class="' . implode(' ', $data->modifiers) . '">';
+
+		if ($data->event && $data->dates) {
+			the_telabotanica_module('event-dates', [
+				'href' => $data->href,
+				'start' => $data->dates['start'],
+				'end' => $data->dates['end'],
+				'title' => $data->dates['title'],
+				'modifiers' => 'float-left',
+			]);
+		} else {
+			echo '<a href="' . $data->href . '" class="list-articles-item-image">';
+				if ($data->thumbnail_url) {
+					printf(
+						'<img src="%s" class="list-articles-item-image" />',
+						$data->thumbnail_url
+					);
+				} else {
+					echo $data->thumbnail;
+				}
+			echo '</a>';
+		}
+
+		echo '<div class="list-articles-item-text">';
+			echo '<div class="list-articles-item-meta">';
+
+				if ($data->event && $data->place) {
+					echo '<span class="list-articles-item-place">';
+						the_telabotanica_module('icon', ['icon' => 'marker']);
+						echo $data->place;
+					echo '</span>';
+				}
+
+				if ($data->date) {
+					printf(
+						'<span class="list-articles-item-date" title="%s">',
+						$data->date['title']
+					);
+						the_telabotanica_module('icon', ['icon' => 'clock']);
+						printf(
+							'<time datetime="%s">%s</time>',
+							$data->date['datetime'],
+							$data->date['text']
+						);
+					echo '</span> – ';
+				}
+
+				if ($data->author) {
+					echo '<span class="list-articles-item-author">';
+						echo $data->author['prefix'] . ' ';
+						printf(
+							'<a href="%s">%s</a>',
+							$data->author['href'],
+							$data->author['text']
+						);
+					echo '</span>';
+				}
+
+				if ($data->categories) {
+					the_telabotanica_module('categories-labels', ['items' => $data->categories]);
+				}
+
+			echo '</div>';
+
+			printf(
+				'<h2 class="list-articles-item-title"><a href="%s" rel="bookmark">%s</a></h2>',
+				$data->href,
+				$data->title
+			);
+
+			echo $data->text;
+		echo '</div>';
+
+	echo '</article>';
 }

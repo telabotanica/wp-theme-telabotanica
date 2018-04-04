@@ -14,6 +14,7 @@ plus de détails sur http://semver.org/lang/fr/
 * retour au rendu PHP pour les modules :
   * `card-project`
   * `icon`
+	* `list-articles-item`
   * `notice`
 * tableau de bord
 * bloc `contribute` : amélioration du remplissage aléatoire

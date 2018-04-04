@@ -1,6 +1,4 @@
 <?php function telabotanica_module_categories_labels($data) {
-	global $pug;
-
 	$defaults = [
 		'items' => []
 	];
@@ -16,7 +14,15 @@
 		}
 	}
 
-	echo $pug->render(__DIR__ . '/categories-labels.pug', [
-		'data' => $data
-	]);
+	echo '<span class="categories-labels">';
+
+		foreach ($data->items as $item) {
+			printf(
+				'<a href="%s" rel="category">%s</a>',
+				$data->href,
+				$data->text
+			);
+		}
+
+	echo '</span>';
 }

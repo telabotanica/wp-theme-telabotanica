@@ -15,6 +15,7 @@ plus de détails sur http://semver.org/lang/fr/
   * `card-project`
   * `categories-labels`
   * `event-dates`
+  * `feed-item`
   * `icon`
 	* `list-articles-item`
   * `notice`

@@ -1,7 +1,7 @@
 <?php function telabotanica_module_event_dates($data) {
-	global $pug;
 
 	$defaults = [
+		'tag' => 'div',
 		'start' => [],
 		'end' => false,
 		'href' => false,
@@ -9,6 +9,9 @@
 	];
 
 	$data = telabotanica_styleguide_data($defaults, $data);
+	$data->modifiers = telabotanica_styleguide_modifiers_array('event-dates', $data->modifiers);
+
+	$data->tag = $data->href ? 'a' : 'div';
 
 	$date_timestamp = strtotime( get_field( 'date', null, false ) );
 	$date_end_timestamp = strtotime( get_field( 'date_end', null, false ) );
@@ -35,8 +38,46 @@
 		$data->title = sprintf( _x( 'Le %s', '%s = date', 'telabotanica' ), $date_title );
 	}
 
-	echo $pug->render(__DIR__ . '/event-dates.pug', [
-		'data' => $data
-	]);
+	printf(
+		'<%s href="%" class="%s" title="%s">',
+		$data->tag,
+		$data->href,
+		implode(' ', $data->modifiers),
+		$data->title
+	);
+
+		if ($data->start) {
+			printf(
+				'<time class="event-dates-item" datetime="%s">',
+				$data->start['datetime']
+			);
+				printf(
+					'<div class="event-dates-day">%s</div>',
+					$data->start['day']
+				);
+				printf(
+					'<div class="event-dates-month">%s</div>',
+					$data->start['month']
+				);
+			echo '</time>';
+		}
+
+		if ($data->end) {
+			printf(
+				'<time class="event-dates-item is-end" datetime="%s">',
+				$data->end['datetime']
+			);
+				printf(
+					'<div class="event-dates-day">%s</div>',
+					$data->end['day']
+				);
+				printf(
+					'<div class="event-dates-month">%s</div>',
+					$data->end['month']
+				);
+			echo '</time>';
+		}
+
+	printf('</%s>', $data->tag);
 
 }

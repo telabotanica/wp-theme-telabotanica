@@ -47,9 +47,20 @@ the_telabotanica_module('cover', [
 					<?php _e("Filtrer", 'telabotanica') ?>
 				</h2>
 
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+
+						// 'All members' link should clear all filtes and show all the members
+						var $clearFitlersButton = $('#tb-clear-filters');
+						if ($clearFitlersButton.length) {
+							$('#tb-all-members-link').attr('href', $clearFitlersButton.attr('href'));
+						}
+					});
+				</script>
+
 				<ul class="toc-items">
 					<li class="selected toc-item">
-						<a class="toc-item-link" href="<?php bp_members_directory_permalink(); ?>"><?php printf( __( 'All Members %s', 'buddypress' ), '<span>(' . bp_get_total_member_count() . ')</span>' ); ?></a>
+						<a id="tb-all-members-link" class="toc-item-link" href="<?php bp_members_directory_permalink(); ?>"><?php printf( __( 'All Members %s', 'buddypress' ), '<span>(' . bp_get_total_member_count() . ')</span>' ); ?></a>
 					</li>
 
 					<?php if ( is_user_logged_in() && bp_is_active( 'friends' ) && bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>

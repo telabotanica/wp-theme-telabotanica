@@ -61,7 +61,7 @@
 		echo implode(' | ', $filters);
 		echo "</p>\n";
 		echo "<p>\n";
-		echo "<a class='button' href='$F->action'>";
+		echo "<a id='tb-clear-filters' class='button' href='$F->action'>";
 		echo "<span class='button-text'>". __('Réinitialiser les filtres', 'telabotanica'). "</span>";
 		echo "</a>\n";
 		echo "</p>\n";

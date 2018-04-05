@@ -33,6 +33,7 @@ do_action( 'bp_before_members_loop' ); ?>
 	do_action( 'bp_before_directory_members_list' ); ?>
 
 	<div id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
+		<h3 class="section-header">Membres</h3>
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 

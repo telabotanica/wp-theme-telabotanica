@@ -4,258 +4,264 @@ body.group-admin .toc-items {
     border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
     padding: 1.5rem 0;
 
-        &.current {
-            > a {
-                color: $gris-23;
-            }
-            > a::before {
-                content: "\25B6";
-                display: block;
-                font-size: 1rem;
-                line-height: 2rem;
-                margin-left: -2rem;
-                position: absolute;
-                color: $vert-clair;
-            }
-        }
-        > a {
-            color: $gris-60;
-            font-size: 1.6rem;
-            font-weight: $bold;
-            text-decoration: none;
-        }
-        > a:focus::before, a:hover::before {
-            content: "\25B6";
-            display: block;
-            font-size: 1rem;
-            line-height: 2rem;
-            margin-left: -2rem;
-            position: absolute;
-        }
+    &.current {
+      > a {
+        color: $gris-23;
+      }
+
+      > a::before {
+        content: "\25B6";
+        display: block;
+        font-size: 1rem;
+        line-height: 2rem;
+        margin-left: -2rem;
+        position: absolute;
+        color: $vert-clair;
+      }
     }
+
+    > a {
+      color: $gris-60;
+      font-size: 1.6rem;
+      font-weight: $bold;
+      text-decoration: none;
+    }
+
+    > a:focus::before, a:hover::before {
+      content: "\25B6";
+      display: block;
+      font-size: 1rem;
+      line-height: 2rem;
+      margin-left: -2rem;
+      position: absolute;
+    }
+  }
 }
 
 #subnav.toc {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 
 #group-settings-panel {
-    padding-top: 2rem;
-    color: $gris-23;
+  padding-top: 2rem;
+  color: $gris-23;
 }
 
 #group-settings-form, #search-members-form {
+  h2.bp-screen-reader-text {
+    position: relative;
+    height: auto;
+    width: auto;
+    margin-top: 1.1rem;
+    padding: 0;
+    font-size: 2.5rem;
+    font-family: $ubuntu;
+    font-weight: $regular;
+  }
 
-    h2.bp-screen-reader-text {
-        position: relative;
-        height: auto;
-        width: auto;
-        margin-top: 1.1rem;
-        padding: 0;
-        font-size: 2.5rem;
-        font-family: $ubuntu;
-        font-weight: $regular;
+  label {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.4rem;
+    color: $gris-60;
+    font-size: 1.5rem;
+  }
+
+  fieldset {
+    border: none;
+    position: relative;
+    margin-top: 2rem;
+
+    > legend {
+      display: inline-block;
+      margin-top: 2rem;
+      margin-bottom: 0.4rem;
+      color: $gris-23;
+      font-size: 1.8rem;
     }
+  }
 
+  input[type="text"], input[type="url"], textarea {
+    width: 100%;
+    border: solid $gris-dd 0.1rem;
+    border-radius: 0.3rem;
+    padding: 1rem;
+  }
+
+  .editfield {
+    position: relative;
+  }
+
+  .group-create-privacy {
+    ul {
+      margin-top: 0;
+    }
+  }
+
+  .checkbox-group, .checkbox, .radio {
     label {
-        display: block;
-        margin-top: 2rem;
-        margin-bottom: 0.4rem;
+      margin-top: 0.2rem;
+    }
+  }
+
+  .description, fieldset > p {
+    position: absolute;
+    right: 0;
+    width: 30rem;
+    top: -3.5rem;
+    font-size: 1.3rem;
+    text-align: right;
+    color: $gris-aa;
+  }
+
+  .description {
+    top: 0;
+  }
+
+  input[type="submit"], #tb-forum-creer-liste, #bp-browse-button, .item-list.group-request-list .generic-button {
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: $vert-bouton;
+    border-radius: 0.2rem;
+    color: $blanc;
+    display: inline-block;
+    font-family: $ubuntu, sans-serif;
+    font-size: 1.3rem;
+    font-weight: $medium;
+    letter-spacing: 0.1rem;
+    line-height: 1.5rem;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
+
+    &:focus, &:hover {
+      background-color: lighten($vert-bouton, 8%);
+    }
+
+    &[disabled] {
+      background-color: $gris-b3;
+    }
+  }
+
+  #tb-forum-creer-liste {
+    margin-top: 1px;
+    padding: 0.3rem 0.7rem;
+  }
+
+  p {
+    color: $gris-60;
+  }
+
+  #bp-browse-button {
+    width: auto;
+  }
+
+  #drag-drop-area {
+    border-width: 2px;
+  }
+
+  .bp-avatar-nav ul.avatar-nav-items {
+    > li {
+      &.current {
+        border-bottom-color: $gris-f4;
+        border-radius: 0;
+
+        > a {
+          color: $gris-23;
+        }
+      }
+      > a {
         color: $gris-60;
-        font-size: 1.5rem;
+      }
     }
+  }
 
-    fieldset {
-        border: none;
-        position: relative;
-        margin-top: 2rem;
+  .component-contact {
+    border-bottom: none;
+  }
 
-        > legend {
-            display: inline-block;
-            margin-top: 2rem;
-            margin-bottom: 0.4rem;
-            color: $gris-23;
-            font-size: 1.8rem;
-        }
-    }
+  .membership-request-comments {
+    margin-top: 0;
+  }
 
-    input[type="text"], input[type="url"], textarea {
-        width: 100%;
-        border: solid $gris-dd 0.1rem;
-        border-radius: 0.3rem;
-        padding: 1rem;
-    }
+  .pagination {
+    border-top: none;
+    margin-top: 0;
+  }
 
-    .editfield {
-        position: relative;
-    }
+  .item-list.group-request-list {
+    margin-bottom: 2rem;
+    list-style-type: none;
 
-    .group-create-privacy {
-        ul {
-            margin-top: 0;
-        }
-    }
+    .action {
+      > .generic-button {
+        margin-top: 0.3rem;
+        padding: 0.4rem 1rem;
 
-    .checkbox-group, .checkbox, .radio {
-        label {
-            margin-top: 0.2rem;
-        }
-    }
-
-    .description, fieldset > p {
-        position: absolute;
-        right: 0;
-        width: 30rem;
-        top: -3.5rem;
-        font-size: 1.3rem;
-        text-align: right;
-        color: $gris-aa;
-    }
-
-    .description {
-        top: 0;
-    }
-
-    input[type="submit"], #tb-forum-creer-liste, #bp-browse-button, .item-list.group-request-list .generic-button {
-        border: none;
-        margin-top: 1rem;
-        cursor: pointer;
-        background-color: $vert-bouton;
-        border-radius: 0.2rem;
-        color: $blanc;
-        display: inline-block;
-        font-family: $ubuntu, sans-serif;
-        font-size: 1.3rem;
-        font-weight: $medium;
-        letter-spacing: 0.1rem;
-        line-height: 1.5rem;
-        padding: 1.5rem 2rem;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: background 0.2s ease;
-
-        &:focus, &:hover {
-            background-color: lighten($vert-bouton, 8%);
+        > a {
+          color: white;
+          text-decoration: none;
         }
 
-        &[disabled] {
-            background-color: $gris-b3;
+        & + .button {
+          margin-left: 0;
         }
-    }
 
-    #tb-forum-creer-liste {
-      margin-top: 1px;
-      padding: 0.3rem 0.7rem;
-    }
-
-    p {
-        color: $gris-60;
-    }
-
-    #bp-browse-button {
-        width: auto;
-    }
-
-    #drag-drop-area {
-        border-width: 2px;
-    }
-
-    .bp-avatar-nav ul.avatar-nav-items {
-        > li {
-            &.current {
-                border-bottom-color: $gris-f4;
-                border-radius: 0;
-                > a {
-                    color: $gris-23;
-                }
-            }
-            > a {
-                color: $gris-60;
-            }
+        &.reject {
+          background-color: $rouge;
         }
-    }
 
-    .component-contact {
-        border-bottom: none;
-    }
-
-    .membership-request-comments {
-        margin-top: 0;
-    }
-
-    .pagination {
-        border-top: none;
-        margin-top: 0;
-    }
-
-    .item-list.group-request-list {
-        margin-bottom: 2rem;
-        list-style-type: none;
-
-        .action {
-            > .generic-button {
-              margin-top: 0.3rem;
-              padding: 0.4rem 1rem;
-
-                > a {
-                    color: white;
-                    text-decoration: none;
-                }
-
-                & + .button {
-                    margin-left: 0;
-                }
-
-                &.reject {
-                    background-color: $rouge;
-                }
-
-                &.accept {
-                    background-color: $vert-bouton;
-                }
-            }
+        &.accept {
+          background-color: $vert-bouton;
         }
+      }
     }
+  }
 }
 
 #search-members-form {
-    > label {
-        display: inline;
-        > input[type="text"] {
-            width: 40rem;
-        }
+  > label {
+    display: inline;
+
+    > input[type="text"] {
+      width: 40rem;
     }
-    > input[type="submit"] {
-        padding: 1.2rem 1.8rem;
-    }
+  }
+
+  > input[type="submit"] {
+    padding: 1.2rem 1.8rem;
+  }
 }
 
 .bp-widget.group-members-list {
-    margin-top: 3rem;
+  margin-top: 3rem;
 
-    ul {
-        list-style: none;
+  ul {
+    list-style: none;
 
-        .component-contact {
-            border-bottom: none;
-        }
-        .action {
-            margin-bottom: 1rem;
-
-            > .button {
-              background-color: $rouge; // le bouton "supprimer du groupe" n'a pas de classe
-              margin-top: 0.3rem;
-              padding: 0.4rem 1rem;
-
-                & + .button {
-                    margin-left: 0;
-                }
-
-                &.member-promote-to-mod, &.member-promote-to-admin {
-                    background-color: $vert-bouton;
-                }
-            }
-        }
+    .component-contact {
+      border-bottom: none;
     }
+
+    .action {
+      margin-bottom: 1rem;
+
+      > .button {
+        background-color: $rouge; // le bouton "supprimer du groupe" n'a pas de classe
+        margin-top: 0.3rem;
+        padding: 0.4rem 1rem;
+
+        & + .button {
+          margin-left: 0;
+        }
+
+        &.member-promote-to-mod, &.member-promote-to-admin {
+          background-color: $vert-bouton;
+        }
+      }
+    }
+  }
 }

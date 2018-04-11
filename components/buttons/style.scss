@@ -4,6 +4,14 @@
     text-align: center;
   }
 
+  @include small {
+    line-height: 3;
+
+    .button {
+      margin: 0 1rem;
+    }
+  }
+
   @include large-and-medium {
     &:not(.as-seamless), &:not(.as-links) {
       border-top: 0.1rem solid transparentize($taupe, 0.8);

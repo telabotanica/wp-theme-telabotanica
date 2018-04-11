@@ -4,12 +4,6 @@
   position: relative;
   width: 30rem;
 
-  &.with-large-cover {
-    .card-project-cover {
-      height: 22rem;
-    }
-  }
-
   em {
     color: $noir;
     background: $jaune-clair;
@@ -66,14 +60,8 @@
     }
   }
 
-  &-content,
-  &-meta {
-    padding: 2rem;
-  }
-
   &-title {
     font-family: $ubuntu;
-    font-size: 1.8rem;
     font-weight: $bold;
     line-height: 1.4;
     margin: 0;
@@ -86,7 +74,7 @@
 
   &-description {
     font-size: 1.4rem;
-    line-height: 2.2rem;
+    line-height: 1.6;
     margin: 0.5rem 0;
 
     p {margin: 0;}
@@ -107,6 +95,48 @@
       margin-right: 0.8rem;
       vertical-align: text-top;
       width: 1.8rem;
+    }
+  }
+
+  @include small {
+    &.with-large-cover {
+      .card-project-cover {
+        height: 18rem;
+      }
+    }
+
+    &-content,
+    &-meta {
+      padding: 1.5rem;
+    }
+
+    &-title {
+      font-size: 1.7rem;
+    }
+
+    &-description {
+      font-size: 1.3rem;
+    }
+  }
+
+  @include large-and-medium {
+    &.with-large-cover {
+      .card-project-cover {
+        height: 22rem;
+      }
+    }
+
+    &-content,
+    &-meta {
+      padding: 2rem;
+    }
+
+    &-title {
+      font-size: 1.8rem;
+    }
+
+    &-description {
+      font-size: 1.4rem;
     }
   }
 }

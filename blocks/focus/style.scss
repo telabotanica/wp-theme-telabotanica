@@ -44,10 +44,8 @@
   &-title {
     color: $gris-33;
     font-family: $ubuntu;
-    font-size: 3.2rem;
     font-weight: $light;
-    line-height: 3.6rem;
-    margin: 0 0 2rem;
+    line-height: 1.2;
     text-align: center;
 
     .component + & {
@@ -72,8 +70,7 @@
   }
 
   &-intro {
-    font-size: 1.6rem;
-    line-height: 2.6rem;
+    line-height: 1.6;
 
     a {
       color: inherit;
@@ -126,19 +123,44 @@
     }
   }
 
-  &-credits {
-    color: transparentize($gris-f0, 0.25);
-    font-size: 1.2rem;
-    bottom: 0;
-    padding: 1rem;
-    position: absolute;
-    right: 0;
+  @include small {
+    &-title {
+      font-size: 2rem;
+      margin: 0 0 1rem;
+    }
 
-    a {
-      color: $gris-f0;
-      text-decoration: none;
-      &:hover {border-bottom: 0.1rem solid;}
+    &-intro {
+      font-size: 1.4rem;
+    }
+
+    &-credits {
+      display: none;
     }
   }
 
+  @include large-and-medium {
+    &-title {
+      font-size: 3.2rem;
+      margin: 0 0 2rem;
+    }
+
+    &-intro {
+      font-size: 1.6rem;
+    }
+
+    &-credits {
+      color: transparentize($gris-f0, 0.25);
+      font-size: 1.2rem;
+      bottom: 0;
+      padding: 1rem;
+      position: absolute;
+      right: 0;
+
+      a {
+        color: $gris-f0;
+        text-decoration: none;
+        &:hover {border-bottom: 0.1rem solid;}
+      }
+    }
+  }
 }

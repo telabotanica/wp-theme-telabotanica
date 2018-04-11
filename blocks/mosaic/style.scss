@@ -1,5 +1,4 @@
 .block-mosaic {
-
   &-items,
   &-item-images {
     @include reset-list;
@@ -27,6 +26,15 @@
   &-item-image {
     &, a {
       display: inline-block;
+    }
+
+    a {
+      transition: opacity 0.2s ease;
+
+      &:hover,
+      &:focus {
+        opacity: 0.9;
+      }
     }
   }
 

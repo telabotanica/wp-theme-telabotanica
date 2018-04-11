@@ -39,7 +39,7 @@
 			&.is-end {
 				height: 2.75rem;
 
-				&:before {
+				&::before {
 					border-top-width: 0.5rem;
 					border-left-width: 0.5rem;
 					border-right-width: 0.5rem;
@@ -68,7 +68,7 @@
 			background-color: lighten($orange, 42%);
 			position: relative;
 
-			&:before {
+			&::before {
 				border-top: 1rem solid lighten($orange, 35%);
 				border-left: 1rem solid transparent;
 				border-right: 1rem solid transparent;

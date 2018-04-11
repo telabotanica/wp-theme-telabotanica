@@ -63,7 +63,7 @@
 		div { display: inline-block; }
 	}
 
-	&-item + &-item:before {
+	&-item + &-item::before {
 		content: ">";
 		margin-right: 1rem;
 		position: relative;

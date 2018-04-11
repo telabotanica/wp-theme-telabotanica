@@ -44,7 +44,7 @@
 		&:hover, &:focus {
 			background-color: transparentize($turquoise, 0.8);
 
-			&:before {
+			&::before {
 				color: $gris-33;
 			}
 		}

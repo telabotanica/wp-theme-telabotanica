@@ -63,7 +63,7 @@
 			display: flex;
 			justify-content: center;
 
-			&:before {
+			&::before {
 				background-color: transparentize($noir, 0.7);
 				content: "";
 				display: block;

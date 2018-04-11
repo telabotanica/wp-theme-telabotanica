@@ -38,7 +38,7 @@
 			position: relative;
 			width: 5rem;
 
-			&:after {
+			&::after {
 				background-color: currentColor;
 				border-radius: 0.4rem;
 				content: "";

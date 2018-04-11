@@ -23,7 +23,7 @@
 		justify-content: center;
 		position: relative;
 
-		&:after {
+		&::after {
 			background-color: currentColor;
 			border-radius: 0.4rem;
 			content: "";
@@ -38,7 +38,7 @@
 		}
 
 		&:hover, &:focus {
-			&:after {opacity: 0.3;}
+			&::after {opacity: 0.3;}
 		}
 
 		svg {
@@ -94,7 +94,7 @@
 				border-bottom-color: currentColor;
 			}
 
-			&:after {
+			&::after {
 				content: "›";
 				display: inline;
 				margin-left: 0.5rem;

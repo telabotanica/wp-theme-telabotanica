@@ -39,10 +39,10 @@
       }
 
       span {
-        &:before {
+        &::before {
           content: "(";
         }
-        &:after {
+        &::after {
           content: ")";
         }
       }

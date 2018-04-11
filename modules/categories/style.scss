@@ -8,9 +8,9 @@
     padding: 0;
   }
 
-  &-item.is-active .categories-item-link:before,
-  &-item .categories-item-link:hover:before,
-  &-item .categories-item-link:focus:before {
+  &-item.is-active .categories-item-link::before,
+  &-item .categories-item-link:hover::before,
+  &-item .categories-item-link:focus::before {
     content: "▶";
     display: block;
     font-size: 1rem;
@@ -25,7 +25,7 @@
     &.is-active .categories-item-link {
       color: $gris-23;
       fill: $gris-23;
-      &:before {color: $vert-clair;}
+      &::before {color: $vert-clair;}
     }
 
     &-title {
@@ -46,7 +46,7 @@
       text-decoration: none;
 
       &:hover, &:focus {
-        &:before {
+        &::before {
           color: $taupe;
         }
       }

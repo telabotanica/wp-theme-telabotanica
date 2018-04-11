@@ -72,7 +72,7 @@ div.search-results {
 
 	&-hit,
 	.aa-suggestion {
-		&:after {
+		&::after {
 			visibility: hidden;
 			display: block;
 			font-size: 0;
@@ -165,9 +165,9 @@ div.search-results {
 	}
 
 	&-empty {
+		clear: both;
 		color: $gris-aa;
 		font-size: 1.3rem;
-		clear: both;
 		padding: 0 2.5rem 2.5rem;
 
 		&-query {font-weight: bold;}

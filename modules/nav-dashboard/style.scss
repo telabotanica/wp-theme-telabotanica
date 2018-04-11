@@ -31,7 +31,7 @@
 		}
 
 		&.is-current {
-			.nav-dashboard-item-text:before {
+			.nav-dashboard-item-text::before {
 				color: $vert-clair-vif;
 				content: "▸";
 				display: inline-block;
@@ -55,7 +55,7 @@
 		}
 
 		&.with-dot {
-			.nav-dashboard-item-text:after {
+			.nav-dashboard-item-text::after {
 				background-color: $rouge;
 				border-radius: 50%;
 				content: "";

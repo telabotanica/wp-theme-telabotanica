@@ -49,7 +49,7 @@
       position: absolute;
       left: 0;
 
-      &:before {
+      &::before {
         content: "<";
         display: inline-block;
         margin-right: 0.5rem;
@@ -61,7 +61,7 @@
       position: absolute;
       right: 0;
 
-      &:after {
+      &::after {
         content: ">";
         display: inline-block;
         margin-left: 0.5rem;

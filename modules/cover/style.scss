@@ -12,7 +12,7 @@
 		min-height: 27vw;
 	}
 
-	&:before {
+	&::before {
 		background-color: transparentize($bleu-nuit, 0.6);
 		content: "";
 		display: block;

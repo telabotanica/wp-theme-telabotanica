@@ -78,7 +78,7 @@
 		text-transform: uppercase;
 		transition: color 0.2s ease;
 
-		&:after {
+		&::after {
 			content: "›";
 			display: inline;
 			margin-left: 0.5rem;

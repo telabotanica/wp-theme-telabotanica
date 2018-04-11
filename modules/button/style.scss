@@ -78,7 +78,7 @@
 			margin-left: 3rem;
 		}
 
-		&:after {
+		&::after {
 			content: ">";
 			display: inline-block;
 			margin-left: 0.5rem;
@@ -114,7 +114,7 @@
 		}
 
 		&.back {
-			&:after {display: none;}
+			&::after {display: none;}
 		}
 	}
 

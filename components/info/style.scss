@@ -14,7 +14,7 @@
 			position: relative;
 		}
 
-		&:before {
+		&::before {
 			background: transparentize($taupe, 0.8);
 			content: "";
 			display: block;
@@ -36,7 +36,7 @@
 			float: left;
 			font-weight: $bold;
 
-			&:after {
+			&::after {
 				content: ":";
 				margin: 0 0.5rem;
 			}

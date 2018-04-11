@@ -5,7 +5,7 @@
 	&.with-background-image {
 		position: relative;
 
-		&:before {
+		&::before {
 	    background-color: transparentize($bleu-nuit, 0.4);
 	    content: "";
 	    display: block;

@@ -319,7 +319,7 @@
 						border-left: 0.1rem solid transparentize($taupe, 0.8);
 					}
 
-					&:before {
+					&::before {
 						border-radius: 50%;
 						content: "";
 						display: block;
@@ -334,7 +334,7 @@
 					}
 
 					&:hover {
-						&:before {
+						&::before {
 							height: 30rem;
 							opacity: 0;
 							transition: opacity 0.8s ease, height 0.8s ease, width 0.8s ease;
@@ -362,22 +362,22 @@
 				}
 
 				.menu-item.identifier {
-					&:before {background-color: $vert-tres-clair;}
+					&::before {background-color: $vert-tres-clair;}
 					a {background-image: url('../../modules/header/icons/identifier.svg');}
 					&.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
 				}
 				.menu-item.apprendre {
-					&:before {background-color: $violet-clair;}
+					&::before {background-color: $violet-clair;}
 					a {background-image: url('../../modules/header/icons/apprendre.svg');}
 					&.current_page_item a, a:hover, a:focus {color: $violet;}
 				}
 				.menu-item.sortir {
-					&:before {background-color: $orange-clair;}
+					&::before {background-color: $orange-clair;}
 					a {background-image: url('../../modules/header/icons/sortir.svg');}
 					&.current_page_item a, a:hover, a:focus {color: $orange;}
 				}
 				.menu-item.participer {
-					&:before {background-color: $bleu-clair;}
+					&::before {background-color: $bleu-clair;}
 					a {background-image: url('../../modules/header/icons/participer.svg');}
 					&.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
 				}

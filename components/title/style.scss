@@ -37,7 +37,7 @@
 		margin: 0;
 		position: relative;
 
-		&:before {
+		&::before {
 			background-color: $vert-clair-vif;
 			content: "";
 			display: block;

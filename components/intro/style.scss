@@ -12,7 +12,8 @@
     color: $turquoise-fonce;
     text-decoration: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparentize($turquoise-fonce, 0.9);
     }
   }

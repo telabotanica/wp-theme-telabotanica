@@ -19,7 +19,8 @@
     text-decoration: none;
     transition: all 0.2s ease;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: $gris-f0;
       color: lighten($vert-fonce, 8%);
     }

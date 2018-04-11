@@ -41,7 +41,8 @@
       width: 1.2rem;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparentize($turquoise, 0.8);
 
       &::before {

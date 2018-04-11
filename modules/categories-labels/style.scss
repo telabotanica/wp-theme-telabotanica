@@ -10,10 +10,10 @@
     text-decoration: none;
     transition: all 0.2s ease;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparentize($taupe, 0.6);
       color: $gris-33;
     }
   }
-
 }

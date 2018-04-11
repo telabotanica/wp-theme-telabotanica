@@ -34,7 +34,8 @@
       text-decoration: none;
       transition: border-bottom 0.2s ease;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         border-bottom-color: transparentize($marron, 0.8);
       }
 
@@ -63,7 +64,8 @@
       fill: $marron;
       padding: 1rem;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         fill: $gris-33;
       }
     }

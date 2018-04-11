@@ -17,7 +17,8 @@
     text-decoration: none;
     transition: background 0.2s ease;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparentize($turquoise-fonce, 0.9);
     }
   }

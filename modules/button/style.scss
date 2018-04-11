@@ -59,7 +59,8 @@
     padding: 1.3rem 1.8rem;
     transition: opacity 0.2s ease;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       opacity: 0.7;
     }
   }
@@ -84,7 +85,8 @@
       margin-left: 0.5rem;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparent;
       color: lighten($vert-fonce, 8%);
     }
@@ -92,7 +94,8 @@
     &.orange {
       color: $orange;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: lighten($orange, 8%);
       }
     }
@@ -100,7 +103,8 @@
     &.rouge {
       color: $rouge;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: lighten($rouge, 8%);
       }
     }
@@ -108,7 +112,8 @@
     &.white {
       color: $blanc;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         opacity: 0.7;
       }
     }

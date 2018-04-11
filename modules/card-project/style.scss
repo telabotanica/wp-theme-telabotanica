@@ -21,7 +21,8 @@
     display: block;
     text-decoration: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .card-project-title span {
         border-bottom-color: currentColor;
       }

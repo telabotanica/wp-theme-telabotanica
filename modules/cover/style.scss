@@ -53,7 +53,8 @@
       text-decoration: none;
       transition: border 0.2s ease;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         border-bottom-color: transparent;
       }
     }

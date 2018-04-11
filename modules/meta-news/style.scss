@@ -68,7 +68,8 @@
       justify-content: center;
       width: 3.4rem;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         background-color: transparentize($taupe, 0.6);
         fill: $gris-33;
       }

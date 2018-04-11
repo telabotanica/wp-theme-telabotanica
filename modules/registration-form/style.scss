@@ -67,13 +67,16 @@
       text-align: center;
       text-decoration: none;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         background-color: lighten($vert-bouton, 8%);
         color: $blanc;
       }
     }
 
-    input[type="text"], input[type="email"], input[type="password"] {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
       width: 100%;
       border: 0.1rem solid $gris-dd;
       border-radius: 0.3rem;
@@ -97,7 +100,6 @@
     }
 
     .checkbox-options {
-
       > label {
         margin-top: 0.5rem;
 

@@ -37,7 +37,8 @@
       width: 100%;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       &::after {opacity: 0.3;}
     }
 
@@ -58,7 +59,8 @@
       text-decoration: none;
       transition: border 0.2s ease;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         border-bottom-color: currentColor;
       }
     }

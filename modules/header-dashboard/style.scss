@@ -18,7 +18,8 @@
 
     a {
       color: $gris-77;
-      &:hover, &:focus {text-decoration: none;}
+      &:hover,
+      &:focus {text-decoration: none;}
     }
   }
 }

@@ -33,7 +33,8 @@
       text-decoration: none;
       transition: background 0.2s ease;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         background-color: $vert-clair-vif;
       }
     }

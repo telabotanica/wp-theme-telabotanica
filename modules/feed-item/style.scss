@@ -109,7 +109,8 @@
       text-decoration: none;
       transition: border 0.2s ease-in-out;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $gris-23;
       }
     }
@@ -123,7 +124,8 @@
     text-decoration: none;
     transition: border 0.2s ease-in-out;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .feed-item-title {
         border-bottom: 0.2rem solid;
       }

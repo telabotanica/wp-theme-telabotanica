@@ -54,7 +54,8 @@
       font-weight: $bold;
       text-decoration: none;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         &::before {
           color: $taupe;
         }
@@ -134,7 +135,8 @@
         position: absolute;
       }
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $gris-33;
 
         &::before {

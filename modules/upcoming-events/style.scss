@@ -35,7 +35,8 @@
       text-decoration: none;
       color: $gris-23;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         .upcoming-events-date {color: darken($orange, 20%);}
       }
     }

@@ -39,7 +39,8 @@ body.login {
     padding-bottom: 0;
     text-shadow: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: lighten($vert-bouton, 8%);
     }
   }

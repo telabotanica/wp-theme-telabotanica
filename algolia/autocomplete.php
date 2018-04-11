@@ -13,7 +13,7 @@
   <a href="{{{ data.resultsUrl }}}" class="search-results-header">
     <div class="search-results-header-title">{{{ data.label }}}</div>
     <div class="search-results-header-count">{{{ data.nbHits }}}</div>
-    <div class="search-results-header-more"><?php _e( 'voir plus', 'telabotanica' ); ?></div>
+    <div class="search-results-header-more"><?php _e('voir plus', 'telabotanica'); ?></div>
   </a>
 </script>
 
@@ -120,7 +120,7 @@
 <script type="text/html" id="tmpl-autocomplete-footer">
   <div class="search-results-footer">
     <div class="search-results-footer-branding">
-      <?php esc_html_e( 'Powered by', 'algolia' ); ?>
+      <?php esc_html_e('Powered by', 'algolia'); ?>
       <a href="#" class="algolia-powered-by-link" title="Algolia">
         <img class="algolia-logo" src="https://www.algolia.com/assets/algolia128x40.png" alt="Algolia" />
       </a>
@@ -130,7 +130,7 @@
 
 <script type="text/html" id="tmpl-autocomplete-empty">
   <div class="search-results-empty">
-    <?php esc_html_e( 'Aucun résultat pour ', 'telabotanica' ); ?>
+    <?php esc_html_e('Aucun résultat pour ', 'telabotanica'); ?>
     <span class="search-results-empty-query">"{{ data.query }}"</span>
   </div>
 </script>

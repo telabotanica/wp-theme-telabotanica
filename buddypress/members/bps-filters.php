@@ -7,20 +7,22 @@
  *
  */
 
-	$F = bps_escaped_filters_data ();
-	$filters = array();
+	$F = bps_escaped_filters_data();
+	$filters = [];
 
-	foreach ($F->fields as $f)
-	{
-		switch ($f->display)
-		{
+	foreach ($F->fields as $f) {
+	    switch ($f->display) {
 		case 'range':
-			if ($f->min === '' && $f->max === '')  break;
+			if ($f->min === '' && $f->max === '') {
+			    break;
+			}
 			$filter = "<strong>$f->label :</strong>";
-			if ($f->min !== '')
-				$filter .= " <strong>". __('min', 'bp-profile-search'). "</strong> $f->min";
-			if ($f->max !== '')
-				$filter .= " <strong>". __('max', 'bp-profile-search'). "</strong> $f->max";
+			if ($f->min !== '') {
+			    $filter .= ' <strong>' . __('min', 'bp-profile-search') . "</strong> $f->min";
+			}
+			if ($f->max !== '') {
+			    $filter .= ' <strong>' . __('max', 'bp-profile-search') . "</strong> $f->max";
+			}
 			$filters[] = $filter;
 			break;
 
@@ -31,7 +33,9 @@
 		case 'number':
 		case 'textarea':
 		case 'url':
-			if ($f->value === '')  break;
+			if ($f->value === '') {
+			    break;
+			}
 		$filters[] = "<strong>$f->label :</strong> <span>$f->value</span>";
 			break;
 
@@ -39,11 +43,16 @@
 		case 'radio':
 		case 'multiselectbox':
 		case 'checkbox':
-			$values = array ();
-			foreach ($f->options as $key => $label)
-				if (in_array ($key, $f->values))  $values[] = $label;
-			$values = implode (', ', $values);
-			if ($values === '')  break;
+			$values = [];
+			foreach ($f->options as $key => $label) {
+			    if (in_array($key, $f->values)) {
+			        $values[] = $label;
+			    }
+			}
+			$values = implode(', ', $values);
+			if ($values === '') {
+			    break;
+			}
 			$filters[] = "<strong>$f->label :</strong> <span>$values</span>";
 			break;
 
@@ -53,19 +62,18 @@
 		}
 	}
 
-	if ($filters)
-	{
-		echo "<div class='bps_filters'>\n";
-		echo "<h3 class='section-header'>Filtres de recherche</h3>";
-		echo "<p>\n";
-		echo implode(' | ', $filters);
-		echo "</p>\n";
-		echo "<p>\n";
-		echo "<a id='tb-clear-filters' class='button' href='$F->action'>";
-		echo "<span class='button-text'>". __('Réinitialiser les filtres', 'telabotanica'). "</span>";
-		echo "</a>\n";
-		echo "</p>\n";
-		echo "<div>\n";
+	if ($filters) {
+	    echo "<div class='bps_filters'>\n";
+	    echo "<h3 class='section-header'>Filtres de recherche</h3>";
+	    echo "<p>\n";
+	    echo implode(' | ', $filters);
+	    echo "</p>\n";
+	    echo "<p>\n";
+	    echo "<a id='tb-clear-filters' class='button' href='$F->action'>";
+	    echo "<span class='button-text'>" . __('Réinitialiser les filtres', 'telabotanica') . '</span>';
+	    echo "</a>\n";
+	    echo "</p>\n";
+	    echo "<div>\n";
 	}
 
 // BP Profile Search - end of template

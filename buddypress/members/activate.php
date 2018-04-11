@@ -1,11 +1,7 @@
 <?php
 /**
  * BuddyPress - Members Activate
- *
- * @package BuddyPress
- * @subpackage bp-legacy
  */
-
 ?>
 
 <div id="buddypress">
@@ -22,7 +18,7 @@
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_activation_page' ); ?>
+	do_action('bp_before_activation_page'); ?>
 
 	<div class="page" id="activate-page">
 
@@ -30,7 +26,7 @@
 			<?php
 
 			/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
-			do_action( 'template_notices' ); ?>
+			do_action('template_notices'); ?>
 
 		</div>
 
@@ -41,15 +37,15 @@
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_before_activate_content' ); ?>
+		do_action('bp_before_activate_content'); ?>
 
-		<?php if ( bp_account_was_activated() ) : ?>
+		<?php if (bp_account_was_activated()) : ?>
 
 			<div class="notice notice-confirm">
-				<?php if ( isset( $_GET['e'] ) ) : ?>
-					<p><?php _e( 'Your account was activated successfully! Your account details have been sent to you in a separate email.', 'buddypress' ); ?></p>
+				<?php if (isset($_GET['e'])) : ?>
+					<p><?php _e('Your account was activated successfully! Your account details have been sent to you in a separate email.', 'buddypress'); ?></p>
 				<?php else : ?>
-					<p><?php printf( __('Votre compte est validé ! Vous pouvez maintenant <strong><a href="%s">vous connecter</a></strong> avec les identifiant et mot de passe que vous avez renseignés  à l\'inscription. N\'oubliez pas de compléter les informations de votre profil !', 'telabotanica'), wp_login_url( bp_get_root_domain() )); ?></p>
+					<p><?php printf(__('Votre compte est validé ! Vous pouvez maintenant <strong><a href="%s">vous connecter</a></strong> avec les identifiant et mot de passe que vous avez renseignés  à l\'inscription. N\'oubliez pas de compléter les informations de votre profil !', 'telabotanica'), wp_login_url(bp_get_root_domain())); ?></p>
 				<?php endif; ?>
 			</div>
 
@@ -61,15 +57,15 @@
 				<?php printf(__('<strong><a href="%s">Cliquez ici</a></strong> pour vous identifier', 'telabotanica'), wp_login_url(home_url())) ?>.
 			</div>
 
-			<p><?php _e( 'Please provide a valid activation key.', 'buddypress' ); ?></p>
+			<p><?php _e('Please provide a valid activation key.', 'buddypress'); ?></p>
 
 			<form action="" method="get" class="standard-form" id="activation-form">
 
-				<label for="key"><?php _e( 'Activation Key:', 'buddypress' ); ?></label>
+				<label for="key"><?php _e('Activation Key:', 'buddypress'); ?></label>
 				<input type="text" name="key" id="key" value="" />
 
 				<p class="submit">
-					<input type="submit" name="submit" value="<?php esc_attr_e( 'Activate', 'buddypress' ); ?>" />
+					<input type="submit" name="submit" value="<?php esc_attr_e('Activate', 'buddypress'); ?>" />
 				</p>
 
 			</form>
@@ -83,7 +79,7 @@
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_after_activate_content' ); ?>
+		do_action('bp_after_activate_content'); ?>
 
 	</div><!-- .page -->
 
@@ -94,7 +90,7 @@
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_after_activation_page' ); ?>
+	do_action('bp_after_activation_page'); ?>
 
 		</div>
 	</div>

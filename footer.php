@@ -8,8 +8,8 @@
 
   <?php
   if (!isset($GLOBALS['is_error'])) {
-    the_telabotanica_module('footer');
-    the_telabotanica_module('notice-cookies');
+      the_telabotanica_module('footer');
+      the_telabotanica_module('notice-cookies');
   }
   ?>
 

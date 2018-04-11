@@ -1,16 +1,13 @@
 <?php
 /**
  * BuddyPress - Groups Admin
- *
- * @package BuddyPress
- * @subpackage bp-legacy
  */
 ?>
 
 <div class="layout-content-col reversed-colors">
   <div class="layout-wrapper">
     <aside class="layout-column">
-      <div class="item-list-tabs no-ajax toc" id="subnav" aria-label="<?php esc_attr_e( 'Group secondary navigation', 'buddypress' ); ?>" role="navigation">
+      <div class="item-list-tabs no-ajax toc" id="subnav" aria-label="<?php esc_attr_e('Group secondary navigation', 'buddypress'); ?>" role="navigation">
         <h2 class="toc-title"><?php _e('Paramètres du projet', 'telabotanica') ?></h2>
         <ul class="toc-items">
           <?php bp_group_admin_tabs(); ?>
@@ -26,7 +23,7 @@
          *
          * @since 2.7.0
          */
-        do_action( 'bp_before_group_admin_form' ); ?>
+        do_action('bp_before_group_admin_form'); ?>
 
         <form action="<?php bp_group_admin_form_action(); ?>" name="group-settings-form" id="group-settings-form" class="standard-form" method="post" enctype="multipart/form-data">
 
@@ -36,13 +33,13 @@
            *
            * @since 1.1.0
            */
-          do_action( 'bp_before_group_admin_content' ); ?>
+          do_action('bp_before_group_admin_content'); ?>
 
           <?php /* Fetch the template for the current admin screen being viewed */ ?>
 
-          <?php if ( bp_is_group_admin_screen( bp_action_variable() ) ) : ?>
+          <?php if (bp_is_group_admin_screen(bp_action_variable())) : ?>
 
-            <?php bp_get_template_part( 'groups/single/admin/' . bp_action_variable() ); ?>
+            <?php bp_get_template_part('groups/single/admin/' . bp_action_variable()); ?>
 
           <?php endif; ?>
 
@@ -55,7 +52,7 @@
            *
            * @since 1.1.0
            */
-          do_action( 'groups_custom_edit_steps' ); ?>
+          do_action('groups_custom_edit_steps'); ?>
 
           <?php
 
@@ -64,7 +61,7 @@
            *
            * @since 1.1.0
            */
-          do_action( 'bp_after_group_admin_content' ); ?>
+          do_action('bp_after_group_admin_content'); ?>
 
         </form><!-- #group-settings-form -->
       </div>
@@ -74,7 +71,7 @@
      *
      * @since 2.7.0
      */
-    do_action( 'bp_after_group_admin_form' ); ?>
+    do_action('bp_after_group_admin_form'); ?>
 
     </div>
   </div>

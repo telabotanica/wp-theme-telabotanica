@@ -17,38 +17,34 @@ $chemin_collections_http = get_field('applis_externes_chemin_collections_http', 
 
 // Inclusion de l'appli
 if (is_dir($dossier_collections)) {
-  $chemin_collections = $dossier_collections . "/collection_wordpress.php";
-  require $chemin_collections;
+    $chemin_collections = $dossier_collections . '/collection_wordpress.php';
+    require $chemin_collections;
 
-  // Rendu
-  // get_header() doit être placé après le require sans quoi les
-  // scripts et styles ne seront pas amorcés
-  get_header();
-  template_collections_entete();
-  ?>
+    // Rendu
+    // get_header() doit être placé après le require sans quoi les
+    // scripts et styles ne seront pas amorcés
+    get_header();
+    template_collections_entete(); ?>
   <div class="appli-collections">
     <?php
     // (fonctions définies dans collection_wordpress.php)
-    echo collections_get_contenu_tete();
-    ?>
+    echo collections_get_contenu_tete(); ?>
     <div class="component component-title level-2">
       <h1 id="resultats-recherche-collections">Résultats de la recherche</h1>
     </div>
     <?php
     echo collections_get_contenu();
-    echo collections_get_contenu_pied();
-    ?>
+    echo collections_get_contenu_pied(); ?>
   </div>
   <?php
 } else {
-  get_header();
-  template_collections_entete();
-  ?>
+        get_header();
+        template_collections_entete(); ?>
   <div class="component component-text">Impossible de charger le moteur de recherche des collections, vérifiez la configuration.</div>
   <?php
-}
+    }
 
-// fermeture des balises ouvertes par template_collections_entete() ?>
+// fermeture des balises ouvertes par template_collections_entete()?>
 </article>
 </div>
 </div>
@@ -63,8 +59,9 @@ get_footer();
  * Factorisation crado des éléments communs au cas général et au cas d'erreur, à
  * cause de la nécesité d'appeler get_header() après l'inclusion de l'appli
  */
-function template_collections_entete() {
-  ?>
+function template_collections_entete()
+{
+    ?>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
@@ -75,33 +72,33 @@ function template_collections_entete() {
       <aside class="layout-column">
       <?php
       $module = collections_get_module();
-      the_telabotanica_module('toc', [
+    the_telabotanica_module('toc', [
         'items' => [
           [
-            'text' => 'Rechercher',
-            'href' => '#recherche-collections',
+            'text'   => 'Rechercher',
+            'href'   => '#recherche-collections',
             'active' => true,
-            'items' => [
+            'items'  => [
               [
-                'text' => 'Rechercher une collection',
-                'href' => '?module=Recherche#rechercher-parmi-collections',
+                'text'   => 'Rechercher une collection',
+                'href'   => '?module=Recherche#rechercher-parmi-collections',
                 'active' => false
               ],
               [
-                'text' => 'Rechercher une personne',
-                'href' => '?module=Recherche#rechercher-parmi-personnes',
+                'text'   => 'Rechercher une personne',
+                'href'   => '?module=Recherche#rechercher-parmi-personnes',
                 'active' => false
               ],
               [
-                'text' => 'Rechercher une publication',
-                'href' => '?module=RecherchePublications',
+                'text'   => 'Rechercher une publication',
+                'href'   => '?module=RecherchePublications',
                 'active' => ($module == 'RecherchePublications')
               ]
             ]
           ],
           [
-            'text' => 'Résultats de recherche',
-            'href' => '#resultats-recherche-collections',
+            'text'   => 'Résultats de recherche',
+            'href'   => '#resultats-recherche-collections',
             'active' => false
           ]
         ]
@@ -121,4 +118,5 @@ function template_collections_entete() {
             Complétez l'inventaire sur <a href="https://beta.tela-botanica.org/preprod/outils/collections-en-ligne">Collections En Ligne</a>
           </p>
         </div>
-<?php }
+<?php
+}

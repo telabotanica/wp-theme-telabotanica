@@ -1,28 +1,28 @@
 <?php
 
-$search_query = sanitize_text_field( get_search_query() );
+$search_query = sanitize_text_field(get_search_query());
 
 // Are we searching in a specific index?
-$current_index = sanitize_key( get_query_var( 'in', false ) );
+$current_index = sanitize_key(get_query_var('in', false));
 
 // Redirect some indices to the category or page, while preserving the query
 switch ($current_index) {
   case 'actualites':
-    $redirect_url = get_category_link( get_category_by_slug( 'actualites' ) );
+    $redirect_url = get_category_link(get_category_by_slug('actualites'));
     break;
 
   case 'evenements':
-    $redirect_url = get_category_link( get_category_by_slug( 'evenements' ) );
+    $redirect_url = get_category_link(get_category_by_slug('evenements'));
     break;
 
   case 'projets':
-    $redirect_url = get_permalink(get_page_by_path( 'projets' ));
+    $redirect_url = get_permalink(get_page_by_path('projets'));
     break;
 }
 
-if ( isset($redirect_url) ) {
-  wp_redirect( $redirect_url . '?q=' . $search_query );
-  exit;
+if (isset($redirect_url)) {
+    wp_redirect($redirect_url . '?q=' . $search_query);
+    exit;
 }
 
 // Force a small header (without use cases navigation)
@@ -35,25 +35,25 @@ get_header();
     <main id="main" class="site-main">
 
       <?php
-      if ( telabotanica_algolia_check(true) ) :
+      if (telabotanica_algolia_check(true)) :
 
         // Get Algolia instance
         $algolia_client = telabotanica_algolia_client();
         $algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
 
-        if ( $current_index ) :
+        if ($current_index) :
 
           // Retrieve the label for the current index
           $indices = $algolia_autocomplete_config['sources'];
-          foreach ( $indices as $index ) :
-            if ( $index['index_id'] === $current_index ) {
-              $current_index = [
-                'id' => $current_index,
-                'label' => $index['label'],
-                'name' => $index['index_name'],
+          foreach ($indices as $index) :
+            if ($index['index_id'] === $current_index) {
+                $current_index = [
+                'id'      => $current_index,
+                'label'   => $index['label'],
+                'name'    => $index['index_name'],
                 'filters' => @$index['filters'] ?: []
               ];
-              break;
+                break;
             }
           endforeach;
 
@@ -64,7 +64,7 @@ get_header();
           ]);
 
           the_telabotanica_module('cover-search', [
-            'index' => $current_index['id'],
+            'index'         => $current_index['id'],
             'total_results' => false,
             'instantsearch' => true
           ]);
@@ -85,25 +85,25 @@ get_header();
                   the_telabotanica_module('breadcrumbs', [
                     'items' => [
                       [
-                        'href' => esc_url( home_url( '/' ) . '?s=' . $search_query ),
+                        'href' => esc_url(home_url('/') . '?s=' . $search_query),
                         'text' => __('Recherche', 'telabotanica')
                       ],
                       [
                         'text' => $current_index['label']
                       ],
-                      [ 'text' => '<span id="search-stats">' . sprintf( _n(
+                      ['text' => '<span id="search-stats">' . sprintf(_n(
                         '%s résultat trouvé',
                         '%s résultats trouvés',
                         $results['nbHits'],
                         'telabotanica'
-                      ), number_format_i18n( $results['nbHits'] ) ) . '</span>' ]
+                      ), number_format_i18n($results['nbHits'])) . '</span>']
                     ]
                   ]);
 
                   echo '<div id="search-hits">';
                     foreach ($results['hits'] as $hit) {
-                      $hit['type'] = $current_index['id'];
-                      the_telabotanica_module('search-hit', $hit);
+                        $hit['type'] = $current_index['id'];
+                        the_telabotanica_module('search-hit', $hit);
                     }
                   echo '</div>';
 
@@ -117,11 +117,11 @@ get_header();
           // Perform several queries in a single API call
           $queries = [];
 
-          foreach ( $algolia_autocomplete_config['sources'] as $index ) :
+          foreach ($algolia_autocomplete_config['sources'] as $index) :
             $queries[] = [
-              'indexName' => $index['index_name'],
-              'query' => $search_query,
-              'hitsPerPage' => $index['settings']['hitsPerPage'] * 2,
+              'indexName'    => $index['index_name'],
+              'query'        => $search_query,
+              'hitsPerPage'  => $index['settings']['hitsPerPage'] * 2,
               'facetFilters' => array_key_exists('facetFilters', $index['settings']) ? $index['settings']['facetFilters'] : null
             ];
           endforeach;

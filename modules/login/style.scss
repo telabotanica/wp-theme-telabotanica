@@ -5,7 +5,7 @@ Certaines couleurs n'utilisent pas les variables de colors.scss pour la même ra
 */
 
 body.login {
-	background-color: $grisF4;
+	background-color: $gris-f4;
 }
 
 .login {
@@ -62,7 +62,7 @@ body.login {
 
 		label {
 			background-color: #fbfbfb;
-			border: 0.1rem solid $grisDD;
+			border: 0.1rem solid $gris-dd;
 			color: #32373c;
 			display: inline-block;
 			margin: 0.5rem 1rem 0 0;
@@ -94,7 +94,7 @@ body.login {
 			padding: 0;
 
 			.icon {
-				fill: $grisB3;
+				fill: $gris-b3;
 				height: 2.4rem;
 				margin-top: 0.4rem;
 				width: 2.4rem;

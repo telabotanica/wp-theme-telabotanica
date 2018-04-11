@@ -42,7 +42,7 @@
   }
 
   &-title {
-    color: $gris33;
+    color: $gris-33;
     font-family: $ubuntu;
     font-size: 3.2rem;
     font-weight: $light;
@@ -108,7 +108,7 @@
       width: 40%;
 
       h3 {
-        color: $gris23;
+        color: $gris-23;
         font-family: $ubuntu;
         font-size: 2.6rem;
         font-weight: $bold;
@@ -127,7 +127,7 @@
   }
 
   &-credits {
-    color: transparentize($grisF0, 0.25);
+    color: transparentize($gris-f0, 0.25);
     font-size: 1.2rem;
     bottom: 0;
     padding: 1rem;
@@ -135,7 +135,7 @@
     right: 0;
 
     a {
-      color: $grisF0;
+      color: $gris-f0;
       text-decoration: none;
       &:hover {border-bottom: 0.1rem solid;}
     }

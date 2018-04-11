@@ -1,12 +1,12 @@
 body.group-admin .toc-items {
     // répercussion (copie) du style de la ToC)
     > li {
-        border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
+        border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
         padding: 1.5rem 0;
 
         &.current {
             > a {
-                color: $gris23;
+                color: $gris-23;
             }
             > a::before {
                 content: "\25B6";
@@ -19,7 +19,7 @@ body.group-admin .toc-items {
             }
         }
         > a {
-            color: $gris60;
+            color: $gris-60;
             font-size: 1.6rem;
             font-weight: $bold;
             text-decoration: none;
@@ -41,7 +41,7 @@ body.group-admin .toc-items {
 
 #group-settings-panel {
     padding-top: 2rem;
-    color: $gris23;
+    color: $gris-23;
 }
 
 #group-settings-form, #search-members-form {
@@ -61,7 +61,7 @@ body.group-admin .toc-items {
         display: block;
         margin-top: 2rem;
         margin-bottom: .4rem;
-        color: $gris60;
+        color: $gris-60;
         font-size: 1.5rem;
     }
 
@@ -74,14 +74,14 @@ body.group-admin .toc-items {
             display: inline-block;
             margin-top: 2rem;
             margin-bottom: .4rem;
-            color: $gris23;
+            color: $gris-23;
             font-size: 1.8rem;
         }
     }
 
     input[type="text"], input[type="url"], textarea {
         width: 100%;
-        border: solid $grisDD .1rem;
+        border: solid $gris-dd .1rem;
         border-radius: .3rem;
         padding: 1rem;
     }
@@ -109,7 +109,7 @@ body.group-admin .toc-items {
         top: -3.5rem;
         font-size: 1.3rem;
         text-align: right;
-        color: $grisAA;
+        color: $gris-aa;
     }
 
     .description {
@@ -140,7 +140,7 @@ body.group-admin .toc-items {
         }
 
         &[disabled] {
-            background-color: $grisB3;
+            background-color: $gris-b3;
         }
     }
 
@@ -150,7 +150,7 @@ body.group-admin .toc-items {
     }
 
     p {
-        color: $gris60;
+        color: $gris-60;
     }
 
     #bp-browse-button {
@@ -164,14 +164,14 @@ body.group-admin .toc-items {
     .bp-avatar-nav ul.avatar-nav-items {
         > li {
             &.current {
-                border-bottom-color: $grisF4;
+                border-bottom-color: $gris-f4;
                 border-radius: 0;
                 > a {
-                    color: $gris23;
+                    color: $gris-23;
                 }
             }
             > a {
-                color: $gris60;
+                color: $gris-60;
             }
         }
     }

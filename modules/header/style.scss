@@ -123,7 +123,7 @@
 
 				a {
 					align-items: center;
-					color: $grisB3;
+					color: $gris-b3;
 					display: flex;
 					font-size: 1.2rem;
 					height: $header-height-fixed;
@@ -132,12 +132,12 @@
 					transition: color 0.2s ease;
 
 					&:hover {
-						color: $gris33;
+						color: $gris-33;
 					}
 				}
 
 				&-text {
-					border-right: 0.1rem solid $grisF0;
+					border-right: 0.1rem solid $gris-f0;
 					display: inline-block;
 					height: 2.3rem;
 					line-height: 2.3rem;
@@ -195,7 +195,7 @@
 					> a {
 						border-bottom: 0.4rem solid transparent;
 						border-top: 0.4rem solid transparent;
-						color: $gris60;
+						color: $gris-60;
 						font-size: 1.2rem;
 						line-height: $header-height-fixed - 0.8rem;
 						position: relative;
@@ -260,7 +260,7 @@
 					}
 
 					> .menu-item-description {
-						color: $gris60;
+						color: $gris-60;
 						font-family: $muli;
 						font-size: 1.3rem;
 						font-weight: $light;
@@ -269,7 +269,7 @@
 						position: relative;
 
 						.icon {
-							fill: $gris99;
+							fill: $gris-99;
 							height: 1.8rem;
 							left: 1.4rem;
 							position: absolute;
@@ -279,7 +279,7 @@
 					}
 
 					a {
-						color: $gris33;
+						color: $gris-33;
 						font-family: $muli;
 						line-height: 1.4;
 						padding: 0.6rem 1.5rem 0.9rem;
@@ -348,7 +348,7 @@
 					background: transparent top center no-repeat;
 					background-size: 4.6rem;
 					border-right: 0.1rem solid transparentize($taupe, 0.8);
-					color: $gris33;
+					color: $gris-33;
 					display: flex;
 					font-family: $ubuntu;
 					font-size: 1.5rem;

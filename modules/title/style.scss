@@ -22,11 +22,11 @@
 	}
 
 	&.with-separator {
-		border-top: 0.1rem solid transparentize($grisDD, 0.5);
+		border-top: 0.1rem solid transparentize($gris-dd, 0.5);
 	}
 
 	&.with-border-bottom {
-		border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
+		border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
 	}
 
 	.layout-column & {

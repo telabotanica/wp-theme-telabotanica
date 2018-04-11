@@ -1,10 +1,10 @@
 .upcoming-events {
-	background-color: $grisF0;
+	background-color: $gris-f0;
 	border-radius: 0.2rem;
 	padding: 2rem;
 
 	&-title {
-		color: $gris23;
+		color: $gris-23;
 		font-family: $ubuntu;
 		font-size: 1.8rem;
 		font-weight: $bold;
@@ -33,7 +33,7 @@
 			font-family: $ubuntu;
 			min-height: 5.5rem;
 			text-decoration: none;
-			color: $gris23;
+			color: $gris-23;
 
 			&:hover, &:focus {
 				.upcoming-events-date {color: darken($orange, 20%);}

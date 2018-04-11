@@ -30,13 +30,13 @@
 
 		a {
 			border-bottom: 0.2rem solid transparent;
-			color: $gris23;
+			color: $gris-23;
 			text-decoration: none;
 			transition: border 0.2s ease;
 
 			&:hover,
 			&:focus {
-				border-bottom-color: $gris23;
+				border-bottom-color: $gris-23;
 			}
 		}
 
@@ -64,7 +64,7 @@
 	}
 
 	& + & {
-		border-top: 0.1rem solid $grisDD;
+		border-top: 0.1rem solid $gris-dd;
 		margin-top: 2.5rem;
 		padding-top: 2.5rem;
 	}
@@ -72,7 +72,7 @@
 	.component-title,
 	.component-text {
 		h2 {
-			color: $gris33;
+			color: $gris-33;
 			font-weight: $light;
 		}
 	}

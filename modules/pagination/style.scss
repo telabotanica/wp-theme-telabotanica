@@ -1,5 +1,5 @@
 .pagination {
-  border-top: 0.1rem solid $grisDD;
+  border-top: 0.1rem solid $gris-dd;
   font-family: $ubuntu;
   font-size: 1.3rem;
   font-weight: $medium;
@@ -20,7 +20,7 @@
     transition: all 0.2s ease;
 
     &:hover, &:focus {
-      background-color: $grisF0;
+      background-color: $gris-f0;
       color: lighten($vert-fonce, 8%);
     }
 
@@ -35,7 +35,7 @@
     }
 
     &.dots {
-      color: $gris60;
+      color: $gris-60;
       pointer-events: none;
     }
 

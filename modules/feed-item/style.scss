@@ -1,7 +1,7 @@
 .feed-item {
 	background-color: $blanc;
-	border: 0.1rem solid $grisEB;
-	color: $gris99;
+	border: 0.1rem solid $gris-eb;
+	color: $gris-99;
 	font-size: 1.2rem;
 	padding: 2rem;
 	position: relative;
@@ -82,7 +82,7 @@
 		padding: 0;
 
 		.feed-item-text {
-			background-color: $grisF4;
+			background-color: $gris-f4;
 			border: 0.2rem solid $taupe;
 			border-radius: 2rem;
 			color: $taupe;
@@ -110,13 +110,13 @@
 			transition: border 0.2s ease-in-out;
 
 			&:hover, &:focus {
-				color: $gris23;
+				color: $gris-23;
 			}
 		}
 	}
 
 	&-link {
-		border: 0.1rem solid $grisEB;
+		border: 0.1rem solid $gris-eb;
 		color: inherit;
 		display: block;
 		padding: 2rem;
@@ -162,7 +162,7 @@
 
 	&.has-only-text .feed-item-text,
 	&-title {
-		color: $gris23;
+		color: $gris-23;
 		font-family: $ubuntu;
 		font-size: 1.5rem;
 		font-weight: $bold;

@@ -4,20 +4,20 @@
 	padding-bottom: 3rem;
 
 	&-title {
-		color: $gris33;
+		color: $gris-33;
 		font-family: $ubuntu;
 		font-size: 2.6rem;
 		margin: 0;
 	}
 
 	&-message {
-		color: $gris77;
+		color: $gris-77;
 		font-size: 1.6rem;
 		margin-top: 0.5rem;
 		max-width: 60rem;
 
 		a {
-			color: $gris77;
+			color: $gris-77;
 			&:hover, &:focus {text-decoration: none;}
 		}
 	}

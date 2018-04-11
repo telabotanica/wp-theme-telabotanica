@@ -83,7 +83,7 @@ div.search-results {
 
 		a {
 			font-size: 1.2rem;
-			color: $gris23;
+			color: $gris-23;
 			font-weight: normal;
 			text-decoration: none;
 
@@ -104,7 +104,7 @@ div.search-results {
 
 			.aa-suggestion.aa-cursor &,
 			&:hover {
-				background-color: $grisF4;
+				background-color: $gris-f4;
 			}
 
 			svg {
@@ -115,7 +115,7 @@ div.search-results {
 		}
 
 		&-post-title {
-			color: $gris23;
+			color: $gris-23;
 			display: block;
 			font-family: $ubuntu;
 			font-size: 1.4rem;
@@ -127,7 +127,7 @@ div.search-results {
 		}
 
 		&-post-content {
-			color: $gris44;
+			color: $gris-44;
 			display: block;
 			font-size: 1.3rem;
 
@@ -165,7 +165,7 @@ div.search-results {
 	}
 
 	&-empty {
-		color: $grisAA;
+		color: $gris-aa;
 		font-size: 1.3rem;
 		clear: both;
 		padding: 0 2.5rem 2.5rem;
@@ -217,7 +217,7 @@ div.search-results {
 	@include small {
 		&-index {
 			& + & {
-				border-top: 0.1rem solid $grisEB;
+				border-top: 0.1rem solid $gris-eb;
 			}
 		}
 	}
@@ -234,7 +234,7 @@ div.search-results {
 			}
 
 			&::before {
-				border-top: 0.1rem solid $grisEB;
+				border-top: 0.1rem solid $gris-eb;
 				height: 0;
 				left: 2.5rem;
 				top: 0;
@@ -242,7 +242,7 @@ div.search-results {
 			}
 
 			&::after {
-				border-right: 0.1rem solid $grisEB;
+				border-right: 0.1rem solid $gris-eb;
 				height: calc(100% - 2.5rem);
 				right: 0;
 				top: 2.5rem;

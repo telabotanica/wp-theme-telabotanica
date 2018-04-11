@@ -1,6 +1,6 @@
 .directory.members {
 
-	color: $gris23;
+	color: $gris-23;
 
 	.layout-column {
 
@@ -19,7 +19,7 @@
 				margin-right: 1rem;
 			}
 			> select {
-				color: $gris33;
+				color: $gris-33;
 			}
 		}
 
@@ -45,7 +45,7 @@
 
 				> label {
 					display: block;
-					color: $gris60;
+					color: $gris-60;
 					margin-bottom: .4rem;
 				}
 
@@ -54,15 +54,15 @@
 					border: .1rem solid #ddd;
 					border-radius: .3rem;
 					padding: .8rem;
-					color: $gris33;
+					color: $gris-33;
 				}
 
 				> select {
 					width: 100%;
-					color: $gris33;
+					color: $gris-33;
 
 					> option {
-						color: $gris60;
+						color: $gris-60;
 					}
 				}
 
@@ -70,12 +70,12 @@
 				  .radio {
 					> .label {
 						display: block;
-						color: $gris60;
+						color: $gris-60;
 						margin-bottom: .6rem;
 					}
 					> label {
 						display: block;
-						color: $gris60;
+						color: $gris-60;
 						margin-bottom: .4rem;
 
 						> input {
@@ -134,7 +134,7 @@
 			padding-top: .5rem;
 
 			.bp_mda_bulk_actions_options {
-				color: $gris33;
+				color: $gris-33;
 			}
 		}
 
@@ -163,7 +163,7 @@
 		>form {
 			> label {
 				display: block;
-				color: $gris60;
+				color: $gris-60;
 				margin-bottom: .4rem;
 				margin-top: 1em;
 
@@ -192,7 +192,7 @@
 				border: .1rem solid #ddd;
 				border-radius: .3rem;
 				padding: .8rem;
-				color: $gris33;
+				color: $gris-33;
 			}
 		}
 	}
@@ -222,7 +222,7 @@
 		}
 
 		&[disabled] {
-			background-color: $grisB3;
+			background-color: $gris-b3;
 		}
 	}
 }

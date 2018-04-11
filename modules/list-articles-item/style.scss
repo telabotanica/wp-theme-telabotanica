@@ -1,18 +1,18 @@
 .list-articles-item {
-	color: $gris33;
+	color: $gris-33;
 	line-height: 2.4rem;
 	overflow: hidden;
 
 	& + & {margin-top: 5rem;}
 
 	.only-events & + & {
-		border-top: 0.1rem solid $grisDD;
+		border-top: 0.1rem solid $gris-dd;
 		margin-top: 3rem;
 		padding-top: 3rem;
 	}
 
 	&-image {
-		background-color: $grisF0;
+		background-color: $gris-f0;
 		float: left;
 		height: 16rem;
 		margin-right: 2.5rem;
@@ -31,7 +31,7 @@
 
 		&,
 		a {
-			color: $gris23;
+			color: $gris-23;
 		}
 
 		a {

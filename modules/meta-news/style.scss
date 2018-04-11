@@ -4,7 +4,7 @@
 	line-height: 1.6rem;
 
 	&-item {
-		border-top: 0.1rem solid $grisDD;
+		border-top: 0.1rem solid $gris-dd;
 		padding: 1.5rem 0;
 		position: relative;
 
@@ -70,7 +70,7 @@
 
 			&:hover, &:focus {
 				background-color: transparentize($taupe, 0.6);
-				fill: $gris33;
+				fill: $gris-33;
 			}
 		}
 	}

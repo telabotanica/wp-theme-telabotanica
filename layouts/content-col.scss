@@ -59,7 +59,7 @@
 
 	// Inversion des couleurs des colonnes
 	&.reversed-colors {
-		background-color: $grisF4;
+		background-color: $gris-f4;
 
 		> .layout-wrapper {
 			> .layout-column {
@@ -70,7 +70,7 @@
 				}
 			}
 			> .layout-content {
-				background-color: $grisF4;
+				background-color: $gris-f4;
 			}
 		}
 	}

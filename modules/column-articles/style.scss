@@ -15,13 +15,13 @@
 	}
 
 	&-item-link {
-		color: $gris33;
+		color: $gris-33;
 		display: block;
 		text-decoration: none;
 
 		&:hover,
 		&:focus {
-			.column-articles-item-title span {border-bottom-color: $gris23;}
+			.column-articles-item-title span {border-bottom-color: $gris-23;}
 		}
 	}
 
@@ -34,7 +34,7 @@
 	}
 
 	&-item-title {
-		color: $gris23;
+		color: $gris-23;
 		font-family: $ubuntu;
 		font-weight: $medium;
 		line-height: 1.3;

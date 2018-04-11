@@ -1,6 +1,6 @@
 #membership-request-panel {
     padding-top: 2rem;
-    color: $gris23;
+    color: $gris-23;
 
     form {
 
@@ -19,13 +19,13 @@
             display: block;
             margin-top: 2rem;
             margin-bottom: .4rem;
-            color: $gris60;
+            color: $gris-60;
             font-size: 1.5rem;
         }
 
         input[type="text"], textarea {
             width: 100%;
-            border: solid $grisDD .1rem;
+            border: solid $gris-dd .1rem;
             border-radius: .3rem;
             padding: 1rem;
         }

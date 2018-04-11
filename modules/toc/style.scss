@@ -35,13 +35,13 @@
 	}
 
 	&-item {
-		border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
+		border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
 		padding: 1.5rem 0;
 
 		&:only-child {border-bottom: 0;}
 
 		&.is-active > .toc-item-link {
-			color: $gris23;
+			color: $gris-23;
 
 			&:before {
 				color: $vert-clair;
@@ -49,7 +49,7 @@
 		}
 
 		&-link {
-			color: $gris60;
+			color: $gris-60;
 			font-size: 1.6rem;
 			font-weight: $bold;
 			text-decoration: none;
@@ -68,7 +68,7 @@
 		position: relative;
 
 		&:before {
-			border-left: 0.1rem dotted transparentize($grisDD, 0.3);
+			border-left: 0.1rem dotted transparentize($gris-dd, 0.3);
 			bottom: 1rem;
 			content: "";
 			display: block;
@@ -135,10 +135,10 @@
 			}
 
 			&:hover, &:focus {
-				color: $gris33;
+				color: $gris-33;
 
 				&:before {
-					color: $gris60;
+					color: $gris-60;
 				}
 			}
 		}

@@ -17,7 +17,7 @@
 	}
 
 	&-link {
-		color: $gris33;
+		color: $gris-33;
 		display: block;
 		text-decoration: none;
 
@@ -26,14 +26,14 @@
 				border-bottom-color: currentColor;
 			}
 			.card-project-description {
-				color: $gris60;
+				color: $gris-60;
 			}
 		}
 	}
 
 	&-cover {
 		align-items: center;
-		background: $grisF0 center center no-repeat;
+		background: $gris-f0 center center no-repeat;
 		background-size: cover;
 		display: flex;
 		height: 17rem;

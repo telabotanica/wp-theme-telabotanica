@@ -1,7 +1,7 @@
 .component-links {
 
 	&-title {
-		color: $gris33;
+		color: $gris-33;
 		font-family: $ubuntu;
 		font-size: 2rem;
 		font-weight: $light;
@@ -21,7 +21,7 @@
 
 	a {
 		background-color: transparentize($turquoise, 0.9);
-		color: $gris33;
+		color: $gris-33;
 		display: block;
 		font-family: $ubuntu;
 		font-weight: $regular;
@@ -45,7 +45,7 @@
 			background-color: transparentize($turquoise, 0.8);
 
 			&:before {
-				color: $gris33;
+				color: $gris-33;
 			}
 		}
 	}

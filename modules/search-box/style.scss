@@ -5,7 +5,7 @@
 	border-bottom-right-radius: 0.4rem;
 	border-top: 0;
 	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.25), 0 0 0.1rem rgba(0, 0, 0, 0.35);
-	color: $gris23;
+	color: $gris-23;
 	font-size: 1.2rem;
 	z-index: 999999;
 
@@ -21,7 +21,7 @@
 		width: 100%;
 	}
 
-	.aa-hint {color: $gris60;}
+	.aa-hint {color: $gris-60;}
 
 	.clear {
 		clear: both;
@@ -45,7 +45,7 @@
 		}
 
 		.search-box-input {
-			background-color: $grisF4;
+			background-color: $gris-f4;
 			padding: 0;
 			transition: width 0.3s ease;
 			width: 0;
@@ -95,13 +95,13 @@
 
 		.ais-search-box--powered-by {
 			bottom: -2.5rem;
-			color: transparentize($grisF0, 0.25);
+			color: transparentize($gris-f0, 0.25);
 			font-size: 1.2rem;
 			position: absolute;
 			right: 0;
 
 			a {
-				color: $grisF0;
+				color: $gris-f0;
 				text-decoration: none;
 				&:hover {border-bottom: 0.1rem solid;}
 			}
@@ -121,7 +121,7 @@
 
 	&-input {
 		border-radius: 0.2rem 0 0 0.2rem;
-		color: $gris23;
+		color: $gris-23;
 		font-family: $muli;
 		height: 100%;
 		padding: 1rem 0 1rem 2rem;
@@ -138,7 +138,7 @@
 	}
 
 	&-suggestions {
-		color: transparentize($grisF0, 0.25);
+		color: transparentize($gris-f0, 0.25);
 		line-height: 1.4;
 
 		a {

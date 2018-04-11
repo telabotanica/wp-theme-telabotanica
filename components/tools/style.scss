@@ -1,5 +1,5 @@
 .component-tools {
-	color: $gris33;
+	color: $gris-33;
 	line-height: 1.6;
 	overflow: hidden;
 
@@ -54,7 +54,7 @@
 
 		a {
 			border-bottom: 0.2rem solid transparent;
-			color: $gris23;
+			color: $gris-23;
 			text-decoration: none;
 			transition: border 0.2s ease;
 
@@ -107,7 +107,7 @@
 
 		&-item {
 			& + & {
-				border-top: 0.1rem solid transparentize($grisDD, 0.5);
+				border-top: 0.1rem solid transparentize($gris-dd, 0.5);
 				margin-top: 2rem;
 				padding-top: 2rem;
 			}

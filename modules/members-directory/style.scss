@@ -46,14 +46,14 @@
 				> label {
 					display: block;
 					color: $gris-60;
-					margin-bottom: .4rem;
+					margin-bottom: 0.4rem;
 				}
 
 				> input[type="text"] {
 					width: 100%;
-					border: .1rem solid #ddd;
-					border-radius: .3rem;
-					padding: .8rem;
+					border: 0.1rem solid #ddd;
+					border-radius: 0.3rem;
+					padding: 0.8rem;
 					color: $gris-33;
 				}
 
@@ -71,16 +71,16 @@
 					> .label {
 						display: block;
 						color: $gris-60;
-						margin-bottom: .6rem;
+						margin-bottom: 0.6rem;
 					}
 					> label {
 						display: block;
 						color: $gris-60;
-						margin-bottom: .4rem;
+						margin-bottom: 0.4rem;
 
 						> input {
 							vertical-align: top;
-							margin-right: .5rem;
+							margin-right: 0.5rem;
 						}
 					}
 				}
@@ -100,12 +100,12 @@
 
 		.bp_mda_select_all_search_results {
 			margin-bottom: 1rem;
-			padding-top: .5rem;
+			padding-top: 0.5rem;
 
 			> label {
 				> input {
 					vertical-align: top;
-					margin-right: .5 rem;
+					margin-right: 0.5 rem;
 				}
 			}
 		}
@@ -113,7 +113,7 @@
 		.bp_mda_select_all_page_items {
 			//border: solid red 1px;
 			margin-bottom: 1rem;
-			padding-top: .5rem;
+			padding-top: 0.5rem;
 			height: 3rem;
 
 			> label {
@@ -124,14 +124,14 @@
 				}
 				> input {
 					vertical-align: top;
-					margin-right: .5 rem;
+					margin-right: 0.5 rem;
 				}
 			}
 		}
 
 		.bp_mda_bulk_actions_container {
 			margin-bottom: 1rem;
-			padding-top: .5rem;
+			padding-top: 0.5rem;
 
 			.bp_mda_bulk_actions_options {
 				color: $gris-33;
@@ -164,7 +164,7 @@
 			> label {
 				display: block;
 				color: $gris-60;
-				margin-bottom: .4rem;
+				margin-bottom: 0.4rem;
 				margin-top: 1em;
 
 				&[for="send-to-input"] {
@@ -189,16 +189,16 @@
 
 			> input[type="text"], textarea {
 				width: 100%;
-				border: .1rem solid #ddd;
-				border-radius: .3rem;
-				padding: .8rem;
+				border: 0.1rem solid #ddd;
+				border-radius: 0.3rem;
+				padding: 0.8rem;
 				color: $gris-33;
 			}
 		}
 	}
 
 	.bp_mda_bulk_actions_submit, .bp_mda_action_submit {
-		border-radius: .2rem;
+		border-radius: 0.2rem;
 		background-color: $vert-bouton;
 		border: 0 none;
 		cursor: pointer;
@@ -207,15 +207,15 @@
 		font-family: Ubuntu,sans-serif;
 		font-size: 1.3rem;
 		font-weight: 500;
-		letter-spacing: .1rem;
+		letter-spacing: 0.1rem;
 		line-height: 1.2rem;
-		padding: .8rem 1.5rem;
+		padding: 0.8rem 1.5rem;
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
-		-webkit-transition: background .2s ease;
-		-o-transition: background .2s ease;
-		transition: background .2s ease;
+		-webkit-transition: background 0.2s ease;
+		-o-transition: background 0.2s ease;
+		transition: background 0.2s ease;
 
 		&:focus, &:hover {
 			background-color: lighten($vert-bouton, 8%);

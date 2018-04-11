@@ -18,22 +18,22 @@
         label {
             display: block;
             margin-top: 2rem;
-            margin-bottom: .4rem;
+            margin-bottom: 0.4rem;
             color: $gris-60;
             font-size: 1.5rem;
         }
 
         input[type="text"], textarea {
             width: 100%;
-            border: solid $gris-dd .1rem;
-            border-radius: .3rem;
+            border: solid $gris-dd 0.1rem;
+            border-radius: 0.3rem;
             padding: 1rem;
         }
 
         input[type="submit"] {
             border: none;
             cursor: pointer;
-            border-radius: .2rem;
+            border-radius: 0.2rem;
         }
     }
 }

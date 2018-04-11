@@ -60,7 +60,7 @@ body.group-admin .toc-items {
     label {
         display: block;
         margin-top: 2rem;
-        margin-bottom: .4rem;
+        margin-bottom: 0.4rem;
         color: $gris-60;
         font-size: 1.5rem;
     }
@@ -73,7 +73,7 @@ body.group-admin .toc-items {
         > legend {
             display: inline-block;
             margin-top: 2rem;
-            margin-bottom: .4rem;
+            margin-bottom: 0.4rem;
             color: $gris-23;
             font-size: 1.8rem;
         }
@@ -81,8 +81,8 @@ body.group-admin .toc-items {
 
     input[type="text"], input[type="url"], textarea {
         width: 100%;
-        border: solid $gris-dd .1rem;
-        border-radius: .3rem;
+        border: solid $gris-dd 0.1rem;
+        border-radius: 0.3rem;
         padding: 1rem;
     }
 
@@ -98,7 +98,7 @@ body.group-admin .toc-items {
 
     .checkbox-group, .checkbox, .radio {
         label {
-            margin-top: .2rem;
+            margin-top: 0.2rem;
         }
     }
 
@@ -121,19 +121,19 @@ body.group-admin .toc-items {
         margin-top: 1rem;
         cursor: pointer;
         background-color: $vert-bouton;
-        border-radius: .2rem;
+        border-radius: 0.2rem;
         color: $blanc;
         display: inline-block;
         font-family: $ubuntu, sans-serif;
         font-size: 1.3rem;
         font-weight: $medium;
-        letter-spacing: .1rem;
+        letter-spacing: 0.1rem;
         line-height: 1.5rem;
         padding: 1.5rem 2rem;
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
-        transition: background .2s ease;
+        transition: background 0.2s ease;
 
         &:focus, &:hover {
             background-color: lighten($vert-bouton, 8%);
@@ -145,7 +145,7 @@ body.group-admin .toc-items {
     }
 
     #tb-forum-creer-liste {
-        padding: .3rem .7rem;
+        padding: 0.3rem 0.7rem;
         margin-top: 1px;
     }
 
@@ -195,8 +195,8 @@ body.group-admin .toc-items {
 
         .action {
             > .generic-button {
-                padding: .4rem 1rem;
-                margin-top: .3rem;
+                padding: 0.4rem 1rem;
+                margin-top: 0.3rem;
 
                 > a {
                     color: white;
@@ -243,8 +243,8 @@ body.group-admin .toc-items {
         .action {
             margin-bottom: 1rem;
             > .button {
-                padding: .4rem 1rem;
-                margin-top: .3rem;
+                padding: 0.4rem 1rem;
+                margin-top: 0.3rem;
                 background-color: $rouge; // le bouton "supprimer du groupe" n'a pas de classe
 
                 & + .button {

@@ -6,10 +6,8 @@
  * and the comment form.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
  * @since 1.0
+ *
  * @version 1.0
  */
 
@@ -18,8 +16,8 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() ) {
-  return;
+if (post_password_required()) {
+    return;
 }
 ?>
 

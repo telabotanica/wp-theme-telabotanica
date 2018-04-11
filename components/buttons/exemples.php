@@ -1,6 +1,7 @@
 <?php
+
 return [
-  "Standard" => [
+  'Standard' => [
     'items' => [
       [
         'link' => [

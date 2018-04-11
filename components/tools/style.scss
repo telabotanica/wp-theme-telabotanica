@@ -1,176 +1,176 @@
 .component-tools {
-	color: $gris-33;
-	line-height: 1.6;
-	overflow: hidden;
+  color: $gris-33;
+  line-height: 1.6;
+  overflow: hidden;
 
-	&-items {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+  &-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-	&-item {
-		clear: both;
-		overflow: hidden;
+  &-item {
+    clear: both;
+    overflow: hidden;
 
-		& + & {margin-top: 4rem;}
-	}
+    & + & {margin-top: 4rem;}
+  }
 
-	&-item-icon {
-		align-items: center;
-		display: flex;
-		float: left;
-		justify-content: center;
-		position: relative;
+  &-item-icon {
+    align-items: center;
+    display: flex;
+    float: left;
+    justify-content: center;
+    position: relative;
 
-		&::after {
-			background-color: currentColor;
-			border-radius: 0.4rem;
-			content: "";
-			display: block;
-			height: 100%;
-			left: 0;
-			opacity: 0.2;
-			position: absolute;
-			top: 0;
-			transition: opacity 0.2s ease;
-			width: 100%;
-		}
+    &::after {
+      background-color: currentColor;
+      border-radius: 0.4rem;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      transition: opacity 0.2s ease;
+      width: 100%;
+    }
 
-		&:hover, &:focus {
-			&::after {opacity: 0.3;}
-		}
+    &:hover, &:focus {
+      &::after {opacity: 0.3;}
+    }
 
-		svg {
-			fill: currentColor;
-		}
-	}
+    svg {
+      fill: currentColor;
+    }
+  }
 
-	&-item-title {
-		font-family: $ubuntu;
-		font-weight: $bold;
-		line-height: 1.4;
-		margin-top: 0;
+  &-item-title {
+    font-family: $ubuntu;
+    font-weight: $bold;
+    line-height: 1.4;
+    margin-top: 0;
 
-		a {
-			border-bottom: 0.2rem solid transparent;
-			color: $gris-23;
-			text-decoration: none;
-			transition: border 0.2s ease;
+    a {
+      border-bottom: 0.2rem solid transparent;
+      color: $gris-23;
+      text-decoration: none;
+      transition: border 0.2s ease;
 
-			&:hover, &:focus {
-				border-bottom-color: currentColor;
-			}
-		}
-	}
+      &:hover, &:focus {
+        border-bottom-color: currentColor;
+      }
+    }
+  }
 
-	&-item-description {
-		margin-bottom: 1rem;
+  &-item-description {
+    margin-bottom: 1rem;
 
-		p {margin: 0;}
-		b, strong {font-weight: $bold;}
-	}
+    p {margin: 0;}
+    b, strong {font-weight: $bold;}
+  }
 
-	&-item-link {
-		line-height: 1.2;
-		padding-bottom: 0.2rem;
+  &-item-link {
+    line-height: 1.2;
+    padding-bottom: 0.2rem;
 
-		a {
-			color: $marron;
-			font-family: $ubuntu;
-			font-size: 1.3rem;
-			font-weight: $medium;
-			letter-spacing: 0.1rem;
-			text-decoration: none;
-			text-transform: uppercase;
-			transition: border 0.2s ease;
+    a {
+      color: $marron;
+      font-family: $ubuntu;
+      font-size: 1.3rem;
+      font-weight: $medium;
+      letter-spacing: 0.1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border 0.2s ease;
 
-			span {
-				border-bottom: 0.2rem solid transparent;
-			}
+      span {
+        border-bottom: 0.2rem solid transparent;
+      }
 
-			&:hover span,
-			&:focus span {
-				border-bottom-color: currentColor;
-			}
+      &:hover span,
+      &:focus span {
+        border-bottom-color: currentColor;
+      }
 
-			&::after {
-				content: "›";
-				display: inline;
-				margin-left: 0.5rem;
-			}
-		}
-	}
+      &::after {
+        content: "›";
+        display: inline;
+        margin-left: 0.5rem;
+      }
+    }
+  }
 
-	@include small {
-		margin: 2rem 0;
+  @include small {
+    margin: 2rem 0;
 
-		&-item {
-			& + & {
-				border-top: 0.1rem solid transparentize($gris-dd, 0.5);
-				margin-top: 2rem;
-				padding-top: 2rem;
-			}
-		}
+    &-item {
+      & + & {
+        border-top: 0.1rem solid transparentize($gris-dd, 0.5);
+        margin-top: 2rem;
+        padding-top: 2rem;
+      }
+    }
 
-		&-item-icon {
-			height: 5rem;
-			width: 5rem;
+    &-item-icon {
+      height: 5rem;
+      width: 5rem;
 
-			img {
-				height: 3rem;
-				width: 3rem;
-			}
+      img {
+        height: 3rem;
+        width: 3rem;
+      }
 
-			svg {
-				height: 3rem;
-				width: 3rem;
-			}
-		}
+      svg {
+        height: 3rem;
+        width: 3rem;
+      }
+    }
 
-		&-item-title,
-		&-item-description,
-		&-item-link {
-			margin-left: 6rem;
-		}
+    &-item-title,
+    &-item-description,
+    &-item-link {
+      margin-left: 6rem;
+    }
 
-		&-item-title {
-			font-size: 1.7rem;
-			margin-bottom: 0.5rem;
-		}
+    &-item-title {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
 
-		&-item-description {
-			font-size: 1.3rem;
-		}
-	}
+    &-item-description {
+      font-size: 1.3rem;
+    }
+  }
 
-	@include large-and-medium {
-		margin: 4rem 0;
+  @include large-and-medium {
+    margin: 4rem 0;
 
-		&-item-icon {
-			height: 10rem;
-			width: 10rem;
+    &-item-icon {
+      height: 10rem;
+      width: 10rem;
 
-			img {
-				height: 6rem;
-				width: 6rem;
-			}
+      img {
+        height: 6rem;
+        width: 6rem;
+      }
 
-			svg {
-				height: 6rem;
-				width: 6rem;
-			}
-		}
+      svg {
+        height: 6rem;
+        width: 6rem;
+      }
+    }
 
-		&-item-title,
-		&-item-description,
-		&-item-link {
-			margin-left: 14rem;
-		}
+    &-item-title,
+    &-item-description,
+    &-item-link {
+      margin-left: 14rem;
+    }
 
-		&-item-title {
-			font-size: 1.9rem;
-			margin-bottom: 1rem;
-		}
-	}
+    &-item-title {
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+    }
+  }
 }

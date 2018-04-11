@@ -1,84 +1,84 @@
 .search-hit {
-	border-bottom: 0.1rem solid $gris-dd;
-	font-size: 1.4rem;
-	margin-bottom: 2rem;
-	padding-bottom: 2rem;
+  border-bottom: 0.1rem solid $gris-dd;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 
-	em {
-		background-color: $jaune-clair;
-		color: $noir;
-		font-style: normal;
-	}
+  em {
+    background-color: $jaune-clair;
+    color: $noir;
+    font-style: normal;
+  }
 
-	&-title {
-		font-family: $ubuntu;
-		font-size: 1.75rem;
-		font-weight: $bold;
-		margin: 0;
+  &-title {
+    font-family: $ubuntu;
+    font-size: 1.75rem;
+    font-weight: $bold;
+    margin: 0;
 
-		&,
-		a {
-			color: $gris-23;
-		}
+    &,
+    a {
+      color: $gris-23;
+    }
 
-		a {
-			text-decoration: none;
-			transition: background-color 0.2s ease, color 0.2s ease;
+    a {
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
 
-			&:hover {color: $turquoise-fonce;}
-		}
+      &:hover {color: $turquoise-fonce;}
+    }
 
-		&-suffix {
-			font-size: 1.6rem;
-			font-weight: normal;
-			margin-left: 0.5rem;
-		}
+    &-suffix {
+      font-size: 1.6rem;
+      font-weight: normal;
+      margin-left: 0.5rem;
+    }
 
-		.search-hit-tag {
-			float: right;
-			margin-left: 1rem;
-			vertical-align: bottom;
+    .search-hit-tag {
+      float: right;
+      margin-left: 1rem;
+      vertical-align: bottom;
 
-			&,
-			&:hover {
-				color: $blanc;
-			}
-		}
-	}
+      &,
+      &:hover {
+        color: $blanc;
+      }
+    }
+  }
 
-	&-tag {
-		background-color: $vert-bouton;
-		border-radius: 0.2rem;
-		color: $blanc;
-		display: inline-block;
-		font-size: 1.25rem;
-		padding: 0.25rem 0.5rem;
+  &-tag {
+    background-color: $vert-bouton;
+    border-radius: 0.2rem;
+    color: $blanc;
+    display: inline-block;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
 
-		&:link:hover {background-color: $vert-fonce;}
+    &:link:hover {background-color: $vert-fonce;}
 
-		&-bdtfx {background-color: $vert-bouton;}
-		&-bdtfx:link:hover {background-color: darken($vert-bouton, 10);}
-		&-bdtxa {background-color: $orange;}
-		&-bdtxa:link:hover {background-color: darken($orange, 10);}
-		&-isfan {background-color: $violet;}
-		&-isfan:link:hover {background-color: darken($violet, 10);}
-		&-apd {background-color: $turquoise;}
-		&-apd:link:hover {background-color: darken($turquoise, 10);}
-	}
+    &-bdtfx {background-color: $vert-bouton;}
+    &-bdtfx:link:hover {background-color: darken($vert-bouton, 10);}
+    &-bdtxa {background-color: $orange;}
+    &-bdtxa:link:hover {background-color: darken($orange, 10);}
+    &-isfan {background-color: $violet;}
+    &-isfan:link:hover {background-color: darken($violet, 10);}
+    &-apd {background-color: $turquoise;}
+    &-apd:link:hover {background-color: darken($turquoise, 10);}
+  }
 
-	&-text {
-		font-weight: bold;
-	}
+  &-text {
+    font-weight: bold;
+  }
 
-	&-synonyms {
-		@include reset-list;
-		color: $gris-60;
-		font-size: 1.2rem;
-	}
+  &-synonyms {
+    @include reset-list;
+    color: $gris-60;
+    font-size: 1.2rem;
+  }
 
-	&-text,
-	&-synonyms {
-		line-height: 1.4;
-		margin-top: 0.4rem;
-	}
+  &-text,
+  &-synonyms {
+    line-height: 1.4;
+    margin-top: 0.4rem;
+  }
 }

@@ -1,46 +1,46 @@
 .component-image {
-	img {
-		display: block;
-		max-width: 100%;
-	}
+  img {
+    display: block;
+    max-width: 100%;
+  }
 
-	&.left,
-	&.right {
-		margin-bottom: 2rem;
-		max-width: 50%;
-	}
+  &.left,
+  &.right {
+    margin-bottom: 2rem;
+    max-width: 50%;
+  }
 
-	&.left {
-		float: left;
-		margin-right: 2.5rem;
-	}
+  &.left {
+    float: left;
+    margin-right: 2.5rem;
+  }
 
-	&.right {
-		float: right;
-		margin-left: 2.5rem;
-	}
+  &.right {
+    float: right;
+    margin-left: 2.5rem;
+  }
 
-	&.center {
-		img {margin: 0 auto;}
-		.component-image-credits {text-align: center;}
-	}
+  &.center {
+    img {margin: 0 auto;}
+    .component-image-credits {text-align: center;}
+  }
 
-	&-credits {
-		color: $gris-77;
-		font-size: 1.3rem;
-		line-height: 1.8rem;
-		margin-top: 0.7rem;
+  &-credits {
+    color: $gris-77;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    margin-top: 0.7rem;
 
-		&-title {
-			font-weight: $bold;
-		}
+    &-title {
+      font-weight: $bold;
+    }
 
-		a {
-			color: $gris-77;
-			text-decoration: none;
+    a {
+      color: $gris-77;
+      text-decoration: none;
 
-			&:hover,
-			&:focus {text-decoration: underline;}
-		}
-	}
+      &:hover,
+      &:focus {text-decoration: underline;}
+    }
+  }
 }

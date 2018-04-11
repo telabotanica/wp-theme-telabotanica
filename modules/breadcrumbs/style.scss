@@ -1,81 +1,81 @@
 .breadcrumbs {
-	border-bottom: 0.1rem solid $gris-dd;
-	color: $marron;
-	line-height: 1rem;
-	padding: 1.8rem 0 1.7rem;
-	margin-bottom: 2rem;
+  border-bottom: 0.1rem solid $gris-dd;
+  color: $marron;
+  line-height: 1rem;
+  padding: 1.8rem 0 1.7rem;
+  margin-bottom: 2rem;
 
-	&-items {
-		@include reset-list;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
+  &-items {
+    @include reset-list;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-	// modifier pour enlever la bordure
-	&.no-border {
-		border: 0;
-	}
+  // modifier pour enlever la bordure
+  &.no-border {
+    border: 0;
+  }
 
-	// pas de padding-top lorsqu'on est dans un layout central-col
-	.layout-central-col & {
-		padding-top: 0;
-	}
+  // pas de padding-top lorsqu'on est dans un layout central-col
+  .layout-central-col & {
+    padding-top: 0;
+  }
 
-	// pas de margin-botto, lorsqu'on est dans un layout content-col full-width
-	.layout-content-col.full-width  & {
-		margin-bottom: 0;
-	}
+  // pas de margin-botto, lorsqu'on est dans un layout content-col full-width
+  .layout-content-col.full-width  & {
+    margin-bottom: 0;
+  }
 
-	&-item {
-		display: inline;
-		font-family: $ubuntu;
-		font-size: 1.4rem;
-		font-weight: $regular;
-		letter-spacing: 0.1rem;
-		line-height: 1.8rem;
-		text-transform: uppercase;
-		margin-right: 1rem;
+  &-item {
+    display: inline;
+    font-family: $ubuntu;
+    font-size: 1.4rem;
+    font-weight: $regular;
+    letter-spacing: 0.1rem;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    margin-right: 1rem;
 
-		> a {
-			border-bottom: 0.1rem solid $vert-fonce;
-			color: $vert-fonce;
-			display: inline-block;
-			text-decoration: none;
-			transition: border 0.2s ease;
+    > a {
+      border-bottom: 0.1rem solid $vert-fonce;
+      color: $vert-fonce;
+      display: inline-block;
+      text-decoration: none;
+      transition: border 0.2s ease;
 
-			&:hover {
-				border-bottom-color: transparent;
-			}
-		}
+      &:hover {
+        border-bottom-color: transparent;
+      }
+    }
 
-		&:last-child {
-			margin-right: 0;
+    &:last-child {
+      margin-right: 0;
 
-			> a {
-				border: 0;
-				color: $marron;
-				cursor: default;
-				pointer-events: none;
-			}
-		}
+      > a {
+        border: 0;
+        color: $marron;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
 
-		div { display: inline-block; }
-	}
+    div { display: inline-block; }
+  }
 
-	&-item + &-item::before {
-		content: ">";
-		margin-right: 1rem;
-		position: relative;
-		speak: none;
-	}
+  &-item + &-item::before {
+    content: ">";
+    margin-right: 1rem;
+    position: relative;
+    speak: none;
+  }
 
-	&-button {
-		float: right;
+  &-button {
+    float: right;
 
-		.icon {
-			height: 1.8rem;
-			width: 1.8rem;
-		}
-	}
+    .icon {
+      height: 1.8rem;
+      width: 1.8rem;
+    }
+  }
 }

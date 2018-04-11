@@ -1,228 +1,224 @@
 .directory.members {
 
-	color: $gris-23;
+  color: $gris-23;
 
-	.layout-column {
+  .layout-column {
+    .item-list-tabs {
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+    }
 
-		.item-list-tabs {
-			ul {
-				list-style-type: none;
-				//border: solid red 1px;
-				padding: 0;
-			}
-		}
+    #members-order-select {
+      padding: 0;
 
-		#members-order-select {
-			padding: 0;
+      > label {
+        margin-right: 1rem;
+      }
+      > select {
+        color: $gris-33;
+      }
+    }
 
-			> label {
-				margin-right: 1rem;
-			}
-			> select {
-				color: $gris-33;
-			}
-		}
+    .advanced-search-container {
+      h4 {
+        margin: 0;
+        color: $gris-60;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
 
-		.advanced-search-container {
-			h4 {
-				margin: 0;
-				color: #606060;
-				font-size: 1.6rem;
-				font-weight: 700;
-			}
+      .submit {
+        margin-top: 3rem;
 
-			.submit {
-				margin-top: 3rem;
+        > input {
+          float: right;
+        }
+      }
 
-				> input {
-					float: right;
-				}
-			}
+      .editfield {
 
-			.editfield {
+        margin-bottom: 1rem;
 
-				margin-bottom: 1rem;
+        > label {
+          display: block;
+          color: $gris-60;
+          margin-bottom: 0.4rem;
+        }
 
-				> label {
-					display: block;
-					color: $gris-60;
-					margin-bottom: 0.4rem;
-				}
+        > input[type="text"] {
+          width: 100%;
+          border: 0.1rem solid $gris-dd;
+          border-radius: 0.3rem;
+          padding: 0.8rem;
+          color: $gris-33;
+        }
 
-				> input[type="text"] {
-					width: 100%;
-					border: 0.1rem solid #ddd;
-					border-radius: 0.3rem;
-					padding: 0.8rem;
-					color: $gris-33;
-				}
+        > select {
+          width: 100%;
+          color: $gris-33;
 
-				> select {
-					width: 100%;
-					color: $gris-33;
+          > option {
+            color: $gris-60;
+          }
+        }
 
-					> option {
-						color: $gris-60;
-					}
-				}
+        > .checkbox,
+          .radio {
+          > .label {
+            display: block;
+            color: $gris-60;
+            margin-bottom: 0.6rem;
+          }
+          > label {
+            display: block;
+            color: $gris-60;
+            margin-bottom: 0.4rem;
 
-				> .checkbox,
-				  .radio {
-					> .label {
-						display: block;
-						color: $gris-60;
-						margin-bottom: 0.6rem;
-					}
-					> label {
-						display: block;
-						color: $gris-60;
-						margin-bottom: 0.4rem;
+            > input {
+              vertical-align: top;
+              margin-right: 0.5rem;
+            }
+          }
+        }
 
-						> input {
-							vertical-align: top;
-							margin-right: 0.5rem;
-						}
-					}
-				}
+        > .description {
+          display: none;
+        }
+      }
+    }
+  }
 
-				> .description {
-					display: none;
-				}
-			}
-		}
-	}
+  .layout-content {
 
-	.layout-content {
+    #members-dir-list {
+      margin-top: 2rem;
+    }
 
-		#members-dir-list {
-			margin-top: 2rem;
-		}
+    .bp_mda_select_all_search_results {
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
 
-		.bp_mda_select_all_search_results {
-			margin-bottom: 1rem;
-			padding-top: 0.5rem;
+      > label {
+        > input {
+          vertical-align: top;
+          margin-right: 0.5 rem;
+        }
+      }
+    }
 
-			> label {
-				> input {
-					vertical-align: top;
-					margin-right: 0.5 rem;
-				}
-			}
-		}
+    .bp_mda_select_all_page_items {
+      //border: solid red 1px;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      height: 3rem;
 
-		.bp_mda_select_all_page_items {
-			//border: solid red 1px;
-			margin-bottom: 1rem;
-			padding-top: 0.5rem;
-			height: 3rem;
+      > label {
+        &::after {
+          content: "Sélectionner les resultats de cette page";
+        }
+        > .bp_mda_all_page_items_checkbox {
+        }
+        > input {
+          vertical-align: top;
+          margin-right: 0.5 rem;
+        }
+      }
+    }
 
-			> label {
-				&::after {
-					content: "Sélectionner les resultats de cette page";
-				}
-				> .bp_mda_all_page_items_checkbox {
-				}
-				> input {
-					vertical-align: top;
-					margin-right: 0.5 rem;
-				}
-			}
-		}
+    .bp_mda_bulk_actions_container {
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
 
-		.bp_mda_bulk_actions_container {
-			margin-bottom: 1rem;
-			padding-top: 0.5rem;
+      .bp_mda_bulk_actions_options {
+        color: $gris-33;
+      }
+    }
 
-			.bp_mda_bulk_actions_options {
-				color: $gris-33;
-			}
-		}
+    .component-accordion {
+      margin-bottom: 3rem;
+    }
 
-		.component-accordion {
-			margin-bottom: 3rem;
-		}
+    .component-accordion:last-child {
+      // hidden when contact form isn't here
+      display: none;
+    }
+  }
 
-		.component-accordion:last-child {
-			// hidden when contact form isn't here
-			display: none;
-		}
-	}
+  #pag-bottom {
+    border-top: none;
+    margin-top: 3rem;
+  }
 
-	#pag-bottom {
-		border-top: none;
-		margin-top: 3rem;
-	}
+  #member-dir-pag-bottom {
+    > .page-numbers.next, .page-numbers.prev {
+      display: none;
+    }
+  }
 
-	#member-dir-pag-bottom {
-		> .page-numbers.next, .page-numbers.prev {
-			display: none;
-		}
-	}
+  .bp_mda_action_specific_form {
+    >form {
+      > label {
+        display: block;
+        color: $gris-60;
+        margin-bottom: 0.4rem;
+        margin-top: 1em;
 
-	.bp_mda_action_specific_form {
-		>form {
-			> label {
-				display: block;
-				color: $gris-60;
-				margin-bottom: 0.4rem;
-				margin-top: 1em;
+        &[for="send-to-input"] {
+          display: inline;
+        }
+      }
 
-				&[for="send-to-input"] {
-					display: inline;
-				}
-			}
+      .bp_mda_action_submit {
+        margin-top: 1em;
+        float: right;
+        padding: 1.25rem 2rem;
+      }
 
-			.bp_mda_action_submit {
-				margin-top: 1em;
-				float: right;
-				padding: 1.25rem 2rem;
-			}
+      > ul.acfb-holder {
+        display: inline;
+        padding-left: 1em;
 
-			> ul.acfb-holder {
-				display: inline;
-				padding-left: 1em;
+        > li {
+          display: inline;
+        }
+      }
 
-				> li {
-					display: inline;
-				}
-			}
+      > input[type="text"], textarea {
+        border: 0.1rem solid $gris-dd;
+        border-radius: 0.3rem;
+        color: $gris-33;
+        padding: 0.8rem;
+        width: 100%;
+      }
+    }
+  }
 
-			> input[type="text"], textarea {
-				width: 100%;
-				border: 0.1rem solid #ddd;
-				border-radius: 0.3rem;
-				padding: 0.8rem;
-				color: $gris-33;
-			}
-		}
-	}
+  .bp_mda_bulk_actions_submit, .bp_mda_action_submit {
+    background-color: $vert-bouton;
+    border: 0 none;
+    border-radius: 0.2rem;
+    color: $blanc;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Ubuntu,sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    line-height: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
 
-	.bp_mda_bulk_actions_submit, .bp_mda_action_submit {
-		border-radius: 0.2rem;
-		background-color: $vert-bouton;
-		border: 0 none;
-		cursor: pointer;
-		color: $blanc;
-		display: inline-block;
-		font-family: Ubuntu,sans-serif;
-		font-size: 1.3rem;
-		font-weight: 500;
-		letter-spacing: 0.1rem;
-		line-height: 1.2rem;
-		padding: 0.8rem 1.5rem;
-		text-align: center;
-		text-decoration: none;
-		text-transform: uppercase;
-		-webkit-transition: background 0.2s ease;
-		-o-transition: background 0.2s ease;
-		transition: background 0.2s ease;
+    &:focus, &:hover {
+      background-color: lighten($vert-bouton, 8%);
+    }
 
-		&:focus, &:hover {
-			background-color: lighten($vert-bouton, 8%);
-		}
-
-		&[disabled] {
-			background-color: $gris-b3;
-		}
-	}
+    &[disabled] {
+      background-color: $gris-b3;
+    }
+  }
 }

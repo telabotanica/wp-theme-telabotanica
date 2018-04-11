@@ -1,62 +1,62 @@
 .component-links {
 
-	&-title {
-		color: $gris-33;
-		font-family: $ubuntu;
-		font-size: 2rem;
-		font-weight: $light;
-		line-height: 2.6rem;
-		margin: 0 0 1rem;
-	}
+  &-title {
+    color: $gris-33;
+    font-family: $ubuntu;
+    font-size: 2rem;
+    font-weight: $light;
+    line-height: 2.6rem;
+    margin: 0 0 1rem;
+  }
 
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-	li + li {
-		margin-top: 0.2rem;
-	}
+  li + li {
+    margin-top: 0.2rem;
+  }
 
-	a {
-		background-color: transparentize($turquoise, 0.9);
-		color: $gris-33;
-		display: block;
-		font-family: $ubuntu;
-		font-weight: $regular;
-		line-height: 1.8rem;
-		overflow: hidden;
-		padding: 1rem 13rem 1rem 4rem;
-		position: relative;
-		text-decoration: none;
-		transition: background 0.2s ease;
+  a {
+    background-color: transparentize($turquoise, 0.9);
+    color: $gris-33;
+    display: block;
+    font-family: $ubuntu;
+    font-weight: $regular;
+    line-height: 1.8rem;
+    overflow: hidden;
+    padding: 1rem 13rem 1rem 4rem;
+    position: relative;
+    text-decoration: none;
+    transition: background 0.2s ease;
 
-		.icon {
-			fill: $turquoise;
-			left: 1.5rem;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 1.2rem;
-		}
+    .icon {
+      fill: $turquoise;
+      left: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.2rem;
+    }
 
-		&:hover, &:focus {
-			background-color: transparentize($turquoise, 0.8);
+    &:hover, &:focus {
+      background-color: transparentize($turquoise, 0.8);
 
-			&::before {
-				color: $gris-33;
-			}
-		}
-	}
+      &::before {
+        color: $gris-33;
+      }
+    }
+  }
 
-	&-metadata {
-		color: $turquoise-fonce;
-		font-size: 1.4rem;
-		position: absolute;
-		right: 2rem;
-		top: 1rem;
-		white-space: nowrap;
-	}
+  &-metadata {
+    color: $turquoise-fonce;
+    font-size: 1.4rem;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    white-space: nowrap;
+  }
 
 }

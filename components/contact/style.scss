@@ -1,65 +1,65 @@
 .component-contact {
-	align-items: flex-start;
-	border-bottom: 0.1rem solid transparentize($taupe, 0.8);
-	border-top: 0.1rem solid transparentize($taupe, 0.8);
-	display: flex;
-	font-size: 1.6rem;
-	font-weight: $regular;
-	line-height: 2.4rem;
-	overflow: hidden;
-	padding: 2rem 0;
-	position: relative;
+  align-items: flex-start;
+  border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+  border-top: 0.1rem solid transparentize($taupe, 0.8);
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: $regular;
+  line-height: 2.4rem;
+  overflow: hidden;
+  padding: 2rem 0;
+  position: relative;
 
-	& + & {
-		border-top: 0;
-		padding-top: 0;
-	}
+  & + & {
+    border-top: 0;
+    padding-top: 0;
+  }
 
-	a {
-		border-bottom: 0.1rem solid;
-		color: $turquoise-fonce;
-		font-weight: $regular;
-		text-decoration: none;
-		transition: background 0.2s ease;
+  a {
+    border-bottom: 0.1rem solid;
+    color: $turquoise-fonce;
+    font-weight: $regular;
+    text-decoration: none;
+    transition: background 0.2s ease;
 
-		&:hover, &:focus {
-			background-color: transparentize($turquoise-fonce, 0.9);
-		}
-	}
+    &:hover, &:focus {
+      background-color: transparentize($turquoise-fonce, 0.9);
+    }
+  }
 
-	&-text {
-	}
+  &-text {
+  }
 
-	&-image {
-		align-items: center;
-		background: $vert-tres-clair center center no-repeat;
-		background-size: cover;
-		border-radius: 50%;
-		display: flex;
-		float: left;
-		justify-content: center;
-		height: 10rem;
-		margin-right: 2.5rem;
-		min-width: 10rem;
-		overflow: hidden;
+  &-image {
+    align-items: center;
+    background: $vert-tres-clair center center no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+    float: left;
+    justify-content: center;
+    height: 10rem;
+    margin-right: 2.5rem;
+    min-width: 10rem;
+    overflow: hidden;
 
-		.icon {
-			fill: $vert-clair;
-			height: 2.5rem;
-			width: 2.5rem;
-		}
-	}
+    .icon {
+      fill: $vert-clair;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
 
-	&-name {
-		font-weight: $bold;
-	}
+  &-name {
+    font-weight: $bold;
+  }
 
-	&-description {
-	}
+  &-description {
+  }
 
-	&-details {
-		@include reset-list;
-		margin-top: 0.5rem;
-	}
+  &-details {
+    @include reset-list;
+    margin-top: 0.5rem;
+  }
 
 }

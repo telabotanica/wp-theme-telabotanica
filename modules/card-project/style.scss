@@ -1,111 +1,111 @@
 .card-project {
-	background-color: $blanc;
-	height: 42.5rem;
-	position: relative;
-	width: 30rem;
+  background-color: $blanc;
+  height: 42.5rem;
+  position: relative;
+  width: 30rem;
 
-	&.with-large-cover {
-		.card-project-cover {
-			height: 22rem;
-		}
-	}
+  &.with-large-cover {
+    .card-project-cover {
+      height: 22rem;
+    }
+  }
 
-	em {
-		color: $noir;
-		background: $jaune-clair;
-		font-style: normal;
-	}
+  em {
+    color: $noir;
+    background: $jaune-clair;
+    font-style: normal;
+  }
 
-	&-link {
-		color: $gris-33;
-		display: block;
-		text-decoration: none;
+  &-link {
+    color: $gris-33;
+    display: block;
+    text-decoration: none;
 
-		&:hover, &:focus {
-			.card-project-title span {
-				border-bottom-color: currentColor;
-			}
-			.card-project-description {
-				color: $gris-60;
-			}
-		}
-	}
+    &:hover, &:focus {
+      .card-project-title span {
+        border-bottom-color: currentColor;
+      }
+      .card-project-description {
+        color: $gris-60;
+      }
+    }
+  }
 
-	&-cover {
-		align-items: center;
-		background: $gris-f0 center center no-repeat;
-		background-size: cover;
-		display: flex;
-		height: 17rem;
-		justify-content: center;
-		position: relative;
-	}
+  &-cover {
+    align-items: center;
+    background: $gris-f0 center center no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 17rem;
+    justify-content: center;
+    position: relative;
+  }
 
-	&-avatar {
-		border-radius: 50%;
-		border: 0.3rem solid white;
-		height: 9rem;
-		width: 9rem;
-	}
+  &-avatar {
+    border-radius: 50%;
+    border: 0.3rem solid white;
+    height: 9rem;
+    width: 9rem;
+  }
 
-	&-tela {
-		background: $blanc;
-		border-bottom-right-radius: 2rem;
-		fill: $vert-bouton;
-		height: 4.2rem;
-		left: 0;
-		padding: 0.8rem 1.3rem 1.2rem 1rem;
-		position: absolute;
-		top: 0;
-		width: 4.5rem;
+  &-tela {
+    background: $blanc;
+    border-bottom-right-radius: 2rem;
+    fill: $vert-bouton;
+    height: 4.2rem;
+    left: 0;
+    padding: 0.8rem 1.3rem 1.2rem 1rem;
+    position: absolute;
+    top: 0;
+    width: 4.5rem;
 
-		.icon {
-			height: 2.2rem;
-			width: 2.2rem;
-		}
-	}
+    .icon {
+      height: 2.2rem;
+      width: 2.2rem;
+    }
+  }
 
-	&-content,
-	&-meta {
-		padding: 2rem;
-	}
+  &-content,
+  &-meta {
+    padding: 2rem;
+  }
 
-	&-title {
-		font-family: $ubuntu;
-		font-size: 1.8rem;
-		font-weight: $bold;
-		line-height: 1.4;
-		margin: 0;
+  &-title {
+    font-family: $ubuntu;
+    font-size: 1.8rem;
+    font-weight: $bold;
+    line-height: 1.4;
+    margin: 0;
 
-		span {
-			border-bottom: 0.2rem solid transparent;
-			transition: border 0.2s ease;
-		}
-	}
+    span {
+      border-bottom: 0.2rem solid transparent;
+      transition: border 0.2s ease;
+    }
+  }
 
-	&-description {
-		font-size: 1.4rem;
-		line-height: 2.2rem;
-		margin: 0.5rem 0;
+  &-description {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    margin: 0.5rem 0;
 
-		p {margin: 0;}
-	}
+    p {margin: 0;}
+  }
 
-	&-meta {
-		bottom: 0;
-		color: $marron-gris;
-		font-size: 1.3rem;
-		left: 0;
-		line-height: 1.8rem;
-		position: absolute;
-		width: 100%;
+  &-meta {
+    bottom: 0;
+    color: $marron-gris;
+    font-size: 1.3rem;
+    left: 0;
+    line-height: 1.8rem;
+    position: absolute;
+    width: 100%;
 
-		.icon {
-			fill: $vert-bouton;
-			height: 1.8rem;
-			margin-right: 0.8rem;
-			vertical-align: text-top;
-			width: 1.8rem;
-		}
-	}
+    .icon {
+      fill: $vert-bouton;
+      height: 1.8rem;
+      margin-right: 0.8rem;
+      vertical-align: text-top;
+      width: 1.8rem;
+    }
+  }
 }

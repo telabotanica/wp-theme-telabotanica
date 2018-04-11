@@ -1,16 +1,16 @@
 <wpml-config>
-	<custom-fields>
-	</custom-fields>
-	<custom-types>
-		<custom-type translate="1">acf-field-group</custom-type>
-		<custom-type translate="1">tb_thematique</custom-type>
-		<custom-type translate="1">tb_outil</custom-type>
-		<custom-type translate="1">tb_participer</custom-type>
-	</custom-types>
-	<taxonomies>
-	</taxonomies>
-	<admin-texts>
-	</admin-texts>
-	<language-switcher-settings>
-	</language-switcher-settings>
+  <custom-fields>
+  </custom-fields>
+  <custom-types>
+    <custom-type translate="1">acf-field-group</custom-type>
+    <custom-type translate="1">tb_thematique</custom-type>
+    <custom-type translate="1">tb_outil</custom-type>
+    <custom-type translate="1">tb_participer</custom-type>
+  </custom-types>
+  <taxonomies>
+  </taxonomies>
+  <admin-texts>
+  </admin-texts>
+  <language-switcher-settings>
+  </language-switcher-settings>
 </wpml-config>

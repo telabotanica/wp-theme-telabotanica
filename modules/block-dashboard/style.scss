@@ -1,53 +1,53 @@
 .block-dashboard {
 
-	& + & {
-		margin-top: 3.5rem;
-	}
+  & + & {
+    margin-top: 3.5rem;
+  }
 
-	> .title {
-		padding-bottom: 0.5rem;
-		padding-top: 0;
-	}
+  > .title {
+    padding-bottom: 0.5rem;
+    padding-top: 0;
+  }
 
-	&-content {
-		background-color: $blanc;
-		min-height: 20rem;
-	}
+  &-content {
+    background-color: $blanc;
+    min-height: 20rem;
+  }
 
-	&-footer {
-		padding: 1.5rem;
-		text-align: center;
-	}
+  &-footer {
+    padding: 1.5rem;
+    text-align: center;
+  }
 
-	&.is-empty {
+  &.is-empty {
 
-		.block-dashboard-content {
-			align-items: center;
-			color: $gris-aa;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			text-align: center;
+    .block-dashboard-content {
+      align-items: center;
+      color: $gris-aa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
 
-			> .icon {
-				fill: $gris-aa;
-				height: 4rem;
-				width: 4rem;
-				margin-bottom: 0.5rem;
-			}
-		}
+      > .icon {
+        fill: $gris-aa;
+        height: 4rem;
+        width: 4rem;
+        margin-bottom: 0.5rem;
+      }
+    }
 
-	}
+  }
 
-	&.transparent-content {
-		.block-dashboard-content {
-			background: transparent;
-		}
-	}
+  &.transparent-content {
+    .block-dashboard-content {
+      background: transparent;
+    }
+  }
 
-	&-empty-text {
-		font-style: italic;
-		margin-bottom: 2.5rem;
-	}
+  &-empty-text {
+    font-style: italic;
+    margin-bottom: 2.5rem;
+  }
 
 }

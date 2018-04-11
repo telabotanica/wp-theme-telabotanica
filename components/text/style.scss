@@ -1,36 +1,36 @@
 .component-text {
-	color: $gris-33;
-	line-height: 2.4rem;
+  color: $gris-33;
+  line-height: 2.4rem;
 
-	p {
-		margin: 0 0 2rem;
+  p {
+    margin: 0 0 2rem;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
-	a {
-		border-bottom: 0.1rem solid;
-		color: $turquoise-fonce;
-		font-weight: $regular;
-		text-decoration: none;
-		transition: background 0.2s ease;
+  a {
+    border-bottom: 0.1rem solid;
+    color: $turquoise-fonce;
+    font-weight: $regular;
+    text-decoration: none;
+    transition: background 0.2s ease;
 
-		&:hover, &:focus {
-			background-color: transparentize($turquoise-fonce, 0.9);
-		}
-	}
+    &:hover, &:focus {
+      background-color: transparentize($turquoise-fonce, 0.9);
+    }
+  }
 
-	b, strong {font-weight: $bold;}
+  b, strong {font-weight: $bold;}
 
-	table {
-		border-collapse: collapse;
+  table {
+    border-collapse: collapse;
 
-		th,
-		td {
-			border: 0.1rem solid $gris-dd;
-			padding: 0.5rem;
-		}
-	}
+    th,
+    td {
+      border: 0.1rem solid $gris-dd;
+      padding: 0.5rem;
+    }
+  }
 }

@@ -1,25 +1,25 @@
 .error-page {
-	margin: 10rem 5rem;
-	text-align: center;
+  margin: 10rem 5rem;
+  text-align: center;
 
-	&-logo {
-		position: absolute;
-		left: 2.5rem;
-		top: 2rem;
-		width: 15rem;
-	}
+  &-logo {
+    position: absolute;
+    left: 2.5rem;
+    top: 2rem;
+    width: 15rem;
+  }
 
-	&-title {
-		color: $gris-60;
-		font-family: $ubuntu;
-		font-size: 3.6rem;
-		font-weight: $light;
-	}
+  &-title {
+    color: $gris-60;
+    font-family: $ubuntu;
+    font-size: 3.6rem;
+    font-weight: $light;
+  }
 
-	&-text {
-		color: $gris-33;
-		margin: 0 auto 4rem;
-		max-width: 62rem;
-		line-height: 1.5;
-	}
+  &-text {
+    color: $gris-33;
+    margin: 0 auto 4rem;
+    max-width: 62rem;
+    line-height: 1.5;
+  }
 }

@@ -1,65 +1,65 @@
 .upcoming-events {
-	background-color: $gris-f0;
-	border-radius: 0.2rem;
-	padding: 2rem;
+  background-color: $gris-f0;
+  border-radius: 0.2rem;
+  padding: 2rem;
 
-	&-title {
-		color: $gris-23;
-		font-family: $ubuntu;
-		font-size: 1.8rem;
-		font-weight: $bold;
+  &-title {
+    color: $gris-23;
+    font-family: $ubuntu;
+    font-size: 1.8rem;
+    font-weight: $bold;
 
-		.icon {
-			fill: $orange;
-			display: inline-block;
-			margin-right: 1rem;
-			width: 1.8rem;
-		}
-	}
+    .icon {
+      fill: $orange;
+      display: inline-block;
+      margin-right: 1rem;
+      width: 1.8rem;
+    }
+  }
 
-	&-items {
-		border-top: 0.1rem solid transparentize($taupe, 0.8);
-		list-style: none;
-		margin: 1.5rem 0 2rem;
-		padding: 0;
-	}
+  &-items {
+    border-top: 0.1rem solid transparentize($taupe, 0.8);
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+  }
 
-	&-item {
-		border-bottom: 0.1rem solid transparentize($taupe, 0.8);
-		padding: 1.5rem 0;
+  &-item {
+    border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+    padding: 1.5rem 0;
 
-		&-link {
-			display: block;
-			font-family: $ubuntu;
-			min-height: 5.5rem;
-			text-decoration: none;
-			color: $gris-23;
+    &-link {
+      display: block;
+      font-family: $ubuntu;
+      min-height: 5.5rem;
+      text-decoration: none;
+      color: $gris-23;
 
-			&:hover, &:focus {
-				.upcoming-events-date {color: darken($orange, 20%);}
-			}
-		}
-	}
+      &:hover, &:focus {
+        .upcoming-events-date {color: darken($orange, 20%);}
+      }
+    }
+  }
 
-	.event-dates {
-		position: absolute;
-	}
+  .event-dates {
+    position: absolute;
+  }
 
-	&-name,
-	&-place {
-		margin-left: 7.5rem;
-	}
+  &-name,
+  &-place {
+    margin-left: 7.5rem;
+  }
 
-	&-name {
-		font-size: 1.6rem;
-		font-weight: $medium;
-		line-height: 2.1rem;
-	}
+  &-name {
+    font-size: 1.6rem;
+    font-weight: $medium;
+    line-height: 2.1rem;
+  }
 
-	&-place {
-		color: $orange;
-		font-size: 1.2rem;
-		font-weight: $regular;
-		margin-top: 0.5rem;
-	}
+  &-place {
+    color: $orange;
+    font-size: 1.2rem;
+    font-weight: $regular;
+    margin-top: 0.5rem;
+  }
 }

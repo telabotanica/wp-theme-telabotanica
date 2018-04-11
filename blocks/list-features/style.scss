@@ -1,98 +1,98 @@
 .block-list-features {
 
-	&-title {
-		color: $gris-23;
-		font-family: $ubuntu;
-		font-size: 3.2rem;
-		font-weight: $light;
-		line-height: 3.6rem;
-		margin: 0 0 4rem;
-		text-align: center;
-	}
+  &-title {
+    color: $gris-23;
+    font-family: $ubuntu;
+    font-size: 3.2rem;
+    font-weight: $light;
+    line-height: 3.6rem;
+    margin: 0 0 4rem;
+    text-align: center;
+  }
 
-	&-items {
-		@include reset-list;
-		display: flex;
-		flex-wrap: wrap;
-	}
+  &-items {
+    @include reset-list;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-	&-item {
-		overflow: hidden;
-		margin-top: 3rem;
-		width: 50%;
+  &-item {
+    overflow: hidden;
+    margin-top: 3rem;
+    width: 50%;
 
-		&:nth-child(2n) {
-			padding-left: 5rem;
-		}
-		&:nth-child(2n+1) {
-			padding-right: 5rem;
-		}
+    &:nth-child(2n) {
+      padding-left: 5rem;
+    }
+    &:nth-child(2n+1) {
+      padding-right: 5rem;
+    }
 
-		&-icon {
-			align-items: center;
-			display: flex;
-			float: left;
-			justify-content: center;
-			height: 5rem;
-			margin-bottom: 4rem;
-			position: relative;
-			width: 5rem;
+    &-icon {
+      align-items: center;
+      display: flex;
+      float: left;
+      justify-content: center;
+      height: 5rem;
+      margin-bottom: 4rem;
+      position: relative;
+      width: 5rem;
 
-			&::after {
-				background-color: currentColor;
-				border-radius: 0.4rem;
-				content: "";
-				display: block;
-				height: 100%;
-				left: 0;
-				opacity: 0.2;
-				position: absolute;
-				top: 0;
-				transition: opacity 0.2s ease;
-				width: 100%;
-			}
+      &::after {
+        background-color: currentColor;
+        border-radius: 0.4rem;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0.2;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.2s ease;
+        width: 100%;
+      }
 
-			img {
-				max-height: 2.4rem;
-				max-width: 2.4rem;
-			}
+      img {
+        max-height: 2.4rem;
+        max-width: 2.4rem;
+      }
 
-			svg {
-				height: 2.4rem;
-				width: 2.4rem;
-				fill: currentColor;
-			}
-		}
+      svg {
+        height: 2.4rem;
+        width: 2.4rem;
+        fill: currentColor;
+      }
+    }
 
-		&-icon ~ &-title,
-		&-icon ~ &-description {
-			margin-left: 7rem;
-		}
+    &-icon ~ &-title,
+    &-icon ~ &-description {
+      margin-left: 7rem;
+    }
 
-		&-title {
-			font-family: $ubuntu;
-			font-size: 1.9rem;
-			font-weight: $bold;
-			margin-bottom: 0.5rem;
-			margin-top: 0;
-		}
+    &-title {
+      font-family: $ubuntu;
+      font-size: 1.9rem;
+      font-weight: $bold;
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+    }
 
-		&-description {
-			font-size: 1.4rem;
-			line-height: 2.2rem;
+    &-description {
+      font-size: 1.4rem;
+      line-height: 2.2rem;
 
-			a {
-				border-bottom: 0.1rem solid;
-				color: $turquoise-fonce;
-				font-weight: $regular;
-				text-decoration: none;
-				transition: background 0.2s ease;
+      a {
+        border-bottom: 0.1rem solid;
+        color: $turquoise-fonce;
+        font-weight: $regular;
+        text-decoration: none;
+        transition: background 0.2s ease;
 
-				&:hover, &:focus {
-					background-color: transparentize($turquoise-fonce, 0.9);
-				}
-			}
-		}
-	}
+        &:hover, &:focus {
+          background-color: transparentize($turquoise-fonce, 0.9);
+        }
+      }
+    }
+  }
 
 }

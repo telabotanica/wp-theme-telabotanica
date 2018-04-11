@@ -1,387 +1,390 @@
 @import "_variables";
 
 .header {
-	position: relative;
-	z-index: 1500;
+  position: relative;
+  z-index: 1500;
 
-	&-fixed {
-		box-shadow: 0 0.1rem 0.2rem 0 transparentize($noir, 0.9);
-		font-family: $ubuntu;
-		font-size: 0; // cache les espaces entre éléments dans le code HTML
-		font-weight: $medium;
-		height: $header-height-fixed;
-		letter-spacing: 0.1rem;
-		position: fixed;
-		width: 100%;
-		z-index: 100;
-	}
+  &-fixed {
+    box-shadow: 0 0.1rem 0.2rem 0 transparentize($noir, 0.9);
+    font-family: $ubuntu;
+    font-size: 0; // cache les espaces entre éléments dans le code HTML
+    font-weight: $medium;
+    height: $header-height-fixed;
+    letter-spacing: 0.1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
 
-	&-logo {
-		float: left;
-		font-family: $ubuntu;
-		font-size: 2rem;
-		font-weight: $bold;
-		margin: 0 6rem 0 0;
+  &-logo {
+    float: left;
+    font-family: $ubuntu;
+    font-size: 2rem;
+    font-weight: $bold;
+    margin: 0 6rem 0 0;
 
-		> a {
-			background-color: $vert-clair;
-			align-items: center;
-			color: $blanc;
-			display: flex;
-			height: $header-height-fixed;
-			justify-content: center;
-			text-decoration: none;
-			transition: background 0.2s ease;
+    > a {
+      background-color: $vert-clair;
+      align-items: center;
+      color: $blanc;
+      display: flex;
+      height: $header-height-fixed;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s ease;
 
-			&:hover, &:focus {
-				background-color: $vert-clair-vif;
-			}
-		}
+      &:hover, &:focus {
+        background-color: $vert-clair-vif;
+      }
+    }
 
-		img {
-			margin-bottom: 0.5rem;
-			width: 14rem;
-		}
+    img {
+      margin-bottom: 0.5rem;
+      width: 14rem;
+    }
 
-		body.bp-user & {
-			width: 26rem;
+    body.bp-user & {
+      width: 26rem;
 
-			> a {
-				justify-content: flex-start;
-				padding-left: 3rem;
-			}
-		}
-	}
+      > a {
+        justify-content: flex-start;
+        padding-left: 3rem;
+      }
+    }
+  }
 
-	@include small {
-		height: $header-height-fixed;
+  @include small {
+    height: $header-height-fixed;
 
-		&-fixed {
-			background-color: $vert-clair;
-		}
+    &-fixed {
+      background-color: $vert-clair;
+    }
 
-		&-logo {
-			width: 16rem;
-		}
+    &-logo {
+      width: 16rem;
+    }
 
-		&-toggle {
-			background: transparent;
-			border: 0;
-			color: $blanc;
-			font-size: 1.2rem;
-			padding: 1rem;
-			position: absolute;
-			right: 0;
-			top: 1rem;
-		}
+    &-toggle {
+      background: transparent;
+      border: 0;
+      color: $blanc;
+      font-size: 1.2rem;
+      padding: 1rem;
+      position: absolute;
+      right: 0;
+      top: 1rem;
+    }
 
-		&-links {
-			display: none;
-		}
+    &-links {
+      display: none;
+    }
 
-		&-nav {
-			display: none;
-		}
+    &-nav {
+      display: none;
+    }
 
-		&-nav-usecases {
-			display: none;
-		}
-	}
+    &-nav-usecases {
+      display: none;
+    }
+  }
 
-	@include large-and-medium {
-		background-color: $beige;
-		height: $header-height;
+  @include large-and-medium {
+    background-color: $beige;
+    height: $header-height;
 
-		&.is-small {
-			height: $header-height-fixed;
-		}
+    &.is-small {
+      height: $header-height-fixed;
+    }
 
-		&-fixed {
-			background-color: $blanc;
-		}
+    &-fixed {
+      background-color: $blanc;
+    }
 
-		&-logo {
-			width: 19rem;
-		}
+    &-logo {
+      width: 19rem;
+    }
 
-		&-toggle {
-			display: none;
-		}
+    &-toggle {
+      display: none;
+    }
 
-		&-links {
-			list-style: none;
-			margin: 0;
-			padding: 0 1.4rem 0 0;
-			position: absolute;
-			right: 0;
-			top: 0;
+    &-links {
+      list-style: none;
+      margin: 0;
+      padding: 0 1.4rem 0 0;
+      position: absolute;
+      right: 0;
+      top: 0;
 
-			&-item {
-				display: inline-block;
-				height: $header-height-fixed;
-				vertical-align: top;
+      &-item {
+        display: inline-block;
+        height: $header-height-fixed;
+        vertical-align: top;
 
-				a {
-					align-items: center;
-					color: $gris-b3;
-					display: flex;
-					font-size: 1.2rem;
-					height: $header-height-fixed;
-					padding-left: 1rem;
-					text-decoration: none;
-					transition: color 0.2s ease;
+        a {
+          align-items: center;
+          color: $gris-b3;
+          display: flex;
+          font-size: 1.2rem;
+          height: $header-height-fixed;
+          padding-left: 1rem;
+          text-decoration: none;
+          transition: color 0.2s ease;
 
-					&:hover {
-						color: $gris-33;
-					}
-				}
+          &:hover {
+            color: $gris-33;
+          }
+        }
 
-				&-text {
-					border-right: 0.1rem solid $gris-f0;
-					display: inline-block;
-					height: 2.3rem;
-					line-height: 2.3rem;
-					padding-right: 1rem;
-				}
+        &-text {
+          border-right: 0.1rem solid $gris-f0;
+          display: inline-block;
+          height: 2.3rem;
+          line-height: 2.3rem;
+          padding-right: 1rem;
+        }
 
-				&-user {
-					&-avatar {
-						background: center center no-repeat;
-						background-size: cover;
-						border-radius: 50%;
-						display: inline-block;
-						height: 2.2rem;
-						margin-left: 0.5rem;
-						vertical-align: middle;
-						width: 2.2rem;
-					}
-					a {color: $vert-fonce;}
-				}
+        &-user {
+          &-avatar {
+            background: center center no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            display: inline-block;
+            height: 2.2rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            width: 2.2rem;
+          }
+          a {color: $vert-fonce;}
+        }
 
-				&-login a {
-					color: $vert-clair;
-					text-transform: uppercase;
-				}
+        &-login a {
+          color: $vert-clair;
+          text-transform: uppercase;
+        }
 
-				&-donate a {
-					font-weight: $light;
-					letter-spacing: 0;
-				}
+        &-donate a {
+          font-weight: $light;
+          letter-spacing: 0;
+        }
 
-				&-search {
-					align-items: center;
-					display: inline-flex;
-					padding-left: 1rem;
-				}
-			}
-		}
+        &-search {
+          align-items: center;
+          display: inline-flex;
+          padding-left: 1rem;
+        }
+      }
+    }
 
-		&-nav {
-			&-items {
-				list-style: none;
-				margin: 0;
-				padding: 0;
+    &-nav {
+      &-items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-				a {
-					display: block;
-					text-decoration: none;
-				}
+        a {
+          display: block;
+          text-decoration: none;
+        }
 
-				> .menu-item {
-					display: inline-block;
-					margin-right: 2rem;
-					vertical-align: top;
+        > .menu-item {
+          display: inline-block;
+          margin-right: 2rem;
+          vertical-align: top;
 
-					> a {
-						border-bottom: 0.4rem solid transparent;
-						border-top: 0.4rem solid transparent;
-						color: $gris-60;
-						font-size: 1.2rem;
-						line-height: $header-height-fixed - 0.8rem;
-						position: relative;
-						padding: 0 1rem;
-						text-transform: uppercase;
+          > a {
+            border-bottom: 0.4rem solid transparent;
+            border-top: 0.4rem solid transparent;
+            color: $gris-60;
+            font-size: 1.2rem;
+            line-height: $header-height-fixed - 0.8rem;
+            position: relative;
+            padding: 0 1rem;
+            text-transform: uppercase;
 
-						&.is-open,
-						&:hover,
-						&:focus {
-							background-color: $beige;
-							border-bottom-color: $vert-clair;
-							color: $noir;
-						}
-						&:focus {
-							outline: none;
-						}
-					}
+            &.is-open,
+            &:hover,
+            &:focus {
+              background-color: $beige;
+              border-bottom-color: $vert-clair;
+              color: $noir;
+            }
+            &:focus {
+              outline: none;
+            }
+          }
 
-					&.current-menu-item > a {
-						border-bottom-color: $vert-clair;
-						color: $noir;
-					}
-				}
+          &.current-menu-item > a {
+            border-bottom-color: $vert-clair;
+            color: $noir;
+          }
+        }
 
-				.sub-menu {
-					@include reset-list;
-					background-color: $blanc;
-					box-shadow: 0 0.2rem 0.2rem 0 transparentize($noir, 0.85);
-					display: none;
-					font-size: 1.5rem;
-					letter-spacing: 0;
-					padding: 1rem;
-					position: absolute;
-					transform: translateX(-2.5rem);
-					width: 24rem;
+        .sub-menu {
+          @include reset-list;
+          background-color: $blanc;
+          box-shadow: 0 0.2rem 0.2rem 0 transparentize($noir, 0.85);
+          display: none;
+          font-size: 1.5rem;
+          letter-spacing: 0;
+          padding: 1rem;
+          position: absolute;
+          transform: translateX(-2.5rem);
+          width: 24rem;
 
-					&.is-open {
-						display: block;
-					}
+          &.is-open {
+            display: block;
+          }
 
-					> .menu-item {
-						&.is-contribution a {
-							color: $vert-fonce;
-							fill: $vert-fonce;
-							font-family: $ubuntu;
-							font-size: 1.1rem;
-							font-weight: $medium;
-							letter-spacing: 0.1rem;
-							padding-bottom: 1rem;
-							padding-top: 1rem;
-							text-transform: uppercase;
+          > .menu-item {
+            &.is-contribution a {
+              color: $vert-fonce;
+              fill: $vert-fonce;
+              font-family: $ubuntu;
+              font-size: 1.1rem;
+              font-weight: $medium;
+              letter-spacing: 0.1rem;
+              padding-bottom: 1rem;
+              padding-top: 1rem;
+              text-transform: uppercase;
 
-							.icon {
-								margin-right: 0.8rem;
-								vertical-align: bottom;
-							}
-						}
-					}
+              .icon {
+                margin-right: 0.8rem;
+                vertical-align: bottom;
+              }
+            }
+          }
 
-					> .menu-item + .menu-item {
-						border-top: 0.1rem solid transparentize($taupe, 0.8);
-					}
+          > .menu-item + .menu-item {
+            border-top: 0.1rem solid transparentize($taupe, 0.8);
+          }
 
-					> .menu-item-description {
-						color: $gris-60;
-						font-family: $muli;
-						font-size: 1.3rem;
-						font-weight: $light;
-						line-height: 1.6;
-						padding: 2rem 1.5rem 0.9rem 3.9rem;
-						position: relative;
+          > .menu-item-description {
+            color: $gris-60;
+            font-family: $muli;
+            font-size: 1.3rem;
+            font-weight: $light;
+            line-height: 1.6;
+            padding: 2rem 1.5rem 0.9rem 3.9rem;
+            position: relative;
 
-						.icon {
-							fill: $gris-99;
-							height: 1.8rem;
-							left: 1.4rem;
-							position: absolute;
-							top: 2.2rem;
-							width: 1.8rem;
-						}
-					}
+            .icon {
+              fill: $gris-99;
+              height: 1.8rem;
+              left: 1.4rem;
+              position: absolute;
+              top: 2.2rem;
+              width: 1.8rem;
+            }
+          }
 
-					a {
-						color: $gris-33;
-						font-family: $muli;
-						line-height: 1.4;
-						padding: 0.6rem 1.5rem 0.9rem;
+          a {
+            color: $gris-33;
+            font-family: $muli;
+            line-height: 1.4;
+            padding: 0.6rem 1.5rem 0.9rem;
 
-						&:hover,
-						&:focus {
-							background-color: $beige;
-							color: $noir;
-						}
-						&:focus {
-							outline: 0.2rem solid $vert-clair;
-						}
-					}
-				}
-			}
-		}
+            &:hover,
+            &:focus {
+              background-color: $beige;
+              color: $noir;
+            }
+            &:focus {
+              outline: 0.2rem solid $vert-clair;
+            }
+          }
+        }
+      }
+    }
 
-		&-nav-usecases {
-			font-size: 0; // cache les espaces entre éléments dans le code HTML
-			padding-top: $header-height-fixed;
-			margin: 0 auto;
-			width: 100rem;
+    &-nav-usecases {
+      font-size: 0; // cache les espaces entre éléments dans le code HTML
+      padding-top: $header-height-fixed;
+      margin: 0 auto;
+      width: 100rem;
 
-			&-items {
-				list-style: none;
-				margin: 0;
-				padding: 1.9rem 0;
-				text-align: center;
+      &-items {
+        list-style: none;
+        margin: 0;
+        padding: 1.9rem 0;
+        text-align: center;
 
-				.menu-item {
-					display: inline-block;
-					overflow: hidden;
-					position: relative;
-					width: 25%;
+        .menu-item {
+          display: inline-block;
+          overflow: hidden;
+          position: relative;
+          width: 25%;
 
-					&:first-child a {
-						border-left: 0.1rem solid transparentize($taupe, 0.8);
-					}
+          &:first-child a {
+            border-left: 0.1rem solid transparentize($taupe, 0.8);
+          }
 
-					&::before {
-						border-radius: 50%;
-						content: "";
-						display: block;
-						height: 0;
-						left: 50%;
-						opacity: 0.8;
-						position: absolute;
-						top: 30%;
-						transform: translate3d(-50%, -50%, 0);
-						width: 0;
-						z-index: 0;
-					}
+          &::before {
+            border-radius: 50%;
+            content: "";
+            display: block;
+            height: 0;
+            left: 50%;
+            opacity: 0.8;
+            position: absolute;
+            top: 30%;
+            transform: translate3d(-50%, -50%, 0);
+            width: 0;
+            z-index: 0;
+          }
 
-					&:hover {
-						&::before {
-							height: 30rem;
-							opacity: 0;
-							transition: opacity 0.8s ease, height 0.8s ease, width 0.8s ease;
-							width: 30rem;
-						}
-					}
-				}
+          &:hover {
+            &::before {
+              height: 30rem;
+              opacity: 0;
+              transition: opacity 0.8s ease, height 0.8s ease, width 0.8s ease;
+              width: 30rem;
+            }
+          }
+        }
 
-				a {
-					align-items: flex-end;
-					background: transparent top center no-repeat;
-					background-size: 4.6rem;
-					border-right: 0.1rem solid transparentize($taupe, 0.8);
-					color: $gris-33;
-					display: flex;
-					font-family: $ubuntu;
-					font-size: 1.5rem;
-					font-weight: $regular;
-					height: 7.2rem;
-					justify-content: center;
-					position: relative;
-					padding: 0 4rem;
-					text-decoration: none;
-					transition: color 0.2s ease;
-				}
+        a {
+          align-items: flex-end;
+          background: transparent top center no-repeat;
+          background-size: 4.6rem;
+          border-right: 0.1rem solid transparentize($taupe, 0.8);
+          color: $gris-33;
+          display: flex;
+          font-family: $ubuntu;
+          font-size: 1.5rem;
+          font-weight: $regular;
+          height: 7.2rem;
+          justify-content: center;
+          position: relative;
+          padding: 0 4rem;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
 
-				.menu-item.identifier {
-					&::before {background-color: $vert-tres-clair;}
-					a {background-image: url('../../modules/header/icons/identifier.svg');}
-					&.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
-				}
-				.menu-item.apprendre {
-					&::before {background-color: $violet-clair;}
-					a {background-image: url('../../modules/header/icons/apprendre.svg');}
-					&.current_page_item a, a:hover, a:focus {color: $violet;}
-				}
-				.menu-item.sortir {
-					&::before {background-color: $orange-clair;}
-					a {background-image: url('../../modules/header/icons/sortir.svg');}
-					&.current_page_item a, a:hover, a:focus {color: $orange;}
-				}
-				.menu-item.participer {
-					&::before {background-color: $bleu-clair;}
-					a {background-image: url('../../modules/header/icons/participer.svg');}
-					&.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
-				}
-			}
-		}
-	}
+        .menu-item.identifier {
+          &::before {background-color: $vert-tres-clair;}
+          a {background-image: url('../../modules/header/icons/identifier.svg');}
+          &.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
+        }
+
+        .menu-item.apprendre {
+          &::before {background-color: $violet-clair;}
+          a {background-image: url('../../modules/header/icons/apprendre.svg');}
+          &.current_page_item a, a:hover, a:focus {color: $violet;}
+        }
+
+        .menu-item.sortir {
+          &::before {background-color: $orange-clair;}
+          a {background-image: url('../../modules/header/icons/sortir.svg');}
+          &.current_page_item a, a:hover, a:focus {color: $orange;}
+        }
+
+        .menu-item.participer {
+          &::before {background-color: $bleu-clair;}
+          a {background-image: url('../../modules/header/icons/participer.svg');}
+          &.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
+        }
+      }
+    }
+  }
 }

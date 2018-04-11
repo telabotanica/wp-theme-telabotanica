@@ -1,39 +1,39 @@
 .block-focus {
-	background: center center no-repeat;
+  background: center center no-repeat;
   background-size: cover;
 
-	&.with-background-image {
-		position: relative;
+  &.with-background-image {
+    position: relative;
 
-		&::before {
-	    background-color: transparentize($bleu-nuit, 0.4);
-	    content: "";
-	    display: block;
-	    height: 100%;
-	    left: 0;
-	    position: absolute;
-	    top: 0;
-	    width: 100%;
-	  }
+    &::before {
+      background-color: transparentize($bleu-nuit, 0.4);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
 
-		&,
-		.block-focus-title {
-	    color: $blanc;
-		}
+    &,
+    .block-focus-title {
+      color: $blanc;
+    }
 
-		> * {position: relative;}
-		> .block-focus-credits {position: absolute;}
-	}
+    > * {position: relative;}
+    > .block-focus-credits {position: absolute;}
+  }
 
   > .component {
     margin: 0 auto 5rem;
     max-width: 100rem;
   }
 
-	> .component-image {
-		img {margin: 0 auto;}
-		.component-image-credits {text-align: center;}
-	}
+  > .component-image {
+    img {margin: 0 auto;}
+    .component-image-credits {text-align: center;}
+  }
 
   &-header {
     margin: 0 auto;
@@ -54,36 +54,36 @@
       margin-top: 4rem;
     }
 
-	  &-icon {
-			align-items: center;
-			background-color: $vert-archi-clair;
-			border-radius: 50%;
-			display: flex;
-			height: 8rem;
-			justify-content: center;
-			margin: 0 auto 2rem;
-			width: 8rem;
+    &-icon {
+      align-items: center;
+      background-color: $vert-archi-clair;
+      border-radius: 50%;
+      display: flex;
+      height: 8rem;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      width: 8rem;
 
-			svg {
-				height: 3.8rem;
-				width: 3.8rem;
-			}
-		}
+      svg {
+        height: 3.8rem;
+        width: 3.8rem;
+      }
+    }
   }
 
-	&-intro {
-		font-size: 1.6rem;
-		line-height: 2.6rem;
+  &-intro {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
 
-		a {
-			color: inherit;
+    a {
+      color: inherit;
 
-			&:hover,
-			&:focus {
-				text-decoration: none;
-			}
-		}
-	}
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
 
   &-intro + .component-buttons {
     margin-top: 2rem;
@@ -99,9 +99,9 @@
     margin: 0 auto;
     max-width: 118rem;
 
-		> .component-embed {
-			width: 50rem;
-		}
+    > .component-embed {
+      width: 50rem;
+    }
 
     &-text {
       margin-left: 4rem;

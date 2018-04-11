@@ -1,144 +1,144 @@
 .block-mosaic {
 
-	&-items,
-	&-item-images {
-		@include reset-list;
-	}
+  &-items,
+  &-item-images {
+    @include reset-list;
+  }
 
-	&-item {
-		color: $gris-33;
-		font-size: 1.6rem;
-		line-height: 1.6;
-		overflow: hidden;
-	}
+  &-item {
+    color: $gris-33;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    overflow: hidden;
+  }
 
-	&-item-title {
-		color: $gris-23;
-		font-family: $ubuntu;
-		font-weight: $bold;
-		line-height: 1.3;
-		margin: 0;
-	}
+  &-item-title {
+    color: $gris-23;
+    font-family: $ubuntu;
+    font-weight: $bold;
+    line-height: 1.3;
+    margin: 0;
+  }
 
-	&-item-text {
-		margin: 0.5rem 0 1.5rem;
-	}
+  &-item-text {
+    margin: 0.5rem 0 1.5rem;
+  }
 
-	&-item-image {
-		&, a {
-			display: inline-block;
-		}
-	}
+  &-item-image {
+    &, a {
+      display: inline-block;
+    }
+  }
 
-	@include small {
-		$mosaic-item-height: 50vw;
-		padding: 0;
+  @include small {
+    $mosaic-item-height: 50vw;
+    padding: 0;
 
-		&-item {
-			display: flex;
-			flex-direction: column-reverse;
-		}
+    &-item {
+      display: flex;
+      flex-direction: column-reverse;
+    }
 
-		&-item-content-wrapper {
-			padding: 2rem 2rem 3rem;
-			text-align: center;
-		}
+    &-item-content-wrapper {
+      padding: 2rem 2rem 3rem;
+      text-align: center;
+    }
 
-		&-item-title,
-		&-item-text {
-			padding: 0 1rem;
-		}
+    &-item-title,
+    &-item-text {
+      padding: 0 1rem;
+    }
 
-		&-item-title {
-			font-size: 1.7rem;
-		}
+    &-item-title {
+      font-size: 1.7rem;
+    }
 
-		&-item-text {
-			font-size: 1.4rem;
-		}
+    &-item-text {
+      font-size: 1.4rem;
+    }
 
-		&-item-image {
-			width: 50%;
+    &-item-image {
+      width: 50%;
 
-			&:nth-child(3),
-			&:nth-child(4) {
-				display: none;
-			}
+      &:nth-child(3),
+      &:nth-child(4) {
+        display: none;
+      }
 
-			img {
-				height: $mosaic-item-height;
-				width: 100%;
-			}
-		}
-	}
+      img {
+        height: $mosaic-item-height;
+        width: 100%;
+      }
+    }
+  }
 
-	@include large-and-medium {
-		$mosaic-item-height: 20vw;
-		padding: 0;
+  @include large-and-medium {
+    $mosaic-item-height: 20vw;
+    padding: 0;
 
-		&-item {
-			height: $mosaic-item-height;
+    &-item {
+      height: $mosaic-item-height;
 
-			&:nth-child(2n) {
-				.block-mosaic-item-content-wrapper {
-					float: left;
-					justify-content: flex-end;
-				}
-			}
-		}
+      &:nth-child(2n) {
+        .block-mosaic-item-content-wrapper {
+          float: left;
+          justify-content: flex-end;
+        }
+      }
+    }
 
-		&-item-content {
-			max-width: 30.5rem;
-		}
+    &-item-content {
+      max-width: 30.5rem;
+    }
 
-		&-item-content-wrapper {
-			align-items: center;
-			display: flex;
-			float: right;
-			height: $mosaic-item-height;
-			justify-content: flex-start;
-			padding: 3.5rem;
-			width: 40%;
-		}
+    &-item-content-wrapper {
+      align-items: center;
+      display: flex;
+      float: right;
+      height: $mosaic-item-height;
+      justify-content: flex-start;
+      padding: 3.5rem;
+      width: 40%;
+    }
 
-		&-item-title {
-			font-size: 1.9rem;
-		}
+    &-item-title {
+      font-size: 1.9rem;
+    }
 
-		&-item-images {
-			float: left;
-			width: 60%;
-		}
+    &-item-images {
+      float: left;
+      width: 60%;
+    }
 
-		&-item-image {
-			width: 33.33%;
+    &-item-image {
+      width: 33.33%;
 
-			img {
-				height: $mosaic-item-height;
-				width: 100%;
-			}
-		}
-	}
+      img {
+        height: $mosaic-item-height;
+        width: 100%;
+      }
+    }
+  }
 
-	@media (min-width: 1600px) {
-		$mosaic-item-height: 16.67vw;
+  @media (min-width: 1600px) {
+    $mosaic-item-height: 16.67vw;
 
-		&-item,
-		&-item-content-wrapper {
-			height: $mosaic-item-height;
-		}
+    &-item,
+    &-item-content-wrapper {
+      height: $mosaic-item-height;
+    }
 
-		&-item-content-wrapper {
-			width: 33.33%;
-		}
+    &-item-content-wrapper {
+      width: 33.33%;
+    }
 
-		&-item-images {
-			width: 66.66%;
-		}
+    &-item-images {
+      width: 66.66%;
+    }
 
-		&-item-image {
-			width: 25%;
-			img {height: $mosaic-item-height;}
-		}
-	}
+    &-item-image {
+      width: 25%;
+      img {height: $mosaic-item-height;}
+    }
+  }
 }

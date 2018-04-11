@@ -3,56 +3,56 @@
     @include reset-list;
   }
 
-	&-item {
-		border-bottom: 0.1rem solid transparentize($taupe, 0.8);
-	}
+  &-item {
+    border-bottom: 0.1rem solid transparentize($taupe, 0.8);
+  }
 
-	&-item-link {
-		color: $marron;
-		display: block;
-		font-family: $ubuntu;
-		font-weight: $medium;
-		letter-spacing: 0.1rem;
-		line-height: 2.1;
-		padding: 1.5rem 2rem 1.5rem 3rem;
-		position: relative;
-		text-decoration: none;
-		text-transform: uppercase;
+  &-item-link {
+    color: $marron;
+    display: block;
+    font-family: $ubuntu;
+    font-weight: $medium;
+    letter-spacing: 0.1rem;
+    line-height: 2.1;
+    padding: 1.5rem 2rem 1.5rem 3rem;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
 
-		&:hover,
-		&:focus {
-			color: $marron-fonce;
-			.icon {fill: $marron-fonce;}
-		}
+    &:hover,
+    &:focus {
+      color: $marron-fonce;
+      .icon {fill: $marron-fonce;}
+    }
 
-		.icon {
-			fill: $marron;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			vertical-align: middle;
+    .icon {
+      fill: $marron;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      vertical-align: middle;
 
-			&:first-child {
-				left: 0;
-				width: 1.8rem;
-			}
+      &:first-child {
+        left: 0;
+        width: 1.8rem;
+      }
 
-			&:last-child {
-				right: 0;
-				width: 0.6rem;
-			}
-		}
-	}
+      &:last-child {
+        right: 0;
+        width: 0.6rem;
+      }
+    }
+  }
 
-	@include small {
-		&-item-link {
-			font-size: 1.3rem;
-		}
-	}
+  @include small {
+    &-item-link {
+      font-size: 1.3rem;
+    }
+  }
 
-	@include large-and-medium {
-		&-item-link {
-			font-size: 1.4rem;
-		}
-	}
+  @include large-and-medium {
+    &-item-link {
+      font-size: 1.4rem;
+    }
+  }
 }

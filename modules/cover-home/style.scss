@@ -1,220 +1,220 @@
 // This module inherits styles from `cover`
 
 .cover-home {
-	> .layout-wrapper {
-		position: relative;
-	}
+  > .layout-wrapper {
+    position: relative;
+  }
 
-	&-title {
-		font-family: $ubuntu;
-		font-weight: $bold;
-		margin: 0;
-	}
+  &-title {
+    font-family: $ubuntu;
+    font-weight: $bold;
+    margin: 0;
+  }
 
-	&-link {
-		font-weight: $regular;
-		margin-top: 0.5rem;
+  &-link {
+    font-weight: $regular;
+    margin-top: 0.5rem;
 
-		a {
-			border-bottom: 0.1rem solid $blanc;
-			color: $blanc;
-			text-decoration: none;
-			transition: border 0.2s ease;
+    a {
+      border-bottom: 0.1rem solid $blanc;
+      color: $blanc;
+      text-decoration: none;
+      transition: border 0.2s ease;
 
-			&:hover, &:focus {
-				border-bottom-color: transparent;
-			}
-		}
-	}
+      &:hover, &:focus {
+        border-bottom-color: transparent;
+      }
+    }
+  }
 
-	&-stats {
-		@include reset-list;
-		font-family: $ubuntu;
-		font-weight: $medium;
-		text-transform: uppercase;
-		text-align: center;
+  &-stats {
+    @include reset-list;
+    font-family: $ubuntu;
+    font-weight: $medium;
+    text-transform: uppercase;
+    text-align: center;
 
-		a {
-			color: $blanc;
-			text-decoration: none;
+    a {
+      color: $blanc;
+      text-decoration: none;
 
-			&:hover, &:focus {
-				.cover-home-stats-icon {background-color: $blanc;}
-			}
-		}
+      &:hover, &:focus {
+        .cover-home-stats-icon {background-color: $blanc;}
+      }
+    }
 
-		&-icon {
-			align-items: center;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			margin: 0 auto 0.5rem;
-			transition: background-color 0.3s ease;
-		}
+    &-icon {
+      align-items: center;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      transition: background-color 0.3s ease;
+    }
 
-		var {
-			display: block;
-			font-style: normal;
-			font-weight: $bold;
-			letter-spacing: 0;
-			white-space: nowrap;
-		}
+    var {
+      display: block;
+      font-style: normal;
+      font-weight: $bold;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
 
-		&-item > a {
-			display: block;
-		}
+    &-item > a {
+      display: block;
+    }
 
-		&-item-users .cover-home-stats-icon {
-			background-color: $orange-clair;
-			svg { fill: $orange; }
-		}
+    &-item-users .cover-home-stats-icon {
+      background-color: $orange-clair;
+      svg { fill: $orange; }
+    }
 
-		&-item-observations .cover-home-stats-icon {
-			background-color: $vert-archi-clair;
-			svg { fill: $vert-clair; }
-		}
+    &-item-observations .cover-home-stats-icon {
+      background-color: $vert-archi-clair;
+      svg { fill: $vert-clair; }
+    }
 
-		&-item-get-involved .cover-home-stats-icon {
-			background-color: $turquoise-clair;
-			svg { fill: $turquoise; }
-		}
-	}
+    &-item-get-involved .cover-home-stats-icon {
+      background-color: $turquoise-clair;
+      svg { fill: $turquoise; }
+    }
+  }
 
-	@include small {
-		padding: 2.5rem 0 0;
+  @include small {
+    padding: 2.5rem 0 0;
 
-		&-title {
-			font-size: 1.8rem;
-			line-height: 1.4;
-			text-align: center;
-		}
+    &-title {
+      font-size: 1.8rem;
+      line-height: 1.4;
+      text-align: center;
+    }
 
-		&-link {
-			font-size: 1.4rem;
-			text-align: center;
-		}
+    &-link {
+      font-size: 1.4rem;
+      text-align: center;
+    }
 
-		&-content {
-			> .search-box {
-				margin-top: 2rem;
-			}
-		}
+    &-content {
+      > .search-box {
+        margin-top: 2rem;
+      }
+    }
 
-		&-stats {
-			background-color: transparentize($noir, 0.7);
-			display: flex;
-			font-size: 0.9rem;
-			letter-spacing: 0.1rem;
-			margin: 2rem -2rem 0;
-			padding: 2rem;
+    &-stats {
+      background-color: transparentize($noir, 0.7);
+      display: flex;
+      font-size: 0.9rem;
+      letter-spacing: 0.1rem;
+      margin: 2rem -2rem 0;
+      padding: 2rem;
 
-			&-icon {
-				height: 4.4rem;
-				width: 4.4rem;
-			}
+      &-icon {
+        height: 4.4rem;
+        width: 4.4rem;
+      }
 
-			var {
-				font-size: 1.6rem;
-			}
+      var {
+        font-size: 1.6rem;
+      }
 
-			&-item:nth-child(2n+1) {
-				margin-top: 3rem;
-			}
+      &-item:nth-child(2n+1) {
+        margin-top: 3rem;
+      }
 
-			&-item-users .cover-home-stats-icon svg {
-				height: 2rem;
-				width: 2.7rem;
-			}
+      &-item-users .cover-home-stats-icon svg {
+        height: 2rem;
+        width: 2.7rem;
+      }
 
-			&-item-observations .cover-home-stats-icon svg {
-				height: 2rem;
-				width: 2.7rem;
-			}
+      &-item-observations .cover-home-stats-icon svg {
+        height: 2rem;
+        width: 2.7rem;
+      }
 
-			&-item-get-involved .cover-home-stats-icon svg {
-				height: 2rem;
-				width: 2rem;
-			}
-		}
-	}
+      &-item-get-involved .cover-home-stats-icon svg {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+  }
 
-	@include large-and-medium {
-		min-height: 42rem;
-		padding: 5rem 0;
+  @include large-and-medium {
+    min-height: 42rem;
+    padding: 5rem 0;
 
-		> .layout-wrapper {
-			align-items: center;
-			display: flex;
-			height: 32rem;
-			justify-content: space-between;
-		}
+    > .layout-wrapper {
+      align-items: center;
+      display: flex;
+      height: 32rem;
+      justify-content: space-between;
+    }
 
-		&-title {
-			font-size: 3.2rem;
-		}
+    &-title {
+      font-size: 3.2rem;
+    }
 
-		&-link {
-			font-size: 1.8rem;
-		}
+    &-link {
+      font-size: 1.8rem;
+    }
 
-		&-content {
-			flex-grow: 1;
-			margin-right: 5rem;
+    &-content {
+      flex-grow: 1;
+      margin-right: 5rem;
 
-			> .search-box {
-				margin-top: 2.5rem;
-			}
-		}
+      > .search-box {
+        margin-top: 2.5rem;
+      }
+    }
 
-		&-stats {
-			font-size: 1.2rem;
-			height: 32rem;
-			letter-spacing: 0.1rem;
-			position: relative;
-			width: 40%;
+    &-stats {
+      font-size: 1.2rem;
+      height: 32rem;
+      letter-spacing: 0.1rem;
+      position: relative;
+      width: 40%;
 
-			&-icon {
-				height: 6.6rem;
-				width: 6.6rem;
-			}
+      &-icon {
+        height: 6.6rem;
+        width: 6.6rem;
+      }
 
-			var {
-				font-size: 2.6rem;
-			}
+      var {
+        font-size: 2.6rem;
+      }
 
-			&-item {
-				position: absolute;
-			}
+      &-item {
+        position: absolute;
+      }
 
-			&-item-users {
-				top: 10%;
-				left: 0;
+      &-item-users {
+        top: 10%;
+        left: 0;
 
-				.cover-home-stats-icon svg {
-					height: 3rem;
-					width: 4rem;
-				}
-			}
+        .cover-home-stats-icon svg {
+          height: 3rem;
+          width: 4rem;
+        }
+      }
 
-			&-item-observations {
-				top: 0;
-				right: 0;
+      &-item-observations {
+        top: 0;
+        right: 0;
 
-				.cover-home-stats-icon svg {
-					height: 3rem;
-					width: 4rem;
-				}
-			}
+        .cover-home-stats-icon svg {
+          height: 3rem;
+          width: 4rem;
+        }
+      }
 
-			&-item-get-involved {
-				bottom: 0;
-				left: 30%;
+      &-item-get-involved {
+        bottom: 0;
+        left: 30%;
 
-				.cover-home-stats-icon svg {
-					height: 3rem;
-					width: 3rem;
-				}
-			}
-		}
-	}
+        .cover-home-stats-icon svg {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+    }
+  }
 }

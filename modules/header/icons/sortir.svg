@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 46 46" style="enable-background:new 0 0 46 46;" xml:space="preserve">
+   viewBox="0 0 46 46" style="enable-background:new 0 0 46 46;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#F9E2D7;}
-	.st1{fill:none;}
-	.st2{fill:#E16E38;}
+  .st0{fill:#F9E2D7;}
+  .st1{fill:none;}
+  .st2{fill:#E16E38;}
 </style>
 <circle class="st0" cx="23" cy="23" r="23"/>
 <path class="st1" d="M11,11h24v24H11V11z"/>
 <path class="st1" d="M11,11h24v24H11V11z"/>
 <path class="st2" d="M17,15.4l-2-2L13.4,15l2,2L17,15.4z M13.9,21.9h-3.4v2.3h3.4L13.9,21.9z M24.1,10.6h-2.3v3.3h2.3L24.1,10.6z
-	 M32.6,15L31,13.4l-2,2l1.6,1.6L32.6,15z M29,30.6l2,2l1.6-1.6l-2-2L29,30.6z M32.1,21.9v2.3h3.4v-2.3L32.1,21.9z M23,16.2
-	c-3.8,0-6.8,3.1-6.8,6.8s3.1,6.8,6.8,6.8s6.8-3.1,6.8-6.8l0,0C29.8,19.2,26.8,16.2,23,16.2z M21.9,35.4h2.3v-3.3h-2.3V35.4z
-	 M13.4,31l1.6,1.6l2-2L15.4,29L13.4,31z"/>
+   M32.6,15L31,13.4l-2,2l1.6,1.6L32.6,15z M29,30.6l2,2l1.6-1.6l-2-2L29,30.6z M32.1,21.9v2.3h3.4v-2.3L32.1,21.9z M23,16.2
+  c-3.8,0-6.8,3.1-6.8,6.8s3.1,6.8,6.8,6.8s6.8-3.1,6.8-6.8l0,0C29.8,19.2,26.8,16.2,23,16.2z M21.9,35.4h2.3v-3.3h-2.3V35.4z
+   M13.4,31l1.6,1.6l2-2L15.4,29L13.4,31z"/>
 </svg>

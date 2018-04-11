@@ -1,6 +1,6 @@
 //- This file is only meant to be included in other modules
 //- and then used as a mixin: +categories-labels({ ... })
 mixin categories-labels(data)
-	span.categories-labels
-		each item in data.items
-			a(href=item.href rel="category")= item.text
+  span.categories-labels
+    each item in data.items
+      a(href=item.href rel="category")= item.text

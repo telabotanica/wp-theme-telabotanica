@@ -1,8 +1,8 @@
 body.group-admin .toc-items {
-    // répercussion (copie) du style de la ToC)
-    > li {
-        border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
-        padding: 1.5rem 0;
+  // répercussion (copie) du style de la ToC)
+  > li {
+    border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
+    padding: 1.5rem 0;
 
         &.current {
             > a {
@@ -145,8 +145,8 @@ body.group-admin .toc-items {
     }
 
     #tb-forum-creer-liste {
-        padding: 0.3rem 0.7rem;
-        margin-top: 1px;
+      margin-top: 1px;
+      padding: 0.3rem 0.7rem;
     }
 
     p {
@@ -195,8 +195,8 @@ body.group-admin .toc-items {
 
         .action {
             > .generic-button {
-                padding: 0.4rem 1rem;
-                margin-top: 0.3rem;
+              margin-top: 0.3rem;
+              padding: 0.4rem 1rem;
 
                 > a {
                     color: white;
@@ -242,10 +242,11 @@ body.group-admin .toc-items {
         }
         .action {
             margin-bottom: 1rem;
+
             > .button {
-                padding: 0.4rem 1rem;
-                margin-top: 0.3rem;
-                background-color: $rouge; // le bouton "supprimer du groupe" n'a pas de classe
+              background-color: $rouge; // le bouton "supprimer du groupe" n'a pas de classe
+              margin-top: 0.3rem;
+              padding: 0.4rem 1rem;
 
                 & + .button {
                     margin-left: 0;

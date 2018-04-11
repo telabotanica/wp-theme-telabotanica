@@ -15,12 +15,12 @@
 
 * {{ featured.post.post_title }} *
 
-	Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
+  Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
 
 {% if featured.intro is not empty %}
-	{% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
+  {% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
 {% else %}
-	{% set content = featured.post.post_content %}
+  {% set content = featured.post.post_content %}
 {% endif %}
 
 {{ content|striptags|truncate(500, true)|raw|unescape }}
@@ -33,24 +33,24 @@
 
 {% for category_id, category in categories %}
 
-	{% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
+  {% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
 
 ### {{ subcategory }} ###
 
-		{% for item in attribute(attribute(posts, category_id), subcategory_id) %}
+    {% for item in attribute(attribute(posts, category_id), subcategory_id) %}
 
-			{% if item.event.date %}
+      {% if item.event.date %}
 
 * {{ item.post.post_title }} *
 
 {% set date_start = item.event.date|localizeddate("none", "none", "fr-FR", null, "d MMM") %}
 {% if item.event.date_end %}
-	{% set date_end = item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") %}
+  {% set date_end = item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") %}
 
-	Du {{ date_start }} au {{ date_end }}
+  Du {{ date_start }} au {{ date_end }}
 {% else %}
 
-	Le {{ date_start }}
+  Le {{ date_start }}
 {% endif %}
 
 {{ item.event.place }} - Publié par {{ item.author }}
@@ -61,16 +61,16 @@
 
 
 
-			{% else %}
+      {% else %}
 
 * {{ item.post.post_title }} *
 
 Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
 
 {% if item.intro is not empty %}
-	{% set content = item.intro ~ ' ' ~ item.post.post_content %}
+  {% set content = item.intro ~ ' ' ~ item.post.post_content %}
 {% else %}
-	{% set content = item.post.post_content %}
+  {% set content = item.post.post_content %}
 {% endif %}
 
 {{ content|striptags|truncate(300, true)|raw|unescape }}
@@ -79,22 +79,22 @@ Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par 
 
 
 
-			{% endif %}
+      {% endif %}
 
 -----------------------
 
-		{% endfor %}
+    {% endfor %}
 
-	{% endfor %}
+  {% endfor %}
 
 {% if 'actualites' == category.slug %}
-	Toutes les actualités : {{ category.url }}
+  Toutes les actualités : {{ category.url }}
 {% elseif 'evenements' == category.slug %}
-	Tous les évènements : {{ category.url }}
+  Tous les évènements : {{ category.url }}
 {% elseif 'offres-emploi' == category.slug %}
-	Toutes les offres d'emploi : {{ category.url }}
+  Toutes les offres d'emploi : {{ category.url }}
 {% else %}
-	Tous les articles de {{ category.name }} : {{ category.url }}
+  Tous les articles de {{ category.name }} : {{ category.url }}
 {% endif %}
 
 ================================================

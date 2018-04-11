@@ -1,98 +1,98 @@
 .nav-dashboard {
   background-color: $marron-tres-fonce;
-	font-family: $ubuntu;
-	font-size: 1.2rem;
-	letter-spacing: 0.1rem;
-	line-height: 1.7rem;
-	max-width: 26rem;
-	text-transform: uppercase;
+  font-family: $ubuntu;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.7rem;
+  max-width: 26rem;
+  text-transform: uppercase;
 
   &-items {
     @include reset-list;
-		padding: 2rem 0;
+    padding: 2rem 0;
   }
 
-	&-item {
-		margin-bottom: 2rem;
+  &-item {
+    margin-bottom: 2rem;
 
-		a {
-			display: block;
-			padding: 0.6rem 3rem 0.6rem 6rem;
-			position: relative;
-		}
+    a {
+      display: block;
+      padding: 0.6rem 3rem 0.6rem 6rem;
+      position: relative;
+    }
 
-		.icon {
-			left: 3rem;
-			margin-right: 1rem;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			vertical-align: middle;
-		}
+    .icon {
+      left: 3rem;
+      margin-right: 1rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      vertical-align: middle;
+    }
 
-		&.is-current {
-			.nav-dashboard-item-text::before {
-				color: $vert-clair-vif;
-				content: "▸";
-				display: inline-block;
-				font-size: 2rem;
-				left: 0.5rem;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-			}
+    &.is-current {
+      .nav-dashboard-item-text::before {
+        color: $vert-clair-vif;
+        content: "▸";
+        display: inline-block;
+        font-size: 2rem;
+        left: 0.5rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
 
-			a {
-				border-left: 0.4rem solid $vert-clair-vif;
-				color: $blanc;
-				fill: $vert-clair-vif !important;
-				padding-left: 5.6rem;
-			}
+      a {
+        border-left: 0.4rem solid $vert-clair-vif;
+        color: $blanc;
+        fill: $vert-clair-vif !important;
+        padding-left: 5.6rem;
+      }
 
-			.icon {
-				left: 2.6rem;
-			}
-		}
+      .icon {
+        left: 2.6rem;
+      }
+    }
 
-		&.with-dot {
-			.nav-dashboard-item-text::after {
-				background-color: $rouge;
-				border-radius: 50%;
-				content: "";
-				display: inline-block;
-				height: 0.8rem;
-				margin-left: 1rem;
-				width: 0.8rem;
-			}
-		}
+    &.with-dot {
+      .nav-dashboard-item-text::after {
+        background-color: $rouge;
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+        height: 0.8rem;
+        margin-left: 1rem;
+        width: 0.8rem;
+      }
+    }
 
-		&.is-last {
-			font-size: 1.3rem;
-			margin-bottom: 0;
-			padding: 5rem 3rem 0;
-			text-transform: none;
+    &.is-last {
+      font-size: 1.3rem;
+      margin-bottom: 0;
+      padding: 5rem 3rem 0;
+      text-transform: none;
 
-			a {
-				border-top: 0.1rem solid $gris-44;
-				padding: 1.5rem 0.5rem 1.5rem 3rem;
-			}
+      a {
+        border-top: 0.1rem solid $gris-44;
+        padding: 1.5rem 0.5rem 1.5rem 3rem;
+      }
 
-			.icon {
-				left: 0;
-			}
-		}
+      .icon {
+        left: 0;
+      }
+    }
 
-	}
+  }
 
-	a {
-		color: $gris-aa;
-		fill: $gris-aa;
-		text-decoration: none;
+  a {
+    color: $gris-aa;
+    fill: $gris-aa;
+    text-decoration: none;
 
-		&:hover,
-		&:focus {
-			color: $blanc;
-			fill: $blanc;
-		}
-	}
+    &:hover,
+    &:focus {
+      color: $blanc;
+      fill: $blanc;
+    }
+  }
 }

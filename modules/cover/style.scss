@@ -1,95 +1,95 @@
 .cover {
-	align-items: center;
-	background: center center no-repeat;
-	background-size: cover;
-	color: $blanc;
-	display: flex;
-	min-height: 27.5rem;
-	position: relative;
+  align-items: center;
+  background: center center no-repeat;
+  background-size: cover;
+  color: $blanc;
+  display: flex;
+  min-height: 27.5rem;
+  position: relative;
 
-	&.tall {
-		min-height: 37rem;
-		min-height: 27vw;
-	}
+  &.tall {
+    min-height: 37rem;
+    min-height: 27vw;
+  }
 
-	&::before {
-		background-color: transparentize($bleu-nuit, 0.6);
-		content: "";
-		display: block;
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
-	}
+  &::before {
+    background-color: transparentize($bleu-nuit, 0.6);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
-	&-title,
-	&-subtitle,
-	&-content {
-		position: relative;
-	}
+  &-title,
+  &-subtitle,
+  &-content {
+    position: relative;
+  }
 
-	&-search-box ~ &-title,
-	&-search-box ~ &-subtitle,
-	&-search-box ~ &-content {
-		margin-right: 46rem;
-	}
+  &-search-box ~ &-title,
+  &-search-box ~ &-subtitle,
+  &-search-box ~ &-content {
+    margin-right: 46rem;
+  }
 
-	&-title {
-		font-family: $ubuntu;
-		font-size: 3.2rem;
-		font-weight: $bold;
-		margin: 0;
-	}
+  &-title {
+    font-family: $ubuntu;
+    font-size: 3.2rem;
+    font-weight: $bold;
+    margin: 0;
+  }
 
-	&-subtitle {
-		font-weight: $regular;
-		font-size: 1.8rem;
-		margin-top: 0.5rem;
+  &-subtitle {
+    font-weight: $regular;
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
 
-		a {
-			border-bottom: 0.1rem solid $blanc;
-			color: $blanc;
-			text-decoration: none;
-			transition: border 0.2s ease;
+    a {
+      border-bottom: 0.1rem solid $blanc;
+      color: $blanc;
+      text-decoration: none;
+      transition: border 0.2s ease;
 
-			&:hover, &:focus {
-				border-bottom-color: transparent;
-			}
-		}
-	}
+      &:hover, &:focus {
+        border-bottom-color: transparent;
+      }
+    }
+  }
 
-	&-content {
-		margin-top: 2rem;
-	}
+  &-content {
+    margin-top: 2rem;
+  }
 
-	&-search-box {
-		float: right;
-		margin-top: 1rem;
-		position: relative;
-		width: 44rem;
-	}
+  &-search-box {
+    float: right;
+    margin-top: 1rem;
+    position: relative;
+    width: 44rem;
+  }
 
-	@include small {
-		&-credits {
-			display: none;
-		}
-	}
+  @include small {
+    &-credits {
+      display: none;
+    }
+  }
 
-	@include large-and-medium {
-		&-credits {
-			bottom: 0;
-			color: transparentize($gris-f0, 0.25);
-			font-size: 1.2rem;
-			padding: 1rem;
-			position: absolute;
-			right: 0;
+  @include large-and-medium {
+    &-credits {
+      bottom: 0;
+      color: transparentize($gris-f0, 0.25);
+      font-size: 1.2rem;
+      padding: 1rem;
+      position: absolute;
+      right: 0;
 
-			a {
-				color: $gris-f0;
-				text-decoration: none;
-				&:hover {border-bottom: 0.1rem solid;}
-			}
-		}
-	}
+      a {
+        color: $gris-f0;
+        text-decoration: none;
+        &:hover {border-bottom: 0.1rem solid;}
+      }
+    }
+  }
 }

@@ -17,11 +17,11 @@
     }
   }
 
-	@include small {
-  	font-size: 1.4rem;
-	}
+  @include small {
+    font-size: 1.4rem;
+  }
 
-	@include large-and-medium {
-  	font-size: 1.8rem;
-	}
+  @include large-and-medium {
+    font-size: 1.8rem;
+  }
 }

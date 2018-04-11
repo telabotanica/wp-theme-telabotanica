@@ -1,155 +1,155 @@
 @import "../header/_variables";
 
 .toc {
-	font-family: $ubuntu;
-	font-weight: $regular;
-	margin-bottom: 4rem;
-	width: 30rem;
+  font-family: $ubuntu;
+  font-weight: $regular;
+  margin-bottom: 4rem;
+  width: 30rem;
 
-	&.affix {
-		position: fixed;
-		top: $header-height-fixed;
+  &.affix {
+    position: fixed;
+    top: $header-height-fixed;
 
-		body.admin-bar & {top: $header-height-fixed + $header-admin-bar-height;}
-	}
-	&.affix-bottom {
-		position: absolute;
-	}
+    body.admin-bar & {top: $header-height-fixed + $header-admin-bar-height;}
+  }
+  &.affix-bottom {
+    position: absolute;
+  }
 
-	&-items,
-	&-subitems {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+  &-items,
+  &-subitems {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-	&-item.is-active > .toc-item-link::before,
-	&-item > .toc-item-link:hover::before,
-	&-item > .toc-item-link:focus::before {
-		content: "▶";
-		display: block;
-		font-size: 1rem;
-		line-height: 2rem;
-		margin-left: -2rem;
-		position: absolute;
-	}
+  &-item.is-active > .toc-item-link::before,
+  &-item > .toc-item-link:hover::before,
+  &-item > .toc-item-link:focus::before {
+    content: "▶";
+    display: block;
+    font-size: 1rem;
+    line-height: 2rem;
+    margin-left: -2rem;
+    position: absolute;
+  }
 
-	&-item {
-		border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
-		padding: 1.5rem 0;
+  &-item {
+    border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
+    padding: 1.5rem 0;
 
-		&:only-child {border-bottom: 0;}
+    &:only-child {border-bottom: 0;}
 
-		&.is-active > .toc-item-link {
-			color: $gris-23;
+    &.is-active > .toc-item-link {
+      color: $gris-23;
 
-			&::before {
-				color: $vert-clair;
-			}
-		}
+      &::before {
+        color: $vert-clair;
+      }
+    }
 
-		&-link {
-			color: $gris-60;
-			font-size: 1.6rem;
-			font-weight: $bold;
-			text-decoration: none;
+    &-link {
+      color: $gris-60;
+      font-size: 1.6rem;
+      font-weight: $bold;
+      text-decoration: none;
 
-			&:hover, &:focus {
-				&::before {
-					color: $taupe;
-				}
-			}
-		}
-	}
+      &:hover, &:focus {
+        &::before {
+          color: $taupe;
+        }
+      }
+    }
+  }
 
-	&-subitems {
-		font-size: 1.5rem;
-		margin-top: 0.5rem;
-		position: relative;
+  &-subitems {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    position: relative;
 
-		&::before {
-			border-left: 0.1rem dotted transparentize($gris-dd, 0.3);
-			bottom: 1rem;
-			content: "";
-			display: block;
-			left: 0.4rem;
-			position: absolute;
-			top: 1rem;
-		}
+    &::before {
+      border-left: 0.1rem dotted transparentize($gris-dd, 0.3);
+      bottom: 1rem;
+      content: "";
+      display: block;
+      left: 0.4rem;
+      position: absolute;
+      top: 1rem;
+    }
 
-		.toc-item-link + & {
-			margin-top: 2rem;
-		}
-	}
+    .toc-item-link + & {
+      margin-top: 2rem;
+    }
+  }
 
-	&-subitem {
-		margin-bottom: 1.5rem;
-		position: relative;
+  &-subitem {
+    margin-bottom: 1.5rem;
+    position: relative;
 
-		&:last-child {
-			margin-bottom: 0.5rem;
-		}
+    &:last-child {
+      margin-bottom: 0.5rem;
+    }
 
-		&.is-active {
-			.toc-subitem-link {
-				color: $noir;
-				font-weight: $medium;
+    &.is-active {
+      .toc-subitem-link {
+        color: $noir;
+        font-weight: $medium;
 
-				> .icon {
-					display: inline-block;
-					fill: $vert-clair;
-					height: 2.2rem;
-					left: 0;
-					position: absolute;
-					transform: translate(-0.3rem, -0.3rem);
-					width: 2.2rem;
-				}
+        > .icon {
+          display: inline-block;
+          fill: $vert-clair;
+          height: 2.2rem;
+          left: 0;
+          position: absolute;
+          transform: translate(-0.3rem, -0.3rem);
+          width: 2.2rem;
+        }
 
-				&::before {
-					visibility: hidden;
-				}
-			}
-		}
+        &::before {
+          visibility: hidden;
+        }
+      }
+    }
 
-		&-link {
-			color: $marron-gris;
-			display: inline-block;
-			font-size: 1.5rem;
-			font-weight: $regular;
-			line-height: 1.8rem;
-			padding-left: 3rem;
-			text-decoration: none;
-			transition: all 0.2s ease;
+    &-link {
+      color: $marron-gris;
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: $regular;
+      line-height: 1.8rem;
+      padding-left: 3rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
 
-			> .icon {
-				display: none;
-			}
+      > .icon {
+        display: none;
+      }
 
-			&::before {
-				color: $vert-clair;
-				content: "●";
-				display: inline-block;
-				left: 0;
-				margin-right: 2rem;
-				position: absolute;
-			}
+      &::before {
+        color: $vert-clair;
+        content: "●";
+        display: inline-block;
+        left: 0;
+        margin-right: 2rem;
+        position: absolute;
+      }
 
-			&:hover, &:focus {
-				color: $gris-33;
+      &:hover, &:focus {
+        color: $gris-33;
 
-				&::before {
-					color: $gris-60;
-				}
-			}
-		}
-	}
+        &::before {
+          color: $gris-60;
+        }
+      }
+    }
+  }
 
-	.children {
-	// 	color: $marron-gris;
-	// 	font-weight: $regular;
-		list-style: none;
-		margin-top: 1rem;
-		padding-left: 2.5rem;
-	}
+  .children {
+  //   color: $marron-gris;
+  //   font-weight: $regular;
+    list-style: none;
+    margin-top: 1rem;
+    padding-left: 2.5rem;
+  }
 
 }

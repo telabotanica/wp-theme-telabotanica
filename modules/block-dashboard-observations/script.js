@@ -17,75 +17,75 @@ Tela.modules = Tela.modules || {};
 
 Tela.modules.blockDashboardObservations = (function(){
 
-	function module(selector){
-		var $el = $(selector),
-			$titleSuffix,
-			$content,
-			apiUrl,
-			data = {
-				total: 0,
-				items: []
-			};
+  function module(selector){
+    var $el = $(selector),
+      $titleSuffix,
+      $content,
+      apiUrl,
+      data = {
+        total: 0,
+        items: []
+      };
 
-		function init(){
-			$titleSuffix = $el.find('.title-suffix');
-			$content = $el.find('.block-dashboard-content');
+    function init(){
+      $titleSuffix = $el.find('.title-suffix');
+      $content = $el.find('.block-dashboard-content');
 
-			// Get the URL to the API from the data-* attribute
-			apiUrl = $el.data('apiUrl');
+      // Get the URL to the API from the data-* attribute
+      apiUrl = $el.data('apiUrl');
 
-			loadData();
-		}
+      loadData();
+    }
 
-		function loadData(){
-			// Call the API
-			$.getJSON( apiUrl, function( json ) {
-				data.total = json.entete.total;
-				_.each(json.resultats, function (item) {
-					var dateObservation = moment(item.date_observation);
-					data.items.push({
-						type: 'feed-item',
-						href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
-						target: '_blank',
-						image: item.images[0]['binaire.href'].replace('XL.', 'CRXS.'),
-						title: item['determination.ns'] || '?',
-						text: 'Observé le ' + dateObservation.format('ll') + ' - Par ' + item['auteur.prenom'] + ' ' + item['auteur.nom'],
-						meta: {
-							place: item.zone_geo
-						}
-					});
-				});
-				updateSuffix();
-				renderContent();
-			});
-		}
+    function loadData(){
+      // Call the API
+      $.getJSON( apiUrl, function( json ) {
+        data.total = json.entete.total;
+        _.each(json.resultats, function (item) {
+          var dateObservation = moment(item.date_observation);
+          data.items.push({
+            type: 'feed-item',
+            href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
+            target: '_blank',
+            image: item.images[0]['binaire.href'].replace('XL.', 'CRXS.'),
+            title: item['determination.ns'] || '?',
+            text: 'Observé le ' + dateObservation.format('ll') + ' - Par ' + item['auteur.prenom'] + ' ' + item['auteur.nom'],
+            meta: {
+              place: item.zone_geo
+            }
+          });
+        });
+        updateSuffix();
+        renderContent();
+      });
+    }
 
-		function updateSuffix(){
-			$titleSuffix.text(numeral(data.total).format('0,0'));
-		}
+    function updateSuffix(){
+      $titleSuffix.text(numeral(data.total).format('0,0'));
+    }
 
-		function renderContent(){
-			var content = '';
-			_.each(data.items, function(item){
-				content += feedItemTemplate({data: item});
-			})
-			$content.prepend(content);
-		}
+    function renderContent(){
+      var content = '';
+      _.each(data.items, function(item){
+        content += feedItemTemplate({data: item});
+      })
+      $content.prepend(content);
+    }
 
 
-		init();
+    init();
 
-		return $el;
-	}
+    return $el;
+  }
 
-	return function(selector){
-		return $(selector).each(function(){
-			module(this);
-		});
-	};
+  return function(selector){
+    return $(selector).each(function(){
+      module(this);
+    });
+  };
 
 })();
 
 $(document).ready(function(){
-	Tela.modules.blockDashboardObservations('.block-dashboard-observations');
+  Tela.modules.blockDashboardObservations('.block-dashboard-observations');
 });

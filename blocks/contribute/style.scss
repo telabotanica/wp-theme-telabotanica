@@ -1,143 +1,143 @@
 .block-contribute {
-	&-header {
-		margin: 0 auto;
-		max-width: 66rem;
-		text-align: center;
-	}
+  &-header {
+    margin: 0 auto;
+    max-width: 66rem;
+    text-align: center;
+  }
 
-	&-title {
-		color: $gris-33;
-		font-family: $ubuntu;
-		font-weight: $light;
-		line-height: 1.1;
-		margin: 0 0 5rem;
-		text-align: center;
-	}
+  &-title {
+    color: $gris-33;
+    font-family: $ubuntu;
+    font-weight: $light;
+    line-height: 1.1;
+    margin: 0 0 5rem;
+    text-align: center;
+  }
 
-	&-content {
-		text-align: center;
-	}
+  &-content {
+    text-align: center;
+  }
 
-	&-items {
-		@include reset-list;
-	}
+  &-items {
+    @include reset-list;
+  }
 
-	&-item {
-		text-align: center;
-	}
+  &-item {
+    text-align: center;
+  }
 
-	&-item-link {
-		color: $gris-33;
-		display: block;
-		font-size: 1.5rem;
-		text-decoration: none;
+  &-item-link {
+    color: $gris-33;
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
 
-		&:hover,
-		&:focus {
-			.block-contribute-item-title span {
-				border-bottom-color: currentColor;
-			}
-			.block-contribute-item-button {
-				color: $marron-fonce;
-			}
-		}
-	}
+    &:hover,
+    &:focus {
+      .block-contribute-item-title span {
+        border-bottom-color: currentColor;
+      }
+      .block-contribute-item-button {
+        color: $marron-fonce;
+      }
+    }
+  }
 
-	&-item-image {
-		background-position: center center;
-		background-size: cover;
-		border-radius: 50%;
-		margin: 0 auto 2rem;
-	}
+  &-item-image {
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+  }
 
-	&-item-title {
-		color: $gris-23;
-		font-family: $ubuntu;
-		font-weight: $bold;
-		line-height: 1.3;
-		margin-bottom: 1rem;
-		margin-top: 0;
+  &-item-title {
+    color: $gris-23;
+    font-family: $ubuntu;
+    font-weight: $bold;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    margin-top: 0;
 
-		span {
-			border-bottom: 0.2rem solid transparent;
-			transition: border 0.2s ease;
-		}
-	}
+    span {
+      border-bottom: 0.2rem solid transparent;
+      transition: border 0.2s ease;
+    }
+  }
 
-	&-item-text {
-		line-height: 1.6;
-	}
+  &-item-text {
+    line-height: 1.6;
+  }
 
-	&-item-button {
-		color: $orange;
-		font-family: $ubuntu;
-		font-size: 1.3rem;
-		font-weight: $medium;
-		letter-spacing: 0.1rem;
-		text-decoration: none;
-		text-transform: uppercase;
-		transition: color 0.2s ease;
+  &-item-button {
+    color: $orange;
+    font-family: $ubuntu;
+    font-size: 1.3rem;
+    font-weight: $medium;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
 
-		&::after {
-			content: "›";
-			display: inline;
-			margin-left: 0.5rem;
-		}
-	}
+    &::after {
+      content: "›";
+      display: inline;
+      margin-left: 0.5rem;
+    }
+  }
 
-	@include small {
-		&-title {
-			font-size: 2rem;
-		}
+  @include small {
+    &-title {
+      font-size: 2rem;
+    }
 
-		&-item {
-			& + & {
-				margin-bottom: 3rem;
-			}
-		}
+    &-item {
+      & + & {
+        margin-bottom: 3rem;
+      }
+    }
 
-		&-item-image {
-			height: 10rem;
-			width: 10rem;
-		}
+    &-item-image {
+      height: 10rem;
+      width: 10rem;
+    }
 
-		&-item-title {
-			font-size: 1.7rem;
-		}
+    &-item-title {
+      font-size: 1.7rem;
+    }
 
-		&-item-text {
-			font-size: 1.3rem;
-			margin-bottom: 1rem;
-		}
-	}
+    &-item-text {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+  }
 
-	@include large-and-medium {
-		&-title {
-			font-size: 3.2rem;
-		}
+  @include large-and-medium {
+    &-title {
+      font-size: 3.2rem;
+    }
 
-		&-items {
-			display: flex;
-			margin-bottom: 5rem;
-			justify-content: space-between;
-		}
+    &-items {
+      display: flex;
+      margin-bottom: 5rem;
+      justify-content: space-between;
+    }
 
-		&-item {
-			width: 31%;
-		}
+    &-item {
+      width: 31%;
+    }
 
-		&-item-image {
-			height: 22rem;
-			width: 22rem;
-		}
+    &-item-image {
+      height: 22rem;
+      width: 22rem;
+    }
 
-		&-item-title {
-			font-size: 2.2rem;
-			margin-bottom: 2rem;
-		}
+    &-item-title {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
 
-		&-text {
-			margin-bottom: 2rem;
-		}
-	}
+    &-text {
+      margin-bottom: 2rem;
+    }
+  }
 }

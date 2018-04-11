@@ -11,6 +11,8 @@ plus de détails sur http://semver.org/lang/fr/
 
 ## x.β.α (bientôt)
 
+## 0.1.0 (2018-04-11)
+
 * retour au rendu PHP pour les modules :
   * `card-project`
   * `categories-labels`

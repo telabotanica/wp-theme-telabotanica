@@ -1,8 +1,8 @@
 .cover-member {
   align-items: center;
   color: $blanc;
-  fill: $blanc;
   display: flex;
+  fill: $blanc;
   flex-direction: column;
   justify-content: center;
   min-height: 36.8rem;
@@ -39,8 +39,8 @@
   }
 
   .avatar {
-    border-radius: 50%;
     border: 0.3rem solid $blanc;
+    border-radius: 50%;
   }
 
   &-title,

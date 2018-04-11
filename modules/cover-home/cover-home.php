@@ -63,16 +63,16 @@
 						<?php printf(__('%s telabotanistes', 'telabotanica'), '<var>' . $user_count . '</var>') ?>
 					</a>
 				</li>
-				<li class="cover-home-stats-item cover-home-stats-item-observations">
-					<a href="<?php echo $observations_link ?>">
-						<div class="cover-home-stats-icon"><?php the_telabotanica_module('icon', ['icon' => 'leaf-outline']) ?></div>
-						<?php printf(__('%s observations', 'telabotanica'), '<var>' . number_format_i18n($observations_count) . '</var>') ?>
-					</a>
-				</li>
 				<li class="cover-home-stats-item cover-home-stats-item-get-involved">
 					<a href="<?php echo $get_involved_link ?>">
 						<div class="cover-home-stats-icon"><?php the_telabotanica_module('icon', ['icon' => 'hand-outline']) ?></div>
 						<?php printf(__('%s façons de participer', 'telabotanica'), '<var>' . number_format_i18n($get_involved_count) . '</var>') ?>
+					</a>
+				</li>
+				<li class="cover-home-stats-item cover-home-stats-item-observations">
+					<a href="<?php echo $observations_link ?>">
+						<div class="cover-home-stats-icon"><?php the_telabotanica_module('icon', ['icon' => 'leaf-outline']) ?></div>
+						<?php printf(__('%s observations', 'telabotanica'), '<var>' . number_format_i18n($observations_count) . '</var>') ?>
 					</a>
 				</li>
 			</ul>

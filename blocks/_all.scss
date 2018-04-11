@@ -1,5 +1,11 @@
 .block {
-  padding: 7.5rem 5rem;
+	@include small {
+		padding: 2rem;
+	}
+
+	@include large-and-medium {
+		padding: 7.5rem 5rem;
+	}
 }
 
 @import "contribute/style";

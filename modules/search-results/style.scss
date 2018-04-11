@@ -1,9 +1,11 @@
 // We target div to prevent the style
 // to apply to body.search-results (class added by Wordpress)
 div.search-results {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	@include large-and-medium {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
 }
 
 .search-results {
@@ -12,30 +14,6 @@ div.search-results {
 	&-index {
 		margin-bottom: 2rem;
 		position: relative;
-		width: 33.33%;
-
-		&:before,
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-		}
-
-		&:before {
-			border-top: 0.1rem solid $grisEB;
-			height: 0;
-			left: 2.5rem;
-			top: 0;
-			width: calc(100% - 5rem);
-		}
-
-		&:after {
-			border-right: 0.1rem solid $grisEB;
-			height: calc(100% - 2.5rem);
-			right: 0;
-			top: 2.5rem;
-			width: 0;
-		}
 
 		&:nth-child(1):before,
 		&:nth-child(2):before,
@@ -236,4 +214,40 @@ div.search-results {
 		}
 	}
 
+	@include small {
+		&-index {
+			& + & {
+				border-top: 0.1rem solid $grisEB;
+			}
+		}
+	}
+
+	@include large-and-medium {
+		&-index {
+			width: 33.33%;
+
+			&:before,
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+			}
+
+			&:before {
+				border-top: 0.1rem solid $grisEB;
+				height: 0;
+				left: 2.5rem;
+				top: 0;
+				width: calc(100% - 5rem);
+			}
+
+			&:after {
+				border-right: 0.1rem solid $grisEB;
+				height: calc(100% - 2.5rem);
+				right: 0;
+				top: 2.5rem;
+				width: 0;
+			}
+		}
+	}
 }

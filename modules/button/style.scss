@@ -10,7 +10,6 @@
 	font-weight: $medium;
 	letter-spacing: 0.1rem;
 	line-height: 1.5rem;
-	padding: 1.25rem 2rem;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -51,10 +50,6 @@
 		&:focus {
 			background-color: $grisF0;
 		}
-	}
-
-	&.block {
-		display: block;
 	}
 
 	&.outline {
@@ -134,6 +129,18 @@
 		.icon + &,
 		& + .icon {
 			margin-left: 1rem;
+		}
+	}
+
+	@include small {
+		padding: 1rem 1.5rem;
+	}
+
+	@include large-and-medium {
+		padding: 1.25rem 2rem;
+
+		&.block {
+			display: block;
 		}
 	}
 }

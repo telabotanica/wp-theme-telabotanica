@@ -1,5 +1,4 @@
 .article {
-
 	&.is-small {
 		align-items: center;
 		display: flex;
@@ -25,10 +24,9 @@
 
 	&-title {
 		font-family: $ubuntu;
-		font-size: 2.6rem;
 		font-weight: $bold;
-		line-height: 3.6rem;
-		margin: 0 0 2rem;
+		line-height: 1.4;
+		margin: 0;
 
 		a {
 			border-bottom: 0.2rem solid transparent;
@@ -54,11 +52,6 @@
 		margin-left: 2.5rem;
 	}
 
-	&-image,
-	.component-intro {
-		margin-bottom: 3rem;
-	}
-
 	&-image {
 		display: block;
 
@@ -81,6 +74,30 @@
 		h2 {
 			color: $gris33;
 			font-weight: $light;
+		}
+	}
+
+	@include small {
+		&-title {
+			font-size: 1.65rem;
+			margin-bottom: 1rem;
+		}
+
+		&-image,
+		.component-intro {
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	@include large-and-medium {
+		&-title {
+			font-size: 2.6rem;
+			margin-bottom: 2rem;
+		}
+
+		&-image,
+		.component-intro {
+			margin-bottom: 3rem;
 		}
 	}
 }

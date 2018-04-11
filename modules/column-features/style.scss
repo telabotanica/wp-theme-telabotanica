@@ -1,9 +1,6 @@
 .column-features {
-
 	&-items {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+		@include reset-list;
 	}
 
 	&-item {
@@ -12,72 +9,89 @@
 		& + & {
 			border-top: 0.1rem solid transparentize($taupe, 0.8);
 		}
+	}
 
-		&-link {
-			color: $gris33;
-			display: block;
-			font-size: 1.4rem;
-			line-height: 2.2rem;
-			text-decoration: none;
+	&-item-link {
+		color: $gris33;
+		display: block;
+		line-height: 1.6;
+		text-decoration: none;
 
-			&:hover,
-			&:focus {
-				.column-features-item-title span {border-bottom-color: $gris23;}
-			}
-		}
-
-		&-icon {
-			align-items: center;
-			display: flex;
-			float: left;
-			justify-content: center;
-			height: 5rem;
-			position: relative;
-			width: 5rem;
-
-			img {
-				max-height: 2.4rem;
-				max-width: 2.4rem;
-			}
-
-			svg {
-				height: 2.4rem;
-				width: 2.4rem;
-			}
-
-			&:after {
-				background-color: currentColor;
-				border-radius: 0.4rem;
-				content: "";
-				display: block;
-				height: 100%;
-				left: 0;
-				opacity: 0.2;
-				position: absolute;
-				top: 0;
-				transition: opacity 0.2s ease;
-				width: 100%;
-			}
-		}
-
-		&-title {
-			color: $gris23;
-			font-family: $ubuntu;
-			font-size: 1.9rem;
-			font-weight: $bold;
-			line-height: 2.6rem;
-			margin: 0 0 0.7rem;
-
-			span {
-				border-bottom: 0.2rem solid transparent;
-				transition: border 0.2s ease;
-			}
-		}
-
-		&-icon ~ &-title,
-		&-icon ~ &-text {
-			margin-left: 7rem;
+		&:hover,
+		&:focus {
+			.column-features-item-title span {border-bottom-color: $gris23;}
 		}
 	}
 
+	&-item-icon {
+		align-items: center;
+		display: flex;
+		float: left;
+		justify-content: center;
+		height: 5rem;
+		position: relative;
+		width: 5rem;
+
+		img {
+			max-height: 2.4rem;
+			max-width: 2.4rem;
+		}
+
+		svg {
+			height: 2.4rem;
+			width: 2.4rem;
+		}
+
+		&:after {
+			background-color: currentColor;
+			border-radius: 0.4rem;
+			content: "";
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			transition: opacity 0.2s ease;
+			width: 100%;
+		}
+	}
+
+	&-item-title {
+		color: $gris23;
+		font-family: $ubuntu;
+		font-weight: $bold;
+		line-height: 1.4;
+		margin: 0 0 0.7rem;
+
+		span {
+			border-bottom: 0.2rem solid transparent;
+			transition: border 0.2s ease;
+		}
+	}
+
+	&-item-icon ~ &-item-title,
+	&-item-icon ~ &-item-text {
+		margin-left: 7rem;
+	}
+
+	@include small {
+		&-item-link {
+			font-size: 1.3rem;
+		}
+
+		&-item-title {
+			font-size: 1.7rem;
+		}
+	}
+
+	@include large-and-medium {
+		&-item-link {
+			font-size: 1.4rem;
+		}
+
+		&-item-title {
+			font-size: 1.9rem;
+		}
+	}
 }

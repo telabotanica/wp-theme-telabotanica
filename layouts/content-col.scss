@@ -1,26 +1,8 @@
 .layout-content-col {
 	> .layout-wrapper {
-		display: flex;
-
 		> .layout-column {
 			background-color: $beige;
-			float: left;
-			flex: 0 0 33rem;
 			position: relative;
-			padding-bottom: 5.5rem;
-			padding-right: 3rem;
-			width: 33rem;
-
-			&:before {
-				background-color: $beige;
-				bottom: 0;
-				content: "";
-				display: block;
-				position: absolute;
-				right: 100%;
-				top: 0;
-				width: 100rem;
-			}
 
 			.layout-column-item {
 				margin-bottom: 3rem;
@@ -42,14 +24,6 @@
 					padding: 2rem;
 				}
 			}
-		}
-
-		> .layout-content {
-			flex: 1;
-			float: right;
-			margin-left: 5rem;
-			padding-bottom: 5rem;
-			width: 62rem;
 		}
 	}
 
@@ -80,24 +54,7 @@
 
 	// Inversion des colonnes (contenu à gauche et colonne à droite)
 	&.reversed {
-		> .layout-wrapper {
-			> .layout-column {
-				float: right;
-				padding-left: 3rem;
-				padding-right: 0;
-
-				&:before {
-					left: 100%;
-					right: auto;
-				}
-			}
-
-			> .layout-content {
-				float: right;
-				margin-left: 0;
-				margin-right: 5rem;
-			}
-		}
+		// cf. ci-dessous dans media query
 	}
 
 	// Inversion des couleurs des colonnes
@@ -138,6 +95,72 @@
 				margin-right: auto;
 				max-width: 112rem;
 				padding: 4rem 6rem;
+			}
+		}
+	}
+
+	@include small {
+		&.reversed {
+			> .layout-wrapper {
+				> .layout-column {
+					margin: 2rem -2rem 0;
+					padding: 0 2rem;
+				}
+			}
+		}
+	}
+
+	@include large-and-medium {
+		> .layout-wrapper {
+			display: flex;
+
+			> .layout-column {
+				float: left;
+				flex: 0 0 33rem;
+				position: relative;
+				padding-bottom: 5.5rem;
+				padding-right: 3rem;
+				width: 33rem;
+
+				&:before {
+					background-color: $beige;
+					bottom: 0;
+					content: "";
+					display: block;
+					position: absolute;
+					right: 100%;
+					top: 0;
+					width: 100rem;
+				}
+			}
+
+			> .layout-content {
+				flex: 1;
+				float: right;
+				margin-left: 5rem;
+				padding-bottom: 5rem;
+				width: 62rem;
+			}
+		}
+
+		&.reversed {
+			> .layout-wrapper {
+				> .layout-column {
+					float: right;
+					padding-left: 3rem;
+					padding-right: 0;
+
+					&:before {
+						left: 100%;
+						right: auto;
+					}
+				}
+
+				> .layout-content {
+					float: right;
+					margin-left: 0;
+					margin-right: 5rem;
+				}
 			}
 		}
 	}

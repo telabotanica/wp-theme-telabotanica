@@ -24,7 +24,7 @@
 }
 
 // Responsive mixins
-$small-page-padding: 30px;
+$small-page-padding: 20px;
 
 $large-min: $layout-wrapper-width + ($small-page-padding * 2);
 @mixin large {

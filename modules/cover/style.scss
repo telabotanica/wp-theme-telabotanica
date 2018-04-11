@@ -70,18 +70,26 @@
 		width: 44rem;
   }
 
-  &-credits {
-    color: transparentize($grisF0, 0.25);
-    font-size: 1.2rem;
-    bottom: 0;
-    padding: 1rem;
-    position: absolute;
-    right: 0;
-
-    a {
-      color: $grisF0;
-      text-decoration: none;
-      &:hover {border-bottom: 0.1rem solid;}
-    }
+	@include small {
+		&-credits {
+			display: none;
+		}
   }
+
+	@include large-and-medium {
+	  &-credits {
+	    color: transparentize($grisF0, 0.25);
+	    font-size: 1.2rem;
+	    bottom: 0;
+	    padding: 1rem;
+	    position: absolute;
+	    right: 0;
+
+	    a {
+	      color: $grisF0;
+	      text-decoration: none;
+	      &:hover {border-bottom: 0.1rem solid;}
+	    }
+	  }
+	}
 }

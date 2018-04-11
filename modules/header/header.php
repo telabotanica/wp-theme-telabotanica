@@ -41,6 +41,8 @@ function telabotanica_module_header($data) {
 				$logo_element
 			);
 
+			echo '<button type="button" class="header-toggle">Menu</button>';
+
 
 			// Menu secondaire
 

@@ -26,7 +26,6 @@
 
 	&-title {
 		font-family: $ubuntu;
-		font-size: 1.9rem;
 		font-weight: $medium;
 		margin: 0 0 0.5rem;
 
@@ -111,5 +110,17 @@
 
 	p {
 		margin: 1rem 0 0;
+	}
+
+	@include small {
+		&-title {
+			font-size: 1.5rem;
+		}
+	}
+
+	@include large-and-medium {
+		&-title {
+			font-size: 1.9rem;
+		}
 	}
 }

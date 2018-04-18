@@ -11,6 +11,11 @@ $post_category_slug = get_query_var( 'categorie', false );
 $post_category = get_category_by_slug($post_category_slug);
 $confirmation = get_query_var( 'confirmation', false );
 
+// In some cases publishing posts directly should be possible
+$post_is_event = ($post_category->parent === 25);
+$user_is_tb_president =  (wp_get_current_user()->ID === 5);
+$user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
+
 // 404 si la catégorie passée en paramètre n'existe pas
 if ( $post_category_slug && !$post_category ) {
 	global $wp_query;
@@ -161,6 +166,16 @@ get_header(); ?>
 										'honeypot' => true
 
 									);
+
+									if ($user_role_is_admin || $user_is_tb_president || $post_is_event) :
+
+										$options['new_post']['post_status'] = 'publish';
+
+										/* (string) The URL to be redirected to after the form is submit.
+										Special placeholder '%post_url%' will be converted to post's permalink */
+										$options['return'] = '%post_url%';
+
+									endif;
 
 									switch ($post_category_slug) {
 

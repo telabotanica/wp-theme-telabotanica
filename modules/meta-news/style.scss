@@ -22,11 +22,11 @@
       margin-right: 1rem;
       position: absolute;
       vertical-align: top;
-    }
 
-    .icon + * {
-      display: block;
-      margin-left: 2.6rem;
+      + * {
+        display: block;
+        margin-left: 2.6rem;
+      }
     }
   }
 
@@ -42,6 +42,7 @@
   &-author a {
     color: $taupe;
     text-decoration: none;
+
     &:hover,
     &:focus {
       color: $marron-fonce;
@@ -62,8 +63,8 @@
       align-items: center;
       background-color: transparentize($taupe, 0.8);
       border-radius: 50%;
-      fill: $marron;
       display: inline-flex;
+      fill: $marron;
       height: 3.4rem;
       justify-content: center;
       width: 3.4rem;

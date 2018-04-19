@@ -4,7 +4,7 @@
   border-bottom-left-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
   border-top: 0;
-  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.25), 0 0 0.1rem rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0.1rem 0.2rem rgba($noir, 0.25), 0 0 0.1rem rgba($noir, 0.35);
   color: $gris-23;
   font-size: 1.2rem;
   z-index: 999999;
@@ -55,8 +55,8 @@
       align-items: center;
       border-radius: 0;
       display: flex;
-      padding: 0;
       justify-content: center;
+      padding: 0;
       width: 3.4rem;
 
       .icon {
@@ -103,8 +103,9 @@
       a {
         color: $gris-f0;
         text-decoration: none;
-        &:hover {border-bottom: 0.1rem solid;}
       }
+
+      a:hover {border-bottom: 0.1rem solid;}
     }
   }
 
@@ -115,22 +116,26 @@
 
   &-input,
   &-button {
-    border: 0;
     background-color: $blanc;
+    border: 0;
+    border-radius: 0;
   }
 
   &-input {
-    border-radius: 0.2rem 0 0 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
     color: $gris-23;
     font-family: $muli;
     height: 100%;
-    padding: 1rem 0 1rem 2rem;
+    padding: 1rem 0;
+    padding-bottom: 2rem;
     width: 100%;
   }
 
   &-button {
     background-color: $vert-clair;
-    border-radius: 0 0.2rem 0.2rem 0;
+    border-bottom-right-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
     color: $blanc;
     cursor: pointer;
     fill: $blanc;
@@ -160,7 +165,8 @@
       }
 
       .search-box-input {
-        border-radius: 0.2rem 0 0 0.2rem;
+        border-bottom-left-radius: 0.2rem;
+        border-top-left-radius: 0.2rem;
         font-size: 1.2rem;
         overflow: hidden;
         padding-left: 1rem;
@@ -214,7 +220,6 @@
 }
 
 // instantsearch
-
 .ais-infinite-hits {
   &--showmore {
     text-align: center;

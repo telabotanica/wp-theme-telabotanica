@@ -1,12 +1,14 @@
-#field-visibility-settings-toggle-, #field-visibility-settings- {
+#field-visibility-settings-toggle-,
+#field-visibility-settings- {
   display: none;
 }
 
-.field_ville, .field_espece-dinteret {
+.field_ville,
+.field_espece-dinteret {
   .aa-suggestion {
-    padding: 1rem;
     cursor: pointer;
     font-size: 1.4rem;
+    padding: 1rem;
 
     &:hover {
       background-color: $gris-f0;

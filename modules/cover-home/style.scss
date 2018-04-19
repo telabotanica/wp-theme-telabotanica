@@ -45,15 +45,6 @@
       }
     }
 
-    &-icon {
-      align-items: center;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      margin: 0 auto 0.5rem;
-      transition: background-color 0.3s ease;
-    }
-
     var {
       display: block;
       font-style: normal;
@@ -61,25 +52,34 @@
       letter-spacing: 0;
       white-space: nowrap;
     }
+  }
 
-    &-item > a {
-      display: block;
-    }
+  &-stats-icon {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    transition: background-color 0.3s ease;
+  }
 
-    &-item-users .cover-home-stats-icon {
-      background-color: $orange-clair;
-      svg { fill: $orange; }
-    }
+  &-stats-item > a {
+    display: block;
+  }
 
-    &-item-observations .cover-home-stats-icon {
-      background-color: $vert-archi-clair;
-      svg { fill: $vert-clair; }
-    }
+  &-stats-item-users .cover-home-stats-icon {
+    background-color: $orange-clair;
+    svg { fill: $orange; }
+  }
 
-    &-item-get-involved .cover-home-stats-icon {
-      background-color: $turquoise-clair;
-      svg { fill: $turquoise; }
-    }
+  &-stats-item-observations .cover-home-stats-icon {
+    background-color: $vert-archi-clair;
+    svg { fill: $vert-clair; }
+  }
+
+  &-stats-item-get-involved .cover-home-stats-icon {
+    background-color: $turquoise-clair;
+    svg { fill: $turquoise; }
   }
 
   @include small {
@@ -110,33 +110,33 @@
       margin: 2rem -2rem 0;
       padding: 2rem;
 
-      &-icon {
-        height: 4.4rem;
-        width: 4.4rem;
-      }
-
       var {
         font-size: 1.6rem;
       }
+    }
 
-      &-item:nth-child(2n+1) {
-        margin-top: 3rem;
-      }
+    &-stats-icon {
+      height: 4.4rem;
+      width: 4.4rem;
+    }
 
-      &-item-users .cover-home-stats-icon svg {
-        height: 2rem;
-        width: 2.7rem;
-      }
+    &-stats-item:nth-child(2n+1) {
+      margin-top: 3rem;
+    }
 
-      &-item-observations .cover-home-stats-icon svg {
-        height: 2rem;
-        width: 2.7rem;
-      }
+    &-stats-item-users .cover-home-stats-icon svg {
+      height: 2rem;
+      width: 2.7rem;
+    }
 
-      &-item-get-involved .cover-home-stats-icon svg {
-        height: 2rem;
-        width: 2rem;
-      }
+    &-stats-item-observations .cover-home-stats-icon svg {
+      height: 2rem;
+      width: 2.7rem;
+    }
+
+    &-stats-item-get-involved .cover-home-stats-icon svg {
+      height: 2rem;
+      width: 2rem;
     }
   }
 
@@ -175,47 +175,47 @@
       position: relative;
       width: 40%;
 
-      &-icon {
-        height: 6.6rem;
-        width: 6.6rem;
-      }
-
       var {
         font-size: 2.6rem;
       }
+    }
 
-      &-item {
-        position: absolute;
+    &-stats-icon {
+      height: 6.6rem;
+      width: 6.6rem;
+    }
+
+    &-stats-item {
+      position: absolute;
+    }
+
+    &-stats-item-users {
+      left: 0;
+      top: 10%;
+
+      .cover-home-stats-icon svg {
+        height: 3rem;
+        width: 4rem;
       }
+    }
 
-      &-item-users {
-        left: 0;
-        top: 10%;
+    &-stats-item-observations {
+      right: 0;
+      top: 0;
 
-        .cover-home-stats-icon svg {
-          height: 3rem;
-          width: 4rem;
-        }
+      .cover-home-stats-icon svg {
+        height: 3rem;
+        width: 4rem;
       }
+    }
 
-      &-item-observations {
-        right: 0;
-        top: 0;
+    &-stats-item-get-involved {
+      bottom: 0;
+      left: 30%;
 
-        .cover-home-stats-icon svg {
-          height: 3rem;
-          width: 4rem;
-        }
-      }
-
-      &-item-get-involved {
-        bottom: 0;
-        left: 30%;
-
-        .cover-home-stats-icon svg {
-          height: 3rem;
-          width: 3rem;
-        }
+      .cover-home-stats-icon svg {
+        height: 3rem;
+        width: 3rem;
       }
     }
   }

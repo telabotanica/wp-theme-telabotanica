@@ -1,4 +1,4 @@
-@import "../header/_variables";
+@import "../header/variables";
 
 .toc {
   font-family: $ubuntu;
@@ -12,6 +12,7 @@
 
     body.admin-bar & {top: $header-height-fixed + $header-admin-bar-height;}
   }
+
   &.affix-bottom {
     position: absolute;
   }
@@ -54,11 +55,9 @@
       font-weight: $bold;
       text-decoration: none;
 
-      &:hover,
-      &:focus {
-        &::before {
-          color: $taupe;
-        }
+      &:hover::before,
+      &:focus::before {
+        color: $taupe;
       }
     }
   }
@@ -91,24 +90,22 @@
       margin-bottom: 0.5rem;
     }
 
-    &.is-active {
-      .toc-subitem-link {
-        color: $noir;
-        font-weight: $medium;
+    &.is-active .toc-subitem-link {
+      color: $noir;
+      font-weight: $medium;
 
-        > .icon {
-          display: inline-block;
-          fill: $vert-clair;
-          height: 2.2rem;
-          left: 0;
-          position: absolute;
-          transform: translate(-0.3rem, -0.3rem);
-          width: 2.2rem;
-        }
+      > .icon {
+        display: inline-block;
+        fill: $vert-clair;
+        height: 2.2rem;
+        left: 0;
+        position: absolute;
+        transform: translate(-0.3rem, -0.3rem);
+        width: 2.2rem;
+      }
 
-        &::before {
-          visibility: hidden;
-        }
+      &::before {
+        visibility: hidden;
       }
     }
 
@@ -138,10 +135,11 @@
       &:hover,
       &:focus {
         color: $gris-33;
+      }
 
-        &::before {
-          color: $gris-60;
-        }
+      &:hover::before,
+      &:focus::before {
+        color: $gris-60;
       }
     }
   }

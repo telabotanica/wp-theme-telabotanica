@@ -63,7 +63,8 @@
 
       &-awaiting-moderation {
         color: $violet;
-        margin: 0 0 0 1rem;
+        margin: 0;
+        margin-bottom: 1rem;
       }
 
       .edit-link {margin-left: 1rem;}

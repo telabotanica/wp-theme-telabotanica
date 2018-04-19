@@ -45,6 +45,7 @@ div.search-results {
       float: left;
       margin-right: 0.5rem;
     }
+
     &:hover &-title {
       text-decoration: underline;
     }
@@ -64,6 +65,7 @@ div.search-results {
       margin-top: 0.1rem;
       padding: 0 1rem;
     }
+
     &:hover &-more {
       border-color: $marron-fonce;
       color: $marron-fonce;
@@ -73,17 +75,17 @@ div.search-results {
   &-hit,
   .aa-suggestion {
     &::after {
-      visibility: hidden;
+      clear: both;
+      content: " ";
       display: block;
       font-size: 0;
-      content: " ";
-      clear: both;
       height: 0;
+      visibility: hidden;
     }
 
     a {
-      font-size: 1.2rem;
       color: $gris-23;
+      font-size: 1.2rem;
       font-weight: normal;
       text-decoration: none;
 
@@ -91,8 +93,8 @@ div.search-results {
     }
 
     em {
-      color: $noir;
       background: $jaune-clair;
+      color: $noir;
       font-style: normal;
     }
   }
@@ -108,9 +110,9 @@ div.search-results {
       }
 
       svg {
-        vertical-align: middle;
-        fill: rgba(0,0,0,.3);
+        fill: rgba($noir, 0.3);
         float: left;
+        vertical-align: middle;
       }
     }
 
@@ -132,8 +134,8 @@ div.search-results {
       font-size: 1.3rem;
 
       em {
-        color: $noir;
         background: $jaune-clair;
+        color: $noir;
         padding: 0 0 0.1rem;
       }
     }
@@ -145,22 +147,22 @@ div.search-results {
     }
 
     &-post-thumbnail {
-      float: left;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
       border-radius: 0.3rem;
-      width: 3.2rem;
+      float: left;
       height: 3.2rem;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+      width: 3.2rem;
     }
 
     &-group-thumbnail,
     &-user-thumbnail {
-      float: left;
-      margin-right: 1rem;
-      margin-bottom: 0.5rem;
       border-radius: 2.6rem;
-      width: 5.2rem;
+      float: left;
       height: 5.2rem;
+      margin-bottom: 0.5rem;
+      margin-right: 1rem;
+      width: 5.2rem;
     }
   }
 
@@ -202,14 +204,14 @@ div.search-results {
     width: 100%;
 
     &-branding {
-      padding: 1.5rem 1.4rem 0;
+      color: rgba($noir, 0.3);
       float: right;
-      color: rgba(0,0,0,.3);
       margin-bottom: 0.7rem;
+      padding: 1.5rem 1.4rem 0;
 
       .algolia-logo {
-        width: 5.5rem;
         vertical-align: top;
+        width: 5.5rem;
       }
     }
   }

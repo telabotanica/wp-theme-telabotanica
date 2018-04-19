@@ -9,15 +9,17 @@
 // based on the last method described at
 // http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin hidden-accessibly {
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px 1px 1px 1px); // IE6, IE7
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
   overflow: hidden;
   position: absolute !important;
   width: 1px;
-  /* many screen reader and browser combinations announce broken words as they would appear visually */
+  // many screen reader and browser combinations announce
+  // broken words as they would appear visually
   word-wrap: normal !important;
 }
+
 .hidden-accessibly,
 .screen-reader-text {
   @include hidden-accessibly;
@@ -27,6 +29,7 @@
 $small-page-padding: 20px;
 
 $large-min: $layout-wrapper-width + ($small-page-padding * 2);
+
 @mixin large {
   @media (min-width: $large-min) {
     @content;
@@ -35,6 +38,7 @@ $large-min: $layout-wrapper-width + ($small-page-padding * 2);
 
 $medium-min: 768px;
 $medium-max: $large-min - 0.1px;
+
 @mixin medium {
   @media (min-width: $medium-min) and (max-width: $medium-max) {
     @content;
@@ -48,25 +52,31 @@ $medium-max: $large-min - 0.1px;
 }
 
 $small-max: $medium-min - 0.1px;
+
 @mixin small {
   @media (max-width: $small-max) {
     @content;
   }
 }
+
 @mixin only-on-small {
   display: none !important;
+
   @include small {
     display: block !important;
   }
 }
+
 @mixin hidden-on-small {
   @include small {
     display: none !important;
   }
 }
+
 .hidden-on-small {
   @include hidden-on-small;
 }
+
 .only-on-small {
   @include only-on-small;
 }

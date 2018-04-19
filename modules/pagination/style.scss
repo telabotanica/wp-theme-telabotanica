@@ -46,9 +46,9 @@
     }
 
     &.prev {
+      left: 0;
       padding-left: 0;
       position: absolute;
-      left: 0;
 
       &::before {
         content: "<";

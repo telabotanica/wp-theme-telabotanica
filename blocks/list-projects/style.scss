@@ -28,7 +28,7 @@
 
     .card-project {
       &::after {
-        background: linear-gradient(to bottom, transparentize($blanc,1) 0%, transparentize($blanc,0) 100%);
+        background: linear-gradient(to bottom, transparentize($blanc, 1) 0%, transparentize($blanc, 0) 100%);
         bottom: 0;
         content: "";
         display: block;

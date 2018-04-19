@@ -33,6 +33,7 @@
       .block-contribute-item-title span {
         border-bottom-color: currentColor;
       }
+
       .block-contribute-item-button {
         color: $marron-fonce;
       }
@@ -129,8 +130,8 @@
 
     &-items {
       display: flex;
-      margin-bottom: 5rem;
       justify-content: space-between;
+      margin-bottom: 5rem;
     }
 
     &-item {
@@ -147,7 +148,7 @@
       margin-bottom: 2rem;
     }
 
-    &-text {
+    &-item-text {
       margin-bottom: 2rem;
     }
   }

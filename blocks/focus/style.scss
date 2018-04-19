@@ -80,10 +80,10 @@
         text-decoration: none;
       }
     }
-  }
 
-  &-intro + .component-buttons {
-    margin-top: 2rem;
+    + .component-buttons {
+      margin-top: 2rem;
+    }
   }
 
   &-header + &-content {
@@ -111,10 +111,10 @@
         font-weight: $bold;
         line-height: 3.3rem;
         margin-bottom: 1.5rem;
+      }
 
-        &:first-child {
-          margin-top: 1rem;
-        }
+      h3:first-child {
+        margin-top: 1rem;
       }
 
       .component-buttons {
@@ -149,9 +149,9 @@
     }
 
     &-credits {
+      bottom: 0;
       color: transparentize($gris-f0, 0.25);
       font-size: 1.2rem;
-      bottom: 0;
       padding: 1rem;
       position: absolute;
       right: 0;

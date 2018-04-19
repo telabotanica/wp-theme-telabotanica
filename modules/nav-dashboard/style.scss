@@ -17,7 +17,8 @@
 
     a {
       display: block;
-      padding: 0.6rem 3rem 0.6rem 6rem;
+      padding: 0.6rem 3rem;
+      padding-bottom: 6rem;
       position: relative;
     }
 
@@ -74,7 +75,8 @@
 
       a {
         border-top: 0.1rem solid $gris-44;
-        padding: 1.5rem 0.5rem 1.5rem 3rem;
+        padding: 1.5rem 0.5rem;
+        padding-bottom: 3rem;
       }
 
       .icon {

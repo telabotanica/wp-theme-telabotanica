@@ -80,7 +80,6 @@
 
     .search-box-input {
       background-color: $blanc;
-      border-radius: 0;
     }
 
     .search-box-button {
@@ -122,13 +121,14 @@
   }
 
   &-input {
+    border-radius: 0;
     border-bottom-left-radius: 0.2rem;
     border-top-left-radius: 0.2rem;
     color: $gris-23;
     font-family: $muli;
     height: 100%;
-    padding: 1rem 0;
-    padding-bottom: 2rem;
+    padding: 0.8rem 0 1.2rem;
+    padding-left: 2rem;
     width: 100%;
   }
 

@@ -1,39 +1,39 @@
 .block-focus {
-	background: center center no-repeat;
+  background: center center no-repeat;
   background-size: cover;
 
-	&.with-background-image {
-		position: relative;
+  &.with-background-image {
+    position: relative;
 
-		&:before {
-	    background-color: transparentize($bleu-nuit, 0.4);
-	    content: "";
-	    display: block;
-	    height: 100%;
-	    left: 0;
-	    position: absolute;
-	    top: 0;
-	    width: 100%;
-	  }
+    &::before {
+      background-color: transparentize($bleu-nuit, 0.4);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
 
-		&,
-		.block-focus-title {
-	    color: $blanc;
-		}
+    &,
+    .block-focus-title {
+      color: $blanc;
+    }
 
-		> * {position: relative;}
-		> .block-focus-credits {position: absolute;}
-	}
+    > * {position: relative;}
+    > .block-focus-credits {position: absolute;}
+  }
 
   > .component {
     margin: 0 auto 5rem;
     max-width: 100rem;
   }
 
-	> .component-image {
-		img {margin: 0 auto;}
-		.component-image-credits {text-align: center;}
-	}
+  > .component-image {
+    img {margin: 0 auto;}
+    .component-image-credits {text-align: center;}
+  }
 
   &-header {
     margin: 0 auto;
@@ -42,51 +42,48 @@
   }
 
   &-title {
-    color: $gris33;
+    color: $gris-33;
     font-family: $ubuntu;
-    font-size: 3.2rem;
     font-weight: $light;
-    line-height: 3.6rem;
-    margin: 0 0 2rem;
+    line-height: 1.2;
     text-align: center;
 
     .component + & {
       margin-top: 4rem;
     }
 
-	  &-icon {
-			align-items: center;
-			background-color: $vert-archi-clair;
-			border-radius: 50%;
-			display: flex;
-			height: 8rem;
-			justify-content: center;
-			margin: 0 auto 2rem;
-			width: 8rem;
+    &-icon {
+      align-items: center;
+      background-color: $vert-archi-clair;
+      border-radius: 50%;
+      display: flex;
+      height: 8rem;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      width: 8rem;
 
-			svg {
-				height: 3.8rem;
-				width: 3.8rem;
-			}
-		}
+      svg {
+        height: 3.8rem;
+        width: 3.8rem;
+      }
+    }
   }
 
-	&-intro {
-		font-size: 1.6rem;
-		line-height: 2.6rem;
+  &-intro {
+    line-height: 1.6;
 
-		a {
-			color: inherit;
+    a {
+      color: inherit;
 
-			&:hover,
-			&:focus {
-				text-decoration: none;
-			}
-		}
-	}
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
 
-  &-intro + .component-buttons {
-    margin-top: 2rem;
+    + .component-buttons {
+      margin-top: 2rem;
+    }
   }
 
   &-header + &-content {
@@ -99,25 +96,25 @@
     margin: 0 auto;
     max-width: 118rem;
 
-		> .component-embed {
-			width: 50rem;
-		}
+    > .component-embed {
+      width: 50rem;
+    }
 
     &-text {
       margin-left: 4rem;
       width: 40%;
 
       h3 {
-        color: $gris23;
+        color: $gris-23;
         font-family: $ubuntu;
         font-size: 2.6rem;
         font-weight: $bold;
         line-height: 3.3rem;
         margin-bottom: 1.5rem;
+      }
 
-        &:first-child {
-          margin-top: 1rem;
-        }
+      h3:first-child {
+        margin-top: 1rem;
       }
 
       .component-buttons {
@@ -126,19 +123,44 @@
     }
   }
 
-  &-credits {
-    color: transparentize($grisF0, 0.25);
-    font-size: 1.2rem;
-    bottom: 0;
-    padding: 1rem;
-    position: absolute;
-    right: 0;
+  @include small {
+    &-title {
+      font-size: 2rem;
+      margin: 0 0 1rem;
+    }
 
-    a {
-      color: $grisF0;
-      text-decoration: none;
-      &:hover {border-bottom: 0.1rem solid;}
+    &-intro {
+      font-size: 1.4rem;
+    }
+
+    &-credits {
+      display: none;
     }
   }
 
+  @include large-and-medium {
+    &-title {
+      font-size: 3.2rem;
+      margin: 0 0 2rem;
+    }
+
+    &-intro {
+      font-size: 1.6rem;
+    }
+
+    &-credits {
+      bottom: 0;
+      color: transparentize($gris-f0, 0.25);
+      font-size: 1.2rem;
+      padding: 1rem;
+      position: absolute;
+      right: 0;
+
+      a {
+        color: $gris-f0;
+        text-decoration: none;
+        &:hover {border-bottom: 0.1rem solid;}
+      }
+    }
+  }
 }

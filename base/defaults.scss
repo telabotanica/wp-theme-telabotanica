@@ -2,7 +2,10 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -12,5 +15,7 @@ html {
   color: inherit;
   text-shadow: inherit;
 }
+
 img::selection {background: transparent;}
+
 body {-webkit-tap-highlight-color: transparentize($vert-clair, 0.6);}

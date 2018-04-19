@@ -20,10 +20,10 @@
         border-bottom-color: $vert-bouton;
         color: $marron-fonce;
       }
-    }
 
-    > li + li {
-      margin-left: 4rem;
+      & + & {
+        margin-left: 4rem;
+      }
     }
 
     a {
@@ -34,18 +34,13 @@
       text-decoration: none;
       transition: border-bottom 0.2s ease;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         border-bottom-color: transparentize($marron, 0.8);
       }
 
-      span {
-        &:before {
-          content: "(";
-        }
-        &:after {
-          content: ")";
-        }
-      }
+      span::before {content: "(";}
+      span::after {content: ")";}
     }
   }
 
@@ -63,8 +58,9 @@
       fill: $marron;
       padding: 1rem;
 
-      &:hover, &:focus {
-        fill: $gris33;
+      &:hover,
+      &:focus {
+        fill: $gris-33;
       }
     }
   }

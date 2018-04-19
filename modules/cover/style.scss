@@ -12,7 +12,7 @@
     min-height: 27vw;
   }
 
-  &:before {
+  &::before {
     background-color: transparentize($bleu-nuit, 0.6);
     content: "";
     display: block;
@@ -53,7 +53,8 @@
       text-decoration: none;
       transition: border 0.2s ease;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         border-bottom-color: transparent;
       }
     }
@@ -64,24 +65,32 @@
   }
 
   &-search-box {
-		float: right;
-		margin-top: 1rem;
-		position: relative;
-		width: 44rem;
+    float: right;
+    margin-top: 1rem;
+    position: relative;
+    width: 44rem;
   }
 
-  &-credits {
-    color: transparentize($grisF0, 0.25);
-    font-size: 1.2rem;
-    bottom: 0;
-    padding: 1rem;
-    position: absolute;
-    right: 0;
+  @include small {
+    &-credits {
+      display: none;
+    }
+  }
 
-    a {
-      color: $grisF0;
-      text-decoration: none;
-      &:hover {border-bottom: 0.1rem solid;}
+  @include large-and-medium {
+    &-credits {
+      bottom: 0;
+      color: transparentize($gris-f0, 0.25);
+      font-size: 1.2rem;
+      padding: 1rem;
+      position: absolute;
+      right: 0;
+
+      a {
+        color: $gris-f0;
+        text-decoration: none;
+        &:hover {border-bottom: 0.1rem solid;}
+      }
     }
   }
 }

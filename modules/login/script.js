@@ -5,65 +5,65 @@ Tela.modules = Tela.modules || {};
 
 Tela.modules.login = (function(){
 
-	function module(selector){
-		var $el = $(selector),
-			$inputLogin,
-			$defaultProvider,
-			$labelsProviders,
-			$radiosProviders;
+  function module(selector){
+    var $el = $(selector),
+      $inputLogin,
+      $defaultProvider,
+      $labelsProviders,
+      $radiosProviders;
 
-		function init(){
-			$el.addClass('has-js');
+    function init(){
+      $el.addClass('has-js');
 
-			$inputLogin = $('#user_login');
-			$labelsProviders = $el.find('.login-providers label');
-			$defaultProvider = $labelsProviders.filter('.login-provider-default');
-			$radiosProviders = $el.find('.login-providers input');
+      $inputLogin = $('#user_login');
+      $labelsProviders = $el.find('.login-providers label');
+      $defaultProvider = $labelsProviders.filter('.login-provider-default');
+      $radiosProviders = $el.find('.login-providers input');
 
-			$defaultProvider.hide();
-			replaceDefaultWithIcon();
+      $defaultProvider.hide();
+      replaceDefaultWithIcon();
 
-			$radiosProviders.on('change', onChangeRadio);
-		}
+      $radiosProviders.on('change', onChangeRadio);
+    }
 
-		function replaceDefaultWithIcon(){
-			var iconClose = iconTemplate({data: {icon: 'close'}});
+    function replaceDefaultWithIcon(){
+      var iconClose = iconTemplate({data: {icon: 'close'}});
 
-			// Remove text nodes
-			$defaultProvider.contents().filter(function(){return this.nodeType === 3;}).remove();
+      // Remove text nodes
+      $defaultProvider.contents().filter(function(){return this.nodeType === 3;}).remove();
 
-			// Append icon
-			$defaultProvider.append(iconClose);
-		}
+      // Append icon
+      $defaultProvider.append(iconClose);
+    }
 
-		function onChangeRadio(e){
-			var $this = $(this);
-			$labelsProviders.removeClass('active');
-			if ($this.is(':checked')) {
-				$this.closest('label').addClass('active');
-			}
+    function onChangeRadio(e){
+      var $this = $(this);
+      $labelsProviders.removeClass('active');
+      if ($this.is(':checked')) {
+        $this.closest('label').addClass('active');
+      }
 
-			// Show the default provider only if another one was checked
-			$defaultProvider.toggle($this.val() !== '');
+      // Show the default provider only if another one was checked
+      $defaultProvider.toggle($this.val() !== '');
 
-			// Focus the login input
-			$inputLogin.trigger('focus');
-		}
+      // Focus the login input
+      $inputLogin.trigger('focus');
+    }
 
 
-		init();
+    init();
 
-		return $el;
-	}
+    return $el;
+  }
 
-	return function(selector){
-		return $(selector).each(function(){
-			module(this);
-		});
-	};
+  return function(selector){
+    return $(selector).each(function(){
+      module(this);
+    });
+  };
 
 })();
 
 $(document).ready(function(){
-	Tela.modules.login('#login');
+  Tela.modules.login('#login');
 });

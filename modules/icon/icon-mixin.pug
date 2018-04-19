@@ -1,9 +1,9 @@
 //- This file is only meant to be included in other modules
 //- and then used as a mixin: +icon({icon: 'my-icon'})
 mixin icon(data)
-	- var href = "#icon-" + data.icon;
-	- var modifiers = "icon-" + data.icon;
-	if data.color
-		- modifiers = modifiers + " icon-color-" + data.color
-	svg.icon(aria-hidden="true" role="img" class=modifiers)
-		use(xlink:href=href)
+  - var href = "#icon-" + data.icon;
+  - var modifiers = "icon-" + data.icon;
+  if data.color
+    - modifiers = modifiers + " icon-color-" + data.color
+  svg.icon(aria-hidden="true" role="img" class=modifiers)
+    use(xlink:href=href)

@@ -1,216 +1,236 @@
 .aa-dropdown-menu {
-	// we set the width in JS
-	background-color: $blanc;
-	border-bottom-left-radius: 0.4rem;
-	border-bottom-right-radius: 0.4rem;
-	border-top: 0;
-	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.25), 0 0 0.1rem rgba(0, 0, 0, 0.35);
-	color: $gris23;
-	font-size: 1.2rem;
-	z-index: 999999;
+  // we set the width in JS
+  background-color: $blanc;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-top: 0;
+  box-shadow: 0 0.1rem 0.2rem rgba($noir, 0.25), 0 0 0.1rem rgba($noir, 0.35);
+  color: $gris-23;
+  font-size: 1.2rem;
+  z-index: 999999;
 
-	@media only screen and (max-width: 768px) {
-		// For mobile phones:
-		max-width: inherit;
-		min-width: inherit;
-		width: 70%;
-	}
+  @media only screen and (max-width: 768px) {
+    // For mobile phones:
+    max-width: inherit;
+    min-width: inherit;
+    width: 70%;
+  }
 
-	.aa-input,
-	.aa-hint {
-		width: 100%;
-	}
+  .aa-input,
+  .aa-hint {
+    width: 100%;
+  }
 
-	.aa-hint {color: $gris60;}
+  .aa-hint {color: $gris-60;}
 
-	.clear {
-		clear: both;
-	}
+  .clear {
+    clear: both;
+  }
 }
 
 .search-box {
-	&-wrapper {
-		display: flex;
-		height: 5.7rem;
-		justify-content: space-between;
-		width: 100%;
-	}
+  &-wrapper {
+    display: flex;
+    height: 5.7rem;
+    justify-content: space-between;
+    width: 100%;
+  }
 
-	// modifiers
-	&.tiny {
-		height: 3.2rem;
+  // modifiers
+  &.tiny {
+    height: 3.2rem;
 
-		.search-box-wrapper {
-			height: 3.2rem;
-		}
+    .search-box-wrapper {
+      height: 3.2rem;
+    }
 
-		.search-box-input {
-			background-color: $grisF4;
-			padding: 0;
-			transition: width 0.3s ease;
-			width: 0;
-		}
+    .search-box-input {
+      background-color: $gris-f4;
+      padding: 0;
+      transition: width 0.3s ease;
+      width: 0;
+    }
 
-		.search-box-button {
-			align-items: center;
-			border-radius: 0;
-			display: flex;
-			padding: 0;
-			justify-content: center;
-			width: 3.4rem;
+    .search-box-button {
+      align-items: center;
+      border-radius: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      width: 3.4rem;
 
-			.icon {
-				height: 1.2rem;
-				width: 1.2rem;
-			}
-		}
+      .icon {
+        height: 1.2rem;
+        width: 1.2rem;
+      }
+    }
 
-		&.is-open {
-			.search-box-input {
-				padding: 0 0.8rem;
-				width: 16rem;
-			}
-		}
-	}
+    &.is-open {
+      .search-box-input {
+        padding: 0 0.8rem;
+        width: 16rem;
+      }
+    }
+  }
 
-	&.large {
-		.search-box-wrapper {
-			background-color: transparent;
-			height: 5.6rem;
-		}
+  &.large {
+    .search-box-wrapper {
+      background-color: transparent;
+    }
 
-		.search-box-input {
-			background-color: $blanc;
-			border-radius: 0;
-		}
+    .search-box-input {
+      background-color: $blanc;
+      border-radius: 0;
+    }
 
-		.search-box-button {
-			align-items: center;
-			display: flex;
-		}
+    .search-box-button {
+      align-items: center;
+      display: flex;
+    }
 
-		.aa-dropdown-menu {
-			border: 0;
-			transform: translateX(-4.5rem);
-			width: 62.5rem;
-		}
+    .aa-dropdown-menu {
+      border: 0;
+      transform: translateX(-4.5rem);
+    }
 
-		.ais-search-box--powered-by {
-			bottom: -2.5rem;
-			color: transparentize($grisF0, 0.25);
-			font-size: 1.2rem;
-			position: absolute;
-			right: 0;
+    .ais-search-box--powered-by {
+      bottom: -2.5rem;
+      color: transparentize($gris-f0, 0.25);
+      font-size: 1.2rem;
+      position: absolute;
+      right: 0;
 
-			a {
-				color: $grisF0;
-				text-decoration: none;
-				&:hover {border-bottom: 0.1rem solid;}
-			}
-		}
-	}
+      a {
+        color: $gris-f0;
+        text-decoration: none;
+      }
 
-	&-input,
-	.algolia-autocomplete {
-		flex-grow: 1;
-	}
+      a:hover {border-bottom: 0.1rem solid;}
+    }
+  }
 
-	&-input,
-	&-button {
-		border: 0;
-		background-color: $blanc;
-	}
+  &-input,
+  .algolia-autocomplete {
+    flex-grow: 1;
+  }
 
-	&-input {
-		border-radius: 0.2rem 0 0 0.2rem;
-		color: $gris23;
-		font-family: $muli;
-		height: 100%;
-		padding: 1rem 0 1rem 2rem;
-		width: 100%;
-	}
+  &-input,
+  &-button {
+    background-color: $blanc;
+    border: 0;
+    border-radius: 0;
+  }
 
-	&-button {
-		background-color: $vert-clair;
-		border-radius: 0 0.2rem 0.2rem 0;
-		color: $blanc;
-		cursor: pointer;
-		fill: $blanc;
-		padding: 0 2rem;
-	}
+  &-input {
+    border-bottom-left-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    color: $gris-23;
+    font-family: $muli;
+    height: 100%;
+    padding: 1rem 0;
+    padding-bottom: 2rem;
+    width: 100%;
+  }
 
-	&-suggestions {
-		color: transparentize($grisF0, 0.25);
-		margin-top: 2rem;
+  &-button {
+    background-color: $vert-clair;
+    border-bottom-right-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    color: $blanc;
+    cursor: pointer;
+    fill: $blanc;
+    padding: 0 2rem;
+  }
 
-		a {
-			color: inherit;
-			text-decoration: underline;
+  &-suggestions {
+    color: transparentize($gris-f0, 0.25);
+    line-height: 1.4;
 
-			&:hover,
-			&:focus {
-				color: $blanc;
-				text-decoration: none;
-			}
-		}
-	}
+    a {
+      color: inherit;
+      text-decoration: underline;
 
-	@include small {
+      &:hover,
+      &:focus {
+        color: $blanc;
+        text-decoration: none;
+      }
+    }
+  }
 
-		&.large {
-			.search-box-input {
-				border-radius: 0.2rem 0 0 0.2rem;
-				overflow: hidden;
-				padding-left: 2rem;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
+  @include small {
+    &.large {
+      .search-box-wrapper {
+        height: 3.6rem;
+      }
 
-			.search-box-button {
-				background-color: $blanc;
-				font-size: 2rem;
-				padding: 0 2rem 0 1rem;
-			}
-		}
+      .search-box-input {
+        border-bottom-left-radius: 0.2rem;
+        border-top-left-radius: 0.2rem;
+        font-size: 1.2rem;
+        overflow: hidden;
+        padding-left: 1rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-	}
+      .search-box-button {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+    }
 
-	@include large-and-medium {
+    &-suggestions {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+    }
+  }
 
-		&.tiny {
-			.search-box-input {
-				font-size: 1.2rem;
-			}
-		}
+  @include large-and-medium {
+    &.tiny {
+      .search-box-input {
+        font-size: 1.2rem;
+      }
+    }
 
-		&.large {
-			.search-box-input {
-				font-size: 1.8rem;
-			}
+    &.large {
+      .search-box-wrapper {
+        height: 5.6rem;
+      }
 
-			.search-box-button {
-				color: $blanc;
-				font-size: 2.7rem;
-			}
-		}
+      .search-box-input {
+        font-size: 1.8rem;
+      }
 
-	}
+      .search-box-button {
+        color: $blanc;
+        font-size: 2.7rem;
+      }
+
+      .aa-dropdown-menu {
+        width: 62.5rem;
+      }
+    }
+
+    &-suggestions {
+      margin-top: 2rem;
+    }
+  }
 
 }
 
 // instantsearch
-
 .ais-infinite-hits {
-	&--showmore {
-		text-align: center;
+  &--showmore {
+    text-align: center;
 
-		button {
-			@extend .button;
-		}
+    button {
+      @extend .button;
+    }
 
-		// Hide instantsearch infiniteHits button when disabled
-		button[disabled] {
-			display: none;
-		}
-	}
+    // Hide instantsearch infiniteHits button when disabled
+    button[disabled] {
+      display: none;
+    }
+  }
 }

@@ -1,67 +1,67 @@
 @import "../../modules/header/_variables";
 
 .component-title {
-	$title-anchor-offset: 4rem;
+  $title-anchor-offset: 4rem;
 
-	color: $gris23;
-	font-family: $ubuntu;
-	margin: 4rem 0 2rem;
-	position: relative;
+  color: $gris-23;
+  font-family: $ubuntu;
+  margin: 4rem 0 2rem;
+  position: relative;
 
-	& + & {margin-top: 0;}
-	.component + & {margin-top: 4rem;}
-	& + .component-text,
-	& + .component-intro {margin-top: 2rem;}
+  & + & {margin-top: 0;}
+  .component + & {margin-top: 4rem;}
+  & + .component-text,
+  & + .component-intro {margin-top: 2rem;}
 
-	&.level-2 {
-		margin-top: 6rem;
-	}
+  &.level-2 {
+    margin-top: 6rem;
+  }
 
-	&-anchor {
-		display: block;
-		height: 0;
-		margin-top: -1 * ($header-height-fixed + $title-anchor-offset); // offset for fixed header
-		position: absolute;
-		top: 0;
-		visibility: hidden;
+  &-anchor {
+    display: block;
+    height: 0;
+    margin-top: -1 * ($header-height-fixed + $title-anchor-offset); // offset for fixed header
+    position: absolute;
+    top: 0;
+    visibility: hidden;
 
-		body.admin-bar & {
-			margin-top: -1 * ($header-height-fixed + $title-anchor-offset + $header-admin-bar-height);
-		}
-	}
+    body.admin-bar & {
+      margin-top: -1 * ($header-height-fixed + $title-anchor-offset + $header-admin-bar-height);
+    }
+  }
 
-	h2 {
-		font-size: 2.6rem;
-		font-weight: $bold;
-		line-height: 3.2rem;
-		margin: 0;
-		position: relative;
+  h2 {
+    font-size: 2.6rem;
+    font-weight: $bold;
+    line-height: 3.2rem;
+    margin: 0;
+    position: relative;
 
-		&:before {
-			background-color: $vert-clair-vif;
-			content: "";
-			display: block;
-			height: 100%;
-			position: absolute;
-			left: -5rem;
-			width: 0.4rem;
-		}
-	}
+    &::before {
+      background-color: $vert-clair-vif;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      left: -5rem;
+      width: 0.4rem;
+    }
+  }
 
-	h3 {
-		font-size: 2.4rem;
-		font-weight: $light;
-		line-height: 3rem;
-		margin: 0;
-	}
+  h3 {
+    font-size: 2.4rem;
+    font-weight: $light;
+    line-height: 3rem;
+    margin: 0;
+  }
 
-	h4 {
-		font-size: 2rem;
-		font-weight: $light;
-		line-height: 2.6rem;
-		margin: 0;
-	}
+  h4 {
+    font-size: 2rem;
+    font-weight: $light;
+    line-height: 2.6rem;
+    margin: 0;
+  }
 
-	&:first-child {margin-top: 0;}
+  &:first-child {margin-top: 0;}
 
 }

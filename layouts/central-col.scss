@@ -16,25 +16,25 @@
     }
   }
 
-	// Larger width
-	&.is-wide {
-		> .layout-wrapper {
-			> .layout-content {
-				width: 100rem;
-			}
-		}
-	}
+  // Larger width
+  &.is-wide {
+    > .layout-wrapper {
+      > .layout-content {
+        width: 100rem;
+      }
+    }
+  }
 
-	// No margin on top
-	&.adjacent-top {
-		> .layout-wrapper {
-			margin-top: 0;
-		}
-	}
+  // No margin on top
+  &.adjacent-top {
+    > .layout-wrapper {
+      margin-top: 0;
+    }
+  }
 
   &.background-beige {
     background-color: $beige2;
-		overflow: hidden;
+    overflow: hidden;
   }
 
 }

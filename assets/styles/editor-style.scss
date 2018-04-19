@@ -8,18 +8,18 @@ html {
 }
 
 body {
+  color: $gris-33;
   font-family: $muli;
   font-size: 1.5rem;
   font-weight: $light;
-
-  color: $gris33;
   line-height: 2.4rem;
   max-width: 70rem;
+
+  &.post-type-page {
+    max-width: 62rem;
+  }
 }
 
-body.post-type-page {
-  max-width: 62rem;
-}
 
 p {
   margin: 0 0 2rem;

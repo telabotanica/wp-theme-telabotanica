@@ -1,8 +1,7 @@
 .component-intro {
-  color: $gris33;
-  font-size: 1.8rem;
+  color: $gris-33;
   font-weight: $regular;
-  line-height: 3rem;
+  line-height: 1.7;
 
   p {
     margin: 0 0 2rem;
@@ -13,8 +12,17 @@
     color: $turquoise-fonce;
     text-decoration: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparentize($turquoise-fonce, 0.9);
     }
+  }
+
+  @include small {
+    font-size: 1.4rem;
+  }
+
+  @include large-and-medium {
+    font-size: 1.8rem;
   }
 }

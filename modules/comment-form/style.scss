@@ -1,67 +1,67 @@
 .comment-form {
-	color: $marron;
+  color: $marron;
 
-	.comment-reply-title {
-		color: $gris23;
-		font-family: $ubuntu;
-		font-size: 2.6rem;
-		font-weight: $bold;
-		margin: 0;
-	}
+  .comment-reply-title {
+    color: $gris-23;
+    font-family: $ubuntu;
+    font-size: 2.6rem;
+    font-weight: $bold;
+    margin: 0;
+  }
 
-	.comment-notes,
-	.logged-in-as {
-		font-size: 1.3rem;
-		margin: 0.5rem 0 3rem;
+  .comment-notes,
+  .logged-in-as {
+    font-size: 1.3rem;
+    margin: 0.5rem 0 3rem;
 
-		a {
-			color: inherit;
-			text-decoration: none;
+    a {
+      color: inherit;
+      text-decoration: none;
 
-			&:hover {
-				color: $marron-fonce;
-				text-decoration: underline;
-			}
-		}
-	}
+      &:hover {
+        color: $marron-fonce;
+        text-decoration: underline;
+      }
+    }
+  }
 
-	p {
-		margin: 0 0 2.5rem;
-	}
+  p {
+    margin: 0 0 2.5rem;
+  }
 
-	label {
-		display: block;
-		font-family: $ubuntu;
-		font-size: 1.4rem;
-		font-weight: $regular;
-		letter-spacing: 0.1rem;
-		line-height: 2.5rem;
-		margin: 0;
-		text-transform: uppercase;
-	}
+  label {
+    display: block;
+    font-family: $ubuntu;
+    font-size: 1.4rem;
+    font-weight: $regular;
+    letter-spacing: 0.1rem;
+    line-height: 2.5rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
 
-	textarea,
-	input[type="text"],
-	input[type="email"],
-	input[type="url"] {
-		border: 0;
-		box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
-		padding: 1.2rem;
-		width: 100%;
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="url"] {
+    border: 0;
+    box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
+    padding: 1.2rem;
+    width: 100%;
 
-		.comments & {
-			background-color: $beige2;
-			box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.8);
-		}
-	}
+    .comments & {
+      background-color: $beige2;
+      box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.8);
+    }
+  }
 
 
-	.required {
-		color: $turquoise-fonce;
-	}
+  .required {
+    color: $turquoise-fonce;
+  }
 
-	.form-submit {
-		text-align: center;
-		padding-top: 1.5rem;
-	}
+  .form-submit {
+    text-align: center;
+    padding-top: 1.5rem;
+  }
 }

@@ -1,239 +1,255 @@
 // We target div to prevent the style
 // to apply to body.search-results (class added by Wordpress)
 div.search-results {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+  @include large-and-medium {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .search-results {
-	// warning: don't apply any style to .search-results directly (see above)
+  // warning: don't apply any style to .search-results directly (see above)
 
-	&-index {
-		margin-bottom: 2rem;
-		position: relative;
-		width: 33.33%;
+  &-index {
+    margin-bottom: 2rem;
+    position: relative;
 
-		&:before,
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-		}
+    &:nth-child(1)::before,
+    &:nth-child(2)::before,
+    &:nth-child(3)::before,
+    &:nth-child(3n)::after {display: none;}
 
-		&:before {
-			border-top: 0.1rem solid $grisEB;
-			height: 0;
-			left: 2.5rem;
-			top: 0;
-			width: calc(100% - 5rem);
-		}
+    &.has-more {
+      padding-bottom: 4rem;
+    }
+  }
 
-		&:after {
-			border-right: 0.1rem solid $grisEB;
-			height: calc(100% - 2.5rem);
-			right: 0;
-			top: 2.5rem;
-			width: 0;
-		}
+  &-header {
+    display: block;
+    font-family: $ubuntu;
+    font-weight: $regular;
+    line-height: 2.2rem;
+    margin: 2.5rem 2.5rem 1.5rem;
+    overflow: hidden;
 
-		&:nth-child(1):before,
-		&:nth-child(2):before,
-		&:nth-child(3):before,
-		&:nth-child(3n):after {display: none;}
+    &-title,
+    &-count {
+      font-size: 1.4rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+    }
 
-		&.has-more {
-			padding-bottom: 4rem;
-		}
-	}
+    &-title {
+      color: $vert-fonce;
+      float: left;
+      margin-right: 0.5rem;
+    }
 
-	&-header {
-		display: block;
-		font-family: $ubuntu;
-		font-weight: $regular;
-		line-height: 2.2rem;
-		margin: 2.5rem 2.5rem 1.5rem;
-		overflow: hidden;
+    &:hover &-title {
+      text-decoration: underline;
+    }
 
-		&-title,
-		&-count {
-			font-size: 1.4rem;
-			letter-spacing: 0.1rem;
-			text-transform: uppercase;
-		}
+    &-count {
+      color: $orange;
+      float: left;
+    }
 
-		&-title {
-			color: $vert-fonce;
-			float: left;
-			margin-right: 0.5rem;
-		}
-		&:hover &-title {
-			text-decoration: underline;
-		}
+    &-more {
+      border: 0.1rem solid $marron;
+      border-radius: 1.2rem;
+      color: $marron;
+      float: right;
+      font-size: 1.2rem;
+      line-height: 2.2rem;
+      margin-top: 0.1rem;
+      padding: 0 1rem;
+    }
 
-		&-count {
-			color: $orange;
-			float: left;
-		}
+    &:hover &-more {
+      border-color: $marron-fonce;
+      color: $marron-fonce;
+    }
+  }
 
-		&-more {
-			border: 0.1rem solid $marron;
-			border-radius: 1.2rem;
-			color: $marron;
-			float: right;
-			font-size: 1.2rem;
-			line-height: 2.2rem;
-			margin-top: 0.1rem;
-			padding: 0 1rem;
-		}
-		&:hover &-more {
-			border-color: $marron-fonce;
-			color: $marron-fonce;
-		}
-	}
+  &-hit,
+  .aa-suggestion {
+    &::after {
+      clear: both;
+      content: " ";
+      display: block;
+      font-size: 0;
+      height: 0;
+      visibility: hidden;
+    }
 
-	&-hit,
-	.aa-suggestion {
-		&:after {
-			visibility: hidden;
-			display: block;
-			font-size: 0;
-			content: " ";
-			clear: both;
-			height: 0;
-		}
+    a {
+      color: $gris-23;
+      font-size: 1.2rem;
+      font-weight: normal;
+      text-decoration: none;
 
-		a {
-			font-size: 1.2rem;
-			color: $gris23;
-			font-weight: normal;
-			text-decoration: none;
+      &:hover {text-decoration: none;}
+    }
 
-			&:hover {text-decoration: none;}
-		}
+    em {
+      background: $jaune-clair;
+      color: $noir;
+      font-style: normal;
+    }
+  }
 
-		em {
-			color: $noir;
-			background: $jaune-clair;
-			font-style: normal;
-		}
-	}
+  &-hit {
+    &-link {
+      display: block;
+      padding: 0.5rem 2.5rem;
 
-	&-hit {
-		&-link {
-			display: block;
-			padding: 0.5rem 2.5rem;
+      .aa-suggestion.aa-cursor &,
+      &:hover {
+        background-color: $gris-f4;
+      }
 
-			.aa-suggestion.aa-cursor &,
-			&:hover {
-				background-color: $grisF4;
-			}
+      svg {
+        fill: rgba($noir, 0.3);
+        float: left;
+        vertical-align: middle;
+      }
+    }
 
-			svg {
-				vertical-align: middle;
-				fill: rgba(0,0,0,.3);
-				float: left;
-			}
-		}
+    &-post-title {
+      color: $gris-23;
+      display: block;
+      font-family: $ubuntu;
+      font-size: 1.4rem;
+      font-weight: $bold;
+      margin-bottom: 0.2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-		&-post-title {
-			color: $gris23;
-			display: block;
-			font-family: $ubuntu;
-			font-size: 1.4rem;
-			font-weight: $bold;
-			margin-bottom: 0.2rem;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
+    &-post-content {
+      color: $gris-44;
+      display: block;
+      font-size: 1.3rem;
 
-		&-post-content {
-			color: $gris44;
-			display: block;
-			font-size: 1.3rem;
+      em {
+        background: $jaune-clair;
+        color: $noir;
+        padding: 0 0 0.1rem;
+      }
+    }
 
-			em {
-				color: $noir;
-				background: $jaune-clair;
-				padding: 0 0 0.1rem;
-			}
-		}
+    &-post-attributes &-post-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-		&-post-attributes &-post-content {
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
+    &-post-thumbnail {
+      border-radius: 0.3rem;
+      float: left;
+      height: 3.2rem;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+      width: 3.2rem;
+    }
 
-		&-post-thumbnail {
-			float: left;
-			margin-right: 0.5rem;
-			margin-bottom: 0.5rem;
-			border-radius: 0.3rem;
-			width: 3.2rem;
-			height: 3.2rem;
-		}
+    &-group-thumbnail,
+    &-user-thumbnail {
+      border-radius: 2.6rem;
+      float: left;
+      height: 5.2rem;
+      margin-bottom: 0.5rem;
+      margin-right: 1rem;
+      width: 5.2rem;
+    }
+  }
 
-		&-group-thumbnail,
-		&-user-thumbnail {
-			float: left;
-			margin-right: 1rem;
-			margin-bottom: 0.5rem;
-			border-radius: 2.6rem;
-			width: 5.2rem;
-			height: 5.2rem;
-		}
-	}
+  &-empty {
+    clear: both;
+    color: $gris-aa;
+    font-size: 1.3rem;
+    padding: 0 2.5rem 2.5rem;
 
-	&-empty {
-		color: $grisAA;
-		font-size: 1.3rem;
-		clear: both;
-		padding: 0 2.5rem 2.5rem;
+    &-query {font-weight: bold;}
+  }
 
-		&-query {font-weight: bold;}
-	}
+  &-more {
+    bottom: 0;
+    margin: 1rem auto 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
 
-	&-more {
-		bottom: 0;
-		margin: 1rem auto 0;
-		position: absolute;
-		text-align: center;
-		width: 100%;
+    > a {
+      border: 0.2rem solid $taupe;
+      border-radius: 1.45rem;
+      color: $taupe;
+      display: inline-block;
+      font-size: 1.3rem;
+      line-height: 2.5rem;
+      padding: 0 1.5rem;
+      text-decoration: none;
 
-		> a {
-			border: 0.2rem solid $taupe;
-			border-radius: 1.45rem;
-			color: $taupe;
-			display: inline-block;
-			font-size: 1.3rem;
-			line-height: 2.5rem;
-			padding: 0 1.5rem;
-			text-decoration: none;
+      &:hover,
+      &:focus {
+        border-color: $marron-fonce;
+        color: $marron-fonce;
+      }
+    }
+  }
 
-			&:hover,
-			&:focus {
-				border-color: $marron-fonce;
-				color: $marron-fonce;
-			}
-		}
-	}
+  &-footer {
+    width: 100%;
 
-	&-footer {
-		width: 100%;
+    &-branding {
+      color: rgba($noir, 0.3);
+      float: right;
+      margin-bottom: 0.7rem;
+      padding: 1.5rem 1.4rem 0;
 
-		&-branding {
-			padding: 1.5rem 1.4rem 0;
-			float: right;
-			color: rgba(0,0,0,.3);
-			margin-bottom: 0.7rem;
+      .algolia-logo {
+        vertical-align: top;
+        width: 5.5rem;
+      }
+    }
+  }
 
-			.algolia-logo {
-				width: 5.5rem;
-				vertical-align: top;
-			}
-		}
-	}
+  @include small {
+    &-index {
+      & + & {
+        border-top: 0.1rem solid $gris-eb;
+      }
+    }
+  }
 
+  @include large-and-medium {
+    &-index {
+      width: 33.33%;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+      }
+
+      &::before {
+        border-top: 0.1rem solid $gris-eb;
+        height: 0;
+        left: 2.5rem;
+        top: 0;
+        width: calc(100% - 5rem);
+      }
+
+      &::after {
+        border-right: 0.1rem solid $gris-eb;
+        height: calc(100% - 2.5rem);
+        right: 0;
+        top: 2.5rem;
+        width: 0;
+      }
+    }
+  }
 }

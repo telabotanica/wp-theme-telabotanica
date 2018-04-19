@@ -19,11 +19,11 @@
  * @since TelaBotanica 0.1
  */
 function telabotanica_switch_theme() {
-	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
+  switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
 
-	unset( $_GET['activated'] );
+  unset( $_GET['activated'] );
 
-	add_action( 'admin_notices', 'telabotanica_upgrade_notice' );
+  add_action( 'admin_notices', 'telabotanica_upgrade_notice' );
 }
 add_action( 'after_switch_theme', 'telabotanica_switch_theme' );
 
@@ -38,8 +38,8 @@ add_action( 'after_switch_theme', 'telabotanica_switch_theme' );
  * @global string $wp_version WordPress version.
  */
 function telabotanica_upgrade_notice() {
-	$message = sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] );
-	printf( '<div class="error"><p>%s</p></div>', $message );
+  $message = sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] );
+  printf( '<div class="error"><p>%s</p></div>', $message );
 }
 
 /**
@@ -50,9 +50,9 @@ function telabotanica_upgrade_notice() {
  * @global string $wp_version WordPress version.
  */
 function telabotanica_customize() {
-	wp_die( sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] ), '', [
-		'back_link' => true,
-	] );
+  wp_die( sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] ), '', [
+    'back_link' => true,
+  ] );
 }
 add_action( 'load-customize.php', 'telabotanica_customize' );
 
@@ -64,8 +64,8 @@ add_action( 'load-customize.php', 'telabotanica_customize' );
  * @global string $wp_version WordPress version.
  */
 function telabotanica_preview() {
-	if ( isset( $_GET['preview'] ) ) {
-		wp_die( sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] ) );
-	}
+  if ( isset( $_GET['preview'] ) ) {
+    wp_die( sprintf( __( 'TelaBotanica requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'telabotanica' ), $GLOBALS['wp_version'] ) );
+  }
 }
 add_action( 'template_redirect', 'telabotanica_preview' );

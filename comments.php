@@ -19,30 +19,30 @@
  * return early without loading the comments.
  */
 if ( post_password_required() ) {
-	return;
+  return;
 }
 ?>
 
 <div id="comments" class="comments-area">
 
-	<div class="layout-central-col">
-		<div class="layout-wrapper">
-			<div class="layout-content">
-				<?php
-				the_telabotanica_module('comments');
-				?>
-			</div>
-		</div>
-	</div>
+  <div class="layout-central-col">
+    <div class="layout-wrapper">
+      <div class="layout-content">
+        <?php
+        the_telabotanica_module('comments');
+        ?>
+      </div>
+    </div>
+  </div>
 
-	<div class="layout-central-col background-beige">
-		<div class="layout-wrapper">
-			<div class="layout-content">
-				<?php
-				the_telabotanica_module('comment-form');
-				?>
-			</div>
-		</div>
-	</div>
+  <div class="layout-central-col background-beige">
+    <div class="layout-wrapper">
+      <div class="layout-content">
+        <?php
+        the_telabotanica_module('comment-form');
+        ?>
+      </div>
+    </div>
+  </div>
 
 </div><!-- #comments -->

@@ -1,99 +1,99 @@
 .event-dates {
-	color: $orange;
-	font-family: $ubuntu;
-	font-weight: $medium;
-	text-align: center;
-	text-decoration: none;
-	width: 8rem;
+  color: $orange;
+  font-family: $ubuntu;
+  font-weight: $medium;
+  text-align: center;
+  text-decoration: none;
+  width: 8rem;
 
-	@at-root a.event-dates:hover,
-	a.event-dates:focus,
-	a:hover .event-dates,
-	a:focus .event-dates {
-		color: darken($orange, 10%);
-	}
+  @at-root a.event-dates:hover,
+  a.event-dates:focus,
+  a:hover .event-dates,
+  a:focus .event-dates {
+    color: darken($orange, 10%);
+  }
 
-	// modifiers
-	&.float-left {
-		float: left;
-		margin-bottom: 1rem;
-		margin-right: 2.5rem;
-	}
+  // modifiers
+  &.float-left {
+    float: left;
+    margin-bottom: 1rem;
+    margin-right: 2.5rem;
+  }
 
-	&.absolute {
-		position: absolute;
-	}
+  &.absolute {
+    position: absolute;
+  }
 
-	&.small {
-		width: 6.5rem;
+  &.small {
+    width: 6.5rem;
 
-		.event-dates-item:last-child {
-			height: 5.5rem;
-		}
+    .event-dates-item:last-child {
+      height: 5.5rem;
+    }
 
-		.event-dates-item {
-			flex-direction: row;
-			height: 2.75rem;
-			padding: 0.2rem;
+    .event-dates-item {
+      flex-direction: row;
+      height: 2.75rem;
+      padding: 0.2rem;
 
-			&.is-end {
-				height: 2.75rem;
+      &.is-end {
+        height: 2.75rem;
 
-				&:before {
-					border-top-width: 0.5rem;
-					border-left-width: 0.5rem;
-					border-right-width: 0.5rem;
-				}
-			}
-		}
+        &::before {
+          border-top-width: 0.5rem;
+          border-left-width: 0.5rem;
+          border-right-width: 0.5rem;
+        }
+      }
+    }
 
-		.event-dates-day {
-			font-size: 1.8rem;
-			margin: 0;
-			padding: 0 0.5rem 0 0;
-		}
-	}
+    .event-dates-day {
+      font-size: 1.8rem;
+      margin: 0;
+      padding: 0 0.5rem 0 0;
+    }
+  }
 
-	&-item {
-		align-items: center;
-		background-color: lighten($orange, 35%);
-		display: flex;
-		flex-direction: column;
-		height: 7rem;
-		justify-content: center;
-		line-height: 1.5rem;
-		padding: 1.4rem 0.5rem;
+  &-item {
+    align-items: center;
+    background-color: lighten($orange, 35%);
+    display: flex;
+    flex-direction: column;
+    height: 7rem;
+    justify-content: center;
+    line-height: 1.5rem;
+    padding: 1.4rem 0.5rem;
 
-		&.is-end {
-			background-color: lighten($orange, 42%);
-			position: relative;
+    &.is-end {
+      background-color: lighten($orange, 42%);
+      position: relative;
 
-			&:before {
-				border-top: 1rem solid lighten($orange, 35%);
-				border-left: 1rem solid transparent;
-				border-right: 1rem solid transparent;
-				content: '';
-				height: 0;
-				left: 50%;
-				position: absolute;
-				top: 0;
-				transform: translateX(-50%);
-				width: 0;
-			}
-		}
-	}
+      &::before {
+        border-top: 1rem solid lighten($orange, 35%);
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        content: '';
+        height: 0;
+        left: 50%;
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+        width: 0;
+      }
+    }
+  }
 
-	&-day {
-		font-size: 2.6rem;
-		line-height: 2rem;
-		margin: 0.25rem 0 0.5rem;
-	}
+  &-day {
+    font-size: 2.6rem;
+    line-height: 2rem;
+    margin: 0.25rem 0 0.5rem;
+  }
 
-	&-month {
-		font-size: 1rem;
-		letter-spacing: 0.1rem;
-		overflow: hidden;
-		text-transform: uppercase;
-		text-overflow: ellipsis;
-	}
+  &-month {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    overflow: hidden;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+  }
 }

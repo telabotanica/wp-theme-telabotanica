@@ -11,15 +11,15 @@
     ] );
   endif;
 
-	if ( get_field('place') ) :
-		echo '<div class="meta-news-item meta-news-place">';
-		the_telabotanica_module('icon', ['icon' => 'marker']);
-		printf(
-			'<span>%s</span>',
-			telabotanica_format_place( get_field( 'place' ) )
-		);
-		echo '</div>';
-	endif;
+  if ( get_field('place') ) :
+    echo '<div class="meta-news-item meta-news-place">';
+    the_telabotanica_module('icon', ['icon' => 'marker']);
+    printf(
+      '<span>%s</span>',
+      telabotanica_format_place( get_field( 'place' ) )
+    );
+    echo '</div>';
+  endif;
 
   echo '<div class="meta-news-item meta-news-date">';
   the_telabotanica_module('icon', ['icon' => 'clock']);
@@ -37,14 +37,14 @@
   printf(
     '<div class="meta-news-item meta-news-author">%s<span>%s</span></div>',
     get_telabotanica_module('icon', ['icon' => 'user']),
-		sprintf(
-			__( 'par %s', 'telabotanica' ),
-			sprintf(
-				'<a href="%s">%s</a>',
-				esc_url( bp_core_get_user_domain( get_the_author_meta( 'ID' ) ) ),
-				get_the_author()
-			)
-		)
+    sprintf(
+      __( 'par %s', 'telabotanica' ),
+      sprintf(
+        '<a href="%s">%s</a>',
+        esc_url( bp_core_get_user_domain( get_the_author_meta( 'ID' ) ) ),
+        get_the_author()
+      )
+    )
   );
 
   // if ( get_the_tags() ) :

@@ -1,47 +1,69 @@
 .title {
-	color: $vert-fonce;
-	font-family: $ubuntu;
-	font-size: 1.4rem;
-	font-weight: $regular;
-	letter-spacing: 0.1rem;
-	line-height: 2.5rem;
-	margin: 0;
-	padding: 1.5rem 0;
-	text-transform: uppercase;
+  color: $vert-fonce;
+  font-family: $ubuntu;
+  font-weight: $regular;
+  letter-spacing: 0.1rem;
+  line-height: 1.8;
+  margin: 0;
+  text-transform: uppercase;
 
-	&-suffix {
-		display: inline-block;
-		margin-left: 1rem;
-	}
+  &-suffix {
+    display: inline-block;
+    margin-left: 1rem;
+  }
 
-	> a {
-		color: inherit;
-		text-decoration: none;
+  > a {
+    color: inherit;
+    text-decoration: none;
 
-		&:hover, &:focus {
-			text-decoration: underline;
-		}
-	}
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 
-	&.with-margin-top {
-		margin-top: 1.5rem;
-	}
+  &.with-separator {
+    border-top: 0.1rem solid transparentize($gris-dd, 0.5);
+  }
 
-	&.with-separator {
-		border-top: 0.1rem solid transparentize($grisDD, 0.5);
-		padding-top: 3.5rem;
-		margin-top: 4rem;
-	}
+  &.with-border-bottom {
+    border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
+  }
 
-	&.with-border-bottom {
-		border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
-	}
+  .layout-column & {
+    color: $marron;
 
-	.layout-column & {
-		color: $marron;
+    &-suffix {
+      color: $vert-fonce;
+    }
+  }
 
-		&-suffix {
-			color: $vert-fonce;
-		}
-	}
+  @include small {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    text-align: center;
+
+    &.with-margin-top {
+      margin-top: 1rem;
+    }
+
+    &.with-separator {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+  }
+
+  @include large-and-medium {
+    font-size: 1.4rem;
+    padding: 1.5rem 0;
+
+    &.with-margin-top {
+      margin-top: 1.5rem;
+    }
+
+    &.with-separator {
+      margin-top: 4rem;
+      padding-top: 3.5rem;
+    }
+  }
 }

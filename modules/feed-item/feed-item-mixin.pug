@@ -1,52 +1,52 @@
 include ../icon/icon-mixin
 
 mixin feed-item-link(data)
-	if data.href
-		a.feed-item-link(href=data.href target=data.target)
-			block
-	else
-		block
+  if data.href
+    a.feed-item-link(href=data.href target=data.target)
+      block
+  else
+    block
 
 //- This file is only meant to be included in other modules
 //- and then used as a mixin: +feed-item({ ... })
 mixin feed-item(data)
-	- var modifiers = "feed-item";
-	if data.date && !data.text
-		- modifiers = modifiers + " is-date"
-	if data.image
-		- modifiers = modifiers + " has-image"
-	if data.images
-		- modifiers = modifiers + " has-images"
-	if data.href
-		- modifiers = modifiers + " has-link"
-	if data.article
-		- modifiers = modifiers + " is-article"
-	if data.text && !data.image && !data.title && !data.meta && !data.href
-		- modifiers = modifiers + " has-only-text"
-	div(class=modifiers)
-		+feed-item-link(data)
-			if data.image
-				if data.article
-					div.feed-item-image(style="background-image: url(" + data.image + ")")
-						+icon({icon: 'news'})
-				else
-					img.feed-item-image(src=data.image alt="")
-			if data.images
-				.feed-item-images
-					each image in data.images
-						img(src=image alt="")
-			if data.title
-				h3.feed-item-title= data.title
-			if data.text
-				.feed-item-text!= data.text
-			else if data.date
-				.feed-item-text
-					+icon({icon: 'clock'})
-					!= data.date
-			if data.meta
-				.feed-item-meta
-					if data.meta.place
-						span.feed-item-meta-place= data.meta.place
-						+icon({icon: 'marker'})
-					if data.meta.text
-						= data.meta.text
+  - var modifiers = "feed-item";
+  if data.date && !data.text
+    - modifiers = modifiers + " is-date"
+  if data.image
+    - modifiers = modifiers + " has-image"
+  if data.images
+    - modifiers = modifiers + " has-images"
+  if data.href
+    - modifiers = modifiers + " has-link"
+  if data.article
+    - modifiers = modifiers + " is-article"
+  if data.text && !data.image && !data.title && !data.meta && !data.href
+    - modifiers = modifiers + " has-only-text"
+  div(class=modifiers)
+    +feed-item-link(data)
+      if data.image
+        if data.article
+          div.feed-item-image(style="background-image: url(" + data.image + ")")
+            +icon({icon: 'news'})
+        else
+          img.feed-item-image(src=data.image alt="")
+      if data.images
+        .feed-item-images
+          each image in data.images
+            img(src=image alt="")
+      if data.title
+        h3.feed-item-title= data.title
+      if data.text
+        .feed-item-text!= data.text
+      else if data.date
+        .feed-item-text
+          +icon({icon: 'clock'})
+          != data.date
+      if data.meta
+        .feed-item-meta
+          if data.meta.place
+            span.feed-item-meta-place= data.meta.place
+            +icon({icon: 'marker'})
+          if data.meta.text
+            = data.meta.text

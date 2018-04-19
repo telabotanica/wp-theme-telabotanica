@@ -1,6 +1,7 @@
 # Default application configuration that all configurations inherit from.
 
 scss_files: "**/*.scss"
+exclude: "node_modules/**"
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already
@@ -41,7 +42,7 @@ linters:
     enabled: true
 
   DeclarationOrder:
-    enabled: true
+    enabled: false
 
   DisableLinterReason:
     enabled: false
@@ -92,8 +93,8 @@ linters:
   Indentation:
     enabled: true
     allow_non_nested_indentation: false
-    character: tab # or 'space'
-    width: 1
+    character: space
+    width: 2
 
   LeadingZero:
     enabled: true
@@ -123,7 +124,7 @@ linters:
   PropertyCount:
     enabled: true
     include_nested: false
-    max_properties: 10
+    max_properties: 15
 
   PropertySortOrder:
     enabled: true
@@ -160,7 +161,7 @@ linters:
 
   SelectorDepth:
     enabled: true
-    max_depth: 2
+    max_depth: 3
 
   SelectorFormat:
     enabled: true

@@ -1,38 +1,39 @@
 .nav-tabs {
-	font-family: $ubuntu;
-	font-size: 1.4rem;
-	font-weight: $regular;
-	letter-spacing: 0.1rem;
-	line-height: 2.5rem;
-	margin-bottom: 3rem;
-	text-transform: uppercase;
+  font-family: $ubuntu;
+  font-size: 1.4rem;
+  font-weight: $regular;
+  letter-spacing: 0.1rem;
+  line-height: 2.5rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
 
-	&-items {
-		@include reset-list;
-	}
+  &-items {
+    @include reset-list;
+  }
 
-	&-item {
-		display: inline-block;
+  &-item {
+    display: inline-block;
 
-		& + & {
-			margin-left: 2rem;
-		}
+    & + & {
+      margin-left: 2rem;
+    }
 
-		a {
-			color: $taupe;
-			display: inline-block;
-			text-decoration: none;
+    a {
+      color: $taupe;
+      display: inline-block;
+      text-decoration: none;
 
-			&:hover, &:focus {
-				text-decoration: underline;
-			}
-		}
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
 
-		&.is-current {
-			a {
-				color: $vert-fonce;
-				text-decoration: underline;
-			}
-		}
-	}
+    &.is-current {
+      a {
+        color: $vert-fonce;
+        text-decoration: underline;
+      }
+    }
+  }
 }

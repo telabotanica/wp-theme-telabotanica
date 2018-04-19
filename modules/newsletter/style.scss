@@ -1,18 +1,37 @@
 .newsletter {
-  background-color: $grisF0;
+  background-color: $gris-f0;
   border-radius: 0.2rem;
-  padding: 2.5rem 3rem;
 
   &-title {
-    color: $gris23;
+    color: $gris-23;
     font-family: $ubuntu;
-    font-size: 1.8rem;
     font-weight: $bold;
   }
 
   &-text {
-    color: $gris33;
-		line-height: 1.6;
-		margin-top: 1rem;
+    color: $gris-33;
+    line-height: 1.6;
+  }
+
+  @include small {
+    padding: 1.5rem 2rem;
+
+    &-title {
+      font-size: 1.6rem;
+    }
+
+    &-text {
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+    }
+  }
+
+  @include large-and-medium {
+    padding: 2.5rem 3rem;
+
+    &-title {
+      font-size: 1.8rem;
+      margin-top: 1rem;
+    }
   }
 }

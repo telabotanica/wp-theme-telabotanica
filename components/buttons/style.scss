@@ -1,11 +1,25 @@
 .component-buttons {
-  &:not(.as-seamless, .as-links) {
-    border-top: 0.1rem solid transparentize($taupe, 0.8);
-    padding: 3rem 0;
+  &:not(.as-seamless), &:not(.as-links) {
+    // TODO: FIX
     text-align: center;
   }
 
-  &:not(.as-seamless) {
-    margin-top: 4rem;
+  @include small {
+    line-height: 3;
+
+    .button {
+      margin: 0 1rem;
+    }
+  }
+
+  @include large-and-medium {
+    &:not(.as-seamless), &:not(.as-links) {
+      border-top: 0.1rem solid transparentize($taupe, 0.8);
+      padding: 3rem 0;
+    }
+
+    &:not(.as-seamless) {
+      margin-top: 4rem;
+    }
   }
 }

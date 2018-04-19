@@ -1,11 +1,11 @@
 {
-	"globals": {
-		"algolia": false,
-		"console": false,
-		"document": false,
-		"$": false,
-		"require": false,
-		"window": true,
-		"wp": false
-	}
+  "globals": {
+    "algolia": false,
+    "console": false,
+    "document": false,
+    "$": false,
+    "require": false,
+    "window": true,
+    "wp": false
+  }
 }

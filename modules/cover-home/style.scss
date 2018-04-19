@@ -1,142 +1,222 @@
 // This module inherits styles from `cover`
 
 .cover-home {
-	min-height: 42rem;
-	padding: 5rem 0;
+  > .layout-wrapper {
+    position: relative;
+  }
 
-	> .layout-wrapper {
-		align-items: center;
-		display: flex;
-		height: 32rem;
-		justify-content: space-between;
-		position: relative;
-	}
+  &-title {
+    font-family: $ubuntu;
+    font-weight: $bold;
+    margin: 0;
+  }
 
-	&-title {
-		font-family: $ubuntu;
-		font-size: 3.2rem;
-		font-weight: $bold;
-		margin: 0;
-	}
+  &-link {
+    font-weight: $regular;
+    margin-top: 0.5rem;
 
-	&-link {
-		font-weight: $regular;
-		font-size: 1.8rem;
-		margin-top: 0.5rem;
+    a {
+      border-bottom: 0.1rem solid $blanc;
+      color: $blanc;
+      text-decoration: none;
+      transition: border 0.2s ease;
 
-		a {
-			border-bottom: 0.1rem solid $blanc;
-			color: $blanc;
-			text-decoration: none;
-			transition: border 0.2s ease;
+      &:hover,
+      &:focus {
+        border-bottom-color: transparent;
+      }
+    }
+  }
 
-			&:hover, &:focus {
-				border-bottom-color: transparent;
-			}
-		}
-	}
+  &-stats {
+    @include reset-list;
+    font-family: $ubuntu;
+    font-weight: $medium;
+    text-align: center;
+    text-transform: uppercase;
 
-	&-content {
-		flex-grow: 1;
-		margin-right: 5rem;
+    a {
+      color: $blanc;
+      text-decoration: none;
 
-		> .search-box {
-			margin-top: 2.5rem;
-		}
-	}
+      &:hover,
+      &:focus {
+        .cover-home-stats-icon {background-color: $blanc;}
+      }
+    }
 
-	&-stats {
-		@include reset-list;
-		font-family: $ubuntu;
-		font-size: 1.2rem;
-		font-weight: $medium;
-		letter-spacing: 0.1rem;
-		height: 32rem;
-		position: relative;
-		text-transform: uppercase;
-		text-align: center;
-		width: 40%;
+    var {
+      display: block;
+      font-style: normal;
+      font-weight: $bold;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+  }
 
-		a {
-			color: $blanc;
-			text-decoration: none;
+  &-stats-icon {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    transition: background-color 0.3s ease;
+  }
 
-			&:hover, &:focus {
-				.cover-home-stats-icon {background-color: $blanc;}
-			}
-		}
+  &-stats-item > a {
+    display: block;
+  }
 
-		&-icon {
-			align-items: center;
-			border-radius: 50%;
-			display: flex;
-			height: 6.6rem;
-			justify-content: center;
-			margin: 0 auto 0.5rem;
-			transition: background-color 0.3s ease;
-			width: 6.6rem;
-		}
+  &-stats-item-users .cover-home-stats-icon {
+    background-color: $orange-clair;
+    svg { fill: $orange; }
+  }
 
-		var {
-			display: block;
-			font-size: 2.6rem;
-			font-style: normal;
-			font-weight: $bold;
-			letter-spacing: 0;
-			white-space: nowrap;
-		}
+  &-stats-item-observations .cover-home-stats-icon {
+    background-color: $vert-archi-clair;
+    svg { fill: $vert-clair; }
+  }
 
-		&-item {
-			position: absolute;
+  &-stats-item-get-involved .cover-home-stats-icon {
+    background-color: $turquoise-clair;
+    svg { fill: $turquoise; }
+  }
 
-			> a {
-				display: block;
-			}
+  @include small {
+    padding: 2.5rem 0 0;
 
-			&-users {
-				top: 10%;
-				left: 0;
+    &-title {
+      font-size: 1.8rem;
+      line-height: 1.4;
+      text-align: center;
+    }
 
-				.cover-home-stats-icon {
-					background-color: $orange-clair;
+    &-link {
+      font-size: 1.4rem;
+      text-align: center;
+    }
 
-					svg {
-						fill: $orange;
-						height: 3rem;
-						width: 4rem;
-					}
-				}
-			}
+    &-content {
+      > .search-box {
+        margin-top: 2rem;
+      }
+    }
 
-			&-observations {
-				top: 0;
-				right: 0;
+    &-stats {
+      background-color: transparentize($noir, 0.7);
+      display: flex;
+      font-size: 0.9rem;
+      letter-spacing: 0.1rem;
+      margin: 2rem -2rem 0;
+      padding: 2rem;
 
-				.cover-home-stats-icon {
-					background-color: $vert-archi-clair;
+      var {
+        font-size: 1.6rem;
+      }
+    }
 
-					svg {
-						fill: $vert-clair;
-						height: 3rem;
-						width: 4rem;
-					}
-				}
-			}
+    &-stats-icon {
+      height: 4.4rem;
+      width: 4.4rem;
+    }
 
-			&-get-involved {
-				bottom: 0;
-				left: 30%;
+    &-stats-item:nth-child(2n+1) {
+      margin-top: 3rem;
+    }
 
-				.cover-home-stats-icon {
-					background-color: $turquoise-clair;
+    &-stats-item-users .cover-home-stats-icon svg {
+      height: 2rem;
+      width: 2.7rem;
+    }
 
-					svg {
-						fill: $turquoise;
-						height: 3rem;
-						width: 3rem;
-					}
-				}
-			}
-		}
-	}
+    &-stats-item-observations .cover-home-stats-icon svg {
+      height: 2rem;
+      width: 2.7rem;
+    }
+
+    &-stats-item-get-involved .cover-home-stats-icon svg {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+
+  @include large-and-medium {
+    min-height: 42rem;
+    padding: 5rem 0;
+
+    > .layout-wrapper {
+      align-items: center;
+      display: flex;
+      height: 32rem;
+      justify-content: space-between;
+    }
+
+    &-title {
+      font-size: 3.2rem;
+    }
+
+    &-link {
+      font-size: 1.8rem;
+    }
+
+    &-content {
+      flex-grow: 1;
+      margin-right: 5rem;
+
+      > .search-box {
+        margin-top: 2.5rem;
+      }
+    }
+
+    &-stats {
+      font-size: 1.2rem;
+      height: 32rem;
+      letter-spacing: 0.1rem;
+      position: relative;
+      width: 40%;
+
+      var {
+        font-size: 2.6rem;
+      }
+    }
+
+    &-stats-icon {
+      height: 6.6rem;
+      width: 6.6rem;
+    }
+
+    &-stats-item {
+      position: absolute;
+    }
+
+    &-stats-item-users {
+      left: 0;
+      top: 10%;
+
+      .cover-home-stats-icon svg {
+        height: 3rem;
+        width: 4rem;
+      }
+    }
+
+    &-stats-item-observations {
+      right: 0;
+      top: 0;
+
+      .cover-home-stats-icon svg {
+        height: 3rem;
+        width: 4rem;
+      }
+    }
+
+    &-stats-item-get-involved {
+      bottom: 0;
+      left: 30%;
+
+      .cover-home-stats-icon svg {
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+  }
 }

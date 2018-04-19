@@ -1,155 +1,155 @@
-@import "../header/_variables";
+@import "../header/variables";
 
 .toc {
-	font-family: $ubuntu;
-	font-weight: $regular;
-	margin-bottom: 4rem;
-	width: 30rem;
+  font-family: $ubuntu;
+  font-weight: $regular;
+  margin-bottom: 4rem;
+  width: 30rem;
 
-	&.affix {
-		position: fixed;
-		top: $header-height-fixed;
+  &.affix {
+    position: fixed;
+    top: $header-height-fixed;
 
-		body.admin-bar & {top: $header-height-fixed + $header-admin-bar-height;}
-	}
-	&.affix-bottom {
-		position: absolute;
-	}
+    body.admin-bar & {top: $header-height-fixed + $header-admin-bar-height;}
+  }
 
-	&-items,
-	&-subitems {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+  &.affix-bottom {
+    position: absolute;
+  }
 
-	&-item.is-active > .toc-item-link:before,
-	&-item > .toc-item-link:hover:before,
-	&-item > .toc-item-link:focus:before {
-		content: "▶";
-		display: block;
-		font-size: 1rem;
-		line-height: 2rem;
-		margin-left: -2rem;
-		position: absolute;
-	}
+  &-items,
+  &-subitems {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-	&-item {
-		border-bottom: 0.1rem solid transparentize($grisDD, 0.5);
-		padding: 1.5rem 0;
+  &-item.is-active > .toc-item-link::before,
+  &-item > .toc-item-link:hover::before,
+  &-item > .toc-item-link:focus::before {
+    content: "▶";
+    display: block;
+    font-size: 1rem;
+    line-height: 2rem;
+    margin-left: -2rem;
+    position: absolute;
+  }
 
-		&:only-child {border-bottom: 0;}
+  &-item {
+    border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
+    padding: 1.5rem 0;
 
-		&.is-active > .toc-item-link {
-			color: $gris23;
+    &:only-child {border-bottom: 0;}
 
-			&:before {
-				color: $vert-clair;
-			}
-		}
+    &.is-active > .toc-item-link {
+      color: $gris-23;
 
-		&-link {
-			color: $gris60;
-			font-size: 1.6rem;
-			font-weight: $bold;
-			text-decoration: none;
+      &::before {
+        color: $vert-clair;
+      }
+    }
 
-			&:hover, &:focus {
-				&:before {
-					color: $taupe;
-				}
-			}
-		}
-	}
+    &-link {
+      color: $gris-60;
+      font-size: 1.6rem;
+      font-weight: $bold;
+      text-decoration: none;
 
-	&-subitems {
-		font-size: 1.5rem;
-		margin-top: 0.5rem;
-		position: relative;
+      &:hover::before,
+      &:focus::before {
+        color: $taupe;
+      }
+    }
+  }
 
-		&:before {
-			border-left: 0.1rem dotted transparentize($grisDD, 0.3);
-			bottom: 1rem;
-			content: "";
-			display: block;
-			left: 0.4rem;
-			position: absolute;
-			top: 1rem;
-		}
+  &-subitems {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    position: relative;
 
-		.toc-item-link + & {
-			margin-top: 2rem;
-		}
-	}
+    &::before {
+      border-left: 0.1rem dotted transparentize($gris-dd, 0.3);
+      bottom: 1rem;
+      content: "";
+      display: block;
+      left: 0.4rem;
+      position: absolute;
+      top: 1rem;
+    }
 
-	&-subitem {
-		margin-bottom: 1.5rem;
-		position: relative;
+    .toc-item-link + & {
+      margin-top: 2rem;
+    }
+  }
 
-		&:last-child {
-			margin-bottom: 0.5rem;
-		}
+  &-subitem {
+    margin-bottom: 1.5rem;
+    position: relative;
 
-		&.is-active {
-			.toc-subitem-link {
-				color: $noir;
-				font-weight: $medium;
+    &:last-child {
+      margin-bottom: 0.5rem;
+    }
 
-				> .icon {
-					display: inline-block;
-					fill: $vert-clair;
-					height: 2.2rem;
-					left: 0;
-					position: absolute;
-					transform: translate(-0.3rem, -0.3rem);
-					width: 2.2rem;
-				}
+    &.is-active .toc-subitem-link {
+      color: $noir;
+      font-weight: $medium;
 
-				&:before {
-					visibility: hidden;
-				}
-			}
-		}
+      > .icon {
+        display: inline-block;
+        fill: $vert-clair;
+        height: 2.2rem;
+        left: 0;
+        position: absolute;
+        transform: translate(-0.3rem, -0.3rem);
+        width: 2.2rem;
+      }
 
-		&-link {
-			color: $marron-gris;
-			display: inline-block;
-			font-size: 1.5rem;
-			font-weight: $regular;
-			line-height: 1.8rem;
-			padding-left: 3rem;
-			text-decoration: none;
-			transition: all 0.2s ease;
+      &::before {
+        visibility: hidden;
+      }
+    }
 
-			> .icon {
-				display: none;
-			}
+    &-link {
+      color: $marron-gris;
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: $regular;
+      line-height: 1.8rem;
+      padding-left: 3rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
 
-			&:before {
-				color: $vert-clair;
-				content: "●";
-				display: inline-block;
-				left: 0;
-				margin-right: 2rem;
-				position: absolute;
-			}
+      > .icon {
+        display: none;
+      }
 
-			&:hover, &:focus {
-				color: $gris33;
+      &::before {
+        color: $vert-clair;
+        content: "●";
+        display: inline-block;
+        left: 0;
+        margin-right: 2rem;
+        position: absolute;
+      }
 
-				&:before {
-					color: $gris60;
-				}
-			}
-		}
-	}
+      &:hover,
+      &:focus {
+        color: $gris-33;
+      }
 
-	.children {
-	// 	color: $marron-gris;
-	// 	font-weight: $regular;
-		list-style: none;
-		margin-top: 1rem;
-		padding-left: 2.5rem;
-	}
+      &:hover::before,
+      &:focus::before {
+        color: $gris-60;
+      }
+    }
+  }
+
+  .children {
+  //   color: $marron-gris;
+  //   font-weight: $regular;
+    list-style: none;
+    margin-top: 1rem;
+    padding-left: 2.5rem;
+  }
 
 }

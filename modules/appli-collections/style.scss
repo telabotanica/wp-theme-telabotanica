@@ -1,27 +1,27 @@
 .appli-collections {
 
-	#col-form, #pers-form, #pub-form {
-		input[type="submit"] {
-			border: none;
-			cursor: pointer;
-		}
-	}
+  #col-form, #pers-form, #pub-form {
+    input[type="submit"] {
+      border: none;
+      cursor: pointer;
+    }
+  }
 
-	#col_resultat {
-		margin-bottom: 50px;
-		li {
-			padding-top: 3px;
-		}
-		ul > li > a {
-			color: #598000;
-		}
-	}
+  #col_resultat {
+    margin-bottom: 50px;
+    li {
+      padding-top: 3px;
+    }
+    ul > li > a {
+      color: #598000;
+    }
+  }
 
-	.ui-widget-header  {
-		background: #b2cb43 none repeat-x scroll 50% 50%
-	}
+  .ui-widget-header  {
+    background: #b2cb43 none repeat-x scroll 50% 50%
+  }
 
-	p.txt-long {
-		width: auto;
-	}
+  p.txt-long {
+    width: auto;
+  }
 }

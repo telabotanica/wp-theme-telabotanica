@@ -1,130 +1,128 @@
 #registration-form {
+  #signup_form.standard-form {
+    color: $gris-23;
+    margin-top: 4rem;
 
+    #template-notices {
+      > #message {
+        > p {
+          border: none;
+          background-color: transparent;
+          margin: 0;
+        }
+      }
 
-	#signup_form.standard-form {
-		color: $gris23;
-		margin-top: 4rem;
+      &.notice-registration-complete {
+        margin: 4rem auto;
+        width: 70%;
+        text-align: center;
+      }
+    }
 
-		#template-notices {
+    #basic-details-section {
+      float: none;
 
-			> #message {
-				>p {
-					border: none;
-					background-color: transparent;
-					margin: 0;
-				}
-			}
+      #pass-strength-result {
+        float: right;
+      }
+    }
 
-			&.notice-registration-complete {
-				margin: 4rem auto;
-				width: 70%;
-				text-align: center;
-			}
-		}
+    #profile-details-section {
+      float: none;
+      margin-top: 4rem;
+    }
 
-		#basic-details-section {
-			float: none;
+    #registration-instructions {
+      float: right;
+      width: 48%;
+      padding: 1rem;
+      color: $gris-23;
+      background-color: $beige2;
 
-			#pass-strength-result {
-				float: right;
-			}
-		}
+      > h2 {
+        fill: $taupe;
+        margin-top: 0;
+        .icon {
+          height: 4rem;
+          width: 4rem;
+        }
+      }
+    }
 
-		#profile-details-section {
-			float: none;
-			margin-top: 4rem;
-		}
+    a {
+      color: $turquoise-fonce;
+      fill: $turquoise-fonce;
 
-		#registration-instructions {
-			float: right;
-			width: 48%;
-			//border: solid blue 1px;
-			padding: 1rem;
-			color: $gris23;
-			background-color: $beige2;
+      &:hover {
+        color: darken($turquoise-fonce, 10%);
+        fill: darken($turquoise-fonce, 10%);
+      }
+    }
 
-			> h2 {
-				fill: $taupe;
-				margin-top: 0;
-				.icon {
-					height: 4rem;
-					width: 4rem;
-				}
-			}
-		}
+    button {
+      font-size: 1.3rem;
+      background-color: $vert-bouton;
+      color: $blanc;
+      padding: 1.25rem 2rem;
+      text-align: center;
+      text-decoration: none;
 
-		a {
-			color: $turquoise-fonce;
-			fill: $turquoise-fonce;
+      &:hover,
+      &:focus {
+        background-color: lighten($vert-bouton, 8%);
+        color: $blanc;
+      }
+    }
 
-			&:hover {
-				color: darken($turquoise-fonce, 10%);
-				fill: darken($turquoise-fonce, 10%);
-			}
-		}
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      border: 0.1rem solid $gris-dd;
+      border-radius: 0.3rem;
+      padding: 1rem;
+    }
 
-		button {
-			font-size: 1.3rem;
-			background-color: $vert-bouton;
-			color: $blanc;
-			padding: 1.25rem 2rem;
-			text-align: center;
-			text-decoration: none;
+    label {
+      display: block;
+      margin-top: 2rem;
+      margin-bottom: 0.4rem;
+      color: $gris-60;
+      font-size: 1.5rem;
+    }
 
-			&:hover, &:focus {
-				background-color: lighten($vert-bouton, 8%);
-				color: $blanc;
-			}
-		}
+    div {
+      div.error {
+        width: 100%;
+        padding-left: 1rem;
+        border-radius: 2px;
+      }
+    }
 
-		input[type="text"], input[type="email"], input[type="password"] {
-			width: 100%;
-			border: .1rem solid #ddd;
-			border-radius: .3rem;
-			padding: 1rem;
-		}
+    .checkbox-options {
+      > label {
+        margin-top: 0.5rem;
 
-		label {
-			display: block;
-			margin-top: 2rem;
-			margin-bottom: .4rem;
-			color: #606060;
-			font-size: 1.5rem;
-		}
+        > input {
+          vertical-align: middle;
+        }
+      }
+    }
 
-		div {
-			div.error {
-				width: 100%;
-				padding-left: 1rem;
-				border-radius: 2px;
-			}
-		}
-
-		.checkbox-options {
-
-			> label {
-				margin-top: 0.5rem;
-
-				> input {
-					vertical-align: middle;
-				}
-			}
-		}
-
-		div.submit.complete-registration {
-			margin: 4rem 0;
-			width: 48%;
-			text-align: right;
-			float: none;
-		}
-	}
+    div.submit.complete-registration {
+      margin: 4rem 0;
+      width: 48%;
+      text-align: right;
+      float: none;
+    }
+  }
 }
 
 #buddypress .field-visibility-settings-toggle,
 #buddypress .field-visibility-settings-notoggle {
-	display: none;
+  display: none;
 }
 
 #activate-page {
-	margin: 4rem 0;
+  margin: 4rem 0;
 }

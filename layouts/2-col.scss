@@ -1,49 +1,50 @@
 .layout-2-col {
 
-	@include small {
-		.layout-column:last-child {
-			margin-top: 3.5rem;
-		}
-	}
+  @include small {
+    .layout-column:last-child {
+      margin-top: 3.5rem;
+    }
+  }
 
-	@include large-and-medium {
-		> .layout-wrapper {
-			display: flex;
-			justify-content: space-between;
-			overflow: hidden;
+  @include large-and-medium {
+    > .layout-wrapper {
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
 
-			> .layout-column {
-				width: 45.5rem;
+      > .layout-column {
+        width: 45.5rem;
 
-				&:first-child {
-					float: left;
-					margin-right: 2rem;
-				}
+        &:first-child {
+          float: left;
+          margin-right: 2rem;
+        }
 
-				&:last-child {
-					float: right;
-					margin-left: 2rem;
-				}
-			}
-		}
+        &:last-child {
+          float: right;
+          margin-left: 2rem;
+        }
+      }
+    }
 
-		&.down {
-			> .layout-wrapper {
-				align-items: flex-end;
-			}
-		}
+    &.down {
+      > .layout-wrapper {
+        align-items: flex-end;
+      }
+    }
 
-		// larger first col
-		&.larger-first-col {
-			> .layout-wrapper {
-				> .layout-column:first-child {
-					width: 58rem;
-				}
-				> .layout-column:last-child {
-					width: 38rem;
-				}
-			}
-		}
-	}
+    // larger first col
+    &.larger-first-col {
+      > .layout-wrapper {
+        > .layout-column:first-child {
+          width: 58rem;
+        }
+
+        > .layout-column:last-child {
+          width: 38rem;
+        }
+      }
+    }
+  }
 
 }

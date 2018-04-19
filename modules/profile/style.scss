@@ -1,25 +1,27 @@
-#field-visibility-settings-toggle-, #field-visibility-settings- {
-	display: none;
+#field-visibility-settings-toggle-,
+#field-visibility-settings- {
+  display: none;
 }
 
-.field_ville, .field_espece-dinteret {
-	.aa-suggestion {
-		padding: 1rem;
-		cursor: pointer;
-		font-size: 1.4rem;
+.field_ville,
+.field_espece-dinteret {
+  .aa-suggestion {
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 1rem;
 
-		&:hover {
-			background-color: $grisF0;
-		}
+    &:hover {
+      background-color: $gris-f0;
+    }
 
-		> p {
-			margin: 0;
-		}
-	}
+    > p {
+      margin: 0;
+    }
+  }
 }
 
 #profile-edit-form {
-	> h2 {
-		display: none;
-	}
+  > h2 {
+    display: none;
+  }
 }

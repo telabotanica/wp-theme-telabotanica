@@ -1,54 +1,54 @@
 .component-info {
-	clear: both;
+  clear: both;
 
-	&-title {
-		color: $orange;
-		font-family: $ubuntu;
-		font-size: 2rem;
-		font-weight: $medium;
-		position: relative;
+  &-title {
+    color: $orange;
+    font-family: $ubuntu;
+    font-size: 2rem;
+    font-weight: $medium;
+    position: relative;
 
-		span {
-			background-color: $blanc;
-			padding-right: 1rem;
-			position: relative;
-		}
+    span {
+      background-color: $blanc;
+      padding-right: 1rem;
+      position: relative;
+    }
 
-		&:before {
-			background: transparentize($taupe, 0.8);
-			content: "";
-			display: block;
-			height: 0.2rem;
-			position: absolute;
-			top: 50%;
-			width: 100%;
-		}
-	}
+    &::before {
+      background: transparentize($taupe, 0.8);
+      content: "";
+      display: block;
+      height: 0.2rem;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+    }
+  }
 
-	&-items {
-		line-height: 2.6rem;
-	}
+  &-items {
+    line-height: 2.6rem;
+  }
 
-	&-item {
-		&-title {
-			clear: left;
-			color: $orange;
-			float: left;
-			font-weight: $bold;
+  &-item {
+    &-title {
+      clear: left;
+      color: $orange;
+      float: left;
+      font-weight: $bold;
 
-			&:after {
-				content: ":";
-				margin: 0 0.5rem;
-			}
-		}
+      &::after {
+        content: ":";
+        margin: 0 0.5rem;
+      }
+    }
 
-		&-text {
-			display: block;
-			margin-left: 0;
+    &-text {
+      display: block;
+      margin-left: 0;
 
-			p {margin: 0;}
-		}
+      p {margin: 0;}
+    }
 
-	}
+  }
 
 }

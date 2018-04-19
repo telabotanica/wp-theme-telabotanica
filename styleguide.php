@@ -7,8 +7,8 @@ global $wp_query;
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
 
       <?php
       $current = false;
@@ -57,20 +57,20 @@ get_header(); ?>
             <?php the_telabotanica_module('button-top'); ?>
           </aside>
           <div class="layout-content">
-						<?php
-						$breadcrumbs_items = [
-							[
-								'href' => esc_url( site_url('styleguide') ),
-								'text' => __('Styleguide', 'telabotanica')
-							]
-						];
-						if ( $current ) :
-							$breadcrumbs_items[] = ['text' => $type . 's'];
-							$breadcrumbs_items[] = ['text' => $nom,];
-						endif;
-						the_telabotanica_module('breadcrumbs', [
-							'items' => $breadcrumbs_items
-						]);
+            <?php
+            $breadcrumbs_items = [
+              [
+                'href' => esc_url( site_url('styleguide') ),
+                'text' => __('Styleguide', 'telabotanica')
+              ]
+            ];
+            if ( $current ) :
+              $breadcrumbs_items[] = ['text' => $type . 's'];
+              $breadcrumbs_items[] = ['text' => $nom,];
+            endif;
+            the_telabotanica_module('breadcrumbs', [
+              'items' => $breadcrumbs_items
+            ]);
 
             if ( $current ) :
               $exemples = require($type . 's/' . $nom . '/exemples.php');

@@ -1,144 +1,167 @@
 .layout-content-col {
-	> .layout-wrapper {
-		display: flex;
+  > .layout-wrapper {
+    > .layout-column {
+      background-color: $beige;
+      position: relative;
 
-		> .layout-column {
-			background-color: $beige;
-			float: left;
-			flex: 0 0 33rem;
-			position: relative;
-			padding-bottom: 5.5rem;
-			padding-right: 3rem;
-			width: 33rem;
+      .layout-column-item {
+        margin-bottom: 3rem;
 
-			&:before {
-				background-color: $beige;
-				bottom: 0;
-				content: "";
-				display: block;
-				position: absolute;
-				right: 100%;
-				top: 0;
-				width: 100rem;
-			}
+        &:last-child {
+          margin-bottom: 0;
+        }
 
-			.layout-column-item {
-				margin-bottom: 3rem;
+        &.background-white {
+          background-color: $blanc;
+        }
 
-				&:last-child {
-					margin-bottom: 0;
-				}
+        &.with-shadow {
+          box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
+          position: relative;
+        }
 
-				&.background-white {
-					background-color: $blanc;
-				}
+        &.with-padding {
+          padding: 2rem;
+        }
+      }
+    }
+  }
 
-				&.with-shadow {
-					box-shadow: -0.6rem 0.6rem 0 0 transparentize($taupe, 0.9);
-					position: relative;
-				}
+  // Pleine largeur
+  &.full-width {
+    > .layout-wrapper {
+      width: 100%;
 
-				&.with-padding {
-					padding: 2rem;
-				}
-			}
-		}
+      > .layout-column {
+        flex: 0 0 36rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        width: 36rem;
 
-		> .layout-content {
-			flex: 1;
-			float: right;
-			margin-left: 5rem;
-			padding-bottom: 5rem;
-			width: 62rem;
-		}
-	}
+        &::before {display: none;}
 
-	// Pleine largeur
-	&.full-width {
-		> .layout-wrapper {
-			width: 100%;
+        .button-top {
+          text-align: center;
+        }
+      }
 
-			> .layout-column {
-				flex: 0 0 36rem;
-				padding-left: 5rem;
-				padding-right: 5rem;
-				width: 36rem;
+      > .layout-content {
+        margin-left: 0;
+        padding: 0 5rem;
+      }
+    }
+  }
 
-				&:before {display: none;}
+  // Inversion des colonnes (contenu à gauche et colonne à droite)
+  &.reversed {
+    // cf. ci-dessous dans media query
+  }
 
-				.button-top {
-					text-align: center;
-				}
-			}
+  // Inversion des couleurs des colonnes
+  &.reversed-colors {
+    background-color: $gris-f4;
 
-			> .layout-content {
-				margin-left: 0;
-				padding: 0 5rem;
-			}
-		}
-	}
+    > .layout-wrapper {
+      > .layout-column {
+        background-color: $blanc;
 
-	// Inversion des colonnes (contenu à gauche et colonne à droite)
-	&.reversed {
-		> .layout-wrapper {
-			> .layout-column {
-				float: right;
-				padding-left: 3rem;
-				padding-right: 0;
+        &::before {
+          background-color: $blanc;
+        }
+      }
+      > .layout-content {
+        background-color: $gris-f4;
+      }
+    }
+  }
 
-				&:before {
-					left: 100%;
-					right: auto;
-				}
-			}
+  // Tableau de bord
+  &.is-dashboard {
+    > .layout-wrapper {
+      width: 100%;
 
-			> .layout-content {
-				float: right;
-				margin-left: 0;
-				margin-right: 5rem;
-			}
-		}
-	}
+      > .layout-column {
+        flex: 0 0 26rem;
+        padding: 0;
+        width: 26rem;
 
-	// Inversion des couleurs des colonnes
-	&.reversed-colors {
-		background-color: $grisF4;
+        &::before {display: none;}
 
-		> .layout-wrapper {
-			> .layout-column {
-				background-color: $blanc;
+        > * {height: 100%;}
+      }
 
-				&:before {
-					background-color: $blanc;
-				}
-			}
-			> .layout-content {
-				background-color: $grisF4;
-			}
-		}
-	}
+      > .layout-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 112rem;
+        padding: 4rem 6rem;
+      }
+    }
+  }
 
-	// Tableau de bord
-	&.is-dashboard {
-		> .layout-wrapper {
-			width: 100%;
+  @include small {
+    &.reversed {
+      > .layout-wrapper {
+        > .layout-column {
+          margin: 2rem -2rem 0;
+          padding: 0 2rem;
+        }
+      }
+    }
+  }
 
-			> .layout-column {
-				flex: 0 0 26rem;
-				padding: 0;
-				width: 26rem;
+  @include large-and-medium {
+    > .layout-wrapper {
+      display: flex;
 
-				&:before {display: none;}
+      > .layout-column {
+        float: left;
+        flex: 0 0 33rem;
+        position: relative;
+        padding-bottom: 5.5rem;
+        padding-right: 3rem;
+        width: 33rem;
 
-				> * {height: 100%;}
-			}
+        &::before {
+          background-color: $beige;
+          bottom: 0;
+          content: "";
+          display: block;
+          position: absolute;
+          right: 100%;
+          top: 0;
+          width: 100rem;
+        }
+      }
 
-			> .layout-content {
-				margin-left: auto;
-				margin-right: auto;
-				max-width: 112rem;
-				padding: 4rem 6rem;
-			}
-		}
-	}
+      > .layout-content {
+        flex: 1;
+        float: right;
+        margin-left: 5rem;
+        padding-bottom: 5rem;
+        width: 62rem;
+      }
+    }
+
+    &.reversed {
+      > .layout-wrapper {
+        > .layout-column {
+          float: right;
+          padding-left: 3rem;
+          padding-right: 0;
+
+          &::before {
+            left: 100%;
+            right: auto;
+          }
+        }
+
+        > .layout-content {
+          float: right;
+          margin-left: 0;
+          margin-right: 5rem;
+        }
+      }
+    }
+  }
 }

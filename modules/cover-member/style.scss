@@ -1,104 +1,104 @@
 .cover-member {
-	align-items: center;
-	color: $blanc;
-	fill: $blanc;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	min-height: 36.8rem;
-	overflow: hidden;
-	padding: 1rem;
-	position: relative;
+  align-items: center;
+  color: $blanc;
+  display: flex;
+  fill: $blanc;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 36.8rem;
+  overflow: hidden;
+  padding: 1rem;
+  position: relative;
 
-	> * {
-		z-index: 1;
-	}
+  > * {
+    z-index: 1;
+  }
 
-	&-image {
-		background: center center no-repeat;
-		background-size: cover;
-		filter: blur(0.3rem);
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		transform: scale(1.05);
-		width: 100%;
-		z-index: 0;
+  &-image {
+    background: center center no-repeat;
+    background-size: cover;
+    filter: blur(0.3rem);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: scale(1.05);
+    width: 100%;
+    z-index: 0;
 
-		&:before {
-			background-color: transparentize($bleu-nuit, 0.6);
-			content: "";
-			display: block;
-			height: 100%;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
-	}
+    &::before {
+      background-color: transparentize($bleu-nuit, 0.6);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
 
-	.avatar {
-		border-radius: 50%;
-		border: 0.3rem solid white;
-	}
+  .avatar {
+    border: 0.3rem solid $blanc;
+    border-radius: 50%;
+  }
 
-	&-title,
-	&-description {
-		max-width: 60rem;
-		text-align: center;
-	}
+  &-title,
+  &-description {
+    max-width: 60rem;
+    text-align: center;
+  }
 
-	&-title {
-		font-family: $ubuntu;
-		font-size: 3.2rem;
-		font-weight: $bold;
-		line-height: 4rem;
-		margin: 1rem 0 0.5rem;
-	}
+  &-title {
+    font-family: $ubuntu;
+    font-size: 3.2rem;
+    font-weight: $bold;
+    line-height: 4rem;
+    margin: 1rem 0 0.5rem;
+  }
 
-	&-description {
-		font-size: 1.8rem;
-		font-weight: $regular;
-		line-height: 2.6rem;
-		margin-bottom: 3rem;
+  &-description {
+    font-size: 1.8rem;
+    font-weight: $regular;
+    line-height: 2.6rem;
+    margin-bottom: 3rem;
 
-		p {margin: 0;}
-	}
+    p {margin: 0;}
+  }
 
-	&-back,
-	&-meta {
-		line-height: 4.7rem;
-		position: absolute;
-		text-transform: uppercase;
-		top: 0;
+  &-back,
+  &-meta {
+    line-height: 4.7rem;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
 
-		.icon {
-			height: 1.3rem;
-			width: 1.3rem;
-		}
-	}
+    .icon {
+      height: 1.3rem;
+      width: 1.3rem;
+    }
+  }
 
-	&-back {
-		left: 0;
-		margin: 1rem 1.5rem;
-	}
+  &-back {
+    left: 0;
+    margin: 1rem 1.5rem;
+  }
 
-	&-meta {
-		font-family: $ubuntu;
-		font-size: 1.3rem;
-		letter-spacing: 0.1rem;
-		padding: 1rem 1.5rem;
-		right: 0;
+  &-meta {
+    font-family: $ubuntu;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    padding: 1rem 1.5rem;
+    right: 0;
 
-		> * + * {
-			margin-left: 3rem;
-		}
+    > * + * {
+      margin-left: 3rem;
+    }
 
-		.icon {
-			margin-left: 0.5rem;
-			vertical-align: sub;
-		}
-	}
+    .icon {
+      margin-left: 0.5rem;
+      vertical-align: sub;
+    }
+  }
 
 }

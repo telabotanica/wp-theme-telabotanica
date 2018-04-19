@@ -9,8 +9,8 @@ Installer [Node](https://nodejs.org)
 
 Installer les dépendences du projet
 
-		npm install
-		composer install
+    npm install
+    composer install
 
 Définir les constantes suivantes dans `wp-config.php`:
 ```php
@@ -26,7 +26,7 @@ define('ALGOLIA_PREFIX',); // (correspondant à l'environnement en cours, par ex
 
 ### Pendant le développement
 
-		npm start
+    npm start
 
 Cette commande :
 - surveille les fichiers du thème
@@ -34,7 +34,7 @@ Cette commande :
 
 ### Compiler le thème
 
-		npm run build
+    npm run build
 
 Cette commande :
 - compile `assets/styles/main.scss` dans `dist/bundle.css`
@@ -45,5 +45,5 @@ Cette commande :
 
 Depuis le serveur :
 
-	git pull
-	composer install
+  git pull
+  composer install

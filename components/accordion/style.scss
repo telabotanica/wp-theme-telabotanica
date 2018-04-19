@@ -31,8 +31,8 @@
   &__header {
     background: transparent;
     border: 0;
-    border-bottom: 0.1rem solid $grisDD;
-    color: $gris23;
+    border-bottom: 0.1rem solid $gris-dd;
+    color: $gris-23;
     cursor: pointer;
     display: block;
     font-family: $ubuntu;
@@ -42,7 +42,7 @@
     text-align: left;
     width: 100%;
 
-    &:before {
+    &::before {
       color: $vert-bouton;
       content: "▷";
       display: inline-block;
@@ -50,11 +50,11 @@
       transition: transform 0.2s ease;
     }
 
-    &[aria-expanded="true"]:before {
+    &[aria-expanded="true"]::before {
       transform: rotate(90deg);
     }
 
-    &[aria-selected="true"]:before {
+    &[aria-selected="true"]::before {
       content: "▶";
     }
   }

@@ -1,86 +1,103 @@
 .article {
+  &.is-small {
+    align-items: center;
+    display: flex;
+    overflow: hidden;
 
-	&.is-small {
-		align-items: center;
-		display: flex;
-		overflow: hidden;
+    .article-title {
+      font-size: 1.9rem;
+      line-height: 2.8rem;
+      margin-bottom: 0;
+    }
 
-		.article-title {
-			font-size: 1.9rem;
-			line-height: 2.8rem;
-			margin-bottom: 0;
-		}
+    .article-thumbnail {
+      background: center center no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+      float: left;
+      height: 10rem;
+      margin: 0 2.5rem 0 0;
+      min-width: 10rem;
+      overflow: hidden;
+    }
+  }
 
-		.article-thumbnail {
-			background: center center no-repeat;
-			background-size: cover;
-			border-radius: 50%;
-			float: left;
-			height: 10rem;
-			margin: 0 2.5rem 0 0;
-			min-width: 10rem;
-			overflow: hidden;
-		}
-	}
+  &-title {
+    font-family: $ubuntu;
+    font-weight: $bold;
+    line-height: 1.4;
+    margin: 0;
 
-	&-title {
-		font-family: $ubuntu;
-		font-size: 2.6rem;
-		font-weight: $bold;
-		line-height: 3.6rem;
-		margin: 0 0 2rem;
+    a {
+      border-bottom: 0.2rem solid transparent;
+      color: $gris-23;
+      text-decoration: none;
+      transition: border 0.2s ease;
 
-		a {
-			border-bottom: 0.2rem solid transparent;
-			color: $gris23;
-			text-decoration: none;
-			transition: border 0.2s ease;
+      &:hover,
+      &:focus {
+        border-bottom-color: $gris-23;
+      }
+    }
 
-			&:hover,
-			&:focus {
-				border-bottom-color: $gris23;
-			}
-		}
+    .icon {
+      height: 1.2rem;
+      margin-left: 0.5rem;
+      width: 1.2rem;
+    }
+  }
 
-		.icon {
-			height: 1.2rem;
-			margin-left: 0.5rem;
-			width: 1.2rem;
-		}
-	}
+  &-thumbnail {
+    float: right;
+    margin-left: 2.5rem;
+  }
 
-	&-thumbnail {
-		float: right;
-		margin-left: 2.5rem;
-	}
+  &-image {
+    display: block;
 
-	&-image,
-	.component-intro {
-		margin-bottom: 3rem;
-	}
+    img {display: block;}
+  }
 
-	&-image {
-		display: block;
+  // margin-top lorsque précédé de breadcrumbs
+  .breadcrumbs + & {
+    margin-top: 3rem;
+  }
 
-		img {display: block;}
-	}
+  & + & {
+    border-top: 0.1rem solid $gris-dd;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+  }
 
-	// margin-top lorsque précédé de breadcrumbs
-	.breadcrumbs + & {
-		margin-top: 3rem;
-	}
+  .component-title,
+  .component-text {
+    h2 {
+      color: $gris-33;
+      font-weight: $light;
+    }
+  }
 
-	& + & {
-		border-top: 0.1rem solid $grisDD;
-		margin-top: 2.5rem;
-		padding-top: 2.5rem;
-	}
+  @include small {
+    &-title {
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+    }
 
-	.component-title,
-	.component-text {
-		h2 {
-			color: $gris33;
-			font-weight: $light;
-		}
-	}
+    &-image,
+    .component-intro {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @include large-and-medium {
+    &-title {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+    }
+
+    &-image,
+    .component-intro {
+      margin-bottom: 3rem;
+    }
+  }
 }

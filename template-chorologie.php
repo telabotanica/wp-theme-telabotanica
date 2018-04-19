@@ -17,31 +17,31 @@ $chemin_chorologie_http = get_field('applis_externes_chemin_chorologie_http', 'o
 
 // Inclusion de l'appli
 if (is_dir($dossier_chorologie)) {
-	$chemin_chorologie = $dossier_chorologie . "/chorologie_wordpress.php";
-	require $chemin_chorologie;
+  $chemin_chorologie = $dossier_chorologie . "/chorologie_wordpress.php";
+  require $chemin_chorologie;
 
-	// Rendu
-	// get_header() doit être placé après le require sans quoi les
-	// scripts et styles ne seront pas amorcés
-	get_header();
-	template_chorologie_entete();
-	?>
-	<div class="appli-chorologie">
-		<?php
-		// fonctions définies dans chorologie_wordpress.php
-		//echo chorologie_get_contenu_tete();
-		//echo chorologie_get_contenu_navigation();
-		echo chorologie_get_contenu();
-		echo chorologie_get_contenu_pied();
-		?>
-	</div>
-	<?php
+  // Rendu
+  // get_header() doit être placé après le require sans quoi les
+  // scripts et styles ne seront pas amorcés
+  get_header();
+  template_chorologie_entete();
+  ?>
+  <div class="appli-chorologie">
+    <?php
+    // fonctions définies dans chorologie_wordpress.php
+    //echo chorologie_get_contenu_tete();
+    //echo chorologie_get_contenu_navigation();
+    echo chorologie_get_contenu();
+    echo chorologie_get_contenu_pied();
+    ?>
+  </div>
+  <?php
 } else {
-	get_header();
-	template_chorologie_entete();
-	?>
-	<div class="component component-text">Impossible de charger Chorologie, vérifiez la configuration.</div>
-	<?php
+  get_header();
+  template_chorologie_entete();
+  ?>
+  <div class="component component-text">Impossible de charger Chorologie, vérifiez la configuration.</div>
+  <?php
 }
 
 // fermeture des balises ouvertes par template_chorologie_entete() ?>
@@ -60,51 +60,51 @@ get_footer();
  * cause de la nécesité d'appeler get_header() après l'inclusion de l'appli
  */
 function template_chorologie_entete() {
-	?>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+  ?>
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
 
-	  <?php the_telabotanica_module('cover'); ?>
+    <?php the_telabotanica_module('cover'); ?>
 
-	  <div class="layout-content-col">
-		<div class="layout-wrapper">
-		  <aside class="layout-column">
-			<?php
-				$module = chorologie_get_module();
-				the_telabotanica_module('toc', [
-				'items' => [
-					[
-						'text' => 'Par département',
-						'href' => '?module=liste-zones-geo',
-						'active' => ($module == 'liste-zones-geo')
-					],
-					[
-						'text' => 'Liste des taxons',
-						'href' => '?module=liste-taxons',
-						'active' => ($module == 'liste-taxons')
-					],
-					[
-						'text' => 'Carte',
-						'href' => '?module=carte',
-						'active' => ($module == 'carte' || $module == 'carte-taxon')
-					]
-				]
-			]); ?>
-			<?php the_telabotanica_module('button-top'); ?>
-		  </aside>
-		  <div class="layout-content">
-			<?php the_telabotanica_module('breadcrumbs'); ?>
-			<article>
-				<div class="component component-title level-2">
-					<h1 id="recherche-collections">Chorologie départementale</h1>
-				</div>
-				<div class="component component-text">
-					<p>
-						Consultez la répartition des espèces de France métropolitaine par département.
-						<br>
-						Ces données proviennent de la base <!--<a href="#">-->"Chorologie départementale" de Philippe Julve<!--</a>-->.
-						<br>
-						Signalez une nouvelle entrée ou une erreur sur le <a href="http://www.tela-botanica.org/projets-9">projet chorologie départementale</a>.
-					</p>
-				</div>
+    <div class="layout-content-col">
+    <div class="layout-wrapper">
+      <aside class="layout-column">
+      <?php
+        $module = chorologie_get_module();
+        the_telabotanica_module('toc', [
+        'items' => [
+          [
+            'text' => 'Par département',
+            'href' => '?module=liste-zones-geo',
+            'active' => ($module == 'liste-zones-geo')
+          ],
+          [
+            'text' => 'Liste des taxons',
+            'href' => '?module=liste-taxons',
+            'active' => ($module == 'liste-taxons')
+          ],
+          [
+            'text' => 'Carte',
+            'href' => '?module=carte',
+            'active' => ($module == 'carte' || $module == 'carte-taxon')
+          ]
+        ]
+      ]); ?>
+      <?php the_telabotanica_module('button-top'); ?>
+      </aside>
+      <div class="layout-content">
+      <?php the_telabotanica_module('breadcrumbs'); ?>
+      <article>
+        <div class="component component-title level-2">
+          <h1 id="recherche-collections">Chorologie départementale</h1>
+        </div>
+        <div class="component component-text">
+          <p>
+            Consultez la répartition des espèces de France métropolitaine par département.
+            <br>
+            Ces données proviennent de la base <!--<a href="#">-->"Chorologie départementale" de Philippe Julve<!--</a>-->.
+            <br>
+            Signalez une nouvelle entrée ou une erreur sur le <a href="http://www.tela-botanica.org/projets-9">projet chorologie départementale</a>.
+          </p>
+        </div>
 <?php }

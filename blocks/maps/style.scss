@@ -1,7 +1,7 @@
 .block-maps {
-  padding: 0;
-
   @include small {
+    padding: 0;
+
     .layout-wrapper {
       margin: 0;
     }
@@ -14,6 +14,8 @@
   }
 
   @include large-and-medium {
+    padding: 0;
+
     > .layout-content-col {
       position: relative;
     }

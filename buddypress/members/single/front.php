@@ -62,7 +62,7 @@ the_telabotanica_module('header-dashboard', [
 				'title' => [
 					'title' => __('Mes photos', 'telabotanica'),
 					'suffix' => '',
-					'href' => 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=8&tri=date_transmission&ordre=desc&format=CRXS&masque.auteur=' . get_current_user_id(),
+					'href' => 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=8&tri=date_transmission&ordre=desc&format=CRXS&masque.auteur=' . bp_get_displayed_user_email(),
 					'target' => '_blank'
 				],
 				'button' => [

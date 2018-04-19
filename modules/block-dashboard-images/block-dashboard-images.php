@@ -2,7 +2,7 @@
   $defaults = [
     'title' => [],
     'modifiers' => ['block-dashboard-images'],
-    'api_url' => 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' . bp_displayed_user_id()
+    'api_url' => 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' . bp_get_displayed_user_email()
     // For local debugging:
     // 'api_url' => '/wp-content/themes/telabotanica/modules/block-dashboard-images/test.xml'
   ];

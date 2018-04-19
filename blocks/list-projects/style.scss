@@ -1,14 +1,15 @@
 .block-list-projects {
-  &-items {
-    @include reset-list;
-  }
-
   @include small {
-    padding: 0;
+    padding: 0 0 3rem;
 
     .card-project {
-      height: auto;
-      width: auto;
+      height: 100%;
+      margin-right: 1rem;
+      width: 100%;
+    }
+
+    .flickity-viewport {
+      overflow: visible;
     }
   }
 

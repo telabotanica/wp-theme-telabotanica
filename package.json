@@ -66,6 +66,7 @@
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "flickity": "^2.1.1",
     "matchmedia-polyfill": "^0.3.0"
   }
 }

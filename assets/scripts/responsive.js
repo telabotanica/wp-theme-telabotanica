@@ -1,5 +1,3 @@
-require('matchmedia-polyfill');
-
 $(document).ready(function(){
   // Responsive tweaks on home page
   if ($("body").hasClass("home-page")) {

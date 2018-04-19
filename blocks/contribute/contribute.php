@@ -3,7 +3,7 @@
 function telabotanica_block_contribute_item($item) {
   if ( is_array($item) ) $item = (object) $item;
 
-  echo '<li class="block-contribute-item">';
+  echo '<div class="block-contribute-item">';
 
     printf(
       '<a href="%s" target="%s" class="block-contribute-item-link">',
@@ -35,7 +35,7 @@ function telabotanica_block_contribute_item($item) {
 
     echo '</a>';
 
-  echo '</li>';
+  echo '</div>';
 }
 
 function telabotanica_block_contribute($data) {
@@ -66,7 +66,7 @@ function telabotanica_block_contribute($data) {
     echo '<div class="block-contribute-content">';
 
       echo '<div class="layout-wrapper">';
-        echo '<ul class="block-contribute-items">';
+        echo '<div class="block-contribute-items">';
 
         $items_id = [];
 
@@ -124,7 +124,7 @@ function telabotanica_block_contribute($data) {
 
         endif;
 
-        echo '</ul>';
+        echo '</div>';
       echo '</div>';
 
       if ( $data->buttons ) :

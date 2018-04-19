@@ -10,16 +10,12 @@
     font-family: $ubuntu;
     font-weight: $light;
     line-height: 1.1;
-    margin: 0 0 5rem;
+    margin: 0;
     text-align: center;
   }
 
   &-content {
     text-align: center;
-  }
-
-  &-items {
-    @include reset-list;
   }
 
   &-item {
@@ -88,12 +84,15 @@
   @include small {
     &-title {
       font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &-items {
+      margin-bottom: 6rem;
     }
 
     &-item {
-      & + & {
-        margin-top: 3rem;
-      }
+      width: 100%;
     }
 
     &-item-image {
@@ -109,11 +108,23 @@
       font-size: 1.3rem;
       margin-bottom: 1rem;
     }
+
+    .flickity-page-dots {
+      bottom: -40px;
+    }
+
+    .flickity-prev-next-button {
+      top: 50px;
+
+      &.previous {left: -40px;}
+      &.next {right: -40px;}
+    }
   }
 
   @include large-and-medium {
     &-title {
       font-size: 3.2rem;
+      margin-bottom: 5rem;
     }
 
     &-items {

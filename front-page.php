@@ -50,10 +50,10 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
               wp_reset_postdata();
             endif;
 
-
             $featured_tools = get_field('tools');
 
             if ( $featured_tools ) :
+              echo '<div id="js-front-page-tools">';
 
               the_telabotanica_module('title', [
                 'title' => __('Les outils de Tela Botanica', 'telabotanica'),
@@ -74,6 +74,7 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
                 ]
               ]);
 
+              echo '</div>';
             endif;
             ?>
           </div>

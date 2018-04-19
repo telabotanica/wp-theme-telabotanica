@@ -5,6 +5,9 @@ require('../styles/login-style.scss');
 // Icons
 require('../icons/_all.js');
 
+// Responsive
+require('./responsive.js');
+
 // Modules
 // Require all script.js files in the modules folder
 var req = require.context('../../modules/', true, /script\.js$/);

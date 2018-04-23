@@ -91,11 +91,11 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
                   'modifiers' => 'block orange'
                 ] ); ?>
               </div>
-              <div class="layout-column-item background-white with-shadow">
+              <!-- <div class="layout-column-item background-white with-shadow">
                 <?php
                 the_telabotanica_module('map-events');
                 ?>
-              </div>
+              </div> -->
               <?php
             else :
               ?>

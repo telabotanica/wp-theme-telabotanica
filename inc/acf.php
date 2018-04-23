@@ -38,3 +38,12 @@ function telabotanica_add_acf_query_vars( $vars ){
   return $vars;
 }
 add_filter( 'query_vars', 'telabotanica_add_acf_query_vars' );
+
+// Traduction forcée de Title et Content
+function telabotanica_acf_load_field( $field ) {
+  if ( in_array($field["label"], ["Title", "Content"]) ) {
+    $field["label"] = __( $field["label"], "acf" );
+  }
+  return $field;
+}
+add_filter( 'acf/load_field', 'telabotanica_acf_load_field');

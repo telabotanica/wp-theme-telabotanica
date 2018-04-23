@@ -28,6 +28,14 @@ Tela.components.map = (function(){
       L.tileLayer('https://osm.tela-botanica.org/tuiles/osmfr/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
+
+      var icon = new L.icon({
+        iconUrl: require("./marker-icon.png"),
+        iconSize: [25, 41],
+        iconAnchor: [12, 41]
+      });
+      var marker = L.marker(options.center, {icon: icon});
+      marker.addTo(map);
     }
 
     function initOptions(){

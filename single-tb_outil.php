@@ -19,7 +19,6 @@ get_header(); ?>
 
       <?php
       if ( $fields->cover_buttons ) :
-        $fields->cover_buttons['display'] = 'seamless';
         $cover_content = get_telabotanica_component( 'buttons', $fields->cover_buttons );
       endif;
 

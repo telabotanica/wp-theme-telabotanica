@@ -1,8 +1,8 @@
 .component-buttons {
-  &:not(.as-seamless), &:not(.as-links) {
+  // &:not(.as-seamless), &:not(.as-links) {
     // TODO: FIX
-    text-align: center;
-  }
+    // text-align: center;
+  // }
 
   @include small {
     line-height: 3;
@@ -13,13 +13,11 @@
   }
 
   @include large-and-medium {
-    &:not(.as-seamless), &:not(.as-links) {
+    // &:not(.as-seamless), &:not(.as-links) {
+    &.with-separator {
       border-top: 0.1rem solid transparentize($taupe, 0.8);
-      padding: 3rem 0;
-    }
-
-    &:not(.as-seamless) {
       margin-top: 4rem;
+      padding: 3rem 0;
     }
   }
 }

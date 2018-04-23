@@ -128,10 +128,7 @@ function telabotanica_block_contribute($data) {
       echo '</div>';
 
       if ( $data->buttons ) :
-
-        $data->buttons['display'] = [ $data->buttons['display'], 'seamless' ];
         the_telabotanica_component( 'buttons', $data->buttons );
-
       endif;
 
     echo '</div>';

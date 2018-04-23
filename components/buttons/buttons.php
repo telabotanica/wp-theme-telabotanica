@@ -12,7 +12,6 @@
   if (empty($data->display)) $data->display = 'buttons';
 
   if ( $data->display === 'links' || ( is_array( $data->display ) && in_array('links', $data->display) ) ) $data->modifiers[] = 'as-links';
-  if ( $data->display === 'seamless' || ( is_array( $data->display ) && in_array('seamless', $data->display) ) ) $data->modifiers[] = 'as-seamless';
 
   echo '<div class="' . implode(' ', $data->modifiers) . '">';
 

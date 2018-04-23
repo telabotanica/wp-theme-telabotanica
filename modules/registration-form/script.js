@@ -9,8 +9,10 @@ Tela.modules.register = (function(){
     // This overloads /plugins/buddypress/bp-templates/bp-legacy/js/buddypress.js:1208
     // (actually loadded : buddypress.min.js)
     $('#profile-edit-form input:not(:submit), #profile-edit-form textarea, #profile-edit-form select, #signup_form input:not(:submit), #signup_form textarea, #signup_form select').change(function(){
-        window.onbeforeunload = null;
-      });
+      window.onbeforeunload = function(event) {
+        event.stopPropagation();
+      };
+    });
   }
 
   function changeLinksTargets() {

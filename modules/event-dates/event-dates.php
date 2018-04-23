@@ -39,7 +39,7 @@
   }
 
   printf(
-    '<%s href="%" class="%s" title="%s">',
+    '<%s href="%s" class="%s" title="%s">',
     $data->tag,
     $data->href,
     implode(' ', $data->modifiers),

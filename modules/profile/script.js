@@ -6,14 +6,15 @@ var _ = {
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
-Tela.modules.profile = (function(){
+Tela.modules.profile = (function() {
 
-  function module(selector){
+  function module(selector) {
     var $el = $(selector),
         $searchInputVille,
         $searchInputEspece,
         $currentRequestVille,
         $currentRequestEspece,
+        $departement,
         $pays;
 
     function init() {
@@ -22,7 +23,7 @@ Tela.modules.profile = (function(){
       initRestrictionDepartements();
     }
 
-    function initAutocompleteVille(){
+    function initAutocompleteVille() {
       $searchInputVille = $el.find('.field_ville input[type="text"]');
       $currentRequestVille = false;
 
@@ -87,20 +88,21 @@ Tela.modules.profile = (function(){
 
     function initRestrictionDepartements() {
       $pays = $el.find('.field_pays > select');
-      $pays.click(linkPaysDepartement);
+      $departement = $el.find('.field_departement');
+
       linkPaysDepartement();
+      $pays.change(linkPaysDepartement);
     }
 
     /**
-     * if chosen country is France, enables the "département" selector; else
-     * disables it and clears previously selected "département"
+     * if chosen country is France, shows the "département" selector; else
+     * hides it and clears previously selected "département"
      */
     function linkPaysDepartement() {
-      var departement = $el.find('.field_departement > select');
-      var france = $pays.val() == 'France';
-      departement.prop('disabled', !france);
-      if (! france) {
-        departement.val('');
+      if ($pays.val() === 'France') {
+        $departement.show();
+      } else {
+        $departement.hide().children('select').val('');
       }
     }
 

@@ -6,8 +6,13 @@ Tela.modules.register = (function(){
   function unbind(){
     // prevents Buddypress[.min.js] from displaying a "leave page" warning
     // (onbeforeunload) when validating the form
-    // TODO: enquêter sur l'origine du problème, en attendant, gros fix sale
-    $('#profile-edit-form input:not(:submit), #profile-edit-form textarea, #profile-edit-form select, #signup_form input:not(:submit), #signup_form textarea, #signup_form select').unbind('change');
+    // This overloads /plugins/buddypress/bp-templates/bp-legacy/js/buddypress.js:1208
+    // (actually loadded : buddypress.min.js)
+    $('#profile-edit-form input:not(:submit), #profile-edit-form textarea, #profile-edit-form select, #signup_form input:not(:submit), #signup_form textarea, #signup_form select').change(function(){
+      window.onbeforeunload = function(event) {
+        event.stopPropagation();
+      };
+    });
   }
 
   function changeLinksTargets() {

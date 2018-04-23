@@ -22,6 +22,22 @@
             "new_lines": ""
         },
         {
+            "key": "field_5a5f72bac0061",
+            "label": "Localisation",
+            "name": "localisation",
+            "type": "algolia_places",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "algolia_type": "all",
+            "algolia_countries": ""
+        },
+        {
             "key": "field_58034aa1ef07d",
             "label": "Contexte",
             "name": "context",
@@ -178,5 +194,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1488651317
+    "modified": 1524491120
 }

@@ -21,7 +21,7 @@
         color: $marron-fonce;
       }
 
-      & + & {
+      + li {
         margin-left: 4rem;
       }
     }

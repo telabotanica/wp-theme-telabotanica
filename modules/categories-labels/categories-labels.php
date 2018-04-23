@@ -19,8 +19,8 @@
     foreach ($data->items as $item) {
       printf(
         '<a href="%s" rel="category">%s</a>',
-        $data->href,
-        $data->text
+        $item['href'],
+        $item['text']
       );
     }
 

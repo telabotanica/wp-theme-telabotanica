@@ -85,7 +85,7 @@ get_header(); ?>
                 // Si l'utilisateur n'est pas connecté
                 if ( ! is_user_logged_in() ) :
 
-                  the_telabotanica_module('warning', [
+                  the_telabotanica_module('notice', [
                     'text' => __('Vous devez être connecté(e) à votre compte pour pouvoir proposer une actualité.', 'telabotanica')
                   ]);
                   echo '<p style="text-align: center">';

@@ -24,7 +24,7 @@
         {
             "key": "field_5a5f72bac0061",
             "label": "Localisation",
-            "name": "localisation",
+            "name": "place",
             "type": "algolia_places",
             "instructions": "",
             "required": 0,
@@ -194,5 +194,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1524491120
+    "modified": 1525107445
 }

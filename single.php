@@ -147,8 +147,8 @@ get_header(); ?>
 
                   endif;
 
-                  // EVENEMENT
-                  if ( post_is_in_descendant_category( 'evenements' ) ) :
+                  // EVENEMENT OU OFFRES-EMPLOI
+                  if ( post_is_in_descendant_category( 'evenements' ) || post_is_in_descendant_category( 'offres-emploi' )) :
 
                     $info_items = [];
 
@@ -157,10 +157,14 @@ get_header(); ?>
                       'text' => get_field('place')->value
                     ];
 
-                    $info_items[] = [
-                      'title' => 'Tarif',
-                      'text' => get_field('is_free') === true ? __( 'Gratuit', 'telabotanica') : get_field('prices')
-                    ];
+                    if ( post_is_in_descendant_category( 'evenements' )) :
+
+                      $info_items[] = [
+                        'title' => 'Tarif',
+                        'text' => get_field('is_free') === true ? __( 'Gratuit', 'telabotanica') : get_field('prices')
+                      ];
+
+                    endif;
 
                     the_telabotanica_component('info', [
                       'items' => $info_items
@@ -168,7 +172,7 @@ get_header(); ?>
 
                     the_telabotanica_component('map');
 
-                  endif; // FIN EVENEMENT
+                  endif; // FIN EVENEMENT/OFFRE-EMPLOI
 
                   if ( get_field('contact_info') && !empty( get_field('contact_info')['contact'][0]['name'] ) ) {
                     the_telabotanica_component('contact', get_field('contact_info')['contact'][0]);

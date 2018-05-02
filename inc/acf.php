@@ -37,7 +37,6 @@ function telabotanica_add_acf_query_vars( $vars ){
   $vars[] = "confirmation";
   $vars[] = "edit";
   $vars[] = "post_id";
-  $vars[] = "preview";
   $vars[] = "validation";
   return $vars;
 }

@@ -3,8 +3,6 @@
  * Post
  */
 $current_tb_user = wp_get_current_user()->ID;
-$preview = get_query_var('preview', false);
-$status_is_not_publish = (get_post_status(get_the_ID()) !== 'publish');
 
 get_header(); ?>
 
@@ -15,8 +13,10 @@ get_header(); ?>
         <div class="layout-central-col">
           <div class="layout-wrapper">
             <?php
+            $status = get_post_status(get_the_ID());
+
             // only post author should be able to display non published posts
-            if (($preview || $status_is_not_publish) && $current_tb_user!== get_the_author_id()) :
+            if ($status !== 'publish' && $current_tb_user !== get_the_author_id()) :
 
               the_telabotanica_module('notice', [
                 'type' => 'alert',
@@ -28,8 +28,8 @@ get_header(); ?>
                 <?php
                 the_telabotanica_module('button', [
                   'href' => 'mailto:accueil@tela-botanica.org',
-                  'text' => __( 'Contactez @accueil', 'telabotanica' ),
-                  'title' => __('Ecrire à accueil@tela-botanica.org' , 'telabotanica')
+                  'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                  'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
                 ]);
                 the_telabotanica_module('button', [
                     'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
@@ -39,6 +39,7 @@ get_header(); ?>
               </p>
 
             <?php else : ?>
+
               <?php while ( have_posts() ) : the_post(); ?>
                 <aside class="layout-aside">
                   <?php the_telabotanica_module('meta-news'); ?>
@@ -174,8 +175,8 @@ get_header(); ?>
                         endwhile;
                     endif;
 
-                    // EVENEMENT
-                    if ( post_is_in_descendant_category( 'evenements' ) ) :
+                    // EVENEMENT OU OFFRES-EMPLOI
+                    if ( post_is_in_descendant_category( 'evenements' ) || post_is_in_descendant_category( 'offres-emploi' )) :
 
                       $info_items = [];
 
@@ -184,10 +185,14 @@ get_header(); ?>
                         'text' => get_field('place')->value
                       ];
 
-                      $info_items[] = [
-                        'title' => 'Tarif',
-                        'text' => get_field('is_free') === true ? __( 'Gratuit', 'telabotanica') : get_field('prices')
-                      ];
+                      if ( post_is_in_descendant_category( 'evenements' )) :
+
+                        $info_items[] = [
+                          'title' => 'Tarif',
+                          'text' => get_field('is_free') === true ? __( 'Gratuit', 'telabotanica') : get_field('prices')
+                        ];
+
+                      endif;
 
                       the_telabotanica_component('info', [
                         'items' => $info_items
@@ -195,7 +200,7 @@ get_header(); ?>
 
                       the_telabotanica_component('map');
 
-                    endif; // FIN EVENEMENT
+                    endif; // FIN EVENEMENT/OFFRE-EMPLOI
 
                     if ( get_field('contact_info') && !empty( get_field('contact_info')['contact'][0]['name'] ) ) {
                       the_telabotanica_component('contact', get_field('contact_info')['contact'][0]);
@@ -206,10 +211,10 @@ get_header(); ?>
               <?php
               endwhile;
 
-              if ($preview) :
+              if ($status === 'draft' && $current_tb_user === get_the_author_id()) :
                 // In some cases publishing posts directly should be possible
                 $post_is_event = (get_the_category()[0]->parent === 25);
-                $user_is_tb_president =  (wp_get_current_user()->ID === 5);
+                $user_is_tb_president =  ($current_tb_user === 5);
                 $user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
 
                   echo '<p style="text-align: center">';

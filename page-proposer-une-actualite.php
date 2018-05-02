@@ -144,7 +144,7 @@ get_header(); ?>
 
                     /* (string) The URL to be redirected to after the form is submit. Defaults to the current URL with a GET parameter '?updated=true'.
                     A special placeholder '%post_url%' will be converted to post's permalink (handy if creating a new post) */
-                    'return' => '%post_url%' . '&preview=true',
+                    'return' => '%post_url%',
 
                     /* (string) Extra HTML to add before the fields */
                     'html_before_fields' => '',
@@ -194,8 +194,8 @@ get_header(); ?>
                       echo '<p style="text-align: center">';
                         the_telabotanica_module('button', [
                           'href' => 'mailto:accueil@tela-botanica.org',
-                          'text' => __( 'Contactez @accueil', 'telabotanica' ),
-                          'title' => __('Ecrire à accueil@tela-botanica.org' , 'telabotanica')
+                          'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                          'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
                         ]);
                         the_telabotanica_module('button', [
                           'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
@@ -281,14 +281,14 @@ get_header(); ?>
                     the_telabotanica_module('notice', [
                       'type' => 'alert',
                       'title' => __('Un problème est survenu', 'telabotanica'),
-                      'text' => __("Si vous êtes bien l'auteur de l'article, et que vous êtes autorisé à publier sans modération dans cette catégorie d'actualités, contactez l'accueil Tela-Botanica" , 'telabotanica' )
+                      'text' => __("Si vous êtes bien l'auteur de l'article, et que vous êtes autorisé à publier sans modération dans cette catégorie d'actualités, contactez l'accueil Tela Botanica" , 'telabotanica' )
                     ]);
 
                     echo '<p style="text-align: center">';
                       the_telabotanica_module('button', [
                         'href' => 'mailto:accueil@tela-botanica.org',
-                        'text' => __( 'Contactez @accueil', 'telabotanica' ),
-                        'title' => __('Ecrire à accueil@tela-botanica.org' , 'telabotanica')
+                        'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                        'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
                       ]);
                     echo '</p>';
                   endif;

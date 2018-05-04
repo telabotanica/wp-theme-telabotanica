@@ -35,6 +35,9 @@ add_action('acf/save_post', 'telabotanica_set_featured_image', 20);
 function telabotanica_add_acf_query_vars( $vars ){
   $vars[] = "categorie";
   $vars[] = "confirmation";
+  $vars[] = "edit";
+  $vars[] = "post_id";
+  $vars[] = "validation";
   return $vars;
 }
 add_filter( 'query_vars', 'telabotanica_add_acf_query_vars' );

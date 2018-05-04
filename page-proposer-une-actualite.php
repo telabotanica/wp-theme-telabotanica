@@ -9,12 +9,24 @@ $header_small = true;
 // A-t-on défini une catégorie?
 $post_category_slug = get_query_var( 'categorie', false );
 $post_category = get_category_by_slug($post_category_slug);
-$confirmation = get_query_var( 'confirmation', false );
 
-// In some cases publishing posts directly should be possible
-$post_is_event = ($post_category->parent === 25);
-$user_is_tb_president =  (wp_get_current_user()->ID === 5);
+// Page loaded on edit mode
+$edit = get_query_var( 'edit', false );
+
+// Page loaded on validated post mode
+$validation = get_query_var( 'validation', false );
+
+$post_id = get_query_var( 'post_id', NULL );
+$current_tb_user = strval (wp_get_current_user()->ID);
+$post_author = get_post($post_id)->post_author;
+
+$post_is_event = (get_post( $post_id )->post_parent === 25);
+$user_is_tb_president =  ($current_tb_user === 5);
 $user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
+
+// For most users, moderation is required before publication,
+// which means displaying post recording confirmation
+$confirmation = get_query_var( 'confirmation', false );
 
 // 404 si la catégorie passée en paramètre n'existe pas
 if ( $post_category_slug && !$post_category ) {
@@ -132,7 +144,7 @@ get_header(); ?>
 
                     /* (string) The URL to be redirected to after the form is submit. Defaults to the current URL with a GET parameter '?updated=true'.
                     A special placeholder '%post_url%' will be converted to post's permalink (handy if creating a new post) */
-                    'return' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ) . '?confirmation=true',
+                    'return' => '%post_url%',
 
                     /* (string) Extra HTML to add before the fields */
                     'html_before_fields' => '',
@@ -141,7 +153,7 @@ get_header(); ?>
                     'html_after_fields' => '',
 
                     /* (string) The text displayed on the submit button */
-                    'submit_value' => __("Envoyer", 'telabotanica'),
+                    'submit_value' => __("Prévisualiser", 'telabotanica'),
 
                     /* (string) A message displayed above the form after being redirected. Can also be set to false for no message */
                     'updated_message' => false,
@@ -167,14 +179,33 @@ get_header(); ?>
 
                   );
 
-                  if ($user_role_is_admin || $user_is_tb_president || $post_is_event) :
+                  if( $edit ) :
+                    if($current_tb_user === $post_author) :
+                      if(! is_null($post_id)) :
+                        $options['post_id'] = $post_id;
+                      endif;
+                    else :
+                      the_telabotanica_module('notice', [
+                        'type' => 'alert',
+                        'title' => __('Un problème est survenu', 'telabotanica'),
+                        'text' => __("Vous n'êtes pas autorisé à modifier un article dont vous n'êtes pas l'auteur.\n Si ce message apparait alors que vous êtes bien l'auteur de l'article veuillez contacter l'accueil" , 'telabotanica' )
+                      ]);
 
-                    $options['new_post']['post_status'] = 'publish';
+                      echo '<p style="text-align: center">';
+                        the_telabotanica_module('button', [
+                          'href' => 'mailto:accueil@tela-botanica.org',
+                          'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                          'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
+                        ]);
+                        the_telabotanica_module('button', [
+                          'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
+                          'text' => __( 'Proposer une actualité', 'telabotanica' )
+                        ]);
+                      echo '</p>';
 
-                    /* (string) The URL to be redirected to after the form is submit.
-                    Special placeholder '%post_url%' will be converted to post's permalink */
-                    $options['return'] = '%post_url%';
-
+                      get_footer();
+                      exit;
+                    endif;
                   endif;
 
                   switch ($post_category_slug) {
@@ -223,6 +254,45 @@ get_header(); ?>
               else :
 
                 the_telabotanica_module('breadcrumbs');
+
+                if( $validation ) :
+                  if(! is_null($post_id) && $current_tb_user === $post_author && ($post_is_event || $user_is_tb_president || $user_role_is_admin)) :
+
+                    $updates = array(
+                      'ID' => $post_id,
+                      'post_status' => 'publish'
+                    );
+                    wp_update_post( $updates );
+
+                    the_telabotanica_module('notice', [
+                      'type' => 'confirm',
+                      'title' => __("Félicitations, votre article a bien été publié.", 'telabotanica')
+                    ]);
+
+                    echo '<p style="text-align: center">';
+                      the_telabotanica_module('button', [
+                        'href' => get_permalink( $post_id ),
+                        'text' => __( "Voir l'article", 'telabotanica' )
+                      ]);
+                    echo '</p>';
+
+                  else :
+
+                    the_telabotanica_module('notice', [
+                      'type' => 'alert',
+                      'title' => __('Un problème est survenu', 'telabotanica'),
+                      'text' => __("Si vous êtes bien l'auteur de l'article, et que vous êtes autorisé à publier sans modération dans cette catégorie d'actualités, contactez l'accueil Tela Botanica" , 'telabotanica' )
+                    ]);
+
+                    echo '<p style="text-align: center">';
+                      the_telabotanica_module('button', [
+                        'href' => 'mailto:accueil@tela-botanica.org',
+                        'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                        'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
+                      ]);
+                    echo '</p>';
+                  endif;
+                endif;
 
                 echo '<article class="article">';
 

@@ -20,7 +20,7 @@ $post_id = get_query_var( 'post_id', NULL );
 $current_tb_user = strval (wp_get_current_user()->ID);
 $post_author = get_post($post_id)->post_author;
 
-$post_is_event = (get_post( $post_id )->post_parent === 25);
+$post_is_event = (get_the_category($post_id)[0]->parent === 25);
 $user_is_tb_president =  ($current_tb_user === 5);
 $user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
 

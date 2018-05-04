@@ -119,7 +119,7 @@ the_telabotanica_module('header-dashboard', [
 					'text' => __("Retrouvez prochainement ici la liste de vos dons", 'telabotanica'),
 					// 'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
 					'button' => [
-						'href' => get_permalink( get_page_by_path( 'soutenir' ) ),
+						'href' => get_permalink( get_page_by_path( 'presentation/soutenir' ) ),
 						'text' => __('Faites un don !', 'telabotanica'),
 						'modifiers' => 'rouge'
 					]

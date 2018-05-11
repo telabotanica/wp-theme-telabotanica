@@ -75,6 +75,7 @@ the_telabotanica_module('header-dashboard', [
 			$user_posts_query = new WP_Query([
 				'posts_per_page' => 3,
 				'author' => get_current_user_id(),
+				'post_status' => 'publish'
 			]);
 			$user_posts = '';
 			if ( $user_posts_query->have_posts() ) :

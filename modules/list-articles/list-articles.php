@@ -18,7 +18,9 @@
 
   if ( have_posts() ) :
     while ( have_posts() ) : the_post();
-      the_telabotanica_module('list-articles-item');
+      if(get_post_status(get_the_ID()) === 'publish') :
+        the_telabotanica_module('list-articles-item');
+      endif;
     endwhile;
 
     the_telabotanica_module('pagination');

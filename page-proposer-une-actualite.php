@@ -188,18 +188,19 @@ get_header(); ?>
                       the_telabotanica_module('notice', [
                         'type' => 'alert',
                         'title' => __('Un problème est survenu', 'telabotanica'),
-                        'text' => __("Vous n'êtes pas autorisé à modifier un article dont vous n'êtes pas l'auteur.\n Si ce message apparait alors que vous êtes bien l'auteur de l'article veuillez contacter l'accueil" , 'telabotanica' )
+                        'text' => __("Vous n'êtes pas autorisé à modifier un article dont vous n'êtes pas l'auteur." , 'telabotanica' )
                       ]);
 
                       echo '<p style="text-align: center">';
                         the_telabotanica_module('button', [
                           'href' => 'mailto:accueil@tela-botanica.org',
-                          'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                          'text' => __( "Contactez-nous", 'telabotanica' ),
                           'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
                         ]);
                         the_telabotanica_module('button', [
                           'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
-                          'text' => __( 'Proposer une actualité', 'telabotanica' )
+                          'text' => __( 'Proposer une actualité', 'telabotanica' ),
+                          'title' => __('Rédiger un article' , 'telabotanica')
                         ]);
                       echo '</p>';
 
@@ -281,14 +282,18 @@ get_header(); ?>
                     the_telabotanica_module('notice', [
                       'type' => 'alert',
                       'title' => __('Un problème est survenu', 'telabotanica'),
-                      'text' => __("Si vous êtes bien l'auteur de l'article, et que vous êtes autorisé à publier sans modération dans cette catégorie d'actualités, contactez l'accueil Tela Botanica" , 'telabotanica' )
+                      'text' => __("Cet article doit être relu par un membre de l'équipe Tela Botanica avant publication." , 'telabotanica' )
                     ]);
-
                     echo '<p style="text-align: center">';
                       the_telabotanica_module('button', [
                         'href' => 'mailto:accueil@tela-botanica.org',
-                        'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                        'text' => __( "Contactez-nous", 'telabotanica' ),
                         'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
+                      ]);
+                      the_telabotanica_module('button', [
+                        'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
+                        'text' => __( 'Proposer une actualité', 'telabotanica' ),
+                        'title' => __('Rédiger un article' , 'telabotanica')
                       ]);
                     echo '</p>';
                   endif;

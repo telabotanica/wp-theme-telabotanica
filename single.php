@@ -3,6 +3,8 @@
  * Post
  */
 $current_tb_user = wp_get_current_user()->ID;
+$user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
+
 
 get_header(); ?>
 
@@ -16,25 +18,25 @@ get_header(); ?>
             $status = get_post_status(get_the_ID());
 
             // only post author should be able to display non published posts
-            if ($status !== 'publish' && $current_tb_user !== get_the_author_id()) :
-
+            if ($status !== 'publish' && $current_tb_user !== get_the_author_id() && !$user_role_is_admin) :
               the_telabotanica_module('notice', [
                 'type' => 'alert',
                 'title' => __('Un problème est survenu', 'telabotanica'),
-                'text' => __("Vous n'êtes pas autorisé à modifier un article dont vous n'êtes pas l'auteur. Si ce message apparait alors que vous êtes bien l'auteur de l'article veuillez contacter l'accueil" , 'telabotanica' )
+                'text' => __("Vous n'êtes pas autorisé à modifier un article dont vous n'êtes pas l'auteur." , 'telabotanica' )
               ]);
             ?>
               <p style="text-align: center">
                 <?php
                 the_telabotanica_module('button', [
                   'href' => 'mailto:accueil@tela-botanica.org',
-                  'text' => __( "Contactez l'accueil Tela Botanica", 'telabotanica' ),
+                  'text' => __( "Contactez-nous", 'telabotanica' ),
                   'title' => __('Écrire à accueil@tela-botanica.org' , 'telabotanica')
                 ]);
                 the_telabotanica_module('button', [
-                    'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
-                    'text' => __( 'Proposer une actualité', 'telabotanica' )
-                  ]);
+                  'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
+                  'text' => __( 'Proposer une actualité', 'telabotanica' ),
+                  'title' => __('Rédiger un article' , 'telabotanica')
+                ]);
                 ?>
               </p>
 
@@ -221,7 +223,8 @@ get_header(); ?>
 
                   the_telabotanica_module('button', [
                       'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ).'?categorie='.get_the_category()[0]->slug.'&post_id='.get_the_ID().'&edit=true',
-                      'text' => __( 'Modifier', 'telabotanica' )
+                      'text' => __( 'Modifier', 'telabotanica' ),
+                      'title' => __('Apporter des corrections', 'telabotanica' )
                     ]
                   );
 
@@ -237,7 +240,8 @@ get_header(); ?>
 
                   the_telabotanica_module('button', [
                       'href' => $validation_link,
-                      'text' => __( 'Valider', 'telabotanica' )
+                      'text' => __( 'Valider', 'telabotanica' ),
+                      'title' => __( "Soumettre l'article / mettre en ligne l'évènement", 'telabotanica' )
                     ]
                   );
 

@@ -222,7 +222,7 @@ get_header(); ?>
                     case 'congres-conferences':
                     case 'expositions':
                     case 'sorties-de-terrain':
-                    case 'stages-et-ateliers':
+                    case 'stages-ateliers':
                       $options['post_content'] = false;
                       $options['field_groups'] = [
                         'group_5803515c20ffc' // Article - Évènement

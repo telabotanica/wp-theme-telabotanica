@@ -25,6 +25,7 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
             $featured_post = new WP_Query([
               'post_type' => 'post',
               'meta_key' => 'featured',
+              'post_status' => 'publish',
               'meta_value' => 1,
               'posts_per_page' => 1
             ]);
@@ -89,6 +90,7 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
             <?php
             $latest_articles = new WP_Query([
               'post_type' => 'post',
+              'post_status' => 'publish',
               'cat' => implode(',', [
                 $category_actualites->cat_ID
               ]),

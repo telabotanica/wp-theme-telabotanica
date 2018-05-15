@@ -155,6 +155,9 @@ get_header(); ?>
                     /* (string) The text displayed on the submit button */
                     'submit_value' => __("Prévisualiser", 'telabotanica'),
 
+                    /* (string) HTML used to render the submit button. Added in v5.5.10 */
+                    'html_submit_button'  => '<input class="acf-button button button-primary button-large" value="%s" title="'. __("Voir l'actualité mise en forme", 'telabotanica') . '" type="submit">',
+
                     /* (string) A message displayed above the form after being redirected. Can also be set to false for no message */
                     'updated_message' => false,
 

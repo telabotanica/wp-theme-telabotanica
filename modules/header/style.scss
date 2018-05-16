@@ -6,13 +6,17 @@
 
   &-fixed {
     box-shadow: 0 0.1rem 0.2rem 0 transparentize($noir, 0.9);
-    font-family: $ubuntu;
     font-size: 0; // cache les espaces entre éléments dans le code HTML
-    font-weight: $medium;
     height: $header-height-fixed;
-    letter-spacing: 0.1rem;
     position: fixed;
     width: 100%;
+  }
+
+  &-fixed,
+  &-container {
+    font-family: $ubuntu;
+    font-weight: $medium;
+    letter-spacing: 0.1rem;
     z-index: 100;
   }
 
@@ -54,8 +58,56 @@
     }
   }
 
+  &-nav-items {
+    @include reset-list;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
+    > .menu-item {
+      > a {
+        color: $gris-60;
+        padding: 0 1rem;
+        text-transform: uppercase;
+
+        &.is-open,
+        &:hover,
+        &:focus {
+          background-color: $beige;
+          color: $noir;
+        }
+      }
+
+      &.current-menu-item > a {
+        color: $noir;
+      }
+    }
+  }
+
+  &-nav-usecases-items {
+    @include reset-list;
+
+    a {
+      display: flex;
+      font-family: $ubuntu;
+      font-weight: $regular;
+      text-decoration: none;
+    }
+  }
+
   @include small {
     height: $header-height-fixed;
+
+    &-container {
+      background-color: $blanc;
+      bottom: 0;
+      overflow: auto;
+      position: fixed;
+      top: $header-height-fixed;
+      width: 100%;
+    }
 
     &-fixed {
       background-color: $vert-clair;
@@ -76,16 +128,36 @@
       top: 1rem;
     }
 
-    &-links {
-      display: none;
-    }
-
-    &-nav {
-      display: none;
-    }
-
+    &-container,
+    &-links,
+    &-nav,
+    &-nav .sub-menu,
     &-nav-usecases {
       display: none;
+    }
+
+    &.is-open {
+      .header-container,
+      .header-links,
+      .header-nav,
+      .header-nav-usecases {
+        display: block;
+      }
+    }
+
+    &-nav-items {
+      margin: 0 2rem;
+
+      > .menu-item {
+        > a {
+          font-size: 1.4rem;
+          padding: 1.5rem 0;
+        }
+      }
+
+      > .menu-item + .menu-item {
+        border-top: 0.1rem solid transparentize($taupe, 0.8);
+      }
     }
   }
 
@@ -110,189 +182,172 @@
     }
 
     &-links {
-      list-style: none;
-      margin: 0;
+      @include reset-list;
       padding: 0 1.4rem 0 0;
       position: absolute;
       right: 0;
       top: 0;
+    }
 
-      &-item {
-        display: inline-block;
+    &-links-item {
+      display: inline-block;
+      height: $header-height-fixed;
+      vertical-align: top;
+
+      a {
+        align-items: center;
+        color: $gris-b3;
+        display: flex;
+        font-size: 1.2rem;
         height: $header-height-fixed;
-        vertical-align: top;
+        padding-left: 1rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
 
-        a {
-          align-items: center;
-          color: $gris-b3;
-          display: flex;
-          font-size: 1.2rem;
-          height: $header-height-fixed;
-          padding-left: 1rem;
-          text-decoration: none;
-          transition: color 0.2s ease;
-
-          &:hover {
-            color: $gris-33;
-          }
-        }
-
-        &-text {
-          border-right: 0.1rem solid $gris-f0;
-          display: inline-block;
-          height: 2.3rem;
-          line-height: 2.3rem;
-          padding-right: 1rem;
-        }
-
-        &-user {
-          &-avatar {
-            background: center center no-repeat;
-            background-size: cover;
-            border-radius: 50%;
-            display: inline-block;
-            height: 2.2rem;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-            width: 2.2rem;
-          }
-          a {color: $vert-fonce;}
-        }
-
-        &-login a {
-          color: $vert-clair;
-          text-transform: uppercase;
-        }
-
-        &-donate a {
-          font-weight: $light;
-          letter-spacing: 0;
-        }
-
-        &-search {
-          align-items: center;
-          display: inline-flex;
-          padding-left: 1rem;
+        &:hover {
+          color: $gris-33;
         }
       }
     }
 
-    &-nav {
-      &-items {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    &-links-item-text {
+      border-right: 0.1rem solid $gris-f0;
+      display: inline-block;
+      height: 2.3rem;
+      line-height: 2.3rem;
+      padding-right: 1rem;
+    }
 
-        a {
+    &-links-item-user {
+      &-avatar {
+        background: center center no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        display: inline-block;
+        height: 2.2rem;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        width: 2.2rem;
+      }
+      a {color: $vert-fonce;}
+    }
+
+    &-links-item-login a {
+      color: $vert-clair;
+      text-transform: uppercase;
+    }
+
+    &-links-item-donate a {
+      font-weight: $light;
+      letter-spacing: 0;
+    }
+
+    &-links-item-search {
+      align-items: center;
+      display: inline-flex;
+      padding-left: 1rem;
+    }
+
+    &-nav-items {
+      > .menu-item {
+        display: inline-block;
+        margin-right: 2rem;
+        vertical-align: top;
+
+        > a {
+          border-bottom: 0.4rem solid transparent;
+          border-top: 0.4rem solid transparent;
+          font-size: 1.2rem;
+          line-height: $header-height-fixed - 0.8rem;
+          position: relative;
+
+          &.is-open,
+          &:hover,
+          &:focus {
+            border-bottom-color: $vert-clair;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        &.current-menu-item > a {
+          border-bottom-color: $vert-clair;
+        }
+      }
+
+      .sub-menu {
+        @include reset-list;
+        background-color: $blanc;
+        box-shadow: 0 0.2rem 0.2rem 0 transparentize($noir, 0.85);
+        display: none;
+        font-size: 1.5rem;
+        letter-spacing: 0;
+        padding: 1rem;
+        position: absolute;
+        transform: translateX(-2.5rem);
+        width: 24rem;
+
+        &.is-open {
           display: block;
-          text-decoration: none;
         }
 
         > .menu-item {
-          display: inline-block;
-          margin-right: 2rem;
-          vertical-align: top;
-
-          > a {
-            border-bottom: 0.4rem solid transparent;
-            border-top: 0.4rem solid transparent;
-            color: $gris-60;
-            font-size: 1.2rem;
-            line-height: $header-height-fixed - 0.8rem;
-            position: relative;
-            padding: 0 1rem;
+          &.is-contribution a {
+            color: $vert-fonce;
+            fill: $vert-fonce;
+            font-family: $ubuntu;
+            font-size: 1.1rem;
+            font-weight: $medium;
+            letter-spacing: 0.1rem;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
             text-transform: uppercase;
 
-            &.is-open,
-            &:hover,
-            &:focus {
-              background-color: $beige;
-              border-bottom-color: $vert-clair;
-              color: $noir;
+            .icon {
+              margin-right: 0.8rem;
+              vertical-align: bottom;
             }
-            &:focus {
-              outline: none;
-            }
-          }
-
-          &.current-menu-item > a {
-            border-bottom-color: $vert-clair;
-            color: $noir;
           }
         }
 
-        .sub-menu {
-          @include reset-list;
-          background-color: $blanc;
-          box-shadow: 0 0.2rem 0.2rem 0 transparentize($noir, 0.85);
-          display: none;
-          font-size: 1.5rem;
-          letter-spacing: 0;
-          padding: 1rem;
-          position: absolute;
-          transform: translateX(-2.5rem);
-          width: 24rem;
+        > .menu-item + .menu-item {
+          border-top: 0.1rem solid transparentize($taupe, 0.8);
+        }
 
-          &.is-open {
-            display: block;
+        > .menu-item-description {
+          color: $gris-60;
+          font-family: $muli;
+          font-size: 1.3rem;
+          font-weight: $light;
+          line-height: 1.6;
+          padding: 2rem 1.5rem 0.9rem 3.9rem;
+          position: relative;
+
+          .icon {
+            fill: $gris-99;
+            height: 1.8rem;
+            left: 1.4rem;
+            position: absolute;
+            top: 2.2rem;
+            width: 1.8rem;
           }
+        }
 
-          > .menu-item {
-            &.is-contribution a {
-              color: $vert-fonce;
-              fill: $vert-fonce;
-              font-family: $ubuntu;
-              font-size: 1.1rem;
-              font-weight: $medium;
-              letter-spacing: 0.1rem;
-              padding-bottom: 1rem;
-              padding-top: 1rem;
-              text-transform: uppercase;
+        a {
+          color: $gris-33;
+          font-family: $muli;
+          line-height: 1.4;
+          padding: 0.6rem 1.5rem 0.9rem;
 
-              .icon {
-                margin-right: 0.8rem;
-                vertical-align: bottom;
-              }
-            }
+          &:hover,
+          &:focus {
+            background-color: $beige;
+            color: $noir;
           }
-
-          > .menu-item + .menu-item {
-            border-top: 0.1rem solid transparentize($taupe, 0.8);
-          }
-
-          > .menu-item-description {
-            color: $gris-60;
-            font-family: $muli;
-            font-size: 1.3rem;
-            font-weight: $light;
-            line-height: 1.6;
-            padding: 2rem 1.5rem 0.9rem 3.9rem;
-            position: relative;
-
-            .icon {
-              fill: $gris-99;
-              height: 1.8rem;
-              left: 1.4rem;
-              position: absolute;
-              top: 2.2rem;
-              width: 1.8rem;
-            }
-          }
-
-          a {
-            color: $gris-33;
-            font-family: $muli;
-            line-height: 1.4;
-            padding: 0.6rem 1.5rem 0.9rem;
-
-            &:hover,
-            &:focus {
-              background-color: $beige;
-              color: $noir;
-            }
-            &:focus {
-              outline: 0.2rem solid $vert-clair;
-            }
+          &:focus {
+            outline: 0.2rem solid $vert-clair;
           }
         }
       }
@@ -303,88 +358,82 @@
       padding-top: $header-height-fixed;
       margin: 0 auto;
       width: 100rem;
+    }
 
-      &-items {
-        list-style: none;
-        margin: 0;
-        padding: 1.9rem 0;
-        text-align: center;
+    &-nav-usecases-items {
+      padding: 1.9rem 0;
+      text-align: center;
 
-        .menu-item {
-          display: inline-block;
-          overflow: hidden;
-          position: relative;
-          width: 25%;
+      .menu-item {
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        width: 25%;
 
-          &:first-child a {
-            border-left: 0.1rem solid transparentize($taupe, 0.8);
-          }
+        &:first-child a {
+          border-left: 0.1rem solid transparentize($taupe, 0.8);
+        }
 
+        &::before {
+          border-radius: 50%;
+          content: "";
+          display: block;
+          height: 0;
+          left: 50%;
+          opacity: 0.8;
+          position: absolute;
+          top: 30%;
+          transform: translate3d(-50%, -50%, 0);
+          width: 0;
+          z-index: 0;
+        }
+
+        &:hover {
           &::before {
-            border-radius: 50%;
-            content: "";
-            display: block;
-            height: 0;
-            left: 50%;
-            opacity: 0.8;
-            position: absolute;
-            top: 30%;
-            transform: translate3d(-50%, -50%, 0);
-            width: 0;
-            z-index: 0;
-          }
-
-          &:hover {
-            &::before {
-              height: 30rem;
-              opacity: 0;
-              transition: opacity 0.8s ease, height 0.8s ease, width 0.8s ease;
-              width: 30rem;
-            }
+            height: 30rem;
+            opacity: 0;
+            transition: opacity 0.8s ease, height 0.8s ease, width 0.8s ease;
+            width: 30rem;
           }
         }
+      }
 
-        a {
-          align-items: flex-end;
-          background: transparent top center no-repeat;
-          background-size: 4.6rem;
-          border-right: 0.1rem solid transparentize($taupe, 0.8);
-          color: $gris-33;
-          display: flex;
-          font-family: $ubuntu;
-          font-size: 1.5rem;
-          font-weight: $regular;
-          height: 7.2rem;
-          justify-content: center;
-          position: relative;
-          padding: 0 4rem;
-          text-decoration: none;
-          transition: color 0.2s ease;
-        }
+      a {
+        align-items: flex-end;
+        background: transparent top center no-repeat;
+        background-size: 4.6rem;
+        border-right: 0.1rem solid transparentize($taupe, 0.8);
+        color: $gris-33;
+        font-size: 1.5rem;
+        height: 7.2rem;
+        justify-content: center;
+        position: relative;
+        padding: 0 4rem;
+        transition: color 0.2s ease;
+      }
 
-        .menu-item.identifier {
-          &::before {background-color: $vert-tres-clair;}
-          a {background-image: url('../../modules/header/icons/identifier.svg');}
-          &.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
-        }
+      .menu-item.identifier {
+        &::before {background-color: $vert-tres-clair;}
+        a {background-image: url('../../modules/header/icons/identifier.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
+      }
 
-        .menu-item.apprendre {
-          &::before {background-color: $violet-clair;}
-          a {background-image: url('../../modules/header/icons/apprendre.svg');}
-          &.current_page_item a, a:hover, a:focus {color: $violet;}
-        }
+      .menu-item.apprendre {
+        &::before {background-color: $violet-clair;}
+        a {background-image: url('../../modules/header/icons/apprendre.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $violet;}
+      }
 
-        .menu-item.sortir {
-          &::before {background-color: $orange-clair;}
-          a {background-image: url('../../modules/header/icons/sortir.svg');}
-          &.current_page_item a, a:hover, a:focus {color: $orange;}
-        }
+      .menu-item.sortir {
+        &::before {background-color: $orange-clair;}
+        a {background-image: url('../../modules/header/icons/sortir.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $orange;}
+      }
 
-        .menu-item.participer {
-          &::before {background-color: $bleu-clair;}
-          a {background-image: url('../../modules/header/icons/participer.svg');}
-          &.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
-        }
+      .menu-item.participer {
+        &::before {background-color: $bleu-clair;}
+        a {background-image: url('../../modules/header/icons/participer.svg');}
+        &.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
       }
     }
   }

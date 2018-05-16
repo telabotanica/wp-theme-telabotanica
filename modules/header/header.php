@@ -19,6 +19,9 @@ function telabotanica_module_header($data) {
   $data->modifiers = telabotanica_styleguide_modifiers_array('header', $data->modifiers);
   if ( $header_small === true ) $data->modifiers[] = 'is-small';
 
+  // TODO: remove
+  $data->modifiers[] = 'is-open';
+
   printf(
     '<header class="%s" role="banner">',
     implode(' ', $data->modifiers)

@@ -12,8 +12,14 @@ Tela.modules.header = (function(){
 
     function init(){
       $nav = $el.find('.header-nav');
-      var $itemsContribute = $el.find('.menu-item.is-contribution > a');
 
+      // On mobile only
+      if (matchMedia('only screen and (max-width: 767.9px)').matches) {
+        initMobile();
+        return;
+      }
+
+      var $itemsContribute = $el.find('.menu-item.is-contribution > a');
       var iconEdit = iconTemplate({data: {icon: 'edit'}});
       $itemsContribute.prepend(iconEdit);
 
@@ -24,6 +30,25 @@ Tela.modules.header = (function(){
         focusClass: "is-focus",
         openClass: "is-open"
       });
+    }
+
+    function initMobile(){
+      var $container = $('<div class="header-container"></div>');
+      $el.append($container);
+
+      $el.find(".search-box").appendTo($container);
+      $nav.appendTo($container);
+      $el.find(".header-nav-usecases").appendTo($container);
+      $el.find(".header-links").appendTo($container);
+      $el.find(".header-links-item:empty").remove();
+
+      var $toggle = $el.find(".header-toggle");
+      $toggle.on("click", toggleNav);
+    }
+
+    function toggleNav(e){
+      e.preventDefault();
+      $el.toggleClass("is-open");
     }
 
     init();

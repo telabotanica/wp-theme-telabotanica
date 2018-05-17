@@ -201,6 +201,12 @@
     }
   }
 
+  &-links-item-user-avatar {
+    background: center center no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+  }
+
   @include small {
     @at-root body.has-nav-open {
       overflow: hidden;
@@ -404,19 +410,46 @@
       }
     }
 
-    &-links-item-login {
+    &-links-item-login,
+    &-links-item-user {
       margin-top: 2rem;
+
+      a {
+        display: block;
+        margin-left: -2.5rem;
+        padding: 1.5rem;
+        width: 100vw;
+      }
+    }
+
+    &-links-item-login {
 
       a {
         background-color: $vert-clair;
         color: $blanc;
-        display: block;
-        margin-left: -2.5rem;
-        padding: 1.5rem;
         text-align: center;
         text-transform: uppercase;
-        width: 100vw;
       }
+    }
+
+    &-links-item-user {
+      a {
+        background-color: $gris-f0;
+      }
+
+      .header-links-item-text {
+        align-items: center;
+        color: $gris-33;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+
+    &-links-item-user-avatar {
+      display: inline-block;
+      height: 4.2rem;
+      margin-bottom: 0.5rem;
+      width: 4.2rem;
     }
   }
 
@@ -479,19 +512,16 @@
       padding-right: 1rem;
     }
 
-    &-links-item-user {
-      &-avatar {
-        background: center center no-repeat;
-        background-size: cover;
-        border-radius: 50%;
-        display: inline-block;
-        height: 2.2rem;
-        margin-left: 0.5rem;
-        vertical-align: middle;
-        width: 2.2rem;
-      }
+    &-links-item-user a {
+      color: $vert-fonce;
+    }
 
-      a {color: $vert-fonce;}
+    &-links-item-user-avatar {
+      display: inline-block;
+      height: 2.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      width: 2.2rem;
     }
 
     &-links-item-login a {

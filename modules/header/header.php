@@ -19,9 +19,6 @@ function telabotanica_module_header($data) {
   $data->modifiers = telabotanica_styleguide_modifiers_array('header', $data->modifiers);
   if ( $header_small === true ) $data->modifiers[] = 'is-small';
 
-  // TODO: remove
-  $data->modifiers[] = 'is-open';
-
   printf(
     '<header class="%s" role="banner">',
     implode(' ', $data->modifiers)
@@ -44,8 +41,17 @@ function telabotanica_module_header($data) {
         $logo_element
       );
 
-      echo '<button type="button" class="header-toggle">Menu</button>';
+      printf(
+        '<button type="button" class="header-toggle">%s%s</button>',
+        __( 'Menu', 'telabotanica' ),
+        get_telabotanica_module('icon', ['icon' => 'menu'])
+      );
 
+      printf(
+        '<button type="button" class="header-toggle is-hidden">%s%s</button>',
+        __( 'Fermer', 'telabotanica' ),
+        get_telabotanica_module('icon', ['icon' => 'close'])
+      );
 
       // Menu secondaire
 
@@ -120,8 +126,9 @@ function telabotanica_module_header($data) {
       // Lien "Faites un don"
 
       printf(
-        '<li class="header-links-item header-links-item-donate"><a href="%s">%s</a></li>',
+        '<li class="header-links-item header-links-item-donate"><a href="%s">%s%s</a></li>',
         get_permalink( get_page_by_path( 'presentation/soutenir' ) ),
+        get_telabotanica_module('icon', ['icon' => 'heart', 'color' => 'vert-clair']),
         __( 'Faites un don !', 'telabotanica' )
       );
 

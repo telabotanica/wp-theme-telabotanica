@@ -8,9 +8,12 @@ Tela.modules.header = (function(){
 
   function module(selector){
     var $el = $(selector),
+      $body,
+      $toggle,
       $nav;
 
     function init(){
+      $body = $('body');
       $nav = $el.find('.header-nav');
 
       // On mobile only
@@ -36,19 +39,21 @@ Tela.modules.header = (function(){
       var $container = $('<div class="header-container"></div>');
       $el.append($container);
 
-      $el.find(".search-box").appendTo($container);
+      $el.find(".search-box").addClass("is-open").appendTo($container);
       $nav.appendTo($container);
       $el.find(".header-nav-usecases").appendTo($container);
       $el.find(".header-links").appendTo($container);
       $el.find(".header-links-item:empty").remove();
 
-      var $toggle = $el.find(".header-toggle");
+      $toggle = $el.find(".header-toggle");
       $toggle.on("click", toggleNav);
     }
 
     function toggleNav(e){
       e.preventDefault();
+      $toggle.toggleClass("is-hidden");
       $el.toggleClass("is-open");
+      $body.toggleClass("has-nav-open");
     }
 
     init();

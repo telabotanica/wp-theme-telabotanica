@@ -16,7 +16,6 @@
   &-container {
     font-family: $ubuntu;
     font-weight: $medium;
-    letter-spacing: 0.1rem;
     z-index: 100;
   }
 
@@ -90,14 +89,53 @@
     @include reset-list;
 
     a {
+      color: $gris-33;
       display: flex;
       font-family: $ubuntu;
       font-weight: $regular;
       text-decoration: none;
     }
+
+    .menu-item {
+      &.identifier {
+        a {background-image: url("../../modules/header/icons/identifier.svg");}
+        &.current_page_item a,
+        a:hover,
+        a:focus {color: $vert-fonce;}
+      }
+
+      &.apprendre {
+        a {background-image: url("../../modules/header/icons/apprendre.svg");}
+        &.current_page_item a,
+        a:hover,
+        a:focus {color: $violet;}
+      }
+
+      &.sortir {
+        a {background-image: url("../../modules/header/icons/sortir.svg");}
+        &.current_page_item a,
+        a:hover,
+        a:focus {color: $orange;}
+      }
+
+      &.participer {
+        a {background-image: url("../../modules/header/icons/participer.svg");}
+        &.current_page_item a,
+        a:hover,
+        a:focus {color: $turquoise-fonce;}
+      }
+    }
+  }
+
+  &-links {
+    @include reset-list;
   }
 
   @include small {
+    @at-root body.has-nav-open {
+      overflow: hidden;
+    }
+
     height: $header-height-fixed;
 
     &-container {
@@ -118,14 +156,27 @@
     }
 
     &-toggle {
+      align-items: center;
       background: transparent;
       border: 0;
       color: $blanc;
+      display: inline-flex;
       font-size: 1.2rem;
       padding: 1rem;
       position: absolute;
       right: 0;
-      top: 1rem;
+      top: 0.5rem;
+
+      .icon {
+        fill: $blanc;
+        height: 2.6rem;
+        margin-left: 0.5rem;
+        width: 2.6rem;
+      }
+
+      &.is-hidden {
+        display: none;
+      }
     }
 
     &-container,
@@ -138,14 +189,43 @@
 
     &.is-open {
       .header-container,
-      .header-links,
       .header-nav,
       .header-nav-usecases {
         display: block;
       }
+
+      .header-links {
+        display: flex;
+      }
+    }
+
+    .search-box {
+      margin: 1rem 2rem;
+
+      .search-box-button {
+        background-color: $blanc;
+        color: $vert-clair;
+        fill: $vert-clair;
+
+        .icon {
+          height: 2rem;
+          width: 2rem;
+        }
+      }
+
+      &.is-open .search-box-input {
+        background-color: $blanc;
+        padding-left: 0;
+        width: 100%;
+      }
+    }
+
+    &-nav {
+      border-top: 0.4rem solid transparentize($taupe, 0.8);
     }
 
     &-nav-items {
+      letter-spacing: 0.1rem;
       margin: 0 2rem;
 
       > .menu-item {
@@ -157,6 +237,77 @@
 
       > .menu-item + .menu-item {
         border-top: 0.1rem solid transparentize($taupe, 0.8);
+      }
+    }
+
+    &-nav-usecases {
+      background-color: $beige;
+      border-bottom: 0.2rem solid transparentize($taupe, 0.8);
+      border-top: 0.2rem solid transparentize($taupe, 0.8);
+      padding: 2rem;
+    }
+
+    &-nav-usecases-items {
+      .menu-item {
+        a {
+          background: transparent center left no-repeat;
+          background-size: 4.6rem;
+          padding: 1.5rem 0;
+          padding-left: 6rem;
+        }
+      }
+
+      .menu-item + .menu-item {
+        margin-top: 1rem;
+      }
+    }
+
+    &-links {
+      flex-direction: column-reverse;
+      font-family: $muli;
+      font-size: 1.3rem;
+      font-weight: $regular;
+      margin: 2rem 2.5rem 0;
+
+      a {
+        color: $gris-33;
+        text-decoration: none;
+      }
+    }
+
+    &-links-item-donate {
+      a {
+        align-items: center;
+        color: $vert-fonce;
+        display: inline-flex;
+
+        &:hover,
+        &:focus {
+          color: $gris-33;
+
+          .icon {
+            fill: $orange;
+          }
+        }
+
+        .icon {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    &-links-item-login {
+      margin-top: 2rem;
+
+      a {
+        background-color: $vert-clair;
+        color: $blanc;
+        display: block;
+        margin-left: -2.5rem;
+        padding: 1.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100vw;
       }
     }
   }
@@ -171,6 +322,7 @@
 
     &-fixed {
       background-color: $blanc;
+      letter-spacing: 0.1rem;
     }
 
     &-logo {
@@ -182,7 +334,6 @@
     }
 
     &-links {
-      @include reset-list;
       padding: 0 1.4rem 0 0;
       position: absolute;
       right: 0;
@@ -240,6 +391,8 @@
     &-links-item-donate a {
       font-weight: $light;
       letter-spacing: 0;
+
+      .icon {display: none;}
     }
 
     &-links-item-search {
@@ -396,44 +549,27 @@
             width: 30rem;
           }
         }
-      }
 
-      a {
-        align-items: flex-end;
-        background: transparent top center no-repeat;
-        background-size: 4.6rem;
-        border-right: 0.1rem solid transparentize($taupe, 0.8);
-        color: $gris-33;
-        font-size: 1.5rem;
-        height: 7.2rem;
-        justify-content: center;
-        position: relative;
-        padding: 0 4rem;
-        transition: color 0.2s ease;
-      }
+        a {
+          align-items: flex-end;
+          background: transparent top center no-repeat;
+          background-size: 4.6rem;
+          border-right: 0.1rem solid transparentize($taupe, 0.8);
+          font-size: 1.5rem;
+          height: 7.2rem;
+          justify-content: center;
+          padding: 0 4rem;
+          position: relative;
+          transition: color 0.2s ease;
+        }
 
-      .menu-item.identifier {
-        &::before {background-color: $vert-tres-clair;}
-        a {background-image: url('../../modules/header/icons/identifier.svg');}
-        &.current_page_item a, a:hover, a:focus {color: $vert-fonce;}
-      }
+        &.identifier::before {background-color: $vert-tres-clair;}
 
-      .menu-item.apprendre {
-        &::before {background-color: $violet-clair;}
-        a {background-image: url('../../modules/header/icons/apprendre.svg');}
-        &.current_page_item a, a:hover, a:focus {color: $violet;}
-      }
+        &.apprendre::before {background-color: $violet-clair;}
 
-      .menu-item.sortir {
-        &::before {background-color: $orange-clair;}
-        a {background-image: url('../../modules/header/icons/sortir.svg');}
-        &.current_page_item a, a:hover, a:focus {color: $orange;}
-      }
+        &.sortir::before {background-color: $orange-clair;}
 
-      .menu-item.participer {
-        &::before {background-color: $bleu-clair;}
-        a {background-image: url('../../modules/header/icons/participer.svg');}
-        &.current_page_item a, a:hover, a:focus {color: $turquoise-fonce;}
+        &.participer::before {background-color: $bleu-clair;}
       }
     }
   }

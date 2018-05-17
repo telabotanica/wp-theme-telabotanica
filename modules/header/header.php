@@ -162,5 +162,11 @@ function telabotanica_module_header($data) {
 
   endif;
 
+  printf(
+    '<div class="header-container"></div><div class="header-submenu-container"><button class="header-submenu-back">%s%s</button><div class="header-submenu-container-nav"></div></div>',
+    get_telabotanica_module('icon', ['icon' => 'arrow-left']),
+    __( 'Retour', 'telabotanica' )
+  );
+
   echo '</header>';
 }

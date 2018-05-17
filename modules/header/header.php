@@ -41,8 +41,17 @@ function telabotanica_module_header($data) {
         $logo_element
       );
 
-      echo '<button type="button" class="header-toggle">Menu</button>';
+      printf(
+        '<button type="button" class="header-toggle">%s%s</button>',
+        __( 'Menu', 'telabotanica' ),
+        get_telabotanica_module('icon', ['icon' => 'menu'])
+      );
 
+      printf(
+        '<button type="button" class="header-toggle is-hidden">%s%s</button>',
+        __( 'Fermer', 'telabotanica' ),
+        get_telabotanica_module('icon', ['icon' => 'close'])
+      );
 
       // Menu secondaire
 
@@ -117,8 +126,9 @@ function telabotanica_module_header($data) {
       // Lien "Faites un don"
 
       printf(
-        '<li class="header-links-item header-links-item-donate"><a href="%s">%s</a></li>',
+        '<li class="header-links-item header-links-item-donate"><a href="%s">%s%s</a></li>',
         get_permalink( get_page_by_path( 'presentation/soutenir' ) ),
+        get_telabotanica_module('icon', ['icon' => 'heart', 'color' => 'vert-clair']),
         __( 'Faites un don !', 'telabotanica' )
       );
 
@@ -151,6 +161,12 @@ function telabotanica_module_header($data) {
     echo '</nav>';
 
   endif;
+
+  printf(
+    '<div class="header-container"></div><div class="header-submenu-container"><button class="header-submenu-back">%s%s</button><div class="header-submenu-container-nav"></div></div>',
+    get_telabotanica_module('icon', ['icon' => 'arrow-left']),
+    __( 'Retour', 'telabotanica' )
+  );
 
   echo '</header>';
 }

@@ -37,6 +37,11 @@ Tela.modules.searchBox.autocomplete = (function(){
       $button = $el.find('.search-box-button');
       $primarySearchBox = $('.search-box.is-primary').first();
 
+      // Mobile
+      var isMobile = matchMedia('only screen and (max-width: 767.9px)').matches;
+      // stop here on mobile
+      if (isMobile) return;
+
       // Tiny mode
       if ($el.hasClass('tiny')) {
         isTiny = true;

@@ -1,6 +1,8 @@
 <?php
 
-$search_query = sanitize_text_field( get_search_query() );
+$search_query = get_search_query();
+$search_query = sanitize_text_field($search_query);
+$search_query = str_replace(" ", "%20", $search_query);
 
 // Are we searching in a specific index?
 $current_index = sanitize_key( get_query_var( 'in', false ) );

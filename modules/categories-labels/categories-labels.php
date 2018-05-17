@@ -18,8 +18,9 @@
 
     foreach ($data->items as $item) {
       printf(
-        '<a href="%s" rel="category">%s</a>',
+        '<a href="%s" rel="category" title="%s">%s</a>',
         $item['href'],
+        $item['text'],
         $item['text']
       );
     }

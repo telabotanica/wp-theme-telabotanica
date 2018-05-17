@@ -3,4 +3,4 @@
 mixin categories-labels(data)
   span.categories-labels
     each item in data.items
-      a(href=item.href rel="category")= item.text
+      a(href=item.href rel="category" title=item.text)= item.text

@@ -67,7 +67,7 @@ mixin search-hit-flore(data)
   - var referentiel = data.bdtfx ? 'bdtfx' : data.referentiels[0];
   - var title = data._highlightResult[referentiel].scientific_name.value
   - var suffix = []
-  - if (data[referentiel].author) suffix.push(data[referentiel].author)
+  //- if (data[referentiel].author) suffix.push(data[referentiel].author)
   - if (data[referentiel].year) suffix.push('[' + data[referentiel].year + ']')
   - var href = data[referentiel].permalink
   - var text = data._highlightResult[referentiel].common_name.value
@@ -77,7 +77,7 @@ mixin search-hit-flore(data)
       a(href=href)
         != title
         if suffix.length
-          span.search-hit-title-suffix= suffix.join(' ')
+          span.search-hit-title-suffix= ' ' + suffix.join(' ')
       each ref in data.referentiels
         a.search-hit-tag(href=data[ref].permalink class="search-hit-tag-" + ref)= ref
     if text

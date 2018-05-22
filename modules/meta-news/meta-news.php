@@ -12,7 +12,11 @@
   endif;
 
   if ( get_field('place') ) :
-    echo '<div class="meta-news-item meta-news-place">';
+    if ($category[0]->parent === 30) : // $category->parent === 30 is 'offres-emploi'
+      echo '<div class="meta-news-item meta-news-job-loc">';
+    else :
+      echo '<div class="meta-news-item meta-news-place">';
+    endif;
     the_telabotanica_module('icon', ['icon' => 'marker']);
     printf(
       '<span>%s</span>',

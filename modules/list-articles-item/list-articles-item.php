@@ -98,6 +98,14 @@
           echo '</span>';
         }
 
+        // $category->parent === 30 is 'offres-emploi'
+        if ($category->parent === 30 && $data->place) {
+          echo '<span class="list-articles-item-job-loc">';
+            the_telabotanica_module('icon', ['icon' => 'marker']);
+            echo $data->place;
+          echo '</span>';
+        }
+
         if ($data->date) {
           printf(
             '<span class="list-articles-item-date" title="%s">',

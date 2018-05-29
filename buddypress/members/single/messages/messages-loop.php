@@ -101,9 +101,19 @@ do_action( 'bp_before_member_messages_loop' ); ?>
 						<?php if ( 'sentbox' != bp_current_action() ) : ?>
 							<td class="thread-from">
 								<?php bp_message_thread_avatar( array( 'width' => 25, 'height' => 25 ) ); ?>
-								<span class="from"><?php _e( 'From:', 'buddypress' ); ?></span> <?php bp_message_thread_from(); ?>
+								<span class="from"><?php _e( 'From:', 'buddypress' ); ?></span>
+								<?php if( bp_get_message_thread_from()) : bp_message_thread_from(); else: _e('Deleted user' , 'buddypress'); endif; ?>
 								<?php bp_message_thread_total_and_unread_count(); ?>
 								<span class="activity"><?php bp_message_thread_last_post_date(); ?></span>
+							</td>
+							<td class="thread-info">
+								<?php if( bp_get_message_thread_from()) : ?>
+									<p><a href="<?php bp_message_thread_view_link(); ?>" title="<?php esc_attr_e( 'View Message', 'buddypress' ); ?>"><?php bp_message_thread_subject(); ?></a></p>
+									<p class="thread-excerpt"><?php bp_message_thread_excerpt(); ?></p>
+								<?php else: ?>
+									<p title="<?php esc_attr_e( 'Deleted', 'buddypress' ); ?>"><?php _e('Deleted', 'buddypress'); ?></p>
+									<p class="thread-excerpt"><?php _e('[deleted]', 'buddypress'); ?></p>
+								<?php endif; ?>
 							</td>
 						<?php else: ?>
 							<td class="thread-from">
@@ -112,12 +122,12 @@ do_action( 'bp_before_member_messages_loop' ); ?>
 								<?php bp_message_thread_total_and_unread_count(); ?>
 								<span class="activity"><?php bp_message_thread_last_post_date(); ?></span>
 							</td>
+							<td class="thread-info">
+								<p><a href="<?php bp_message_thread_view_link(); ?>" title="<?php esc_attr_e( "View Message", 'buddypress' ); ?>"><?php bp_message_thread_subject(); ?></a></p>
+								<p class="thread-excerpt"><?php bp_message_thread_excerpt(); ?></p>
+							</td>
 						<?php endif; ?>
 
-						<td class="thread-info">
-							<p><a href="<?php bp_message_thread_view_link(); ?>" title="<?php esc_attr_e( "View Message", 'buddypress' ); ?>"><?php bp_message_thread_subject(); ?></a></p>
-							<p class="thread-excerpt"><?php bp_message_thread_excerpt(); ?></p>
-						</td>
 
 						<?php
 

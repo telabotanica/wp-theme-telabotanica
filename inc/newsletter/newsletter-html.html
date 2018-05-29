@@ -640,7 +640,7 @@
                             </td>
                             <td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
                               <h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
-                              <span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEmploi" style="color: #006979 !important;">Lorraine (88)</span> - Offre publiée le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM yyyy") }} - par {{ item.author }}</span>
+                              <span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEmploi" style="color: #006979 !important;">{{ item.place }}</span> - Offre publiée le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM yyyy") }} - par {{ item.author }}</span>
                               <br>
                               {% if item.intro is not empty %}
                                 {% set content = item.intro ~ ' ' ~ item.post.post_content %}
@@ -691,7 +691,7 @@
                             </td>
                             <td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
                               <h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
-                              <span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEvenements" style="color: #e16e38 !important;">{{ item.event.place }}</span> -  Publié par {{ item.author }}</span>
+                              <span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEvenements" style="color: #e16e38 !important;">{{ item.place }}</span> -  Publié par {{ item.author }}</span>
                               <br>
                               {{ item.event.details|striptags|truncate(200, true)|raw }}
                               <a href="{{ item.link }}" class="colorEvenements" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #e16e38 !important;font-weight: normal;text-decoration: underline;">Lire la suite</a>

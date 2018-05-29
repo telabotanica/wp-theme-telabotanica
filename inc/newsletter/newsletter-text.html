@@ -53,7 +53,7 @@
   Le {{ date_start }}
 {% endif %}
 
-{{ item.event.place }} - Publié par {{ item.author }}
+{{ item.place }} - Publié par {{ item.author }}
 
 {{ item.event.details|striptags|truncate(300, true)|raw|unescape }}
 

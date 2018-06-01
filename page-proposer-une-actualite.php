@@ -21,7 +21,7 @@ $current_tb_user = strval (wp_get_current_user()->ID);
 $post_author = get_post($post_id)->post_author;
 
 $post_is_event = (get_the_category($post_id)[0]->parent === 25);
-$user_is_tb_president =  ($current_tb_user === 5);
+$user_role_is_tb_president =  array_key_exists('tb_president', wp_get_current_user()->caps);
 $user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
 
 // For most users, moderation is required before publication,
@@ -260,7 +260,7 @@ get_header(); ?>
                 the_telabotanica_module('breadcrumbs');
 
                 if( $validation ) :
-                  if(! is_null($post_id) && $current_tb_user === $post_author && ($post_is_event || $user_is_tb_president || $user_role_is_admin)) :
+                  if(! is_null($post_id) && $current_tb_user === $post_author && ($post_is_event || $user_role_is_tb_president || $user_role_is_admin)) :
 
                     $updates = array(
                       'ID' => $post_id,

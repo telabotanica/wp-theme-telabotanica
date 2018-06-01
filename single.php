@@ -212,7 +212,7 @@ get_header(); ?>
               if ($status === 'draft' && $current_tb_user === get_the_author_id()) :
                 // In some cases publishing posts directly should be possible
                 $post_is_event = (get_the_category()[0]->parent === 25);
-                $user_is_tb_president =  ($current_tb_user === 5);
+                $user_role_is_tb_president = array_key_exists('tb_president', wp_get_current_user()->caps);
                 $user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
 
                   echo '<p style="text-align: center">';
@@ -224,7 +224,7 @@ get_header(); ?>
                     ]
                   );
 
-                  if ($user_role_is_admin || $user_is_tb_president || $post_is_event) :
+                  if ($user_role_is_admin || $user_role_is_tb_president || $post_is_event) :
 
                     $validation_link = get_permalink( get_page_by_path( 'proposer-une-actualite' )) . '?post_id=' . get_the_ID().'&validation=true';
 

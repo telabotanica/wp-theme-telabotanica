@@ -34,7 +34,17 @@
       </div>
     </div>
 
-    <?php if ( has_nav_menu( 'footer-columns' ) ) : ?>
+    <div class="footer-nav-toggle">
+      <?php
+      the_telabotanica_module('button', [
+        'text' => __('Plan du site', 'telabotanica'),
+        'modifiers' => ['outline', 'always-block', 'taupe']
+      ]);
+      ?>
+    </div>
+
+    <?php
+    if ( has_nav_menu( 'footer-columns' ) ) : ?>
       <nav class="footer-nav" role="navigation" aria-label="<?php esc_attr_e( 'Plan du site', 'telabotanica' ); ?>">
         <?php
           wp_nav_menu( [

@@ -70,6 +70,10 @@
     }
   }
 
+  &-nav-toggle {
+    display: none;
+  }
+
   &-nav {
     background-color: transparentize($gris-f0, 0.5);
     padding: 3.5rem 0;
@@ -195,6 +199,15 @@
 
     &-about-tela-social-item {
       span {display: none;}
+    }
+
+    &-nav-toggle {
+      display: block;
+      margin: 0 2rem 2rem;
+    }
+
+    &-nav {
+      display: none;
     }
 
     &-nav-items {

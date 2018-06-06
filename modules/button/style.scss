@@ -79,6 +79,10 @@
       margin-left: 3rem;
     }
 
+    .button-text {
+      display: inline;
+    }
+
     &::after {
       content: ">";
       display: inline-block;

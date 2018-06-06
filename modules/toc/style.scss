@@ -152,4 +152,11 @@
     padding-left: 2.5rem;
   }
 
+  @include small {
+    margin-left: -1rem;
+
+    &-items {
+      padding-left: 1rem;
+    }
+  }
 }

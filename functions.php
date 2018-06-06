@@ -256,3 +256,18 @@ function reset_password_message($hint){
   return $hint = __( '<span style="font-weight:900"><span style="color:#E16E38">Warning : </span> Change the password above or remember it well.</span><br><br>Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; ).' );
 }
 add_filter('password_hint','reset_password_message');
+
+// Add president user role
+
+add_role( 'tb_president', __('PrésidentTB', 'telabotanica' ),
+  array(
+    'read' => true, // true allows this capability
+    'create_posts' => true, // Allows user to create new posts
+    'edit_posts' => true, // Allows user to edit their own posts
+    'delete_posts' => true, // Allows user to delete their own posts
+    'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
+    'upload_files' => true
+  )
+);
+
+add_role( 'deleted_tb_user', __('Ex-telabotaniste', 'telabotanica' ), array('read' => false));

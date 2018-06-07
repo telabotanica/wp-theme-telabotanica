@@ -9,7 +9,16 @@
 /** This action is documented in bp-templates/bp-legacy/buddypress/members/single/profile/profile-wp.php */
 do_action( 'bp_before_profile_loop_content' ); ?>
 
-<?php if ( bp_has_profile() ) : ?>
+<?php
+// displaying message for Ex-telabotaniste (deleted_tb_user)
+if( bp_displayed_user_id() === retrieve_deleted_tb_user_id()) :
+	the_telabotanica_module('notice', [
+		'type' => 'info',
+		'title' => __('Ce profil correspond à un compte supprimé.', 'telabotanica'),
+		'text' => __('Tous les articles postés par des comptes désormais supprimés lui sont affiliés.' , 'telabotanica' )
+	]); ?>
+
+<?php elseif ( bp_has_profile()) : ?>
 
 	<?php while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
 

@@ -258,7 +258,6 @@ function reset_password_message($hint){
 add_filter('password_hint','reset_password_message');
 
 // Add president user role
-
 add_role( 'tb_president', __('PrésidentTB', 'telabotanica' ),
   array(
     'read' => true, // true allows this capability
@@ -270,4 +269,46 @@ add_role( 'tb_president', __('PrésidentTB', 'telabotanica' ),
   )
 );
 
+// Add deleted user role
 add_role( 'deleted_tb_user', __('Ex-telabotaniste', 'telabotanica' ), array('read' => false));
+// Retrieve the user with this role
+function retrieve_deleted_tb_user_id() {
+  global $wpdb;
+
+  $deleted_tb_user_ID = $wpdb->get_col( $wpdb->prepare( "
+    SELECT user_id
+    FROM $wpdb->usermeta
+    WHERE meta_key = '{$prefix}capabilities'
+    AND meta_value LIKE %s
+  ", '%deleted_tb_user%') );
+
+  //there can be only one user with the role 'deleted_tb_user'
+  if(isset($deleted_tb_user_ID[0])){
+    return intval($deleted_tb_user_ID[0]);
+  }
+}
+
+// Reassign posts on delete_account
+function reassign_posts_and_links($id) {
+  global $wpdb;
+
+  // set reassign to Ex-telabotaniste user's ID
+  $reassign = retrieve_deleted_tb_user_id();
+
+  // Do the reassignment and let bp_core_delete_account() do the rest using wp_delete_user()
+  $post_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_author = %d", $id ) );
+  $wpdb->update( $wpdb->posts, array('post_author' => $reassign), array('post_author' => $id) );
+  if ( ! empty( $post_ids ) ) {
+    foreach ( $post_ids as $post_id ) {
+      clean_post_cache( $post_id );
+    }
+  }
+  $link_ids = $wpdb->get_col( $wpdb->prepare("SELECT link_id FROM $wpdb->links WHERE link_owner = %d", $id) );
+  $wpdb->update( $wpdb->links, array('link_owner' => $reassign), array('link_owner' => $id) );
+  if ( ! empty( $link_ids ) ) {
+    foreach ( $link_ids as $link_id ) {
+      clean_bookmark_cache( $link_id );
+    }
+  }
+}
+add_action( 'bp_core_pre_delete_account', 'reassign_posts_and_links');

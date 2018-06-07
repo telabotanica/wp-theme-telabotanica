@@ -23,8 +23,8 @@ do_action( 'bp_before_members_loop' ); ?>
 	// IMPORTANT at the moment (2017-02) this plugin guarantees compatibility
 	// with BP Profile Search only if the member loop is initiated with default
 	// parameters (type="active")
-	if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) :
-
+	// Not displaying Ex-telabotaniste ('deleted_tb_user' role)
+	if ( bp_has_members( bp_ajax_querystring( 'members' ) . '&exclude='.retrieve_deleted_tb_user_id() ) ) :
 	/**
 	 * Fires before the display of the members list.
 	 *

@@ -76,6 +76,9 @@ require get_template_directory() . '/inc/acf.php';
 // Intégration d'Algolia
 require get_template_directory() . '/algolia/functions.php';
 
+// Gestion des contenus, liens, commentaires etc. à la suppression d'un compte
+require get_template_directory() . '/inc/manage-delete-account.php';
+
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
 /**
@@ -258,16 +261,13 @@ function reset_password_message($hint){
 add_filter('password_hint','reset_password_message');
 
 // Add president user role
-
 add_role( 'tb_president', __('PrésidentTB', 'telabotanica' ),
   array(
-    'read' => true, // true allows this capability
-    'create_posts' => true, // Allows user to create new posts
+    'read' => true,
+    'create_posts' => true,
     'edit_posts' => true, // Allows user to edit their own posts
     'delete_posts' => true, // Allows user to delete their own posts
     'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
     'upload_files' => true
   )
 );
-
-add_role( 'deleted_tb_user', __('Ex-telabotaniste', 'telabotanica' ), array('read' => false));

@@ -13,7 +13,8 @@
  */
 do_action( 'bp_before_directory_groups_page' );
 
-$projects_page = get_page_by_path( 'projets' );
+$projects_page_name = get_post_field('post_name',get_option('bp-pages')['groups']);
+$projects_page = get_page_by_path($projects_page_name);
 the_telabotanica_module('cover', [
 	// toujours utiliser l'image de cover de la page Projets
 	'image' => get_field('cover_image', $projects_page),
@@ -69,11 +70,11 @@ the_telabotanica_module('cover', [
 					$categories_items[] = [
 						'text' => __('Mes projets', 'telabotanica'),
 						'number' => bp_get_total_group_count_for_user( bp_loggedin_user_id() ),
-						'href' => trailingslashit( bp_loggedin_user_domain() . 'projets' )
+						'href' => trailingslashit( bp_loggedin_user_domain() . $projects_page_name )
 					];
 				endif;
 
-				$help_project_page = get_page_by_path( 'projets/aide' );
+				$help_project_page = get_page_by_path( $projects_page_name . '/aide' );
 				if ( $help_project_page ) :
 					$categories_items[] = [
 						'text' => get_the_title( $help_project_page ),
@@ -87,7 +88,7 @@ the_telabotanica_module('cover', [
 				] );
 
 				echo '<div class="layout-column-item">';
-				$create_project_page = get_page_by_path( 'projets/creer-un-projet' );
+				$create_project_page = get_page_by_path( $projects_page_name . '/creer-un-projet' );
 				if ( $create_project_page ) :
 					the_telabotanica_module('button', [
 						'text' => get_the_title( $create_project_page ),
@@ -136,7 +137,7 @@ the_telabotanica_module('cover', [
 
 				if ( bp_get_current_group_directory_type() ) {
 					$current_type = bp_groups_get_group_type_object( bp_get_current_group_directory_type() );
-					$breadcrumbs_items[] = [ 'href' => get_permalink( get_page_by_path( 'projets' ) ), 'text' => get_the_title() ];
+					$breadcrumbs_items[] = [ 'href' => get_permalink( get_option('bp-pages')['groups'] ), 'text' => get_the_title() ];
 					$breadcrumbs_items[] = [ 'text' => $current_type->labels['name'] ];
 				} else {
 					$breadcrumbs_items[] = [ 'text' => get_the_title() ];

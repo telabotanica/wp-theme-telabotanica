@@ -18,7 +18,7 @@ switch ($current_index) {
     break;
 
   case 'projets':
-    $redirect_url = get_permalink(get_page_by_path( 'projets' ));
+    $redirect_url = get_permalink( get_option('bp-pages')['groups'] );
     break;
 }
 

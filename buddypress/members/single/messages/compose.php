@@ -72,7 +72,7 @@ else : // user needs to choose recipient from members search page
 		]);
 		echo '<p style="text-align: center">';
 		the_telabotanica_module('button', [
-			'href' => get_permalink( get_page_by_path( 'membres' ) ),
+			'href' => get_permalink( get_option('bp-pages')['members'] ),
 			'text' => __( 'Annuaire', 'telabotanica' )
 	    ]);
 		echo '</p>';

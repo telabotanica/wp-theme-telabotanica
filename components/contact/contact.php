@@ -40,7 +40,7 @@
     endif;
 
     if ( !empty($data->image) ) :
-      echo '<div class="component-contact-image" style="background-image: url(' . $data->image . ')"></div>';
+      echo '<div class="component-contact-image" style="background-image: url(' . $data->image['sizes']['thumbnail'] . ')"></div>';
     else :
       echo '<div class="component-contact-image">' . get_telabotanica_module('icon', ['icon' => 'mail-outline']) . '</div>';
     endif;

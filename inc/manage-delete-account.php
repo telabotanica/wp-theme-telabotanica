@@ -14,9 +14,9 @@ function retrieve_deleted_tb_user_id() {
   $deleted_tb_user_ID = $wpdb->get_col( $wpdb->prepare( "
     SELECT user_id
     FROM $wpdb->usermeta
-    WHERE meta_key = '{$prefix}capabilities'
-    AND meta_value LIKE %s
-  ", '%deleted_tb_user%') );
+    WHERE meta_key = 'capabilities'
+    AND meta_value = %s
+  ", 'a:1:{s:15:"deleted_tb_user";b:1;}') );
 
   if(count($deleted_tb_user_ID) > 0) {
 
@@ -28,50 +28,10 @@ function retrieve_deleted_tb_user_id() {
 
 /**
  * Hooked on bp_core_delete_account()
- * unsubscribe user from all lists when deleting his account
- */
-function unsubscribe_deleted_tb_user_from_all_lists($id) {
-  // Détection du plugin Tela Botanica
-  include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-  // détecte si le plugin TB est activé, sans avoir à mentionner le nom du dossier
-  if (function_exists('deleteSubscriberFromAllLists')) {
-    $email = bp_core_get_user_email( $id );
-    $ok = false;
-    $message_type = 'success';
-    $tb_subscriber_ezmlm = new TB_SubscriberEzmlm();
-
-    if ($email) {
-      $ok = $tb_subscriber_ezmlm->deleteSubscriberFromAllLists($email);
-
-      if ($ok) {
-        $message = sprintf(
-          __("L'adresse<strong>%s</strong> a bien été désinscrite de toutes les listes de Tela-botanica.", 'telabotanica'),
-          ' ' . $email
-        );
-      } else {
-        $message = __( 'Une erreur est survenue lors de la désinscription de toutes les listes de Tela-botanica, nous en avons été informés.', 'telabotanica' );
-        $message_type = 'error';
-      }
-    } else {
-      // message only for test usage
-      // TODO : better message to user
-      $message = sprintf(
-        __("Le mail<strong>%s</strong> n'est pas valide.", 'telabotanica'),
-        ' ' . $email
-      );
-      bp_core_add_message($message, 'error');
-    }
-    bp_core_add_message($message, $message_type);
-  } // TODO: send emails
-}
-
-add_action( 'bp_core_pre_delete_account', 'unsubscribe_deleted_tb_user_from_all_lists');
-
-/**
- * Hooked on bp_core_delete_account()
  * Reassigns posts, links, comments etc. as bp_core_delete_account() does not allow reassignment
  * @see wp_delete_user()
  */
+
 function reassign_to_deleted_tb_user($id) {
   global $wpdb;
 

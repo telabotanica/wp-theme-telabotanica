@@ -40,6 +40,9 @@
     endif;
 
     if ( !empty($data->image) ) :
+      if(is_array($data->image)) :
+        $data->image = $data->image['sizes']['thumbnail'];
+      endif;
       echo '<div class="component-contact-image" style="background-image: url(' . $data->image . ')"></div>';
     else :
       echo '<div class="component-contact-image">' . get_telabotanica_module('icon', ['icon' => 'mail-outline']) . '</div>';

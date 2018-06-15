@@ -14,9 +14,9 @@ function retrieve_deleted_tb_user_id() {
   $deleted_tb_user_ID = $wpdb->get_col( $wpdb->prepare( "
     SELECT user_id
     FROM $wpdb->usermeta
-    WHERE meta_key = '{$prefix}capabilities'
-    AND meta_value LIKE %s
-  ", '%deleted_tb_user%') );
+    WHERE meta_key = 'capabilities'
+    AND meta_value = %s
+  ", 'a:1:{s:15:"deleted_tb_user";b:1;}') );
 
   if(count($deleted_tb_user_ID) > 0) {
 

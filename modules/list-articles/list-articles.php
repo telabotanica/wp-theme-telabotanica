@@ -16,7 +16,31 @@
     implode(' ', $data->modifiers)
   );
 
-  if ( have_posts() ) :
+  if($is_category_events) :
+    // order events by event-date
+    // TODO : find out what to do whith obsolete events
+    $sort_events = new WP_Query(array(
+      'post_type'     => 'post',
+      'meta_key'      => 'date',
+      'orderby'     => 'meta_value',
+      'order'       => 'DESC'
+    ));
+
+    if ( $sort_events->have_posts() ) :
+      while ( $sort_events->have_posts() ) : $sort_events->the_post();
+        if(get_post_status(get_the_ID()) === 'publish') :
+          the_telabotanica_module('list-articles-item');
+        endif;
+      endwhile;
+
+      the_telabotanica_module('pagination');
+    else :
+      echo '<p>' . __( 'Aucun évènement.', 'telabotanica' ) . '</p>';
+    endif;
+
+    wp_reset_query();
+
+  elseif ( have_posts() ) :
     while ( have_posts() ) : the_post();
       if(get_post_status(get_the_ID()) === 'publish') :
         the_telabotanica_module('list-articles-item');

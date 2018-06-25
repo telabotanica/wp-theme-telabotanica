@@ -15,7 +15,7 @@
     if ( $data->type === 'posts' ) :
       global $sort_events;
       // when events limit page count to $sort_events->max_num_pages
-      if ($sort_events->max_num_pages) :
+      if (isset($sort_events) && $sort_events->max_num_pages) :
         $args['total'] = array('total' => $sort_events->max_num_pages);
       endif;
 
@@ -24,7 +24,6 @@
         'next_text' => __( 'Page suivante', 'telabotanica' ),
         'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'telabotanica' ) . ' </span>',
       ];
-
 
       the_posts_pagination( $args );
 

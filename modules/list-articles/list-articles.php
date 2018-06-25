@@ -23,7 +23,7 @@
 
     // TODO : pagination is incorrectly synchronized with $sort_events WP_Query for now,
     // if ever post_per_page is set to less than 10 (default value), pagination could malfunction :
-    // pagination shows the right number of pages, but beyound initial page count (with default values) page links return 404
+    // pagination shows the right number of pages, but beyond initial page count (with default values) page links return 404
     $args = array(
       'meta_query' => [
         [

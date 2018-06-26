@@ -1,7 +1,4 @@
 .block-main-features {
-  padding-bottom: 5rem;
-  padding-top: 5rem;
-
   &-title {
     color: $gris-33;
     font-family: $ubuntu;
@@ -14,19 +11,11 @@
 
   &-items {
     @include reset-list;
-    align-content: flex-start;
-    display: flex;
     text-align: center;
   }
 
   &-item {
     overflow: hidden;
-    padding: 1.5rem 3rem;
-    width: 50%;
-
-    & + & {
-      border-left: 0.1rem solid $gris-f0;
-    }
   }
 
   &-item-icon {
@@ -35,7 +24,6 @@
     fill: $vert-bouton;
     height: 4rem;
     justify-content: center;
-    margin-bottom: 3rem;
 
     img {
       max-height: 4rem;
@@ -51,9 +39,7 @@
   &-item-title {
     color: $gris-33;
     font-family: $ubuntu;
-    font-size: 1.8rem;
     font-weight: $bold;
-    margin-bottom: 1rem;
     margin-top: 0;
   }
 
@@ -74,6 +60,58 @@
       &:focus {
         background-color: transparentize($turquoise-fonce, 0.9);
       }
+    }
+  }
+
+  @include small {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+
+    > .layout-wrapper {
+      margin: 0;
+    }
+
+    &-item {
+      & + & {
+        margin-top: 4rem;
+      }
+    }
+
+    &-item-title {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    &-item-icon {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @include large-and-medium {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+
+    &-items {
+      align-content: flex-start;
+      display: flex;
+    }
+
+    &-item {
+      padding: 1.5rem 3rem;
+      width: 50%;
+
+      & + & {
+        border-left: 0.1rem solid $gris-f0;
+      }
+    }
+
+    &-item-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    &-item-icon {
+      margin-bottom: 3rem;
     }
   }
 }

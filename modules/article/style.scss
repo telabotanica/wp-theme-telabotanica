@@ -1,27 +1,4 @@
 .article {
-  &.is-small {
-    align-items: center;
-    display: flex;
-    overflow: hidden;
-
-    .article-title {
-      font-size: 1.9rem;
-      line-height: 2.8rem;
-      margin-bottom: 0;
-    }
-
-    .article-thumbnail {
-      background: center center no-repeat;
-      background-size: cover;
-      border-radius: 50%;
-      float: left;
-      height: 10rem;
-      margin: 0 2.5rem 0 0;
-      min-width: 10rem;
-      overflow: hidden;
-    }
-  }
-
   &-title {
     font-family: $ubuntu;
     font-weight: $bold;
@@ -77,6 +54,26 @@
     }
   }
 
+  &.is-small {
+    display: flex;
+    overflow: hidden;
+
+    .article-title {
+      font-size: 1.9rem;
+      line-height: 2.8rem;
+      margin-bottom: 0;
+    }
+
+    .article-thumbnail {
+      background: center center no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+      float: left;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+
   @include small {
     &-title {
       font-size: 1.65rem;
@@ -86,6 +83,14 @@
     &-image,
     .component-intro {
       margin-bottom: 1.5rem;
+    }
+
+    &.is-small {
+      .article-thumbnail {
+        height: 6rem;
+        margin-right: 1.5rem;
+        min-width: 6rem;
+      }
     }
   }
 
@@ -98,6 +103,16 @@
     &-image,
     .component-intro {
       margin-bottom: 3rem;
+    }
+
+    &.is-small {
+      align-items: center;
+
+      .article-thumbnail {
+        height: 10rem;
+        margin-right: 2.5rem;
+        min-width: 10rem;
+      }
     }
   }
 }

@@ -1,11 +1,9 @@
 .component-links {
-
   &-title {
     color: $gris-33;
     font-family: $ubuntu;
-    font-size: 2rem;
     font-weight: $light;
-    line-height: 2.6rem;
+    line-height: 1.3;
     margin: 0 0 1rem;
   }
 
@@ -27,7 +25,6 @@
     font-weight: $regular;
     line-height: 1.8rem;
     overflow: hidden;
-    padding: 1rem 13rem 1rem 4rem;
     position: relative;
     text-decoration: none;
     transition: background 0.2s ease;
@@ -54,10 +51,39 @@
   &-metadata {
     color: $turquoise-fonce;
     font-size: 1.4rem;
-    position: absolute;
-    right: 2rem;
-    top: 1rem;
-    white-space: nowrap;
   }
 
+  @include small {
+    &-title {
+      font-size: 1.8rem;
+    }
+
+    a {
+      padding: 1rem;
+      padding-left: 4rem;
+    }
+
+    &-metadata {
+      margin-left: 1rem;
+    }
+  }
+
+  @include large-and-medium {
+    &-title {
+      font-size: 2rem;
+    }
+
+    a {
+      padding: 1rem;
+      padding-left: 4rem;
+      padding-right: 13rem;
+    }
+
+    &-metadata {
+      position: absolute;
+      right: 2rem;
+      top: 1rem;
+      white-space: nowrap;
+    }
+  }
 }

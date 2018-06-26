@@ -122,7 +122,7 @@ get_header();
           foreach ( $algolia_autocomplete_config['sources'] as $index ) :
             $queries[] = [
               'indexName' => $index['index_name'],
-              'query' => $search_query,
+              'query' => urldecode($search_query),
               'hitsPerPage' => $index['settings']['hitsPerPage'] * 2,
               'facetFilters' => array_key_exists('facetFilters', $index['settings']) ? $index['settings']['facetFilters'] : null
             ];

@@ -18,7 +18,7 @@ switch ($current_index) {
 }
 
 if ( isset($redirect_url) ) {
-  wp_redirect( $redirect_url . '?q=' . $search_query );
+  wp_redirect( $redirect_url );
   exit;
 }
 

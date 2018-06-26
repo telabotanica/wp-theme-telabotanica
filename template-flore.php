@@ -11,12 +11,23 @@ get_header(); ?>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-      <?php the_telabotanica_module('cover', [
+      <?php
+      $pagename = get_query_var('pagename');
+
+      // Index between page names and facet in Algolia
+      $referentielsFacets = [
+        'france-metropolitaine' => 'referentiels:bdtfx',
+        'antilles-francaises' => 'referentiels:bdtxa',
+        'afrique-du-nord' => 'referentiels:isfan',
+        'afrique-tropicale' => 'referentiels:apd',
+      ];
+
+      the_telabotanica_module('cover', [
         'search' => [
           'index' => 'flore',
           'placeholder' => __('Rechercher un nom, un taxon...', 'telabotanica'),
           'instantsearch' => true,
-          'facetFilters' => 'referentiels:bdtfx'
+          'facetFilters' => array_key_exists($pagename, $referentielsFacets) ? $referentielsFacets[$pagename] : false
         ]
       ]); ?>
 

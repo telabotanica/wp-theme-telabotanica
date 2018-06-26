@@ -23,24 +23,26 @@
     $data->facetFilters
   );
     printf(
-      '<form role="search" method="get" action="%s" class="search-box-wrapper">',
+      '<form role="search" method="get" action="%s">',
       esc_url( home_url( '/' . $data->pageurl ) )
     );
-      printf(
-        '<input name="s" type="text" class="search-box-input" placeholder="%s" value="%s" autocomplete="off" spellcheck="false" />',
-        esc_attr( $data->placeholder ),
-        esc_attr( $data->value )
-      );
       if ($data->index) :
         printf(
           '<input name="in" type="hidden" value="%s" />',
           esc_attr( sanitize_key( $data->index ) )
         );
       endif;
-      printf(
-        '<button type="submit" class="search-box-button">%s</button>',
-        get_telabotanica_module('icon', ['icon' => 'search'])
-      );
+      echo '<div class="search-box-wrapper">';
+        printf(
+          '<input name="s" type="text" class="search-box-input" placeholder="%s" value="%s" autocomplete="off" spellcheck="false" />',
+          esc_attr( $data->placeholder ),
+          esc_attr( $data->value )
+        );
+        printf(
+          '<button type="submit" class="search-box-button">%s</button>',
+          get_telabotanica_module('icon', ['icon' => 'search'])
+        );
+      echo '</div>';
     echo '</form>';
 
     if ( $data->suggestions ) :

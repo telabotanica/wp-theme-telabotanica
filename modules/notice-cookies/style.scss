@@ -9,20 +9,40 @@
   font-weight: $regular;
   left: 0;
   overflow: hidden;
-  padding: 3rem;
   position: fixed;
   width: 100%;
   z-index: 1001;
 
   &-text {
-    border-left: 0.4rem solid $vert-clair-vif;
-    float: left;
     line-height: 1.4;
-    max-width: 80rem;
-    padding-left: 3rem;
   }
 
-  &-buttons {
-    float: right;
+  @include small {
+    padding: 0 2rem 2rem;
+
+    &-text {
+      border-top: 0.4rem solid $vert-clair-vif;
+      font-size: 1.2rem;
+      padding-top: 1.5rem;
+    }
+
+    &-buttons {
+      margin-top: 1rem;
+    }
+  }
+
+  @include large-and-medium {
+    padding: 3rem;
+
+    &-text {
+      border-left: 0.4rem solid $vert-clair-vif;
+      float: left;
+      max-width: 80rem;
+      padding-left: 3rem;
+    }
+
+    &-buttons {
+      float: right;
+    }
   }
 }

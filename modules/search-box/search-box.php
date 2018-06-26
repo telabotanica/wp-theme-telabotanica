@@ -10,6 +10,14 @@
     'pageurl' => ''
   ];
 
+  $vars = '';
+  if($data->index === 'projets' || $data->index === 'actualites' ||  $data->index === 'evenements') :
+    $data->pageurl = $data->index;
+    $vars = 'q';
+  else :
+    $vars = 'in';
+  endif;
+
   $data = telabotanica_styleguide_data($defaults, $data);
   $data->modifiers = telabotanica_styleguide_modifiers_array('search-box', $data->modifiers);
 
@@ -31,7 +39,7 @@
       );
       if ($data->index) :
         printf(
-          '<input name="in" type="hidden" value="%s" />',
+          '<input name="' . $vars . '" type="hidden" value="%s" />',
           esc_attr( sanitize_key( $data->index ) )
         );
       endif;

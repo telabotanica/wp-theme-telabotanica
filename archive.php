@@ -34,7 +34,8 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
           'search' => [
             'index' => 'evenements',
             'placeholder' => __('Rechercher un évènement...', 'telabotanica'),
-            'instantsearch' => true
+            'instantsearch' => true,
+            'pageurl' => 'evenements'
           ]
         ] );
       } else {
@@ -50,7 +51,8 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
           'search' => [
             'index' => 'actualites',
             'placeholder' => __("Rechercher une actualité...", 'telabotanica'),
-            'instantsearch' => true
+            'instantsearch' => true,
+            'pageurl' => 'actualites'
           ]
         ] );
       }

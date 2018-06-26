@@ -6,6 +6,7 @@
     'total_results' => $wp_query->found_posts,
     'index' => false,
     'instantsearch' => false,
+    'facetFilters' => '',
     'modifiers' => []
   ];
 
@@ -53,6 +54,7 @@
         'autocomplete' => false,
         'instantsearch' => $data->instantsearch,
         'index' => $data->index,
+        'facetFilters' => $data->facetFilters,
         'modifiers' => ['large', 'is-primary']
       ]);
 

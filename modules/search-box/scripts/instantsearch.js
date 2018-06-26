@@ -34,7 +34,7 @@ Tela.modules.searchBox.instantsearch = (function(){
       // The logic for autocomplete is in scripts/autocomplete.js
       if ($el.data('autocomplete') === true) {return;}
 
-      $initialContent = $('.layout-content .list-articles:not(#search-hits), .layout-content .list-projects:not(#search-hits), .layout-content .pagination, .layout-column .layout-column-item');
+      $initialContent = $('.layout-content > *:not(#search-hits, .breadcrumbs), .layout-column > *:not(.search-filters)');
       $searchInput = $el.find('.search-box-input');
       $searchFilters = $('#search-filters').closest('.search-filters');
       $searchHits = $('#search-hits');
@@ -54,13 +54,18 @@ Tela.modules.searchBox.instantsearch = (function(){
         mapping = {'q': 's'};
       }
 
+      var searchParameters = {
+        hitsPerPage: 20
+      };
+      if ($el.data('facetFilters')) {
+        searchParameters.facetFilters = $el.data('facetFilters').split(",");
+      }
+
       var options = {
         appId: algolia.application_id,
         apiKey: algolia.search_api_key,
         indexName: index.index_name,
-        searchParameters: {
-          hitsPerPage: 20
-        },
+        searchParameters: searchParameters,
         urlSync: {
           mapping: mapping,
           trackedParameters: ['query', 'attribute:*']

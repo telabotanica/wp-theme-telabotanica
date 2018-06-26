@@ -4,13 +4,7 @@
   background-size: cover;
   color: $blanc;
   display: flex;
-  min-height: 27.5rem;
   position: relative;
-
-  &.tall {
-    min-height: 37rem;
-    min-height: 27vw;
-  }
 
   &::before {
     background-color: transparentize($bleu-nuit, 0.6);
@@ -37,14 +31,12 @@
 
   &-title {
     font-family: $ubuntu;
-    font-size: 3.2rem;
     font-weight: $bold;
     margin: 0;
   }
 
   &-subtitle {
     font-weight: $regular;
-    font-size: 1.8rem;
     margin-top: 0.5rem;
 
     a {
@@ -72,12 +64,42 @@
   }
 
   @include small {
+    min-height: 16rem;
+    text-align: center;
+
+    &.tall {
+      min-height: 23rem;
+    }
+
+    &-title {
+      font-size: 2.2rem;
+    }
+
+    &-subtitle {
+      font-size: 1.6rem;
+    }
+
     &-credits {
       display: none;
     }
   }
 
   @include large-and-medium {
+    min-height: 27.5rem;
+
+    &.tall {
+      min-height: 37rem;
+      min-height: 27vw;
+    }
+
+    &-title {
+      font-size: 3.2rem;
+    }
+
+    &-subtitle {
+      font-size: 1.8rem;
+    }
+
     &-credits {
       bottom: 0;
       color: transparentize($gris-f0, 0.25);

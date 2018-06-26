@@ -46,6 +46,7 @@
     font-family: $ubuntu;
     font-weight: $light;
     line-height: 1.2;
+    margin: 0;
     text-align: center;
 
     .component + & {
@@ -86,51 +87,51 @@
     }
   }
 
-  &-header + &-content {
-    margin-top: 7.5rem;
-  }
-
   &-content {
-    display: flex;
-    justify-content: space-around;
     margin: 0 auto;
-    max-width: 118rem;
 
     > .component-embed {
       width: 50rem;
     }
+  }
 
-    &-text {
-      margin-left: 4rem;
-      width: 40%;
+  &-content-text {
+    h3 {
+      color: $gris-23;
+      font-family: $ubuntu;
+      font-weight: $bold;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
 
-      h3 {
-        color: $gris-23;
-        font-family: $ubuntu;
-        font-size: 2.6rem;
-        font-weight: $bold;
-        line-height: 3.3rem;
-        margin-bottom: 1.5rem;
-      }
-
-      h3:first-child {
-        margin-top: 1rem;
-      }
-
-      .component-buttons {
-        margin-top: 3.5rem;
-      }
+    h3:first-child {
+      margin-top: 1rem;
     }
   }
 
   @include small {
+    text-align: center;
+
     &-title {
-      font-size: 2rem;
-      margin: 0 0 1rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
     }
 
     &-intro {
       font-size: 1.4rem;
+    }
+
+    &-header + &-content {
+      margin-top: 3rem;
+    }
+
+    &-content > .component-image {
+      margin: 1rem auto;
+      max-width: 70vw;
+    }
+
+    &-content-text h3 {
+      font-size: 1.6rem;
     }
 
     &-credits {
@@ -141,11 +142,34 @@
   @include large-and-medium {
     &-title {
       font-size: 3.2rem;
-      margin: 0 0 2rem;
+      margin-bottom: 2rem;
     }
 
     &-intro {
       font-size: 1.6rem;
+    }
+
+    &-header + &-content {
+      margin-top: 7.5rem;
+    }
+
+    &-content {
+      display: flex;
+      justify-content: space-around;
+      max-width: 118rem;
+    }
+
+    &-content-text {
+      margin-left: 4rem;
+      width: 40%;
+
+      h3 {
+        font-size: 2.6rem;
+      }
+
+      .component-buttons {
+        margin-top: 3.5rem;
+      }
     }
 
     &-credits {

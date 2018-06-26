@@ -5,12 +5,27 @@
 
   .layout-components {
     margin: 0 auto;
-    max-width: 70rem;
     overflow: hidden;
-    padding: 10rem 0;
+
+    > *:first-child {
+      margin-top: 0;
+    }
   }
 
   &.background-beige {
     background-color: $beige2;
+  }
+
+  @include small {
+    .layout-components {
+      padding: 4rem 0;
+    }
+  }
+
+  @include large-and-medium {
+    .layout-components {
+      max-width: 70rem;
+      padding: 10rem 0;
+    }
   }
 }

@@ -21,6 +21,24 @@
     &:focus {
       background-color: transparentize($turquoise-fonce, 0.9);
     }
+
+    &.logo {
+      border: 0;
+      display: inline-block;
+      filter: grayscale(1);
+      transition: all 0.2s ease;
+
+      img {
+        vertical-align: middle;
+        width: 15rem;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        filter: none;
+      }
+    }
   }
 
   b, strong {font-weight: $bold;}

@@ -25,7 +25,7 @@ Tela.modules.header = (function(){
       $itemsContribute.prepend(iconEdit);
 
       // On mobile only
-      if (matchMedia('only screen and (max-width: 767.9px)').matches) {
+      if (matchMedia('only screen and (max-width: 1199.9px)').matches) {
         initMobile();
         return;
       }

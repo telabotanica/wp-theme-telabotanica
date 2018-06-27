@@ -104,13 +104,14 @@
       margin-bottom: 4rem;
     }
 
-    &.reversed {
-      > .layout-wrapper {
-        > .layout-column {
-          margin: 2rem -2rem 0;
-          padding: 0 2rem;
-        }
-      }
+    &.reversed > .layout-wrapper > .layout-column {
+      margin: 2rem -2rem 0;
+      padding: 0 2rem;
+    }
+
+    &.reversed.reversed-colors > .layout-wrapper > .layout-column {
+      margin: 0;
+      padding: 0 2rem;
     }
   }
 

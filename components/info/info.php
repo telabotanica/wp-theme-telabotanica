@@ -21,11 +21,13 @@
 
         $item = (object) $item;
 
-        printf(
-          '<dt class="component-info-item-title">%s</dt><dd class="component-info-item-text">%s</dd>',
-          $item->title,
-          $item->text
-        );
+        if ($item->text) {
+          printf(
+            '<dt class="component-info-item-title">%s</dt><dd class="component-info-item-text">%s</dd>',
+            $item->title,
+            $item->text
+          );
+        }
 
       endforeach;
 

@@ -83,7 +83,7 @@ Tela.modules.searchBox.instantsearch = (function(){
       search.start();
 
       // Remove other elements
-      $el.find('input.search-box-input:not(.ais-search-box--input)').remove();
+      $el.find('input.search-box-input:not(.ais-search-box--input)').hide();
       $el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
     }
 

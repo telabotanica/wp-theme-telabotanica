@@ -23,8 +23,7 @@ the_telabotanica_module('cover', [
 	'search' => [
 		'index' => 'projets',
 		'placeholder' => __('Rechercher un projet...', 'telabotanica'),
-		'instantsearch' => true,
-		'pageurl' => $projects_page_name
+		'instantsearch' => true
 	]
 ]);
 

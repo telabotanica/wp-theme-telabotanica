@@ -4,14 +4,13 @@ _.each = require('lodash.foreach');
 _.map = require('lodash.map');
 _.throttle = require('lodash.throttle');
 
-require('./affix.js');
-
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
 Tela.modules.toc = (function(){
 
   var defaultOptions = {
+    accordionsSelector: '.component-accordion',
     anchorsSelector: '.component-title.level-2 .component-title-anchor',
     anchorOffset: 40 // should be the same as $title-anchor-offset in component title style
   };
@@ -29,6 +28,7 @@ Tela.modules.toc = (function(){
       headerHeight = $('.header-nav').height();
 
       $articleContainer = $('.layout-content article');
+      $accordions = $articleContainer.find(options.accordionsSelector);
       $anchors = $articleContainer.find(options.anchorsSelector);
 
       if ($anchors.length) {
@@ -36,7 +36,10 @@ Tela.modules.toc = (function(){
         $(window).on('scroll', _.throttle(onScroll, 250));
       }
 
-      setAffix();
+      if ($accordions.length) {
+        // Monitor changes to article height (when an accordion is open/closed)
+        onElementHeightChange($articleContainer[0], parseItems);
+      }
     }
 
     function initOptions() {
@@ -50,12 +53,14 @@ Tela.modules.toc = (function(){
         var $anchor = $(anchor);
         return {
           id: $anchor.attr('name'),
-          top: $anchor.offset().top + options.anchorOffset
+          top: Math.round($anchor.offset().top + options.anchorOffset)
         };
       });
 
       _.each(items, function (item, index, list) {
-        item.bottom = (list[index+1]) ? list[index+1].top : $articleContainer.position().top + $articleContainer.height();
+        item.bottom = (list[index+1]) ?
+          list[index+1].top :
+          Math.round($articleContainer.position().top + $articleContainer.height());
       });
 
       onScroll();
@@ -75,19 +80,18 @@ Tela.modules.toc = (function(){
       });
     }
 
-    function setAffix(){
-      // no affix if there is not enough space to show the whole element
-      if ($el.height() > window.innerHeight - headerHeight - 100) return;
+    function onElementHeightChange(elm, callback){
+      var lastHeight = elm.clientHeight, newHeight;
 
-      // no affix if the parent is not tall enough
-      if ($el.height() > $el.closest('.layout-column').height() - 50) return;
+      (function run(){
+          newHeight = elm.clientHeight;
+          if (lastHeight != newHeight) callback();
+          lastHeight = newHeight;
 
-      $el.affix({
-        offset: {
-          top: $el.offset().top - headerHeight,
-          bottom: $('body').height() - $('.footer').offset().top + headerHeight + 50
-        }
-      });
+          if (elm.onElementHeightChangeTimer) clearTimeout(elm.onElementHeightChangeTimer);
+
+          elm.onElementHeightChangeTimer = setTimeout(run, 500);
+      })();
     }
 
     initOptions();

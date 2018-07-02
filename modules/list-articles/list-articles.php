@@ -42,7 +42,7 @@
     $query = new WP_Query($args);
     wp_reset_postdata();
     wp_reset_query();
-    $args['max_num_pages'] = ceil($query->found_posts / $query->query_vars['posts_per_page']);
+    $args['max_num_pages'] = (int) ceil($query->found_posts / $query->query_vars['posts_per_page']);
     $args['paged'] = $paged;
     $args['is_paged'] = true;
 

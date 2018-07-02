@@ -14,16 +14,16 @@
 
     if ( $data->type === 'posts' ) :
       global $sort_events;
-      // when events limit page count to $sort_events->max_num_pages
-      if (isset($sort_events) && $sort_events->max_num_pages) :
-        $args['total'] = array('total' => $sort_events->max_num_pages);
-      endif;
 
       $args = [
         'prev_text' => __( 'Page précédente', 'telabotanica' ),
         'next_text' => __( 'Page suivante', 'telabotanica' ),
         'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'telabotanica' ) . ' </span>',
       ];
+      // when events limit page count to $sort_events->max_num_pages
+      if (isset($sort_events) && $sort_events->max_num_pages) :
+        $args['total'] = (int) ceil($sort_events->max_num_pages);
+      endif;
 
       the_posts_pagination( $args );
 

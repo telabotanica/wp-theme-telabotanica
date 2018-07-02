@@ -8,6 +8,10 @@
   top: $header-height-fixed;
   width: 30rem;
 
+  body.admin-bar & {
+    top: $header-height-fixed + $header-admin-bar-height;
+  }
+
   &-items,
   &-subitems {
     list-style: none;

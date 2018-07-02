@@ -95,14 +95,16 @@ Tela.modules.searchBox.instantsearch = (function(){
           $searchHits.hide();
           $initialContent.show();
         });
+
+        helper.search();
+      } else {
+        helper.search();
+
+        // Show hits
+        $initialContent.hide();
+        $searchFilters.show();
+        $searchHits.show();
       }
-
-      helper.search();
-
-      // Show hits
-      $initialContent.hide();
-      $searchFilters.show();
-      $searchHits.show();
     }
 
     function initSearchBox(){

@@ -4,8 +4,6 @@ _.each = require('lodash.foreach');
 _.map = require('lodash.map');
 _.throttle = require('lodash.throttle');
 
-require('./affix.js');
-
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
@@ -35,8 +33,6 @@ Tela.modules.toc = (function(){
         _.defer(parseItems);
         $(window).on('scroll', _.throttle(onScroll, 250));
       }
-
-      setAffix();
     }
 
     function initOptions() {
@@ -71,21 +67,6 @@ Tela.modules.toc = (function(){
           currentItemId = item.id;
           $el.find('.toc-subitem').removeClass('is-active');
           $el.find('a[href="#' + item.id + '"]').closest('.toc-subitem').addClass('is-active');
-        }
-      });
-    }
-
-    function setAffix(){
-      // no affix if there is not enough space to show the whole element
-      if ($el.height() > window.innerHeight - headerHeight - 100) return;
-
-      // no affix if the parent is not tall enough
-      if ($el.height() > $el.closest('.layout-column').height() - 50) return;
-
-      $el.affix({
-        offset: {
-          top: $el.offset().top - headerHeight,
-          bottom: $('body').height() - $('.footer').offset().top + headerHeight + 50
         }
       });
     }

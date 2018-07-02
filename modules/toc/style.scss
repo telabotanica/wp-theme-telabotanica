@@ -4,18 +4,9 @@
   font-family: $ubuntu;
   font-weight: $regular;
   margin-bottom: 4rem;
+  position: sticky;
+  top: $header-height-fixed;
   width: 30rem;
-
-  &.affix {
-    position: fixed;
-    top: $header-height-fixed;
-
-    body.admin-bar & {top: $header-height-fixed + $header-admin-bar-height;}
-  }
-
-  &.affix-bottom {
-    position: absolute;
-  }
 
   &-items,
   &-subitems {

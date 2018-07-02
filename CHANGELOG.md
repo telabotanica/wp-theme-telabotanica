@@ -12,6 +12,8 @@ plus de détails sur http://semver.org/lang/fr/
 ## x.β.α (bientôt)
 
 * template `flore` ajouté
+* module `toc` :
+  * remplacement du comportement "affix" par une solution CSS (`position: sticky`)
 
 ## 0.1.0 (2018-04-11)
 

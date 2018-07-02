@@ -10,6 +10,7 @@ Tela.modules = Tela.modules || {};
 Tela.modules.toc = (function(){
 
   var defaultOptions = {
+    accordionsSelector: '.component-accordion',
     anchorsSelector: '.component-title.level-2 .component-title-anchor',
     anchorOffset: 40 // should be the same as $title-anchor-offset in component title style
   };
@@ -27,11 +28,17 @@ Tela.modules.toc = (function(){
       headerHeight = $('.header-nav').height();
 
       $articleContainer = $('.layout-content article');
+      $accordions = $articleContainer.find(options.accordionsSelector);
       $anchors = $articleContainer.find(options.anchorsSelector);
 
       if ($anchors.length) {
         _.defer(parseItems);
         $(window).on('scroll', _.throttle(onScroll, 250));
+      }
+
+      if ($accordions.length) {
+        // Monitor changes to article height (when an accordion is open/closed)
+        onElementHeightChange($articleContainer[0], parseItems);
       }
     }
 
@@ -46,12 +53,14 @@ Tela.modules.toc = (function(){
         var $anchor = $(anchor);
         return {
           id: $anchor.attr('name'),
-          top: $anchor.offset().top + options.anchorOffset
+          top: Math.round($anchor.offset().top + options.anchorOffset)
         };
       });
 
       _.each(items, function (item, index, list) {
-        item.bottom = (list[index+1]) ? list[index+1].top : $articleContainer.position().top + $articleContainer.height();
+        item.bottom = (list[index+1]) ?
+          list[index+1].top :
+          Math.round($articleContainer.position().top + $articleContainer.height());
       });
 
       onScroll();
@@ -69,6 +78,20 @@ Tela.modules.toc = (function(){
           $el.find('a[href="#' + item.id + '"]').closest('.toc-subitem').addClass('is-active');
         }
       });
+    }
+
+    function onElementHeightChange(elm, callback){
+      var lastHeight = elm.clientHeight, newHeight;
+
+      (function run(){
+          newHeight = elm.clientHeight;
+          if (lastHeight != newHeight) callback();
+          lastHeight = newHeight;
+
+          if (elm.onElementHeightChangeTimer) clearTimeout(elm.onElementHeightChangeTimer);
+
+          elm.onElementHeightChangeTimer = setTimeout(run, 500);
+      })();
     }
 
     initOptions();

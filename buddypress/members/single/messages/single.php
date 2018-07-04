@@ -20,6 +20,8 @@
 
 	<?php if ( bp_thread_has_messages() ) : ?>
 
+		<?php $is_moderation_requested = (bool) preg_match('[modération requise]',bp_get_the_thread_subject()); ?>
+
 		<h2 id="message-subject"><?php bp_the_thread_subject(); ?></h2>
 
 		<p id="message-recipients">
@@ -29,10 +31,14 @@
 
 					<?php _e( 'You are alone in this conversation.', 'buddypress' ); ?>
 
-				<?php elseif ( bp_get_max_thread_recipients_to_list() <= bp_get_thread_recipients_count() ) : ?>
+				<?php elseif ( get_option(BP_MPM_OPTION_RECIPIENTS_LIMIT) <= bp_get_thread_recipients_count() && ! $is_moderation_requested ) : ?>
+					<?php printf( __( 'Message envoyé à %s destinataires.', 'telabotanica' ), number_format_i18n( bp_get_thread_recipients_count() ) ); ?>
+
+				<?php elseif ( bp_get_max_thread_recipients_to_list() <= bp_get_thread_recipients_count() && ! $is_moderation_requested ) : ?>
 
 					<?php printf( __( 'Conversation between %s recipients.', 'buddypress' ), number_format_i18n( bp_get_thread_recipients_count() ) ); ?>
-
+				<?php elseif ($is_moderation_requested) : ?>
+					<?php _e('Message modéré car adressé à plus de 10 destinataires.','telabotanica'); ?>
 				<?php else : ?>
 
 					<?php printf( __( 'Conversation between %s.', 'buddypress' ), bp_get_thread_recipients_list() ); ?>
@@ -83,6 +89,8 @@
 		 * @since 1.1.0
 		 */
 		do_action( 'bp_before_message_thread_reply' ); ?>
+
+		<?php if ( ! $is_moderation_requested && get_option(BP_MPM_OPTION_RECIPIENTS_LIMIT) >= bp_get_thread_recipients_count()) : ?>
 
 		<form id="send-reply" action="<?php bp_messages_form_action(); ?>" method="post" class="standard-form">
 
@@ -147,6 +155,8 @@
 			</div><!-- .message-box -->
 
 		</form><!-- #send-reply -->
+
+		<?php endif; ?>
 
 		<?php
 

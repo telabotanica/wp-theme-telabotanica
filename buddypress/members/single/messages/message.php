@@ -11,6 +11,7 @@
  * @subpackage bp-legacy
  */
 
+$is_moderation_requested = (bool) preg_match('[modération requise]',bp_get_the_thread_subject());
 ?>
 
 			<div class="message-box <?php bp_the_thread_message_css_class(); ?>">
@@ -67,8 +68,21 @@
 				do_action( 'bp_before_message_content' ); ?>
 
 				<div class="message-content">
+					<?php
+					// prevent moderation message (with accept or deny option) from being displayed to sender
+					if ($is_moderation_requested && bp_get_the_thread_message_sender_id() === get_current_user_id() && !current_user_can('Administrator') ) :
+					?>
+						<?php
 
-					<?php bp_the_thread_message_content(); ?>
+						the_telabotanica_module('notice',[
+							'type' => 'info',
+							'text' => 'Message modéré car adressé à plus de 10 destinataires.'
+						]);
+
+						?>
+					<?php else : ?>
+						<?php bp_the_thread_message_content(); ?>
+					<?php endif; ?>
 
 				</div><!-- .message-content -->
 

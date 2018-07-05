@@ -23,3 +23,7 @@ req.keys().forEach(req);
 // Require all script.js files in the components folder
 var req = require.context('../../components/', true, /script\.js$/);
 req.keys().forEach(req);
+
+// require dependencies
+// require('../../node_modules/lazyframe/dist/lazyframe.min.js');
+require('../../node_modules/vanilla-lazyload/dist/lazyload.min.js');

@@ -46,7 +46,7 @@
     "lodash.sortby": "^4.7.0",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.18.1",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.9.1",
     "normalize-scss": "^7.0.0",
     "numeral": "^2.0.6",
     "path": "^0.12.7",
@@ -67,6 +67,8 @@
   },
   "dependencies": {
     "flickity": "^2.1.2",
-    "matchmedia-polyfill": "^0.3.0"
+    "lazyframe": "^1.1.6",
+    "matchmedia-polyfill": "^0.3.0",
+    "vanilla-lazyload": "^8.8.0"
   }
 }

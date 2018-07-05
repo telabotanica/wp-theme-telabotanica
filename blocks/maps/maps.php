@@ -22,7 +22,7 @@
       <div class="layout-content">
         <?php
         printf(
-          '<iframe src="%s"></iframe>',
+          '<iframe class="lazyload" data-src="%s"></iframe>',
           $data->iframe_url
         );
         ?>

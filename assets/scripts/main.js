@@ -8,7 +8,7 @@ require('../icons/_all.js');
 // Lazyload
 var LazyLoad = require('vanilla-lazyload');
 var lazy = new LazyLoad({
-  elements_selector: "iframe.lazyload"
+  elements_selector: "iframe.lazyload, img.lazyload"
 });
 
 // Responsive

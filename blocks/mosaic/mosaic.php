@@ -27,7 +27,7 @@ function telabotanica_block_mosaic_item($item) {
         $image = (object) $image;
 
         printf(
-          '<li class="block-mosaic-item-image"><a href="%s" target="_blank" title="%s"><img src="%s" alt="%s" /></a></li>',
+          '<li class="block-mosaic-item-image"><a href="%s" target="_blank" title="%s"><img data-src="%s" alt="%s" class="lazyload" /></a></li>',
           $image->href,
           @$image->title ?: '',
           $image->src,

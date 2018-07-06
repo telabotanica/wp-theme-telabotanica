@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "flickity": "^2.1.2",
-    "matchmedia-polyfill": "^0.3.0"
+    "matchmedia-polyfill": "^0.3.0",
+    "vanilla-lazyload": "^8.8.0"
   }
 }

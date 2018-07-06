@@ -5,6 +5,12 @@ require('../styles/login-style.scss');
 // Icons
 require('../icons/_all.js');
 
+// Lazyload
+var LazyLoad = require('vanilla-lazyload');
+var lazy = new LazyLoad({
+  elements_selector: "iframe.lazyload, img.lazyload"
+});
+
 // Responsive
 require('matchmedia-polyfill');
 require('./responsive.js');

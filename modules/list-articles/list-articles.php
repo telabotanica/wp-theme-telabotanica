@@ -25,13 +25,21 @@
     // if ever post_per_page is set to less than 10 (default value), pagination could malfunction :
     // pagination shows the right number of pages, but beyond initial page count (with default values) page links return 404
     $args = array(
+      'cat' => $category->cat_ID,
       'meta_query' => [
-        [
-          'key' => 'date',
-          'compare' => '>',
-          'value' => date('Ymd'),
-          'type' => 'DATE'
-        ]
+        'relation' => 'OR',
+          [
+            'key' => 'date_end',
+            'compare' => '>',
+            'value' => date('Ymd'),
+            'type' => 'DATE'
+          ],
+          [
+            'key' => 'date',
+            'compare' => '>',
+            'value' => date('Ymd'),
+            'type' => 'DATE'
+          ]
       ],
       'orderby' => 'meta_value_num',
       'meta_key' => 'date',

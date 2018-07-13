@@ -30,6 +30,7 @@ function retrieve_deleted_tb_user_id() {
 /**
  * Hooked on bp_core_delete_account()
  * Reassigns posts, links, comments etc. as bp_core_delete_account() does not allow reassignment
+ * @param int $id. The user id
  * @see wp_delete_user()
  */
 function reassign_to_deleted_tb_user($id) {
@@ -66,3 +67,31 @@ function reassign_to_deleted_tb_user($id) {
   }
 }
 add_action( 'bp_core_pre_delete_account', 'reassign_to_deleted_tb_user');
+
+/**
+ * Reassigns old posts, links, comments etc.
+ * @param int $id. The user id
+ * @param string $target. Target is post, link or comment
+ * @return int $reassign
+ */
+function reassign_old_to_deleted_tb_user($target,$id) {
+  global $wpdb;
+
+  // set reassign to Ex-telabotaniste user's ID
+  $reassign = retrieve_deleted_tb_user_id();
+
+  switch ($target) {
+    case 'post':
+      $wpdb->update( $wpdb->posts, array('post_author' => $reassign), array('ID' => $id) );
+      break;
+    case 'link':
+      $wpdb->update( $wpdb->links, array('link_owner' => $reassign), array('link_id' => $id) );
+      break;
+    case 'comment':
+      $wpdb->update( $wpdb->comments, array('user_id' => $reassign), array('comment_id' => $id) );
+      break;
+    default:
+      break;
+  }
+  return $reassign;
+}

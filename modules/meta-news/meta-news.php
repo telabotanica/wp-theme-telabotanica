@@ -1,5 +1,10 @@
 <?php function telabotanica_module_meta_news($data) {
   $category = get_the_category();
+  $author_id = get_the_author_meta( 'ID' );
+
+  if (empty($author_id)) :
+    $author_id = reassign_old_to_deleted_tb_user('post',get_the_ID());
+  endif;
 
   echo '<div class="meta-news">';
 
@@ -12,7 +17,7 @@
   endif;
 
   if ( get_field('place') ) :
-    if ($category[0]->parent === 30) : // $category->parent === 30 is 'offres-emploi'
+    if (post_is_in_descendant_category( 'offres-emploi' )) :
       echo '<div class="meta-news-item meta-news-job-loc">';
     else :
       echo '<div class="meta-news-item meta-news-place">';
@@ -45,8 +50,8 @@
       __( 'par %s', 'telabotanica' ),
       sprintf(
         '<a href="%s">%s</a>',
-        esc_url( bp_core_get_user_domain( get_the_author_meta( 'ID' ) ) ),
-        get_the_author()
+        esc_url( bp_core_get_user_domain( $author_id ) ),
+        bp_core_get_user_displayname( $author_id )
       )
     )
   );

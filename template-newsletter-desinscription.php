@@ -40,7 +40,7 @@ if (function_exists('tbChargerConfigPlugin')) {
       $email = trim($_POST['email']);
       // instance du gestionnaire de liste, pour la lettre d'actualités
       $adresse_liste = $newsletter_config['newsletter_recipient'];
-      $nom_liste = substr($adresse_liste, 0, strpos($adresse_liste, '@'));
+      $nom_liste = trim(substr($adresse_liste, 0, strpos($adresse_liste, '@')));
       $liste = new TB_ListeEzmlm($nom_liste);
       // désinscription
       $ok = $liste->modifierStatutAbonnement(false, $email);

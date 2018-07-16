@@ -114,7 +114,7 @@
 		case 'radio':
 			echo "<div class='radio'>\n";
 			echo "<span class='label'>" . $label_unslashed . "</span>\n";
-			
+
 			foreach ($f->options as $key => $label)
 			{
 				$checked = in_array ($key, $f->values)? "checked='checked'": "";

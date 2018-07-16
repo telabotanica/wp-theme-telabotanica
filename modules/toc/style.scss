@@ -33,6 +33,7 @@
   &-item {
     border-bottom: 0.1rem solid transparentize($gris-dd, 0.5);
     padding: 1.5rem 0;
+    list-style: none;
 
     &:only-child {border-bottom: 0;}
 

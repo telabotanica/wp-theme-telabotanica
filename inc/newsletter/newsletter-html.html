@@ -682,7 +682,7 @@
                                   {% if item.event.date_end %}
                                   <tr>
                                     <td valign="top" class="bodyContentSectionDate bodyContentSectionDateBottom" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #F8F5EF;border-radius: 0 0 2px 2px;font-size: 10px;color: #e16e38;letter-spacing: 1px;text-align: center;text-transform: uppercase;width: 55px;padding-bottom: 5px !important;padding-top: 8px !important;">
-                                      <span style="display: block;font-size: 26px;">{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d") }}</span> {{ item.event.date|localizeddate("none", "none", "fr-FR", null, "MMM") }}
+                                      <span style="display: block;font-size: 26px;">{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d") }}</span> {{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "MMM") }}
                                     </td>
                                   </tr>
                                   {% endif %}

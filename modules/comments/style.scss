@@ -4,15 +4,10 @@
   &-title {
     color: $gris-23;
     font-family: $ubuntu;
-    font-size: 2.6rem;
     font-weight: $bold;
-    margin: 5rem 0;
 
     .icon {
-      height: 3rem;
-      margin-right: 2rem;
       vertical-align: bottom;
-      width: 3.8rem;
     }
   }
 
@@ -39,16 +34,12 @@
       &-author {
         color: $gris-23;
         font-family: $ubuntu;
-        font-size: 1.9rem;
         font-weight: $bold;
         margin: 0;
 
         .avatar {
           border-radius: 50%;
           float: left;
-          height: 4.5rem;
-          margin-right: 1rem;
-          width: 4.5rem;
         }
 
         .says {@include hidden-accessibly;}
@@ -57,7 +48,6 @@
       &-metadata,
       &-awaiting-moderation,
       .edit-link {
-        font-size: 1.4rem;
         display: inline-block;
       }
 
@@ -70,7 +60,8 @@
       .edit-link {margin-left: 1rem;}
 
       &-content {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+        line-height: 1.6;
       }
 
       .comment-reply {
@@ -94,7 +85,6 @@
         &-title {
           color: $gris-23;
           font-family: $ubuntu;
-          font-size: 1.9rem;
           font-weight: $bold;
 
           small {
@@ -115,6 +105,90 @@
       border-top: 0.1rem solid transparentize($taupe, 0.8);
       margin-top: 3rem;
       padding-top: 3rem;
+    }
+  }
+
+  @include small {
+    &-title {
+      font-size: 1.65rem;
+      margin: 2rem 0 3rem;
+
+      .icon {
+        height: 2rem;
+        margin-right: 1rem;
+        width: 2.6rem;
+      }
+    }
+
+    &-items {
+      .comment {
+        &-author,
+        &-reply-title {
+          font-size: 1.4rem;
+        }
+
+        &-author {
+          .avatar {
+            height: 3rem;
+            margin-right: 1rem;
+            width: 3rem;
+          }
+        }
+
+        &-metadata,
+        &-awaiting-moderation,
+        .edit-link {
+          font-size: 1.2rem;
+        }
+
+        &-respond,
+        .children {
+          margin-top: 3rem;
+          margin-left: 2.5rem;
+        }
+      }
+    }
+  }
+
+  @include large-and-medium {
+    &-title {
+      font-size: 2.6rem;
+      margin: 5rem 0;
+
+      .icon {
+        height: 3rem;
+        margin-right: 2rem;
+        width: 3.8rem;
+      }
+    }
+
+    &-items {
+      .comment {
+        &-author,
+        &-reply-title {
+          font-size: 1.9rem;
+        }
+
+        &-author {
+          .avatar {
+            height: 4.5rem;
+            margin-right: 1rem;
+            width: 4.5rem;
+          }
+        }
+
+        &-metadata,
+        &-awaiting-moderation,
+        .edit-link {
+          font-size: 1.4rem;
+        }
+
+        &-respond,
+        .children {
+          margin-top: 4rem;
+          margin-left: 5.5rem;
+        }
+      }
     }
   }
 }

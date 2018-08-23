@@ -52,4 +52,21 @@
       padding: 0.5rem;
     }
   }
+
+  @include small {
+    figure {
+      margin: 2rem 0;
+    }
+
+    figure > img,
+    iframe {
+      max-width: 100%;
+    }
+  }
+
+  @include large-and-medium {
+    figure {
+      margin: 1rem 4rem;
+    }
+  }
 }

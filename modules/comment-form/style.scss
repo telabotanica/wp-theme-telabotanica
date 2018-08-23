@@ -4,7 +4,6 @@
   .comment-reply-title {
     color: $gris-23;
     font-family: $ubuntu;
-    font-size: 2.6rem;
     font-weight: $bold;
     margin: 0;
   }
@@ -63,5 +62,17 @@
   .form-submit {
     text-align: center;
     padding-top: 1.5rem;
+  }
+
+  @include small {
+    .comment-reply-title {
+      font-size: 1.65rem;
+    }
+  }
+
+  @include large-and-medium {
+    .comment-reply-title {
+      font-size: 2.6rem;
+    }
   }
 }

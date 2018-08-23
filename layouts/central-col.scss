@@ -1,40 +1,59 @@
 .layout-central-col {
-  > .layout-wrapper {
-    margin: 4rem auto;
-    position: relative;
-    width: 120rem;
 
-    > .layout-aside {
-      left: 0;
-      position: absolute;
-      width: 18rem;
-    }
-
-    > .layout-content {
-      margin: 0 auto;
-      width: 70rem;
-    }
-  }
-
-  // Larger width
-  &.is-wide {
+  @include small {
     > .layout-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin: 2rem;
+
+      > .layout-aside {
+        order: 2;
+      }
+
       > .layout-content {
-        width: 100rem;
+        order: 1;
+        margin-bottom: 4rem;
       }
     }
   }
 
-  // No margin on top
-  &.adjacent-top {
+  @include large-and-medium {
     > .layout-wrapper {
-      margin-top: 0;
+      margin: 4rem auto;
+      position: relative;
+      width: 120rem;
+
+      > .layout-aside {
+        left: 0;
+        position: absolute;
+        width: 18rem;
+      }
+
+      > .layout-content {
+        margin: 0 auto;
+        width: 70rem;
+      }
+    }
+
+    // Larger width
+    &.is-wide {
+      > .layout-wrapper {
+        > .layout-content {
+          width: 100rem;
+        }
+      }
+    }
+
+    // No margin on top
+    &.adjacent-top {
+      > .layout-wrapper {
+        margin-top: 0;
+      }
+    }
+
+    &.background-beige {
+      background-color: $beige2;
+      overflow: hidden;
     }
   }
-
-  &.background-beige {
-    background-color: $beige2;
-    overflow: hidden;
-  }
-
 }

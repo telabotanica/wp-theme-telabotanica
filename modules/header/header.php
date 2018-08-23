@@ -87,7 +87,7 @@ function telabotanica_module_header($data) {
         <li class="header-links-item header-links-item-user">
           <a href="<?php echo bp_loggedin_user_domain(); ?>">
             <span class="header-links-item-text">
-              <?php echo $current_user->display_name; ?>
+              <span class="header-links-item-user-name"><?php echo $current_user->display_name; ?></span>
               <span class="header-links-item-user-avatar" style="background-image: url(<?php echo $avatar_url ?>);"></span>
             </span>
           </a>

@@ -552,6 +552,10 @@ $header-breakpoint-large: 1330px;
       color: $vert-fonce;
     }
 
+    &-links-item-user-name {
+      display: none;
+    }
+
     &-links-item-user-avatar {
       display: inline-block;
       height: 2.2rem;
@@ -720,6 +724,15 @@ $header-breakpoint-large: 1330px;
       > .menu-item {
         margin-right: 2rem;
       }
+    }
+
+    &-links-item-user-name {
+      display: inline-block;
+      max-width: 10rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      white-space: nowrap;
     }
   }
 }

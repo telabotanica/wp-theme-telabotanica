@@ -454,7 +454,7 @@ $header-breakpoint-large: 1330px;
         display: block;
         margin-left: -2.5rem;
         padding: 1.5rem;
-        width: 100vw;
+        width: calc(100% + 5rem);
       }
     }
 

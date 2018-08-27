@@ -103,24 +103,24 @@ function telabotanica_module_header($data) {
 
       // Choix de la langue
 
-      echo '<li class="header-links-item">';
-        if (function_exists('icl_get_languages')) :
-          try {
-            foreach (icl_get_languages() as $locale) {
-              if ($locale['active'] === '1') {continue;}
-              printf(
-                '<a href="%s" rel="alternate" hreflang="%s" title="%s"><span class="header-links-item-text">%s</span></a>',
-                $locale['url'],
-                $locale['code'],
-                $locale['native_name'],
-                strtoupper($locale['code'])
-              );
-            }
-          } catch (Exception $e) {
-            echo $e->getMessage();
-          }
-        endif;
-      echo '</li>';
+      // echo '<li class="header-links-item">';
+      //   if (function_exists('icl_get_languages')) :
+      //     try {
+      //       foreach (icl_get_languages() as $locale) {
+      //         if ($locale['active'] === '1') {continue;}
+      //         printf(
+      //           '<a href="%s" rel="alternate" hreflang="%s" title="%s"><span class="header-links-item-text">%s</span></a>',
+      //           $locale['url'],
+      //           $locale['code'],
+      //           $locale['native_name'],
+      //           strtoupper($locale['code'])
+      //         );
+      //       }
+      //     } catch (Exception $e) {
+      //       echo $e->getMessage();
+      //     }
+      //   endif;
+      // echo '</li>';
 
 
       // Lien "Faites un don"

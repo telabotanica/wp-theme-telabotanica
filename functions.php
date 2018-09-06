@@ -79,6 +79,9 @@ require get_template_directory() . '/algolia/functions.php';
 // Gestion des contenus, liens, commentaires etc. à la suppression d'un compte
 require get_template_directory() . '/inc/manage-delete-account.php';
 
+// Permet de faire le lien entre le nom du pays et son code iso
+require get_template_directory() . '/inc/members-special-chars.php';
+
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
 /**

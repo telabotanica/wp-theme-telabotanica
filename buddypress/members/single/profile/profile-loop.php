@@ -37,7 +37,10 @@ if( bp_displayed_user_id() === retrieve_deleted_tb_user_id()) :
 
 					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
-						<?php if ( bp_field_has_data() ) : ?>
+						<?php
+							// No need to display 'Inscription à la lettre d’actualité' & 'conditions d'utilisation'
+							if ( bp_field_has_data() && bp_get_the_profile_field_id() !== 54 && bp_get_the_profile_field_id() !== 59 ) :
+						?>
 
 							<tr<?php bp_field_css_class(); ?>>
 

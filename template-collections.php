@@ -118,7 +118,7 @@ function template_collections_entete() {
           <p>
             Recherchez une collection botanique, une institution hébergeant un herbier, une personne ou une publication.
             <br>
-            Complétez l'inventaire sur <a href="https://beta.tela-botanica.org/preprod/outils/collections-en-ligne">Collections En Ligne</a>
+            Complétez l'inventaire sur <a href="https://www.tela-botanica.org/outils/collections-en-ligne">Collections En Ligne</a>.
           </p>
         </div>
 <?php }

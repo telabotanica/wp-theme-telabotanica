@@ -1,3 +1,7 @@
 .list-articles {
-  margin: 3rem 0 20rem;
+  margin: 3rem 0;
+
+  @include large-and-medium {
+    margin-bottom: 20rem;
+  }
 }

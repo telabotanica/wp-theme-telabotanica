@@ -88,4 +88,31 @@
       margin-top: 0.7rem;
     }
   }
+
+  @include small {
+    &-title {
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: $taupe;
+      }
+
+      &::after {
+        content: "–";
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    &.is-closed {
+      .categories-title::after {
+        content: "+";
+      }
+
+      .categories-items {
+        display: none;
+      }
+    }
+  }
 }

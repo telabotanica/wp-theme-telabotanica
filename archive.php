@@ -86,14 +86,14 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
 
             if ( $is_category_events ) :
               ?>
-              <div class="layout-column-item background-white with-shadow with-padding">
+              <div class="layout-column-item background-white with-shadow with-padding js-archive-page-secondary">
                 <?php the_telabotanica_module('button', [
                   'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
                   'text' => __( 'Proposer un évènement', 'telabotanica' ),
                   'modifiers' => 'block orange'
                 ] ); ?>
               </div>
-              <!-- <div class="layout-column-item background-white with-shadow">
+              <!-- <div class="layout-column-item background-white with-shadow js-archive-page-secondary">
                 <?php
                 the_telabotanica_module('map-events');
                 ?>
@@ -101,7 +101,7 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
               <?php
             else :
               ?>
-              <div class="layout-column-item background-white with-shadow with-padding">
+              <div class="layout-column-item background-white with-shadow with-padding js-archive-page-secondary">
                 <?php the_telabotanica_module('button', [
                   'href' => get_permalink( get_page_by_path( 'proposer-une-actualite' ) ),
                   'text' => __( 'Proposer une actualité', 'telabotanica' ),
@@ -109,10 +109,10 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
                 ] ); ?>
               </div>
               <?php the_telabotanica_module('newsletter', [
-                'modifiers' => 'layout-column-item background-white with-shadow with-padding'
+                'modifiers' => 'layout-column-item background-white with-shadow with-padding js-archive-page-secondary'
               ] ); ?>
               <?php the_telabotanica_module('upcoming-events', [
-                'modifiers' => 'layout-column-item background-white with-shadow with-padding'
+                'modifiers' => 'layout-column-item background-white with-shadow with-padding js-archive-page-secondary'
               ] );
             endif;
 

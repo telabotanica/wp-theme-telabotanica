@@ -18,4 +18,19 @@ $(document).ready(function(){
       }
     }
   }
+
+  // Responsive tweaks on archive page
+  if ($("body").hasClass("archive")) {
+    // On mobile only
+    if (matchMedia('only screen and (max-width: 767.9px)').matches) {
+      // Move column content to the end
+      var $secondaryElements = $(".js-archive-page-secondary");
+      var $layoutContent = $(".list-articles").closest(".layout-content");
+      if ($secondaryElements.length && $layoutContent.length) {
+        var $container = $('<aside class="layout-column"></div>');
+        $container.append($secondaryElements);
+        $container.insertAfter($layoutContent);
+      }
+    }
+  }
 });

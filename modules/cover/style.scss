@@ -23,12 +23,6 @@
     position: relative;
   }
 
-  &-search-box ~ &-title,
-  &-search-box ~ &-subtitle,
-  &-search-box ~ &-content {
-    margin-right: 46rem;
-  }
-
   &-title {
     font-family: $ubuntu;
     font-weight: $bold;
@@ -57,15 +51,27 @@
   }
 
   &-search-box {
-    float: right;
     margin-top: 1rem;
     position: relative;
-    width: 44rem;
   }
 
   @include small {
+    flex-direction: column;
+    justify-content: center;
     min-height: 16rem;
     text-align: center;
+
+    > .layout-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    &-search-box {
+      margin-top: 2rem;
+      order: 3; // move the search box after the title and subtitle
+    }
 
     &.tall {
       min-height: 23rem;
@@ -76,7 +82,8 @@
     }
 
     &-subtitle {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
+      line-height: 1.5;
     }
 
     &-credits {
@@ -86,6 +93,17 @@
 
   @include large-and-medium {
     min-height: 27.5rem;
+
+    &-search-box {
+      float: right;
+      width: 44rem;
+    }
+
+    &-search-box ~ &-title,
+    &-search-box ~ &-subtitle,
+    &-search-box ~ &-content {
+      margin-right: 46rem;
+    }
 
     &.tall {
       min-height: 37rem;

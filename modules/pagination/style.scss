@@ -48,7 +48,6 @@
     &.prev {
       left: 0;
       padding-left: 0;
-      position: absolute;
 
       &::before {
         content: "<";
@@ -59,7 +58,6 @@
 
     &.next {
       padding-right: 0;
-      position: absolute;
       right: 0;
 
       &::after {
@@ -67,6 +65,13 @@
         display: inline-block;
         margin-left: 0.5rem;
       }
+    }
+  }
+
+  @include large-and-medium {
+    &.prev,
+    &.next {
+      position: absolute;
     }
   }
 }

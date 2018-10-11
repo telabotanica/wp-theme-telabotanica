@@ -109,6 +109,7 @@
       letter-spacing: 0.1rem;
       margin: 2rem -2rem 0;
       padding: 2rem;
+      justify-content: space-around;
 
       var {
         font-size: 1.6rem;
@@ -137,6 +138,12 @@
     &-stats-item-get-involved .cover-home-stats-icon svg {
       height: 2rem;
       width: 2rem;
+    }
+  }
+
+  @include medium {
+    > .layout-wrapper {
+      width: 100%;
     }
   }
 

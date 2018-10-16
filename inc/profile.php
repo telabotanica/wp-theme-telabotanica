@@ -181,7 +181,8 @@ function members_page_only_for_logged_in_users() {
   $nomPageMembres = get_post_field('post_name', $pagesBP['members']);
 
   if (is_user_logged_in() == false && strpos($current_url, '/' . $nomPageMembres . '/') !== false) {
-    $redirect_url = wp_login_url();
+    // L'utilisateur sera redirigé vers la page membres après s'être connecté
+    $redirect_url = wp_login_url() . '?redirect_to=' . site_url() . $_SERVER['REQUEST_URI'];
     wp_redirect($redirect_url);
     die();
   }

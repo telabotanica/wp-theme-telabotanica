@@ -45,7 +45,6 @@ get_header(); ?>
               <?php while ( have_posts() ) : the_post(); ?>
                 <aside class="layout-aside">
                   <?php the_telabotanica_module('meta-news'); ?>
-                  <?php the_telabotanica_module('button-top'); ?>
                 </aside>
                 <div class="layout-content">
                   <?php the_telabotanica_module('breadcrumbs'); ?>

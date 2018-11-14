@@ -570,10 +570,25 @@ $header-breakpoint-large: 1330px;
     }
 
     &-links-item-donate a {
-      font-weight: $light;
       letter-spacing: 0;
+      background-color: $orange;
+      padding-right: 1rem;
+      border-bottom-width: 1rem;
+      border-bottom-style: solid;
+      border-top-width: 1rem;
+      border-top-style: solid;
+      border-color: $blanc;
+      font-weight: $bold;
+      color: $blanc;
 
-      .icon {display: none;}
+      .icon {
+        display: none;
+      }
+
+      &:hover {
+        background-color: transparentize($orange, 0.1);
+        color: $blanc;
+      }
     }
 
     &-links-item-search {

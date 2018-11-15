@@ -95,6 +95,15 @@ mixin search-hit-flore(data)
           li.search-hit-synonyms-item= "+ " + diffSynonyms + " autres synonymes"
         else if diffSynonyms == 1
           li.search-hit-synonyms-item= "+ un autre synonyme"
+    .search-hit-images
+      if data[referentiel]['thumbnails']
+        if data[referentiel]['thumbnails']['coste']
+          img.search-hit-image(src=data[referentiel]['thumbnails']['coste'] class="search-hit-image-coste" alt= title + " (illustration de Coste)")
+        if data[referentiel]['thumbnails']['cel']
+          each organesrc, organe in data[referentiel]['thumbnails']['cel']
+            img.search-hit-image(src=organesrc class="search-hit-image-cel-" + organe alt= title + " - " + organe + " (image CeL)")
+        if data[referentiel]['thumbnails']['chorodep']
+          img.search-hit-image(src=data[referentiel]['thumbnails']['chorodep'] class="search-hit-image-chorodep" alt= title + " (carte de répartition Chorodep)")
 
 mixin search-hit-vegetation(data)
   - var title = data._highlightResult.syntaxon.value

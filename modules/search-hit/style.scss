@@ -66,6 +66,18 @@
     &-apd:link:hover {background-color: darken($turquoise, 10);}
   }
 
+  &-image {
+    border: 0.1rem solid $gris-dd;
+    border-radius: 0.4rem;
+    height: 10rem;
+    margin-right: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  &-images {
+    display: flex;
+  }
+
   &-text {
     font-weight: bold;
   }

@@ -122,3 +122,27 @@ mixin search-hit-projets(data)
       ]
     }
   +card-project(itemData)
+
+mixin search-hit-pages(data)
+  - var title = data._highlightResult.post_title.value
+  - var subtitle = data._highlightResult.post_subtitle.value
+  - var href = data.permalink
+  - var breadcrumbs = data.breadcrumb
+  - var part = data.part
+  - var text = data._snippetResult.post_content.value
+  .search-hit
+    ol.breadcrumbs-items
+      each link, label in breadcrumbs
+        li.breadcrumbs-item
+          a(href=link)= label
+    br
+    h3.search-hit-title
+      a(href=href)!= title
+    if subtitle
+      p.search-hit-text!= subtitle
+    else
+      br
+    if text
+      p.search-hit-content!= text
+    .search-hit-content
+      a(href=href)!= href

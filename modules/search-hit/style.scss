@@ -76,8 +76,26 @@
     font-size: 1.2rem;
   }
 
+  &-content {
+    font-weight: 300;
+
+    a {
+      border-bottom: 0.1rem solid;
+      color: $turquoise-fonce;
+      font-weight: $regular;
+      text-decoration: none;
+      transition: background 0.2s ease;
+
+      &:hover,
+      &:focus {
+        background-color: transparentize($turquoise-fonce, 0.9);
+      }
+    }
+  }
+
   &-text,
-  &-synonyms {
+  &-synonyms,
+  &-content {
     line-height: 1.4;
     margin-top: 0.4rem;
   }

@@ -106,7 +106,7 @@
             "label": "Contact",
             "name": "contact_info",
             "type": "clone",
-            "instructions": "Tous ces champs sont optionnels.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

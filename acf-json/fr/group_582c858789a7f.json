@@ -7,7 +7,7 @@
             "label": "Contact",
             "name": "contact",
             "type": "repeater",
-            "instructions": "Tous ces champs sont optionnels.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -51,7 +51,7 @@
                     "name": "name",
                     "type": "text",
                     "instructions": "Nom de la personne ou de l'organisme",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "66",

@@ -17,19 +17,15 @@
         <?php
           the_telabotanica_module('icon', ['icon' => 'discussion', 'color' => 'vert-clair']);
           $comments_number = get_comments_number();
-          if ( '1' === $comments_number ) {
-            __( 'Un commentaire', 'telabotanica' );
-          } else {
-            printf(
-              _n(
-                '%1$s commentaire',
-                '%1$s commentaires',
-                $comments_number,
-                'telabotanica'
-              ),
-              number_format_i18n( $comments_number )
-            );
-          }
+          printf(
+            _n(
+              '%1$s commentaire',
+              '%1$s commentaires',
+              $comments_number,
+              'telabotanica'
+            ),
+            number_format_i18n( $comments_number )
+          );
         ?>
       </h2>
 

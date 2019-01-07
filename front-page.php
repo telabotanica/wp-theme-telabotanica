@@ -47,7 +47,8 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
                 $featured_post_id = get_the_ID();
                 the_telabotanica_module('article', [
                   'image' => has_post_thumbnail() ? get_the_post_thumbnail( null, 'home-latest-post' ) : false,
-                  'intro' => get_the_excerpt() ?: wp_trim_excerpt()
+                  'intro' => get_the_excerpt() ?: wp_trim_excerpt(),
+                  'title_level' => 3
                 ]);
               endwhile;
 

@@ -24,17 +24,17 @@
   }
 
   if (!empty($data->href)) {
-    $attributes .= sprintf('href="%s"', $data->href);
+    $attributes .= sprintf('href="%s" ', $data->href);
   } else {
     $data->tag = 'button';
   }
 
   if (!empty($data->target)) {
-    $attributes .= sprintf('target="%s"', $data->target);
+    $attributes .= sprintf('target="%s" ', $data->target);
   }
 
   if (!empty($data->title)) {
-    $attributes .= sprintf('title="%s"', $data->title);
+    $attributes .= sprintf('title="%s" ', $data->title);
   }
 
   printf(

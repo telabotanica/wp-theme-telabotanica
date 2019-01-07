@@ -6,7 +6,10 @@ function telabotanica_block_contribute_item($item) {
   echo '<div class="block-contribute-item">';
 
     printf(
-      '<a href="%s" target="%s" class="block-contribute-item-link">',
+      ($item->target
+        ? '<a href="%s" target="%s" class="block-contribute-item-link">'
+        : '<a href="%s" class="block-contribute-item-link">'
+      ),
       esc_url( $item->href ),
       $item->target
     );

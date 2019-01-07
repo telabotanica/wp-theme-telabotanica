@@ -21,7 +21,10 @@
         echo '<li class="column-features-item">';
 
           printf(
-            '<a href="%s" title="%s" target="%s" class="column-features-item-link">',
+            ($item->link['target']
+              ? '<a href="%s" title="%s" target="%s" class="column-features-item-link">'
+              : '<a href="%s" title="%s" class="column-features-item-link">'
+            ),
             esc_url( $item->link['url'] ),
             $item->link['title'],
             $item->link['target']

@@ -46,7 +46,7 @@
         }
 
         echo sprintf(
-          '<img src="%s" class="card-project-avatar" />',
+          '<img src="%s" alt="" class="card-project-avatar" />',
           $data->avatar
         );
 

@@ -82,6 +82,9 @@ require get_template_directory() . '/inc/manage-delete-account.php';
 // Permet de faire le lien entre le nom du pays et son code iso
 require get_template_directory() . '/inc/members-special-chars.php';
 
+// Règles de validation du titre des articles
+require get_template_directory() . '/inc/validate-post-title.php';
+
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
 /**

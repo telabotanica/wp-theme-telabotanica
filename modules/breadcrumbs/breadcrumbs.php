@@ -27,7 +27,7 @@
       }
 
       // Article courant
-      $data->items[] = [ 'text' => get_the_title() ];
+      $data->items[] = [ 'href' => get_permalink(), 'text' => get_the_title() ];
 
     // Page
     elseif ( is_page() ) :
@@ -44,7 +44,7 @@
       }
 
       // Page courante
-      $data->items[] = [ 'text' => get_the_title() ];
+      $data->items[] = [ 'href' => get_permalink(), 'text' => get_the_title() ];
 
 
     // Archive
@@ -92,25 +92,23 @@
         if (!isset($item->modifiers)) $item->modifiers = '';
         if (!isset($item->text)) $item->text = 'Page';
 
-        echo '<li class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-
         if ( isset($item->href) ) :
 
           $is_last = ( $i + 1 === count( $data->items ) );
 
+          echo '<li class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
           echo '<a href="' . $item->href . '" class="' . $item->modifiers . '"' . ( $is_last ? ' tabindex="-1"' : '' ) . ' itemprop="item">';
           echo '<span itemprop="name">' . $item->text . '</span>';
           echo '<meta itemprop="position" content="' . ($i + 1) . '" />';
           echo '</a>';
+          echo '</li>';
 
         else :
 
-          echo $item->text;
+          echo '<li class="breadcrumbs-item">' . $item->text . '</li>';
 
         endif;
-
-        echo '</li>';
-
+        
       endforeach;
 
       echo '</ol>';

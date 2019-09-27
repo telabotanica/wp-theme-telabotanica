@@ -22,6 +22,7 @@
       ga('send', 'pageview');
 
   </script>
+  <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <?php wp_head(); ?>
 </head>
 

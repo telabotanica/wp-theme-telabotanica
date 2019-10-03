@@ -7,6 +7,7 @@ $regular: normal;
 $medium: 500;
 $bold: bold;
 
+// police de labeur
 @font-face {
   font-family: "Muli";
   src: url("#{$fonts-path}muli-light-webfont.eot");
@@ -16,6 +17,7 @@ $bold: bold;
        url("#{$fonts-path}muli-light-webfont.ttf") format("truetype");
   font-weight: $light;
   font-style: normal;
+  font-display: optional;
 }
 
 @font-face {
@@ -27,6 +29,7 @@ $bold: bold;
        url("#{$fonts-path}muli-regular-webfont.ttf") format("truetype");
   font-weight: $regular;
   font-style: normal;
+  font-display: optional;
 }
 
 @font-face {
@@ -38,8 +41,10 @@ $bold: bold;
        url("#{$fonts-path}muli-bold-webfont.ttf") format("truetype");
   font-weight: $bold;
   font-style: normal;
+  font-display: optional;
 }
 
+// police de titrage
 @font-face {
   font-family: "Ubuntu";
   src: url("#{$fonts-path}ubuntu-bold-webfont.eot");
@@ -49,6 +54,7 @@ $bold: bold;
        url("#{$fonts-path}ubuntu-bold-webfont.ttf") format("truetype");
   font-weight: $bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -60,6 +66,7 @@ $bold: bold;
        url("#{$fonts-path}ubuntu-medium-webfont.ttf") format("truetype");
   font-weight: $medium;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -71,6 +78,7 @@ $bold: bold;
        url("#{$fonts-path}ubuntu-regular-webfont.ttf") format("truetype");
   font-weight: $regular;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -82,6 +90,7 @@ $bold: bold;
        url("#{$fonts-path}ubuntu-light-webfont.ttf") format("truetype");
   font-weight: $light;
   font-style: normal;
+  font-display: swap;
 }
 
 html {

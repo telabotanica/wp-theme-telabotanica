@@ -3,7 +3,7 @@
  * Post
  */
 $current_tb_user = wp_get_current_user()->ID;
-$user_role_is_admin = array_key_exists('administrator', wp_get_current_user()->caps);
+$user_role_is_admin_or_editor = array_key_exists('administrator', wp_get_current_user()->caps) || array_key_exists('editor', wp_get_current_user()->caps);
 
 
 get_header(); ?>
@@ -18,7 +18,7 @@ get_header(); ?>
             $status = get_post_status(get_the_ID());
 
             // only post author should be able to display non published posts
-            if ($status !== 'publish' && $current_tb_user !== get_the_author_id() && !$user_role_is_admin) :
+            if ($status !== 'publish' && $current_tb_user !== get_the_author_id() && !$user_role_is_admin_or_editor) :
               the_telabotanica_module('notice', [
                 'type' => 'alert',
                 'title' => __('Un problème est survenu', 'telabotanica'),

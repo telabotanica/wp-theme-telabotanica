@@ -77,7 +77,7 @@
       ]);
     } else {
       echo '<a href="' . $data->href . '" class="list-articles-item-image">';
-        if ($data->thumbnail_url) {
+        if (isset($data->thumbnail_url)) {
           printf(
             '<img src="%s" class="list-articles-item-image" />',
             $data->thumbnail_url

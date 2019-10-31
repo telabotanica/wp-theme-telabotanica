@@ -569,36 +569,36 @@ $header-breakpoint-large: 1330px;
       text-transform: uppercase;
     }
 
-    // // Special style for donate event
-    // &-links-item-donate a {
-    //   letter-spacing: 0;
-    //   background-color: $orange;
-    //   padding-right: 1rem;
-    //   border-bottom-width: 1rem;
-    //   border-bottom-style: solid;
-    //   border-top-width: 1rem;
-    //   border-top-style: solid;
-    //   border-color: $blanc;
-    //   font-weight: $bold;
-    //   color: $blanc;
+    // Special style for donate event
+    &-links-item-donate a {
+      letter-spacing: 0;
+      background-color: $orange;
+      padding-right: 1rem;
+      border-bottom-width: 1rem;
+      border-bottom-style: solid;
+      border-top-width: 1rem;
+      border-top-style: solid;
+      border-color: $blanc;
+      font-weight: $bold;
+      color: $blanc;
 
-    //   .icon {
-    //     display: none;
-    //   }
+      .icon {
+        display: none;
+      }
 
-    //   &:hover {
-    //     background-color: transparentize($orange, 0.1);
-    //     color: $blanc;
-    //   }
-    // }
+      &:hover {
+        background-color: transparentize($orange, 0.1);
+        color: $blanc;
+      }
+    }
 
     // // Regular style for donate button
-    &-links-item-donate a {
-      font-weight: $light;
-      letter-spacing: 0;
+    // &-links-item-donate a {
+    //   font-weight: $light;
+    //   letter-spacing: 0;
 
-      .icon {display: none;}
-    }
+    //   .icon {display: none;}
+    // }
 
     &-links-item-search {
       align-items: center;

@@ -13,7 +13,7 @@
       <div class="toc">
         <h2 class="toc-title">Flora Data</h2>
         <ul class="toc-items" id="ep-flora-data-menu">
-          <li class="toc-item is-active" id="ep-flora-data-saisie">
+          <li class="toc-item" id="ep-flora-data-saisie">
             <a class="toc-item-link" href="#ep-flora-data-tab-saisie">
               <?php _e('Saisie de nouvelles observations', 'telabotanica') ?>
             </a>

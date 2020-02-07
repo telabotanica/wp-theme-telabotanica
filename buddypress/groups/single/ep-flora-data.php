@@ -13,6 +13,11 @@
       <div class="toc">
         <h2 class="toc-title">Flora Data</h2>
         <ul class="toc-items" id="ep-flora-data-menu">
+          <li class="toc-item" id="ep-flora-data-saisie">
+            <a class="toc-item-link" href="#ep-flora-data-tab-saisie">
+              <?php _e('Saisie de nouvelles observations', 'telabotanica') ?>
+            </a>
+          </li>
           <li class="toc-item is-active" id="ep-flora-data-cartoPoint">
             <a class="toc-item-link" href="#ep-flora-data-tab-cartoPoint">
               <?php _e('Carte des observations', 'telabotanica') ?>
@@ -26,11 +31,6 @@
           <li class="toc-item" id="ep-flora-data-observation">
             <a class="toc-item-link" href="#ep-flora-data-tab-observation">
               <?php _e('Flux des dernières observations', 'telabotanica') ?>
-            </a>
-          </li>
-          <li class="toc-item" id="ep-flora-data-saisie">
-            <a class="toc-item-link" href="#ep-flora-data-tab-saisie">
-              <?php _e('Saisie de nouvelles observations', 'telabotanica') ?>
             </a>
           </li>
           <li class="toc-item" id="ep-flora-data-export">

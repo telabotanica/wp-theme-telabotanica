@@ -43,14 +43,14 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
               }
               add_filter( 'excerpt_length', 'front_page_custom_excerpt_lengh', 10 );
 
-              while ( $featured_post->have_posts() ) : $featured_post->the_post();
+              if ( $featured_post->have_posts() ) : $featured_post->the_post();
                 $featured_post_id = get_the_ID();
                 the_telabotanica_module('article', [
                   'image' => has_post_thumbnail() ? get_the_post_thumbnail( null, 'home-latest-post' ) : false,
                   'intro' => get_the_excerpt() ?: wp_trim_excerpt(),
                   'title_level' => 3
                 ]);
-              endwhile;
+              endif;
 
               the_telabotanica_module('button', [
                 'href' => get_permalink(),

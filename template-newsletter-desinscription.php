@@ -63,7 +63,7 @@ if (function_exists('tbChargerConfigPlugin')) {
         // si la personne a un compte, décochage de la case "je veux
         // recevoir la lettre" dans son profil
         $utilisateur = get_user_by( 'email', $email );
-        if ($utilisateur) {
+        if (empty($listes) && $utilisateur) {
           $config_plugin_tb = tbChargerConfigPlugin();
           if (! empty($config_plugin_tb['profil']['id_case_inscription_lettre_actu'])) {
             $id_case = $config_plugin_tb['profil']['id_case_inscription_lettre_actu'];

@@ -38,12 +38,21 @@ if (function_exists('tbChargerConfigPlugin')) {
       //robot
     } elseif (!empty ($_POST['email'])) {
       $email = trim($_POST['email']);
-      // instance du gestionnaire de liste, pour la lettre d'actualités
-      $adresse_liste = $newsletter_config['newsletter_recipient'];
-      $nom_liste = trim(substr($adresse_liste, 0, strpos($adresse_liste, '@')));
-      $liste = new TB_ListeEzmlm($nom_liste);
-      // désinscription
-      $ok = $liste->modifierStatutAbonnement(false, $email);
+      // instance du gestionnaire de liste, pour la lettre d'actualités de TB ou du Mooc
+      // $listes est défini par le template parent
+      if (empty($listes)) {
+        $adresse_liste = $newsletter_config['newsletter_recipient'];
+        $nom_liste = trim(substr($adresse_liste, 0, strpos($adresse_liste, '@')));
+        $liste = new TB_ListeEzmlm($nom_liste);
+        // désinscription
+        $ok = $liste->modifierStatutAbonnement(false, $email);
+      } else {
+        $ok = false;
+        foreach ($listes as $nom_liste) {
+          $liste = new TB_ListeEzmlm($nom_liste);
+          $ok = $ok || $liste->modifierStatutAbonnement(false, $email);
+        }
+      }
 
       if ($ok) {
         ?>

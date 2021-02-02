@@ -21,7 +21,7 @@ get_header();
         <?php the_telabotanica_module('breadcrumbs'); ?>
         <article class="newsletter-unsubscribe">
           <div class="component component-title level-2">
-            <h1><?php _e("Me désinscrire de la lettre d'actualités", 'telabotanica') ?></h1>
+            <h1><?php echo get_the_title() ?></h1>
           </div>
 
 <?php
@@ -87,7 +87,7 @@ if (function_exists('tbChargerConfigPlugin')) {
         $message = 'Désinscription à la lettre d\'actu : erreur ! ' . "\r\n"
           . "\r\n"
           . 'Adresse à désinscrire : ' . $email . "\r\n"
-          . 'Liste : ' . $adresse_liste . "\r\n"
+          . 'Liste : ' . $nom_liste . "\r\n"
         ;
         $headers = 'Content-Type: text/plain; charset="utf-8"' . "\r\n"
           . 'Content-Transfer-Encoding: 8bit' . "\r\n"

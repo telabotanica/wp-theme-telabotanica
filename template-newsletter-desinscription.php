@@ -50,7 +50,8 @@ if (function_exists('tbChargerConfigPlugin')) {
         $ok = false;
         foreach ($listes as $nom_liste) {
           $liste = new TB_ListeEzmlm($nom_liste);
-          $ok = $ok || $liste->modifierStatutAbonnement(false, $email);
+          $res = $liste->modifierStatutAbonnement(false, $email);
+          $ok = $res || $ok;
         }
       }
 

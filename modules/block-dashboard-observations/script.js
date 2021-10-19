@@ -45,7 +45,7 @@ Tela.modules.blockDashboardObservations = (function(){
           var dateObservation = moment(item.date_observation);
           data.items.push({
             type: 'feed-item',
-            href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
+            href: 'https://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
             target: '_blank',
             image: item.images[0]['binaire.href'].replace('XL.', 'CRXS.'),
             title: item['determination.ns'] || '?',

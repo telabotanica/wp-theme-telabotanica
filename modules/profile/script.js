@@ -73,7 +73,7 @@ Tela.modules.profile = (function() {
                 $currentRequestEspece.abort();
             }
             $currentRequestEspece = $.get(
-              'http://api.tela-botanica.org/service:eflore:0.1/bdtfx/noms?masque=' + query + '%&retour.format=min&navigation.limite=20&ns.structure=au&retour.tri=alpharet&retour.structure=liste',
+              'https://api.tela-botanica.org/service:eflore:0.1/bdtfx/noms?masque=' + query + '%&retour.format=min&navigation.limite=20&ns.structure=au&retour.tri=alpharet&retour.structure=liste',
               function(data) {
                 cb(data.resultat);
               }

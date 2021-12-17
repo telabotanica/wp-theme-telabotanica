@@ -85,6 +85,16 @@ require get_template_directory() . '/inc/members-special-chars.php';
 // Règles de validation du titre des articles
 require get_template_directory() . '/inc/validate-post-title.php';
 
+// Ajout d'ACF à WP REST API
+require get_template_directory() . '/inc/rest-api-posts-acf.php';
+
+// remplacer la limite retour posts par page (100) par PHP_INT_MAX
+require get_template_directory() . '/inc/rest-api-posts-per-page.php';
+
+// accéder facilement à la catégorie parente pour chaque article
+// Obtenir les enfants de chaque catégorie parente
+require get_template_directory() . '/inc/rest-api-posts-category-hierarchy.php';
+
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
 /**

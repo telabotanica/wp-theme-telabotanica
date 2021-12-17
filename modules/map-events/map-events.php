@@ -7,7 +7,7 @@
   $data = telabotanica_styleguide_data($defaults, $data);
   $data->modifiers = telabotanica_styleguide_modifiers_array('map-events', $data->modifiers);
 
-  $url_map_events = '#'; // TODO
+  $url_map_events = get_permalink( get_page_by_path( 'cartographies/evenements' ) );
 
   printf(
     '<div class="%s">',

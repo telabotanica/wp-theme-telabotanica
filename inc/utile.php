@@ -47,37 +47,70 @@ if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
 }
 
 /**
- * Format place (saved using ACF field Algolia Places)
+ * Format place (saved using ACF field Tb Places)
  *
  * @return string
  */
 function telabotanica_format_place( $place ) {
 
-  if ( !is_object( $place ) ) return $place;
+  $valid_place = telabotanica_get_valid_place( $place );
 
-  $template = '%s (%s)';
-
-  if ( $place->countryCode !== 'fr' ) {
-    $code = strtoupper( $place->countryCode );
-  } else if ( isset( $place->postcode ) ) {
-    $code = substr( $place->postcode, 0, 2 );
-  } else {
-    $code = $place->administrative;
+  if ( !$valid_place ) {
+    return $place;
   }
 
-  if ( isset( $place->city ) ) {
-    $city = $place->city;
+  if ( $valid_place->countryCode !== 'fr' ) {
+    $code = strtoupper( $valid_place->countryCode );
+  } else if ( isset( $valid_place->postcode ) ) {
+    $code = substr( $valid_place->postcode, 0, 2 );
   } else {
-    $city = $place->name;
+    $code = $valid_place->administrative;
   }
 
-  $place = sprintf(
-    $template,
+  $city = $valid_place->city ?? $valid_place->name;
+
+  $formated_place = sprintf(
+    '%s (%s)',
     $city,
     $code
   );
 
-   return $place;
+   return $formated_place;
+}
+
+function telabotanica_get_valid_place( $place ) {
+  if ( !is_object( $place ) ) {
+    if ( !is_string( $place ) ) {
+      return null;
+    }
+
+    $json_object = json_decode($place);
+
+    if( !is_object( $json_object ) ) {
+      return null;
+    }
+
+    $place = $json_object;
+  }
+
+  $keys_to_check = [
+    'countryCode',
+    'name',
+    'value',
+    'type',
+    'administrative'
+  ];
+
+  foreach($keys_to_check as $key) {
+    if( 'administrative' === $key && property_exists( $place, 'type' ) && 'country' === $place->type ) {
+      continue;
+    }
+    if( !property_exists( $place, $key ) || !$place->{$key} ) {
+      return null;
+    }
+  }
+
+  return $place;
 }
 
 /**

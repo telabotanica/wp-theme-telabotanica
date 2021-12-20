@@ -54,11 +54,10 @@ if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
 function telabotanica_format_place( $place ) {
 
   $valid_place = telabotanica_get_valid_place( $place );
+
   if ( !$valid_place ) {
     return $place;
   }
-
-  $template = '%s (%s)';
 
   if ( $valid_place->countryCode !== 'fr' ) {
     $code = strtoupper( $valid_place->countryCode );
@@ -68,14 +67,10 @@ function telabotanica_format_place( $place ) {
     $code = $valid_place->administrative;
   }
 
-  if ( isset( $valid_place->city ) ) {
-    $city = $valid_place->city;
-  } else {
-    $city = $valid_place->name;
-  }
+  $city = $valid_place->city ?? $valid_place->name;
 
   $formated_place = sprintf(
-    $template,
+    '%s (%s)',
     $city,
     $code
   );
@@ -97,6 +92,7 @@ function telabotanica_get_valid_place( $place ) {
 
     $place = $json_object;
   }
+
   $keys_to_check = [
     'countryCode',
     'name',

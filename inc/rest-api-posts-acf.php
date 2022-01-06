@@ -11,7 +11,7 @@ function tb_add_acf_fields() {
             'schema' => [
                 'type' => 'array',
             ],
-        ],
+        ]
     );
 }
 

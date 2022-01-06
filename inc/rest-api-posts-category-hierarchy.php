@@ -9,8 +9,8 @@ function tb_add_category_fields_to_posts() {
             'get_callback' => 'tb_get_post_parent_category',
             'schema' => [
                 'type' => 'string',
-            ],
-        ],
+            ]
+        ]
     );
     register_rest_field(
         'post',
@@ -19,8 +19,8 @@ function tb_add_category_fields_to_posts() {
             'get_callback' => 'tb_get_post_category',
             'schema' => [
                 'type' => 'array',
-            ],
-        ],
+            ]
+        ]
     );
 }
 /*
@@ -53,6 +53,6 @@ function tb_get_post_category($object, $field_name, $request) {
         'id' => $object['categories'][0],
         'name' => $category->name,
         'slug' => $category->slug,
-        'count' => $category->count,
+        'count' => $category->count
     ];
 }

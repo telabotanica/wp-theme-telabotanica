@@ -10,7 +10,7 @@ function tb_add_acf_fields() {
             'get_callback' => 'tb_get_acf_fields',
             'schema' => [
                 'type' => 'array',
-            ],
+            ]
         ]
     );
 }

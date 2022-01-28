@@ -110,14 +110,13 @@ the_telabotanica_module('header-dashboard', [
 
 			the_telabotanica_module('block-dashboard', [
 				'title' => [
-					'title' => __('Mes dons', 'telabotanica'),
-					'href' => '#' // TODO: remettre le lien ci-dessous quand la page Dons sera dispo
-					// 'href' => bp_loggedin_user_domain() . 'dons/'
+					'title' => __('Soutenir Tela Botanica', 'telabotanica'),
+					'href' => get_permalink( get_page_by_path( 'presentation/soutenir' ) ),
 				],
 				'html_content' => '', // TODO
 				'empty' => [
 					'icon' => 'heart-outline',
-					'text' => __("Retrouvez prochainement ici la liste de vos dons", 'telabotanica'),
+					'text' => __("Soutenez le réseau et ses actions", 'telabotanica'),
 					// 'text' => __("Vous n'avez pas encore fait de don", 'telabotanica'),
 					'button' => [
 						'href' => get_permalink( get_page_by_path( 'presentation/soutenir' ) ),

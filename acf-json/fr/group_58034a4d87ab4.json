@@ -25,7 +25,7 @@
             "key": "field_5a5f72bac0061",
             "label": "Localisation",
             "name": "place",
-            "type": "algolia_places",
+            "type": "tb_places",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,8 +34,9 @@
                 "class": "",
                 "id": ""
             },
-            "algolia_type": "all",
-            "algolia_countries": ""
+            "tb_type": "all",
+            "tb_countries": "",
+            "wpml_cf_preferences": 0
         },
         {
             "key": "field_58034aa1ef07d",
@@ -192,7 +193,7 @@
         "the_content",
         "excerpt"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1525107445
+    "modified": 1644240342
 }

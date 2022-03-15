@@ -19,14 +19,17 @@
   $data->start = [
     'datetime' => date_i18n('Y-m-d', $date_timestamp),
     'day' => date_i18n('j', $date_timestamp),
-    'month' => date_i18n('M', $date_timestamp)
+    'month' => date_i18n('M', $date_timestamp),
+    'year' => date_i18n('Y', $date_timestamp)
+
   ];
 
   if ( $date_end_timestamp ) :
     $data->end = [
       'datetime' => date_i18n('Y-m-d', $date_end_timestamp),
       'day' => date_i18n('j', $date_end_timestamp),
-      'month' => date_i18n('M', $date_end_timestamp)
+      'month' => date_i18n('M', $date_end_timestamp),
+      'year' => date_i18n('Y', $date_end_timestamp)
     ];
   endif;
 
@@ -57,7 +60,7 @@
         );
         printf(
           '<div class="event-dates-month">%s</div>',
-          $data->start['month']
+          $data->start['month'].(date('Y') !== $data->start['year'] ? ' '.$data->start['year'] : '')
         );
       echo '</time>';
     }
@@ -73,7 +76,7 @@
         );
         printf(
           '<div class="event-dates-month">%s</div>',
-          $data->end['month']
+          $data->end['month'].(date('Y') !== $data->end['year'] ? ' '.$data->end['year'] : '')
         );
       echo '</time>';
     }

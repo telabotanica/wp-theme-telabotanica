@@ -50,6 +50,10 @@ the_telabotanica_module('cover', [
 
 				$project_categories = bp_groups_get_group_types( [], 'objects' );
 
+				if (isset($project_categories['archive'])) {
+					unset($project_categories['archive']);
+				}
+
 				$categories_items = [
 					[
 						'text' => __('Tous les projets', 'telabotanica'),

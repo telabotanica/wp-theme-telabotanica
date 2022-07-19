@@ -64,7 +64,7 @@
             'depth'          => 1
           ] );
         ?>
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="nofollow" class="footer-nav-license"><?php the_telabotanica_module('icon', ['icon' => 'cc']) ?> BY-SA 4.0</a>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.<?php echo /*ICL_LANGUAGE_CODE*/ 'fr' ?>" target="_blank" rel="nofollow" class="footer-nav-license"><?php the_telabotanica_module('icon', ['icon' => 'cc']) ?> BY-SA 4.0</a>
       </nav>
     <?php endif; ?>
   </footer><!-- .site-footer -->

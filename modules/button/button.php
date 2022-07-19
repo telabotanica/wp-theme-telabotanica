@@ -41,7 +41,7 @@
     '<%s %s class="%s">%s<span class="button-text">%s</span>%s</%s>',
     $data->tag,
     $attributes,
-    implode($data->modifiers, ' '),
+    implode(' ', $data->modifiers),
     $data->icon_before ? get_telabotanica_module('icon', ['icon' => $data->icon_before]) : '',
     $data->text,
     $data->icon_after ? get_telabotanica_module('icon', ['icon' => $data->icon_after]) : '',

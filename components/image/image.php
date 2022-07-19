@@ -27,7 +27,7 @@
     $components_width = is_page() ? 620 : 700;
 
     if ($image['width'] > $components_width) {
-      $data->srcset = implode($srcset, ', ');
+      $data->srcset = implode(', ', $srcset);
       $data->sizes = '(min-width: 1160px) ' . $components_width . 'px, 100vw';
     }
 

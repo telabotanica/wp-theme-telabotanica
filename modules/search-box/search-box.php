@@ -58,7 +58,7 @@
         '<div class="search-box-suggestions">%s</div>',
         sprintf(
           __('Par exemple : %s...', 'telabotanica'),
-          implode($suggestions, ', ')
+          implode(', ', $suggestions)
         )
       );
     endif;

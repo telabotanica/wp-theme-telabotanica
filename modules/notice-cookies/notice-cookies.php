@@ -21,7 +21,7 @@
 
   printf(
     '<div class="%s">',
-    implode($data->modifiers, ' ')
+    implode(' ', $data->modifiers)
   );
 
     printf(

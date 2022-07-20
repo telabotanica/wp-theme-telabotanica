@@ -18,7 +18,7 @@ get_header(); ?>
             $status = get_post_status(get_the_ID());
 
             // only post author should be able to display non published posts
-            if ($status !== 'publish' && $current_tb_user !== get_the_author_id() && !$user_role_is_admin_or_editor) :
+            if ($status !== 'publish' && $current_tb_user !== (int) get_post_field('post_author') && !$user_role_is_admin_or_editor) :
               the_telabotanica_module('notice', [
                 'type' => 'alert',
                 'title' => __('Un problème est survenu', 'telabotanica'),
@@ -210,7 +210,7 @@ get_header(); ?>
               <?php
               endwhile;
 
-              if ($status === 'draft' && $current_tb_user === get_the_author_id()) :
+              if ($status === 'draft' && $current_tb_user === (int) get_post_field('post_author')) :
                 // In some cases publishing posts directly should be possible
                 $post_is_event = (get_the_category()[0]->parent === 25);
                 $user_role_is_tb_president = array_key_exists('tb_president', wp_get_current_user()->caps);

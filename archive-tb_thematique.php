@@ -29,7 +29,7 @@ get_header(); ?>
 
             // Trier par ordre alphabétique et désactiver la pagination
             global $query_string;
-            query_posts( $query_string . '&order=ASC&orderby=name&posts_per_page=-1' );
+            query_posts( $query_string . '&order=ASC&orderby=name&posts_per_page=-1&post_status=publish' );
 
             if ( have_posts() ) :
               while ( have_posts() ) : the_post();

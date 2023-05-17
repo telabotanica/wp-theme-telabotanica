@@ -101,16 +101,21 @@ return [
           ]
         ]
       ],
-      // TODO: enable when ready
-      // [
-      //   'index_id' => 'pages',
-      //   'index_name' => ALGOLIA_PREFIX . 'pages',
-      //   'label' => __('Pages', 'telabotanica'),
-      //   'tmpl_suggestion' => 'autocomplete-post-suggestion',
-      //   'settings' => [
-      //     'hitsPerPage' => 5
-      //   ]
-      // ]
+      [
+        'index_id' => 'pages',
+        'index_name' => ALGOLIA_PREFIX . 'pages',
+        'label' => __('Pages', 'telabotanica'),
+        'tmpl_suggestion' => 'autocomplete-post-suggestion',
+        'settings' => [
+          'hitsPerPage' => 5
+        ],
+        'filters' => [
+          'post_type' => [
+            'type' => 'menu',
+            'label' => __('Par type de pages', 'telabotanica')
+          ]
+        ]
+      ]
     ]
   ]
 ];

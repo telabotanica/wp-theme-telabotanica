@@ -41,6 +41,13 @@ the_telabotanica_module('header-dashboard', [
 				]
 			]);
 
+      $trailMap = 'https://www.tela-botanica.org/tbmaps/?auteur='. bp_get_displayed_user_email() .'&sources=sentiers';
+
+      echo('<div class="block-dashboard block-dashboard-map">
+            <h2 class="title"><a href="https://www.tela-botanica.org/smart-form/" target="_blank">Mes sentiers Smart\'Flore publiés</a></h2>
+            <div class="block-dashboard-content"><iframe src="' . $trailMap . '"></iframe></div></div>');
+
+
 			the_telabotanica_module('block-dashboard-observations', [
 				'title' => [
 					'title' => __('Nouvelles observations du réseau - À déterminer', 'telabotanica'),

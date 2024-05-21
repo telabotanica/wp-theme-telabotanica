@@ -62,12 +62,12 @@ else :
 						) ),
 						'current' => bp_is_user_messages()
 					],
-					[
-						'href' => bp_loggedin_user_domain() . 'outils/',
-						'text' => __( 'Mes outils', 'telabotanica' ),
-						'icon' => 'tool',
-						'current' => bp_is_current_component('outils')
-					],
+//					[
+//						'href' => bp_loggedin_user_domain() . 'outils/',
+//						'text' => __( 'Mes outils', 'telabotanica' ),
+//						'icon' => 'tool',
+//						'current' => bp_is_current_component('outils')
+//					],
 					[
 						'href' => bp_loggedin_user_domain() . 'projets/',
 						'text' => __( 'Mes projets', 'telabotanica' ),
@@ -81,18 +81,18 @@ else :
 					// 	'icon' => 'bookmark',
 					// 	'current' => bp_is_current_component('thematiques')
 					// ],
-					[
-						'href' => bp_loggedin_user_domain() . 'documents/',
-						'text' => __( 'Mes documents', 'telabotanica' ),
-						'icon' => 'doc',
-						'current' => bp_is_current_component('documents')
-					],
-					[
-						'href' => bp_loggedin_user_domain() . 'contributions/',
-						'text' => __( 'Mes contributions', 'telabotanica' ),
-						'icon' => 'hand',
-						'current' => bp_is_current_component('contributions')
-					],
+//					[
+//						'href' => bp_loggedin_user_domain() . 'documents/',
+//						'text' => __( 'Mes documents', 'telabotanica' ),
+//						'icon' => 'doc',
+//						'current' => bp_is_current_component('documents')
+//					],
+//					[
+//						'href' => bp_loggedin_user_domain() . 'contributions/',
+//						'text' => __( 'Mes contributions', 'telabotanica' ),
+//						'icon' => 'hand',
+//						'current' => bp_is_current_component('contributions')
+//					],
 					[
 						'href' => bp_loggedin_user_domain() . 'profile/',
 						'text' => __( 'Mon profil', 'telabotanica' ),

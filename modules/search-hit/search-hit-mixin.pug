@@ -70,7 +70,7 @@ mixin search-hit-flore(data)
   //- if (data[referentiel].author) suffix.push(data[referentiel].author)
   - if (data[referentiel].year) suffix.push('[' + data[referentiel].year + ']')
   - var href = data[referentiel].permalink
-  - var text = data._highlightResult[referentiel].common_name.value
+  - var noms = data._highlightResult[referentiel].common_name
   - var synonyms = data._highlightResult[referentiel].synonyms
   .search-hit
     h3.search-hit-title
@@ -80,9 +80,14 @@ mixin search-hit-flore(data)
           span.search-hit-title-suffix= ' ' + suffix.join(' ')
       each ref in data.referentiels
         a.search-hit-tag(href=data[ref].permalink class="search-hit-tag-" + ref)= ref
-    if text
+    if noms
       .search-hit-text
-        != text
+         - var nom_txt='';
+         each nom in noms
+           - nom_txt += nom.value + ', '
+         - nom_txt = nom_txt.slice(0,-2)  
+         h6.search-hit-name
+           !=nom_txt
     if synonyms
       - var firstSynonyms = synonyms.slice(0, 2)
       - var diffSynonyms = synonyms.length - firstSynonyms.length

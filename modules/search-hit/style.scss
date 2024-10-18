@@ -94,3 +94,15 @@
     margin-top: 0.4rem;
   }
 }
+
+.search-hit-name{
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0;
+
+  em {
+    background-color: $jaune-clair;
+    color: $noir;
+    font-style: normal;
+  }
+}

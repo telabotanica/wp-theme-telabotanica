@@ -8,9 +8,16 @@
       '<span class="search-results-hit-post-title">%s</span>',
       $hit['_highlightResult']['bdtfx']['scientific_name']['value']
     );
+    $noms=$hit['_highlightResult']['bdtfx']['common_name'];
+    $noms_txt='';
+    foreach($noms as $nom){
+    	$noms_txt.=$nom['value'].', ';
+    }
+    $noms_txt=rtrim($noms_txt);
+    $noms_txt=rtrim($noms_txt,',');
     printf(
       '<span class="search-results-hit-post-content">%s</span>',
-      $hit['_highlightResult']['bdtfx']['common_name']['value']
+      $noms_txt
     );
   echo '</a>';
 }

@@ -40,7 +40,7 @@ Tela.modules.searchBox.autocomplete = (function(){
       // Mobile
       var isMobile = matchMedia('only screen and (max-width: 767.9px)').matches;
       // stop here on mobile
-      if (isMobile) return;
+      //if (isMobile) return;
 
       // Tiny mode
       if ($el.hasClass('tiny')) {

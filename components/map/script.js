@@ -25,7 +25,7 @@ Tela.components.map = (function(){
         zoom: options.zoom
       });
 
-      L.tileLayer('https://osm.tela-botanica.org/tuiles/osmfr/{z}/{x}/{y}.png', {
+      L.tileLayer('https://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 

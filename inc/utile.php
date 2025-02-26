@@ -63,9 +63,7 @@ function telabotanica_format_place( $place ) {
     $code = strtoupper( $valid_place->countryCode );
   } else if ( isset( $valid_place->postcode ) ) {
     $code = substr( $valid_place->postcode, 0, 2 );
-  } else {
-    $code = $valid_place->administrative;
-  }
+  } 
 
   $city = $valid_place->city ?? $valid_place->name;
 
@@ -97,12 +95,11 @@ function telabotanica_get_valid_place( $place ) {
     'countryCode',
     'name',
     'value',
-    'type',
-    'administrative'
+    'type'
   ];
 
   foreach($keys_to_check as $key) {
-    if( 'administrative' === $key && property_exists( $place, 'type' ) && 'country' === $place->type ) {
+    if( property_exists( $place, 'type' ) && 'country' === $place->type ) {
       continue;
     }
     if( !property_exists( $place, $key ) || !$place->{$key} ) {

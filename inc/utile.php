@@ -63,8 +63,10 @@ function telabotanica_format_place( $place ) {
     $code = strtoupper( $valid_place->countryCode );
   } else if ( isset( $valid_place->postcode ) ) {
     $code = substr( $valid_place->postcode, 0, 2 );
-  } else {
+  } else if ( isset( $valid_place->administrative ) ) {
     $code = $valid_place->administrative;
+  } else {
+    $code = '';
   }
 
   $city = $valid_place->city ?? $valid_place->name;

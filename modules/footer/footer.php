@@ -14,7 +14,6 @@
 
           <ul class="footer-about-tela-social-items">
             <li class="footer-about-tela-social-item"><a href="https://www.facebook.com/telabotanica/" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'facebook-disc']) ?> <span>Facebook</span></a></li>
-            <li class="footer-about-tela-social-item"><a href="https://twitter.com/TelaBotanica" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'twitter-disc']) ?> <span>Twitter</span></a></li>
             <li class="footer-about-tela-social-item"><a href="https://vimeo.com/telabotanica" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'vimeo-disc']) ?> <span>Vimeo</span></a></li>
             <li class="footer-about-tela-social-item"><a href="https://github.com/telabotanica" target="_blank"><?php the_telabotanica_module('icon', ['icon' => 'github-disc']) ?> <span>Github</span></a></li>
           </ul>

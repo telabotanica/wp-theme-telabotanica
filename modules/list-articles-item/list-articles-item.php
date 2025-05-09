@@ -71,7 +71,7 @@
       the_telabotanica_module('event-dates', [
         'href' => $data->href,
         'start' => $data->dates['start'],
-        'end' => $data->dates['end'],
+        'end' => $data->dates['end'] ?? null,
         'title' => $data->dates['title'],
         'modifiers' => 'float-left',
       ]);

@@ -261,7 +261,7 @@ add_action( 'wp_loaded', 'telabotanica_styleguide_flush_rules' );
 // Définition du <title> des pages
 function telabotanica_styleguide_title( $title ) {
   global $wp_query;
-  if ( $wp_query->query_vars['pagename'] !== 'styleguide' ) { return $title; }
+  if ( isset($wp_query->query_vars['pagename']) && $wp_query->query_vars['pagename'] !== 'styleguide' ) { return $title; }
 
   $prefix = '';
   if ($wp_query->get('styleguide_type') && $wp_query->get('styleguide_nom')) {

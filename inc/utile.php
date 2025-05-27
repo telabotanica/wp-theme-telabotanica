@@ -107,7 +107,7 @@ function telabotanica_get_valid_place( $place ) {
     if( 'administrative' === $key && property_exists( $place, 'type' ) && 'country' === $place->type ) {
       continue;
     }
-    if( !property_exists( $place, $key ) || !$place->{$key} ) {
+    if( 'administrative' !== $key && (!property_exists( $place, $key ) || !$place->{$key}) ) {
       return null;
     }
   }

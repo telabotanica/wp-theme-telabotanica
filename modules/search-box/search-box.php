@@ -13,6 +13,10 @@
 
   $data = telabotanica_styleguide_data($defaults, $data);
   $data->modifiers = telabotanica_styleguide_modifiers_array('search-box', $data->modifiers);
+  // If country search display country name instead of iso
+  if( 2 === strlen( $data->value ) && ctype_upper( $data->value ) ) :
+    $data->value = retrieve_country_name_from_iso( $data->value );
+  endif;
 
   printf(
     '<div class="%s" data-autocomplete="%s" data-instantsearch="%s" data-index="%s" data-facet-filters="%s">',

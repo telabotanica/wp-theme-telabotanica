@@ -23,8 +23,29 @@ do_action( 'bp_before_members_loop' ); ?>
 	// IMPORTANT at the moment (2017-02) this plugin guarantees compatibility
 	// with BP Profile Search only if the member loop is initiated with default
 	// parameters (type="active")
+
+	// Set global count for pagination
+	global $members_count_custom_search;
+	$members_count_custom_search = null;
+
+	if( get_query_var( 'countries', false ) ) :
+		// search in country field
+		$ids = tb_members_custom_ids( get_query_var( 'countries' ), 3 );
+		if( get_query_var( 'tb_search', false ) ) :
+			//search in other fields
+			$ids += tb_members_custom_ids( get_query_var( 'tb_search' ), null );
+		endif;
+		// Count for pagination
+		$members_count_custom_search = count($ids);
+		// convert the array to a csv string
+		$ids = 'include=' . implode( ',', array_unique ( $ids ) );
+	else :
+		$ids = bp_ajax_querystring( 'members' );
+	endif;
+
 	// Not displaying Ex-telabotaniste ('deleted_tb_user' role)
-	if ( bp_has_members( bp_ajax_querystring( 'members' ) . '&exclude='.retrieve_deleted_tb_user_id() ) ) :
+	if ( bp_has_members( $ids . '&exclude=' . retrieve_deleted_tb_user_id() . "&page_arg='upage'") ) :
+
 	/**
 	 * Fires before the display of the members list.
 	 *
@@ -35,9 +56,7 @@ do_action( 'bp_before_members_loop' ); ?>
 	<div id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
 		<h3 class="section-header">Membres</h3>
 
-	<?php while ( bp_members() ) : bp_the_member(); ?>
-
-		<?php
+	<?php while ( bp_members() ) : bp_the_member();
 
 		/**
 		 * Fires before the display of a directory member item.
@@ -46,15 +65,15 @@ do_action( 'bp_before_members_loop' ); ?>
 		 */
 		// do_action( 'bp_directory_before_members_item' );
 
-                //strip classes values from bp_get_member_class()
-                $pattern = "/^class=\"(.*?)\"/";
-                if (preg_match($pattern, bp_get_member_class(), $matches)) {
-                    $inHTMLClassStrippedValues = $matches[1];
-                } else {
-                    $inHTMLClassStrippedValues = bp_get_member_class();
-                }
+        //strip classes values from bp_get_member_class()
+        $pattern = "/^class=\"(.*?)\"/";
+        if ( preg_match( $pattern, bp_get_member_class(), $matches ) ) :
+            $inHTMLClassStrippedValues = $matches[1];
+        else :
+            $inHTMLClassStrippedValues = bp_get_member_class();
+        endif;
 
-		the_telabotanica_component('contact', [
+		the_telabotanica_component( 'contact', [
 			'image' => bp_core_fetch_avatar(array(
 				'item_id' => bp_get_member_user_id(),
 				'html' => 'false',
@@ -94,23 +113,23 @@ do_action( 'bp_before_members_loop' ); ?>
 </div>
 
 	<?php
+		/**
+		 * Fires after the display of the members list.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'bp_after_directory_members_list' ); ?>
 
-	/**
-	 * Fires after the display of the members list.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'bp_after_directory_members_list' ); ?>
+		<?php bp_member_hidden_fields(); ?>
 
-	<?php bp_member_hidden_fields(); ?>
-
-	<?php the_telabotanica_module('pagination', [
-		'id' => 'pag-bottom',
-		'count_id' => 'member-dir-count-bottom',
-		'links_id' => 'member-dir-pag-bottom',
-		'context' => 'buddypress',
-		'type' => 'members'
-	]); ?>
+		<?php the_telabotanica_module('pagination', [
+			'id' => 'pag-bottom',
+			'count_id' => 'member-dir-count-bottom',
+			'links_id' => 'member-dir-pag-bottom',
+			'context' => 'buddypress',
+			'type' => 'members'
+		]);
+	?>
 
 <?php else: ?>
 

@@ -4,3 +4,4 @@ vendor/
 /dist
 npm-debug.log
 /cache
+.idea

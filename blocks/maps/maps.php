@@ -38,6 +38,7 @@
         if ( $data->items ) :
 
           // Remplacement des variables
+          $data->items = array_filter($data->items, 'is_array');
           $data->items = array_map(function($item){
             $item['title'] = str_replace([
               '{countries_count}',
@@ -47,7 +48,7 @@
               number_format_i18n( 110 ), // TODO
               bp_get_total_member_count(),
               number_format_i18n( 172 ) // TODO
-            ], $item['title']);
+            ], $item['title'] ?? '');
             return $item;
           }, $data->items);
 
@@ -58,8 +59,10 @@
 
         endif;
 
-        $data->button['href'] = $data->button['url'];
-        $data->button['text'] = $data->button['title'];
+        $data->button = is_array($data->button) ? $data->button : [];
+
+        $data->button['href'] = $data->button['url'] ?? '#';
+        $data->button['text'] = $data->button['title'] ?? '';
         $data->button['modifiers'] = ['block', 'orange'];
         the_telabotanica_module('button', $data->button);
         ?>

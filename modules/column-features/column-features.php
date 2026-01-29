@@ -17,17 +17,21 @@
       foreach ($data->items as $item) :
 
         $item = (object) $item;
+        $item->link = is_array($item->link ?? null) ? $item->link : [];
+        $item->link['target'] = $item->link['target'] ?? '';
+        $item->link['url']    = $item->link['url'] ?? '#';
+        $item->link['title']  = $item->link['title'] ?? '';
 
         echo '<li class="column-features-item">';
 
           printf(
-            ($item->link['target']
+            (!empty($item->link['target'])
               ? '<a href="%s" title="%s" target="%s" class="column-features-item-link">'
               : '<a href="%s" title="%s" class="column-features-item-link">'
             ),
-            esc_url( $item->link['url'] ),
-            $item->link['title'],
-            $item->link['target']
+            esc_url( $item->link['url'] ?? '#' ),
+            $item->link['title'] ?? '',
+            $item->link['target'] ?? ''
           );
 
             if ( $item->icon ) {

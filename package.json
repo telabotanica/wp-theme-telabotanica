@@ -69,7 +69,7 @@
     "webpack": "^4.47.0"
   },
   "dependencies": {
-    "ajv": "^6.12.6",
+    "ajv": "^8.18.0",
     "flickity": "^2.1.2",
     "matchmedia-polyfill": "^0.3.0",
     "vanilla-lazyload": "^8.8.0"

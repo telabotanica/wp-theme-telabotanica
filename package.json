@@ -31,7 +31,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "he": "^1.1.1",
-    "instantsearch.js": "^2.1.4",
+    "instantsearch.js": "^4.86.1",
     "jquery-accessible-accordion-aria": "2.4.x",
     "js-cookie": "^2.1.4",
     "leaflet": "^1.2.0",

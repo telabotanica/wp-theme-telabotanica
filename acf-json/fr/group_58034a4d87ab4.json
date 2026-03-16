@@ -26,7 +26,7 @@
             "label": "Localisation",
             "name": "place",
             "type": "tb_places",
-            "instructions": "",
+            "instructions": "Si la saisie par nom de ville ne fonctionne pas, veuillez saisir le code postal.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

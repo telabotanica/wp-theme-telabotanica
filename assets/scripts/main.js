@@ -1,31 +1,22 @@
-require('../styles/main.scss');
-require('../styles/editor-style.scss');
-require('../styles/login-style.scss');
+import moment from 'moment'
+import 'moment/locale/fr'
+moment.locale('fr')
 
-// Icons
-require('../icons/_all.js');
+import '../styles/main.scss'
+import '../styles/editor-style.scss'
+import '../styles/login-style.scss'
 
-// Lazyload
-var LazyLoad = require('vanilla-lazyload');
-var lazy = new LazyLoad({
+import '../icons/_all.js'
+
+import LazyLoad from 'vanilla-lazyload'
+
+new LazyLoad({
   elements_selector: "iframe.lazyload, img.lazyload"
-});
+})
 
-// Responsive
-require('matchmedia-polyfill');
-require('./responsive.js');
+import 'matchmedia-polyfill'
+import './responsive.js'
 
-// Modules
-// Require all script.js files in the modules folder
-var req = require.context('../../modules/', true, /script\.js$/);
-req.keys().forEach(req);
-
-// Blocks
-// Require all script.js files in the blocks folder
-var req = require.context('../../blocks/', true, /script\.js$/);
-req.keys().forEach(req);
-
-// Composants
-// Require all script.js files in the components folder
-var req = require.context('../../components/', true, /script\.js$/);
-req.keys().forEach(req);
+import.meta.glob('../../modules/**/script.js', { eager: true })
+import.meta.glob('../../blocks/**/script.js', { eager: true })
+import.meta.glob('../../components/**/script.js', { eager: true })

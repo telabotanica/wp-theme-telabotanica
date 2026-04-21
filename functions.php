@@ -36,7 +36,7 @@ require get_template_directory() . '/inc/utile.php';
 require get_template_directory() . '/inc/excerpt.php';
 
 // Pages d'options (avec ACF)
-require get_template_directory() . '/inc/options.php';
+//require get_template_directory() . '/inc/options.php';
 
 // Chargement des types de contenus sur mesure (Custom Post Types)
 // cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
@@ -53,40 +53,40 @@ require get_template_directory() . '/inc/wpml.php';
 require get_template_directory() . '/inc/styleguide.php';
 
 // Amélioration du flux RSS
-require get_template_directory() . '/inc/rss.php';
+//require get_template_directory() . '/inc/rss.php';
 
 // Personnalisation de la page de login
 require get_template_directory() . '/inc/login.php';
 
 // Synchronisation et améliorations des profils wordpress et buddypress
-require get_template_directory() . '/inc/profile.php';
+//require get_template_directory() . '/inc/profile.php';
 
 // Suppression de la barre d'outils pour les non-admins
 require get_template_directory() . '/inc/remove-toolbar.php';
 
 // Ajout de sous-pages au profil
-require get_template_directory() . '/inc/profile-subpages.php';
+//require get_template_directory() . '/inc/profile-subpages.php';
 
 // Redirection des non-admins vers la page d'accueil lors du login
-require get_template_directory() . '/inc/redirect-after-login.php';
+//require get_template_directory() . '/inc/redirect-after-login.php';
 
 // Customisation ACF
 require get_template_directory() . '/inc/acf.php';
 
 // Intégration d'Algolia
-require get_template_directory() . '/algolia/functions.php';
+//require get_template_directory() . '/algolia/functions.php';
 
 // Gestion des contenus, liens, commentaires etc. à la suppression d'un compte
-require get_template_directory() . '/inc/manage-delete-account.php';
+//require get_template_directory() . '/inc/manage-delete-account.php';
 
 // Permet de faire le lien entre le nom du pays et son code iso
-require get_template_directory() . '/inc/members-special-chars.php';
+//require get_template_directory() . '/inc/members-special-chars.php';
 
 // Règles de validation du titre des articles
 require get_template_directory() . '/inc/validate-post-title.php';
 
 // Ajout d'ACF à WP REST API
-require get_template_directory() . '/inc/rest-api-posts-acf.php';
+//require get_template_directory() . '/inc/rest-api-posts-acf.php';
 
 // remplacer la limite retour posts par page (100) par PHP_INT_MAX
 require get_template_directory() . '/inc/rest-api-posts-per-page.php';
@@ -184,10 +184,21 @@ add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
  */
 function telabotanica_scripts() {
   // Theme stylesheet.
-  wp_enqueue_style( 'telabotanica-style', get_template_directory_uri() . '/dist/bundle.css' );
+  wp_enqueue_style(
+    'telabotanica-style',
+    get_template_directory_uri() . '/dist/bundle.css',
+    [],
+    filemtime(get_template_directory() . '/dist/bundle.css')
+  );
 
   // Theme script.
-  wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', [ 'jquery', 'wp-util' ], null, true );
+  wp_enqueue_script(
+    'telabotanica-script',
+    get_template_directory_uri() . '/dist/bundle.js',
+    [ 'wp-util' ],
+    null,
+    true
+  );
 }
 add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
 
@@ -242,7 +253,12 @@ add_filter( 'wp_get_attachment_image_attributes', 'telabotanica_post_thumbnail_s
  * Ajout d'un style spécifique pour l'admin
  */
 function telabotanica_admin_theme_style() {
-  wp_enqueue_style('telabotanica', get_template_directory_uri() . '/admin/style.css');
+  wp_enqueue_style(
+    'telabotanica',
+    get_template_directory_uri() . '/admin/style.css',
+    [],
+    filemtime(get_template_directory() . '/admin/style.css')
+  );
 }
 add_action('admin_enqueue_scripts', 'telabotanica_admin_theme_style');
 
@@ -296,3 +312,9 @@ function tiny_mce_remove_unused_formats($init) {
 	return $init;
 }
 add_filter('tiny_mce_before_init', 'tiny_mce_remove_unused_formats' );
+
+if (defined('WP_DEBUG') && WP_DEBUG) {
+  wp_enqueue_script('vite-client', 'http://localhost:5173/@vite/client', [], null, true);
+  wp_enqueue_script('vite-main', 'http://localhost:5173/assets/scripts/main.js', [], null, true);
+  return;
+}

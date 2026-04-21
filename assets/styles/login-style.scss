@@ -4,7 +4,7 @@ $small-page-padding: 20px;
 $medium-page-padding: 4rem;
 
 // Base
-@import "../../base/colors";
+@use "../../base/colors" as *;
 @import "../../base/defaults";
 @import "../../base/fonts";
 @import "../../base/mixins";

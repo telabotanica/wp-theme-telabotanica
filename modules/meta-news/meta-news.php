@@ -50,8 +50,8 @@
       __( 'par %s', 'telabotanica' ),
       sprintf(
         '<a href="%s">%s</a>',
-        esc_url( bp_core_get_user_domain( $author_id ) ),
-        bp_core_get_user_displayname( $author_id )
+        esc_url( tb_user_url($author_id) ),
+        esc_html( tb_user_name($author_id) )
       )
     )
   );

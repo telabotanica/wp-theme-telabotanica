@@ -117,17 +117,17 @@ $category_emploi = get_category_by_slug('offres-emploi') ?: null;
               'items' => [
                 [
                   'text' => __("Toute l'actualité", "telabotanica"),
-                  'href' => tb_category_by_slug($category_actualites) ? get_category_link($category_actualites) : '#',
+                  'href' => $category_actualites ? get_category_link($category_actualites) : '#',
                   'icon' => 'news'
                 ],
                 [
                   'text' => __("Tous les évènements", "telabotanica"),
-                  'href' => tb_category_by_slug($category_evenements) ? get_category_link($category_evenements) : '#',
+                  'href' => $category_evenements ? get_category_link($category_evenements) : '#',
                   'icon' => 'calendar'
                 ],
                 [
                   'text' => __("Offres d'emplois / stages", "telabotanica"),
-                  'href' => tb_category_by_slug($category_emploi) ? get_category_link($category_emploi) : '#',
+                  'href' => $category_emploi ? get_category_link($category_emploi) : '#',
                   'icon' => 'laptop'
                 ],
                 [

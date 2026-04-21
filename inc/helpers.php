@@ -61,3 +61,25 @@ function tb_bp_profile_edit_url() {
 function tb_category_by_slug($slug) {
   return get_category_by_slug($slug) ?: null;
 }
+
+function tb_user_url($user_id) {
+  return function_exists('bp_core_get_user_domain')
+    ? bp_core_get_user_domain($user_id)
+    : get_author_posts_url($user_id);
+}
+
+function tb_user_name($user_id) {
+  return function_exists('bp_core_get_user_displayname')
+    ? bp_core_get_user_displayname($user_id)
+    : get_the_author_meta('display_name', $user_id);
+}
+
+function tb_current_url() {
+  if (function_exists('bp_is_group') && bp_is_group()) {
+    return function_exists('bp_get_group_permalink')
+      ? bp_get_group_permalink()
+      : get_permalink();
+  }
+
+  return get_permalink();
+}

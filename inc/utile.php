@@ -9,6 +9,9 @@ function get_current_page_depth(){
   global $wp_query;
 
   $object = $wp_query->get_queried_object();
+  if (!isset($object->post_parent)) {
+    return 0;
+  }
   $parent_id = $object->post_parent;
   $depth = 0;
   while($parent_id > 0){
@@ -37,7 +40,14 @@ if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
     function post_is_in_descendant_category( $cats, $_post = null ) {
         foreach ( (array) $cats as $cat ) {
             // get_term_children() accepts integer ID only
-            if ( is_string( $cat ) ) $cat = get_category_by_slug( $cat )->cat_ID;
+          if ( is_string( $cat ) ) {
+            $term = get_term_by('slug', $cat, 'category');
+            $cat = $term ? $term->term_id : 0;
+          }
+
+          if ( empty($cat) ) {
+            continue;
+          }
             $descendants = get_term_children( (int) $cat, 'category' );
             if ( $descendants && in_category( $descendants, $_post ) )
                 return true;

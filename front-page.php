@@ -59,32 +59,32 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
               wp_reset_postdata();
             endif;
 
-            $featured_tools = get_field('tools');
+//            $featured_tools = get_field('tools');
 
-            if ( $featured_tools ) :
-              echo '<div id="js-front-page-tools">';
-
-              the_telabotanica_module('title', [
-                'title' => __('Les outils de Tela Botanica', 'telabotanica'),
-                'level' => 2,
-                'modifiers' => $featured_post->have_posts() ? 'with-separator' : 'with-margin-top'
-              ]);
-
-              the_telabotanica_component('tools', $featured_tools);
-
-              the_telabotanica_component('buttons', [
-                'items' => [
-                  [
-                    'link' => [
-                      'url' => get_permalink( get_page_by_path( 'outils' ) )
-                    ],
-                    'text' => __('Voir tous les outils', 'telabotanica')
-                  ]
-                ]
-              ]);
-
-              echo '</div>';
-            endif;
+//            if ( $featured_tools ) :
+//              echo '<div id="js-front-page-tools">';
+//
+//              the_telabotanica_module('title', [
+//                'title' => __('Les outils de Tela Botanica', 'telabotanica'),
+//                'level' => 2,
+//                'modifiers' => $featured_post->have_posts() ? 'with-separator' : 'with-margin-top'
+//              ]);
+//
+////              the_telabotanica_component('tools', $featured_tools);
+//
+//              the_telabotanica_component('buttons', [
+//                'items' => [
+//                  [
+//                    'link' => [
+//                      'url' => get_permalink( get_page_by_path( 'outils' ) )
+//                    ],
+//                    'text' => __('Voir tous les outils', 'telabotanica')
+//                  ]
+//                ]
+//              ]);
+//
+//              echo '</div>';
+//            endif;
             ?>
           </div>
           <aside class="layout-column">
@@ -150,19 +150,19 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
       </div>
 
       <div class="layout-full-width">
-        <?php
-        // Si la page utilise des blocs
-        if( have_rows('blocks') ):
-
-            // On boucle sur les blocs
-            while ( have_rows('blocks') ) : the_row();
-
-              the_telabotanica_block(get_row_layout());
-
-            endwhile;
-
-        endif;
-        ?>
+<!--        --><?php
+//        // Si la page utilise des blocs
+//        if( have_rows('blocks') ):
+//
+//            // On boucle sur les blocs
+//            while ( have_rows('blocks') ) : the_row();
+//
+//              the_telabotanica_block(get_row_layout());
+//
+//            endwhile;
+//
+//        endif;
+//        ?>
       </div>
 
     </main><!-- .site-main -->

@@ -1,10 +1,10 @@
 <?php
-require_once 'inc/walker.php';
+//require_once 'inc/walker.php';
 
 function telabotanica_module_header($data) {
   // $header_small can be set be true before calling get_header()
   // in a template file to force a small header (without use cases navigation)
-  global $header_small;
+  $header_small = $data['small'] ?? false;
 
   $defaults = [
     'image' => get_field('cover_image'),
@@ -66,7 +66,8 @@ function telabotanica_module_header($data) {
             'theme_location' => 'secondary',
             'menu_class'     => 'header-nav-items',
             'depth'          => 2,
-            'walker'         => new HeaderNavWalker(),
+            'walker' => new Walker_Nav_Menu(),
+//            'walker'         => new HeaderNavWalker(),
             'items_wrap'     => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>'
            ] );
         echo '</nav>';
@@ -134,13 +135,13 @@ function telabotanica_module_header($data) {
 
       // Recherche
 
-      printf(
-        '<li class="header-links-item header-links-item-search">%s</li>',
-        get_telabotanica_module('search-box', [
-          'placeholder' => __('Rechercher...', 'telabotanica'),
-          'modifiers' => ['tiny']
-        ])
-      );
+//      printf(
+//        '<li class="header-links-item header-links-item-search">%s</li>',
+//        get_telabotanica_module('search-box', [
+//          'placeholder' => __('Rechercher...', 'telabotanica'),
+//          'modifiers' => ['tiny']
+//        ])
+//      );
     echo '</ul>';
   echo '</div>';
 

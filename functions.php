@@ -318,3 +318,40 @@ if (defined('WP_DEBUG') && WP_DEBUG) {
   wp_enqueue_script('vite-main', 'http://localhost:5173/assets/scripts/main.js', [], null, true);
   return;
 }
+
+function tb_assets() {
+
+  if (defined('WP_DEBUG') && WP_DEBUG) {
+    wp_enqueue_script('vite', 'http://localhost:5173/@vite/client', [], null, true);
+    wp_enqueue_script('app', 'http://localhost:5173/assets/js/main.js', [], null, true);
+    return;
+  }
+
+  wp_enqueue_script(
+    'app',
+    get_template_directory_uri() . '/dist/js/app.js',
+    [],
+    filemtime(get_template_directory() . '/dist/js/app.js'),
+    true
+  );
+
+  wp_enqueue_style(
+    'style',
+    get_template_directory_uri() . '/dist/assets/main.css',
+    [],
+    filemtime(get_template_directory() . '/dist/assets/main.css')
+  );
+}
+
+add_action('wp_enqueue_scripts', 'tb_assets');
+
+function tb_menu_aria($atts, $item, $args) {
+
+  if (in_array('menu-item-has-children', $item->classes)) {
+    $atts['aria-haspopup'] = 'true';
+    $atts['aria-expanded'] = 'false';
+  }
+
+  return $atts;
+}
+add_filter('nav_menu_link_attributes', 'tb_menu_aria', 10, 3);

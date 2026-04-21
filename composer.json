@@ -1,6 +1,4 @@
 {
     "require": {
-        "proteusthemes/wai-aria-walker-nav-menu": "^1.2",
-        "algolia/algoliasearch-client-php": "^1.18"
     }
 }

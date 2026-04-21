@@ -47,13 +47,13 @@
   );
     echo '<div class="layout-wrapper">';
 
-      if ($data->search) :
-        $data->search['autocomplete'] = false;
-        printf(
-          '<div class="cover-search-box">%s</div>',
-          get_telabotanica_module('search-box', $data->search)
-        );
-      endif;
+//      if ($data->search) :
+//        $data->search['autocomplete'] = false;
+//        printf(
+//          '<div class="cover-search-box">%s</div>',
+//          get_telabotanica_module('search-box', $data->search)
+//        );
+//      endif;
 
       printf(
         '<h1 class="cover-title">%s</h1>',

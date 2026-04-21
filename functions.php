@@ -178,9 +178,39 @@ function telabotanica_content_width() {
 add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
 
 /**
- * Enqueues Vite-built scripts and styles.
+ * Enqueues Vite-built frontend scripts and styles.
+ * 
+ * In production/build, Vite outputs dist/bundle.js and dist/bundle.css
+ * (along with editor/login styles). The theme previously only enqueued the
+ * bundle.js (via the login path for some pages), which could lead to CSS not
+ * being loaded on the frontend. This adds a safe frontend asset enqueue using
+ * the generated dist files when present.
  */
-// Consolidated asset pipeline: use tb_assets() exclusively (Vite)
+function telabotanica_enqueue_frontend_assets() {
+  // Enqueue the main JS bundle if it exists
+  $bundle_js = get_template_directory() . '/dist/bundle.js';
+  if ( file_exists( $bundle_js ) ) {
+    wp_enqueue_script(
+      'telabotanica-frontend-script',
+      get_template_directory_uri() . '/dist/bundle.js',
+      [ 'jquery' ],
+      null,
+      true
+    );
+  }
+
+  // Enqueue the main CSS bundle if it exists
+  $bundle_css = get_template_directory() . '/dist/bundle.css';
+  if ( file_exists( $bundle_css ) ) {
+    wp_enqueue_style(
+      'telabotanica-frontend-style',
+      get_template_directory_uri() . '/dist/bundle.css',
+      [],
+      filemtime( $bundle_css )
+    );
+  }
+}
+add_action( 'wp_enqueue_scripts', 'telabotanica_enqueue_frontend_assets' );
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality

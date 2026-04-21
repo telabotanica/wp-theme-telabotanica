@@ -13,9 +13,9 @@ $category_emploi = get_category_by_slug('offres-emploi') ?: null;
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-      <?php
-      the_telabotanica_module('cover-home');
-      ?>
+<!--      --><?php
+//      the_telabotanica_module('cover-home');
+//      ?>
 
       <div class="layout-content-col reversed">
         <div class="layout-wrapper">

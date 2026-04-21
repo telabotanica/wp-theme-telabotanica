@@ -1,14 +1,6 @@
 <?php
 //require_once 'inc/walker.php';
 
-function tb_acf($key, $default = null) {
-  if (!function_exists('get_field')) {
-    return $default;
-  }
-
-  return get_field($key) ?: $default;
-}
-
 function telabotanica_module_header($data) {
   // $header_small can be set be true before calling get_header()
   // in a template file to force a small header (without use cases navigation)
@@ -175,21 +167,4 @@ function telabotanica_module_header($data) {
   );
 
   echo '</header>';
-}
-
-function tb_bp_avatar($user_id) {
-  if (!function_exists('bp_core_fetch_avatar')) {
-    return '';
-  }
-
-  return bp_core_fetch_avatar([
-    'item_id' => $user_id,
-    'html' => false
-  ]);
-}
-
-function tb_bp_profile_url() {
-  return function_exists('bp_loggedin_user_domain')
-    ? bp_loggedin_user_domain()
-    : '#';
 }

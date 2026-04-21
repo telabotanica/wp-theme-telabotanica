@@ -32,6 +32,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 require get_template_directory() . '/vendor/autoload.php';
 
 // Fonctions utiles
+require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/utile.php';
 
 // Filtres pour l'extrait

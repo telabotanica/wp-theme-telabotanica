@@ -8,14 +8,18 @@
  */
 function telabotanica_custom_excerpt( $post_excerpt, $post = null ) {
 
+  if (!is_string($post_excerpt)) {
+    $post_excerpt = '';
+  }
+
   // On ajoute l'intro au début de l'excerpt s'il y en a une
-  $intro = get_field('intro', $post);
+  $intro = tb_acf('intro', $post);
   if ( $intro ) :
     $post_excerpt = $intro . ' ' . $post_excerpt;
   endif;
 
   // Si l'excerpt est toujours vide, on essaye d'utiliser la description
-  $description = get_field('description', $post);
+  $description = tb_acf('description', $post);
   if ( empty( $post_excerpt ) && $description ) :
     $post_excerpt = $description;
   endif;

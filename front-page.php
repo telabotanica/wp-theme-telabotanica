@@ -5,9 +5,9 @@
 
 get_header();
 
-$category_actualites = get_category_by_slug( 'actualites' );
-$category_evenements = get_category_by_slug( 'evenements' );
-$category_emploi = get_category_by_slug( 'offres-emploi' );
+$category_actualites = get_category_by_slug('actualites') ?: null;
+$category_evenements = get_category_by_slug('evenements') ?: null;
+$category_emploi = get_category_by_slug('offres-emploi') ?: null;
 ?>
 
   <div id="primary" class="content-area">
@@ -92,9 +92,7 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
             $latest_articles = new WP_Query([
               'post_type' => 'post',
               'post_status' => 'publish',
-              'cat' => implode(',', [
-                $category_actualites->cat_ID
-              ]),
+              'cat' => $category_actualites?->cat_ID ?? 0,
               'posts_per_page' => 5,
               // évite d'afficher 2 fois l'actu à la Une
               'post__not_in' => $featured_post_id ? [$featured_post_id] : []
@@ -119,17 +117,17 @@ $category_emploi = get_category_by_slug( 'offres-emploi' );
               'items' => [
                 [
                   'text' => __("Toute l'actualité", "telabotanica"),
-                  'href' => get_category_link( $category_actualites ),
+                  'href' => tb_category_by_slug($category_actualites) ? get_category_link($category_actualites) : '#',
                   'icon' => 'news'
                 ],
                 [
                   'text' => __("Tous les évènements", "telabotanica"),
-                  'href' => get_category_link( $category_evenements ),
+                  'href' => tb_category_by_slug($category_evenements) ? get_category_link($category_evenements) : '#',
                   'icon' => 'calendar'
                 ],
                 [
                   'text' => __("Offres d'emplois / stages", "telabotanica"),
-                  'href' => get_category_link( $category_emploi ),
+                  'href' => tb_category_by_slug($category_emploi) ? get_category_link($category_emploi) : '#',
                   'icon' => 'laptop'
                 ],
                 [

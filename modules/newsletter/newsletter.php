@@ -23,9 +23,13 @@
       __( "Chaque jeudi, recevez un condensé de l'actualité du réseau, les évènements et les offres d'emplois directement dans votre boîte mail.", 'telabotanica' )
     );
 
+  $url = is_user_logged_in()
+    ? tb_bp_profile_edit_url()
+    : tb_bp_signup_url();
+
     if ($data->button) {
       the_telabotanica_module('button', [
-        'href' => is_user_logged_in() ? bp_loggedin_user_domain() . 'profile/edit' : bp_get_signup_page(),
+        'href' => $url,
         'text' => __( "S'abonner", 'telabotanica' )
       ] );
     }

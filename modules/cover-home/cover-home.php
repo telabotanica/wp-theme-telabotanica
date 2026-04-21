@@ -1,17 +1,25 @@
 <?php function telabotanica_module_cover_home($data) {
 
   $defaults = [
-    'image' => get_field('cover_image'),
+    'image' => tb_acf('cover_image', []),
     'title' => __('Bienvenue sur Tela Botanica, <br />le réseau des botanistes francophones', 'telabotanica'),
     'modifiers' => []
   ];
   $data = telabotanica_styleguide_data($defaults, $data);
+  $data->image = is_array($data->image) ? $data->image : [];
   $data->modifiers = telabotanica_styleguide_modifiers_array(['cover', 'cover-home'], $data->modifiers);
+
+  $bg = '';
+  if (is_array($data->image) && isset($data->image['sizes']['cover-background'])) {
+    $bg = $data->image['sizes']['cover-background'];
+  } elseif (is_array($data->image) && isset($data->image['url'])) {
+    $bg = $data->image['url'];
+  }
 
   printf(
     '<div class="%s" style="background-image: url(%s);">',
     implode(' ', $data->modifiers),
-    $data->image['sizes']['cover-background']
+    esc_url($bg)
   );
 
     echo '<div class="layout-wrapper">';
@@ -25,7 +33,7 @@
         );
         printf(
           '<div class="cover-home-link"><a href="%s">%s</a></div>',
-          bp_loggedin_user_domain(),
+          tb_bp_user_url(),
           __('Accéder à votre espace personnel', 'telabotanica')
         );
       else :
@@ -35,16 +43,21 @@
         );
       endif;
 
-      the_telabotanica_module('search-box', [
-        // TODO: make the suggestions configurable
-        'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc'],
-        'modifiers' => ['large', 'is-primary']
-      ]);
+//      the_telabotanica_module('search-box', [
+//        // TODO: make the suggestions configurable
+//        'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc'],
+//        'modifiers' => ['large', 'is-primary']
+//      ]);
 
       echo '</div>';
 
-      $users_link = get_permalink( get_option('bp-pages')['members'] );
-      $user_count = bp_get_total_member_count();
+      $bp_pages = get_option('bp-pages');
+
+      $bp_pages = (array) get_option('bp-pages');
+      $members_id = $bp_pages['members'] ?? null;
+      $users_link = $members_id ? get_permalink($members_id) : home_url('/');
+
+      $user_count = tb_bp_members_count();
       $observations_link = get_permalink( get_page_by_path( 'cartographies/observations-botaniques' ) );
 
       if ( false === ( $observations_count = get_transient( 'cover_home_observations_count' ) ) ) {

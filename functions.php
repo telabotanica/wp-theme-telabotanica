@@ -20,7 +20,9 @@
  * For more information on hooks, actions, and filters,
  * {@link https://codex.wordpress.org/Plugin_API}
  */
-
+if (!defined('ABSPATH')) {
+  exit;
+}
 // Ce thème requiert WordPress 4.4 ou ultérieur
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
   require get_template_directory() . '/inc/back-compat.php';
@@ -72,9 +74,6 @@ require get_template_directory() . '/inc/remove-toolbar.php';
 
 // Customisation ACF
 require get_template_directory() . '/inc/acf.php';
-
-// Intégration d'Algolia
-//require get_template_directory() . '/algolia/functions.php';
 
 // Gestion des contenus, liens, commentaires etc. à la suppression d'un compte
 //require get_template_directory() . '/inc/manage-delete-account.php';
@@ -178,29 +177,9 @@ function telabotanica_content_width() {
 add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
 
 /**
- * Enqueues scripts and styles.
- *
- * @since Twenty Sixteen 1.0
+ * Enqueues Vite-built scripts and styles.
  */
-function telabotanica_scripts() {
-  // Theme stylesheet.
-  wp_enqueue_style(
-    'telabotanica-style',
-    get_template_directory_uri() . '/dist/bundle.css',
-    [],
-    filemtime(get_template_directory() . '/dist/bundle.css')
-  );
-
-  // Theme script.
-  wp_enqueue_script(
-    'telabotanica-script',
-    get_template_directory_uri() . '/dist/bundle.js',
-    [ 'wp-util' ],
-    null,
-    true
-  );
-}
-add_action( 'wp_enqueue_scripts', 'telabotanica_scripts' );
+// Consolidated asset pipeline: use tb_assets() exclusively (Vite)
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
@@ -312,38 +291,6 @@ function tiny_mce_remove_unused_formats($init) {
 	return $init;
 }
 add_filter('tiny_mce_before_init', 'tiny_mce_remove_unused_formats' );
-
-if (defined('WP_DEBUG') && WP_DEBUG) {
-  wp_enqueue_script('vite-client', 'http://localhost:5173/@vite/client', [], null, true);
-  wp_enqueue_script('vite-main', 'http://localhost:5173/assets/scripts/main.js', [], null, true);
-  return;
-}
-
-function tb_assets() {
-
-  if (defined('WP_DEBUG') && WP_DEBUG) {
-    wp_enqueue_script('vite', 'http://localhost:5173/@vite/client', [], null, true);
-    wp_enqueue_script('app', 'http://localhost:5173/assets/js/main.js', [], null, true);
-    return;
-  }
-
-  wp_enqueue_script(
-    'app',
-    get_template_directory_uri() . '/dist/js/app.js',
-    [],
-    filemtime(get_template_directory() . '/dist/js/app.js'),
-    true
-  );
-
-  wp_enqueue_style(
-    'style',
-    get_template_directory_uri() . '/dist/assets/main.css',
-    [],
-    filemtime(get_template_directory() . '/dist/assets/main.css')
-  );
-}
-
-add_action('wp_enqueue_scripts', 'tb_assets');
 
 function tb_menu_aria($atts, $item, $args) {
 

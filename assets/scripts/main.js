@@ -14,7 +14,6 @@ new LazyLoad({
   elements_selector: "iframe.lazyload, img.lazyload"
 })
 
-import 'matchmedia-polyfill'
 import './responsive.js'
 
 import.meta.glob('../../modules/**/script.js', { eager: true })

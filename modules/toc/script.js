@@ -1,113 +1,87 @@
-var _ = _ || {};
-_.defer = require('lodash.defer');
-_.each = require('lodash.foreach');
-_.map = require('lodash.map');
-_.throttle = require('lodash.throttle');
-
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
-
-Tela.modules.toc = (function(){
-
-  var defaultOptions = {
-    accordionsSelector: '.component-accordion',
-    anchorsSelector: '.component-title.level-2 .component-title-anchor',
-    anchorOffset: 40 // should be the same as $title-anchor-offset in component title style
-  };
-
-  function module(selector, userOptions){
-    var $el = $(selector),
-      options = $.extend({}, defaultOptions, userOptions),
-      items,
-      headerHeight,
-      currentItemId,
-      $articleContainer,
-      $anchors;
-
-    function init(){
-      headerHeight = $('.header-nav').height();
-
-      $articleContainer = $('.layout-content article');
-      $accordions = $articleContainer.find(options.accordionsSelector);
-      $anchors = $articleContainer.find(options.anchorsSelector);
-
-      if ($anchors.length) {
-        _.defer(parseItems);
-        $(window).on('scroll', _.throttle(onScroll, 250));
-      }
-
-      if ($accordions.length) {
-        // Monitor changes to article height (when an accordion is open/closed)
-        onElementHeightChange($articleContainer[0], parseItems);
-      }
-    }
-
-    function initOptions() {
-      $.each($el.data(), function(key, value){
-        options[key] = value;
-      });
-    }
-
-    function parseItems() {
-      items = _.map($anchors, function(anchor, index) {
-        var $anchor = $(anchor);
-        return {
-          id: $anchor.attr('name'),
-          top: Math.round($anchor.offset().top + options.anchorOffset)
-        };
-      });
-
-      _.each(items, function (item, index, list) {
-        item.bottom = (list[index+1]) ?
-          list[index+1].top :
-          Math.round($articleContainer.position().top + $articleContainer.height());
-      });
-
-      onScroll();
-    }
-
-    function onScroll() {
-      var scrollTop = $(window).scrollTop();
-
-      _.each(items, function (item, index, list) {
-        if (scrollTop > item.top - headerHeight
-         && scrollTop < item.bottom - headerHeight
-         && currentItemId != item.id) {
-          currentItemId = item.id;
-          $el.find('.toc-subitem').removeClass('is-active');
-          $el.find('a[href="#' + item.id + '"]').closest('.toc-subitem').addClass('is-active');
-        }
-      });
-    }
-
-    function onElementHeightChange(elm, callback){
-      var lastHeight = elm.clientHeight, newHeight;
-
-      (function run(){
-          newHeight = elm.clientHeight;
-          if (lastHeight != newHeight) callback();
-          lastHeight = newHeight;
-
-          if (elm.onElementHeightChangeTimer) clearTimeout(elm.onElementHeightChangeTimer);
-
-          elm.onElementHeightChangeTimer = setTimeout(run, 500);
-      })();
-    }
-
-    initOptions();
-    init();
-
-    return $el;
+// Vanilla ES6 Toc navigation (no jQuery)
+(function(){
+  function throttle(fn, wait){
+    let t = 0;
+    return function(){
+      const now = Date.now();
+      if (now - t >= wait){ t = now; fn.apply(this, arguments); }
+    };
   }
 
-  return function(selector, userOptions){
-    return $(selector).each(function(){
-      module(this, userOptions);
-    });
+  const _ = {
+    defer: (fn)=>{ setTimeout(fn, 0); },
+    map: (arr, fn)=> Array.from(arr).map((v,i)=>fn(v,i)),
+    throttle: throttle
   };
+  const Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
+  Tela.modules.toc = (function(){
+    const defaultOptions = {
+      accordionsSelector: '.component-accordion',
+      anchorsSelector: '.component-title.level-2 .component-title-anchor',
+      anchorOffset: 40
+    };
+
+    function module(selector, userOptions){
+      const el = document.querySelector(selector);
+      if (!el) return;
+      const options = Object.assign({}, defaultOptions, userOptions || {});
+      let items = [], headerHeight = 0, currentItemId = null;
+      let articleContainer = document.querySelector('.layout-content article');
+      let anchors = articleContainer ? articleContainer.querySelectorAll(options.anchorsSelector) : [];
+      let accordions = articleContainer ? articleContainer.querySelectorAll(options.accordionsSelector) : [];
+
+      function init(){
+        headerHeight = document.querySelector('.header-nav')?.offsetHeight || 0;
+        articleContainer = document.querySelector('.layout-content article');
+        accordions = articleContainer ? articleContainer.querySelectorAll(options.accordionsSelector) : [];
+        anchors = articleContainer ? articleContainer.querySelectorAll(options.anchorsSelector) : [];
+        if (anchors.length){
+          _.defer(parseItems);
+          window.addEventListener('scroll', throttle(onScroll, 250));
+        }
+        if (accordions.length){
+          // simple polling
+          setInterval(parseItems, 500);
+        }
+      }
+
+      function parseItems(){
+        items = Array.from(anchors).map(anchor => {
+          const name = anchor.getAttribute('name');
+          const rect = anchor.getBoundingClientRect();
+          const top = Math.round(rect.top + window.scrollY + options.anchorOffset);
+          return { id: name, top };
+        });
+        items.forEach((item, idx) => {
+          item.bottom = (idx+1 < items.length) ? items[idx+1].top : Math.round((articleContainer?.offsetTop || 0) + (articleContainer?.offsetHeight || 0));
+        });
+        onScroll();
+      }
+
+      function onScroll(){
+        const scrollTop = window.scrollY;
+        items.forEach(item => {
+          if (scrollTop > item.top - headerHeight && scrollTop < item.bottom - headerHeight && currentItemId !== item.id){
+            currentItemId = item.id;
+            el.querySelectorAll('.toc-subitem').forEach(n => n.classList.remove('is-active'));
+            const a = el.querySelector('a[href="#' + item.id + '"]');
+            if (a){ const parent = a.closest('.toc-subitem'); if (parent) parent.classList.add('is-active'); }
+          }
+        });
+      }
+
+      init();
+      parseItems();
+    }
+
+    return function(selector, userOptions){
+      document.querySelectorAll(selector).forEach(el => module(el, userOptions));
+    };
+  })();
+
+  document.addEventListener('DOMContentLoaded', function(){
+    Tela.modules.toc('.toc');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.modules.toc('.toc');
-});

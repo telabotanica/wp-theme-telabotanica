@@ -1,4 +1,4 @@
-var iconTemplate = require('../icon/icon.pug');
+var iconTemplate = require('./../icon/icon');
 
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};

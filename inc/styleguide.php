@@ -19,7 +19,7 @@
   */
 $telabotanica_modules = [
   'article',
-  'autocomplete',
+//  'autocomplete',
   'breadcrumbs',
   'block-dashboard',
   'block-dashboard-images',
@@ -60,10 +60,10 @@ $telabotanica_modules = [
   'notice-cookies',
   'newsletter',
   'pagination',
-  'search-box',
+//  'search-box',
   'search-filters',
   'search-hit',
-  'search-results',
+//  'search-results',
   'share',
   'title',
   'toc',

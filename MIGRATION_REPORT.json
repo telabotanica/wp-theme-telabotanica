@@ -1,0 +1,390 @@
+{
+  "current_structure": {
+    "root_files": [
+      "package.json",
+      "composer.json",
+      "webpack.config.js",
+      "vite.config.js",
+      "postcss.config.js",
+      "functions.php"
+    ],
+    "main_directories": {
+      "assets": {
+        "description": "Source CSS, JS, and assets",
+        "contents": {
+          "styles": ["main.scss", "editor-style.scss", "login-style.scss"],
+          "scripts": ["main.js", "responsive.js"],
+          "icons": "64 SVG icon files (_all.js index)",
+          "fonts": "Web fonts (Ubuntu, Muli variants)",
+          "images": "Logo files"
+        }
+      },
+      "modules": {
+        "description": "Reusable template and script modules",
+        "count": "70+ modules",
+        "pattern": "Each module contains: *.pug template, script.js, (optional styles)"
+      },
+      "blocks": {
+        "description": "Gutenberg block definitions",
+        "modules": ["contribute", "focus", "list-features", "maps", "list-projects", "main-features", "mosaic"]
+      },
+      "inc": {
+        "description": "PHP includes",
+        "files": "25+ files including ACF, custom post types, REST API customizations"
+      },
+      "algolia": {
+        "description": "Algolia search integration",
+        "files": ["functions.php", "config.php", "autocomplete.php"]
+      },
+      "dist": {
+        "status": "DOES NOT EXIST - needs to be built"
+      },
+      "cache": {
+        "description": "Pug template cache",
+        "path": "cache/pug"
+      }
+    }
+  },
+  "webpack_config": {
+    "exists": true,
+    "path": "webpack.config.js",
+    "status": "LEGACY - Webpack is being replaced by Vite",
+    "entry": "./assets/scripts/main.js",
+    "output": {
+      "path": "dist/",
+      "filename": "bundle.js"
+    },
+    "style_entries": [
+      "main.scss → dist/bundle.css",
+      "editor-style.scss → dist/editor-style.css",
+      "login-style.scss → dist/login-style.css"
+    ],
+    "loaders": {
+      "pug": "pug-loader for .pug files in modules/",
+      "svg": "svg-sprite-loader for icons/, svg-url-loader for others",
+      "fonts": "file-loader for web fonts",
+      "images": "url-loader with 10KB limit"
+    },
+    "plugins": [
+      "ExtractTextPlugin (3 instances)",
+      "webpack.optimize.UglifyJsPlugin",
+      "webpack.ProvidePlugin ($, jQuery)",
+      "webpack.ContextReplacementPlugin (moment locale: fr)"
+    ],
+    "externals": {
+      "jquery": "jQuery (global variable)"
+    }
+  },
+  "pug_templates": {
+    "total_count": 16,
+    "entry_level": false,
+    "usage_pattern": "Pug templates are required() in JavaScript modules for client-side rendering",
+    "files": [
+      "modules/notice/notice.pug + notice-mixin.pug",
+      "modules/icon/icon.pug + icon-mixin.pug",
+      "modules/card-project/card-project.pug + card-project-mixin.pug",
+      "modules/list-articles-item/list-articles-item.pug + list-articles-item-mixin.pug",
+      "modules/event-dates/event-dates.pug + event-dates-mixin.pug",
+      "modules/categories-labels/categories-labels.pug + categories-labels-mixin.pug",
+      "modules/search-hit/search-hit.pug + search-hit-mixin.pug",
+      "modules/feed-item/feed-item.pug + feed-item-mixin.pug"
+    ],
+    "usage_locations": [
+      "modules/block-dashboard-observations/script.js",
+      "modules/feed/script.js",
+      "modules/footer/script.js",
+      "modules/header/script.js",
+      "modules/list-projects/script.js",
+      "modules/login/script.js",
+      "modules/search-box/scripts/instantsearch.js"
+    ],
+    "role": "Dynamic template rendering for search results, feed items, icons, cards",
+    "migration_action": "Convert to plain HTML template strings or Web Components"
+  },
+  "package_json": {
+    "build_scripts": {
+      "dev": "vite",
+      "build": "vite build"
+    },
+    "npm_dev_dependencies": {
+      "autoprefixer": "^10.4.19",
+      "postcss": "^8.4.38",
+      "sass": "^1.99.0",
+      "vite": "^8.0.9",
+      "vite-plugin-pug": "^0.4.1"
+    },
+    "npm_dependencies": {
+      "flickity": "^2.3.0 (carousel/slider)",
+      "moment": "^2.30.1 (date handling)",
+      "normalize-scss": "^8.0.0",
+      "vanilla-lazyload": "^19.1.3",
+      "vite-plugin-svg-icons": "^2.0.1"
+    },
+    "algolia_packages": "NONE found in package.json",
+    "notes": "Pug plugin is already included for Vite. Package is minimal and Vite-ready."
+  },
+  "php_dependencies": {
+    "composer_json": {
+      "status": "EMPTY - only contains empty 'require' object",
+      "path": "composer.json"
+    },
+    "vendor_autoload": "require get_template_directory() . '/vendor/autoload.php' (in functions.php)",
+    "acf_usage": "ACF functions are used but NO ACF PHP package dependency exists",
+    "notes": "ACF must be installed as a separate plugin or via external composer package"
+  },
+  "php_functions": {
+    "main_entry_point": "functions.php",
+    "script_enqueueing": {
+      "telabotanica_scripts()": {
+        "hooks": "wp_enqueue_scripts",
+        "enqueues": [
+          "dist/bundle.css (via get_file_mtime for cache busting)",
+          "dist/bundle.js with wp-util dependency"
+        ],
+        "status": "CURRENT - references dist/bundle.* files from Webpack"
+      },
+      "tb_assets()": {
+        "hooks": "wp_enqueue_scripts",
+        "enqueues": [
+          "dist/js/app.js (Vite output)",
+          "dist/assets/main.css (Vite output)"
+        ],
+        "status": "CONDITIONAL - checks WP_DEBUG for hot module reload from localhost:5173",
+        "note": "Duplicate function - both telabotanica_scripts() and tb_assets() are active"
+      }
+    },
+    "vite_dev_server": {
+      "detection": "if (defined('WP_DEBUG') && WP_DEBUG)",
+      "dev_server_url": "http://localhost:5173",
+      "scripts_loaded": [
+        "@vite/client",
+        "assets/scripts/main.js (from Vite dev server)"
+      ]
+    },
+    "style_support": "add_editor_style('dist/editor-style.css')",
+    "custom_logo_sizes": "set_post_thumbnail_size(), add_image_size() × 5 sizes",
+    "nav_menus": "4 custom menu locations registered",
+    "included_files": [
+      "inc/utile.php",
+      "inc/excerpt.php",
+      "inc/custom-post-types.php",
+      "inc/custom-taxonomies.php",
+      "inc/wpml.php",
+      "inc/styleguide.php",
+      "inc/login.php",
+      "inc/acf.php",
+      "inc/remove-toolbar.php",
+      "inc/validate-post-title.php",
+      "inc/rest-api-posts-per-page.php",
+      "inc/rest-api-posts-category-hierarchy.php"
+    ],
+    "commented_out": [
+      "inc/options.php (ACF options)",
+      "algolia/functions.php (Algolia integration - LINE 77)",
+      "inc/profile.php",
+      "inc/profile-subpages.php",
+      "inc/redirect-after-login.php",
+      "inc/manage-delete-account.php",
+      "inc/members-special-chars.php",
+      "inc/rest-api-posts-acf.php (REST API ACF exposure)",
+      "inc/rss.php"
+    ]
+  },
+  "algolia_traces": {
+    "status": "EXTENSIVELY USED BUT DISABLED",
+    "summary": "Algolia search is deeply integrated but currently commented out in functions.php line 77",
+    "php_files": {
+      "functions.php": {
+        "line_77": "//require get_template_directory() . '/algolia/functions.php'; [COMMENTED OUT]"
+      },
+      "algolia/functions.php": {
+        "functions": [
+          "telabotanica_algolia_check()",
+          "telabotanica_algolia_client()",
+          "telabotanica_algolia_config()",
+          "telabotanica_algolia_add_config() - adds JS config to footer",
+          "telabotanica_algolia_add_templates() - adds templates to footer",
+          "telabotanica_algolia_add_query_vars() - registers 'algolia_index' query var"
+        ]
+      },
+      "algolia/config.php": {
+        "constants_required": [
+          "ALGOLIA_APPLICATION_ID",
+          "ALGOLIA_SEARCH_API_KEY",
+          "ALGOLIA_ADMIN_API_KEY",
+          "ALGOLIA_PREFIX"
+        ],
+        "indices": [
+          "flore (from external API)",
+          "ALGOLIA_PREFIX . 'actualites'",
+          "ALGOLIA_PREFIX . 'projets'",
+          "Vegetations (external)",
+          "ALGOLIA_PREFIX . 'evenements'"
+        ]
+      },
+      "algolia/autocomplete.php": "HTML template for Algolia-powered search form"
+    },
+    "template_files": {
+      "archive.php": "References telabotanica_algolia_config()['autocomplete']",
+      "template-flore.php": "References telabotanica_algolia_config()['autocomplete']"
+    },
+    "javascript_files": {
+      "modules/autocomplete/script.js": {
+        "requires": ["autocomplete.js", "lodash.debounce"],
+        "usage": "window.algolia global variable",
+        "note": "TODO comment indicates unfinished implementation"
+      },
+      "modules/search-box/scripts/instantsearch.js": {
+        "requires": ["instantsearch.js", "moment", "numeral", "pubsub-js"],
+        "usage": "algolia.autocomplete.sources, algolia.application_id, algolia.search_api_key"
+      },
+      "modules/search-box/scripts/autocomplete.js": {
+        "requires": ["autocomplete.js", "algoliasearch"]
+      },
+      "modules/profile/script.js": {
+        "requires": ["autocomplete.js"]
+      }
+    },
+    "migration_action": "REMOVE all Algolia files (algolia/ directory) and references from: functions.php, archive.php, template-flore.php, modules/autocomplete/, modules/search-box/, modules/profile/"
+  },
+  "acf_traces": {
+    "status": "USED IN MULTIPLE LOCATIONS",
+    "summary": "ACF (Advanced Custom Fields) is used for custom fields but plugin must be installed separately",
+    "php_files": {
+      "inc/acf.php": {
+        "functions": [
+          "telabotanica_set_featured_image() - extracts featured image from ACF field 'image'",
+          "telabotanica_add_acf_query_vars() - registers query vars for ACF forms",
+          "telabotanica_acf_load_field() - filter to translate Title/Content labels"
+        ],
+        "hooks": [
+          "acf/save_post (action)",
+          "query_vars (filter)",
+          "acf/load_field (filter)"
+        ]
+      },
+      "functions.php": {
+        "line_39": "//require get_template_directory() . '/inc/options.php'; [COMMENTED OUT - ACF options]",
+        "line_74": "require get_template_directory() . '/inc/acf.php'; [ACTIVE]",
+        "line_89": "//require get_template_directory() . '/inc/rest-api-posts-acf.php'; [COMMENTED OUT]"
+      }
+    },
+    "template_files": [
+      "archive.php - likely uses ACF field display",
+      "template-flore.php - likely uses ACF field display"
+    ],
+    "acf_json_directory": "acf-json/ - directory exists for ACF field group storage",
+    "acf_usage": [
+      "get_field('image', $post_id) - in inc/acf.php",
+      "get_field('components', $post_id) - flexible content field",
+      "Complex field keys like 'field_582c849d8668f_field_582c67ba3c90e'"
+    ],
+    "notes": "ACF is a plugin dependency. No ACF PHP code in composer.json - must be installed via WordPress plugins."
+  },
+  "vite_readiness": {
+    "vite_config_exists": true,
+    "vite_config_file": "vite.config.js",
+    "configuration": {
+      "build": {
+        "outDir": "dist",
+        "rollup_input": {
+          "bundle": "assets/scripts/main.js",
+          "editor-style": "assets/styles/editor-style.scss",
+          "login-style": "assets/styles/login-style.scss"
+        },
+        "output": "Entrypoints: [name].js for JS, [name][extname] for CSS"
+      },
+      "plugins": ["vite-plugin-pug"],
+      "css": {
+        "postcss": "autoprefixer configured"
+      },
+      "resolve": {
+        "alias": "@: assets/"
+      }
+    },
+    "status": "PARTIAL - Vite config exists but Webpack is still referenced in functions.php",
+    "dev_server_port": 5173,
+    "current_npm_scripts": {
+      "dev": "vite",
+      "build": "vite build"
+    },
+    "migration_progress": "VITE ALREADY IN USE - only needs to remove Webpack references",
+    "action_items": [
+      "1. Verify dist/ directory is generated after 'npm run build'",
+      "2. Remove webpack.config.js (no longer needed)",
+      "3. Clean up functions.php to use only Vite output paths",
+      "4. Remove duplicate tb_assets() function",
+      "5. Update postcss.config.js - remove unused plugins (pixrem, css-mqpacker)"
+    ]
+  },
+  "build_status": {
+    "dist_directory": "NOT FOUND in file system",
+    "indication": "Theme has not been built yet - 'npm run build' has not been executed",
+    "webpack_bundle": "webpack.config.js exists but Vite is primary build tool",
+    "next_steps": [
+      "Run: npm install",
+      "Run: npm run build",
+      "Verify dist/ is created with bundle.js, editor-style.css, login-style.css"
+    ]
+  },
+  "migration_plan_summary": {
+    "from": "Webpack (legacy) + Pug + Algolia + ACF",
+    "to": "Vite (modern) + plain HTML/CSS/JS",
+    "status": "PARTIAL - Already migrated to Vite, needs cleanup",
+    "phases": {
+      "phase_1_remove_algolia": {
+        "priority": "HIGH",
+        "actions": [
+          "1. Remove algolia/ directory entirely",
+          "2. Remove Algolia comment from functions.php line 77",
+          "3. Remove Algolia references from archive.php and template-flore.php",
+          "4. Remove modules: autocomplete/, search-box/ (if Algolia-dependent)",
+          "5. Remove packages: autocomplete.js, instantsearch.js, algoliasearch from package.json (if installed)",
+          "6. Run: npm install (to clean node_modules)"
+        ]
+      },
+      "phase_2_convert_pug_to_html": {
+        "priority": "HIGH",
+        "files_to_convert": 16,
+        "approach": [
+          "1. Convert .pug template files to HTML template strings in JS",
+          "2. Update require() statements to use template strings instead",
+          "3. Test each module after conversion",
+          "4. Remove vite-plugin-pug dependency once all .pug files are converted"
+        ]
+      },
+      "phase_3_remove_webpack": {
+        "priority": "MEDIUM",
+        "actions": [
+          "1. Delete webpack.config.js",
+          "2. Verify Vite build produces all required output",
+          "3. Update functions.php to remove webpack references"
+        ]
+      },
+      "phase_4_consolidate_vite": {
+        "priority": "MEDIUM",
+        "actions": [
+          "1. Remove duplicate tb_assets() function from functions.php",
+          "2. Keep only telabotanica_scripts() for bundle loading",
+          "3. Ensure dist/bundle.js and dist/bundle.css are correctly referenced",
+          "4. Test hot module reload with WP_DEBUG on localhost:5173"
+        ]
+      },
+      "phase_5_acf_handling": {
+        "priority": "LOW-MEDIUM",
+        "note": "ACF is plugin-based, not theme-based",
+        "actions": [
+          "1. ACF remains in inc/acf.php as-is (plugin dependency)",
+          "2. No migration needed - plugin handles all functionality",
+          "3. Ensure ACF plugin is installed in WordPress"
+        ]
+      }
+    },
+    "estimated_effort": "MEDIUM - 2-4 hours",
+    "blockers": "None identified",
+    "risks": [
+      "Algolia removal may break search functionality if users depend on it",
+      "Pug to HTML conversion could introduce regressions in template rendering"
+    ]
+  }
+}

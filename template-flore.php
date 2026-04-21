@@ -36,28 +36,9 @@ get_header(); ?>
           <aside class="layout-column">
             <?php
 
-            $algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
-            $current_index = 'flore';
-
-            // Retrieve the label for the current index
-            $indices = $algolia_autocomplete_config['sources'];
-            foreach ( $indices as $index ) :
-              if ( $index['index_id'] === $current_index ) {
-                $current_index = [
-                  'id' => $current_index,
-                  'label' => $index['label'],
-                  'name' => $index['index_name'],
-                  'filters' => @$index['filters'] ?: []
-                ];
-                break;
-              }
-            endforeach;
-
             the_telabotanica_module('toc');
 
-            the_telabotanica_module('search-filters', [
-              'filters' => $current_index['filters']
-            ]);
+            the_telabotanica_module('search-filters', []);
 
             the_telabotanica_module('button-top');
             ?>

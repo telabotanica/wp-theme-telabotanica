@@ -1,177 +1,181 @@
-var feedItemTemplate = require('../feed-item/feed-item.pug');
+import feedItemTemplate from './../feed-item/feed-item.js';
 
-var _ = _ || {};
-_.each = require('lodash.foreach');
-_.flatten = require('lodash.flatten');
-_.groupBy = require('lodash.groupby');
-_.map = require('lodash.map');
-_.maxBy = require('lodash.maxby');
-_.sortBy = require('lodash.sortby');
-
-var he = require('he');
-
-var moment = require('moment');
-moment.locale('fr');
-
-var Tela = window.Tela || {};
+const Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
-Tela.modules.feed = (function(){
+function groupBy(array, key) {
+  return array.reduce((acc, item) => {
+    const k = item[key];
+    if (!acc[k]) acc[k] = [];
+    acc[k].push(item);
+    return acc;
+  }, {});
+}
 
-  function module(selector){
-    var $el = $(selector),
-      $content,
-      apiUrls = {},
-      maxItems = 8, // ?
-      data = {
-        items: []
-      };
+function sortByDateDesc(items) {
+  return [...items].sort((a, b) => new Date(b.date) - new Date(a.date));
+}
 
-    function init(){
-      $content = $el.find('.feed-items');
-      var userId = $el.data('userId');
-      var siteUrl = $el.data('siteUrl');
+function maxBy(arr, key) {
+  return arr.reduce((max, item) =>
+    new Date(item[key]) > new Date(max[key]) ? item : max
+  );
+}
 
-      apiUrls = {
-        observations: 'https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=' + userId,
-        images: 'https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=' + userId,
-        actualites: siteUrl + '/wp-json/wp/v2/posts?author=' + userId + '&_embed',
-        // useful for local debugging:
-        // observations: '/wp-content/themes/telabotanica/modules/feed/observations.json',
-        // images: '/wp-content/themes/telabotanica/modules/feed/images.json',
-      };
+function escapeHtml(str = '') {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
 
-      loadData();
-    }
+function formatDateFR(date) {
+  return new Intl.DateTimeFormat('fr-FR', {
+    dateStyle: 'medium'
+  }).format(new Date(date));
+}
 
-    function loadData(){
-      $content.before('<div class="feed-loading">Chargement...</div>');
+Tela.modules.feed = (function () {
+  function module(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
 
-      // Call the APIs
-      $.when(loadActualites(), loadObservations(), loadImages())
-        .done(renderContent)
-        .fail(function(){
-          $content.before('<div>Erreur lors du chargement du flux.</div>');
-        })
-        .always(function(){
-          $el.find('.feed-loading').remove();
-        });
-    }
+    const content = el.querySelector('.feed-items');
+    if (!content) return;
 
-    function loadActualites() {
-      return $.getJSON(apiUrls.actualites, function(json){
-        _.each(json, function (item) {
-          var categories = 'wp:term' in item._embedded ? _.map(item._embedded['wp:term'][0], function(term) {
-            return term.name;
-          }) : [];
-          data.items.push({
-            article: true,
-            href: item.link,
-            image: function() {
-              try {
-                return item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url;
-              } catch(e) {}
-              return false;
-            }(),
-            title: he.decode(item.title.rendered),
-            date: item.modified,
-            day: item.modified.substring(0,10),
-            text: item.excerpt.rendered,
-            meta: {
-              text: categories.join(', ')
-            }
-          });
-        });
-      });
-    }
+    const userId = el.dataset.userId;
+    const siteUrl = el.dataset.siteUrl;
 
-    function loadObservations() {
-      return $.getJSON(apiUrls.observations, function(json){
-        _.each(json.resultats, function (item) {
-          data.items.push({
-            href: 'http://www.tela-botanica.org/appli:identiplante#obs~' + item.id_observation,
-            target: '_blank',
-            image: ('images' in item && item.images.length) ? item.images[0]['binaire.href'].replace('XL.', 'CRXS.') : false,
-            title: item['determination.ns'],
-            date: item.date_transmission,
-            day: item.date_transmission.substring(0,10),
-            text: "Nouvelle observation ajoutée au Carnet en Ligne",
-            meta: {
-              place: item.zone_geo
-            }
-          });
-        });
-      });
-    }
+    const apiUrls = {
+      observations: `https://api.tela-botanica.org/service:del:0.1/observations?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&masque.auteur=${userId}`,
+      images: `https://api.tela-botanica.org/service:del:0.1/images?navigation.depart=0&navigation.limite=50&tri=date_transmission&ordre=desc&format=CRS&masque.auteur=${userId}`,
+      actualites: `${siteUrl}/wp-json/wp/v2/posts?author=${userId}&_embed`
+    };
 
-    function loadImages() {
-      return $.getJSON(apiUrls.images, function(json){
-        var images = [];
-        _.each(json.resultats, function (item) {
-          var date = item.observation.date_transmission;
-          images.push({
-            date: date,
-            day: date.substring(0,10),
-            image: item['binaire.href']
-          });
-        });
+    const data = { items: [] };
+    const maxItems = 8;
 
-        // grouper par jour
-        var imagesByDay = _.groupBy(images, 'day');
+    async function init() {
+      const loader = document.createElement('div');
+      loader.className = 'feed-loading';
+      loader.textContent = 'Chargement...';
+      content.before(loader);
 
-        // pousser des multi-items
-        _.each(imagesByDay, function (item, day) {
-          data.items.push({
-            href: 'http://www.tela-botanica.org/appli:cel',
-            target: '_blank',
-            images: _.map(item, 'image').slice(0,maxItems),
-            title: item.length + ' photo' + (item.length > 1 ? 's' : '') + ' ajoutée' + (item.length > 1 ? 's' : ''),
-            date: _.maxBy(item, 'date').date,
-            day: item[0].day,
-            text: 'Au Carnet en Ligne',
-            meta: {
-              text: ''
-            }
-          });
-        });
-      });
-    }
-
-    function renderContent(){
-      data.items = _.sortBy(data.items, 'date');
-      data.items = data.items.reverse();
-      data.items = _.groupBy(data.items, 'day');
-      var groupedItems = [];
-      for (var day in data.items) {
-        var d = data.items[day];
-        groupedItems.push({
-          date: moment(d[0].date).calendar()
-        });
-        groupedItems.push(data.items[day]);
+      try {
+        await Promise.all([loadActualites(), loadObservations(), loadImages()]);
+        renderContent();
+      } catch (e) {
+        content.before(document.createTextNode('Erreur lors du chargement du flux.'));
+      } finally {
+        loader.remove();
       }
-      data.items = _.flatten(groupedItems);
-
-      var content = '';
-      _.each(data.items, function(item){
-        content += feedItemTemplate({data: item});
-      });
-      $content.append(content);
     }
 
+    async function loadActualites() {
+      const res = await fetch(apiUrls.actualites);
+      const json = await res.json();
+
+      json.forEach((item) => {
+        const categories =
+          item._embedded?.['wp:term']?.[0]?.map((t) => t.name) || [];
+
+        data.items.push({
+          article: true,
+          href: item.link,
+          image:
+            item._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes
+              ?.thumbnail?.source_url || false,
+          title: escapeHtml(item.title.rendered),
+          date: item.modified,
+          day: item.modified.slice(0, 10),
+          text: item.excerpt.rendered,
+          meta: {
+            text: categories.join(', ')
+          }
+        });
+      });
+    }
+
+    async function loadObservations() {
+      const res = await fetch(apiUrls.observations);
+      const json = await res.json();
+
+      json.resultats.forEach((item) => {
+        data.items.push({
+          href: `http://www.tela-botanica.org/appli:identiplante#obs~${item.id_observation}`,
+          target: '_blank',
+          image: item.images?.length
+            ? item.images[0]['binaire.href'].replace('XL.', 'CRXS.')
+            : false,
+          title: item['determination.ns'],
+          date: item.date_transmission,
+          day: item.date_transmission.slice(0, 10),
+          text: 'Nouvelle observation ajoutée au Carnet en Ligne',
+          meta: {
+            place: item.zone_geo
+          }
+        });
+      });
+    }
+
+    async function loadImages() {
+      const res = await fetch(apiUrls.images);
+      const json = await res.json();
+
+      const images = json.resultats.map((item) => {
+        const date = item.observation.date_transmission;
+        return {
+          date,
+          day: date.slice(0, 10),
+          image: item['binaire.href']
+        };
+      });
+
+      const grouped = groupBy(images, 'day');
+
+      Object.entries(grouped).forEach(([day, items]) => {
+        data.items.push({
+          href: 'http://www.tela-botanica.org/appli:cel',
+          target: '_blank',
+          images: items.slice(0, maxItems).map((i) => i.image),
+          title: `${items.length} photo${items.length > 1 ? 's' : ''} ajoutée${
+            items.length > 1 ? 's' : ''
+          }`,
+          date: maxBy(items, 'date').date,
+          day,
+          text: 'Au Carnet en Ligne',
+          meta: { text: '' }
+        });
+      });
+    }
+
+    function renderContent() {
+      const sorted = sortByDateDesc(data.items);
+
+      const grouped = groupBy(sorted, 'day');
+
+      const flat = [];
+
+      Object.keys(grouped).forEach((day) => {
+        flat.push({
+          date: formatDateFR(grouped[day][0].date)
+        });
+        flat.push(...grouped[day]);
+      });
+
+      content.innerHTML = flat
+        .map((item) => feedItemTemplate({ data: item }))
+        .join('');
+    }
 
     init();
-
-    return $el;
   }
 
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
+  return function (selector) {
+    document.querySelectorAll(selector).forEach((el) => module(el));
   };
-
 })();
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', () => {
   Tela.modules.feed('.feed');
 });

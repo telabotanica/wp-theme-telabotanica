@@ -1,5 +1,5 @@
 var PubSub = require('pubsub-js');
-var cardProjectTemplate = require('../card-project/card-project.pug');
+var cardProjectTemplate = require('./../card-project/card-project');
 
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};

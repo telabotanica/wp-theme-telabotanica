@@ -1,15 +1,23 @@
 <?php
 //require_once 'inc/walker.php';
 
+function tb_acf($key, $default = null) {
+  if (!function_exists('get_field')) {
+    return $default;
+  }
+
+  return get_field($key) ?: $default;
+}
+
 function telabotanica_module_header($data) {
   // $header_small can be set be true before calling get_header()
   // in a template file to force a small header (without use cases navigation)
-  $header_small = $data['small'] ?? false;
+  $header_small = $data->small ?? false;
 
   $defaults = [
-    'image' => get_field('cover_image'),
+    'image' => tb_acf('cover_image'),
     'title' => get_the_title(),
-    'subtitle' => get_field('cover_subtitle'),
+    'subtitle' => tb_acf('cover_subtitle'),
     'content' => false,
     'search' => false,
     'modifiers' => []
@@ -81,12 +89,9 @@ function telabotanica_module_header($data) {
 
       if ( is_user_logged_in() ) :
         $current_user = wp_get_current_user();
-        $avatar_url = bp_core_fetch_avatar( [
-          'item_id' => $current_user->ID,
-          'html' => false
-        ] ); ?>
+        $avatar_url = tb_bp_avatar($current_user->ID); ?>
         <li class="header-links-item header-links-item-user">
-          <a href="<?php echo bp_loggedin_user_domain(); ?>">
+          <a href="<?php echo tb_bp_profile_url(); ?>">
             <span class="header-links-item-text">
               <span class="header-links-item-user-name"><?php echo $current_user->display_name; ?></span>
               <span class="header-links-item-user-avatar" style="background-image: url(<?php echo $avatar_url ?>);"></span>
@@ -170,4 +175,21 @@ function telabotanica_module_header($data) {
   );
 
   echo '</header>';
+}
+
+function tb_bp_avatar($user_id) {
+  if (!function_exists('bp_core_fetch_avatar')) {
+    return '';
+  }
+
+  return bp_core_fetch_avatar([
+    'item_id' => $user_id,
+    'html' => false
+  ]);
+}
+
+function tb_bp_profile_url() {
+  return function_exists('bp_loggedin_user_domain')
+    ? bp_loggedin_user_domain()
+    : '#';
 }

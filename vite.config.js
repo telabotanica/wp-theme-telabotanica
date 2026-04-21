@@ -1,11 +1,7 @@
 import { defineConfig } from 'vite'
 import path from 'path'
-import pugPlugin from 'vite-plugin-pug'
 
 export default defineConfig({
-  plugins: [
-    pugPlugin()
-  ],
   build: {
     outDir: 'dist',
     rollupOptions: {
@@ -14,9 +10,11 @@ export default defineConfig({
         'editor-style': path.resolve(__dirname, 'assets/styles/editor-style.scss'),
         'login-style': path.resolve(__dirname, 'assets/styles/login-style.scss')
       },
+      external: ['leaflet'],
       output: {
         entryFileNames: '[name].js',
         assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return '[name][extname]'
           if (assetInfo.name.endsWith('.css')) {
             return '[name][extname]'
           }

@@ -37,117 +37,35 @@ get_header();
     <main id="main" class="site-main">
 
       <?php
-      if ( telabotanica_algolia_check(true) ) :
-
-        // Get Algolia instance
-        $algolia_client = telabotanica_algolia_client();
-        $algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
-
-        if ( $current_index ) :
-
-          // Retrieve the label for the current index
-          $indices = $algolia_autocomplete_config['sources'];
-          foreach ( $indices as $index ) :
-            if ( $index['index_id'] === $current_index ) {
-              $current_index = [
-                'id' => $current_index,
-                'label' => $index['label'],
-                'name' => $index['index_name'],
-                'filters' => @$index['filters'] ?: []
-              ];
-              break;
-            }
-          endforeach;
-
-          // Perform the search
-          $index = $algolia_client->initIndex($current_index['name']);
-          $results = $index->search($search_query, [
-            'hitsPerPage' => 20
-          ]);
-
-          the_telabotanica_module('cover-search', [
-            'index' => $current_index['id'],
-            'total_results' => false,
-            'instantsearch' => true
-          ]);
-          ?>
-
-          <div class="layout-content-col">
-            <div class="layout-wrapper">
-                <aside class="layout-column">
-                  <?php
-                  the_telabotanica_module('search-filters', [
-                    'filters' => $current_index['filters']
-                  ]);
-                  the_telabotanica_module('button-top');
-                  ?>
-                </aside>
-                <div class="layout-content">
-                  <?php
-                  the_telabotanica_module('breadcrumbs', [
-                    'items' => [
-                      [
-                        'href' => esc_url( home_url( '/' ) . '?s=' . $search_query ),
-                        'text' => __('Recherche', 'telabotanica')
-                      ],
-                      [
-                        'text' => $current_index['label']
-                      ],
-                      [ 'text' => '<span id="search-stats">' . sprintf( _n(
-                        '%s résultat trouvé',
-                        '%s résultats trouvés',
-                        $results['nbHits'],
-                        'telabotanica'
-                      ), number_format_i18n( $results['nbHits'] ) ) . '</span>' ]
-                    ]
-                  ]);
-
-                  echo '<div id="search-hits">';
-                    foreach ($results['hits'] as $hit) {
-                      $hit['type'] = $current_index['id'];
-                      the_telabotanica_module('search-hit', $hit);
-                    }
-                  echo '</div>';
-
-                  // TODO: add pagination
-                  ?>
-                </div>
-              </div>
-            </div>
-        <?php
-        else :
-          // Perform several queries in a single API call
-          $queries = [];
-
-          foreach ( $algolia_autocomplete_config['sources'] as $index ) :
-            $queries[] = [
-              'indexName' => $index['index_name'],
-              'query' => urldecode($search_query),
-              'hitsPerPage' => $index['settings']['hitsPerPage'] * 2,
-              'facetFilters' => array_key_exists('facetFilters', $index['settings']) ? $index['settings']['facetFilters'] : null
-            ];
-          endforeach;
-
-          $results = $algolia_client->multipleQueries($queries);
-          $total_results = array_sum(array_column($results['results'], 'nbHits'));
-
-          the_telabotanica_module('cover-search', [
-            'total_results' => $total_results
-          ]);
-        ?>
-          <div class="layout-central-col is-wide adjacent-top">
-            <div class="layout-wrapper">
-              <div class="layout-content">
-                <?php
-                the_telabotanica_module('search-results', $results);
-                ?>
-              </div>
-            </div>
-          </div>
-        <?php
-        endif;
-      endif;
+      // WordPress standard search results
+      the_telabotanica_module('cover-search');
       ?>
+
+      <div class="layout-central-col is-wide adjacent-top">
+        <div class="layout-wrapper">
+          <div class="layout-content">
+            <?php
+            if ( have_posts() ) :
+              while ( have_posts() ) :
+                the_post();
+                the_telabotanica_module('list-articles-item', [
+                  'post_id' => get_the_ID(),
+                  'title' => get_the_title(),
+                  'excerpt' => get_the_excerpt(),
+                  'url' => get_permalink(),
+                  'date' => get_the_date('U')
+                ]);
+              endwhile;
+              the_posts_pagination();
+            else :
+              ?>
+              <p><?php _e('No results found.', 'telabotanica'); ?></p>
+              <?php
+            endif;
+            ?>
+          </div>
+        </div>
+      </div>
 
     </main><!-- .site-main -->
   </div><!-- .content-area -->

@@ -63,23 +63,6 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
           <aside class="layout-column">
             <?php
 
-            $algolia_autocomplete_config = telabotanica_algolia_config()['autocomplete'];
-            $current_index = $is_category_events ? 'evenements' : 'actualites';
-
-            // Retrieve the label for the current index
-            $indices = $algolia_autocomplete_config['sources'];
-            foreach ( $indices as $index ) :
-              if ( $index['index_id'] === $current_index ) {
-                $current_index = [
-                  'id' => $current_index,
-                  'label' => $index['label'],
-                  'name' => $index['index_name'],
-                  'filters' => @$index['filters'] ?: []
-                ];
-                break;
-              }
-            endforeach;
-
             the_telabotanica_module('categories', [
               'modifiers' => 'layout-column-item'
             ] );
@@ -114,9 +97,7 @@ $is_category_events = is_category( $category_evenements ) || cat_is_ancestor_of(
               ] );
             endif;
 
-            the_telabotanica_module('search-filters', [
-              'filters' => $current_index['filters']
-            ]);
+            the_telabotanica_module('search-filters', []);
 
             the_telabotanica_module('button-top');
             ?>

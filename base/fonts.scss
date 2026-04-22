@@ -1,5 +1,4 @@
 $fonts-path: "../fonts/";
-
 $muli: "Muli", sans-serif;
 $ubuntu: "Ubuntu", sans-serif;
 $light: 300;
@@ -7,63 +6,53 @@ $regular: normal;
 $medium: 500;
 $bold: bold;
 
-// police de labeur
+/* Polices optimisées - woff2 uniquement (support moderne 98%+) */
+
+// Muli - Police de body
 @font-face {
   font-family: "Muli";
-  src: url("#{$fonts-path}muli-light-webfont.eot");
-  src: url("#{$fonts-path}muli-light-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}muli-light-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}muli-light-webfont.woff") format("woff"),
-       url("#{$fonts-path}muli-light-webfont.ttf") format("truetype");
+  src: url("#{$fonts-path}muli-light-webfont.woff2") format("woff2");
   font-weight: $light;
   font-style: normal;
-  font-display: fallback;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Muli";
-  src: url("#{$fonts-path}muli-regular-webfont.eot");
-  src: url("#{$fonts-path}muli-regular-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}muli-regular-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}muli-regular-webfont.woff") format("woff"),
-       url("#{$fonts-path}muli-regular-webfont.ttf") format("truetype");
+  src: url("#{$fonts-path}muli-regular-webfont.woff2") format("woff2");
   font-weight: $regular;
   font-style: normal;
-  font-display: fallback;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Muli";
-  src: url("#{$fonts-path}muli-bold-webfont.eot");
-  src: url("#{$fonts-path}muli-bold-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}muli-bold-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}muli-bold-webfont.woff") format("woff"),
-       url("#{$fonts-path}muli-bold-webfont.ttf") format("truetype");
+  src: url("#{$fonts-path}muli-bold-webfont.woff2") format("woff2");
   font-weight: $bold;
   font-style: normal;
-  font-display: fallback;
+  font-display: swap;
 }
 
-// police de titrage
+// Ubuntu - Police de titrage
 @font-face {
   font-family: "Ubuntu";
-  src: url("#{$fonts-path}ubuntu-bold-webfont.eot");
-  src: url("#{$fonts-path}ubuntu-bold-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}ubuntu-bold-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}ubuntu-bold-webfont.woff") format("woff"),
-       url("#{$fonts-path}ubuntu-bold-webfont.ttf") format("truetype");
-  font-weight: $bold;
+  src: url("#{$fonts-path}ubuntu-light-webfont.woff2") format("woff2");
+  font-weight: $light;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("#{$fonts-path}ubuntu-medium-webfont.eot");
-  src: url("#{$fonts-path}ubuntu-medium-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}ubuntu-medium-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}ubuntu-medium-webfont.woff") format("woff"),
-       url("#{$fonts-path}ubuntu-medium-webfont.ttf") format("truetype");
+  src: url("#{$fonts-path}ubuntu-regular-webfont.woff2") format("woff2");
+  font-weight: $regular;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("#{$fonts-path}ubuntu-medium-webfont.woff2") format("woff2");
   font-weight: $medium;
   font-style: normal;
   font-display: swap;
@@ -71,24 +60,8 @@ $bold: bold;
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("#{$fonts-path}ubuntu-regular-webfont.eot");
-  src: url("#{$fonts-path}ubuntu-regular-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}ubuntu-regular-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}ubuntu-regular-webfont.woff") format("woff"),
-       url("#{$fonts-path}ubuntu-regular-webfont.ttf") format("truetype");
-  font-weight: $regular;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url("#{$fonts-path}ubuntu-light-webfont.eot");
-  src: url("#{$fonts-path}ubuntu-light-webfont.eot?#iefix") format("embedded-opentype"),
-       url("#{$fonts-path}ubuntu-light-webfont.woff2") format("woff2"),
-       url("#{$fonts-path}ubuntu-light-webfont.woff") format("woff"),
-       url("#{$fonts-path}ubuntu-light-webfont.ttf") format("truetype");
-  font-weight: $light;
+  src: url("#{$fonts-path}ubuntu-bold-webfont.woff2") format("woff2");
+  font-weight: $bold;
   font-style: normal;
   font-display: swap;
 }
@@ -106,4 +79,4 @@ body {
 }
 
 // Defaults
-strong {font-weight: $bold;}
+strong { font-weight: $bold; }

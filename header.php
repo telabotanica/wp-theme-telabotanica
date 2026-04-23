@@ -22,7 +22,6 @@
     gtag('config', 'G-RY61Q4VD36');
   </script>
   <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <title>Tela Botanica</title>
   <?php wp_head(); ?>
 </head>
 

@@ -2,6 +2,7 @@
 import moment from 'moment'
 import 'moment/locale/fr'
 import LazyLoad from 'vanilla-lazyload'
+import 'virtual:svg-icons-register'
 
 // Configuration moment
 moment.locale('fr')
@@ -21,13 +22,13 @@ new LazyLoad({
 
 // Responsive utilities
 import './responsive.js'
-
+console.log('VITE LOADED')
 // Glob imports - chargement eager des modules
 const moduleScripts = import.meta.glob('../../modules/**/script.js', { eager: true })
 const blockScripts = import.meta.glob('../../blocks/**/script.js', { eager: true })
 const componentScripts = import.meta.glob('../../components/**/script.js', { eager: true })
 
 // Log pour debug (à enlever en production)
-console.log(`Loaded ${Object.keys(moduleScripts).length} modules`)
-console.log(`Loaded ${Object.keys(blockScripts).length} blocks`)
-console.log(`Loaded ${Object.keys(componentScripts).length} components`)
+// console.log(`Loaded ${Object.keys(moduleScripts).length} modules`)
+// console.log(`Loaded ${Object.keys(blockScripts).length} blocks`)
+// console.log(`Loaded ${Object.keys(componentScripts).length} components`)

@@ -2,42 +2,43 @@ var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
 Tela.modules.categories = (function(){
-
-  function module(selector){
-    var $el = $(selector),
-      $title;
+  function module(el){
+    var container = el;
+    var title;
+    var content;
 
     function init(){
-      $title = $el.find('.categories-title');
-      $content = $el.find('.categories-items');
+      title = container.querySelector('.categories-title');
+      content = container.querySelector('.categories-items');
 
       // On mobile only
-      if (!matchMedia('only screen and (max-width: 767.9px)').matches) {
+      if (!window.matchMedia('only screen and (max-width: 767.9px)').matches) {
         return;
       }
 
-      $el.addClass("is-closed");
-      $title.on('click', toggleContent);
+      container.classList.add('is-closed');
+      if (title) {
+        title.addEventListener('click', toggleContent);
+      }
     }
 
     function toggleContent(e){
       e.preventDefault();
-      $el.toggleClass("is-closed");
+      container.classList.toggle('is-closed');
     }
 
     init();
-
-    return $el;
+    return container;
   }
 
   return function(selector){
-    return $(selector).each(function(){
-      module(this);
+    Array.from(document.querySelectorAll(selector)).forEach(function(el){
+      module(el);
     });
   };
 
 })();
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', () => {
   Tela.modules.categories('.categories');
 });

@@ -1,35 +1,36 @@
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', () => {
   // Responsive tweaks on home page
-  if ($("body").hasClass("home-page")) {
-    // On mobile only
+  if (document.body.classList.contains('home-page')) {
     if (matchMedia('only screen and (max-width: 767.9px)').matches) {
       // Move tools after the latest articles
-      var $tools = $("#js-front-page-tools");
-      var $parentWrapper = $tools.closest(".layout-wrapper");
-      if ($tools.length && $parentWrapper.length) {
-        $tools.appendTo($parentWrapper);
+      var tools = document.querySelector('#js-front-page-tools');
+      var parentWrapper = tools ? tools.closest('.layout-wrapper') : null;
+      if (tools && parentWrapper) {
+        parentWrapper.appendChild(tools);
       }
 
       // Invert order of blocks list projects and focus
-      var $blockListProjects = $(".block-list-projects");
-      var $blockFocus = $blockListProjects.prev(".block-focus");
-      if ($blockListProjects.length && $blockFocus.length) {
-        $blockListProjects.insertBefore($blockFocus);
+      var blockListProjects = document.querySelectorAll('.block-list-projects');
+      if (blockListProjects.length > 0) {
+        var bp = blockListProjects[0];
+        var prev = bp.previousElementSibling;
+        if (prev && prev.classList.contains('block-focus')) {
+          prev.parentNode.insertBefore(bp, prev);
+        }
       }
     }
   }
 
   // Responsive tweaks on archive page
-  if ($("body").hasClass("archive")) {
-    // On mobile only
+  if (document.body.classList.contains('archive')) {
     if (matchMedia('only screen and (max-width: 767.9px)').matches) {
-      // Move column content to the end
-      var $secondaryElements = $(".js-archive-page-secondary");
-      var $layoutContent = $(".list-articles").closest(".layout-content");
-      if ($secondaryElements.length && $layoutContent.length) {
-        var $container = $('<aside class="layout-column"></div>');
-        $container.append($secondaryElements);
-        $container.insertAfter($layoutContent);
+      var secondaryElements = document.querySelectorAll('.js-archive-page-secondary');
+      var layoutContent = document.querySelector('.list-articles')?.closest('.layout-content');
+      if (secondaryElements.length && layoutContent) {
+        var container = document.createElement('aside');
+        container.className = 'layout-column';
+        secondaryElements.forEach(function(el){ container.appendChild(el); });
+        layoutContent.parentNode.insertBefore(container, layoutContent.nextSibling);
       }
     }
   }

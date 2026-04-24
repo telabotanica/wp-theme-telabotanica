@@ -2,32 +2,29 @@ var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
 Tela.modules.membersDirectory = (function() {
+  function module(el) {
+    var container = el;
+    var paysEl;
+    var departementEl;
+    var departementSelect;
 
-  function module(selector) {
-    var $el = $(selector),
-      $pays,
-      $departement,
-      $departementSelect;
-
-    function init() {
-      $pays = $el.find('#field_3');
-      $departement = $el.find('.field_departement');
-      $departementSelect = $departement.find('#field_592');
-
-      departementToggle($pays, $departement);
-
-      $pays.change(function() {
-        departementToggle($(this), $departement);
-      });
+    function init(){
+      paysEl = container.querySelector('#field_3');
+      departementEl = container.querySelector('.field_departement');
+      departementSelect = departementEl ? departementEl.querySelector('#field_592') : null;
+      departementToggle(paysEl, departementEl);
+      if (paysEl){
+        paysEl.addEventListener('change', function(){ departementToggle(paysEl, departementEl); });
+      }
     }
 
-    function departementToggle($pays, $departement) {
-      // only 'France' has departements
-      if ($pays.val() === 'France') {
-        $departement.show();
+    function departementToggle(paysEl, departementEl) {
+      if (!paysEl) return;
+      if (paysEl.value === 'France') {
+        departementEl && (departementEl.style.display = '');
       } else {
-        $departement.hide();
-        $departementSelect.val('');
+        if (departementEl) departementEl.style.display = 'none';
+        if (departementSelect) departementSelect.value = '';
       }
     }
 
@@ -35,13 +32,12 @@ Tela.modules.membersDirectory = (function() {
   }
 
   return function(selector) {
-    return $(selector).each(function() {
-        module(this);
+    Array.from(document.querySelectorAll(selector)).forEach(function(el){
+      module(el);
     });
   };
 })();
 
-
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function(){
   Tela.modules.membersDirectory('#bps_directory24437');
 });

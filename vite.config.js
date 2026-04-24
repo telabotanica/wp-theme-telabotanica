@@ -1,7 +1,14 @@
 import { defineConfig } from 'vite'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 export default defineConfig({
+  plugins: [
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(__dirname, 'assets/icons')],
+      symbolId: 'icon-[name]'
+    })
+  ],
   build: {
     outDir: 'dist',
     rollupOptions: {
@@ -10,7 +17,6 @@ export default defineConfig({
         'editor-style': path.resolve(__dirname, 'assets/styles/editor-style.scss'),
         'login-style': path.resolve(__dirname, 'assets/styles/login-style.scss')
       },
-      external: ['leaflet'],
       output: {
         entryFileNames: '[name].js',
         assetFileNames: (assetInfo) => {

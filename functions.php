@@ -86,16 +86,20 @@ function telabotanica_content_width() {
 add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
 
 function telabotanica_enqueue_frontend_assets() {
-  $bundle_js = get_template_directory() . '/dist/bundle.js';
-  if ( file_exists( $bundle_js ) ) {
-    wp_enqueue_script(
-      'telabotanica-frontend-script',
-      get_template_directory_uri() . '/dist/bundle.js',
-      [],
-      null,
-      true
-    );
-  }
+  wp_enqueue_script(
+    'telabotanica-frontend-script',
+    get_template_directory_uri() . '/dist/bundle.js',
+    [],
+    null,
+    true
+  );
+
+  add_filter('script_loader_tag', function ($tag, $handle) {
+    if ($handle === 'telabotanica-frontend-script') {
+      return str_replace('<script ', '<script type="module" ', $tag);
+    }
+    return $tag;
+  }, 10, 2);
 
   wp_enqueue_style(
     'telabotanica-frontend-style',

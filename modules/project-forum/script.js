@@ -1,36 +1,38 @@
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
+/* Vanilla JS version (no jQuery) for Project Forum module */
+(function(){
+  var Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
-Tela.modules.epForum = (function(){
+  Tela.modules.epForum = (function(){
+    function module(el){
+      var form = el;
+      var submitBtn = form.querySelector('input[type="submit"]');
 
-  function module(selector){
-    var $formAbonnement = $(selector),
-        $boutonAbonnement = $formAbonnement.find('input[type="submit"]');
-
-    function init(){
-      $boutonAbonnement.on('click', confirmFormSubmit);
-    }
-
-    function confirmFormSubmit(e){
-      e.preventDefault();
-      e.stopPropagation();
-      var message = $boutonAbonnement.attr("title");
-      if (confirm(message)) {
-        $formAbonnement.submit();
+      function init(){
+        if (!submitBtn) return;
+        submitBtn.addEventListener('click', confirmFormSubmit);
       }
+
+      function confirmFormSubmit(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var message = submitBtn.getAttribute("title");
+        if (confirm(message)) {
+          form.submit();
+        }
+      }
+
+      init();
     }
 
-    init();
-  }
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){
+        module(el);
+      });
+    };
+  })();
 
-  return function(selector){
-    $(selector).each(function() {
-      module(this);
-    });
-  };
-
+  document.addEventListener('DOMContentLoaded', function(){
+    Tela.modules.epForum('#tb-forum-inscription');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.modules.epForum('#tb-forum-inscription');
-});

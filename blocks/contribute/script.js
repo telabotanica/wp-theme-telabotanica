@@ -1,37 +1,36 @@
-var Flickity = require("flickity");
+/* Vanilla JS version (no jQuery) for Contribute block */
+(function(){
+  var Flickity = window.Flickity; // assume Flickity is loaded globally
+  var Tela = window.Tela || {};
+  Tela.blocks = Tela.blocks || {};
 
-var Tela = window.Tela || {};
-Tela.blocks = Tela.blocks || {};
+  Tela.blocks.contribute = (function(){
+    function block(el){
+      var container = el;
+      var items;
 
-Tela.blocks.contribute = (function(){
+      function init(){
+        // On mobile only
+        if (!window.matchMedia('only screen and (max-width: 767.9px)').matches) return;
 
-  function block(selector){
-    var $el = $(selector),
-      $items;
+        items = container.querySelectorAll('.block-contribute-items');
+        if (items.length > 0 && typeof Flickity !== 'undefined'){
+          new Flickity(items[0], { wrapAround: true });
+        }
+      }
 
-    function init(){
-      // On mobile only
-      if (!matchMedia('only screen and (max-width: 767.9px)').matches) return;
-
-      $items = $el.find('.block-contribute-items');
-      var flkty = new Flickity($items[0], {
-        wrapAround: true
-      });
+      init();
+      return container;
     }
 
-    init();
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){
+        block(el);
+      });
+    };
+  })();
 
-    return $el;
-  }
-
-  return function(selector){
-    return $(selector).each(function(){
-      block(this);
-    });
-  };
-
+  document.addEventListener('DOMContentLoaded', function(){
+    Tela.blocks.contribute('.block-contribute');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.blocks.contribute('.block-contribute');
-});

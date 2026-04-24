@@ -1,43 +1,44 @@
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
+/* Vanilla JS version (no jQuery) for Share module */
+(function(){
+  var Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
-Tela.modules.share = (function(){
+  Tela.modules.share = (function(){
+    function module(el){
+      var container = el;
+      var links;
 
-  function module(selector){
-    var $el     = $(selector),
-      $links;
+      function init(){
+        links = container.querySelectorAll('.share-item a');
+        links.forEach(function(a){
+          a.addEventListener('click', onClickLink);
+        });
+      }
 
-    function init(){
-      $links = $el.find('.share-item a');
+      function onClickLink(e){
+        if (e.currentTarget.getAttribute('target') !== '_blank') { return; }
+        e.preventDefault();
+        e.stopPropagation();
+        openInNewWindow(e.currentTarget.getAttribute('href'));
+      }
 
-      $links.on('click', onClickLink);
+      function openInNewWindow(url){
+        var newWindow = window.open(url, 'share', 'height=400,width=600');
+        if (window.focus) { newWindow.focus(); }
+      }
+
+      init();
+      return container;
     }
 
-    function onClickLink(e){
-      if ($(this).attr('target') != '_blank') {return;}
-      e.preventDefault();
-      e.stopPropagation();
-      openInNewWindow($(this).attr('href'));
-    }
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){
+        module(el);
+      });
+    };
+  })();
 
-    function openInNewWindow(url){
-      var newWindow = window.open(url, 'share', 'height=400,width=600');
-      if (window.focus) {newWindow.focus();}
-    }
-
-    init();
-
-    return $el;
-  }
-
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
-  };
-
+  document.addEventListener('DOMContentLoaded', function(){
+    Tela.modules.share('.share');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.modules.share('.share');
-});

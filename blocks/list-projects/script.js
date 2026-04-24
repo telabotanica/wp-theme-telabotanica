@@ -1,37 +1,28 @@
-var Flickity = require("flickity");
-
 var Tela = window.Tela || {};
 Tela.blocks = Tela.blocks || {};
 
 Tela.blocks.listProjects = (function(){
-
-  function block(selector){
-    var $el = $(selector),
-      $items;
-
+  function block(el){
+    var container = el;
+    var items;
     function init(){
       // On mobile only
       if (!matchMedia('only screen and (max-width: 767.9px)').matches) return;
-
-      $items = $el.find('.block-list-projects-items');
-      var flkty = new Flickity($items[0], {
-        prevNextButtons: false
-      });
+      items = container.querySelectorAll('.block-list-projects-items');
+      if (items.length > 0 && typeof Flickity !== 'undefined'){
+        new Flickity(items[0], { prevNextButtons: false });
+      }
     }
-
     init();
-
-    return $el;
+    return container;
   }
 
   return function(selector){
-    return $(selector).each(function(){
-      block(this);
-    });
+    Array.from(document.querySelectorAll(selector)).forEach(function(el){ block(el); });
   };
 
 })();
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', () => {
   Tela.blocks.listProjects('.block-list-projects');
 });

@@ -1,69 +1,60 @@
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
-Tela.modules.epFloraData = (function(){
-
+// Vanilla, simplified Flora Data module renderer
+(function(){
   function module(menuSelector, bodySelector){
-    var $zoneMenu = $(menuSelector),
-        $zoneOutils = $(bodySelector),
-        $tabs,
-        $entreesListe,
-        $outils;
+    var zoneMenu = document.querySelector(menuSelector);
+    var zoneOutils = document.querySelector(bodySelector);
+    if (!zoneMenu || !zoneOutils) return;
+
+    var tabs = zoneMenu.querySelectorAll('a.toc-item-link');
+    var entreesListe = zoneMenu.querySelectorAll('li.toc-item');
+    var outils = zoneOutils.querySelectorAll('.ep-flora-data-tab');
 
     function init(){
-      $tabs = $zoneMenu.find('a.toc-item-link');
-      $entreesListe = $zoneMenu.find('li.toc-item');
-      $outils = $zoneOutils.find('.ep-flora-data-tab');
-
       manageMenu();
-
-      $tabs.on('click', changeTab);
+      tabs.forEach(function(tab){ tab.addEventListener('click', changeTab); });
     }
 
-    function manageMenu() {
-      // supprimer les entrées de menu correspondant aux outils non activés
-      $tabs.each(function() {
-        var idOutil = $(this).attr('href'),
-            outilPointe = $(idOutil);
-        if (! outilPointe.length) {
-            $(this).closest('li').remove();
+    function manageMenu(){
+      tabs.forEach(function(tab){
+        var idOutil = tab.getAttribute('href');
+        var outilPointe = document.querySelector(idOutil);
+        if (!outilPointe){
+          var li = tab.closest('li');
+          if (li && li.parentNode) li.parentNode.removeChild(li);
         }
       });
-      // activer l'entrée de menu correspondant à l'outil actuellement visible
-      if ($outils.length) {
-        var outilVisible = $outils.first(),
-          idOutilVisible = outilVisible.attr('id'),
-          lienMenu = $tabs.filter('[href="#' + idOutilVisible + '"]');
-        lienMenu.closest('li').addClass('is-active');
+      if (outils.length){
+        var outilVisible = outils[0];
+        var idOutilVisible = outilVisible.id;
+        var lienMenu = Array.from(tabs).find(function(t){ return t.getAttribute('href') === '#' + idOutilVisible; });
+        if (lienMenu && lienMenu.closest('li')) lienMenu.closest('li').classList.add('is-active');
       }
     }
 
     function changeTab(e){
       e.preventDefault();
       e.stopPropagation();
-      // active le bon lien dans le menu
-      $entreesListe.removeClass('is-active'); // bruteforce
-      $(this).closest('li').addClass('is-active');
-      // rend visible le bon outil Flora Data
-      var idOutil = $(this).attr('href'),
-          outilChoisi = $(idOutil);
-      $outils.each(function() {
-        $(this).hide();
-      });
-      outilChoisi.show();
+      entreesListe.forEach(function(li){ li.classList.remove('is-active'); });
+      if (this.closest('li')) this.closest('li').classList.add('is-active');
+
+      var idOutil = this.getAttribute('href');
+      var outilChoisi = document.querySelector(idOutil);
+      outils.forEach(function(o){ o.style.display = 'none'; });
+      if (outilChoisi) outilChoisi.style.display = '';
     }
 
     init();
   }
-
-  return function(selector, menuSelector, bodySelector){
-    $(selector).each(function() {
-      module(menuSelector, bodySelector);
-    });
-  };
-
+  Tela.modules.epFloraData = (function(){
+    return function(selector, menuSelector, bodySelector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(){ module(menuSelector, bodySelector); });
+    };
+  })();
 })();
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', () => {
   Tela.modules.epFloraData('.project-flora-data', '#ep-flora-data-menu', '#ep-flora-data-tabs');
 });

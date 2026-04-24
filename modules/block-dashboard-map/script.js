@@ -1,59 +1,65 @@
-var PubSub = require('pubsub-js');
-
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
-
-Tela.modules.blockDashboardMap = (function(){
-
-  function module(selector){
-    var $el = $(selector),
-      $titleSuffix,
-      apiUrl,
-      data = {
-        total: 0
-      };
-
-    function init(){
-      $titleSuffix = $el.find('.title-suffix');
-
-      // Get the URL to the API from the data-* attribute
-      apiUrl = $el.data('apiUrl');
-
-      loadData();
+/* Vanilla JS version (no jQuery) for BlockDashboardMap module */
+(function(){
+  // Minimal PubSub shim
+  var PubSub = {
+    _events: {},
+    publish: function(topic, data){
+      (this._events[topic] || []).forEach(function(cb){ cb(null, data); });
+    },
+    subscribe: function(topic, cb){
+      this._events[topic] = this._events[topic] || [];
+      this._events[topic].push(cb);
     }
-
-    function loadData(){
-      // Call the API
-      $.getJSON( apiUrl, function( json ) {
-        data.total = json.observationsPubliques;
-        updateSuffix();
-        publishTotalImages(json.imagesLieesPubliques);
-      });
-    }
-
-    function updateSuffix(){
-      $titleSuffix.text(data.total);
-    }
-
-    function publishTotalImages(data){
-      // data contains the total of images for this user
-      PubSub.publish('block-dashboard-map.images', data);
-    }
-
-
-    init();
-
-    return $el;
-  }
-
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
   };
 
-})();
+  var Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
-$(document).ready(function(){
-  Tela.modules.blockDashboardMap('.block-dashboard-map');
-});
+  Tela.modules.blockDashboardMap = (function(){
+    function module(el){
+      var $el = el;
+      var titleSuffix;
+      var apiUrl;
+      var data = { total: 0 };
+
+      function init(){
+        titleSuffix = $el.querySelector('.title-suffix');
+        apiUrl = $el.getAttribute('data-api-url');
+        loadData();
+      }
+
+      function loadData(){
+        if (!apiUrl) return;
+        fetch(apiUrl)
+          .then(function(res){ return res.json(); })
+          .then(function(json){
+            data.total = json.observationsPubliques;
+            updateSuffix();
+            publishTotalImages(json.imagesLieesPubliques);
+          })
+          .catch(function(err){ console.error(err); });
+      }
+
+      function updateSuffix(){
+        if (titleSuffix) titleSuffix.textContent = data.total;
+      }
+
+      function publishTotalImages(data){
+        PubSub.publish('block-dashboard-map.images', data);
+      }
+
+      init();
+      return $el;
+    }
+
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){
+        module(el);
+      });
+    };
+  })();
+
+  document.addEventListener('DOMContentLoaded', function(){
+    Tela.modules.blockDashboardMap('.block-dashboard-map');
+  });
+})();

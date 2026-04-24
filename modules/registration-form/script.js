@@ -2,34 +2,28 @@ var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
 Tela.modules.register = (function(){
-
   function unbind(){
-    // prevents Buddypress[.min.js] from displaying a "leave page" warning
-    // (onbeforeunload) when validating the form
-    // This overloads /plugins/buddypress/bp-templates/bp-legacy/js/buddypress.js:1208
-    // (actually loadded : buddypress.min.js)
-    $('#profile-edit-form input:not(:submit), #profile-edit-form textarea, #profile-edit-form select, #signup_form input:not(:submit), #signup_form textarea, #signup_form select').change(function(){
-      window.onbeforeunload = function(event) {
-        event.stopPropagation();
-      };
+    // replaces jQuery-based bindings with vanilla listeners
+    var inputs = document.querySelectorAll('#profile-edit-form input:not([type="submit"]), #profile-edit-form textarea, #profile-edit-form select, #signup_form input:not([type="submit"]), #signup_form textarea, #signup_form select');
+    inputs.forEach(function(el){
+      el.addEventListener('change', function(){
+        window.onbeforeunload = function(event){ event.stopPropagation(); };
+      });
     });
   }
 
   function changeLinksTargets() {
-    // adds target="_blank" to links in fields descriptions, which is not
-    // allowed by the fields editor
-    $('p.description > a').prop('target', '_blank');
+    document.querySelectorAll('p.description > a').forEach(function(a){ a.setAttribute('target','_blank'); });
   }
 
   return function(selector){
-    $(selector).each(function() {
+    Array.from(document.querySelectorAll(selector)).forEach(function(){
       unbind();
       changeLinksTargets();
     });
   };
-
 })();
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', () => {
   Tela.modules.register('#signup_form');
 });

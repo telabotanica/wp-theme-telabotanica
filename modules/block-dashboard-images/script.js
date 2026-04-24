@@ -1,84 +1,86 @@
-var PubSub = require('pubsub-js');
+/* Vanilla JS version (no jQuery) for BlockDashboardImages module */
+(function(){
+  // Tiny PubSub shim to replace pubsub-js usage
+  var PubSub = {
+    _events: {},
+    subscribe: function(topic, cb){
+      this._events[topic] = this._events[topic] || [];
+      this._events[topic].push(cb);
+    },
+    publish: function(topic, data){
+      (this._events[topic] || []).forEach(function(cb){ cb(null, data); });
+    }
+  };
 
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
+  var Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
-Tela.modules.blockDashboardImages = (function(){
-
-  function module(selector){
-    var $el = $(selector),
-      $titleSuffix,
-      $content,
-      apiUrl,
-      maxItems = 8,
-      data = {
+  Tela.modules.blockDashboardImages = (function(){
+    function module(el){
+      var container = el;
+      var titleSuffix;
+      var content;
+      var apiUrl;
+      var maxItems = 8;
+      var data = {
         total: '',
         items: []
       };
 
-    function init(){
-      $titleSuffix = $el.find('.title-suffix');
-      $content = $el.find('.block-dashboard-content');
+      function init(){
+        titleSuffix = container.querySelector('.title-suffix');
+        content = container.querySelector('.block-dashboard-content');
+        apiUrl = container.getAttribute('data-api-url');
+        PubSub.subscribe('block-dashboard-map.images', onTotalImages);
+        loadData();
+      }
 
-      // Get the URL to the API from the data-* attribute
-      apiUrl = $el.data('apiUrl');
+      function loadData(){
+        if (!apiUrl) return;
+        fetch(apiUrl)
+          .then(function(res){ return res.json(); })
+          .then(function(json){
+            (json.resultats || []).slice(0, maxItems).forEach(function(item){
+              data.items.push({
+                href: '#',
+                image: item['binaire.href']
+              });
+            });
+            renderContent();
+          })
+          .catch(function(err){ console.error(err); });
+      }
 
-      // Subscribe to the total of images that will be retrieved by block-dashboard-map
-      PubSub.subscribe('block-dashboard-map.images', onTotalImages);
+      function onTotalImages(e, images){
+        data.total = images;
+        updateSuffix();
+      }
 
-      loadData();
-    }
+      function updateSuffix(){
+        if (titleSuffix) titleSuffix.textContent = data.total;
+      }
 
-    function loadData(){
-      // useful for local debugging:
-      // apiUrl = '/wp-content/themes/telabotanica/modules/feed/images.json';
-
-      // Call the API
-      $.getJSON(apiUrl, function(json){
-        _.each(json.resultats.slice(0, maxItems), function (item) {
-          data.items.push({
-            href: '#',
-            image: item['binaire.href']
-          });
+      function renderContent(){
+        var contentHTML = '<div class="block-dashboard-content-images">';
+        data.items.forEach(function(item){
+          contentHTML += '<a href="' + item.href + '"><img src="' + item.image + '" alt="" /></a>';
         });
+        contentHTML += '</div>';
+        if (content){ content.insertAdjacentHTML('afterbegin', contentHTML); }
+      }
 
-        renderContent();
+      init();
+      return container;
+    }
+
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){
+        module(el);
       });
-    }
+    };
+  })();
 
-    function onTotalImages(e, images) {
-      // images contains the total of images for this user
-      data.total = images;
-      updateSuffix();
-    }
-
-    function updateSuffix(){
-      $titleSuffix.text(data.total);
-    }
-
-    function renderContent(){
-      var content = '<div class="block-dashboard-content-images">';
-      $.each(data.items, function(){
-        content += '<a href="' + this.href + '"><img src="' + this.image + '" alt="" /></a>';
-      })
-      content += '</div>';
-      $content.prepend(content);
-    }
-
-
-    init();
-
-    return $el;
-  }
-
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
-  };
-
+  document.addEventListener('DOMContentLoaded', function(){
+    Tela.modules.blockDashboardImages('.block-dashboard-images');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.modules.blockDashboardImages('.block-dashboard-images');
-});

@@ -1,77 +1,62 @@
-require('velocity-animate');
-var PubSub = require('pubsub-js');
-var Cookies = require('js-cookie');
+/* Vanilla JS version (no jQuery) for Notice Cookies module */
+(function(){
+  // Simple PubSub shim
+  var PubSub = window.PubSub || {
+    _events: {},
+    publish: function(topic, data){ (this._events[topic] || []).forEach(function(cb){ cb(null, data); }); },
+    subscribe: function(topic, cb){ this._events[topic] = this._events[topic] || []; this._events[topic].push(cb); }
+  };
+  // Simple cookie helpers
+  function getCookie(name){ var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : null; }
+  function setCookie(name, value, days){ var d = new Date(); d.setTime(d.getTime() + days*24*60*60*1000); document.cookie = name + '=' + encodeURIComponent(value) + ';path=/;expires=' + d.toUTCString(); }
 
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
+  var Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
-Tela.modules.noticeCookies = (function(){
+  Tela.modules.noticeCookies = (function(){
+    function module(el){
+      var noticeEl = el;
+      var buttonAccept;
 
-  function module(selector){
-    var $el = $(selector),
-        $buttonAccept;
-
-    function init(){
-      // If the user already accepts cookies, remove the notice and quit
-      if (Cookies.get('cookies-accept') === 'true') {
-        $el.remove();
-        return;
+      function init(){
+        // If the user already accepts cookies, remove the notice and quit
+        if (getCookie('cookies-accept') === 'true') {
+          noticeEl.remove();
+          return;
+        }
+        openNotice();
+        buttonAccept = noticeEl.querySelector('.button[data-action="accept-cookies"]');
+        if (buttonAccept) buttonAccept.addEventListener('click', onClickAccept);
       }
 
-      open();
+      function onClickAccept(e){
+        e.preventDefault();
+        setCookie('cookies-accept', 'true', 395);
+        closeNotice();
+      }
 
-      $buttonAccept = $el.find('.button[data-action="accept-cookies"]');
-      $buttonAccept.on('click', onClickAccept);
+      function closeNotice(){
+        // Simple hide/remove without animation
+        noticeEl.style.display = 'none';
+        PubSub.publish('notice-cookies.closed');
+        noticeEl.remove();
+      }
+
+      function openNotice(){
+        noticeEl.style.display = 'block';
+        PubSub.publish('notice-cookies.opened');
+      }
+
+      init();
+      return noticeEl;
     }
 
-    function onClickAccept(e){
-      e.preventDefault();
-      Cookies.set('cookies-accept', 'true', {
-        expires: 395 // 13 months
-      });
-      close();
-    }
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){ module(el); });
+    };
+  })();
 
-    function close(){
-      $el.velocity({
-        height: 0,
-        opacity: [0, 1]
-      }, {
-        duration: 350,
-        easing: "ease",
-        complete: function(){
-          PubSub.publish('notice-cookies.closed');
-          $el.remove();
-        }
-      });
-    }
-
-    function open(){
-      $el.velocity({
-        opacity: [1, 0]
-      }, {
-        display: 'block',
-        duration: 350,
-        easing: "ease",
-        complete: function(){
-          PubSub.publish('notice-cookies.opened');
-        }
-      });
-    }
-
-    init();
-
-    return $el;
-  }
-
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
-  };
-
+  document.addEventListener('DOMContentLoaded', () => {
+    Tela.modules.noticeCookies('.notice-cookies');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.modules.noticeCookies('.notice-cookies');
-});

@@ -1,44 +1,49 @@
-var iconTemplate = require('./../icon/icon');
-
-var Tela = window.Tela || {};
-Tela.modules = Tela.modules || {};
-
-Tela.modules.footer = (function(){
-
-  function module(selector){
-    var $el     = $(selector),
-      $toggleNav,
-      $nav,
-      $itemsMore;
-
-    function init(){
-      $toggleNav = $el.find('.footer-nav-toggle button');
-      $nav = $el.find('.footer-nav');
-      $itemsMore = $el.find('.menu-item-more');
-
-      $toggleNav.on('click', toggleNav);
-
-      var iconArrowRight = iconTemplate({data: {icon: 'arrow-right'}});
-      $itemsMore.append(iconArrowRight);
-    }
-
-    function toggleNav(){
-      $nav.toggle();
-    }
-
-    init();
-
-    return $el;
+/* Vanilla JS version (no jQuery) for Footer module */
+(function(){
+  // Simple inline icon replacement
+  function renderIconArrowRight(){
+    return '<span class="icon-arrow-right">→</span>';
   }
 
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
-    });
-  };
+  var Tela = window.Tela || {};
+  Tela.modules = Tela.modules || {};
 
+  Tela.modules.footer = (function(){
+    function module(el){
+      var container = el;
+      var toggleBtn, nav, itemsMore;
+
+      function init(){
+        toggleBtn = container.querySelector('.footer-nav-toggle button');
+        nav = container.querySelector('.footer-nav');
+        itemsMore = container.querySelector('.menu-item-more');
+
+        if (toggleBtn) toggleBtn.addEventListener('click', toggleNav);
+
+        if (itemsMore) {
+          itemsMore.insertAdjacentHTML('beforeend', renderIconArrowRight());
+        }
+      }
+
+      function toggleNav(){
+        if (!nav) return;
+        var current = window.getComputedStyle(nav).display;
+        nav.style.display = (current === 'none') ? '' : 'none';
+      }
+
+      init();
+      return container;
+    }
+
+    return function(selector){
+      Array.from(document.querySelectorAll(selector)).forEach(function(el){
+        module(el);
+      });
+    };
+
+  })();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    Tela.modules.footer('.footer');
+  });
 })();
-
-$(document).ready(function(){
-  Tela.modules.footer('.footer');
-});

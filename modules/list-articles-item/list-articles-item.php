@@ -20,7 +20,9 @@
     'author' => [
       'prefix' => __( 'par', 'telabotanica' ),
       'text' => get_the_author(),
-      'href' => bp_core_get_user_domain( get_the_author_meta( 'ID' ) )
+      'href' => function_exists('bp_core_get_user_domain')
+        ? bp_core_get_user_domain( get_the_author_meta( 'ID' ) )
+        : get_author_posts_url( get_the_author_meta( 'ID' ) )
     ],
     'categories' => []
   ];
@@ -98,13 +100,17 @@
           echo '</span>';
         }
 
-        // $category->parent === 30 is 'offres-emploi'
-        if ($category->parent === 30 && $data->place) {
-          echo '<span class="list-articles-item-job-loc">';
-            the_telabotanica_module('icon', ['icon' => 'marker']);
-            echo $data->place;
-          echo '</span>';
-        }
+  $categories = get_the_category();
+  foreach ($categories as $category) {
+    // $category->parent === 30 is 'offres-emploi'
+    if ($category->parent === 30 && $data->place) {
+      echo '<span class="list-articles-item-job-loc">';
+      the_telabotanica_module('icon', ['icon' => 'marker']);
+      echo $data->place;
+      echo '</span>';
+      break;
+    }
+  }
 
         if ($data->date) {
           printf(

@@ -30,7 +30,7 @@
         );
 
 //      the_telabotanica_module('search-box', [
-//        // TODO: make the suggestions configurable
+//        // TODO: A reintegrer sans algolia
 //        'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc'],
 //        'modifiers' => ['large', 'is-primary']
 //      ]);

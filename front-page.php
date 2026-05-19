@@ -139,9 +139,9 @@ $category_emploi = get_category_by_slug('offres-emploi') ?: null;
               'modifiers' => 'layout-column-item'
             ] );
 
-            the_telabotanica_module('newsletter', [
-              'modifiers' => ['layout-column-item', 'background-white', 'with-shadow', 'with-padding']
-            ] );
+//            the_telabotanica_module('newsletter', [
+//              'modifiers' => ['layout-column-item', 'background-white', 'with-shadow', 'with-padding']
+//            ] );
             ?>
           </aside>
         </div>

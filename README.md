@@ -20,7 +20,7 @@ Définir les constantes suivantes dans `wp-config.php`:
 
 ### Pendant le développement
 
-    npm start
+    npm run dev
 
 Cette commande :
 - surveille les fichiers du thème
@@ -39,5 +39,7 @@ Cette commande :
 
 Depuis le serveur :
 
-  git pull
-  composer install
+    git pull
+    composer install
+    npm install
+    npm run build

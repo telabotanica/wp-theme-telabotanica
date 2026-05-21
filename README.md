@@ -1,7 +1,11 @@
 # Thème Wordpress du site tela-botanica.org
 
-Ce thème utilise le bundler [Webpack](https://webpack.github.io) et l'outil de
+Ce thème utilise le bundler [Vite](https://vitejs.dev) et l'outil de
 gestion de dépendances [Composer](https://getcomposer.org).
+
+Ce thème a été développé en utilisant Node 24 et PHP 8.5, mais il devrait être compatible avec les versions plus anciennes de ces outils.
+
+Ce thème est conçu pour être utilisé avec Wordpress 7.0 ou une version plus récente, mais il devrait être compatible avec les versions plus anciennes de Wordpress.
 
 ## Pour débuter
 
@@ -13,16 +17,6 @@ Installer les dépendences du projet
     composer install
 
 Définir les constantes suivantes dans `wp-config.php`:
-```php
-/**
- * Remplir ces valeurs avec les clés d'API du compte Algolia
- */
-define('ALGOLIA_APPLICATION_ID',);
-define('ALGOLIA_SEARCH_API_KEY',);
-define('ALGOLIA_ADMIN_API_KEY',);
-define('ALGOLIA_PREFIX',); // (correspondant à l'environnement en cours, par exemple `prod_`)
-```
-
 
 ### Pendant le développement
 

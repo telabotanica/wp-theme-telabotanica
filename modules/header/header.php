@@ -1,5 +1,5 @@
 <?php
-//require_once 'inc/walker.php';
+require_once 'inc/walker.php';
 
 function telabotanica_module_header($data) {
   // $header_small can be set be true before calling get_header()
@@ -66,8 +66,8 @@ function telabotanica_module_header($data) {
             'theme_location' => 'secondary',
             'menu_class'     => 'header-nav-items',
             'depth'          => 2,
-            'walker' => new Walker_Nav_Menu(),
-//            'walker'         => new HeaderNavWalker(),
+//            'walker' => new Walker_Nav_Menu(),
+            'walker'         => new HeaderNavWalker(),
             'items_wrap'     => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>'
            ] );
         echo '</nav>';

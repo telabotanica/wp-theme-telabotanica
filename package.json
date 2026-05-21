@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/telabotanica/wp-theme-telabotanica#readme",
   "devDependencies": {
-    "accessible-mega-menu": "git+https://github.com/adobe-accessibility/Accessible-Mega-Menu.git",
     "autoprefixer": "^10.4.19",
     "js-cookie": "^3.0.5",
     "numeral": "^2.0.6",

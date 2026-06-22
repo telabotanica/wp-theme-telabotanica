@@ -30,17 +30,71 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 
 // Chargement des dépendances installées avec Composer
 require get_template_directory() . '/vendor/autoload.php';
+
+// Fonctions utiles
 require get_template_directory() . '/inc/utile.php';
+
+// Filtres pour l'extrait
 require get_template_directory() . '/inc/excerpt.php';
+
+// Pages d'options (avec ACF)
+require get_template_directory() . '/inc/options.php';
+
+// Chargement des types de contenus sur mesure (Custom Post Types)
+// cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
 require get_template_directory() . '/inc/custom-post-types.php';
+
+// Chargement des taxonomies sur mesure (Custom Taxonomies)
+// cf. https://codex.wordpress.org/Taxonomies#Custom_Taxonomies
 require get_template_directory() . '/inc/custom-taxonomies.php';
+
+// Options WPML
 require get_template_directory() . '/inc/wpml.php';
+
+// Chargement du styleguide
 require get_template_directory() . '/inc/styleguide.php';
+
+// Amélioration du flux RSS
+require get_template_directory() . '/inc/rss.php';
+
+// Personnalisation de la page de login
 require get_template_directory() . '/inc/login.php';
+
+// Synchronisation et améliorations des profils wordpress et buddypress
+require get_template_directory() . '/inc/profile.php';
+
+// Suppression de la barre d'outils pour les non-admins
 require get_template_directory() . '/inc/remove-toolbar.php';
+
+// Ajout de sous-pages au profil
+require get_template_directory() . '/inc/profile-subpages.php';
+
+// Redirection des non-admins vers la page d'accueil lors du login
+require get_template_directory() . '/inc/redirect-after-login.php';
+
+// Customisation ACF
 require get_template_directory() . '/inc/acf.php';
+
+// Intégration d'Algolia
+require get_template_directory() . '/algolia/functions.php';
+
+// Gestion des contenus, liens, commentaires etc. à la suppression d'un compte
+require get_template_directory() . '/inc/manage-delete-account.php';
+
+// Permet de faire le lien entre le nom du pays et son code iso
+require get_template_directory() . '/inc/members-special-chars.php';
+
+// Règles de validation du titre des articles
 require get_template_directory() . '/inc/validate-post-title.php';
+
+// Ajout d'ACF à WP REST API
+require get_template_directory() . '/inc/rest-api-posts-acf.php';
+
+// remplacer la limite retour posts par page (100) par PHP_INT_MAX
 require get_template_directory() . '/inc/rest-api-posts-per-page.php';
+
+// accéder facilement à la catégorie parente pour chaque article
+// Obtenir les enfants de chaque catégorie parente
 require get_template_directory() . '/inc/rest-api-posts-category-hierarchy.php';
 
 

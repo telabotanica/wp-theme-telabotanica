@@ -13,7 +13,13 @@
 
   if (empty($data->image)) {
     $image = get_sub_field('image') ?: get_field('image');
-    $data->image = $image['sizes']['large'];
+
+    if (empty($image) || !is_array($image)) {
+      echo '<div class="' . implode(' ', $data->modifiers) . '"></div>';
+      return;
+    }
+
+    $data->image = $image['sizes']['large'] ?? $image['url'] ?? '';
 
     // Le srcset est analysé selon les tailles proposées.
     // La taille est fixe sur desktop (max-width du conteneur des composants)
@@ -21,7 +27,11 @@
     // cf. https://ericportis.com/posts/2014/srcset-sizes/
     $srcset = [];
     foreach (['medium', 'large'] as $size) {
-      $srcset[$image['sizes'][$size . '-width']] = $image['sizes'][$size] . ' ' . $image['sizes'][$size . '-width'] . 'w';
+      $sizeUrl   = $image['sizes'][$size] ?? null;
+      $sizeWidth = $image['sizes'][$size . '-width'] ?? null;
+      if ($sizeUrl && $sizeWidth) {
+        $srcset[$sizeWidth] = $sizeUrl . ' ' . $sizeWidth . 'w';
+      }
     }
 
     $components_width = is_page() ? 620 : 700;
@@ -44,7 +54,7 @@
       $data->alt
     );
 
-    telabotanica_image_credits( $image, 'component-image' );
+  telabotanica_image_credits( $image ?? null, 'component-image' );
 
   echo '</div>';
 }

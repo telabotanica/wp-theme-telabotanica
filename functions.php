@@ -20,7 +20,9 @@
  * For more information on hooks, actions, and filters,
  * {@link https://codex.wordpress.org/Plugin_API}
  */
-
+if (!defined('ABSPATH')) {
+  exit;
+}
 // Ce thème requiert WordPress 4.4 ou ultérieur
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
   require get_template_directory() . '/inc/back-compat.php';
@@ -28,142 +30,86 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 
 // Chargement des dépendances installées avec Composer
 require get_template_directory() . '/vendor/autoload.php';
-
-// Fonctions utiles
 require get_template_directory() . '/inc/utile.php';
-
-// Filtres pour l'extrait
 require get_template_directory() . '/inc/excerpt.php';
-
-// Pages d'options (avec ACF)
-require get_template_directory() . '/inc/options.php';
-
-// Chargement des types de contenus sur mesure (Custom Post Types)
-// cf. https://codex.wordpress.org/Post_Types#Custom_Post_Types
 require get_template_directory() . '/inc/custom-post-types.php';
-
-// Chargement des taxonomies sur mesure (Custom Taxonomies)
-// cf. https://codex.wordpress.org/Taxonomies#Custom_Taxonomies
 require get_template_directory() . '/inc/custom-taxonomies.php';
-
-// Options WPML
 require get_template_directory() . '/inc/wpml.php';
-
-// Chargement du styleguide
 require get_template_directory() . '/inc/styleguide.php';
-
-// Amélioration du flux RSS
-require get_template_directory() . '/inc/rss.php';
-
-// Personnalisation de la page de login
 require get_template_directory() . '/inc/login.php';
-
-// Synchronisation et améliorations des profils wordpress et buddypress
-require get_template_directory() . '/inc/profile.php';
-
-// Suppression de la barre d'outils pour les non-admins
 require get_template_directory() . '/inc/remove-toolbar.php';
-
-// Ajout de sous-pages au profil
-require get_template_directory() . '/inc/profile-subpages.php';
-
-// Redirection des non-admins vers la page d'accueil lors du login
-require get_template_directory() . '/inc/redirect-after-login.php';
-
-// Customisation ACF
 require get_template_directory() . '/inc/acf.php';
-
-// Intégration d'Algolia
-require get_template_directory() . '/algolia/functions.php';
-
-// Gestion des contenus, liens, commentaires etc. à la suppression d'un compte
-require get_template_directory() . '/inc/manage-delete-account.php';
-
-// Permet de faire le lien entre le nom du pays et son code iso
-require get_template_directory() . '/inc/members-special-chars.php';
-
-// Règles de validation du titre des articles
 require get_template_directory() . '/inc/validate-post-title.php';
-
-// Ajout d'ACF à WP REST API
-require get_template_directory() . '/inc/rest-api-posts-acf.php';
-
-// remplacer la limite retour posts par page (100) par PHP_INT_MAX
 require get_template_directory() . '/inc/rest-api-posts-per-page.php';
-
-// accéder facilement à la catégorie parente pour chaque article
-// Obtenir les enfants de chaque catégorie parente
 require get_template_directory() . '/inc/rest-api-posts-category-hierarchy.php';
 
 
 if ( ! function_exists( 'telabotanica_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- *
- * Create your own telabotanica_setup() function to override in a child theme.
- */
-function telabotanica_setup() {
-  /*
-   * Make theme available for translation.
-   */
-  load_theme_textdomain( 'telabotanica' );
-
-  // Add default posts and comments RSS feed links to head.
-  add_theme_support( 'automatic-feed-links' );
-
-  /*
-   * Let WordPress manage the document title.
-   * By adding theme support, we declare that this theme does not use a
-   * hard-coded <title> tag in the document head, and expect WordPress to
-   * provide it for us.
-   */
-  add_theme_support( 'title-tag' );
-
-  /*
-   * Enable support for Post Thumbnails on posts and pages.
+  /**
+   * Sets up theme defaults and registers support for various WordPress features.
    *
-   * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+   * Note that this function is hooked into the after_setup_theme hook, which
+   * runs before the init hook. The init hook is too late for some features, such
+   * as indicating support for post thumbnails.
+   *
+   * Create your own telabotanica_setup() function to override in a child theme.
    */
-  add_theme_support( 'post-thumbnails' );
-  set_post_thumbnail_size( 220, 160, array( 'center', 'center') );
-  add_image_size( 'medium_square', 250, 250, array( 'center', 'center') );
-  add_image_size( 'home-latest-post', 600, 365, array( 'center', 'center') );
-  add_image_size( 'home-post-thumbnail', 65, 50, array( 'center', 'center') );
-  add_image_size( 'cover-background', 1920, 500, array( 'center', 'center') );
+  function telabotanica_setup() {
 
-  // This theme uses wp_nav_menu() in two locations.
-  register_nav_menus( [
-    'principal'       => __( 'Menu principal', 'telabotanica' ),
-    'secondary'       => __( 'Menu secondaire', 'telabotanica' ),
-    'footer-bar'      => __( 'Pied de page - bandeau', 'telabotanica' ),
-    'footer-columns'  => __( 'Pied de page - en colonnes', 'telabotanica' ),
-  ] );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'title-tag' );
 
-  /*
-   * Switch default core markup for search form, comment form, and comments
-   * to output valid HTML5.
-   */
-  add_theme_support( 'html5', [
-    'search-form',
-    'comment-form',
-    'comment-list',
-    'gallery',
-    'caption',
-  ] );
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 220, 160, ['center', 'center'] );
+    add_image_size( 'medium_square', 250, 250, ['center', 'center'] );
+    add_image_size( 'home-latest-post', 600, 365, ['center', 'center'] );
+    add_image_size( 'home-post-thumbnail', 65, 50, ['center', 'center'] );
+    add_image_size( 'cover-background', 1920, 500, ['center', 'center'] );
 
-  /*
-   * This theme styles the visual editor to resemble the theme style,
-   * specifically font, colors, icons, and column width.
-   */
-  add_editor_style( 'dist/editor-style.css' );
-}
+    register_nav_menus( [
+      'principal'       => 'Menu principal',
+      'secondary'       => 'Menu secondaire',
+      'footer-bar'      => 'Pied de page - bandeau',
+      'footer-columns'  => 'Pied de page - en colonnes',
+    ] );
+
+    add_theme_support( 'html5', [
+      'search-form',
+      'comment-form',
+      'comment-list',
+      'gallery',
+      'caption',
+    ] );
+
+    add_editor_style( 'dist/editor-style.css' );
+  }
 endif; // telabotanica_setup
-add_action( 'after_setup_theme', 'telabotanica_setup' );
 
+add_action( 'after_setup_theme', 'telabotanica_setup' );
+/**
+ * ✅ Chargement des traductions (fix WP 6.7)
+ */
+function telabotanica_load_textdomain() {
+  load_theme_textdomain( 'telabotanica' );
+}
+add_action( 'init', 'telabotanica_load_textdomain' );
+
+/**
+ * ✅ Ajout du rôle (fix WP 6.7)
+ */
+function telabotanica_add_roles() {
+  add_role( 'tb_president', __('PrésidentTB', 'telabotanica' ),
+    [
+      'read' => true,
+      'create_posts' => true,
+      'edit_posts' => true,
+      'delete_posts' => true,
+      'publish_posts' => true,
+      'upload_files' => true
+    ]
+  );
+}
+add_action('init', 'telabotanica_add_roles');
 
 /**
  * Sets the content width in pixels, based on the theme's design and stylesheet.
@@ -272,27 +218,14 @@ add_filter( 'retrieve_password_message', 'fix_password_reset_link', 10, 4);
 * Petit message aux utilisateurs au moment de saisir un nouveau mot de passe
 */
 function reset_password_message($hint){
-  return $hint = __( '<span style="font-weight:900"><span style="color:#E16E38">Warning : </span> Change the password above or remember it well.</span><br><br>Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; ).' );
+  return __( '<span style="font-weight:900"><span style="color:#E16E38">Warning : </span> Change the password above or remember it well.</span><br><br>Hint: The password should be at least twelve characters long.</span>' );
 }
 add_filter('password_hint','reset_password_message');
-
-// Add president user role
-add_role( 'tb_president', __('PrésidentTB', 'telabotanica' ),
-  array(
-    'read' => true,
-    'create_posts' => true,
-    'edit_posts' => true, // Allows user to edit their own posts
-    'delete_posts' => true, // Allows user to delete their own posts
-    'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
-    'upload_files' => true
-  )
-);
 
 // Modify TinyMCE editor to remove H1.
 // from https://www.jowaltham.com/modify-tinymce-editor/
 function tiny_mce_remove_unused_formats($init) {
-	// Add block format elements you want to show in dropdown
-	$init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Address=address;Pre=pre';
-	return $init;
+  $init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Address=address;Pre=pre';
+  return $init;
 }
 add_filter('tiny_mce_before_init', 'tiny_mce_remove_unused_formats' );

@@ -92,9 +92,14 @@
 				echo "<option  value=''>$no_selection</option>\n";
 
 			foreach ($f->options as $key => $label)
-			{
-				$selected = in_array ($key, $f->values)? "selected='selected'": "";
-				echo "<option $selected value='$key'>" . wp_unslash($label) . "</option>\n";
+			{// Todo : find out how an empty option is displayed anyway
+				// Since modules/country-iso-name/script.js is created:
+				// without this condition a secound empty option would be displayed
+				if(!empty($key))
+				{
+					$selected = in_array ($key, $f->values)? "selected='selected'": "";
+					echo "<option $selected value='$key'>" . wp_unslash($label) . "</option>\n";
+				}
 			}
 			echo "</select>\n";
 			break;

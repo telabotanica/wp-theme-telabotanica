@@ -44,6 +44,10 @@
 				if (in_array ($key, $f->values))  $values[] = $label;
 			$values = implode (', ', $values);
 			if ($values === '')  break;
+			// Display country name instead of country iso code, when displaying filters
+			if( 3 === $f->id && 2 === strlen( $values ) && ctype_upper( $values ) ) {
+				$values = retrieve_country_name_from_iso( $values );
+			}
 			$filters[] = "<strong>$f->label :</strong> <span>$values</span>";
 			break;
 

@@ -15,16 +15,20 @@
   $contact = get_sub_field('contact');
   if ($contact !== false) {
     $contact = (object) $contact[0];
+    $image = '';
+    if (!empty($contact->image) && is_array($contact->image)) {
+      $image = $contact->image['sizes']['thumbnail'] ?? '';
+    }
     $defaults = [
-      'image' => $contact->image['sizes']['thumbnail'],
-      'name' => $contact->name,
-      'description' => $contact->description,
-      'phone' => $contact->phone,
-      'email' => $contact->email,
-      'website' => $contact->website,
-      'link' => @$contact->link,
+      'image'         => $image,
+      'name'          => $contact->name ?? '',
+      'description'   => $contact->description ?? '',
+      'phone'         => $contact->phone ?? '',
+      'email'         => $contact->email ?? '',
+      'website'       => $contact->website ?? '',
+      'link'          => $contact->link ?? '',
       'action_before' => false,
-      'modifiers' => []
+      'modifiers'     => []
     ];
   }
 

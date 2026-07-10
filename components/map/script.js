@@ -14,7 +14,7 @@ Tela.components.map = (function(){
   };
 
   function component(selector, userOptions){
-    const el = document.querySelector(selector);
+    const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
     const options = Object.assign({}, defaultOptions, userOptions);
     let $map,
         map;

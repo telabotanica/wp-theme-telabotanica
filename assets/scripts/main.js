@@ -12,9 +12,6 @@ import '../styles/main.scss'
 import '../styles/editor-style.scss'
 import '../styles/login-style.scss'
 
-// Icons
-import '../icons/_all.js'
-
 // Initialize lazy loading
 new LazyLoad({
   elements_selector: "iframe.lazyload, img.lazyload"

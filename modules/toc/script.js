@@ -24,7 +24,7 @@
     };
 
     function module(selector, userOptions){
-      const el = document.querySelector(selector);
+      const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
       if (!el) return;
       const options = Object.assign({}, defaultOptions, userOptions || {});
       let items = [], headerHeight = 0, currentItemId = null;

@@ -37,7 +37,7 @@ function formatDateFR(date) {
 
 Tela.modules.feed = (function () {
   function module(selector) {
-    const el = document.querySelector(selector);
+    const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
     if (!el) return;
 
     const content = el.querySelector('.feed-items');

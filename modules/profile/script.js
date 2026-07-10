@@ -12,7 +12,7 @@
 
   Tela.modules.profile = (function () {
     function module(selector) {
-      const el = document.querySelector(selector);
+      const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
       if (!el) return;
 
       let inputVille, inputEspece, departement, pays;

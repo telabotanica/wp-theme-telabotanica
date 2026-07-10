@@ -2,11 +2,10 @@
 /**
  * Template pour le formulaire de désinscription de la newsletter
  *
- * Utilise la bibliothèque de gestion de liste définie par le plugin
- * Tela Botanica, et envoie un ordre de désinscription à toute personne
- * saisissant son adresse email dans le formulaire
+ * Utilise l'API Brevo (ex Sendinblue) pour blacklister l'adresse email
+ * et la désinscrire de toutes les communications.
  */
- /*
+/*
 Template Name: newsletter-desinscription
 */
 
@@ -25,69 +24,45 @@ get_header();
           </div>
 
 <?php
-// Détection du plugin Tela Botanica
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-// détecte si le plugin TB est activé, sans avoir à mentionner le nom du dossier
 if (function_exists('tbChargerConfigPlugin')) {
 
-  // adresse de la liste "lettre d'actu"
   $newsletter_config = json_decode(get_option('tb_newsletter_config'), true);
-  if (! empty($newsletter_config['newsletter_recipient'])) {
+
+  if (! empty($newsletter_config['brevo_api_key'])) {
     if (! empty($_POST['name'])) {
       //robot
     } elseif (!empty ($_POST['email'])) {
       $email = trim($_POST['email']);
-      // instance du gestionnaire de liste, pour la lettre d'actualités de TB ou du Mooc
-      // $listes est défini par le template parent
-      if (empty($listes)) {
-        $adresse_liste = $newsletter_config['newsletter_recipient'];
-        $nom_liste = trim(substr($adresse_liste, 0, strpos($adresse_liste, '@')));
-        $liste = new TB_ListeEzmlm($nom_liste);
-        // désinscription
-        $ok = $liste->modifierStatutAbonnement(false, $email);
-      } else {
-        $ok = false;
-        foreach ($listes as $nom_liste) {
-          $liste = new TB_ListeEzmlm($nom_liste);
-          $res = $liste->modifierStatutAbonnement(false, $email);
-          $ok = $res || $ok;
-        }
-      }
 
-      if ($ok) {
+      require_once WP_PLUGIN_DIR . '/telabotanica/newsletter/class-brevo-api.php';
+
+      try {
+        $brevo = new Brevo_API($newsletter_config['brevo_api_key']);
+        $brevo->unsubscribe($email);
         ?>
         <p>
-          <?php printf(__("L'adresse <strong>%s</strong> a bien été désinscrite de la lettre d'actualités", 'telabotanica'), $email) ?>.
+          <?php printf(__("L'adresse <strong>%s</strong> a bien été désinscrite de la lettre d'actualités", 'telabotanica'), esc_html($email)) ?>.
         </p>
         <?php
-        // si la personne a un compte, décochage de la case "je veux
-        // recevoir la lettre" dans son profil
-        $utilisateur = get_user_by( 'email', $email );
-        if (empty($listes) && $utilisateur) {
+        $utilisateur = get_user_by('email', $email);
+        if ($utilisateur) {
           $config_plugin_tb = tbChargerConfigPlugin();
           if (! empty($config_plugin_tb['profil']['id_case_inscription_lettre_actu'])) {
             $id_case = $config_plugin_tb['profil']['id_case_inscription_lettre_actu'];
-            // modification de la métadonnée
             xprofile_set_field_data($id_case, $utilisateur->ID, false);
             ?>
             <p>
-              <?php printf(__("Votre profil a été mis à jour", 'telabotanica'), $email) ?>.
+              <?php printf(__("Votre profil a été mis à jour", 'telabotanica'), esc_html($email)) ?>.
             </p>
             <?php
-          } // else message ?
+          }
         }
-      } else {
+      } catch (\RuntimeException $e) {
         $destinataires_emails_erreurs = $newsletter_config['error_recipients_emails'];
-        /**
-         * Lors d'un échec de désinscription, envoie une alerte par email
-         * aux destinataires listés dans la configuration du plugin :
-         * "Newsletter" => "Réglages" => "Destinataires des emails d'erreurs"
-         */
         $message = 'Désinscription à la lettre d\'actu : erreur ! ' . "\r\n"
           . "\r\n"
           . 'Adresse à désinscrire : ' . $email . "\r\n"
-          . 'Liste : ' . $nom_liste . "\r\n"
+          . 'Erreur : ' . $e->getMessage() . "\r\n"
         ;
         $headers = 'Content-Type: text/plain; charset="utf-8"' . "\r\n"
           . 'Content-Transfer-Encoding: 8bit' . "\r\n"
@@ -95,7 +70,7 @@ if (function_exists('tbChargerConfigPlugin')) {
           . 'Reply-To: no-reply@example.com' . "\r\n"
           . 'X-Mailer: PHP/' . phpversion()
         ;
-        foreach ($destinataires_emails_erreurs as $destinataire) {
+        foreach ((array) $destinataires_emails_erreurs as $destinataire) {
           if ($destinataire && '#' !== substr($destinataire, 0, 1)) {
             error_log($message, 1, $destinataire, $headers);
             error_log($message);
@@ -112,7 +87,6 @@ if (function_exists('tbChargerConfigPlugin')) {
       }
     }
   } else {
-    // erreur config lettre
     the_telabotanica_module('notice', [
       'type' => 'warning',
       'title' => __( "Configuration incomplète", 'telabotanica' ),

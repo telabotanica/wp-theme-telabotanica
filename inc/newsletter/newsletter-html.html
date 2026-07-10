@@ -547,7 +547,7 @@
                         <a href="https://www.tela-botanica.org" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: underline;"><strong><img src="{{ logotela }}" height="39" width="150" alt="Tela Botanica" style="-ms-interpolation-mode: bicubic;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;"></strong></a>
                       </td>
                       <td valign="center" class="preheaderContent" style="padding-top: 10px;padding-right: 0;padding-bottom: 12px;padding-left: 20px;text-align: right;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #FFFFFF;font-family: sans-serif;font-size: 14px;line-height: 125%;">
-                        <strong>Lettre d'information</strong> du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM yyyy") }}</td>
+                        <strong>Lettre d'information</strong> du {{ "now"|format_date(pattern="d MMMM yyyy", locale="fr-FR") }}</td>
                     </tr>
                   </table>
                 </td>
@@ -578,7 +578,7 @@
                         </table>
                         {% endif %}
                         <h3 style="display: block;font-family: sans-serif;font-size: 20px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 15px;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ featured.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ featured.post.post_title }}</a></h3>
-                        <span class="bodyMeta" style="color: #929292;font-size: 13px;">{{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}</span>
+                        <span class="bodyMeta" style="color: #929292;font-size: 13px;">{{ featured.date|format_date(pattern="d MMMM", locale="fr-FR") }} - par {{ featured.author }}</span>
                         <br>
                         {% if featured.intro is not empty %}
                           {% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
@@ -591,7 +591,8 @@
                     </tr>
                     {% endif %}
 
-                    {% for category_id, category in categories if 'actualites' == category.slug %}
+                    {% for category_id, category in categories %}
+                    {% if 'actualites' == category.slug %}
                     <tr>
                       <td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
                         {% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
@@ -604,7 +605,7 @@
                             </td>
                             <td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
                               <h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
-                              <span class="bodyMeta" style="color: #929292;font-size: 13px;">{{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}</span>
+                              <span class="bodyMeta" style="color: #929292;font-size: 13px;">{{ item.date|format_date(pattern="d MMMM", locale="fr-FR") }} - par {{ item.author }}</span>
                               <br>
                               {% if item.intro is not empty %}
                                 {% set content = item.intro ~ ' ' ~ item.post.post_content %}
@@ -625,9 +626,11 @@
                         <a href="{{ category.url }}" class="button" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #a2b93b;border-top: 8px solid #a2b93b;border-right: 20px solid #a2b93b;border-bottom: 8px solid #a2b93b;border-left: 20px solid #a2b93b;border-radius: 2px;letter-spacing: 1px;text-transform: uppercase;color: #FFFFFF !important;font-weight: bold !important;text-decoration: none !important;font-size: 11px !important;">Toutes les actualités</a>
                       </td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
 
-                    {% for category_id, category in categories if 'offres-emploi' == category.slug %}
+                    {% for category_id, category in categories %}
+                    {% if 'offres-emploi' == category.slug %}
                     <tr>
                       <td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
                         {% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
@@ -640,7 +643,7 @@
                             </td>
                             <td valign="top" class="bodyContentSection" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding-bottom: 30px;">
                               <h3 style="display: block;font-family: sans-serif;font-size: 16px;font-style: normal;font-weight: bold;line-height: 130%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;color: #232323 !important;"><a href="{{ item.link }}" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #232323;font-weight: bold;text-decoration: none;">{{ item.post.post_title }}</a></h3>
-                              <span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEmploi" style="color: #006979 !important;">{{ item.place }}</span> - Offre publiée le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM yyyy") }} - par {{ item.author }}</span>
+                              <span class="bodyMeta" style="color: #929292;font-size: 13px;"><span class="colorEmploi" style="color: #006979 !important;">{{ item.place }}</span> - Offre publiée le {{ item.date|format_date(pattern="d MMMM yyyy", locale="fr-FR") }} - par {{ item.author }}</span>
                               <br>
                               {% if item.intro is not empty %}
                                 {% set content = item.intro ~ ' ' ~ item.post.post_content %}
@@ -661,9 +664,11 @@
                         <a href="{{ category.url }}" class="button bgcolorEmploi" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #006979 !important;border-top: 8px solid #006979;border-right: 20px solid #006979;border-bottom: 8px solid #006979;border-left: 20px solid #006979;border-radius: 2px;letter-spacing: 1px;text-transform: uppercase;color: #FFFFFF !important;font-weight: bold !important;text-decoration: none !important;font-size: 11px !important;">Toutes les offres d'emploi</a>
                       </td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
 
-                    {% for category_id, category in categories if 'evenements' == category.slug %}
+                    {% for category_id, category in categories %}
+                    {% if 'evenements' == category.slug %}
                     <tr>
                       <td valign="top" class="bodyContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-bottom: 1px solid #dddddd;color: #444444;font-family: sans-serif;font-size: 14px;line-height: 150%;padding-top: 30px;padding-right: 0;padding-bottom: 30px;padding-left: 0;text-align: left;">
                         {% for subcategory_id, subcategory in attribute(subcategories, category_id) %}
@@ -676,13 +681,13 @@
                                 <table border="0" cellpadding="0" cellspacing="0" width="66px" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
                                   <tr>
                                     <td valign="top" class="bodyContentSectionDate" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #F9E2D7;border-radius: 2px;font-size: 10px;color: #e16e38;letter-spacing: 1px;text-align: center;text-transform: uppercase;width: 55px;padding-bottom: 5px !important;padding-top: 8px !important;">
-                                      <span style="display: block;font-size: 26px;">{{ item.event.date|localizeddate("none", "none", "fr-FR", null, "d") }}</span> {{ item.event.date|localizeddate("none", "none", "fr-FR", null, "MMM") }} {% if 'now' | date('Y') != item.event.date | date('Y') %} {{ item.event.date|localizeddate("none", "none", "fr-FR", null, "Y") }} {% endif %}
+                                      <span style="display: block;font-size: 26px;">{{ item.event.date|format_date(pattern="d", locale="fr-FR") }}</span> {{ item.event.date|format_date(pattern="MMM", locale="fr-FR") }} {% if 'now' | date('Y') != item.event.date | date('Y') %} {{ item.event.date|format_date(pattern="Y", locale="fr-FR") }} {% endif %}
                                     </td>
                                   </tr>
                                   {% if item.event.date_end %}
                                   <tr>
                                     <td valign="top" class="bodyContentSectionDate bodyContentSectionDateBottom" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #F8F5EF;border-radius: 0 0 2px 2px;font-size: 10px;color: #e16e38;letter-spacing: 1px;text-align: center;text-transform: uppercase;width: 55px;padding-bottom: 5px !important;padding-top: 8px !important;">
-					    <span style="display: block;font-size: 26px;">{{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d") }}</span> {{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "MMM") }} {% if 'now' | date('Y') != item.event.date_end | date('Y') %} {{ item.event.date_end|localizeddate("none", "none", "fr-FR", null, "Y") }} {% endif %}
+					    <span style="display: block;font-size: 26px;">{{ item.event.date_end|format_date(pattern="d", locale="fr-FR") }}</span> {{ item.event.date_end|format_date(pattern="MMM", locale="fr-FR") }} {% if 'now' | date('Y') != item.event.date_end | date('Y') %} {{ item.event.date_end|format_date(pattern="Y", locale="fr-FR") }} {% endif %}
                                     </td>
                                   </tr>
                                   {% endif %}
@@ -707,6 +712,7 @@
                         <a href="{{ category.url }}" class="button bgcolorEvenements" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #e16e38 !important;border-top: 8px solid #e16e38;border-right: 20px solid #e16e38;border-bottom: 8px solid #e16e38;border-left: 20px solid #e16e38;border-radius: 2px;letter-spacing: 1px;text-transform: uppercase;color: #FFFFFF !important;font-weight: bold !important;text-decoration: none !important;font-size: 11px !important;">Tous les évènements</a>
                       </td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
                   </table>
                   <!-- // END BODY -->

@@ -5,7 +5,7 @@
 
 
 
-###### Lettre d'information du {{ "now"|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} ######
+###### Lettre d'information du {{ "now"|format_date(pattern="d MMMM", locale="fr-FR") }} ######
 
 
 {{ intro|linktotext|striptags|raw|unescape }}
@@ -15,7 +15,7 @@
 
 * {{ featured.post.post_title }} *
 
-  Le {{ featured.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ featured.author }}
+  Le {{ featured.date|format_date(pattern="d MMMM", locale="fr-FR") }} - par {{ featured.author }}
 
 {% if featured.intro is not empty %}
   {% set content = featured.intro ~ ' ' ~ featured.post.post_content %}
@@ -43,9 +43,9 @@
 
 * {{ item.post.post_title }} *
 
-{% set date_start = item.event.date|localizeddate("none", "none", "fr-FR", null, "d MMM") %}
+{% set date_start = item.event.date|format_date(pattern="d MMM", locale="fr-FR") %}
 {% if item.event.date_end %}
-  {% set date_end = item.event.date_end|localizeddate("none", "none", "fr-FR", null, "d MMM") %}
+  {% set date_end = item.event.date_end|format_date(pattern="d MMM", locale="fr-FR") %}
 
   Du {{ date_start }} au {{ date_end }}
 {% else %}
@@ -65,7 +65,7 @@
 
 * {{ item.post.post_title }} *
 
-Le {{ item.date|localizeddate("none", "none", "fr-FR", null, "d MMMM") }} - par {{ item.author }}
+Le {{ item.date|format_date(pattern="d MMMM", locale="fr-FR") }} - par {{ item.author }}
 
 {% if item.intro is not empty %}
   {% set content = item.intro ~ ' ' ~ item.post.post_content %}

@@ -42,6 +42,13 @@ function telabotanica_add_acf_query_vars( $vars ){
 }
 add_filter( 'query_vars', 'telabotanica_add_acf_query_vars' );
 
+// Tri des articles par date décroissante dans la sélection de la newsletter
+add_filter('acf/fields/relationship/query/key=field_5820a0432ffad', function($args, $field, $post_id) {
+	$args['orderby'] = 'date';
+	$args['order'] = 'DESC';
+	return $args;
+}, 10, 3);
+
 // Traduction forcée de Title et Content
 function telabotanica_acf_load_field( $field ) {
   if ( in_array($field["label"], ["Title", "Content"]) ) {

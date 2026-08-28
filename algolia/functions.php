@@ -19,17 +19,35 @@ function telabotanica_algolia_check($notice = false) {
  * Initialize the client
  */
 function telabotanica_algolia_client($admin = false) {
-  if ( !telabotanica_algolia_check(true) ) { return; }
+  if ( !telabotanica_algolia_check(true) ) { return null; }
   $private_config = telabotanica_algolia_config(true);
+  if (!$private_config) return null;
 
-  return new \AlgoliaSearch\Client($private_config['application_id'], $admin ? $private_config['admin_api_key'] : $private_config['search_api_key']);
+  $apiKey = $admin ? $private_config['admin_api_key'] : $private_config['search_api_key'];
+  $appId = $private_config['application_id'];
+
+  // Algolia PHP client v4.47 (OpenAPI): Algolia\AlgoliaSearch\Api\SearchClient::create
+  if (class_exists('\Algolia\AlgoliaSearch\Api\SearchClient')) {
+    return \Algolia\AlgoliaSearch\Api\SearchClient::create($appId, $apiKey);
+  }
+  // Algolia PHP client v4 (legacy): Algolia\AlgoliaSearch\SearchClient::create
+  if (class_exists('\Algolia\AlgoliaSearch\SearchClient')) {
+    return \Algolia\AlgoliaSearch\SearchClient::create($appId, $apiKey);
+  }
+  // Algolia PHP client v3: \AlgoliaSearch\Client
+  if (class_exists('\AlgoliaSearch\Client')) {
+    return new \AlgoliaSearch\Client($appId, $apiKey);
+  }
+
+  error_log('[Algolia] No compatible PHP client found. Install algolia/algoliasearch-client-php.');
+  return null;
 }
 
 /*
  * Algolia config
  */
 function telabotanica_algolia_config($private = false) {
-  if ( !telabotanica_algolia_check() ) { return; }
+  if ( !telabotanica_algolia_check() ) { return null; }
 
   $config = require get_template_directory() . '/algolia/config.php';
 
@@ -42,23 +60,29 @@ function telabotanica_algolia_config($private = false) {
 }
 
 /*
- * Make Algolia config accessible to Javascript
+ * Make Algolia config accessible to Javascript — use wp_json_encode & esc
  */
 function telabotanica_algolia_add_config() {
   if ( !telabotanica_algolia_check() ) { return; }
-  $json_config = json_encode( telabotanica_algolia_config() );
-  echo '<script type="text/javascript">var algolia = ' . $json_config . ';</script>';
+  $config = telabotanica_algolia_config();
+  if (!$config) return;
+  // Only expose public keys; admin key already removed
+  $json_config = wp_json_encode( $config, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+  if (!$json_config) return;
+  // Output via wp_add_inline_script would be cleaner, but keep footer script for back-compat
+  echo '<script type="text/javascript">var algolia = ' . $json_config . ';</script>' . "\n";
 }
-add_filter( 'wp_footer', 'telabotanica_algolia_add_config' );
+add_action( 'wp_footer', 'telabotanica_algolia_add_config' );
 
 /*
  * Add templates to the page
  */
 function telabotanica_algolia_add_templates() {
   if ( !telabotanica_algolia_check() ) { return; }
-  require get_template_directory() . '/algolia/autocomplete.php';
+  $file = get_template_directory() . '/algolia/autocomplete.php';
+  if (file_exists($file)) require $file;
 }
-add_filter( 'wp_footer', 'telabotanica_algolia_add_templates', PHP_INT_MAX );
+add_action( 'wp_footer', 'telabotanica_algolia_add_templates', PHP_INT_MAX );
 
 /*
  * Add custom query_vars `q` and `in` (for search page)

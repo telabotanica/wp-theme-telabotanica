@@ -1,4 +1,4 @@
-var searchHitTemplate = require('../../search-hit/search-hit.pug');
+var searchHitTemplate = require('../../search-hit/search-hit.js');
 var instantsearch = require('instantsearch.js/dist/instantsearch.js');
 
 var moment = require('moment');
@@ -9,56 +9,52 @@ require('numeral/locales/fr');
 numeral.locale('fr');
 
 var PubSub = require('pubsub-js');
-var _ = {
-  find: require('lodash.find')
-};
 
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 Tela.modules.searchBox = Tela.modules.searchBox || {};
 
-Tela.modules.searchBox.instantsearch = (function(){
+Tela.modules.searchBox.instantsearch = (function () {
 
-  function module(selector){
-    var $el = $(selector),
-      index,
+  function module(el) {
+    var index,
       search,
-      $initialContent,
-      $searchInput,
-      $searchFilters,
-      $searchHits,
-      $button
-      ;
+      initialContent,
+      searchInput,
+      searchFilters,
+      searchHits,
+      button
+    ;
 
-    function init(){
+    function init() {
       // The logic for autocomplete is in scripts/autocomplete.js
-      if ($el.data('autocomplete') === true) {return;}
+      if (el.dataset.autocomplete === 'true') { return; }
 
-      $initialContent = $("#content").find('.layout-content > *:not(#search-hits, .breadcrumbs), .layout-column > *:not(.search-filters)');
-      $searchInput = $el.find('.search-box-input');
-      $searchFilters = $('#search-filters').closest('.search-filters');
-      $searchHits = $('#search-hits');
-      $button = $el.find('.search-box-button');
+      var content = document.getElementById('content');
+      initialContent = content
+        ? content.querySelectorAll('.layout-content > *:not(#search-hits, .breadcrumbs), .layout-column > *:not(.search-filters)')
+        : [];
+      searchInput = el.querySelector('.search-box-input');
+      var searchFiltersAnchor = document.getElementById('search-filters');
+      searchFilters = searchFiltersAnchor ? searchFiltersAnchor.closest('.search-filters') : null;
+      searchHits = document.getElementById('search-hits');
+      button = el.querySelector('.search-box-button');
 
-      // console.log($initialContent);
-      // console.log($searchInput);
-      // console.log($searchFilters);
-      // console.log($searchHits);
-      // console.log($button);
-
-      var indexId = $el.data('index');
-      index = _.find(algolia.autocomplete.sources, ['index_id', indexId]);
+      var indexId = el.dataset.index;
+      index = algolia.autocomplete.sources.find(function (source) {
+        return source.index_id === indexId;
+      });
 
       var mapping = {};
       if (isSearchPage()) {
-        mapping = {'q': 's'};
+        mapping = { 'q': 's' };
       }
 
       var searchParameters = {
         hitsPerPage: 20
       };
-      if ($el.data('facetFilters')) {
-        searchParameters.facetFilters = $el.data('facetFilters').split(",");
+      if (el.dataset.facetFilters) {
+        searchParameters.facetFilters = el.dataset.facetFilters.split(',');
       }
 
       var options = {
@@ -83,17 +79,26 @@ Tela.modules.searchBox.instantsearch = (function(){
       search.start();
 
       // Remove other elements
-      $el.find('input.search-box-input:not(.ais-search-box--input)').hide();
-      $el.find('.search-box-button').insertAfter($el.find('.ais-search-box--input'));
+      var legacyInputs = el.querySelectorAll('input.search-box-input:not(.ais-search-box--input)');
+      legacyInputs.forEach(function (input) {
+        input.style.display = 'none';
+      });
+
+      var aisInput = el.querySelector('.ais-search-box--input');
+      if (aisInput && button && aisInput.parentNode) {
+        aisInput.parentNode.insertBefore(button, aisInput.nextSibling);
+      }
     }
 
     function searchFunction(helper) {
       // If no query has been made, do nothing
       if (helper.state.query === '') {
-        search.helper.once('result', function() {
-          $searchFilters.hide();
-          $searchHits.hide();
-          $initialContent.show();
+        search.helper.once('result', function () {
+          if (searchFilters) searchFilters.style.display = 'none';
+          if (searchHits) searchHits.style.display = 'none';
+          initialContent.forEach(function (item) {
+            item.style.display = '';
+          });
         });
 
         helper.search();
@@ -101,17 +106,19 @@ Tela.modules.searchBox.instantsearch = (function(){
         helper.search();
 
         // Show hits
-        $initialContent.hide();
-        $searchFilters.show();
-        $searchHits.show();
+        initialContent.forEach(function (item) {
+          item.style.display = 'none';
+        });
+        if (searchFilters) searchFilters.style.display = '';
+        if (searchHits) searchHits.style.display = '';
       }
     }
 
-    function initSearchBox(){
+    function initSearchBox() {
       search.addWidget(
         instantsearch.widgets.searchBox({
-          container: $el.find('.search-box-wrapper').get(0),
-          placeholder: $searchInput.attr('placeholder'),
+          container: el.querySelector('.search-box-wrapper'),
+          placeholder: searchInput.getAttribute('placeholder'),
           poweredBy: algolia.powered_by_enabled,
           wrapInput: false,
           autofocus: false,
@@ -126,13 +133,13 @@ Tela.modules.searchBox.instantsearch = (function(){
       );
     }
 
-    function initStats(){
-      if ($('#search-stats').length === 0) return;
+    function initStats() {
+      if (!document.getElementById('search-stats')) return;
       search.addWidget(
         instantsearch.widgets.stats({
           container: '#search-stats',
           templates: {
-            body: function(data) {
+            body: function (data) {
               var suffix = ' résultats trouvés';
               if (data.nbHits < 2) {
                 suffix = ' résultat trouvé';
@@ -144,12 +151,12 @@ Tela.modules.searchBox.instantsearch = (function(){
       );
     }
 
-    function initHits(){
+    function initHits() {
       search.addWidget(
         instantsearch.widgets.infiniteHits({
-          container: $searchHits.get(0),
+          container: searchHits,
           transformData: {
-            item: function(data) {
+            item: function (data) {
               data.type = index.index_id;
 
               // Process relative date
@@ -157,7 +164,7 @@ Tela.modules.searchBox.instantsearch = (function(){
                 data.post_date.text = moment.unix(data.post_date.timestamp).fromNow();
               }
 
-              return {data: data};
+              return { data: data };
             }
           },
           templates: {
@@ -169,8 +176,10 @@ Tela.modules.searchBox.instantsearch = (function(){
       );
     }
 
-    function initFilters(){
-      $.each(index.filters, function(id, filter){
+    function initFilters() {
+      Object.keys(index.filters).forEach(function (id) {
+        var filter = index.filters[id];
+
         // Only menu is supported for now
         if (filter.type != 'menu') return;
 
@@ -208,7 +217,7 @@ Tela.modules.searchBox.instantsearch = (function(){
       });
     }
 
-    function transformFilterReferentiel(data){
+    function transformFilterReferentiel(data) {
       // TODO: extract this in I18n files
       var full = {
         bdtfx: 'France métropolitaine',
@@ -220,23 +229,33 @@ Tela.modules.searchBox.instantsearch = (function(){
       return data;
     }
 
-    function isSearchPage(){
-      return $('body').hasClass('search');
+    function isSearchPage() {
+      return document.body.classList.contains('search');
     }
 
     init();
 
-    return $el;
+    return el;
   }
 
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
+  return function (selector) {
+    var elements = document.querySelectorAll(selector);
+    elements.forEach(function (el) {
+      module(el);
     });
+    return elements;
   };
 
 })();
 
-$(document).ready(function(){
+function ready(fn) {
+  if (document.readyState !== 'loading') {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+ready(function () {
   Tela.modules.searchBox.instantsearch('.search-box[data-instantsearch="true"]');
 });

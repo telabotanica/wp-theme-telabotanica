@@ -48,12 +48,13 @@ the_telabotanica_module('cover', [
 				</h2>
 
 				<script type="text/javascript">
-					jQuery(document).ready(function($) {
-
-						// 'All members' link should clear all filtes and show all the members
-						var $clearFitlersButton = $('#tb-clear-filters');
-						if ($clearFitlersButton.length) {
-							$('#tb-all-members-link').attr('href', $clearFitlersButton.attr('href'));
+					document.addEventListener('DOMContentLoaded', function() {
+						// 'All members' link should clear all filters and show all the members
+						var clearFiltersButton = document.getElementById('tb-clear-filters');
+						var allMembersLink = document.getElementById('tb-all-members-link');
+						if (clearFiltersButton && allMembersLink) {
+							var href = clearFiltersButton.getAttribute('href');
+							if (href) allMembersLink.setAttribute('href', href);
 						}
 					});
 				</script>

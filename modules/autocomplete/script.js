@@ -1,20 +1,26 @@
 var algoliaAutocomplete = require('autocomplete.js');
-var _ = {
-  debounce: require('lodash.debounce')
-};
 
 var Tela = window.Tela || {};
 Tela.modules = Tela.modules || {};
 
-Tela.modules.autocomplete = (function(){
+Tela.modules.autocomplete = (function () {
 
-  function module(selector){
-    var $el = $(selector),
-      $searchInput;
+  function debounce(fn, delay) {
+    var timer = null;
+    return function () {
+      var args = arguments;
+      var context = this;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        fn.apply(context, args);
+      }, delay);
+    };
+  }
 
-    function init(){
-      $searchInput = $el.find('.autocomplete-input');
+  function module(el) {
+    var searchInput = el.querySelector('.autocomplete-input');
 
+    function init() {
       /* config */
       var config = {
         debug: algolia.debug,
@@ -25,7 +31,7 @@ Tela.modules.autocomplete = (function(){
       /* setup sources */
       var sources = [
         {
-          source: _.debounce(function(query, cb) {
+          source: debounce(function (query, cb) {
             console.log('Recherche', query, cb);
             // TODO: faire la recherche et retourner les résultats dans un tableau
             var hits = [];
@@ -34,23 +40,31 @@ Tela.modules.autocomplete = (function(){
         }
       ];
 
-      algoliaAutocomplete($searchInput[0], config, sources);
-
+      algoliaAutocomplete(searchInput, config, sources);
     }
 
     init();
-
-    return $el;
+    return el;
   }
 
-  return function(selector){
-    return $(selector).each(function(){
-      module(this);
+  return function (selector) {
+    var elements = document.querySelectorAll(selector);
+    elements.forEach(function (el) {
+      module(el);
     });
+    return elements;
   };
 
 })();
 
-$(document).ready(function(){
+function ready(fn) {
+  if (document.readyState !== 'loading') {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+ready(function () {
   Tela.modules.autocomplete('.autocomplete');
 });

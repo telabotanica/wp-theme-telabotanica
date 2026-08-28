@@ -49,8 +49,7 @@
     <span class="search-results-hit-post-title">{{{ data._highlightResult.bdtfx.scientific_name.value }}}</span>
     <#
 
-    var postContent = data._highlightResult.bdtfx.common_name;
-    console.log(postContent);
+    var postContent = data._highlightResult.bdtfx.common_name || [];
     var noms_txt='';
     for(var i=0;i<postContent.length;i++){
     	noms_txt+=postContent[i].value + ', ';
@@ -116,8 +115,8 @@
   <div class="search-results-footer">
     <div class="search-results-footer-branding">
       <?php esc_html_e( 'Powered by', 'algolia' ); ?>
-      <a href="#" class="algolia-powered-by-link" title="Algolia">
-        <img class="algolia-logo" src="https://www.algolia.com/assets/algolia128x40.png" alt="Algolia" />
+      <a href="https://www.algolia.com/?utm_source=WordPress&utm_medium=extension&utm_content=<?php echo esc_attr($_SERVER['HTTP_HOST'] ?? ''); ?>&utm_campaign=poweredby" class="algolia-powered-by-link" title="Algolia" target="_blank" rel="noopener">
+        <img class="algolia-logo" src="https://www.algolia.com/assets/algolia128x40.png" alt="Algolia" loading="lazy" />
       </a>
     </div>
   </div>

@@ -3,6 +3,9 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 export default defineConfig({
+  define: {
+    global: 'globalThis'
+  },
   plugins: [
     createSvgIconsPlugin({
       iconDirs: [path.resolve(__dirname, 'assets/icons')],

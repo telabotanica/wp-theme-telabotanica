@@ -42,21 +42,21 @@ return [
           ]
         ]
       ],
-      [
-        'index_id' => 'projets',
-        'index_name' => ALGOLIA_PREFIX . 'projets',
-        'label' => __('Projets', 'telabotanica'),
-        'tmpl_suggestion' => 'autocomplete-group-suggestion',
-        'settings' => [
-          'hitsPerPage' => 3
-        ],
-        'filters' => [
-          'categories' => [
-            'type' => 'menu',
-            'label' => __("Par catégorie", 'telabotanica')
-          ]
-        ]
-      ],
+//      [
+//        'index_id' => 'projets',
+//        'index_name' => ALGOLIA_PREFIX . 'projets',
+//        'label' => __('Projets', 'telabotanica'),
+//        'tmpl_suggestion' => 'autocomplete-group-suggestion',
+//        'settings' => [
+//          'hitsPerPage' => 3
+//        ],
+//        'filters' => [
+//          'categories' => [
+//            'type' => 'menu',
+//            'label' => __("Par catégorie", 'telabotanica')
+//          ]
+//        ]
+//      ],
       [
         'index_id' => 'vegetation',
         'index_name' => 'Vegetations',

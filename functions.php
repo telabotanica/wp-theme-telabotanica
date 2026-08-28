@@ -88,6 +88,10 @@ function telabotanica_content_width() {
 add_action( 'after_setup_theme', 'telabotanica_content_width', 0 );
 
 function telabotanica_enqueue_frontend_assets() {
+  // wp.template (underscore) nécessaire pour les templates Algolia autocomplete
+  if ( telabotanica_algolia_check() ) {
+    wp_enqueue_script( 'wp-util' );
+  }
   wp_enqueue_script(
     'telabotanica-frontend-script',
     get_template_directory_uri() . '/dist/bundle.js',

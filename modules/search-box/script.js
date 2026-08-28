@@ -1,7 +1,8 @@
 // This module has different logic depending on the case
+// ESM imports — replaces CommonJS require for Vite compatibility
 
 // Use Algolia autocomplete.js when it has data-autocomplete="true"
-require('./scripts/autocomplete.js');
+import './scripts/autocomplete.js';
 
 // Use Algolia instantsearch.js when it has data-instantsearch="true"
-require('./scripts/instantsearch.js');
+import './scripts/instantsearch.js';

@@ -1,10 +1,14 @@
 var searchHitTemplate = require('../../search-hit/search-hit.js');
+searchHitTemplate = searchHitTemplate.default || searchHitTemplate;
 var instantsearch = require('instantsearch.js/dist/instantsearch.js');
+instantsearch = instantsearch.default || instantsearch;
 
 var moment = require('moment');
+moment = moment.default || moment;
 moment.locale('fr');
 
 var numeral = require('numeral');
+numeral = numeral.default || numeral;
 require('numeral/locales/fr');
 numeral.locale('fr');
 

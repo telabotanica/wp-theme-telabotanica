@@ -29,11 +29,10 @@
           $data->title
         );
 
-//      the_telabotanica_module('search-box', [
-//        // TODO: A reintegrer sans algolia
-//        'suggestions' => ['coquelicot', 'quercus ilex', 'végétation', 'mooc'],
-//        'modifiers' => ['large', 'is-primary']
-//      ]);
+      the_telabotanica_module('search-box', [
+        'suggestions' => ['coquelicot', 'quercus ilex', 'végétation'],
+        'modifiers' => ['large', 'is-primary']
+      ]);
 
       echo '</div>';
 

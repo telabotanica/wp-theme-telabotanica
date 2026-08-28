@@ -18,6 +18,7 @@ require get_template_directory() . '/inc/styleguide.php';
 require get_template_directory() . '/inc/login.php';
 require get_template_directory() . '/inc/remove-toolbar.php';
 require get_template_directory() . '/inc/acf.php';
+require get_template_directory() . '/algolia/functions.php';
 require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/validate-post-title.php';
 require get_template_directory() . '/inc/rest-api-posts-per-page.php';

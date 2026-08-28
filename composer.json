@@ -1,4 +1,5 @@
 {
     "require": {
+        "algolia/algoliasearch-client-php": "^4.47"
     }
 }

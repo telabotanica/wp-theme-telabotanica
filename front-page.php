@@ -93,7 +93,7 @@ $category_emploi = get_category_by_slug('offres-emploi') ?: null;
               'post_type' => 'post',
               'post_status' => 'publish',
               'cat' => $category_actualites?->cat_ID ?? 0,
-              'posts_per_page' => 5,
+              'posts_per_page' => 2,
               // évite d'afficher 2 fois l'actu à la Une
               'post__not_in' => $featured_post_id ? [$featured_post_id] : []
             ]);

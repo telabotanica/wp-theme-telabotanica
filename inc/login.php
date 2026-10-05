@@ -29,3 +29,14 @@ function telabotanica_login_stylesheet() {
 //  wp_enqueue_script( 'telabotanica-script', get_template_directory_uri() . '/dist/bundle.js', [ 'jquery' ], null, true );
 }
 add_action( 'login_enqueue_scripts', 'telabotanica_login_stylesheet' );
+
+// L'ancienne page /inscription/ (ex-BuddyPress, vide) redirige vers
+// l'inscription native stylée par le module login.
+function telabotanica_redirect_inscription_page() {
+  if ( is_admin() || is_preview() || ! is_page( 'inscription' ) ) {
+    return;
+  }
+  wp_safe_redirect( wp_registration_url() );
+  exit;
+}
+add_action( 'template_redirect', 'telabotanica_redirect_inscription_page' );

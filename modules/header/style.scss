@@ -215,6 +215,29 @@ $header-breakpoint-large: 1330px;
     border-radius: 50%;
   }
 
+  // Menu déroulant utilisateur (connecté)
+  &-user-toggle {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+  }
+
+  &-user-submenu {
+    @include reset-list;
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+
   // mobile / tablets
   @media (max-width: $header-breakpoint-small - 0.1px) {
     @at-root body {
@@ -478,6 +501,23 @@ $header-breakpoint-large: 1330px;
         display: flex;
         flex-direction: column-reverse;
       }
+
+      .header-user-toggle {
+        display: block;
+        margin-left: -2.5rem;
+        padding: 1.5rem;
+        width: calc(100% + 5rem);
+        background-color: $gris-f0;
+        color: $gris-33;
+        text-align: center;
+      }
+
+      .header-user-submenu {
+        a {
+          color: $gris-33;
+          padding: 1rem 1.5rem 1.2rem 3.5rem;
+        }
+      }
     }
 
     &-links-item-user-avatar {
@@ -550,6 +590,54 @@ $header-breakpoint-large: 1330px;
 
     &-links-item-user a {
       color: $vert-fonce;
+    }
+
+    &-links-item-user {
+      position: relative;
+    }
+
+    &-user-toggle {
+      align-items: center;
+      color: $vert-fonce;
+      display: flex;
+      font-size: 1.2rem;
+      height: $header-height-fixed;
+      padding-left: 1rem;
+
+      &:hover {
+        color: $gris-33;
+      }
+
+      &:focus {
+        outline: 0.2rem solid $vert-clair;
+      }
+    }
+
+    &-user-submenu {
+      background-color: $blanc;
+      box-shadow: 0 0.2rem 0.2rem 0 transparentize($noir, 0.85);
+      min-width: 20rem;
+      padding: 1rem;
+      position: absolute;
+      right: 0;
+      top: $header-height-fixed;
+
+      a {
+        color: $gris-33;
+        font-size: 1.2rem;
+        line-height: 1.4;
+        padding: 0.6rem 1.5rem 0.9rem;
+
+        &:hover,
+        &:focus {
+          background-color: $beige;
+          color: $noir;
+        }
+
+        &:focus {
+          outline: 0.2rem solid $vert-clair;
+        }
+      }
     }
 
     &-links-item-user-name {

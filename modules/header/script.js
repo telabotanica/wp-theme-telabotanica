@@ -30,6 +30,9 @@ Tela.modules.header = (function(){
       const iconEdit = iconTemplate({data: {icon: 'edit'}});
       itemsContribute.forEach(a => a.insertAdjacentHTML('afterbegin', iconEdit));
 
+      // Menu utilisateur (connecté) : desktop + mobile
+      initUserMenu();
+
       // On mobile only
       if (window.matchMedia && window.matchMedia('only screen and (max-width: 1199.9px)').matches) {
         initMobile();
@@ -38,6 +41,49 @@ Tela.modules.header = (function(){
 
       // Desktop: initialiser le comportement des sous-menus
       initDesktop();
+    }
+
+    function initUserMenu() {
+      const toggle = el.querySelector('.header-user-toggle');
+      const submenu = el.querySelector('.header-user-submenu');
+
+      if (!toggle || !submenu) return;
+
+      function close() {
+        submenu.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isOpen = submenu.classList.contains('is-open');
+
+        if (isOpen) {
+          close();
+        } else {
+          submenu.classList.add('is-open');
+          toggle.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Fermer en cliquant à l'extérieur
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.header-links-item-user')) {
+          close();
+        }
+      });
+
+      // Support clavier (Escape pour fermer)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          close();
+          toggle.blur();
+        }
+      });
     }
 
     function initDesktop() {

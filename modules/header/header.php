@@ -81,14 +81,22 @@ function telabotanica_module_header($data) {
 
       if ( is_user_logged_in() ) :
         $current_user = wp_get_current_user();
-        $avatar_url = tb_bp_avatar($current_user->ID); ?>
-        <li class="header-links-item header-links-item-user">
-          <a href="<?php echo tb_bp_profile_url(); ?>">
+        $account_url = function_exists( 'tb_account_url' ) ? tb_account_url() : wp_login_url();
+        $logout_url = wp_logout_url( home_url() );
+        $avatar_url = function_exists( 'tb_account_avatar_url' ) ? tb_account_avatar_url( $current_user->ID ) : get_avatar_url( $current_user->ID ); ?>
+        <li class="header-links-item header-links-item-user has-submenu">
+          <button type="button" class="header-user-toggle" aria-haspopup="true" aria-expanded="false">
             <span class="header-links-item-text">
-              <span class="header-links-item-user-name"><?php echo $current_user->display_name; ?></span>
-              <span class="header-links-item-user-avatar" style="background-image: url(<?php echo $avatar_url ?>);"></span>
+              <span class="header-links-item-user-name"><?php echo esc_html( $current_user->display_name ); ?></span>
+              <?php if ( $avatar_url ) : ?>
+                <span class="header-links-item-user-avatar" style="background-image: url(<?php echo esc_url( $avatar_url ); ?>);"></span>
+              <?php endif; ?>
             </span>
-          </a>
+          </button>
+          <ul class="header-user-submenu" role="menu" aria-label="<?php esc_attr_e( 'Mon compte', 'telabotanica' ); ?>">
+            <li role="none"><a role="menuitem" href="<?php echo esc_url( $account_url ); ?>"><?php esc_html_e( 'Afficher mon profil', 'telabotanica' ); ?></a></li>
+            <li role="none"><a role="menuitem" href="<?php echo esc_url( $logout_url ); ?>"><?php esc_html_e( 'Me déconnecter', 'telabotanica' ); ?></a></li>
+          </ul>
         </li>
       <?php else :
         printf(

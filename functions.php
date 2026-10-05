@@ -17,7 +17,11 @@ require get_template_directory() . '/inc/wpml.php';
 require get_template_directory() . '/inc/styleguide.php';
 require get_template_directory() . '/inc/login.php';
 require get_template_directory() . '/inc/remove-toolbar.php';
-require get_template_directory() . '/inc/account.php';
+if ( file_exists( get_template_directory() . '/inc/account.php' ) ) {
+  require get_template_directory() . '/inc/account.php';
+} else {
+  error_log( 'telabotanica: inc/account.php manquant (page Mon compte désactivée)' );
+}
 require get_template_directory() . '/inc/acf.php';
 require get_template_directory() . '/algolia/functions.php';
 require get_template_directory() . '/inc/options.php';

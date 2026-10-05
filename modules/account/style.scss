@@ -1,0 +1,63 @@
+// Page Mon compte ([tb_mon_compte]).
+// Reprend les règles du formulaire d'inscription (registration-form)
+// car le style login ne s'applique qu'à body.login (wp-login.php).
+
+.tb-account {
+  max-width: 70rem;
+
+  .tb-account-section {
+    margin: 4rem 0;
+
+    &:first-of-type {
+      margin-top: 2rem;
+    }
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .description {
+    color: $gris-60;
+    font-size: 1.4rem;
+    margin: 0.5rem 0 0;
+  }
+
+  label {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.4rem;
+    color: $gris-60;
+    font-size: 1.5rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    max-width: 50rem;
+    border: 0.1rem solid $gris-dd;
+    border-radius: 0.3rem;
+    padding: 1rem;
+
+    &:focus {
+      border-color: $vert-bouton;
+      box-shadow: 0 0 0.2rem transparentize($vert-bouton, 0.8);
+      outline: none;
+    }
+  }
+
+  .notice {
+    margin: 2rem 0;
+    text-align: left;
+  }
+
+  .tb-account-danger {
+    border-top: 0.1rem solid $gris-dd;
+    padding-top: 2rem;
+
+    h2 {
+      color: $rouge;
+    }
+  }
+}

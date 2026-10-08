@@ -12,9 +12,19 @@
     implode(' ', $data->modifiers)
   );
 
+    $current_user = wp_get_current_user();
+
     comment_form([
       'class_submit' => 'button',
-      'label_submit' => __('Publier', 'telabotanica')
+      'label_submit' => __('Publier', 'telabotanica'),
+      'logged_in_as' => sprintf(
+        '<p class="logged-in-as">%s</p>',
+        sprintf(
+          __( 'Connexion en tant que %1$s. <a href="%2$s">Se déconnecter?</a>', 'telabotanica' ),
+          $current_user->display_name,
+          wp_logout_url( get_permalink() )
+        )
+      ),
     ]);
 
   echo '</div>';

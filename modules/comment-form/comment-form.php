@@ -20,7 +20,7 @@
       'logged_in_as' => sprintf(
         '<p class="logged-in-as">%s</p>',
         sprintf(
-          __( 'Connexion en tant que %1$s. <a href="%2$s">Se déconnecter?</a>', 'telabotanica' ),
+          __( 'Connexion en tant que %1$s. <a href="%2$s">Se déconnecter?</a> Les champs obligatoires sont indiqués avec *', 'telabotanica' ),
           $current_user->display_name,
           wp_logout_url( get_permalink() )
         )

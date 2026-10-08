@@ -182,11 +182,18 @@ function get_telabotanica_component($component, $data = []) {
  */
 function the_telabotanica_styleguide_element($type, $name, $data) {
   $function = 'telabotanica_' . $type . '_' . str_replace('-', '_', $name);
-  if (function_exists($function)) {
+  if (!function_exists($function)) {
+    trigger_error(sprintf(__('Le %s `%s` n\'existe pas dans le styleguide. Avez-vous pensé à l\'ajouter à la liste des éléments dans inc/styleguide.php ?', 'telabotanica'), $type, $name), E_USER_WARNING);
+    return;
+  }
+  try {
     $data = (object) $data;
     call_user_func($function, $data);
-  } else {
-    trigger_error(sprintf(__('Le %s `%s` n\'existe pas dans le styleguide. Avez-vous pensé à l\'ajouter à la liste des éléments dans inc/styleguide.php ?', 'telabotanica'), $type, $name), E_USER_WARNING);
+  } catch ( Throwable $e ) {
+    error_log( sprintf( '[telabotanica][%s:%s] %s', $type, $name, $e->getMessage() ) );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+      trigger_error( sprintf( __( 'Erreur dans %s `%s` : %s', 'telabotanica' ), $type, $name, $e->getMessage() ), E_USER_WARNING );
+    }
   }
 }
 

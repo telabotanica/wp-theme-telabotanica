@@ -1,9 +1,12 @@
 <?php function telabotanica_block_list_projects($data) {
+  $category = function_exists('get_sub_field') ? get_sub_field('category') : null;
+  $group_type = ( is_object($category) && isset($category->name) ) ? $category->name : ( is_array($category) && isset($category['name']) ? $category['name'] : '' );
+
   $defaults = [
-    'background_color' => get_sub_field('background_color'),
+    'background_color' => function_exists('get_sub_field') ? get_sub_field('background_color') : '',
     'query' => [
       'type' => 'random',
-      'group_type' => get_sub_field('category')->name,
+      'group_type' => $group_type,
       'max' => 4
     ],
     'modifiers' => []
@@ -21,7 +24,7 @@
     echo '<div class="layout-wrapper">';
       echo '<div class="block-list-projects-items">';
 
-      if ( bp_has_groups($data->query) ) :
+      if ( function_exists('bp_has_groups') && function_exists('bp_groups') && function_exists('bp_the_group') && bp_has_groups($data->query) ) :
 
         while ( bp_groups() ) : bp_the_group();
 

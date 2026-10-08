@@ -21,41 +21,48 @@
     <div class="layout-wrapper">
       <div class="layout-content">
         <?php
-        printf(
-          '<iframe class="lazyload" data-src="%s"></iframe>',
-          $data->iframe_url
-        );
+        if ( !empty($data->iframe_url) ) :
+          printf(
+            '<iframe class="lazyload" data-src="%s"></iframe>',
+            esc_url( $data->iframe_url )
+          );
+        endif;
         ?>
       </div>
       <aside class="layout-column">
         <?php
-        the_telabotanica_module('title', [
-          'title' => $data->title,
-          'level' => 2,
-          'modifiers' => 'with-margin-top'
-        ]);
+        if ( function_exists('the_telabotanica_module') ) :
+          the_telabotanica_module('title', [
+            'title' => $data->title ?? '',
+            'level' => 2,
+            'modifiers' => 'with-margin-top'
+          ]);
+        endif;
 
-        if ( $data->items ) :
+        if ( !empty($data->items) && is_array($data->items) ) :
 
           // Remplacement des variables
           $data->items = array_filter($data->items, 'is_array');
           $data->items = array_map(function($item){
+            $members_count = function_exists('tb_bp_members_count') ? tb_bp_members_count() : 0;
             $item['title'] = str_replace([
               '{countries_count}',
               '{members_count}',
               '{structures_count}'
             ], [
               number_format_i18n( 110 ), // TODO
-              bp_get_total_member_count(),
+              $members_count,
               number_format_i18n( 172 ) // TODO
             ], $item['title'] ?? '');
             return $item;
           }, $data->items);
 
-          the_telabotanica_module('column-features', [
-            'items' => $data->items,
-            'modifiers' => 'layout-column-item'
-          ]);
+          if ( function_exists('the_telabotanica_module') && !empty($data->items) ) :
+            the_telabotanica_module('column-features', [
+              'items' => $data->items,
+              'modifiers' => 'layout-column-item'
+            ]);
+          endif;
 
         endif;
 
@@ -64,7 +71,9 @@
         $data->button['href'] = $data->button['url'] ?? '#';
         $data->button['text'] = $data->button['title'] ?? '';
         $data->button['modifiers'] = ['block', 'orange'];
-        the_telabotanica_module('button', $data->button);
+        if ( function_exists('the_telabotanica_module') && !empty($data->button['text']) ) :
+          the_telabotanica_module('button', $data->button);
+        endif;
         ?>
       </aside>
     </div>
